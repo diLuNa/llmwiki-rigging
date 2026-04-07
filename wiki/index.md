@@ -157,6 +157,17 @@ Master catalog of all pages. Updated on every ingest.
 
 ---
 
+## Python Snippets
+
+| File | Functions | Papers |
+|------|-----------|--------|
+| [[python/kelvinlet_core.py]] | `grab`, `grab_biscale`, `grab_triscale`, `apply_grab` | [[papers/degoes-2018-kelvinlets]] |
+| [[python/kelvinlet_affine.py]] | `twist`, `scale`, `pinch` | [[papers/degoes-2018-kelvinlets]] |
+| [[python/kelvinlet_constrained.py]] | `solve_forces`, `deform`, `apply_constrained` | [[papers/degoes-2018-kelvinlets]] |
+| [[python/kelvinlet_sharp.py]] | `laplacian`, `bilaplacian`, `cusped_laplacian`, `cusped_bilaplacian`, `sharp_blend` | [[papers/degoes-2019-sharp-kelvinlets]] |
+
+---
+
 ## Authors
 
 | Page | Affiliation |

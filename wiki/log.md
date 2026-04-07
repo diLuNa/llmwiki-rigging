@@ -293,6 +293,17 @@ Papers ingested:
 Updated: li-2017-flame.md source → raw/papers/flame_paper.pdf (local PDF now available)
 New concept: auto-rigging. New authors: kalogerakis-evangelos, saito-jun. Updated: singh-karan.
 
+## [2026-04-07] python | Kelvinlets Python modules extracted
+
+Created 4 NumPy Python modules covering all Kelvinlet algorithms:
+- kelvinlet_core.py         — grab brush: single-scale, bi-scale, tri-scale (Eq. 6–11); vectorized over N points
+- kelvinlet_affine.py       — twist, scale, pinch brushes (Eq. 14–17); includes volume-preservation check
+- kelvinlet_constrained.py  — constrained solve: 3n×3n linear system (Phase 1) + superposed eval (Phase 2) (Eq. 18/§5)
+- kelvinlet_sharp.py        — full Sharp Kelvinlets family: Laplacian, Bi-Laplacian, Cusped Laplacian, Cusped Bi-Laplacian, blended (Eq. 15–18)
+Created wiki/python/index.md with quick-start guide and parameter table.
+Updated wiki/index.md with Python Snippets section.
+Total: 4 modules, 13 functions, all with runnable __main__ examples. NumPy only.
+
 ## [2026-04-07] ingest | MeshGraphNets-related papers (4 papers)
 
 Downloaded and ingested 4 papers extending MeshGraphNets for cloth/character simulation:

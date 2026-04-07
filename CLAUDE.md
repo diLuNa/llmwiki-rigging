@@ -25,6 +25,7 @@ rigging-wiki/
 │   ├── comparisons/   ← side-by-side analysis pages
 │   ├── queries/       ← saved answers to important questions
 │   └── vex/           ← vex code snippets extracted from papers
+│   └── python/        ← python code snippets extracted from papers
 └── tools/             ← helper scripts (search, lint, etc.)
 ```
 
@@ -184,6 +185,14 @@ When asked to vex:
 - Index every Vex snippet in a referencing page with a brief description of the usage and functions written.
 - when possible create an example of usage of the Vex functions created.
 - provide Python alternative if Vex is not available/possible
+- Append to `wiki/log.md`: `## [YYYY-MM-DD] vex | Paper Title`.
+- Report a health summary.
+### Python
+When asked to python:
+- Convert every algorithm found in a paper into python snippets where possible
+- Save every Python snippet created in the python subfolder.
+- Index every Python snippet in a referencing page with a brief description of the usage and functions written.
+- when possible create an example of usage of the Python functions created.
 - Append to `wiki/log.md`: `## [YYYY-MM-DD] vex | Paper Title`.
 - Report a health summary.
 
