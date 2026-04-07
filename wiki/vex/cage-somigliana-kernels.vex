@@ -1,0 +1,188 @@
+// ============================================================
+// Somigliana Coordinates — Elastostatic Kernels
+// Chen, de Goes & Desbrun, SIGGRAPH 2023, Eq. (3)-(4) / (8)
+//
+// Computes per-query-point Somigliana matrix coordinates:
+//   T_i(x) = ∫_{∂Ω} T(y, x) φ_i(y) dσ_y   (vertex-based, d×d matrix, Eq. 8a)
+//   K_j(x) = ∫_{∂Ω} K(y, x) ψ_j(y) dσ_y   (face-based, d×d matrix, Eq. 8b)
+//
+// where the fundamental solution kernels are (3D, Eq. 3-4):
+//
+//   K(x, x0) = (a−b)/r · I  +  b/r³ · r rᵀ              (Kelvinlet, Eq. 3)
+//   T(x, x0, n) = µ(a−2b)/r³ [(nᵀr)I + nrᵀ − rnᵀ]
+//                + 2µbd/r⁵ (nᵀr) r rᵀ                    (Traction kernel, Eq. 4)
+//
+//   r = x − x0,  r = ‖r‖
+//   a = 1/(µ(2d−1)π),  b = a/(4(1−ν)),  d = 3 (spatial dim)
+//   Note: µ cancels in T·v products — set µ=1, only ν matters.
+//
+// Usage: Geometry Wrangle SOP, run Over Points on interior mesh.
+//   Cage mesh must be in second input (triangulated, closed, oriented outward).
+//   Outputs flat float array attributes on each query point:
+//     "somi_Ti" : float[n_cage_verts * 9]  — T_i matrices (row-major 3×3)
+//     "somi_Kj" : float[n_cage_faces * 9]  — K_j matrices (row-major 3×3)
+//
+// Inputs:
+//   nu           (detail, input 0) — Poisson ratio ν ∈ [0, 0.5)
+//   somi_quad_n  (detail, input 0) — quadrature points per triangle edge (default 5)
+//
+// PRECOMPUTATION: run once per neutral cage pose. Runtime deformation
+// uses cage-somigliana-deform.vex to apply these coordinates.
+// ============================================================
+
+float nu  = detail(0, "nu",         0.3);
+int   qn  = detail(0, "somi_quad_n", 5);    // quadrature pts per edge
+
+// Derived material constants (µ = 1, only ratio b/a matters)
+float mu = 1.0;
+float a  = 1.0 / (mu * 5.0 * $PI);          // d=3: (2d-1)=5
+float b  = a / (4.0 * (1.0 - nu));
+
+int n_verts = npoints(1);
+int n_faces = nprimitives(1);
+
+float Ti[];   resize(Ti, n_verts * 9);
+float Kj[];   resize(Kj, n_faces * 9);
+
+// ------------------------------------------------------------------
+// Helper: evaluate displacement kernel K(x0, x) as matrix3
+// r = x - x0 (relative position from source to query)
+// ------------------------------------------------------------------
+function matrix3 kelvinlet_K(vector rvec; float a_; float b_) {
+    float r2 = dot(rvec, rvec);
+    float r  = sqrt(r2);
+    if (r < 1e-12) return matrix3(0);
+    float r3 = r * r2;
+    // K = (a-b)/r * I  +  b/r³ * rrᵀ
+    float s1 = (a_ - b_) / r;
+    float s2 = b_ / r3;
+    matrix3 rrt = set(rvec.x*rvec, rvec.y*rvec, rvec.z*rvec);
+    return s1 * matrix3(1) + s2 * rrt;
+}
+
+// ------------------------------------------------------------------
+// Helper: evaluate traction kernel T(x0, x, n) as matrix3
+// n = outward normal at source point x0
+// Note: µ factors out and equals 1 here
+// ------------------------------------------------------------------
+function matrix3 traction_T(vector rvec; vector n; float a_; float b_) {
+    float r2  = dot(rvec, rvec);
+    float r   = sqrt(r2);
+    if (r < 1e-12) return matrix3(0);
+    float r3  = r * r2;
+    float r5  = r3 * r2;
+    float ndr = dot(n, rvec);
+
+    // Antisymmetric part: (nrᵀ − rnᵀ) + (nᵀr)I
+    matrix3 nr  = set(n.x*rvec, n.y*rvec, n.z*rvec);   // row-major: row i = n[i]*r
+    matrix3 rn  = set(rvec.x*n, rvec.y*n, rvec.z*n);
+    matrix3 Id  = matrix3(1);
+
+    // Volume term: rrᵀ
+    matrix3 rrt = set(rvec.x*rvec, rvec.y*rvec, rvec.z*rvec);
+
+    // T = µ(a-2b)/r³ [(nᵀr)I + nrᵀ − rnᵀ]  +  2µb·3/r⁵ (nᵀr) rrᵀ
+    float coeff1 = (a_ - 2.0*b_) / r3;
+    float coeff2 = 6.0 * b_ / r5;   // 2*b*d/r^(d+2), d=3
+
+    return coeff1 * (ndr * Id + nr - rn)
+         + coeff2 * ndr * rrt;
+}
+
+// ------------------------------------------------------------------
+// Integrate T_i and K_j over cage using Gaussian quadrature.
+// For each cage triangle: subdivide into qn×qn sub-samples, evaluate
+// kernels at each quadrature point, accumulate weighted contributions.
+// ------------------------------------------------------------------
+
+for (int fj = 0; fj < n_faces; fj++) {
+    int ia = primpoint(1, fj, 0);
+    int ib = primpoint(1, fj, 1);
+    int ic = primpoint(1, fj, 2);
+
+    vector pa = point(1, "P", ia);
+    vector pb = point(1, "P", ib);
+    vector pc = point(1, "P", ic);
+
+    // Rest face normal and area
+    vector edge1  = pb - pa;
+    vector edge2  = pc - pa;
+    vector N_area = cross(edge1, edge2);  // area-weighted outward normal
+    float  area   = length(N_area) * 0.5;
+    if (area < 1e-14) continue;
+    vector n_hat = N_area / (2.0 * area);
+
+    // Gauss quadrature: uniform barycentric grid with area weights
+    // total qn*qn samples, weight = area / (total samples)
+    // For production use: replace with proper Gauss-Legendre triangle rule
+    int    n_samples = qn * qn;
+    float  w_sample  = area / float(n_samples);
+
+    for (int si = 0; si < qn; si++) {
+        for (int sj = 0; sj < qn - si; sj++) {
+            float u = (float(si) + 0.33) / float(qn);
+            float v = (float(sj) + 0.33) / float(qn);
+            if (u + v > 1.0) continue;
+            float w = 1.0 - u - v;
+
+            // Quadrature point y on triangle surface
+            vector y     = u*pa + v*pb + w*pc;
+            vector rvec  = @P - y;   // r = x - y (query minus source)
+            float  ry    = length(rvec);
+            if (ry < 1e-10) continue;
+
+            // Piecewise-linear basis functions at (u,v,w)
+            float phi_a = u, phi_b = v, phi_c = w;
+
+            // ψ_j = 1 (piecewise-constant per face)
+            float psi_j = 1.0;
+
+            // Evaluate kernels
+            matrix3 Kmat = kelvinlet_K(rvec, a, b);
+            matrix3 Tmat = traction_T(rvec, n_hat, a, b);
+
+            // Accumulate T_i for each vertex of this face (weighted by φ_i)
+            // Store as flat 3×3 row-major in Ti[vertex_idx * 9 + component]
+            matrix3 dTa = Tmat * phi_a * w_sample;
+            matrix3 dTb = Tmat * phi_b * w_sample;
+            matrix3 dTc = Tmat * phi_c * w_sample;
+
+            for (int r_ = 0; r_ < 3; r_++) {
+                for (int c_ = 0; c_ < 3; c_++) {
+                    float val = getcomp(dTa, r_, c_);
+                    Ti[ia*9 + r_*3 + c_] += val;
+                    val = getcomp(dTb, r_, c_);
+                    Ti[ib*9 + r_*3 + c_] += val;
+                    val = getcomp(dTc, r_, c_);
+                    Ti[ic*9 + r_*3 + c_] += val;
+                }
+            }
+
+            // Accumulate K_j for this face (weighted by ψ_j = 1)
+            matrix3 dKj = Kmat * psi_j * w_sample;
+            for (int r_ = 0; r_ < 3; r_++) {
+                for (int c_ = 0; c_ < 3; c_++) {
+                    Kj[fj*9 + r_*3 + c_] += getcomp(dKj, r_, c_);
+                }
+            }
+        }
+    }
+}
+
+setpointattrib(0, "somi_Ti", @ptnum, Ti, "set");
+setpointattrib(0, "somi_Kj", @ptnum, Kj, "set");
+
+// ============================================================
+// Notes on quadrature accuracy (§5 of paper):
+//   Default paper uses 7500 quadrature points per triangle (GPU).
+//   Partition-of-unity residual ||Σ_i T_i(x) − I||_F measures accuracy.
+//   For visible artifacts: residual should be below 10⁻².
+//
+//   To re-use coordinates for different ν values without recomputing:
+//   Store the r*rᵀ and I parts of K and T separately, then reassemble
+//   cheaply when ν changes (the paper's implementation trick, §5).
+//
+//   The constant c for traction:
+//   c = 2µ[1 + dν/(1-2ν)] = 2[1 + 3ν/(1-2ν)]  (µ=1, d=3)
+//   Used in cage-somigliana-deform.vex to scale K_j contributions.
+// ============================================================

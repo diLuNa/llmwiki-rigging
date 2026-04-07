@@ -1,0 +1,69 @@
+// animatomy-muscle-strain.vex
+// Animatomy — Muscle Strain Computation (§5.1)
+// Source: Choi et al., SIGGRAPH Asia 2022
+//
+// Per-primitive Geometry Wrangle on MUSCLE CURVE geometry.
+// Each primitive is one muscle fiber curve (open polyline).
+// Computes the unitless strain scalar:
+//
+//   γ = (s - s̄) / s̄
+//
+// where  s  = current arc length of the curve
+//        s̄  = rest arc length (stored as prim attribute "rest_length")
+//
+// Negative strain → muscle contracted (shorter than rest)
+// Positive strain → muscle relaxed / elongated beyond rest
+//
+// Inputs:
+//   @P (point positions, current pose)
+//   @rest_length (float, prim) — arc length of this curve in neutral/rest pose
+//                                Set once on the rest mesh (see init pass below)
+//
+// Outputs:
+//   @strain (float, prim) — muscle strain γ
+//   @P      (unchanged)
+
+// ── Compute current arc length ─────────────────────────────────────────────
+int pts[] = primpoints(0, @primnum);
+int np    = len(pts);
+
+float arc_len = 0.0;
+for (int i = 0; i < np - 1; i++) {
+    arc_len += length(point(0, "P", pts[i+1]) - point(0, "P", pts[i]));
+}
+
+// ── Strain formula (§5.1) ─────────────────────────────────────────────────
+float rest_len = prim(0, "rest_length", @primnum);
+
+if (rest_len < 1e-8) {
+    @strain = 0.0;
+} else {
+    @strain = (arc_len - rest_len) / rest_len;
+}
+
+// ── Initialization pass (run ONCE on the rest pose) ───────────────────────
+// In a separate per-primitive wrangle on the rest-pose muscle geometry:
+//
+//   int pts[] = primpoints(0, @primnum);
+//   float s = 0.0;
+//   for (int i = 0; i < len(pts) - 1; i++)
+//       s += length(point(0,"P",pts[i+1]) - point(0,"P",pts[i]));
+//   @rest_length = s;
+//
+// Then promote "rest_length" from the rest geo to the animated geo via
+// a Detail Attrib Promote SOP or an Attribute Copy SOP (keyed by prim index).
+
+// ── Usage notes ────────────────────────────────────────────────────────────
+//
+// Animatomy uses 178 muscle fiber curves for a human face (§3).
+// Each curve spans a specific facial muscle (zygomaticus major/minor,
+// orbicularis oris, frontalis, corrugator, etc.).
+// Sheet muscles (orbicularis oculi, orbicularis oris) use multiple parallel
+// fiber curves to capture selective regional contraction.
+//
+// Additional orthogonal curves capture squash/stretch orthogonal to the
+// fiber direction (volumetric coupling). These use the same strain formula.
+//
+// Collect all primitive strains into a float array in Python:
+//   gamma = [geo.prim(i).attribValue("strain") for i in range(geo.numPrims())]
+//   # gamma is the 178-dimensional strain vector fed to the AE + deformation

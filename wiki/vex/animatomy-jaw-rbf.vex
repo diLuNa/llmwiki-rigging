@@ -1,0 +1,95 @@
+// animatomy-jaw-rbf.vex
+// Animatomy — Jaw Proxy RBF Network  χ(p)  (§5.5)
+// Source: Choi et al., SIGGRAPH Asia 2022
+//
+// Per-point Geometry Wrangle (run over a single synthetic "control point" geo
+// or embed as a function called from the full-model wrangle).
+//
+// Approximates the non-linear jaw rig (Zoss et al. 2018) with a
+// Radial Basis Function (RBF) network using Gaussian kernels:
+//
+//   g_i(p) = exp( -σ_i² · ‖p − μ_i‖² )
+//
+//   χ(p) = Σ_i ψ_i · g_i(p) / Σ_i g_i(p)
+//
+// Maps: 3D jaw control position p ∈ R³
+//     → 6D rigid transform of the mandible (3 translation + 3 axis-angle rotation)
+//
+// M = 50 RBF neurons (§5.5).
+// Weights ψ_i ∈ R⁶, centres μ_i ∈ R³, widths σ_i ∈ R — all trained offline.
+//
+// Inputs (from detail attributes, set by Python before this wrangle):
+//   "jaw_control_pos"  (vector, detail)  — current 3D jaw control point position
+//   "rbf_mu"    (float[], detail)        — stacked centres: M×3 = 150 floats
+//   "rbf_sigma" (float[], detail)        — widths: M floats (σ_i, not σ_i²)
+//   "rbf_psi"   (float[], detail)        — stacked output weights: M×6 = 300 floats
+//   "rbf_M"     (int, detail)            — number of neurons (default 50)
+//
+// Outputs (written as detail attributes for use downstream):
+//   "jaw_translation" (vector, detail)   — 3D translation of mandible
+//   "jaw_rotation"    (vector, detail)   — axis-angle rotation of mandible
+
+int   M   = detail(0, "rbf_M", 50);
+vector p  = detail(0, "jaw_control_pos", {0,0,0});
+
+float mu[]    = detail(0, "rbf_mu",    {});   // M×3
+float sigma[] = detail(0, "rbf_sigma", {});   // M
+float psi[]   = detail(0, "rbf_psi",   {});   // M×6
+
+// ── Compute Gaussian activations g_i(p) ───────────────────────────────────
+float g[];
+resize(g, M);
+float g_sum = 0.0;
+
+for (int i = 0; i < M; i++) {
+    int   mi    = i * 3;
+    vector mu_i = set(mu[mi], mu[mi+1], mu[mi+2]);
+    float  sig  = (i < len(sigma)) ? sigma[i] : 1.0;
+
+    float dist2 = dot(p - mu_i, p - mu_i);
+    g[i]  = exp(-sig * sig * dist2);
+    g_sum += g[i];
+}
+
+// Guard against all-zero activations (query far outside training range)
+if (g_sum < 1e-10) g_sum = 1e-10;
+
+// ── Weighted sum output: χ(p) = Σ ψ_i g_i / Σ g_i ────────────────────────
+float out[] = array(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);   // 6 output dimensions
+
+for (int i = 0; i < M; i++) {
+    float w = g[i] / g_sum;
+    int   pi = i * 6;
+    for (int d = 0; d < 6; d++) {
+        if (pi + d < len(psi))
+            out[d] += w * psi[pi + d];
+    }
+}
+
+// ── Store result ───────────────────────────────────────────────────────────
+// Output convention: first 3 = translation, last 3 = axis-angle rotation
+setdetailattrib(0, "jaw_translation", set(out[0], out[1], out[2]));
+setdetailattrib(0, "jaw_rotation",    set(out[3], out[4], out[5]));
+
+// ── Usage notes ────────────────────────────────────────────────────────────
+//
+// This wrangle replaces a lookup into the complex Zoss 2018 jaw rig.
+// The RBF is infinitely differentiable → end-to-end gradient flow
+// through the jaw for the performance capture solver (§7.1).
+//
+// Training the RBF (Python):
+//   from scipy.optimize import minimize
+//   # Sample K poses from the jaw rig: (jaw_ctrl_pos_k, jaw_xform_6d_k)
+//   # Fit μ_i (K-means on jaw_ctrl_pos), σ_i (heuristic: mean neighbour dist),
+//   # ψ_i (linear least-squares solve for the output weights given the activations)
+//
+//   G = compute_activation_matrix(samples, mu, sigma)  # K × M
+//   Y = jaw_xforms_6d                                  # K × 6
+//   Psi, _, _, _ = np.linalg.lstsq(G, Y, rcond=None)  # M × 6
+//
+// The result (mu, sigma, psi) is saved to disk and loaded into Houdini as
+// detail float arrays.
+//
+// At runtime this wrangle runs ONCE per frame on a 1-point geometry,
+// and the resulting jaw_translation / jaw_rotation vectors are used
+// by animatomy-full-model.vex to build the jaw joint transform.

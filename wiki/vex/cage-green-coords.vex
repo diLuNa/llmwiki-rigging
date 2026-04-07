@@ -1,0 +1,184 @@
+// ============================================================
+// Green Coordinates — 3D Cage Deformation
+// Lipman, Levin & Cohen-Or, SIGGRAPH 2008
+//
+// Encodes interior points as a linear combination of cage vertex
+// positions and cage face normals:
+//
+//   x' = Σ_i φ_i(x) · v'_i  +  Σ_j ψ_j(x) · s_j · n̂'_j
+//
+// where:
+//   φ_i  — vertex coordinate (scalar per cage vertex)
+//   ψ_j  — face coordinate  (scalar per cage face)
+//   v'_i — deformed cage vertex position
+//   n̂'_j — deformed unit face normal
+//   s_j  = sqrt(area(f'_j) / area(f_j))  — area scale factor
+//
+// FACE COORDINATES ψ_j (closed-form via solid angle):
+//   For cage triangle f = (p1,p2,p3), query point x:
+//     Let r_k = p_k - x,  d_k = ||r_k||
+//     Ω_j = 2 atan2( r1·(r2×r3),  d1*d2*d3 + d1*(r2·r3) + d2*(r1·r3) + d3*(r1·r2) )
+//     ψ_j(x) = -Ω_j / (4π)
+//   (Van Oosterom & Strackee 1983 solid-angle formula)
+//
+// VERTEX COORDINATES φ_i (closed-form, Lipman 2008 Appendix A):
+//   Requires integrating the normal derivative of the Laplace kernel
+//   over each face, weighted by the piecewise-linear hat function at
+//   vertex i. The result is an analytical formula involving arctangent
+//   and logarithm terms per triangle edge — see Appendix A of the paper.
+//   A Python BEM reference is provided at the bottom of this file.
+//
+// PROPERTIES:
+//   - Similarity-invariant: cage similarity transform → same transform for x
+//   - Detail-preserving: normal term captures local shape orientation
+//   - Closed-form: no volumetric solve; coordinates computed analytically
+//   - Coordinates may be negative outside the cage
+//
+// Usage:
+//   Pass 1 (precomputation, point wrangle on interior mesh, cage in input 1):
+//     Reads cage geometry from npoints(1), nprimtives(1).
+//     Writes float arrays "gc_phi" (n_cage_verts) and "gc_psi" (n_cage_faces).
+//   Pass 2 (deformation, point wrangle on interior mesh, posed cage in input 1):
+//     Reads gc_phi, gc_psi, posed cage.
+//     Writes deformed @P.
+// ============================================================
+
+// ============================================================
+// PASS 1 — Compute face coordinates ψ_j   (point wrangle)
+//           (vertex coordinates φ_i require the Python reference below)
+// ============================================================
+
+int n_verts = npoints(1);
+int n_faces = nprimitives(1);
+
+float psi[];  resize(psi, n_faces);
+
+for (int fj = 0; fj < n_faces; fj++) {
+    // Triangle vertices
+    int va = primpoint(1, fj, 0);
+    int vb = primpoint(1, fj, 1);
+    int vc = primpoint(1, fj, 2);
+
+    vector r1 = point(1, "P", va) - @P;
+    vector r2 = point(1, "P", vb) - @P;
+    vector r3 = point(1, "P", vc) - @P;
+
+    float d1 = length(r1);
+    float d2 = length(r2);
+    float d3 = length(r3);
+
+    // Degenerate check: x is on or very near the triangle plane
+    if (d1 < 1e-10 || d2 < 1e-10 || d3 < 1e-10) {
+        psi[fj] = 0.0;
+        continue;
+    }
+
+    // Signed solid angle (Van Oosterom & Strackee 1983)
+    float numerator   = dot(r1, cross(r2, r3));
+    float denominator = d1*d2*d3 + dot(r2,r3)*d1 + dot(r1,r3)*d2 + dot(r1,r2)*d3;
+    float omega = 2.0 * atan2(numerator, denominator);
+
+    // Face coordinate  ψ_j = -Ω_j / (4π)
+    psi[fj] = -omega / (4.0 * $PI);
+}
+
+setpointattrib(0, "gc_psi", @ptnum, psi, "set");
+
+// NOTE: φ_i (vertex coordinates) require Appendix A of Lipman 2008.
+// See Python reference at end of this file for numerical evaluation.
+
+// ============================================================
+// PASS 2 — Apply Green Coordinates deformation  (point wrangle)
+//           Reads gc_phi, gc_psi; cage posed in input 1.
+// ============================================================
+// Uncomment to run as Pass 2 (comment out Pass 1 above):
+/*
+float phi[] = point(0, "gc_phi", @ptnum);
+float psi[] = point(0, "gc_psi", @ptnum);
+
+int n_verts = npoints(1);
+int n_faces = nprimitives(1);
+
+vector x_new = {0,0,0};
+
+// Vertex term: Σ_i φ_i · v'_i
+for (int i = 0; i < n_verts; i++) {
+    x_new += phi[i] * point(1, "P", i);
+}
+
+// Face normal term: Σ_j ψ_j · s_j · n̂'_j
+for (int fj = 0; fj < n_faces; fj++) {
+    int va = primpoint(1, fj, 0);
+    int vb = primpoint(1, fj, 1);
+    int vc = primpoint(1, fj, 2);
+
+    vector q1 = point(1, "P", va);
+    vector q2 = point(1, "P", vb);
+    vector q3 = point(1, "P", vc);
+
+    // Deformed face normal (area-weighted)
+    vector N_posed = 0.5 * cross(q2 - q1, q3 - q1);
+    float area_posed = length(N_posed);
+
+    // Rest face area (cached as face attribute "rest_area")
+    float area_rest = prim(1, "rest_area", fj);
+
+    if (area_rest < 1e-14 || area_posed < 1e-14) continue;
+
+    float s_j    = sqrt(area_posed / area_rest);
+    vector n_hat = N_posed / area_posed;   // deformed unit normal
+
+    x_new += psi[fj] * s_j * n_hat;
+}
+
+@P = x_new;
+*/
+
+// ============================================================
+// Python reference — Vertex coordinates φ_i via BEM integration
+// (Lipman 2008, Appendix A — numerical quadrature version)
+//
+//   import numpy as np
+//
+//   def green_vertex_coords(x, cage_verts, cage_faces):
+//       """
+//       Compute Green Coordinates vertex weights phi_i for query point x.
+//       cage_verts: (n, 3) array of cage vertex positions
+//       cage_faces: (m, 3) array of face indices
+//       Returns phi: (n,) array
+//       """
+//       n = len(cage_verts)
+//       phi = np.zeros(n)
+//
+//       for f, (ia, ib, ic) in enumerate(cage_faces):
+//           p = cage_verts[[ia, ib, ic]]   # (3, 3)
+//           r = p - x                      # relative positions
+//           d = np.linalg.norm(r, axis=1)  # distances
+//
+//           # Face normal and area
+//           N = 0.5 * np.cross(p[1]-p[0], p[2]-p[0])
+//           area = np.linalg.norm(N)
+//           if area < 1e-14: continue
+//           n_hat = N / area
+//
+//           # Contribution of this triangle to each of its three vertex weights.
+//           # Uses Gauss-Legendre quadrature (here: 7-point rule on triangle).
+//           # For closed-form Appendix A, replace quadrature with the analytic
+//           # arctangent/logarithm formula from Lipman 2008.
+//           for q_u, q_v, q_w in gauss_triangle_7pt():   # (bary, weight) pairs
+//               y = q_u*p[0] + q_v*p[1] + q_w*p[2]
+//               ry = y - x
+//               dy = np.linalg.norm(ry)
+//               if dy < 1e-14: continue
+//               # Normal derivative of Green's function: dn G(y,x) = (y-x)·n / (4π||y-x||³)
+//               dG_dn = np.dot(ry, n_hat) / (4*np.pi * dy**3)
+//               # Piecewise-linear hat functions at (u,v,w):
+//               phi[ia] += dG_dn * q_u * area * q_w_weight
+//               phi[ib] += dG_dn * q_v * area * q_w_weight
+//               phi[ic] += dG_dn * q_w * area * q_w_weight
+//
+//       return phi
+//
+// NOTE: The partition-of-unity check sum(phi) + sum(psi) ≈ 1 is a useful
+// sanity test after computing both coordinate types.
+// ============================================================

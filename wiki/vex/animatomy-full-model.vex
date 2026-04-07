@@ -1,0 +1,128 @@
+// animatomy-full-model.vex
+// Animatomy — Full Forward Model Evaluation  M(θ, γ)  (§5)
+// Source: Choi et al., SIGGRAPH Asia 2022
+//
+// Per-point Geometry Wrangle on SKIN MESH.
+// Evaluates the complete Animatomy facial model:
+//
+//   T_P(θ, γ) = T  +  B_P(θ; P)  +  B_E(AE(γ, θ_jaw); E)
+//   M(θ, γ)   = W( T_P, J, θ, W )    [LBS over K=3 joints]
+//
+// Pipeline (run in this order each frame):
+//   1. animatomy-muscle-strain.vex  → gamma[] per curve
+//   2. Python AE forward pass        → gamma_ae[] (projected strains)
+//   3. animatomy-jaw-rbf.vex         → jaw_translation, jaw_rotation (detail)
+//   4. [This wrangle]                → applies B_P + B_E + LBS to @P
+//
+// This wrangle combines the outputs of the component wrangles above
+// into the full skinned skin mesh in a single pass.
+//
+// Inputs (all from previous steps, stored as attributes):
+//   @P                            — neutral mesh vertex position T
+//   Detail float[] "R_current"    — 30 pose components (from jaw+eye rotations)
+//   Detail float[] "R_rest"       — 30 rest pose components
+//   Detail float[] "P_basis"      — pose corrective basis (30 × 3N)
+//   Detail float[] "gamma"        — AE-projected strain vector (178)
+//   Detail float[] "E_basis"      — strain blendshape basis (178 × 3N)
+//   Detail float[] "lbs_weights"  — per-point LBS weights (N × K = N × 3)
+//   Detail vector[] "joint_xforms"— K joint delta transforms (3 matrix4)
+//   Detail int "n_strains"        — |γ|
+//   Detail int "n_pose_comps"     — number of pose components (30)
+
+// ────────────────────────────────────────────────────────────────────────
+// STEP 1: Pose blendshape correction  B_P = Σ_k (R_k − R*_k) P_k
+// ────────────────────────────────────────────────────────────────────────
+int   n_pose  = detail(0, "n_pose_comps", 30);
+float R_curr[] = detail(0, "R_current",   {});
+float R_rest[] = detail(0, "R_rest",      {});
+float P_basis[] = detail(0, "P_basis",    {});
+int   n_pts    = @numpt;
+
+vector pose_disp = {0, 0, 0};
+for (int k = 0; k < n_pose; k++) {
+    float dk = 0.0;
+    if (k < len(R_curr) && k < len(R_rest))
+        dk = R_curr[k] - R_rest[k];
+    if (abs(dk) < 1e-7) continue;
+
+    int base = k * n_pts * 3 + @ptnum * 3;
+    if (base + 2 < len(P_basis)) {
+        pose_disp.x += dk * P_basis[base];
+        pose_disp.y += dk * P_basis[base + 1];
+        pose_disp.z += dk * P_basis[base + 2];
+    }
+}
+
+// ────────────────────────────────────────────────────────────────────────
+// STEP 2: Strain expression blendshapes  B_E = E · γ
+// ────────────────────────────────────────────────────────────────────────
+int   n_strains  = detail(0, "n_strains", 0);
+float gamma[]    = detail(0, "gamma",     {});
+float E_basis[]  = detail(0, "E_basis",   {});
+
+vector strain_disp = {0, 0, 0};
+for (int i = 0; i < n_strains; i++) {
+    float gi = (i < len(gamma)) ? gamma[i] : 0.0;
+    if (abs(gi) < 1e-7) continue;
+
+    int base = i * n_pts * 3 + @ptnum * 3;
+    if (base + 2 < len(E_basis)) {
+        strain_disp.x += gi * E_basis[base];
+        strain_disp.y += gi * E_basis[base + 1];
+        strain_disp.z += gi * E_basis[base + 2];
+    }
+}
+
+// ────────────────────────────────────────────────────────────────────────
+// STEP 3: Shaped neutral mesh  T_P = T + B_P + B_E
+// ────────────────────────────────────────────────────────────────────────
+vector T_P = @P + pose_disp + strain_disp;
+
+// ────────────────────────────────────────────────────────────────────────
+// STEP 4: LBS skinning  M = W(T_P, J, θ, W)
+// K = 3 joints (jaw index 0, left_eye 1, right_eye 2)
+// lbs_weights: flat float array [pt0_w0, pt0_w1, pt0_w2, pt1_w0, ...]
+// joint_xforms: 3 matrix4 stored as flat float array (16 floats each)
+// ────────────────────────────────────────────────────────────────────────
+int   K             = 3;
+float lbs_w[]       = detail(0, "lbs_weights",  {});
+float xform_flat[]  = detail(0, "joint_xforms", {});
+
+vector skinned = {0, 0, 0};
+float  w_total = 0.0;
+
+for (int k = 0; k < K; k++) {
+    int   wi = @ptnum * K + k;
+    float wk = (wi < len(lbs_w)) ? lbs_w[wi] : 0.0;
+    if (wk < 1e-7) continue;
+
+    // Reconstruct 4×4 transform for joint k from flat array
+    int base = k * 16;
+    matrix xf = 0;
+    if (base + 15 < len(xform_flat)) {
+        xf = set(
+            xform_flat[base+0],  xform_flat[base+1],  xform_flat[base+2],  xform_flat[base+3],
+            xform_flat[base+4],  xform_flat[base+5],  xform_flat[base+6],  xform_flat[base+7],
+            xform_flat[base+8],  xform_flat[base+9],  xform_flat[base+10], xform_flat[base+11],
+            xform_flat[base+12], xform_flat[base+13], xform_flat[base+14], xform_flat[base+15]
+        );
+    } else {
+        xf = ident();
+    }
+
+    // Transform T_P by this joint's delta transform (row-vector convention)
+    skinned += wk * (T_P * xf);
+    w_total += wk;
+}
+
+// Normalize (LBS weights should sum to 1; guard for safety)
+@P = (w_total > 1e-8) ? skinned / w_total : T_P;
+
+// ── Expression transfer note (§7.3) ───────────────────────────────────────
+//
+// Because actor + character share the same strain autoencoder,
+// animation transfer is trivial: copy gamma[] from actor geo to character geo,
+// run this wrangle on the CHARACTER skin mesh with its own E_basis and W.
+//
+// No retargeting, expression cloning, or correspondence solving needed.
+// The strain vector IS the universal facial expression representation.

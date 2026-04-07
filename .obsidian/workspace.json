@@ -1,0 +1,227 @@
+{
+  "main": {
+    "id": "e8a1976cce35ffe7",
+    "type": "split",
+    "children": [
+      {
+        "id": "096d6d96d5cea119",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1ac5d22824fc4f1b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "wiki/techniques/sculpt-transfer-vex.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "sculpt-transfer-vex"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "f41b92fc5e9ce092",
+    "type": "split",
+    "children": [
+      {
+        "id": "03d6372e80ac48c7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6ed45ffe2638f0d8",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "39554e612d596939",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "f430b07dd85f9a03",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "e1614742a34841ab",
+    "type": "split",
+    "children": [
+      {
+        "id": "64348fba660d6835",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ac1becc4a203e0e1",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "wiki/techniques/sculpt-transfer-vex.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for sculpt-transfer-vex"
+            }
+          },
+          {
+            "id": "8707dd9a618367a5",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "wiki/techniques/sculpt-transfer-vex.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from sculpt-transfer-vex"
+            }
+          },
+          {
+            "id": "454e4e2dca8c308c",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "c19bd3195475ac22",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "7f6ae72f886ec04e",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "wiki/techniques/sculpt-transfer-vex.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of sculpt-transfer-vex"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false,
+      "terminal:Open terminal": false,
+      "templater-obsidian:Templater": false
+    }
+  },
+  "active": "6ed45ffe2638f0d8",
+  "lastOpenFiles": [
+    "wiki/papers/bertiche-2022-neural-cloth-sim.md",
+    "wiki/vex/index.md",
+    "wiki/papers/li-2022-ncloth.md",
+    "wiki/papers/fortunato-2022-multiscale-mgn.md",
+    "wiki/papers/grigorev-2023-hood.md",
+    "CLAUDE.md",
+    "raw/papers/neural-cloth-sim-2022.pdf",
+    "raw/papers/ncloth-2022.pdf",
+    "raw/papers/multiscale-meshgraphnets-2022.pdf",
+    "raw/papers/hood-2023.pdf",
+    "wiki/authors/saito-jun.md",
+    "wiki/authors/kalogerakis-evangelos.md",
+    "wiki/concepts/auto-rigging.md",
+    "wiki/papers/hou-2024-neutral-facial-rigging.md",
+    "wiki/papers/libao-2023-meshgraphnetsrp.md",
+    "wiki/papers/ma-2025-riganyface.md",
+    "wiki/papers/qin-2023-nfr.md",
+    "wiki/papers/feng-2021-deca.md",
+    "wiki/papers/xu-2020-rignet.md",
+    "README.md",
+    "wiki/index.md",
+    "raw/papers/Neutral_Facial_Rigging_from_Limited_Spatiotemporal.pdf",
+    "raw/papers/2005.00559v2.pdf",
+    "wiki/vex/blendshape-corrective-psd.vex",
+    "wiki/vex/blendshape-nlls-faceit.vex",
+    "raw/papers/3623264.3624441.pdf",
+    "wiki/vex/blendshape-qp-fit.vex",
+    "wiki/log.md",
+    "wiki/overview.md",
+    "wiki/papers/jtdp-2003-blendshape-fitting.md",
+    "wiki/papers/zhou-2017-mesh-vae.md",
+    "wiki/papers/canrig-2026-neural-face-rigging.md",
+    "wiki/papers/faceit-diaz-barros.md",
+    "wiki/papers/ding-2023-diffusionrig.md",
+    "wiki/papers/lewis-2014-blendshape-star.md",
+    "wiki/papers/tran-2018-nonlinear-3dmm.md"
+  ]
+}

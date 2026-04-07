@@ -1,0 +1,120 @@
+// ============================================================
+// Curvenet — Surface Deformation Evaluation
+// de Goes, Sheffler & Fleischer, SIGGRAPH 2022, §4.3 / Eq. (5)-(6)
+//
+// This snippet implements the runtime deformation step (Algorithm 1,
+// steps 7-9): given precomputed deformation gradients per cut-face and
+// posed curvenet sample positions, it computes:
+//
+//   1. The transformed cut-face polygons yh = X̊_f * F_f^T (step 7)
+//   2. The adjusted curvenet sample positions xc (step 8):
+//        pi = qi - Fi * (rest_qi - rest_pi)
+//      where qi = posed sample position, rest_qi = rest sample position,
+//      rest_pi = closest projected point on the rest surface mesh.
+//
+// The solved vertex positions xv (step 9) require the global Poisson
+// solve: see Python reference at the bottom of this file.
+//
+// Usage: Two passes in Houdini:
+//
+//   Pass A — "Over Primitives" on the cut-mesh (outputs yh per cut-face):
+//     Reads per-face deformation gradient F_f from primitive attribute "F".
+//     Transforms each polygon: yh_corner = F_f^T * rest_corner
+//
+//   Pass B — "Over Points" on curvenet samples (outputs xc):
+//     Reads posed position, rest position, rest projected point, and F.
+//     Computes adjusted projection target pi.
+//
+// Inputs (Pass A — primitive wrangle, cut-mesh):
+//   F        (matrix3, prim) — per-face deformation gradient (from Eq. 4 solve)
+//
+// Inputs (Pass B — point wrangle, curvenet samples):
+//   Q        (vector, point) — posed sample position qi
+//   rest_Q   (vector, point) — rest sample position rest_qi
+//   rest_P   (vector, point) — rest projected point rest_pi
+//   F        (matrix3, prim) — deformation gradient of adjacent segment
+//
+// ============================================================
+
+// ============================================================
+// PASS A — Transform cut-face polygons by per-face gradient F_f
+//          Run Over Primitives on the cut-mesh.
+// ============================================================
+// Uncomment this block for Pass A:
+/*
+matrix3 Ff = prim(0, "F", @primnum);
+
+// The deformed polygon approximation for cut-face f is: yh = X̊_f * F_f^T
+// which transforms each rest corner by F_f^T (transpose of deformation gradient).
+// We apply this per corner (halfedge corner) on the primitive.
+int n = primvertexcount(0, @primnum);
+for (int i = 0; i < n; i++) {
+    int vtx = vertexindex(0, @primnum, i);
+    int pt  = vertexpoint(0, vtx);
+    vector p_rest = point(0, "P", pt);
+    // Deformed corner position
+    vector p_deformed = p_rest * Ff;   // VEX row-vector: v * M = v^T M
+    setpointattrib(0, "yh", pt, p_deformed, "set");
+}
+*/
+
+// ============================================================
+// PASS B — Compute adjusted curvenet constraint positions xc
+//          Run Over Points on curvenet sample points.
+// ============================================================
+
+// Posed and rest sample positions
+vector qi      = point(0, "Q",      @ptnum);   // posed curvenet sample
+vector rest_qi = point(0, "rest_Q", @ptnum);   // rest curvenet sample
+vector rest_pi = point(0, "rest_P", @ptnum);   // rest projected point on mesh
+
+// Deformation gradient for this sample (from adjacent segment, Eq. 4 solve)
+// Assign segment index separately; here assume it's stored on the point.
+matrix3 Fi = point(0, "F", @ptnum);
+
+// Adjusted projection target (§4.3):
+//   pi = qi - Fi * (rest_qi - rest_pi)
+// This preserves the offset between the surface and the curvenet sample.
+vector offset_rest = rest_qi - rest_pi;
+
+// Fi * offset: standard matrix-vector multiply (F * v = v treated as column)
+// In VEX: matrix3 * vector multiplies as M*v (column vector on right).
+vector pi = qi - Fi * offset_rest;
+
+@P = pi;   // write adjusted constraint position
+
+// ============================================================
+// Global Poisson Solve — Python/scipy reference (Eq. 6):
+//
+//   import numpy as np
+//   from scipy.sparse import lil_matrix, csc_matrix
+//   from scipy.sparse.linalg import spsolve
+//   from sksparse.cholmod import cholesky  # or scipy.sparse.linalg.splu
+//
+//   # --- Precomputation (once per neutral pose) ---
+//
+//   # Lh  : (nh x nh) sparse cut-mesh Laplacian (assembled from per-face Lf)
+//   # V   : (nh x nv) maps mesh-vertex unknowns to halfedge corners
+//   # C   : (nh x nc) maps curvenet sample constraints to halfedge corners
+//   # (V and C form a partition: V*1_v + C*1_c = 1_h)
+//
+//   VtLhV   = (V.T @ Lh @ V).tocsc()
+//   factor  = cholesky(VtLhV)          # sparse Cholesky factorization
+//   VtLh    = (V.T @ Lh).tocsc()
+//
+//   # --- Runtime (per frame) ---
+//
+//   # Step 1: Interpolate deformation gradients from curvenet to mesh vertices.
+//   #   fc : (nc x 9) curvenet deformation gradients (flattened 3x3 per sample)
+//   #   fv : (nv x 9) interpolated deformation gradients at mesh vertices
+//   fv = factor.solve_A(-VtLh @ (C @ fc))
+//
+//   # Step 2: Find vertex positions that match transformed polygons + constraints.
+//   #   yh : (nh x 3) deformed cut-face corner positions (from Pass A above)
+//   #   xc : (nc x 3) adjusted curvenet sample positions (from Pass B above)
+//   #   xv : (nv x 3) output mesh vertex positions
+//   xv = factor.solve_A(VtLh @ (yh - C @ xc))
+//
+//   # Both steps share the same VtLhV factorization — factor once, solve twice.
+//
+// ============================================================

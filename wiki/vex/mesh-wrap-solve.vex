@@ -1,0 +1,104 @@
+// mesh-wrap-solve.vex
+// Mesh Wrap — Iterative Solve Loop  (§5, Eq. 1–2)
+// Source: de Goes & Martinez, SIGGRAPH Talks 2019
+//
+// Per-point Geometry Wrangle — APPLY SOLVED POSITIONS after Python solve.
+// The solve itself (sparse Cholesky) runs in a Python SOP (see comments below).
+// This wrangle reads "solved_P" (a per-point vector written by Python) into @P.
+//
+// Full iteration pipeline:
+//   [VEX] mesh-wrap-project-score  → @proj_P, @score  (snap + score)
+//   [PY ] assemble & solve          → write @solved_P   (linear system)
+//   [VEX] this wrangle              → @P = @solved_P    (apply result)
+//   Repeat until max(@proj_dist) < 1e-4 or 100 iterations.
+//
+// The system solved each iteration (Eq. 2):
+//
+//   ( L  +  µ M^T M  +  κ B^T B ) X  =  µ M^T M P  +  κ B^T Q
+//
+//   L       — affine-invariant Laplacian (from mesh-wrap-affine-coords.vex)
+//   µ M^T M — fitting term (from scores, ramped up per §5)
+//   κ B^T B — curve correspondence term (κ = 0.1)
+//   P       — projected positions on T (from mesh-wrap-project-score.vex)
+//   Q       — target curve samples (from user-authored correspondences)
+//   B       — barycentric coord matrix mapping source samples to vertices
+
+@P = point(0, "solved_P", @ptnum);
+
+// ── Full Python solve (embed in a Python SOP between the two VEX wrangles) ──
+//
+// import numpy as np, scipy.sparse as sp, scipy.sparse.linalg as spla, hou
+//
+// geo   = hou.pwd().geometry()
+// n_pts = geo.numPoints()
+// mu    = geo.attribValue("mu")      # detail float — current stiffness
+// kappa = 0.1
+//
+// # ── Inputs from previous VEX wrangles ──────────────────────────────────
+// P_proj = np.array([pt.attribValue("proj_P") for pt in geo.points()])   # (n,3)
+// scores = np.array([pt.attribValue("score")  for pt in geo.points()])   # (n,)
+//
+// # ── Pre-assembled matrices (built once in setup Python SOP) ────────────
+// L = hou.session.mesh_wrap_L         # scipy sparse (n,n)
+// B = hou.session.mesh_wrap_B         # sparse (n_curve_samples, n)
+// Q = hou.session.mesh_wrap_Q         # (n_curve_samples, 3)
+//
+// # ── Assemble LHS ────────────────────────────────────────────────────────
+// M_diag = sp.diags(scores)                        # (n,n)
+// MTM    = mu * M_diag.T @ M_diag                  # (n,n)
+// BTB    = kappa * B.T @ B                          # (n,n)
+// A      = L + MTM + BTB                            # (n,n) sparse
+//
+// # ── Assemble RHS (separately per coordinate axis) ──────────────────────
+// rhs = MTM @ P_proj + kappa * B.T @ Q             # (n,3)
+//
+// # ── Sparse Cholesky solve (factor once per round, update µ between rounds)
+// factor = spla.factorized(A.tocsc())
+// X = np.column_stack([factor(rhs[:, d]) for d in range(3)])  # (n,3)
+//
+// # ── Write solved positions back as point attribute ──────────────────────
+// attrib = geo.findPointAttrib("solved_P")
+// if not attrib:
+//     attrib = geo.addAttrib(hou.attribType.Point, "solved_P", hou.Vector3())
+// for i, pt in enumerate(geo.points()):
+//     pt.setAttribValue(attrib, hou.Vector3(X[i]))
+//
+// # ── Convergence check ───────────────────────────────────────────────────
+// max_dist = max(pt.attribValue("proj_dist") for pt in geo.points())
+// if max_dist < 1e-4:
+//     print(f"Converged: max_dist = {max_dist:.2e}")
+// else:
+//     print(f"Iter: max_dist = {max_dist:.4f},  mu = {mu}")
+
+// ── Curve correspondence setup (B, Q — built once before the loop) ─────────
+//
+// B encodes barycentric coordinates mapping source curve samples to mesh vertices.
+// Q encodes the corresponding sample positions on the target shape.
+//
+// For each pair of corresponding curves (source: Cs, target: Ct):
+//   - Sample both curves at m evenly-spaced arc-length parameters
+//   - Source samples: compute barycentric coords in source mesh → rows of B
+//   - Target samples: world positions on target mesh → rows of Q
+//
+// In Python (building B and Q):
+//   from scipy.interpolate import interp1d
+//
+//   rows_B, cols_B, vals_B = [], [], []
+//   Q_rows = []
+//
+//   for curve_s, curve_t in zip(source_curves, target_curves):
+//       samples_s = sample_curve(curve_s, m=20)    # (m, prim, u, bary)
+//       samples_t = sample_curve(curve_t, m=20)    # (m, 3) world positions
+//
+//       for j, (prim, u, bary) in enumerate(samples_s):
+//           pts = primpoints(prim)
+//           for k, (vi, w) in enumerate(zip(pts, bary)):
+//               rows_B.append(len(Q_rows))
+//               cols_B.append(vi)
+//               vals_B.append(w)
+//           Q_rows.append(samples_t[j])
+//
+//   B = sp.csr_matrix((vals_B, (rows_B, cols_B)), shape=(len(Q_rows), n_pts))
+//   Q = np.array(Q_rows)   # (m*n_curves, 3)
+//   hou.session.mesh_wrap_B = B
+//   hou.session.mesh_wrap_Q = Q

@@ -1,0 +1,64 @@
+// ============================================================
+// Laplacian & Bi-Laplacian Kelvinlets (Sharp Kelvinlets) — 3D
+// de Goes & James, DigiPro 2019, Eq. (15)-(16)
+//
+// Laplacian Kelvinlet:    O(1/r³) decay  (≡ bi-scale extrapolation quality)
+// Bi-Laplacian Kelvinlet: O(1/r⁹) decay  (≡ 5-scale extrapolation quality!)
+//
+// Both are obtained by differentiating the regularized Kelvinlet:
+//   ΔKε gives faster decay, simpler expression than multi-scale.
+//
+// A/B coefficients:
+//
+// LAPLACIAN (Eq. 15):
+//   A_ε = (15a*ε⁴ - 2b*rε² * (5ε² + 2r²)) / (2*rε⁷)
+//   B_ε = 3b * (7ε² + 2r²) / rε⁷
+//
+// BI-LAPLACIAN (Eq. 16):
+//   A_ε = 105*ε⁴ * (3a*(ε²-2r²) - 2b*rε²) / (2*rε¹¹)
+//   B_ε = 945*b*ε⁴ / rε¹¹
+//
+// Displacement: u(r) = A(r)*force + B(r)*dot(r,force)*r
+//
+// Usage: Geometry Wrangle SOP (run Over Points)
+//
+// Inputs:
+//   vector brush_center — brush tip x0
+//   vector brush_force  — force vector f (NOT tip displacement; no simple tip-norm for Laplacian)
+//   float  epsilon      — brush radius ε
+//   float  nu           — Poisson ratio
+//   int    order        — 1=Laplacian, 2=Bi-Laplacian
+// ============================================================
+
+vector center = detail(0, "brush_center", {0,0,0});
+vector force  = detail(0, "brush_force",  {0,1,0});
+float  eps    = detail(0, "epsilon",       1.0);
+float  nu     = detail(0, "nu",            0.5);
+int    order  = detail(0, "order",         1);    // 1 or 2
+
+float ba   = 1.0 / (4.0*(1.0 - nu));  // b/a ratio; set a=1
+float eps2 = eps*eps;
+float eps4 = eps2*eps2;
+
+vector r  = @P - center;
+float  r2 = dot(r, r);
+float  re = sqrt(r2 + eps2);
+
+float A, B;
+
+if (order == 1) {
+    // --- Laplacian Kelvinlet (Eq. 15) ---
+    float re7 = pow(re, 7.0);
+    A = (15.0*eps4 - 2.0*ba*re*re*(5.0*eps2 + 2.0*r2)) / (2.0*re7);
+    B = 3.0*ba*(7.0*eps2 + 2.0*r2) / re7;
+
+} else {
+    // --- Bi-Laplacian Kelvinlet (Eq. 16) ---
+    float re11 = pow(re, 11.0);
+    A = 105.0*eps4 * (3.0*(eps2 - 2.0*r2) - 2.0*ba*re*re) / (2.0*re11);
+    B = 945.0*ba*eps4 / re11;
+}
+
+vector disp = A * force + B * dot(r, force) * r;
+
+@P += disp;

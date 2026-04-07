@@ -1,0 +1,117 @@
+// wrinkle-curve-displacement.vex
+// Art-Directed Wrinkle System — Curve-to-Displacement Field
+// Source: Cutler et al., Computers & Graphics 2007 (§4)
+//
+// Per-point Geometry Wrangle on the CLOTHING/SKIN mesh.
+// Reads wrinkle curves from a second input (polyline geometry).
+// For each surface point, accumulates the Gaussian displacement
+// contribution from every wrinkle curve segment in range.
+//
+// The wrinkle curve profile (per-segment):
+//   - amplitude : displacement distance along surface normal
+//   - radius    : Gaussian influence radius (falloff)
+//   - bend_angle: tilts the normal before displacement (creates fold-over)
+//
+// Inputs:
+//   Input 0: surface mesh (the clothing/skin geo)
+//   Input 1: wrinkle curve polylines — one or more open polylines
+//             with per-point attributes:
+//               float "amplitude"  (default 0.02)
+//               float "radius"     (default 0.1)
+//               float "bend_angle" (default 0.0, radians)
+//
+// Outputs: @P displaced by the summed wrinkle displacements
+//          @wrinkle_disp (vector) — displacement vector alone (for debug)
+
+// ── Parameters ────────────────────────────────────────────────────────────
+float global_scale = chf("global_scale");  // overall amplitude multiplier (default 1)
+int   blend_mode   = chi("blend_mode");    // 0 = additive, 1 = max
+
+vector total_disp = {0, 0, 0};
+float  max_mag    = 0.0;
+vector max_disp   = {0, 0, 0};
+
+// Surface normal (used for displacement direction)
+vector Nsurf = normalize(point(0, "N", @ptnum));
+if (length(Nsurf) < 1e-6) Nsurf = {0, 1, 0};
+
+// ── Iterate over all wrinkle curve primitives (input 1) ───────────────────
+int n_prims = nprimitives(1);
+
+for (int pi = 0; pi < n_prims; pi++) {
+    int pts[] = primpoints(1, pi);
+    int np    = len(pts);
+    if (np < 2) continue;
+
+    // Iterate over curve segments
+    for (int si = 0; si < np - 1; si++) {
+        int   pt_a = pts[si];
+        int   pt_b = pts[si + 1];
+        vector pa  = point(1, "P", pt_a);
+        vector pb  = point(1, "P", pt_b);
+
+        // Per-segment profile: average the two endpoint values
+        float amp_a   = point(1, "amplitude",  pt_a);
+        float amp_b   = point(1, "amplitude",  pt_b);
+        float rad_a   = point(1, "radius",     pt_a);
+        float rad_b   = point(1, "radius",     pt_b);
+        float bend_a  = point(1, "bend_angle", pt_a);
+        float bend_b  = point(1, "bend_angle", pt_b);
+
+        // Closest point on this segment to current surface vertex
+        vector ab  = pb - pa;
+        float  t   = clamp(dot(@P - pa, ab) / max(dot(ab, ab), 1e-10), 0.0, 1.0);
+
+        // Interpolate profile at t
+        float amp   = lerp(amp_a,  amp_b,  t) * global_scale;
+        float radius = lerp(rad_a,  rad_b,  t);
+        float bend  = lerp(bend_a, bend_b, t);
+
+        // Distance from surface point to closest point on segment
+        vector closest = pa + t * ab;
+        float  dist    = length(@P - closest);
+
+        // Gaussian falloff: weight = amp * exp(-0.5 * (dist/radius)^2)
+        if (radius < 1e-8) continue;
+        float weight = amp * exp(-0.5 * (dist * dist) / (radius * radius));
+
+        // Displacement direction: surface normal bent by bend_angle
+        // Bent toward the wrinkle curve tangent direction
+        vector curve_tangent = normalize(ab);
+        vector bent_N = normalize(cos(bend) * Nsurf + sin(bend) * curve_tangent);
+
+        vector disp = weight * bent_N;
+
+        if (blend_mode == 0) {
+            total_disp += disp;
+        } else {
+            // max mode: take the contribution with largest magnitude
+            if (weight > max_mag) {
+                max_mag  = weight;
+                max_disp = disp;
+            }
+        }
+    }
+}
+
+vector final_disp = (blend_mode == 0) ? total_disp : max_disp;
+
+@P          += final_disp;
+@wrinkle_disp = final_disp;
+
+// ── Wrinkle curve authoring tips ──────────────────────────────────────────
+//
+// Create wrinkle curves with a Draw Curve SOP (polyline mode).
+// Add point attributes before feeding into this wrangle:
+//   Attribute Wrangle (over points of curve geo):
+//     @amplitude  = chf("amplitude");   // e.g. 0.01–0.05 (scene units)
+//     @radius     = chf("radius");      // e.g. 0.05–0.15
+//     @bend_angle = chf("bend_angle");  // e.g. 0 = normal displacement,
+//                                       //       PI/4 = 45-degree fold
+//
+// For age wrinkles (always-on static wrinkles from the paper §6):
+//   Mix a "default_wrinkle_scale" detail float (e.g. 0.3–0.5) with global_scale.
+//   These persist regardless of proximity weight.
+//
+// Multiple curves in one geometry object are all processed together.
+// Use Name or Group attributes to select curves per reference pose.

@@ -1,0 +1,73 @@
+// ============================================================
+// Regularized Kelvinlet — Constrained Deformation
+// de Goes & James, SIGGRAPH 2018, Eq. (18)
+//
+// Places n Kelvinlets at prescribed control points and solves
+// for force vectors f such that specified displacements are matched.
+// Useful for: pinning zero displacement at n-1 anchor points while
+// applying a grab at point n (or for multi-point sculpts).
+//
+// This is a 2-pass setup:
+//   Pass 1 (detail wrangle, or Python): solve the linear system K*f = u
+//   Pass 2 (point wrangle):             evaluate the superposed deformation
+//
+// This snippet implements Pass 2 only (deformation evaluation).
+// Pass 1 (linear solve) must be done externally (e.g. Python / numpy).
+//
+// Inputs (arrays on detail):
+//   vector[] ctrl_centers — control point positions {x₁, ..., xₙ}
+//   vector[] ctrl_forces  — solved force vectors {f₁, ..., fₙ}
+//   float[]  ctrl_epsilons — per-control-point brush radii
+//   float    nu            — shared Poisson ratio
+// ============================================================
+
+float nu = detail(0, "nu", 0.5);
+float ba = 1.0 / (4.0*(1.0 - nu));
+float c  = 2.0 / (3.0 - 2.0*ba);
+
+int    n_ctrl   = len(detail(0, "ctrl_centers"));
+vector total_disp = {0,0,0};
+
+for (int i = 0; i < n_ctrl; i++) {
+    vector xi  = detail(0, "ctrl_centers", i);
+    vector fi  = detail(0, "ctrl_forces",  i);
+    float  epsi = detail(0, "ctrl_epsilons", i);
+
+    vector r   = @P - xi;
+    float  re  = sqrt(dot(r,r) + epsi*epsi);
+    float  re3 = re*re*re;
+
+    float A = (1.0 - ba)/re + 0.5*epsi*epsi/re3;
+    float B = ba/re3;
+
+    // Note: forces fi are raw (from linear solve), already incorporate c*eps scaling
+    total_disp += A * fi + B * dot(r, fi) * r;
+}
+
+@P += total_disp;
+
+// ============================================================
+// Pass 1 — Python/numpy reference (for setup outside Houdini):
+//
+//   import numpy as np
+//
+//   def K_eps(r, eps, ba):
+//       re = np.sqrt(np.dot(r,r) + eps**2)
+//       re3 = re**3
+//       A = (1-ba)/re + 0.5*eps**2/re3
+//       B = ba/re3
+//       return A*np.eye(3) + B*np.outer(r,r)
+//
+//   # Build 3n×3n system matrix
+//   K = np.zeros((3*n, 3*n))
+//   for i in range(n):
+//       for j in range(n):
+//           rij = centers[j] - centers[i]
+//           Kij = K_eps(rij, epsilons[i], ba)
+//           K[3*i:3*i+3, 3*j:3*j+3] = Kij
+//
+//   # Solve for forces
+//   u_vec = u_desired.flatten()
+//   f_vec = np.linalg.solve(K, u_vec)
+//   forces = f_vec.reshape(n, 3)
+// ============================================================

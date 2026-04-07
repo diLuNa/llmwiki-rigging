@@ -1,0 +1,113 @@
+// wrinkle-proximity-metric.vex
+// Art-Directed Wrinkle System — Proximity Metric, Box Filter & Blend Weights
+// Source: Cutler et al., Computers & Graphics 2007 (§5, Eq. 1–3)
+//
+// Per-point Geometry Wrangle.
+// For each vertex, computes the proximity weight w_j for each reference pose:
+//
+//   m*_j = sum_i ( Dl_j,i + Dc_j,i )            (Eq. 1)
+//   Dl_j,i = 1 - |l_j,i - l*_i| / |l_j,i - l0_i|  (when reference changed)
+//           = 0                                    (when rest==ref or out of range)
+//
+//   Box-filter m*_j over neighbours → B(m*_j)    (smooth transitions)
+//   w_j = B(m*_j) ^ persistence_power             (Eq. 2, persistence function)
+//
+// After this wrangle, use the w_j values in wrinkle-blend.vex.
+//
+// Inputs (as detail float arrays — one entry per reference pose):
+//   "ref_stress_k"   — float[16] stress vector for ref pose k (detail attrib array)
+//   "rest_stress"    — float[16] stress vector for rest pose (per-point)
+//   "wrinkle_stress" — float[16] stress vector for current frame (per-point)
+//   "n_ref"          — int, number of reference poses
+//   "persist_power"  — float, persistence function exponent (default 2.0)
+//   "epsilon"        — float, minimum component change to be significant (default 0.01)
+//
+// Outputs:
+//   "wrinkle_w"      — float[], proximity weight per reference pose (per-point)
+//   "wrinkle_raw_m"  — float[], raw (pre-filter) proximity metrics (per-point)
+
+float EPS         = detail(0, "epsilon",      0.01);
+float pers_power  = detail(0, "persist_power", 2.0);
+int   n_ref       = detail(0, "n_ref",         0);
+int   n_comp      = 16;   // 8 lengths + 8 cosines
+
+float stress_anim[] = point(0, "wrinkle_stress",  @ptnum);  // current frame
+float stress_rest[] = point(0, "rest_stress",      @ptnum);  // rest pose
+
+// ── Step 1: compute raw proximity metric per reference pose ───────────────
+float raw_m[];
+resize(raw_m, n_ref);
+
+for (int j = 0; j < n_ref; j++) {
+    // Reference stress stored as a detail array named "ref_stress_j"
+    // Each is float[16] stacked as detail float array: ref_stress[j*16 .. j*16+15]
+    float ref_stress[] = detail(0, "ref_stress", {});   // pre-stacked, see note below
+    // index into stacked array: ref_stress[j*n_comp + i]
+
+    float m_j = 0.0;
+
+    for (int i = 0; i < n_comp; i++) {
+        float l_ref  = ref_stress[j * n_comp + i];
+        float l_anim = stress_anim[i];
+        float l_rest = stress_rest[i];
+
+        float delta_ref_rest = abs(l_ref - l_rest);
+
+        if (delta_ref_rest <= EPS) {
+            // Reference pose barely changed from rest — ignore this component
+            continue;
+        }
+
+        float delta_anim_ref = abs(l_anim - l_ref);
+
+        if (delta_anim_ref > delta_ref_rest) {
+            // Animation is farther from reference than rest is — no contribution
+            continue;
+        }
+
+        // Proximity: 1 at perfect match with ref, 0 at rest level
+        float term = 1.0 - delta_anim_ref / delta_ref_rest;
+        m_j += term;
+    }
+
+    // Normalize by number of components to get [0..1] range
+    raw_m[j] = clamp(m_j / float(n_comp), 0.0, 1.0);
+}
+
+// Store raw metrics for use in box-filter pass (separate wrangle iteration)
+setpointattrib(0, "wrinkle_raw_m", @ptnum, raw_m);
+
+// ── Step 2: box filter over neighbours (run as a SECOND wrangle pass) ─────
+// In a second wrangle node (reading "wrinkle_raw_m"):
+//
+//   float raw_m[] = point(0, "wrinkle_raw_m", @ptnum);
+//   int nbcount   = neighbourcount(0, @ptnum);
+//   float filt_m[];  resize(filt_m, len(raw_m));
+//   for (int j = 0; j < len(raw_m); j++) filt_m[j] = raw_m[j];
+//   for (int ni = 0; ni < nbcount; ni++) {
+//       int nb = neighbour(0, @ptnum, ni);
+//       float nb_m[] = point(0, "wrinkle_raw_m", nb);
+//       for (int j = 0; j < len(raw_m); j++) filt_m[j] += nb_m[j];
+//   }
+//   float inv = 1.0 / float(nbcount + 1);
+//   for (int j = 0; j < len(filt_m); j++) filt_m[j] *= inv;
+//   setpointattrib(0, "wrinkle_filt_m", @ptnum, filt_m);
+
+// ── Step 3: persistence function w_j = B(m*_j)^power ─────────────────────
+// (Run in a third wrangle reading "wrinkle_filt_m"):
+//
+//   float filt_m[] = point(0, "wrinkle_filt_m", @ptnum);
+//   int n_ref_     = detail(0, "n_ref", 0);
+//   float pwr      = detail(0, "persist_power", 2.0);
+//   float w[];  resize(w, n_ref_);
+//   for (int j = 0; j < n_ref_; j++)
+//       w[j] = pow(filt_m[j], pwr);
+//   setpointattrib(0, "wrinkle_w", @ptnum, w);
+
+// ── Data packing note ─────────────────────────────────────────────────────
+// "ref_stress" is a flat detail float array of length n_ref * 16.
+// Pack in Python from pre-computed stress vectors:
+//   ref_stresses = [sv_pose_0, sv_pose_1, ...]   # each is list of 16 floats
+//   geo.addAttrib(hou.attribType.Detail, "ref_stress", [0.0])
+//   geo.setGlobalAttribValue("ref_stress", sum(ref_stresses, []))
+//   geo.setGlobalAttribValue("n_ref", len(ref_stresses))

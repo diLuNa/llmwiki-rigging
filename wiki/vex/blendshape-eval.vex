@@ -1,0 +1,71 @@
+// blendshape-eval.vex
+// Forward blendshape evaluation — delta (additive) and replacement conventions.
+// Sources: Lewis, Anjyo et al. "State of the Art Report: Facial Blendshape Animation"
+//          Eurographics 2014, Eq. 3–4 (additive) and Eq. 1–2 (replacement).
+//
+// USAGE (Point Wrangle):
+//   Input 0: base mesh (neutral)
+//   Inputs 1..N: target shapes (one geometry input per blendshape)
+//
+//   Set CONVENTION to 0 for additive/delta (most common in production),
+//   or 1 for replacement (JTDP03 / UsdSkel barycentric style).
+//
+//   Weights arrive as a float array detail attribute "weights" on input 0.
+//
+//   The snippet drives up to 8 blendshapes inline; for large rigs route
+//   weights through a chop or detail attribute array and loop over inputs.
+
+int   CONVENTION = 0;   // 0 = additive (delta), 1 = replacement (partition-of-unity)
+
+// --- Read base position ---
+vector base_pos = point(0, "P", @ptnum);
+
+// --- Read weight array (float[]) from detail ---
+float weights[] = detail(0, "weights");
+int   N = len(weights);
+
+// -------------------------------------------------------
+// ADDITIVE / DELTA BLENDSHAPE  (Lewis 2014, Eq. 3-4)
+//   f = b0 + B * w
+//   where B[:,k] = b_k - b0  (delta column)
+// -------------------------------------------------------
+if (CONVENTION == 0)
+{
+    vector acc = {0,0,0};
+    for (int k = 0; k < N; k++)
+    {
+        // input k+1 holds target shape k
+        vector target_pos = point(k+1, "P", @ptnum);
+        vector delta      = target_pos - base_pos;    // b_k - b_0
+        acc += weights[k] * delta;                    // w_k * delta_k
+    }
+    @P = base_pos + acc;
+}
+
+// -------------------------------------------------------
+// REPLACEMENT / PARTITION-OF-UNITY  (Lewis 2014, Eq. 1-2)
+//   f = sum_k  w_k * b_k,   sum(w_k) = 1
+//   Input 0 itself is b_0 (neutral), weighted as w[0].
+// -------------------------------------------------------
+else
+{
+    // Normalise weights to sum = 1 for safety
+    float wsum = 0;
+    foreach(float w; weights) wsum += w;
+    if (wsum < 1e-6) wsum = 1.0;
+
+    vector acc = {0,0,0};
+    // neutral contributes as 1 - sum(remaining weights)
+    float w0 = 1.0 - (wsum - weights[0]) / wsum;
+    acc += w0 * base_pos;
+
+    for (int k = 0; k < N; k++)
+    {
+        vector target_pos = point(k+1, "P", @ptnum);
+        acc += (weights[k] / wsum) * target_pos;
+    }
+    @P = acc;
+}
+
+// --- Optional: propagate normals (recompute after) ---
+// Normals should be recomputed with a Facet node downstream.

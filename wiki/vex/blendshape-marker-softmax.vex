@@ -1,0 +1,58 @@
+// blendshape-marker-softmax.vex
+// Softmax-weighted marker-to-vertex correspondence (facial similarity function).
+// Source: JTDP03 "Blendshape Weight Estimation from Markers", §Facial Similarity:
+//
+//   R(P_j) = sum_i  exp(-‖M_i - P_j‖) * C_i
+//            ────────────────────────────────
+//            sum_i  exp(-‖M_i - P_j‖)
+//
+// where M_i are tracked marker positions, C_i are per-marker confidence values,
+// and P_j is a candidate mesh vertex. R(P_j) ∈ [0,1] measures how closely
+// vertex P_j corresponds to the cluster of markers M.
+//
+// USAGE (Point Wrangle on the driven mesh):
+//   Detail attribute "marker_pos"  — float[][] or vector[] array of N marker positions.
+//   Detail attribute "marker_conf" — float[] array of N confidence values (default 1.0).
+//   Output: point attribute "marker_similarity" (float).
+
+// --- Read markers from detail ---
+int   N         = detail(0, "num_markers");          // number of markers
+float sigma     = chf("sigma");                      // distance scale (default ~1.0)
+if (sigma < 1e-6) sigma = 1.0;
+
+vector Pj = @P;   // current vertex position
+
+float num = 0.0;
+float den = 0.0;
+
+for (int i = 0; i < N; i++)
+{
+    // marker positions stored as vector array "marker_pos"
+    vector Mi   = detail(0, "marker_pos", i);
+    float  Ci   = detail(0, "marker_conf", i);   // confidence; 1.0 if absent
+    if (Ci == 0) Ci = 1.0;
+
+    float dist  = length(Mi - Pj);
+    float w_i   = exp(-dist / sigma);             // softmax unnormalised weight
+
+    num += w_i * Ci;
+    den += w_i;
+}
+
+float R = (den > 1e-12) ? (num / den) : 0.0;
+
+f@marker_similarity = R;
+
+// -------------------------------------------------------
+// NOTES
+// -------------------------------------------------------
+// 1. sigma controls the locality of the softmax.  Set it to roughly the
+//    average inter-marker distance on the face (e.g. 0.02–0.05 in scene units).
+//
+// 2. This attribute can be used to build a soft marker-to-vertex map:
+//    the vertex with the highest marker_similarity for each marker is its
+//    "best" mesh correspondent, used to assemble the V_j(alpha) columns
+//    in the QP objective.
+//
+// 3. The full QP solve (Lagrangian with sum-alpha = 1, alpha_i >= 0) is
+//    handled in Python — see blendshape-qp-fit.vex for the Python component.

@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c ':*)",
+      "Bash(python3 -c \" import pypdf r = pypdf.PdfReader\\('/Users/lucaprasso/Documents/work/LLM_Wiki/rigging-wiki/raw/papers/2022.SiggraphPapers.GSF.pdf'\\) for i, page in enumerate\\(r.pages\\): print\\(f'=== PAGE {i+1} ==='\\) print\\(page.extract_text\\(\\)\\) print\\(\\) \")",
+      "Bash(python3:*)",
+      "WebFetch(domain:la.disneyresearch.com)",
+      "Read(//tmp/**)",
+      "WebSearch",
+      "Bash(pdftotext flame_paper.pdf -)",
+      "Bash(pdftotext \"Neutral_Facial_Rigging_from_Limited_Spatiotemporal.pdf\" -)",
+      "Bash(brew list:*)",
+      "Bash(pip3 list:*)",
+      "Bash(pdftotext /Users/lucaprasso/Documents/work/LLM_Wiki/rigging-wiki/raw/papers/Neutral_Facial_Rigging_from_Limited_Spatiotemporal.pdf -)",
+      "Bash(pdfinfo /Users/lucaprasso/Documents/work/LLM_Wiki/rigging-wiki/raw/papers/Neutral_Facial_Rigging_from_Limited_Spatiotemporal.pdf)",
+      "Bash(curl -L -o hood-2023.pdf \"https://arxiv.org/pdf/2212.07242\" --max-time 60 -s -w \"%{http_code}\")",
+      "Bash(curl -L -o multiscale-meshgraphnets-2022.pdf \"https://arxiv.org/pdf/2210.00612\" --max-time 60 -s -w \"%{http_code}\")",
+      "Bash(curl -L -o ncloth-2022.pdf \"https://arxiv.org/pdf/2112.06397\" --max-time 60 -s -w \"%{http_code}\")",
+      "Bash(curl -L -o neural-cloth-sim-2022.pdf \"https://arxiv.org/pdf/2212.11220\" --max-time 60 -s -w \"%{http_code}\")",
+      "WebFetch(domain:arxiv.org)",
+      "WebFetch(domain:min-tang.github.io)",
+      "WebFetch(domain:hbertiche.github.io)",
+      "WebFetch(domain:ar5iv.labs.arxiv.org)"
+    ]
+  }
+}

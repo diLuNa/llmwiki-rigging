@@ -1,0 +1,86 @@
+// wrinkle-blend.vex
+// Art-Directed Wrinkle System — Displacement Blend (Eq. 3)
+// Source: Cutler et al., Computers & Graphics 2007 (§5, Eq. 3)
+//
+// Per-point Geometry Wrangle.
+// Applies the final weighted blend of reference pose displacements:
+//
+//   d* = sum_j ( w_j * d_j )        (Eq. 3)
+//
+// Inputs:
+//   Input 0: animated mesh (with proximity weights "wrinkle_w" from
+//            wrinkle-proximity-metric.vex)
+//   "wrinkle_disp" flat detail float array — stacked displacements from
+//            all reference poses: [d0.x, d0.y, d0.z, d1.x, d1.y, d1.z, ...]
+//   "n_ref"  detail int — number of reference poses
+//
+// Output: @P += blended wrinkle displacement
+//         @wrinkle_total_disp (vector) — blended displacement (debug)
+//
+// Typical pipeline:
+//   rest_geo → stress → store rest stress
+//   ref_pose_0 → stress + wrinkle-curve-displacement → store wrinkle_disp_0
+//   ref_pose_1 → stress + wrinkle-curve-displacement → store wrinkle_disp_1
+//   ...
+//   anim_frame → stress → proximity metric → box filter → this wrangle
+
+int   n_ref = detail(0, "n_ref", 0);
+float w[]   = point(0, "wrinkle_w", @ptnum);   // proximity weight per reference
+
+// Reference displacements: stacked as flat float array of length n_ref * 3
+float ref_disp_flat[] = detail(0, "wrinkle_disp", {});
+
+vector blended_d = {0, 0, 0};
+float  w_total   = 0.0;
+
+for (int j = 0; j < n_ref; j++) {
+    float wj = (j < len(w)) ? w[j] : 0.0;
+    if (wj < 1e-6) continue;
+
+    int base = j * 3;
+    vector dj = set(ref_disp_flat[base],
+                    ref_disp_flat[base + 1],
+                    ref_disp_flat[base + 2]);
+
+    blended_d += wj * dj;
+    w_total   += wj;
+}
+
+// Note: Cutler does NOT normalize — weights can sum > 1 if multiple
+// reference poses are active simultaneously. This is intentional:
+// the wrinkles add on top of each other, bounded by the persistence function.
+
+@P                  += blended_d;
+@wrinkle_total_disp  = blended_d;
+
+// ── Default wrinkles (§6 — always-on, persist regardless of proximity) ────
+//
+// "Age wrinkles" or static default wrinkles (from §4 step 6 in the paper):
+// Add their displacement at full weight, regardless of proximity metric.
+// Store as a separate detail float array "default_disp" (length n_pts * 3).
+//
+//   float def_flat[] = detail(0, "default_disp", {});
+//   int base = @ptnum * 3;
+//   if (base + 2 < len(def_flat)) {
+//       vector def_d = set(def_flat[base], def_flat[base+1], def_flat[base+2]);
+//       float def_scale = detail(0, "default_scale", 1.0);
+//       @P += def_scale * def_d;
+//   }
+
+// ── Python packing helper ─────────────────────────────────────────────────
+//
+// Before runtime, pack reference displacements into a flat detail array:
+//
+//   import hou
+//   geo = hou.node("../animated_mesh").geometry()
+//   n_ref = len(ref_pose_geos)
+//
+//   disp_flat = []
+//   for j, ref_geo in enumerate(ref_pose_geos):
+//       for pt in ref_geo.points():
+//           d = pt.attribValue("wrinkle_disp")   # vector
+//           disp_flat.extend([d[0], d[1], d[2]])
+//
+//   geo.addAttrib(hou.attribType.Detail, "wrinkle_disp", [0.0])
+//   geo.setGlobalAttribValue("wrinkle_disp", disp_flat)
+//   geo.setGlobalAttribValue("n_ref", n_ref)

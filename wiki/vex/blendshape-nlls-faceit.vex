@@ -1,0 +1,114 @@
+// blendshape-nlls-faceit.vex
+// FACEIT-style 2D landmark-driven blendshape weight solving (NLLS / LM).
+// Source: Díaz Barros et al., FACEIT (~2020)
+//
+//   min_alpha  sum_j ‖L_j - Pi(V_j(alpha), pose)‖²  +  mu * ‖∇alpha‖²
+//
+// where L_j are 2D landmark positions from the video frame,
+// Pi is the perspective camera projection, V_j(alpha) is the 3D position
+// of landmark vertex j on the blendshape-driven mesh, and the second term
+// enforces temporal smoothness.
+//
+// VEX handles: camera projection of 3D mesh vertices → 2D screen coords.
+// Python handles: NLLS residual + Levenberg-Marquardt optimisation.
+//
+// USAGE (Point Wrangle — projects 3D mesh positions through camera):
+//   Reads camera transform matrix "cam_xform" (detail, float[16] row-major).
+//   Reads intrinsics "cam_K" (detail, float[9]: fx,0,cx, 0,fy,cy, 0,0,1).
+//   Writes projected UV positions to "uv_proj" point attribute.
+
+// --- Read camera intrinsics and extrinsics from detail ---
+matrix cam_xform = detail(0, "cam_xform");  // world-to-camera 4x4
+float  K[]       = detail(0, "cam_K");      // 3x3 intrinsic (row-major, 9 floats)
+
+float fx = K[0], fy = K[4];
+float cx = K[2], cy = K[5];
+
+// --- Transform point to camera space ---
+vector P_world  = @P;
+vector4 Ph      = set(P_world.x, P_world.y, P_world.z, 1.0);
+vector4 P_cam4  = Ph * cam_xform;
+vector  P_cam   = set(P_cam4.x, P_cam4.y, P_cam4.z);
+
+// --- Perspective divide ---
+float  u_ndc = P_cam.x / max(P_cam.z, 1e-6);
+float  v_ndc = P_cam.y / max(P_cam.z, 1e-6);
+
+// --- Apply intrinsics: NDC → pixel ---
+float u_px = fx * u_ndc + cx;
+float v_px = fy * v_ndc + cy;
+
+v@uv_proj = set(u_px, v_px, 0.0);
+
+// -------------------------------------------------------
+// Python NLLS Solver (run in a Python node)
+// -------------------------------------------------------
+// ```python
+// import numpy as np
+// from scipy.optimize import least_squares
+//
+// node = hou.pwd()
+// geo  = node.geometry()
+//
+// # ---- read blendshapes (N_shapes × N_verts × 3) ----
+// N_shapes  = geo.attribValue("N_shapes")
+// N_lmk     = geo.attribValue("N_landmarks")       # ~68 face landmarks
+// lmk_idx   = list(geo.attribValue("lmk_indices")) # vertex indices
+//
+// # blendshape target positions — packed float array
+// shapes_flat = np.array(geo.attribValue("shape_pos"))
+// N_verts     = shapes_flat.size // (N_shapes * 3)
+// shapes      = shapes_flat.reshape(N_shapes, N_verts, 3)
+//
+// # camera matrices
+// K           = np.array(geo.attribValue("cam_K")).reshape(3, 3)
+// R_cam       = np.array(geo.attribValue("cam_R")).reshape(3, 3)  # rotation
+// t_cam       = np.array(geo.attribValue("cam_t"))                # translation
+//
+// # 2D landmarks from video (pixels)
+// L_2d        = np.array(geo.attribValue("landmarks_2d")).reshape(N_lmk, 2)
+//
+// # previous frame weights for temporal regularisation
+// alpha_prev  = np.array(geo.attribValue("alpha_prev"))
+// if len(alpha_prev) != N_shapes:
+//     alpha_prev = np.zeros(N_shapes)
+// mu = float(geo.attribValue("temporal_weight") or 0.01)
+//
+// neutral_pos = shapes[0]   # shapes[0] = neutral / b0
+//
+// def project(pts_3d):
+//     """Project Nx3 world points to Nx2 pixel coords."""
+//     P_cam = (R_cam @ pts_3d.T).T + t_cam   # (N,3)
+//     P_ndc = P_cam[:, :2] / P_cam[:, 2:3]   # perspective divide
+//     uv    = (K[:2, :2] @ P_ndc.T).T + K[:2, 2]
+//     return uv   # (N,2)
+//
+// def residuals(alpha):
+//     # Clamp for numerical stability (bounds handle it properly in TRF)
+//     V = neutral_pos.copy()
+//     for k in range(N_shapes):
+//         V += alpha[k] * (shapes[k+1] - neutral_pos)   # delta convention
+//     lmk_3d = V[lmk_idx]           # (N_lmk, 3)
+//     lmk_2d = project(lmk_3d)      # (N_lmk, 2)
+//     r_lmk  = (lmk_2d - L_2d).flatten()              # 2D reprojection error
+//     r_temp = np.sqrt(mu) * (alpha - alpha_prev)      # temporal regularisation
+//     return np.concatenate([r_lmk, r_temp])
+//
+// result = least_squares(
+//     residuals,
+//     x0=alpha_prev,
+//     bounds=(0.0, 1.0),
+//     method="trf",
+//     ftol=1e-7, xtol=1e-7,
+//     max_nfev=200
+// )
+// alpha_star = result.x
+//
+// geo.setGlobalAttribValue("alpha_star", alpha_star.tolist())
+// geo.setGlobalAttribValue("alpha_prev", alpha_star.tolist())
+// ```
+
+// -------------------------------------------------------
+// VEX (second wrangle): apply solved weights
+// -------------------------------------------------------
+// (Identical to blendshape-qp-fit.vex apply stage — see that file)

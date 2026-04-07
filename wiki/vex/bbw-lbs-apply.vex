@@ -1,0 +1,82 @@
+// bbw-lbs-apply.vex
+// Bounded Biharmonic Weights — Runtime LBS Deformation
+// Source: Jacobson et al., SIGGRAPH 2011 (§2 — LBS with BBW weights)
+//
+// Per-point Geometry Wrangle.
+// Applies Linear Blend Skinning using precomputed BBW weight attributes.
+//
+// Expects:
+//   - Point float attributes "bbw_0", "bbw_1", ..., "bbw_{K-1}" (K handles)
+//   - Detail int attribute "bbw_n_handles" = K
+//   - Detail matrix attributes "bbw_xform_0", ..., "bbw_xform_{K-1}"
+//       Each is the 4x4 world transform of handle k in the current pose,
+//       post-multiplied by the inverse bind transform: T_k = pose_k * inv(rest_k)
+//
+// Output: deformed @P
+//
+// Setup in Python before running:
+//   geo.addAttrib(hou.attribType.Detail, "bbw_n_handles", K)
+//   for k, bone in enumerate(bones):
+//       xform = bone.worldTransform() * rest_xforms[k].inverted()
+//       geo.addAttrib(hou.attribType.Detail, f"bbw_xform_{k}", hou.Matrix4(1))
+//       geo.setGlobalAttribValue(f"bbw_xform_{k}", xform)
+
+int   K      = detail(0, "bbw_n_handles", 0);
+vector rest_p = @P;        // assumes wrangle runs on rest mesh copy
+                           // or use a separate @rest attribute if @P is already posed
+
+// ── weighted sum of bone-transformed positions ─────────────────────────────
+vector blended = {0, 0, 0};
+float  w_sum   = 0.0;
+
+for (int k = 0; k < K; k++) {
+    string w_attr = sprintf("bbw_%d", k);
+    string x_attr = sprintf("bbw_xform_%d", k);
+
+    float  w = point(0, w_attr, @ptnum);
+    if (w < 1e-6) continue;            // skip zero-weight handles
+
+    matrix xform = detail(0, x_attr, ident());
+
+    // Transform rest position by this handle's delta transform
+    vector posed_p = rest_p * xform;   // VEX: row-vector * matrix
+
+    blended += w * posed_p;
+    w_sum   += w;
+}
+
+// Normalize (weights should already sum to 1, but guard)
+if (w_sum > 1e-8)
+    @P = blended / w_sum;
+// else: leave @P unchanged (degenerate — no weights)
+
+// ── Example: packing handle transforms from Houdini bones ─────────────────
+//
+// In a Python SOP upstream of this wrangle:
+//
+//   import hou, numpy as np
+//
+//   mesh_geo = hou.node("../rest_mesh").geometry()
+//   K = ... # number of handles (joints)
+//
+//   # Compute delta transforms  T_k = current * inv(rest)
+//   for k in range(K):
+//       bone = hou.node(f"../bone_{k}")
+//       rest_xf = hou.Matrix4(bone.evalParmTuple("rest_xform"))   # stored at bind time
+//       pose_xf = bone.worldTransform()
+//       delta   = rest_xf.inverted() * pose_xf                    # or pose * inv(rest)
+//       mesh_geo.setGlobalAttribValue(f"bbw_xform_{k}", delta)
+//
+// Note: VEX reads detail matrix4 as matrix (4x4).
+// VEX row-vector convention: v * M  (not M * v).
+
+// ── Alternative: point cloud handles (non-skeletal) ───────────────────────
+//
+// BBW is not limited to bones. Handles can be:
+//   - Control points (scattered vertices of a cage)
+//   - Curve CVs
+//   - Anchor points for a lattice deformer
+//
+// In each case, T_k maps the handle's rest position to its posed position
+// (rigid transform, affine transform, or full 4x4 matrix).
+// The LBS formula above is identical regardless of handle type.

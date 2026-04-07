@@ -1,0 +1,73 @@
+// mesh-wrap-distortion-energy.vex
+// Mesh Wrap — Per-vertex Distortion Energy  ‖dXi Wi‖²  (§4)
+// Source: de Goes & Martinez, SIGGRAPH Talks 2019
+//
+// Per-point Geometry Wrangle on the WRAP mesh M.
+// Evaluates the affine-invariant distortion at each vertex i:
+//
+//   Ei = ‖ dXi · Wi ‖²_F
+//
+// where  dXi = [ xj − xi | ... ]    (3 × n, current stencil differences)
+//        Wi  = null(dYi)             (n × (n−3), precomputed from source)
+//
+// Sum over all vertices = X^T L X, the global distortion objective.
+// Use this wrangle for diagnostic visualisation or as a convergence check.
+//
+// Inputs:
+//   @P (current wrap vertex positions xi)
+//   @stencil_pts (int[]) — neighbour indices (precomputed on source, transferred)
+//   @Wi_flat (float[])   — flattened Wi, n × (n−3) row-major
+//   @n_stencil (int)     — stencil size n
+//
+// Outputs:
+//   @distortion (float)  — per-vertex distortion energy Ei
+
+int   n   = @n_stencil;
+int   nb[] = @stencil_pts;
+float Wi[] = @Wi_flat;      // n × (n-3), row-major: Wi[j*(n-3) + r]
+
+if (n < 4 || len(Wi) == 0) { @distortion = 0.0; return; }
+
+int n_null = n - 3;   // number of null vectors (generic case)
+if (n_null <= 0) { @distortion = 0.0; return; }
+
+// ── Assemble dXi (3 × n) ──────────────────────────────────────────────────
+// dXi[axis][k] = (xk - xi)[axis]
+float dXi[];
+resize(dXi, 3 * n);
+for (int k = 0; k < n; k++) {
+    vector diff = point(0, "P", nb[k]) - @P;
+    dXi[0 * n + k] = diff.x;
+    dXi[1 * n + k] = diff.y;
+    dXi[2 * n + k] = diff.z;
+}
+
+// ── Compute C = dXi · Wi  (3 × n_null) ───────────────────────────────────
+// C[a][r] = sum_k dXi[a][k] * Wi[k][r]
+// Wi stored row-major: Wi[k * n_null + r]
+float distortion = 0.0;
+
+for (int a = 0; a < 3; a++) {
+    for (int r = 0; r < n_null; r++) {
+        float c = 0.0;
+        for (int k = 0; k < n; k++) {
+            float wi_kr = (k * n_null + r < len(Wi)) ? Wi[k * n_null + r] : 0.0;
+            c += dXi[a * n + k] * wi_kr;
+        }
+        distortion += c * c;
+    }
+}
+
+@distortion = distortion;
+
+// ── Global distortion (after this wrangle) ────────────────────────────────
+// In Python: total_distortion = sum(pt.attribValue("distortion") for pt in geo.points())
+// This equals X^T L X, the quadratic form of the affine-invariant Laplacian.
+//
+// Use as convergence signal: if total_distortion is not decreasing,
+// the µ ramp is too aggressive or curve correspondences are conflicting.
+
+// ── Gradient of Ei w.r.t. xi (for debugging the gradient flow) ───────────
+// ∂Ei/∂xi = 2 dXi Wi Wi^T [-1, ..., -1] (row sums of Wi Wi^T)
+// This is the gradient contribution to the linear system's row i.
+// The full system (L + µ M^T M + κ B^T B) X = rhs assembles these automatically.

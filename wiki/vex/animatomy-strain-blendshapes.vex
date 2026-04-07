@@ -1,0 +1,98 @@
+// animatomy-strain-blendshapes.vex
+// Animatomy — Strain-to-Skin Deformation  B_E = E · γ  (§5.3)
+// Source: Choi et al., SIGGRAPH Asia 2022
+//
+// Per-point Geometry Wrangle on the SKIN MESH (N = 85,000 vertices).
+// Applies the linear strain-driven expression blendshape:
+//
+//   B_E(γ; E) = Σ_i  E_i · γ_i   =  E · γ
+//
+// where  E ∈ R^{3N × |γ|}  is the strain-to-skin deformation matrix
+//        γ ∈ R^{|γ|}       is the (AE-projected) strain vector
+//
+// E is precomputed offline by training (§6). At runtime, this is a
+// matrix-vector product: each vertex adds up one vector per muscle.
+//
+// Inputs:
+//   Detail float array "gamma"          — strain vector, length |γ| (e.g. 178)
+//   Detail float array "E_basis"        — stacked deformation vectors, length 3N × |γ|
+//                                         Row-major: E_basis[i*3N + ptnum*3 + axis]
+//                                         OR column-major: E_basis[i * 3N*3 + ptnum*3 + axis]
+//                                         (see packing note below — column-major recommended)
+//   Detail int "n_strains"              — |γ|
+//
+// Outputs:
+//   @strain_disp (vector, point) — displacement from strain-driven blendshapes
+//   @P += @strain_disp (optionally, enable with "apply_disp" channel)
+
+int   n_strains = detail(0, "n_strains", 0);
+float gamma[]   = detail(0, "gamma",     {});    // AE-projected strain vector
+
+// ── Linear combination: displacement = Σ_i E_i · γ_i ─────────────────────
+// E stored column-major: column i = E_i (displacement for muscle i),
+// length 3N floats per column.
+// E_basis[i * n_pts*3 + @ptnum*3 + axis]
+
+float E_basis[] = detail(0, "E_basis", {});
+int   n_pts     = @numpt;
+
+vector disp = {0, 0, 0};
+
+for (int i = 0; i < n_strains; i++) {
+    float gi = (i < len(gamma)) ? gamma[i] : 0.0;
+    if (abs(gi) < 1e-7) continue;    // skip zero-weighted muscles
+
+    int base = i * n_pts * 3 + @ptnum * 3;
+    if (base + 2 >= len(E_basis)) continue;
+
+    disp.x += gi * E_basis[base];
+    disp.y += gi * E_basis[base + 1];
+    disp.z += gi * E_basis[base + 2];
+}
+
+@strain_disp = disp;
+
+if (chi("apply_disp"))
+    @P += disp;
+
+// ── Memory note ────────────────────────────────────────────────────────────
+// E ∈ R^{3N × |γ|} at N=85k, |γ|=178:
+//   3 × 85000 × 178 × 4 bytes = ~182 MB
+// This is large. In production, E is compressed (sparse or low-rank).
+// For Houdini prototyping, reduce N (use a coarser proxy mesh).
+//
+// Sparse alternative: store only non-zero (i, ptnum, vec3) triplets
+// and iterate over those in VEX. Use a Python SOP to extract sparse rows.
+
+// ── Autoencoder note (AE cannot run in VEX) ───────────────────────────────
+// Before calling this wrangle, pass gamma through the AE in Python:
+//
+//   import torch
+//   gamma_raw = torch.tensor(gamma_from_curves)   # 178-D
+//   gamma_ae  = ae_model(gamma_raw).detach().numpy()
+//   geo.setGlobalAttribValue("gamma", gamma_ae.tolist())
+//
+// The AE is a 3-layer encoder + 3-layer decoder (fully connected, cELU + Tanh).
+// Latent size ≈ |γ| / 2 ≈ 89. Two separate AEs: upper face + lower face.
+// Lower AE is conditioned on jaw pose (jaw control value appended to input).
+// AE weights are trained offline and saved as ONNX or PyTorch state dict.
+
+// ── Python packing helper ─────────────────────────────────────────────────
+// To pack E from a set of per-muscle delta meshes (each is a VEX-compatible
+// geo with same point count as the skin mesh):
+//
+//   import hou, numpy as np
+//   skin_geo = hou.node("../skin_mesh").geometry()
+//   n_pts    = len(skin_geo.points())
+//   n_strains = 178
+//
+//   E_flat = np.zeros((n_strains, n_pts * 3))
+//   for i in range(n_strains):
+//       delta_geo = hou.node(f"../muscle_delta_{i}").geometry()
+//       for j, pt in enumerate(delta_geo.points()):
+//           d = pt.attribValue("strain_delta")   # vector
+//           E_flat[i, j*3:j*3+3] = d
+//
+//   skin_geo.addAttrib(hou.attribType.Detail, "E_basis", [0.0])
+//   skin_geo.setGlobalAttribValue("E_basis", E_flat.flatten().tolist())
+//   skin_geo.setGlobalAttribValue("n_strains", n_strains)

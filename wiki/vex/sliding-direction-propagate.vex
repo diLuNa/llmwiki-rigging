@@ -1,0 +1,100 @@
+// sliding-direction-propagate.vex
+// Sliding Deformation — Global Direction Propagation via Parallel Transport  (§3.2)
+// Source: Pinskiy, Eurographics 2010
+//
+// Per-point Geometry Wrangle. Iterate this wrangle in a For-Each SOP loop,
+// expanding BFS from the handle vertex outward through the support region.
+//
+// §3.2: Starting from the handle vertex (where {a1, a2} = {b1, b2}),
+// propagate the global direction {a1, a2} to each active vertex by
+// averaging the projected representations from already-processed neighbours.
+//
+// Propagation rule for vertex P with m processed neighbours:
+//   a'1 in ΨP = normalize( Σ_j proj_ΨP(a1j from neighbour j) )  (§3.2, Eq. 4)
+//   a'2 = normalize(b2_P - dot(b2_P, a'1) * a'1)  (re-orthogonalize)
+//
+// Projection between adjacent tangent spaces uses dihedral rotation:
+//   the rotation that maps N_j to N_P also rotates a1j into ΨP.
+//
+// Inputs:
+//   @slide_b1, @slide_b2, @slide_N  — local frame (from sliding-tangent-basis.vex)
+//   @slide_a1, @slide_a2 (vector)   — propagated direction (initialize at handle)
+//   @slide_done (int)               — 1 if this vertex has been processed
+//   @slide_active (int)             — 1 if within support region radius
+//   @slide_dist   (float)           — geodesic distance from handle (for falloff)
+//   Detail vector "handle_a1", "handle_a2" — global frame at handle vertex
+//   Detail int "handle_pt"                 — handle point index
+//
+// Outputs: @slide_a1, @slide_a2 updated for each newly reachable vertex
+
+if (!@slide_active || @slide_done) return;
+
+vector Nv = @slide_N;
+vector b1 = @slide_b1;
+vector b2 = @slide_b2;
+
+// ── Collect contributions from processed neighbours ────────────────────────
+int nbcount = neighbourcount(0, @ptnum);
+vector accum_a1 = {0, 0, 0};
+int    n_proc   = 0;
+
+for (int k = 0; k < nbcount; k++) {
+    int nb = neighbour(0, @ptnum, k);
+    if (!point(0, "slide_done", nb)) continue;   // not yet processed
+
+    vector Nb_N  = point(0, "slide_N",  nb);
+    vector nb_a1 = point(0, "slide_a1", nb);
+
+    // ── Parallel transport: rotate nb_a1 from ΨNb into ΨP ─────────────────
+    // dihedral(N_nb, N_P) gives the rotation that aligns the two normals.
+    // Applying this rotation to nb_a1 transports it into ΨP.
+    matrix3 R = dihedral(Nb_N, Nv);    // VEX built-in: minimal rotation between vectors
+    vector  a1_transported = nb_a1 * R;
+
+    // Project onto ΨP (remove any residual normal component)
+    a1_transported -= dot(a1_transported, Nv) * Nv;
+
+    if (length(a1_transported) > 1e-8)
+        accum_a1 += normalize(a1_transported);
+
+    n_proc++;
+}
+
+if (n_proc == 0) return;   // no processed neighbours yet — skip this iteration
+
+// ── Average and normalize ──────────────────────────────────────────────────
+vector a1_new = normalize(accum_a1);
+// Re-orthogonalize a2 against a1 in ΨP
+vector a2_new = normalize(b2 - dot(b2, a1_new) * a1_new);
+if (length(a2_new) < 1e-8)
+    a2_new = normalize(cross(Nv, a1_new));
+
+@slide_a1  = a1_new;
+@slide_a2  = a2_new;
+@slide_done = 1;
+
+// ── Handle vertex initialization (run ONCE before the loop) ───────────────
+// In a separate per-point wrangle, run on the handle vertex only:
+//
+//   if (@ptnum != detail(0, "handle_pt", -1)) return;
+//   @slide_a1   = @slide_b1;   // global a1 = handle's local b1
+//   @slide_a2   = @slide_b2;   // global a2 = handle's local b2
+//   @slide_done = 1;
+//   @slide_dist = 0.0;
+//   setdetailattrib(0, "handle_a1", @slide_b1);
+//   setdetailattrib(0, "handle_a2", @slide_b2);
+
+// ── Support region setup (run before loop, per-point) ─────────────────────
+// Compute geodesic/Euclidean distance from handle; mark active vertices.
+//
+//   vector handle_P = point(0, "P", detail(0, "handle_pt", 0));
+//   float  radius   = detail(0, "slide_radius", 1.0);
+//   float  dist     = length(@P - handle_P);   // Euclidean approx
+//   @slide_active  = (dist <= radius) ? 1 : 0;
+//   @slide_dist    = dist;
+//   @slide_done    = 0;
+
+// ── Number of BFS iterations needed ──────────────────────────────────────
+// In a For-Each SOP loop: set Max Iterations = max_valence_ring_depth.
+// Typically 5–15 iterations for a support radius covering 1–3 edge rings.
+// The @slide_done flag prevents re-processing.

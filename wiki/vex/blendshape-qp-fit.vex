@@ -1,0 +1,106 @@
+// blendshape-qp-fit.vex
+// Constrained QP blendshape weight solving from 3D markers.
+// Source: JTDP03 "Blendshape Weight Estimation from Markers"
+//
+//   min_alpha  sum_j ‖M_j - V_j(alpha)‖²  +  mu * ‖∇alpha‖²
+//   subject to  sum_i alpha_i = 1,  alpha_i >= 0
+//
+// where V_j(alpha) = sum_i alpha_i * V_i[j]  (vertex j of shape i).
+//
+// VEX COMPONENT: assemble per-vertex contributions to the QP matrix.
+// The actual QP solve is done in Python (see embedded snippet below).
+//
+// USAGE (Point Wrangle on the driven mesh at marker-correspondence vertices):
+//   Run AFTER blendshape-marker-softmax.vex to get marker_similarity.
+//   Reads "blendshape_pos" — float[][] of shape [N_shapes, 3*N_verts] packed.
+//   Writes QP data to detail attributes for the Python solver.
+
+// --- Parameters ---
+float mu = chf("temporal_weight");   // temporal smoothness weight (e.g. 0.01)
+
+// -------------------------------------------------------
+// Python QP Solver (run in a Python node after this wrangle)
+// -------------------------------------------------------
+// The Python script below solves the QP per-frame using scipy.
+//
+// ```python
+// import numpy as np
+// from scipy.optimize import minimize
+//
+// node  = hou.pwd()
+// geo   = node.geometry()
+//
+// # ---- read data assembled by VEX ----
+// N_shapes = geo.attribValue("N_shapes")   # int
+// N_markers = geo.attribValue("N_markers") # int
+//
+// # marker positions M: (N_markers, 3)
+// M = np.array(geo.attribValue("marker_pos")).reshape(N_markers, 3)
+//
+// # per-shape, per-marker vertex position V: (N_shapes, N_markers, 3)
+// # packed as flat float array "shape_at_marker_pos"
+// V_flat = np.array(geo.attribValue("shape_at_marker_pos"))
+// V = V_flat.reshape(N_shapes, N_markers, 3)
+//
+// # previous-frame weights for temporal regularisation
+// alpha_prev = np.array(geo.attribValue("alpha_prev"))
+// if len(alpha_prev) != N_shapes:
+//     alpha_prev = np.ones(N_shapes) / N_shapes
+//
+// # ---- build QP matrices ----
+// # residual for a given alpha: r_j = M_j - sum_i alpha_i * V[i,j,:]
+// # objective: ||M - V^T alpha||^2 + mu * ||alpha - alpha_prev||^2
+// # = alpha^T Q alpha + c^T alpha + const
+// #
+// # Q = sum_j  V[:,j,:]^T V[:,j,:]  +  mu * I
+// # c = -2 * sum_j  V[:,j,:] M_j     - 2*mu*alpha_prev
+//
+// Q = np.zeros((N_shapes, N_shapes))
+// c = np.zeros(N_shapes)
+// for j in range(N_markers):
+//     Vj = V[:, j, :]          # (N_shapes, 3)
+//     Q += Vj @ Vj.T
+//     c -= 2.0 * (Vj @ M[j])
+// Q += mu * np.eye(N_shapes)
+// c -= 2.0 * mu * alpha_prev
+//
+// # ---- solve: QP with equality + inequality constraints ----
+// from scipy.optimize import minimize
+// constraints = [{"type": "eq", "fun": lambda a: np.sum(a) - 1.0}]
+// bounds = [(0, 1)] * N_shapes
+// res = minimize(
+//     lambda a: 0.5 * a @ Q @ a + c @ a,
+//     x0=alpha_prev,
+//     jac=lambda a: Q @ a + c,
+//     method="SLSQP",
+//     bounds=bounds,
+//     constraints=constraints,
+//     options={"ftol": 1e-8, "maxiter": 200}
+// )
+// alpha_star = res.x
+//
+// # ---- write back to geometry ----
+// geo.setGlobalAttribValue("alpha_star", alpha_star.tolist())
+// geo.setGlobalAttribValue("alpha_prev", alpha_star.tolist())  # warm-start next frame
+// ```
+
+// -------------------------------------------------------
+// VEX: apply solved weights to reconstruct driven mesh
+// -------------------------------------------------------
+// Run in a second Point Wrangle AFTER the Python node.
+//   Input 0: mesh at neutral
+//   Inputs 1..N: target shapes
+//   Detail attr "alpha_star": float[] of length N_shapes
+
+float alpha[] = detail(0, "alpha_star");
+int   N       = len(alpha);
+
+// Additive delta convention (most common)
+vector base_pos = point(0, "P", @ptnum);
+vector acc      = {0,0,0};
+for (int k = 0; k < N; k++)
+{
+    vector target_pos = point(k+1, "P", @ptnum);
+    acc += alpha[k] * (target_pos - base_pos);
+}
+@P = base_pos + acc;

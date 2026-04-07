@@ -1,0 +1,271 @@
+// ============================================================
+// Somigliana Coordinates — Corotational Cage Deformation
+// Chen, de Goes & Desbrun, SIGGRAPH 2023, Eq. (10)-(15)
+//
+// Runtime deformation using precomputed Somigliana coordinates
+// (T_i and K_j from cage-somigliana-kernels.vex).
+//
+// COROTATIONAL UPDATE RULE (Eq. 11):
+//   x̃ = T(x)^{-1} · [ Σ_i R_i T_i(x) Rᵢᵀ ṽ_i  +  Σ_j R_j K_j(x) Rⱼᵀ τ̃_j ]
+//   T(x) = Σ_i R_i T_i(x) Rᵢᵀ
+//
+// COROTATED TRACTION (Eq. 12-14):
+//   τ̃_j = s_j · R_j · n_j                           (Eq. 14)
+//   s_j  = 2µ[η_j + ν/(1-2ν) · (η_j + (d-1)λ_j)]   (Eq. 12-13, µ=1)
+//
+// NORMAL STRETCH with BULGING CONTROL (§4.4):
+//   β_j  = Ω_posed_j − Ω_rest_j   (solid angle of vertex normals at face j)
+//   η_j  = λ_j · exp(γ · β_j / ((2d-1)π))            bulging formula
+//   γ    = user bulging parameter  (0 = no bulging, higher = more swell)
+//   λ_j  = average in-plane stretch of cage face j
+//
+// FACE ROTATION (local variant, §4.4):
+//   F_j = deformation gradient of cage face j (rest → posed, 3×3)
+//   R_j = polar_R(F_j) via iterative polar decomposition (IPD)
+//
+// TRACTION FORCE BALANCE (Eq. 15):
+//   Find s'_j minimizing Σ_j A_j (s'_j − s_j)² s.t. Σ_j A_j s'_j R_j n_j = 0
+//   Solved analytically via Schur complement (3×3 system).
+//
+// Usage: Geometry Wrangle SOP, run Over Points.
+//   Interior mesh in input 0 (has somi_Ti, somi_Kj attributes).
+//   POSED cage mesh in input 1.
+//   REST cage vertex positions stored as point attribute "rest_P" on input 1.
+//
+// Inputs:
+//   nu     (detail, input 0) — Poisson ratio
+//   gamma  (detail, input 0) — bulging scale γ  (default 0)
+//   variant (detail, input 0) — 0=global, 1=local  (default 1)
+// ============================================================
+
+float nu      = detail(0, "nu",      0.3);
+float gamma_  = detail(0, "gamma",   0.0);
+int   variant = detail(0, "variant", 1);    // 1=local (per-face rotation)
+float mu      = 1.0;
+int   d       = 3;
+
+float a_coeff = 1.0 / (mu * 5.0 * $PI);
+float b_coeff = a_coeff / (4.0 * (1.0 - nu));
+float c_trac  = 2.0 * mu * (1.0 + float(d)*nu / (1.0 - 2.0*nu));  // Eq. 6
+
+int n_verts = npoints(1);
+int n_faces = nprimitives(1);
+
+float Ti[] = point(0, "somi_Ti", @ptnum);   // n_verts * 9 floats
+float Kj[] = point(0, "somi_Kj", @ptnum);   // n_faces * 9 floats
+
+// ------------------------------------------------------------------
+// Helper: convert flat 9-float row-major array (at offset) to matrix3
+// ------------------------------------------------------------------
+function matrix3 flat9_to_mat(float arr[]; int offset) {
+    return set(
+        set(arr[offset+0], arr[offset+1], arr[offset+2]),  // row 0
+        set(arr[offset+3], arr[offset+4], arr[offset+5]),  // row 1
+        set(arr[offset+6], arr[offset+7], arr[offset+8])   // row 2
+    );
+}
+
+// ------------------------------------------------------------------
+// Helper: iterative polar decomposition (10 iterations, quadratic convergence)
+// Returns rotation part R of F = R*S
+// ------------------------------------------------------------------
+function matrix3 polar_R(matrix3 F) {
+    matrix3 R = F;
+    for (int iter = 0; iter < 10; iter++) {
+        matrix3 Rt_inv = transpose(invert(R));
+        R = 0.5 * (R + Rt_inv);
+    }
+    return R;
+}
+
+// ------------------------------------------------------------------
+// Helper: solid angle of a triangle vertex loop (Van Oosterom & Strackee 1983)
+// Used for bulging estimation
+// ------------------------------------------------------------------
+function float solid_angle_tri(vector r1; vector r2; vector r3) {
+    float d1 = length(r1), d2 = length(r2), d3 = length(r3);
+    float num = dot(r1, cross(r2, r3));
+    float den = d1*d2*d3 + dot(r2,r3)*d1 + dot(r1,r3)*d2 + dot(r1,r2)*d3;
+    return 2.0 * atan2(num, den);
+}
+
+// ------------------------------------------------------------------
+// Step 1: Compute per-face rotation R_j and stretches (λ_j, η_j, s_j)
+// ------------------------------------------------------------------
+matrix3 Rj_arr[];  resize(Rj_arr,  n_faces);
+vector  n_rest[];  resize(n_rest,  n_faces);
+float   sj_arr[];  resize(sj_arr,  n_faces);
+float   Aj_arr[];  resize(Aj_arr,  n_faces);
+
+for (int fj = 0; fj < n_faces; fj++) {
+    int ia = primpoint(1, fj, 0);
+    int ib = primpoint(1, fj, 1);
+    int ic = primpoint(1, fj, 2);
+
+    vector pa0 = point(1, "rest_P", ia);
+    vector pb0 = point(1, "rest_P", ib);
+    vector pc0 = point(1, "rest_P", ic);
+
+    vector pa1 = point(1, "P", ia);
+    vector pb1 = point(1, "P", ib);
+    vector pc1 = point(1, "P", ic);
+
+    // Rest and posed edge vectors in face tangent frame
+    vector e1_rest = pb0 - pa0, e2_rest = pc0 - pa0;
+    vector e1_pose = pb1 - pa1, e2_pose = pc1 - pa1;
+
+    vector N_rest  = cross(e1_rest, e2_rest);
+    vector N_pose  = cross(e1_pose, e2_pose);
+    float  A_rest  = length(N_rest) * 0.5;
+    float  A_pose  = length(N_pose) * 0.5;
+    if (A_rest < 1e-14) { sj_arr[fj]=0; Aj_arr[fj]=0; continue; }
+
+    vector n0 = N_rest / (2.0 * A_rest);   // rest unit normal
+    n_rest[fj] = n0;
+    Aj_arr[fj] = A_rest;
+
+    matrix3 Rj;
+    float   lambda_j;
+
+    if (variant == 1) {
+        // --- Local variant: per-face polar decomp ---
+        // Build 3×3 deformation gradient mapping rest tangent frame to posed
+        // Column 3 = rest/posed unit normals (complete the frame)
+        matrix3 F_rest = set(e1_rest, e2_rest, n0);                   // columns
+        matrix3 F_pose = set(e1_pose, e2_pose, N_pose/(2.0*A_rest));
+        matrix3 Fj     = F_pose * invert(F_rest);
+        Rj = polar_R(Fj);
+
+        // λ_j = average in-plane stretch = (svd1 + svd2) / 2
+        // Approximate via ||F_j * e|| / ||e|| for two orthogonal rest directions
+        float s1 = length(Fj * normalize(e1_rest));
+        float s2 = length(Fj * normalize(e2_rest - dot(e2_rest, normalize(e1_rest))*normalize(e1_rest)));
+        lambda_j = 0.5 * (s1 + s2);
+    } else {
+        // --- Global variant: single rotation/scale for whole cage ---
+        // (Computed outside this loop, e.g., via point cloud registration)
+        // Here we fall back to identity rotation as a placeholder.
+        // In production: pass global_R as detail matrix attribute.
+        Rj = matrix3(detail(0, "global_R", matrix3(1)));
+        lambda_j = detail(0, "global_scale", 1.0);
+    }
+    Rj_arr[fj] = Rj;
+
+    // Bulging: β_j = solid angle difference of vertex normals (§4.4)
+    // Approximate β_j using the face solid angle difference (simpler proxy)
+    float omega_rest = solid_angle_tri(pa0, pb0, pc0);
+    float omega_pose = solid_angle_tri(pa1, pb1, pc1);
+    float beta_j = omega_pose - omega_rest;
+
+    // Normal stretch η_j
+    float eta_j = lambda_j * exp(gamma_ * beta_j / (float(2*d-1) * $PI));
+
+    // Traction scaling s_j (Eq. 13-14, µ=1)
+    float tr_Sj = eta_j + float(d-1) * lambda_j;
+    sj_arr[fj] = 2.0 * mu * (eta_j + nu/(1.0 - 2.0*nu) * tr_Sj);
+}
+
+// ------------------------------------------------------------------
+// Step 2: Traction force balance (Eq. 15)
+// Find s'_j s.t. Σ_j A_j s'_j R_j n_j = 0  (minimize Σ A_j (s'_j - s_j)²)
+// ------------------------------------------------------------------
+// Schur complement: s'_j = s_j - λ_sol · (R_j n_j) where
+// λ_sol = (Σ A_j² s_j R_j n_j) / (Σ A_j² ||R_j n_j||²)   [scalar Lagrange mult]
+// But in 3D the constraint is a vector (3 equations), so:
+// λ_sol (3-vector) = M^{-1} · rhs   where M = Σ A_j² (R_j n_j)(R_j n_j)ᵀ
+
+vector rhs_bal = {0,0,0};
+matrix3 M_bal  = matrix3(0);
+for (int fj = 0; fj < n_faces; fj++) {
+    float Aj = Aj_arr[fj];
+    if (Aj < 1e-14) continue;
+    vector Rn_j = Rj_arr[fj] * n_rest[fj];
+    float  wj   = Aj * Aj * sj_arr[fj];
+    rhs_bal += wj * Rn_j;
+    float w2 = Aj * Aj;
+    M_bal += w2 * set(Rn_j.x*Rn_j, Rn_j.y*Rn_j, Rn_j.z*Rn_j);  // outer product
+}
+
+vector lambda_bal = invert(M_bal) * rhs_bal;  // solve 3×3 system
+
+// Corrected traction scalings
+float sj_prime[];  resize(sj_prime, n_faces);
+for (int fj = 0; fj < n_faces; fj++) {
+    vector Rn_j  = Rj_arr[fj] * n_rest[fj];
+    sj_prime[fj] = sj_arr[fj] - dot(lambda_bal, Rn_j);
+}
+
+// ------------------------------------------------------------------
+// Step 3: Corotational deformation (Eq. 11)
+// ------------------------------------------------------------------
+// Compute vertex rotations R_i by averaging area-weighted face rotations
+// (using quaternion averaging for correctness)
+vector4 qi_sum[];  resize(qi_sum, n_verts);
+float   wi_sum[];  resize(wi_sum, n_verts);
+
+for (int fj = 0; fj < n_faces; fj++) {
+    float Aj = Aj_arr[fj];
+    if (Aj < 1e-14) continue;
+    vector4 qfj = quaternion(Rj_arr[fj]);
+    int ia = primpoint(1, fj, 0);
+    int ib = primpoint(1, fj, 1);
+    int ic = primpoint(1, fj, 2);
+    for (int vi_ : array(ia, ib, ic)) {
+        qi_sum[vi_] += Aj * qfj;
+        wi_sum[vi_] += Aj;
+    }
+}
+
+// Assemble T(x) = Σ_i R_i T_i Rᵢᵀ and RHS = Σ_i R_i T_i Rᵢᵀ ṽ_i + Σ_j R_j K_j Rⱼᵀ τ̃_j
+matrix3 T_sum = matrix3(0);
+vector  rhs   = {0,0,0};
+
+// Vertex contributions
+for (int vi = 0; vi < n_verts; vi++) {
+    if (wi_sum[vi] < 1e-14) continue;
+    matrix3 Ri = qconvert(normalize(qi_sum[vi]));   // rotation from averaged quaternion
+    matrix3 Ti_mat = flat9_to_mat(Ti, vi * 9);
+
+    matrix3 RiTi = Ri * Ti_mat * transpose(Ri);   // R_i T_i Rᵢᵀ
+    T_sum += RiTi;
+    rhs   += RiTi * point(1, "P", vi);             // R_i T_i Rᵢᵀ ṽ_i
+}
+
+// Face contributions: R_j K_j Rⱼᵀ τ̃_j
+for (int fj = 0; fj < n_faces; fj++) {
+    if (Aj_arr[fj] < 1e-14) continue;
+    matrix3 Rj = Rj_arr[fj];
+    matrix3 Kj_mat = flat9_to_mat(Kj, fj * 9);
+
+    // Corotated traction τ̃_j = s'_j * R_j * n_j  (Eq. 14, corrected scaling)
+    vector tau_j = sj_prime[fj] * (Rj * n_rest[fj]);
+
+    rhs += Rj * Kj_mat * transpose(Rj) * tau_j;   // R_j K_j Rⱼᵀ τ̃_j
+}
+
+// x̃ = T(x)^{-1} · rhs   (Eq. 11)
+@P = invert(T_sum) * rhs;
+
+// ============================================================
+// Notes:
+//
+// GLOBAL VARIANT — set variant=0 and provide:
+//   "global_R"     (matrix3, detail) — Umeyama rotation of entire cage
+//   "global_scale" (float, detail)   — Umeyama uniform scale
+//   Compute via Python: scipy.spatial.transform or Umeyama 1991 algorithm.
+//
+// POISSON RATIO EFFECT:
+//   ν ∈ [0, 0.5): controls compressibility. ν=0.5 (incompressible) produces
+//   shearing-free but volume-preserving deformation. ν=0 allows more compression.
+//   At ν→±∞: recovers Green Coordinates behavior (in 2D exactly; 3D approximately).
+//
+// BULGING PARAMETER γ:
+//   γ = 0  → no bulging (deformation matches cage exactly at boundary)
+//   γ > 0  → surface swells where cage expands
+//   γ < 0  → surface contracts where cage expands
+//   Typical values: γ ∈ [0, 30] depending on cage scale.
+//
+// PARTITION OF UNITY CHECK:
+//   sum_i T_i(x) ≈ I   (matrix identity)
+//   Use ||Σ_i T_i − I||_F < 10⁻² as quadrature accuracy threshold (§5).
+// ============================================================

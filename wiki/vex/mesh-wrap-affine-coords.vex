@@ -1,0 +1,106 @@
+// mesh-wrap-affine-coords.vex
+// Mesh Wrap — Affine-Invariant Coordinate Precomputation  (§4)
+// Source: de Goes & Martinez, SIGGRAPH Talks 2019
+//
+// Per-point Geometry Wrangle on the SOURCE mesh S.
+// Assembles the stencil difference matrix dYi for each vertex i and
+// stores its flattened form so Python can compute Wi = null(dYi).
+//
+// After Python computes Wi, this wrangle also verifies the null-space
+// property and stores Wi for use in mesh-wrap-distortion-energy.vex.
+//
+// For every vertex i with stencil {j₁, j₂, ... , jₙ}:
+//   dYi  =  [ yj₁ − yi | yj₂ − yi | ... | yjₙ − yi ]   (3 × n matrix)
+//   Wi   =  right null-vectors of dYi                      (n × (n−3) matrix)
+//
+// dYi Wi = 0  iff Wi spans null(dYi)
+//
+// In practice n = vertex valence; n−3 null vectors for a generic 3D stencil.
+//
+// Inputs:  @P on source mesh S
+// Outputs:
+//   @stencil_pts (int[])   — neighbour point indices
+//   @dYi_flat   (float[])  — flattened dYi, row-major, 3 × n floats
+//   @Wi_flat    (float[])  — flattened Wi after Python SVD, n × (n−3) floats
+//   @n_stencil  (int)      — stencil size n
+
+// ── Gather stencil ────────────────────────────────────────────────────────
+int nbcount = neighbourcount(0, @ptnum);
+int stencil[];
+resize(stencil, nbcount);
+for (int k = 0; k < nbcount; k++)
+    stencil[k] = neighbour(0, @ptnum, k);
+
+@stencil_pts = stencil;
+@n_stencil   = nbcount;
+
+// ── Assemble dYi (3 × n), stored row-major as float[] ─────────────────────
+// Row 0: x-components of (yj - yi) for j in stencil
+// Row 1: y-components
+// Row 2: z-components
+float dYi[];
+resize(dYi, 3 * nbcount);
+
+for (int k = 0; k < nbcount; k++) {
+    vector diff = point(0, "P", stencil[k]) - @P;
+    dYi[0 * nbcount + k] = diff.x;
+    dYi[1 * nbcount + k] = diff.y;
+    dYi[2 * nbcount + k] = diff.z;
+}
+
+@dYi_flat = dYi;
+
+// ── Python: compute Wi = null(dYi) ────────────────────────────────────────
+// After this wrangle, run a Python SOP:
+//
+//   import numpy as np, hou
+//   geo = hou.node("../source_mesh").geometry()
+//
+//   for pt in geo.points():
+//       n     = pt.attribValue("n_stencil")
+//       dYi_f = pt.attribValue("dYi_flat")
+//       dYi   = np.array(dYi_f).reshape(3, n)
+//
+//       # SVD: V columns corresponding to near-zero singular values
+//       U, s, Vt = np.linalg.svd(dYi)
+//       # The null space has dimension n - rank(dYi) = n - 3 (generically)
+//       rank = np.sum(s > 1e-8)
+//       Wi = Vt[rank:].T   # shape (n, n-rank) = (n, n-3)
+//
+//       pt.setAttribValue("Wi_flat", Wi.flatten().tolist())
+//
+//   # Verify: for each pt, ||dYi @ Wi||_F should be < 1e-8
+//   # If rank < 3 (degenerate neighbourhood), Wi has more columns → fine.
+
+// ── Assemble sparse Laplacian L (Python, after Wi is stored) ──────────────
+//
+//   # L is assembled from per-vertex contributions: ||dXi Wi||² = tr(Wi^T dXi^T dXi Wi)
+//   # Expanding: ∑_{j,k} Wi[j,r] Wi[k,r] (xi - xj)^T (xi - xk) for all r
+//   # This gives symmetric sparse entries in L.
+//
+//   # For vertex i with stencil [j1,...,jn], the (n+1)×(n+1) local stiffness block is:
+//   #   Ai = [I_n | -e_i] where e_i sums rows; then Ki = Ai^T Wi Wi^T Ai
+//   # Add Ki contributions to global L at indices [i, j1, ..., jn].
+//
+//   # In code (simplified per-vertex loop):
+//   rows_L, cols_L, vals_L = [], [], []
+//   for pt in geo.points():
+//       i     = pt.number()
+//       nb    = pt.attribValue("stencil_pts")   # [j1,...,jn]
+//       n     = len(nb)
+//       Wi_f  = pt.attribValue("Wi_flat")
+//       Wi    = np.array(Wi_f).reshape(n, n - 3)
+//       idx   = [i] + list(nb)   # length n+1
+//
+//       # Augmented difference operator: A maps [xi, xj] → xj - xi
+//       # Wi_aug[:, r] = [-sum(Wi[:,r]), Wi[0,r], ..., Wi[n-1,r]]
+//       Wi_aug = np.vstack([-Wi.sum(axis=0, keepdims=True), Wi])   # (n+1, n-3)
+//       Ki = Wi_aug @ Wi_aug.T   # (n+1, n+1)
+//
+//       for a, ia in enumerate(idx):
+//           for b, ib in enumerate(idx):
+//               rows_L.append(ia);  cols_L.append(ib);  vals_L.append(Ki[a,b])
+//
+//   n_total = geo.numPoints()
+//   L = sp.csr_matrix((vals_L, (rows_L, cols_L)), shape=(n_total, n_total))
+//   L = L + L.T - sp.diags(L.diagonal())   # symmetrize (entries may double-accumulate)

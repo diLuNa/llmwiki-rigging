@@ -1,0 +1,151 @@
+// bbw-cotan-laplacian.vex
+// Bounded Biharmonic Weights — Cotangent Laplacian Assembly
+// Source: Jacobson et al., SIGGRAPH 2011 (§3, Appendix A)
+//
+// Per-primitive Geometry Wrangle on a TRIANGLE mesh.
+// For each triangle, computes the three cotan half-weights and stores
+// sparse (row, col, val) triplets on the detail for Python assembly.
+//
+// Inputs:  @P (point positions)
+// Outputs: detail int arrays  L_row[], L_col[]
+//          detail float array L_val[]
+//
+// The cotangent weight for edge (i,j) contributed by this triangle
+// is 0.5 * cot(angle opposite to that edge).
+//
+// Full Laplacian entry: L[i,j] = -sum of half-weights from adjacent triangles
+//                       L[i,i] = -sum_j L[i,j]
+//
+// Run this wrangle once; Python assembles the full sparse L matrix.
+//
+// Usage:
+//   Connect your rest-pose triangle mesh.
+//   After running, call the Python solve (see bbw-solve.py comment below).
+
+// ── vertex positions ──────────────────────────────────────────────────────
+int pts[] = primpoints(0, @primnum);
+if (len(pts) != 3) return;   // triangles only
+
+vector p0 = point(0, "P", pts[0]);
+vector p1 = point(0, "P", pts[1]);
+vector p2 = point(0, "P", pts[2]);
+
+// ── edge vectors from each vertex ─────────────────────────────────────────
+// angle at p0, opposite edge (p1,p2)
+vector e01 = p1 - p0;  vector e02 = p2 - p0;
+// angle at p1, opposite edge (p0,p2)
+vector e10 = p0 - p1;  vector e12 = p2 - p1;
+// angle at p2, opposite edge (p0,p1)
+vector e20 = p0 - p2;  vector e21 = p1 - p2;
+
+// ── cotangents via cot(theta) = dot / |cross| ─────────────────────────────
+float cross_len0 = length(cross(e01, e02));
+float cross_len1 = length(cross(e10, e12));
+float cross_len2 = length(cross(e20, e21));
+
+float EPS = 1e-10;
+float cot0 = (cross_len0 > EPS) ? dot(e01, e02) / cross_len0 : 0.0;
+float cot1 = (cross_len1 > EPS) ? dot(e10, e12) / cross_len1 : 0.0;
+float cot2 = (cross_len2 > EPS) ? dot(e20, e21) / cross_len2 : 0.0;
+
+// ── half-weights (each edge gets contributions from two triangles) ─────────
+// edge (p1,p2): half-weight = 0.5 * cot0   (row pts[1], col pts[2] and vice versa)
+// edge (p0,p2): half-weight = 0.5 * cot1
+// edge (p0,p1): half-weight = 0.5 * cot2
+
+int rows[]  = array(pts[1], pts[2], pts[0], pts[2], pts[0], pts[1]);
+int cols[]  = array(pts[2], pts[1], pts[2], pts[0], pts[1], pts[0]);
+float vals[] = array(0.5*cot0, 0.5*cot0,
+                     0.5*cot1, 0.5*cot1,
+                     0.5*cot2, 0.5*cot2);
+
+// ── append to detail arrays (thread-unsafe — run single-threaded or merge) ─
+// Single-threaded: set "Multi-threading mode" = "Disabled" on this wrangle.
+int base = len(detail(0, "L_row", {}));
+resize(detail(0, "L_row",  {}), base + 6);
+resize(detail(0, "L_col",  {}), base + 6);
+resize(detail(0, "L_val",  {}), base + 6);
+
+for (int k = 0; k < 6; k++) {
+    setdetailattrib(0, "L_row", base + k, rows[k],  "append");
+    setdetailattrib(0, "L_col", base + k, cols[k],  "append");
+    setdetailattrib(0, "L_val", base + k, -vals[k], "append"); // negative = off-diagonal L
+}
+
+// ─────────────────────────────────────────────────────────────────────────
+// PYTHON SOLVE (run in a Python SOP after this wrangle)
+// ─────────────────────────────────────────────────────────────────────────
+//
+// import numpy as np, scipy.sparse as sp, scipy.sparse.linalg as spla
+//
+// node = hou.pwd()
+// geo  = node.geometry()
+// n    = len(geo.points())
+//
+// # 1. Assemble sparse cotangent Laplacian (off-diagonal triplets)
+// rows = np.array(geo.intListAttribValue("L_row"), dtype=np.int32)
+// cols = np.array(geo.intListAttribValue("L_col"), dtype=np.int32)
+// vals = np.array(geo.floatListAttribValue("L_val"))          # negative half-weights
+// L    = sp.csr_matrix((vals, (rows, cols)), shape=(n, n))
+//
+// # Diagonal: L[i,i] = -sum_j L[i,j]   (makes rows sum to zero)
+// diag = np.array(-L.sum(axis=1)).flatten()
+// L   += sp.diags(diag)
+//
+// # 2. Lumped mass matrix from bbw-mass-matrix.vex output
+// mass = np.array([pt.attribValue("bbw_area") for pt in geo.points()])
+// Minv = sp.diags(1.0 / np.maximum(mass, 1e-12))
+//
+// # 3. Biharmonic system  H = L^T M^{-1} L
+// H = L.T @ Minv @ L   # shape (n, n), symmetric PSD
+//
+// # 4. Handle boundary conditions
+// # handles: list of (handle_index, [constrained_point_indices])
+// # E.g. a skeleton with K joints; each joint constrains its closest vertex to w=1.
+// n_handles = ...  # K
+// handle_pts = [...]  # list of K vertex indices, one per handle
+//
+// W = np.zeros((n, n_handles))
+//
+// for j, h_pt in enumerate(handle_pts):
+//     # Boundary condition indices: pinned to 1 for this handle, 0 for others
+//     fixed_idx = np.array(handle_pts)
+//     fixed_val = np.zeros(n_handles)
+//     fixed_val[j] = 1.0
+//
+//     # Partition into free (f) and constrained (c) rows
+//     free_mask = np.ones(n, dtype=bool)
+//     free_mask[fixed_idx] = False
+//     free_idx = np.where(free_mask)[0]
+//     c_idx    = fixed_idx
+//     c_val    = np.array([1.0 if k == j else 0.0 for k in range(n_handles)])
+//
+//     H_ff = H[np.ix_(free_idx, free_idx)]
+//     H_fc = H[np.ix_(free_idx, c_idx)]
+//     rhs  = -H_fc @ c_val
+//
+//     # Solve unconstrained subproblem (KKT for non-negativity)
+//     # Simple option: truncate negatives (not exact BBW but often OK)
+//     w_free, _ = spla.cg(H_ff, rhs, tol=1e-8)
+//     w_free     = np.clip(w_free, 0.0, 1.0)
+//
+//     # For exact BBW use a QP solver (cvxpy or quadprog):
+//     # import cvxpy as cp
+//     # w = cp.Variable(len(free_idx))
+//     # prob = cp.Problem(cp.Minimize(0.5*cp.quad_form(w, H_ff.toarray()) + rhs @ w),
+//     #                   [w >= 0, w <= 1])
+//     # prob.solve(solver=cp.OSQP)
+//     # w_free = w.value
+//
+//     W[free_idx, j] = w_free
+//     W[c_idx,    j] = c_val
+//
+// # 5. Normalize to partition of unity
+// W_sum = W.sum(axis=1, keepdims=True)
+// W    /= np.maximum(W_sum, 1e-8)
+//
+// # 6. Write back as point attributes  "bbw_0", "bbw_1", ..., "bbw_{K-1}"
+// for j in range(n_handles):
+//     attrib = geo.addAttrib(hou.attribType.Point, f"bbw_{j}", 0.0)
+//     for i, pt in enumerate(geo.points()):
+//         pt.setAttribValue(attrib, float(W[i, j]))

@@ -1,0 +1,83 @@
+// animatomy-pose-correctives.vex
+// Animatomy — Pose Blendshape Correction  B_P = Σ_k (R_k − R*_k) P_k  (§5.2)
+// Source: Choi et al., SIGGRAPH Asia 2022
+//
+// Per-point Geometry Wrangle on the SKIN MESH.
+// Computes the FLAME-style pose corrective blendshapes for jaw + eyeballs:
+//
+//   B_P(θ; P) = Σ_{k=1}^{9K+3}  (R_k(θ) − R_k(θ*))  ·  P_k
+//
+// where  K = 3 joints (jaw + 2 eyeballs) → 9K+3 = 30 components
+//        R_k(θ)  = k-th element of concatenated rotation matrices for current pose
+//        R_k(θ*) = k-th element at rest pose
+//        P_k     = corrective vertex displacement vector for component k
+//
+// This is identical to FLAME (Li et al. 2017) pose blendshapes.
+// Each joint's 3×3 rotation matrix contributes 9 scalar coefficients;
+// the jaw adds 3 translation components (+3 for the jaw block).
+//
+// Inputs:
+//   Detail float array "R_current"  — 30 floats: current pose rotation elements
+//   Detail float array "R_rest"     — 30 floats: rest pose rotation elements
+//   Detail float array "P_basis"    — pose corrective basis, length 30 × 3N
+//                                     Column-major: P_basis[k * 3N + ptnum*3 + axis]
+//   Detail int "n_pose_comps"       — number of pose components (default 30)
+//
+// Outputs:
+//   @pose_disp (vector, point) — pose corrective displacement
+//   @P += @pose_disp (if "apply_disp" channel enabled)
+
+int   n_comps    = detail(0, "n_pose_comps", 30);
+float R_curr[]   = detail(0, "R_current", {});
+float R_rest[]   = detail(0, "R_rest",    {});
+float P_basis[]  = detail(0, "P_basis",   {});
+int   n_pts      = @numpt;
+
+vector pose_disp = {0, 0, 0};
+
+for (int k = 0; k < n_comps; k++) {
+    float delta_k = 0.0;
+    if (k < len(R_curr) && k < len(R_rest))
+        delta_k = R_curr[k] - R_rest[k];
+
+    if (abs(delta_k) < 1e-7) continue;
+
+    int base = k * n_pts * 3 + @ptnum * 3;
+    if (base + 2 >= len(P_basis)) continue;
+
+    pose_disp.x += delta_k * P_basis[base];
+    pose_disp.y += delta_k * P_basis[base + 1];
+    pose_disp.z += delta_k * P_basis[base + 2];
+}
+
+@pose_disp = pose_disp;
+
+if (chi("apply_disp"))
+    @P += pose_disp;
+
+// ── How to unpack joint rotations into R_current (Python) ─────────────────
+//
+//   import numpy as np, hou
+//
+//   def rotation_matrix(axis_angle):
+//       # axis_angle: (3,) vector — axis * angle (Rodrigues)
+//       import scipy.spatial.transform as sst
+//       return sst.Rotation.from_rotvec(axis_angle).as_matrix()   # (3,3)
+//
+//   # K=3 joints: jaw (rigid, 3×4), left_eye (3×3), right_eye (3×3)
+//   R_jaw  = jaw_rotation_matrix()    # (3,3) — extract from 3×4 rigid transform
+//   R_leye = left_eye_rotation_matrix()
+//   R_reye = right_eye_rotation_matrix()
+//   R_rest_jaw, R_rest_leye, R_rest_reye = rest_rotations()
+//
+//   # Translation of jaw adds 3 components (total 9*3 + 3 = 30)
+//   t_jaw      = jaw_translation()          # (3,)
+//   t_rest_jaw = rest_jaw_translation()
+//
+//   R_curr = (R_jaw.flatten().tolist() + R_leye.flatten().tolist() +
+//             R_reye.flatten().tolist() + t_jaw.tolist())
+//   R_rest = (R_rest_jaw.flatten().tolist() + R_rest_leye.flatten().tolist() +
+//             R_rest_reye.flatten().tolist() + t_rest_jaw.tolist())
+//
+//   geo.setGlobalAttribValue("R_current", R_curr)
+//   geo.setGlobalAttribValue("R_rest",    R_rest)

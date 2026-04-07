@@ -1,0 +1,108 @@
+// blendshape-corrective-psd.vex
+// Pose-space corrective blendshape weight evaluation.
+// Sources: Lewis 2000 (PSD), Lewis et al. 2014 STAR §3 (correction shapes),
+//          Animatomy 2022 §5.2 (FLAME-style pose correctives).
+//
+// Corrective shapes activate based on combinations of primary shape weights.
+// Three common evaluation strategies:
+//   A) PRODUCT rule:  w_corr = prod_k  w_k^(e_k)          (multiplicative gating)
+//   B) FACS combo:   w_corr = min(w_a, w_b, ...)           (min of drivers)
+//   C) RBF/PSD:      w_corr = RBF(w_drivers; centres, σ)  (scattered data)
+//
+// USAGE (Point Wrangle):
+//   Input 0: base mesh
+//   Detail attr "primary_weights"  — float[] of primary shape weights w[0..N-1]
+//   Detail attr "corr_drivers"     — int[M][K] — for each of M correctives, which K drivers
+//   Detail attr "corr_exponents"   — float[M][K] — exponent e per driver (for product rule)
+//   Detail attr "corr_threshold"   — float[M] — activation threshold
+//   Computes: "corrective_weights" float[M] detail attribute.
+//   Apply corrective deltas downstream with blendshape-eval.vex.
+
+// --- Parameters ---
+int   MODE = chi("mode");   // 0=product, 1=min, 2=gaussian RBF
+
+float primary_w[] = detail(0, "primary_weights");   // shape [N]
+int   M           = detail(0, "num_correctives");
+
+// We'll store computed corrective weights back as a detail array.
+float corr_w[];
+resize(corr_w, M);
+
+for (int m = 0; m < M; m++)
+{
+    // Read driver indices and exponents for this corrective
+    // Convention: corr_drivers_m = int array of length K stored as
+    //             detail attr "corr_drivers_" + itoa(m)
+    int   drivers[]   = detail(0, "corr_drivers_"  + itoa(m));   // int[]
+    float exponents[] = detail(0, "corr_exponents_"+ itoa(m));   // float[]
+    float threshold   = detail(0, "corr_threshold_"+ itoa(m));
+    int   K           = len(drivers);
+
+    float w_corr = 1.0;
+
+    if (MODE == 0)  // ---- PRODUCT rule (Lewis 2014 §3) ----
+    {
+        // w_corr = prod_k  w_k ^ e_k
+        // e_k = 1 for simple co-activation, >1 for tighter gating
+        for (int k = 0; k < K; k++)
+        {
+            int   idx = drivers[k];
+            float e   = (k < len(exponents)) ? exponents[k] : 1.0;
+            float wk  = (idx < len(primary_w)) ? primary_w[idx] : 0.0;
+            w_corr *= pow(max(wk, 0.0), e);
+        }
+    }
+    else if (MODE == 1)  // ---- MIN rule (FACS combo activation) ----
+    {
+        // w_corr = min(w_drivers)   — fires only when ALL drivers are active
+        w_corr = 1.0;
+        for (int k = 0; k < K; k++)
+        {
+            int   idx = drivers[k];
+            float wk  = (idx < len(primary_w)) ? primary_w[idx] : 0.0;
+            w_corr = min(w_corr, wk);
+        }
+    }
+    else  // ---- Gaussian RBF (PSD-style, Lewis 2000) ----
+    {
+        // w_corr = exp( -‖w_drivers - centre_m‖² / (2*sigma²) )
+        // centres stored per corrective as float arrays "corr_centre_m"
+        float centre[] = detail(0, "corr_centre_" + itoa(m));
+        float sigma    = detail(0, "corr_sigma_"  + itoa(m));
+        if (sigma < 1e-6) sigma = 0.1;
+
+        float dist2 = 0.0;
+        for (int k = 0; k < K; k++)
+        {
+            int   idx = drivers[k];
+            float wk  = (idx < len(primary_w)) ? primary_w[idx] : 0.0;
+            float ck  = (k < len(centre))       ? centre[k]      : 0.0;
+            dist2 += (wk - ck) * (wk - ck);
+        }
+        w_corr = exp(-dist2 / (2.0 * sigma * sigma));
+    }
+
+    // Apply activation threshold
+    if (w_corr < threshold) w_corr = 0.0;
+
+    corr_w[m] = w_corr;
+}
+
+setdetailattrib(0, "corrective_weights", corr_w, "set");
+
+// -------------------------------------------------------
+// NOTES
+// -------------------------------------------------------
+// 1. After computing corrective_weights, pipe into blendshape-eval.vex
+//    with the corrective shapes as inputs 1..M to apply the displacements.
+//
+// 2. The PRODUCT rule is the most common in production (simple to rig).
+//    The RBF/PSD mode requires centres to be set during the rigging phase
+//    (the sculptor poses the rig at the centre weights and sculpts the correction).
+//
+// 3. For FLAME-style correctives (Animatomy §5.2):
+//    Use MODE=0 with drivers being the relevant joint rotation axes projected
+//    as scalar pose parameters — see animatomy-pose-correctives.vex.
+//
+// 4. "Correction shapes are required at nearly every combination of shapes
+//    in a production rig." — Lewis et al. 2014 STAR, §3

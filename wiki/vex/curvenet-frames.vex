@@ -1,0 +1,117 @@
+// ============================================================
+// Curvenet — Scaled Frames & Deformation Gradient
+// de Goes, Sheffler & Fleischer, SIGGRAPH 2022, §3 / Eq. (1)
+//
+// Computes the scaled frame (B_i, S_i) per curvenet segment
+// and the deformation gradient F_i that maps the rest frame
+// to the posed frame, yielding rotation + non-uniform stretch.
+//
+// Deformation gradient (Eq. 1):
+//   F_i = (l_i/l̊_i)(t_i ⊗ t̊_i) + (w_i/ẘ_i)(b_i ⊗ b̊_i) + (h_i/h̊_i)(n_i ⊗ n̊_i)
+//
+// where ⊗ is the outer product, and:
+//   t = unit tangent (from segment end positions)
+//   b = unit binormal = normalize(n × t)
+//   n = segment normal (parallel-transported from intersection corner)
+//   l = segment length
+//   w = segment width  (estimated from intersection tangent angles)
+//   h = sqrt(l * w)    (geometric mean height)
+//
+// F satisfies F * t̊ = (l/l̊)*t, F * b̊ = (w/ẘ)*b, F * n̊ = (h/h̊)*n
+//
+// Usage: Geometry Wrangle SOP, run Over Primitives (each prim = one segment).
+//
+// Prerequisites (set as prim/point attributes before this snippet):
+//   rest_normal  (vector, prim) — parallel-transported normal in rest pose
+//   pose_normal  (vector, prim) — parallel-transported normal in posed pose
+//   rest_width   (float,  prim) — ribbon width in rest pose
+//   pose_width   (float,  prim) — ribbon width in posed pose
+//   Q            (vector, point) — posed world-space point positions
+//
+// Outputs (written as prim attributes):
+//   F    (matrix3)  — 3×3 deformation gradient for this segment
+//   F_tangent (float) — tangential scale l/l̊ (for debug)
+//   F_binormal (float) — lateral scale w/ẘ
+//   F_normal   (float) — normal scale h/h̊
+// ============================================================
+
+// --- Read segment endpoints in rest and posed configurations ---
+
+int pt0 = primpoint(0, @primnum, 0);
+int pt1 = primpoint(0, @primnum, 1);
+
+vector p0 = point(0, "P",  pt0);   // rest positions
+vector p1 = point(0, "P",  pt1);
+vector q0 = point(0, "Q",  pt0);   // posed positions (store in Q attribute)
+vector q1 = point(0, "Q",  pt1);
+
+// --- Rest scaled frame ---
+
+vector t0 = p1 - p0;
+float  l0 = length(t0);
+if (l0 < 1e-10) { return; }        // degenerate segment — skip
+t0 /= l0;
+
+vector n0 = prim(0, "rest_normal",  @primnum);
+vector b0 = normalize(cross(n0, t0));
+float  w0 = prim(0, "rest_width",  @primnum);
+float  h0 = sqrt(max(l0 * w0, 0));
+
+// --- Posed scaled frame ---
+
+vector t1 = q1 - q0;
+float  l1 = length(t1);
+if (l1 < 1e-10) { return; }
+t1 /= l1;
+
+vector n1 = prim(0, "pose_normal",  @primnum);
+vector b1 = normalize(cross(n1, t1));
+float  w1 = prim(0, "pose_width",  @primnum);
+float  h1 = sqrt(max(l1 * w1, 0));
+
+// --- Deformation gradient F (Eq. 1) ---
+// F = (l1/l0)*outer(t1,t0) + (w1/w0)*outer(b1,b0) + (h1/h0)*outer(n1,n0)
+//
+// In VEX, matrix3 set(vector r0, r1, r2) sets row vectors.
+// outer(a, b)[i,j] = a[i]*b[j] → rows are a[i]*b.
+// So: outer(a,b) = set(a.x*b, a.y*b, a.z*b)
+
+float st = (l0 > 1e-10) ? l1 / l0 : 0.0;   // tangential stretch
+float sb = (w0 > 1e-10) ? w1 / w0 : 0.0;   // lateral stretch
+float sn = (h0 > 1e-10) ? h1 / h0 : 0.0;   // normal stretch
+
+matrix3 Ft = set(st * t1.x * t0, st * t1.y * t0, st * t1.z * t0);
+matrix3 Fb = set(sb * b1.x * b0, sb * b1.y * b0, sb * b1.z * b0);
+matrix3 Fn = set(sn * n1.x * n0, sn * n1.y * n0, sn * n1.z * n0);
+
+matrix3 F = Ft + Fb + Fn;
+
+setprimattrib(0, "F",          @primnum, F);
+setprimattrib(0, "F_tangent",  @primnum, st);
+setprimattrib(0, "F_binormal", @primnum, sb);
+setprimattrib(0, "F_normal",   @primnum, sn);
+
+// ============================================================
+// Notes on curvenet frame estimation (§3):
+//
+// INTERSECTION NORMALS — computed across the curvenet topology:
+//   For ordered incident tangents {t0, t1, t2, ...} at an intersection:
+//     corner_vec ci = cross(ti, ti+1)
+//     mi = normalize(ci)                     (corner normal)
+//   Per segment si emanating from the intersection:
+//     n+_i = m_i   (left side normal)
+//     n-_i = m_{i-1} (right side normal)
+//
+// INTERSECTION WIDTHS:
+//   w+_i = l_i + ||c_i||  * (l_{i+1} - l_i)   (left width)
+//   w-_i = l_i + ||c_{i-1}|| * (l_{i-1} - l_i) (right width)
+//
+// PARALLEL TRANSPORT along a curve:
+//   R = dihedral(ti, ti+1)   — smallest rotation mapping tangent i to i+1
+//   n_{i+1} = R * n_i        — accumulated along curve
+//
+//   Torsion correction (when curve connects two intersections):
+//     θ = atan2(dot(Ω_k*n1, cross(n_k, t_k)), dot(Ω_k*n1, n_k))
+//     Apply fraction α_i = arc_length_i / arc_length_total of θ
+//     around t_i using a rotation matrix as an extra twist blending.
+// ============================================================

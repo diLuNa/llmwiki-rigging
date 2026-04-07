@@ -1,0 +1,61 @@
+// ============================================================
+// Cusped Kelvinlet (Sharp Kelvinlets) — 3D Grab
+// de Goes & James, DigiPro 2019, Eq. (10)
+//
+// A cusped (non-smooth) deformation profile: non-zero |∂u/∂r| at r=0.
+// Useful for sharp creases, spikes, and localized spiky edits.
+//
+// The cusped Kelvinlet uses A/B coefficients:
+//   A_ε(r) = a/ε² * (r²/rε + 3rε - 4r)  +  2b/ε² * (r - rε)
+//   B_ε(r) = 2b/ε² * (1/r - 1/rε)
+//
+// Displacement: u(r) = A(r)*force + B(r)*dot(r,force)*r
+//
+// Note: still has O(1/r) far-field decay — use with bi/tri-scale
+// extrapolation for faster decay (see kelvinlet-multiscale.vex).
+//
+// Usage: Geometry Wrangle SOP (run Over Points)
+//
+// Inputs:
+//   vector brush_center — brush tip x0
+//   vector brush_disp   — tip displacement u
+//   float  epsilon      — brush radius ε (= ε₀ of the monomial distribution)
+//   float  nu           — Poisson ratio
+// ============================================================
+
+vector center = detail(0, "brush_center", {0,0,0});
+vector u_tip  = detail(0, "brush_disp",   {0,1,0});
+float  eps    = detail(0, "epsilon",       1.0);
+float  nu     = detail(0, "nu",            0.5);
+
+float ba   = 1.0 / (4.0*(1.0 - nu));  // b/a
+float eps2 = eps*eps;
+
+vector r  = @P - center;
+float  rm = length(r);       // ||r|| (may be 0 at brush center)
+float  re = sqrt(rm*rm + eps2);  // rε
+
+// Guard against r=0 (brush center): displacement there is finite (cusp tip)
+vector disp;
+if (rm < 1e-6) {
+    // At origin: A(0) = (3a-2b)/ε, B*dot(r,f)*r → 0
+    // P(0) = (3a-2b)/(2ε) from profile expansion — absorb into magnitude
+    // Displacement at tip equals u_tip by construction (no singularity)
+    disp = u_tip;
+} else {
+    // Cusped Kelvinlet coefficients (eq 10, normalized by a=1, b=ba):
+    // A_ε = (1/ε²)*(r²/rε + 3rε - 4r)  +  2ba/ε² * (r - rε)
+    // B_ε = 2ba/ε² * (1/r - 1/rε)
+    float A = (1.0/eps2) * (rm*rm/re + 3.0*re - 4.0*rm)
+            + (2.0*ba/eps2) * (rm - re);
+    float B = (2.0*ba/eps2) * (1.0/rm - 1.0/re);
+
+    // Normalize to tip displacement:
+    // u_eps(0) corresponds to profile P(0) = (3 - 2*ba)/eps
+    // So scale factor = eps/(3 - 2*ba)  to get u_tip at origin
+    float scale = eps / (3.0 - 2.0*ba);
+
+    disp = scale * (A * u_tip + B * dot(r, u_tip) * r);
+}
+
+@P += disp;

@@ -1,0 +1,153 @@
+// ============================================================
+// Curvenet — Cut-Aware Polygonal Laplacian
+// de Goes, Sheffler & Fleischer, SIGGRAPH 2022, Appendix A / Eq. (7)-(10)
+//
+// Assembles the discrete Laplacian matrix L_f for an arbitrary polygon,
+// including polygons with crack edges (from curvenet cutting).
+// Based on the polygonal discretization of de Goes et al. 2020.
+//
+// Given a polygon with n corners (positions X[0..n-1]) counter-clockwise:
+//
+//   Edge vectors:   Ef[i] = X[(i+1)%n] - X[i]
+//   Avg edge:       avg_e[j] = 0.5*(Ef[j] + Ef[(j-1+n)%n])
+//   Area vector:    af = 0.5 * sum_i cross(X[i], X[(i+1)%n])   (Eq. 7 form)
+//   Normal:         nf = af / |af|
+//
+//   Gradient columns (Eq. 7):
+//     Gf[:,j] = (-1/|af|) * cross(nf, avg_e[j])     (3-vector per corner j)
+//
+//   Projection operator (Eq. 8):
+//     Qf[i,j] = Df[i,j] - dot(Ef[i], Gf[:,j])
+//     where Df[i,j] = 1 if j==(i+1)%n, -1 if j==i, 0 otherwise
+//
+//   Dirichlet energy (Eq. 9):
+//     E_D(φ) = |af| * ||Gf*φ||² + λ * ||Qf*φ||²
+//
+//   Laplacian (Eq. 10):
+//     Lf = |af| * Gf^T*Gf  +  λ * Qf^T*Qf       (n×n matrix)
+//
+// The Laplacian Lf:
+//   - Reduces to standard cotan weights for triangles.
+//   - Handles crack edges transparently (crack edge columns in Gf/Qf).
+//   - Is symmetric, positive semi-definite, and scale-invariant.
+//
+// Usage: Geometry Wrangle SOP, run Over Primitives.
+//   Reads polygon vertex positions from P.
+//   Outputs flat float array "Lf" of size n*n (row-major) per primitive.
+//   Also outputs "af_norm" (float) and "nf" (vector).
+//
+// NOTE: For crack edges in a cut-mesh, duplicate the cut-vertex position
+//   so that the polygon appears as a simple (non-self-intersecting) polygon.
+//   See §4.1 for cut-mesh halfedge encoding.
+// ============================================================
+
+int n = primvertexcount(0, @primnum);
+if (n < 3) { return; }
+
+// --- Gather positions (counter-clockwise) ---
+vector X[];
+resize(X, n);
+for (int i = 0; i < n; i++) {
+    int vtx = vertexindex(0, @primnum, i);
+    int pt  = vertexpoint(0, vtx);
+    X[i] = point(0, "P", pt);
+}
+
+// --- Edge vectors ---
+vector Ef[];
+resize(Ef, n);
+for (int i = 0; i < n; i++) {
+    Ef[i] = X[(i+1)%n] - X[i];
+}
+
+// --- Area vector af (fan decomposition from X[0] for numerical stability) ---
+vector af = {0,0,0};
+for (int i = 1; i <= n-2; i++) {
+    af += cross(X[i] - X[0], X[i+1] - X[0]);
+}
+af *= 0.5;
+float af_norm = length(af);
+if (af_norm < 1e-14) { return; }
+vector nf = af / af_norm;
+
+setprimattrib(0, "af_norm", @primnum, af_norm);
+setprimattrib(0, "nf",      @primnum, nf);
+
+// --- Average edges avg_e[j] = 0.5*(Ef[j] + Ef[(j-1+n)%n]) ---
+vector avg_e[];
+resize(avg_e, n);
+for (int j = 0; j < n; j++) {
+    avg_e[j] = 0.5 * (Ef[j] + Ef[(j-1+n)%n]);
+}
+
+// --- Gradient operator columns: Gf[:,j] = (-1/af_norm) * cross(nf, avg_e[j]) ---
+vector Gf_col[];
+resize(Gf_col, n);
+for (int j = 0; j < n; j++) {
+    Gf_col[j] = (-1.0 / af_norm) * cross(nf, avg_e[j]);
+}
+
+// --- Projection operator Qf (n×n, flat row-major) ---
+// Qf[i,j] = Df[i,j] - dot(Ef[i], Gf[:,j])
+// Df[i,j] = 1 if j==(i+1)%n, -1 if j==i, 0 otherwise
+float Qf[];
+resize(Qf, n*n);
+for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n; j++) {
+        float Df_ij = 0.0;
+        if      (j == (i+1)%n) Df_ij =  1.0;
+        else if (j == i)       Df_ij = -1.0;
+        Qf[i*n + j] = Df_ij - dot(Ef[i], Gf_col[j]);
+    }
+}
+
+// --- Laplacian Lf = af_norm * Gf^T*Gf + lambda * Qf^T*Qf ---
+float lambda = 1.0;
+float Lf[];
+resize(Lf, n*n);
+for (int i = 0; i < n; i++) {
+    for (int j = i; j < n; j++) {
+        // (Gf^T*Gf)[i,j] = dot(Gf[:,i], Gf[:,j])
+        float GtG = dot(Gf_col[i], Gf_col[j]);
+
+        // (Qf^T*Qf)[i,j] = dot(col i of Qf, col j of Qf)
+        float QtQ = 0.0;
+        for (int k = 0; k < n; k++) {
+            QtQ += Qf[k*n + i] * Qf[k*n + j];
+        }
+
+        float val = af_norm * GtG + lambda * QtQ;
+        Lf[i*n + j] = val;
+        Lf[j*n + i] = val;   // symmetric
+    }
+}
+
+setprimattrib(0, "Lf",     @primnum, Lf);
+setprimattrib(0, "n_verts", @primnum, n);
+
+// ============================================================
+// Triangle case — verify cotan reduction:
+//   For a triangle with vertices X[0], X[1], X[2]:
+//     Gf[:,j] = cotan-weighted edge vectors / (2 * area)
+//   Lf[i,j] = cotan(angle opposite to edge ij) / 2
+//   This matches the standard cotan Laplacian. (Paper, §A)
+//
+// Global Poisson solve (Python/scipy reference — §4.3, Eq. 6):
+//
+//   # Assemble global cut-mesh Laplacian Lh from per-face Lf values.
+//   # V (nh×nv): copy mesh-vertex values to halfedge unknowns
+//   # C (nh×nc): map curvenet constraint values to halfedges
+//   #
+//   # Step 1 — interpolate deformation gradients:
+//   #   (V^T Lh V) fv = -V^T Lh (C fc)
+//   #   fv = spsolve(VtLhV, -VtLh @ (C @ fc))
+//   #
+//   # Step 2 — compute vertex positions:
+//   #   (V^T Lh V) xv = V^T Lh (yh - C xc)
+//   #   xv = spsolve(VtLhV, VtLh @ (yh - C @ xc))
+//   #
+//   # VtLhV is assembled once per neutral pose and factorized (Cholesky).
+//   # Both RHS are computed at runtime per frame.
+//   # xc contains adjusted curvenet sample positions:
+//   #   pi = qi - Fi @ (rest_qi - rest_pi)   (offset-preserving projection)
+// ============================================================

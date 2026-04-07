@@ -1,0 +1,93 @@
+// ============================================================
+// Regularized Kelvinlet — Locally Affine Brushes (3D)
+// de Goes & James, SIGGRAPH 2018, Eq. (14)-(17)
+//
+// Implements three affine brush types:
+//   Twist  (Eq. 15) — skew-symmetric load; volume-preserving rotation
+//   Scale  (Eq. 16) — isotropic scale load; dilation / contraction
+//   Pinch  (Eq. 17) — symmetric traceless load; squeeze + stretch
+//
+// All three use the locally affine regularized Kelvinlet:
+//   ũ_ε(r) = -a*(1/rε³ + 3ε²/(2rε⁵)) * F*r
+//            + b*(1/rε³ * (F + Fᵀ + tr(F)*I) - 3/rε⁵ * (rᵀFr)*I) * r
+//
+// Usage: Geometry Wrangle SOP (run Over Points)
+//
+// Inputs:
+//   vector brush_center — brush center x0
+//   float  epsilon      — brush radius ε
+//   float  nu           — Poisson ratio
+//   int    brush_type   — 0=twist, 1=scale, 2=pinch
+//   --- Twist ---
+//   vector twist_axis   — rotation axis q (angular velocity direction)
+//   float  twist_amount — magnitude of vorticity at x0
+//   --- Scale ---
+//   float  scale_amount — s>0: contraction, s<0: dilation
+//   --- Pinch ---
+//   vector pinch_axis   — primary axis of stretch (normalized)
+//   float  pinch_amount — pinch magnitude
+// ============================================================
+
+vector center    = detail(0, "brush_center",  {0,0,0});
+float  eps       = detail(0, "epsilon",        1.0);
+float  nu        = detail(0, "nu",             0.5);
+int    btype     = detail(0, "brush_type",     0);    // 0=twist,1=scale,2=pinch
+
+float ba = 1.0 / (4.0*(1.0 - nu));   // b/a ratio
+// a cancels via brush normalization; we compute final disp in "a-normalized" form
+// and multiply by a user-controllable magnitude after
+
+vector r   = @P - center;
+float  r2  = dot(r, r);
+float  re  = sqrt(r2 + eps*eps);
+float  re3 = re*re*re;
+float  re5 = re3*re*re;
+
+// Common affine falloff scalars
+float alpha = 1.0/re3 + 1.5*eps*eps/re5;   // = 1/rε³ + 3ε²/(2rε⁵)
+
+vector disp = {0,0,0};
+
+if (btype == 0) {
+    // --- TWIST brush (Eq. 15) ---
+    // F = [q]× (cross product matrix): F*r = q × r
+    // t_ε(r) = -a * alpha * (q × r)
+    // Volume-preserving: divergence = 0 for any nu
+    vector q        = detail(0, "twist_axis",   {0,1,0});
+    float  twist_w  = detail(0, "twist_amount", 1.0);
+    q = normalize(q) * twist_w;
+    // The -a factor is absorbed into twist_amount normalization
+    disp = -alpha * cross(q, r);
+
+} else if (btype == 1) {
+    // --- SCALE brush (Eq. 16) ---
+    // F = s*I  =>  F*r = s*r, tr(F) = 3s, F+Fᵀ = 2sI, rᵀFr = s*r²
+    // s_ε(r) = (2b-a) * alpha * (s*r)
+    // Note: s_ε = 0 for incompressible material (ν=0.5) since 2b-a=0
+    float s = detail(0, "scale_amount", -1.0);
+    float coeff = (2.0*ba - 1.0);   // (2b-a)/a ratio
+    disp = coeff * alpha * (s * r);
+
+} else {
+    // --- PINCH brush (Eq. 17) ---
+    // F = symmetric, traceless.  Simplest 1-DoF pinch: stretch along axis d,
+    // contract in perpendicular plane.
+    // F = pinch_amount * (outer(d,d) - I/3)  [traceless symmetric]
+    // F*r = pinch_amount * (dot(d,r)*d - r/3)
+    // tr(F) = 0
+    // F+Fᵀ = 2F
+    // rᵀFr = pinch_amount * (dot(d,r)² - r²/3)
+    vector d = normalize(detail(0, "pinch_axis",   {1,0,0}));
+    float  p = detail(0, "pinch_amount", 1.0);
+
+    vector Fr = p * (dot(d, r)*d - r/3.0);
+    float  rFr = p * (dot(d,r)*dot(d,r) - r2/3.0);
+
+    // p_ε(r) = (2b-a)/rε³ * F*r  -  3/(2rε⁵) * [2b*rᵀFr*I + a*ε²*F]*r
+    //        = (2ba-1)/re3*Fr - 3/(2re5)*[2ba*rFr*r + eps²*Fr]
+    float coeff1 = (2.0*ba - 1.0) / re3;
+    float coeff2 = 3.0 / (2.0*re5);
+    disp = coeff1*Fr - coeff2*(2.0*ba*rFr*r + eps*eps*Fr);
+}
+
+@P += disp;

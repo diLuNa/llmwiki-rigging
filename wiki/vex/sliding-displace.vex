@@ -1,0 +1,99 @@
+// sliding-displace.vex
+// Sliding Deformation — Tangential Displacement + Surface Re-projection  (§3.3)
+// Source: Pinskiy, Eurographics 2010
+//
+// Per-point Geometry Wrangle on active vertices.
+// Applies the sliding displacement and re-snaps vertices to the mesh surface.
+//
+// §3.3 Algorithm:
+//   (s, t) = (d · a1_handle, d · a2_handle)       project world disp into region coords
+//   dp_P   = falloff(|P - P0|) * (s·a'1 + t·a'2)  local tangent displacement
+//   P'new  = P + dp_P                              displace in tangent plane
+//   Pnew   = nearest point on mesh inside local parameterization (F' → F)
+//
+// Inputs:
+//   @slide_a1, @slide_a2 (vector) — propagated local direction (from sliding-direction-propagate)
+//   @slide_N  (vector)            — vertex normal
+//   @slide_dist (float)           — distance from handle vertex
+//   @slide_active (int)           — 1 if in support region
+//   Detail vector "disp_d"        — world-space displacement d (from handle locators)
+//   Detail vector "handle_a1/a2"  — global region frame at handle
+//   Detail float  "slide_radius"  — support region radius
+//   Detail float  "falloff_power" — falloff exponent (default 3 = cubic, §4)
+//
+// Inputs (second input = rest mesh for surface re-projection):
+//   Input 1: original rest mesh geometry (the surface to snap back to)
+//
+// Outputs:
+//   @P displaced tangentially along the surface
+
+if (!@slide_active) return;
+
+// ── 1. Project world displacement d into region coordinates (s, t) ──────────
+vector d         = detail(0, "disp_d",     {0,0,0});
+vector ha1       = detail(0, "handle_a1",  {1,0,0});
+vector ha2       = detail(0, "handle_a2",  {0,0,1});
+float  radius    = detail(0, "slide_radius",  1.0);
+float  fallpow   = detail(0, "falloff_power", 3.0);
+
+float s = dot(d, ha1);   // magnitude along a1
+float t = dot(d, ha2);   // magnitude along a2
+
+// ── 2. Falloff function: cubic by default (§4) ───────────────────────────
+// falloff(r) = (1 - (r/R)^p)^p  — zero at boundary, 1 at handle
+float  r      = @slide_dist;
+float  r_norm = clamp(r / max(radius, 1e-8), 0.0, 1.0);
+float  fo     = pow(1.0 - pow(r_norm, fallpow), fallpow);
+
+// ── 3. Compute local tangent displacement dp_P (§3.3, Eq. 7) ────────────
+vector a1p = @slide_a1;
+vector a2p = @slide_a2;
+vector dp  = fo * (s * a1p + t * a2p);   // in 3D tangent space
+
+// ── 4. Displace vertex into tangent plane ────────────────────────────────
+vector P_new = @P + dp;
+
+// ── 5. Re-project onto mesh surface (§3.3) ─────────────────────────────
+// The paper: find face F' in local param space containing P'new,
+// compute intrinsic barycentric coords (u,v), map back to 3D face F.
+//
+// Practical Houdini approximation: xyzdist snap to the REST mesh (input 1).
+// This is less accurate than the local parameterization inverse but safe and fast.
+// For production: replace with the local-param inverse (see comments below).
+
+int   prim_idx;
+float uprim, vprim;
+xyzdist(1, P_new, prim_idx, uprim, vprim);
+@P = primuv(1, "P", prim_idx, set(uprim, vprim, 0));
+
+// ── 6. Falloff weight map override ──────────────────────────────────────
+// The paper §4 uses a painted weight map as falloff() in the animation context.
+// Replace the computed fo above with:
+//
+//   float fo = point(0, "slide_weight", @ptnum);   // painter weight map
+//   vector dp = fo * (s * a1p + t * a2p);
+//
+// This gives riggers full spatial control over the sliding influence.
+
+// ── Local parameterization inverse (accurate surface re-projection) ──────
+// §3.3: instead of xyzdist, use the local param stored in @stencil_uv:
+//
+//   // Find the face F' in local param space containing P'new
+//   float u_new = dot(dp, @slide_b1);   // 2D coords of P'new in ΨP
+//   float v_new = dot(dp, @slide_b2);
+//
+//   // Search stencil_uv for the face whose 2D triangle contains (u_new, v_new)
+//   int   stencil[] = @stencil_pts;
+//   float uv[]      = @stencil_uv;
+//   int   n         = len(stencil);
+//
+//   for (int k = 0; k < n - 1; k++) {
+//       // Check if (u_new, v_new) is inside triangle (0,0),(u_k,v_k),(u_{k+1},v_{k+1})
+//       float u0=uv[k*2], v0=uv[k*2+1], u1=uv[(k+1)*2], v1=uv[(k+1)*2+1];
+//       // barycentric test ... → compute (lam0, lam1, lam2)
+//       // map back: Pnew = lam0*@P + lam1*point(0,"P",stencil[k]) + lam2*point(0,"P",stencil[k+1])
+//   }
+//
+// This avoids xyzdist and keeps the displacement exactly on the mesh surface.
+// Neighbourhood expansion: if (u_new, v_new) is outside the current stencil,
+// the paper expands the local param to include the next ring of faces.

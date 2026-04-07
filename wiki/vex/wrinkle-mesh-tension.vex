@@ -1,0 +1,92 @@
+// wrinkle-mesh-tension.vex
+// Mesh-Tension Driven Wrinkles — Tension Scalar Computation
+// Source: Raman et al., CVPR 2022 (§4, Fig. 3)
+//
+// Per-point Geometry Wrangle.
+// Computes two tension scalars per vertex:
+//   @tension_compress  (0..1) — local surface compressed relative to rest
+//   @tension_expand    (0..1) — local surface expanded relative to rest
+//
+// These are used as blend weights between neutral/wrinkle texture maps:
+//   final_map = lerp(neutral, wrinkle_compress, tension_compress)
+//             + lerp(neutral, wrinkle_expand,   tension_expand)
+//
+// Input 0: current (deformed) mesh
+// Input 1: rest (neutral) mesh — same point count and topology
+//
+// Outputs:
+//   @tension_compress  float  — compression tension [0..1]
+//   @tension_expand    float  — expansion tension   [0..1]
+//   @tension_raw       float  — signed mean edge ratio - 1 (negative = compress)
+
+// ── Per-vertex signed strain: mean (curr_len / rest_len) - 1 ─────────────
+int nbcount = neighbourcount(0, @ptnum);
+if (nbcount == 0) { @tension_raw = 0; @tension_compress = 0; @tension_expand = 0; return; }
+
+float strain_sum = 0.0;
+
+for (int i = 0; i < nbcount; i++) {
+    int nb = neighbour(0, @ptnum, i);
+
+    vector curr_edge = point(0, "P",    nb) - @P;
+    vector rest_edge = point(1, "P",    nb) - point(1, "P", @ptnum);
+
+    float curr_len = length(curr_edge);
+    float rest_len = length(rest_edge);
+
+    if (rest_len < 1e-8) continue;
+
+    // Strain per edge: +1 = doubled, 0 = no change, -1 = compressed to zero
+    strain_sum += (curr_len / rest_len) - 1.0;
+}
+
+float mean_strain = strain_sum / float(nbcount);
+
+@tension_raw = mean_strain;
+
+// ── Separate into compression and expansion channels ─────────────────────
+// Raman generates two maps: "compressed" (wrinkles appear under compression)
+// and "expanded" (stretch effects). Both clamped to [0, 1].
+
+float compress_sensitivity = chf("compress_sensitivity");  // default 1.0
+float expand_sensitivity   = chf("expand_sensitivity");    // default 1.0
+
+@tension_compress = clamp(-mean_strain * compress_sensitivity, 0.0, 1.0);
+@tension_expand   = clamp( mean_strain * expand_sensitivity,   0.0, 1.0);
+
+// ── Softmax normalization (Raman §4.3, for multi-expression blending) ─────
+// When blending N expression wrinkle maps, Raman uses softmax over the
+// per-expression tension values rather than raw clamp.
+// For two maps (compress / expand), the softmax simplifies to:
+//
+//   float sum = exp(tension_compress) + exp(tension_expand) + exp(0);  // neutral
+//   float w_compress = exp(tension_compress) / sum;
+//   float w_expand   = exp(tension_expand)   / sum;
+//   float w_neutral  = exp(0.0)              / sum;
+//
+// Use w_compress, w_neutral, w_expand as texture lerp weights.
+
+// ── Triangle-area based alternative (more robust than edge-length) ────────
+// For cleaner tension on irregular meshes, compute area ratio per incident triangle:
+//
+// (comment-only: run as a separate per-prim wrangle, then promote prim→point)
+//   int pts[] = primpoints(0, @primnum);
+//   if (len(pts) != 3) return;
+//   vector p0=point(0,"P",pts[0]), p1=point(0,"P",pts[1]), p2=point(0,"P",pts[2]);
+//   vector r0=point(1,"P",pts[0]), r1=point(1,"P",pts[1]), r2=point(1,"P",pts[2]);
+//   float curr_area = length(cross(p1-p0, p2-p0)) * 0.5;
+//   float rest_area = length(cross(r1-r0, r2-r0)) * 0.5;
+//   @tension_prim = (rest_area > 1e-10) ? (curr_area / rest_area) - 1.0 : 0.0;
+
+// ── Texture-space blend (Raman §4, Fig. 2) ───────────────────────────────
+// The actual wrinkle synthesis (in a shader or compositing node):
+//
+//   vector4 albedo   = lerp(neutral_albedo,   wrinkle_compress_albedo,   @tension_compress);
+//   albedo           = lerp(albedo,            wrinkle_expand_albedo,     @tension_expand);
+//   float  disp_val  = lerp(0, compress_disp, @tension_compress)
+//                    + lerp(0, expand_disp,   @tension_expand);
+//
+// Or with softmax weights (w_compress, w_neutral, w_expand from above):
+//   vector4 albedo = w_neutral  * neutral_albedo
+//                  + w_compress * wrinkle_compress_albedo
+//                  + w_expand   * wrinkle_expand_albedo;

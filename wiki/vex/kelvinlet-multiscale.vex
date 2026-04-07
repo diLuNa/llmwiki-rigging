@@ -1,0 +1,79 @@
+// ============================================================
+// Regularized Kelvinlet — Multi-Scale Extrapolation (3D)
+// de Goes & James, SIGGRAPH 2018, Eq. (8)-(11)
+//
+// Bi-scale:  O(1/r³) decay  — difference of two Kelvinlets
+// Tri-scale: O(1/r⁵) decay  — weighted sum of three Kelvinlets
+//
+// Usage: Geometry Wrangle SOP (run Over Points)
+//
+// Inputs:
+//   vector brush_center — brush tip position x0
+//   vector brush_disp   — desired tip displacement u
+//   float  epsilon      — base brush radius ε₁ (ε₂=1.1ε, ε₃=1.21ε)
+//   float  nu           — Poisson ratio [0, 0.5]
+//   int    mode         — 0=single, 1=bi-scale, 2=tri-scale
+// ============================================================
+
+// --- Helper function: evaluate regularized Kelvinlet matrix times vector
+// Returns K_eps(r)*v as a vector.  Does NOT include the c*eps tip-normalization.
+function vector kelvinlet_K(vector r; float eps; float ba) {
+    float re  = sqrt(dot(r,r) + eps*eps);
+    float re3 = re*re*re;
+    float A = (1.0 - ba)/re + 0.5*eps*eps/re3;
+    float B = ba/re3;
+    return A * {0,0,0} + B * dot(r,{0,0,0}) * r;  // placeholder — see usage below
+}
+// NOTE: use inline form below; VEX functions can't take vector by ref cleanly here.
+// Inline macro: K_eps(r, v, eps, ba) = A*v + B*dot(r,v)*r
+
+vector center = detail(0, "brush_center", {0,0,0});
+vector u_tip  = detail(0, "brush_disp",   {0,1,0});
+float  eps1   = detail(0, "epsilon",       1.0);
+float  nu     = detail(0, "nu",            0.5);
+int    mode   = detail(0, "mode",          2);     // 0=single,1=bi,2=tri
+
+float ba = 1.0 / (4.0*(1.0 - nu));
+float c  = 2.0 / (3.0 - 2.0*ba);
+
+vector r = @P - center;
+
+// --- K_eps(r)*v inline
+#define KMAT(r, v, eps) \
+    ( ((1.0-ba)/sqrt(dot(r,r)+eps*eps) + 0.5*eps*eps/pow(sqrt(dot(r,r)+eps*eps),3.0)) * v \
+    + (ba / pow(sqrt(dot(r,r)+eps*eps),3.0)) * dot(r,v) * r )
+
+vector disp;
+
+if (mode == 0) {
+    // Single-scale (same as kelvinlet-grab.vex)
+    disp = c * eps1 * KMAT(r, u_tip, eps1);
+
+} else if (mode == 1) {
+    // Bi-scale extrapolation (Eq. 8-9): decay O(1/r³)
+    // ε₂ = 1.1 * ε₁ (default; user can change)
+    float eps2 = 1.1 * eps1;
+    // Normalization: c * (1/ε₁ - 1/ε₂)⁻¹ * [K_ε1 - K_ε2] * u_tip
+    float norm = 1.0 / (1.0/eps1 - 1.0/eps2);
+    vector Kd  = KMAT(r, u_tip, eps1) - KMAT(r, u_tip, eps2);
+    disp = c * norm * Kd;
+
+} else {
+    // Tri-scale extrapolation (Eq. 10-11): decay O(1/r⁵)
+    // ε₁, ε₂=1.1ε₁, ε₃=1.21ε₁
+    float eps2 = 1.1  * eps1;
+    float eps3 = 1.21 * eps1;
+    float e1sq = eps1*eps1, e2sq = eps2*eps2, e3sq = eps3*eps3;
+
+    // Weights to cancel O(1/r) and O(1/r³) terms:
+    float w1 =  1.0;
+    float w2 = -(e3sq - e1sq) / (e3sq - e2sq);
+    float w3 =  (e2sq - e1sq) / (e3sq - e2sq);
+
+    // Normalization factor: c / sum(wᵢ/εᵢ)
+    float sum_w_over_e = w1/eps1 + w2/eps2 + w3/eps3;
+    vector Ksum = w1*KMAT(r,u_tip,eps1) + w2*KMAT(r,u_tip,eps2) + w3*KMAT(r,u_tip,eps3);
+    disp = c / sum_w_over_e * Ksum;
+}
+
+@P += disp;

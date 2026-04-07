@@ -1,0 +1,84 @@
+// bbw-harmonic-weights.vex
+// Bounded Biharmonic Weights — Harmonic Weight Fallback (unconstrained)
+// Source: Jacobson et al., SIGGRAPH 2011 (§3 — comparison with harmonic weights)
+//         Joshi et al., SIGGRAPH 2007 (Harmonic Coordinates)
+//
+// Per-point Geometry Wrangle.
+// Implements the HARMONIC weight smoother — a single Laplacian smoothing pass
+// that diffuses handle boundary conditions across the mesh.
+// This is NOT BBW (biharmonic), but is the linear baseline BBW improves upon.
+//
+// Use case:
+//   - Quick weight initialization before the BBW QP solve.
+//   - Standalone smooth weight painting with locality.
+//   - Comparison reference against BBW output.
+//
+// Inputs:
+//   @bbw_N  (int, detail)   — number of handles
+//   @bbw_w  (float[], point) — current weight vector [w_0, w_1, ..., w_{K-1}]
+//                              initialized: w_j[handle_i] = delta_{i,j}
+//   @bbw_fixed (int, point) — 1 if this vertex is a handle vertex (pinned), 0 otherwise
+//
+// Output: @bbw_w updated by one Laplacian diffusion step (iterate ~50–200x)
+//
+// Run this wrangle in a loop (For-Each SOP or Python loop) until convergence.
+
+int K     = detail(0, "bbw_N", 0);
+int fixed = point(0, "bbw_fixed", @ptnum);
+
+if (fixed) return;   // do not update constrained vertices
+
+// ── Laplacian smoothing: weighted average of neighbours ───────────────────
+// Uses uniform weights (1/valence). For cotangent weights, compute from
+// bbw-cotan-laplacian.vex data instead.
+
+int    neighbors[] = neighbours(0, @ptnum);
+int    valence     = len(neighbors);
+if (valence == 0) return;
+
+float inv_v = 1.0 / float(valence);
+
+float w_new[] = array();
+resize(w_new, K);
+for (int j = 0; j < K; j++) w_new[j] = 0.0;
+
+// Sum neighbour weights
+for (int ni = 0; ni < valence; ni++) {
+    int nb = neighbors[ni];
+    float w_nb[] = point(0, "bbw_w", nb);
+    for (int j = 0; j < K; j++) {
+        w_new[j] += inv_v * w_nb[j];
+    }
+}
+
+// ── Non-negativity clamp + partition of unity renormalize ──────────────────
+float sum = 0.0;
+for (int j = 0; j < K; j++) {
+    w_new[j] = max(0.0, w_new[j]);
+    sum += w_new[j];
+}
+if (sum > 1e-8) {
+    for (int j = 0; j < K; j++) w_new[j] /= sum;
+}
+
+setpointattrib(0, "bbw_w", @ptnum, w_new);
+
+// ── Initialization helper (run once before the loop) ──────────────────────
+//
+// Before iterating, initialize @bbw_w on all points:
+//
+// Per-point wrangle (init pass):
+//   int K = detail(0, "bbw_N", 0);
+//   float w[] = array();  resize(w, K);
+//   for (int j = 0; j < K; j++) w[j] = 1.0 / float(K);   // uniform start
+//   setpointattrib(0, "bbw_w", @ptnum, w);
+//
+// Then for each handle vertex (run over handle points only):
+//   int handle_idx = ...;   // which handle (0..K-1) this vertex belongs to
+//   float w[] = array();  resize(w, K);
+//   for (int j = 0; j < K; j++) w[j] = (j == handle_idx) ? 1.0 : 0.0;
+//   setpointattrib(0, "bbw_w", @ptnum, w);
+//   setpointattrib(0, "bbw_fixed", @ptnum, 1);
+//
+// After convergence, split @bbw_w into individual "bbw_0", "bbw_1", ... attributes
+// for use with bbw-lbs-apply.vex.

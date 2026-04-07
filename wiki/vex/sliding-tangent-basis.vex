@@ -1,0 +1,87 @@
+// sliding-tangent-basis.vex
+// Sliding Deformation — Local Tangent Plane Basis  (§3.1)
+// Source: Pinskiy, Eurographics 2010
+//
+// Per-point Geometry Wrangle. Run once on rest mesh.
+// Computes an orthonormal tangent-plane basis {b1, b2} at each vertex P
+// by Gram-Schmidt orthogonalization of projected incident edges (§3.1).
+//
+// Also stores the per-neighbour exponential map images Q' in ΨP using the
+// "normal curve" approximation:
+//   Q' = |αPQ| * uPQ  in tangent-plane coords (u, v)
+// where uPQ is the projection of (Q - P) onto ΨP (first-ring approximation;
+// geodesic correction via face-plane intersection is noted in comments).
+//
+// Inputs:  @P, @N (point positions and normals)
+// Outputs:
+//   @slide_b1   (vector) — first tangent basis vector
+//   @slide_b2   (vector) — second tangent basis vector (= normalize(N × b1))
+//   @slide_N    (vector) — vertex normal (normalized)
+//   @stencil    (int[])  — neighbour indices
+//   @stencil_uv (float[])— 2D local coords (u,v) of each neighbour in ΨP,
+//                          stored interleaved: [u0,v0, u1,v1, ...]
+
+vector Nv  = normalize(@N);
+@slide_N   = Nv;
+
+// ── Build {b1, b2} via Gram-Schmidt on first incident edge ─────────────────
+int nb0 = neighbour(0, @ptnum, 0);
+vector e0 = point(0, "P", nb0) - @P;
+
+// b1 = normalize(e0 - (e0·N)N)  — project edge onto tangent plane
+vector b1 = normalize(e0 - dot(e0, Nv) * Nv);
+// b2 = N × b1  (right-hand frame)
+vector b2 = normalize(cross(Nv, b1));
+
+@slide_b1 = b1;
+@slide_b2 = b2;
+
+// ── Per-neighbour exponential map (first-ring, normal-curve approx) ────────
+// §3.1: Q' = |αPQ| * uPQ, where uPQ is the plane-surface intersection direction.
+// For first-ring neighbours: plane = span{(Q-P), N_P}.
+// Intersection of this plane with ΨP = projection of (Q-P) onto ΨP.
+// |αPQ| ≈ length of the geodesic segment, approximated as plane-face arc lengths.
+//
+// Simplified (first-ring only, no geodesic expansion):
+//   uPQ = normalize(project(Q-P, ΨP))
+//   |αPQ| ≈ |Q - P|  (straight-line approximation, good for locally flat mesh)
+
+int    nbcount   = neighbourcount(0, @ptnum);
+int    stencil[];
+float  stencil_uv[];
+resize(stencil,    nbcount);
+resize(stencil_uv, nbcount * 2);
+
+for (int k = 0; k < nbcount; k++) {
+    int   nb  = neighbour(0, @ptnum, k);
+    vector dQ = point(0, "P", nb) - @P;
+
+    // Project dQ onto tangent plane ΨP
+    vector dQ_tan = dQ - dot(dQ, Nv) * Nv;
+    float  geo_dist = length(dQ_tan);  // approx geodesic distance
+
+    // 2D coords in {b1, b2} frame
+    float u = (geo_dist > 1e-8) ? dot(dQ_tan, b1) : 0.0;
+    float v = (geo_dist > 1e-8) ? dot(dQ_tan, b2) : 0.0;
+
+    stencil[k]          = nb;
+    stencil_uv[k*2]     = u;
+    stencil_uv[k*2 + 1] = v;
+}
+
+@stencil    = stencil;
+@stencil_uv = stencil_uv;
+
+// ── Full normal-curve approximation (for accurate geodesic distance) ────────
+// §3.1 describes tracing "normal curves" — intersections of the mesh with planes
+// spanned by nP and the edge direction.  In VEX on a polygon mesh:
+//
+//   For each face F incident to P containing neighbour Q:
+//       plane_normal = normalize(cross(nP, normalize(Q - P)))
+//       For each edge E of F:
+//           t = intersect line segment E with plane {plane_normal, P}
+//           arc_len += length of segment inside F up to intersection
+//
+// This is an edge-plane intersection walk. For most production meshes the
+// simple projection above is sufficient; the geodesic correction matters most
+// on highly curved surfaces (forehead, eye socket).

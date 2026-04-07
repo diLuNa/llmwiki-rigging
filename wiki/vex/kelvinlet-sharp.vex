@@ -1,0 +1,122 @@
+// ============================================================
+// Sharp Kelvinlets — Full Family (3D)
+// de Goes & James, DigiPro 2019, Eq. (17)-(18)
+//
+// Combines cusped profiles with Laplacian localization.
+// Provides independent control over:
+//   sharpness  — blend between smooth (0) and cusped (1)
+//   locality   — Kelvinlet / Laplacian / Bi-Laplacian
+//
+// CUSPED LAPLACIAN (Eq. 17):  O(1/r³) decay, cusped profile
+//   A_ε = 2/(ε⁴*rε⁵) * [(15a-10b)ε⁶ + (90a-88b)ε⁴r² + 120ε²r⁴(a-b)
+//                         + 48(a-b)*r*(r⁵ - rε⁵)]
+//   B_ε = -12b/(ε⁴*r*rε⁵) * [2ε²r²(4rε-5r) + 4r⁴(rε-r) + ε⁴(4rε-7r)]
+//
+// CUSPED BI-LAPLACIAN (Eq. 18):  O(1/r⁹) decay, cusped — uses R=r/ε form
+//   (see inline; evaluate only for R < 5, else zero)
+//
+// Usage: Geometry Wrangle SOP (run Over Points)
+//
+// Inputs:
+//   vector brush_center  — brush tip x0
+//   vector brush_force   — force vector f
+//   float  epsilon       — brush scale ε
+//   float  nu            — Poisson ratio
+//   int    type          — 0=CuspedLaplacian, 1=CuspedBiLaplacian
+//   float  smooth_blend  — 0=pure cusped, 1=blend with smooth Laplacian/BiLap
+// ============================================================
+
+vector center   = detail(0, "brush_center",  {0,0,0});
+vector force    = detail(0, "brush_force",   {0,1,0});
+float  eps      = detail(0, "epsilon",        1.0);
+float  nu       = detail(0, "nu",             0.5);
+int    btype    = detail(0, "type",           0);
+float  sblend   = detail(0, "smooth_blend",  0.0);  // 0=cusped only
+
+float ba   = 1.0 / (4.0*(1.0 - nu));
+float eps2 = eps*eps;
+float eps4 = eps2*eps2;
+
+vector r  = @P - center;
+float  r2 = dot(r, r);
+float  rm = sqrt(r2);
+float  re = sqrt(r2 + eps2);
+
+float A_cusp = 0, B_cusp = 0;
+float A_smooth = 0, B_smooth = 0;
+
+if (btype == 0) {
+    // === Cusped Laplacian Kelvinlet (Eq. 17) ===
+    float re5  = pow(re, 5.0);
+    float r5   = pow(rm, 5.0);
+    float re5v = pow(re, 5.0);
+
+    if (rm > 1e-7) {
+        // A coefficient
+        float term1 = (15.0 - 10.0*ba)*eps4*eps2;
+        float term2 = (90.0 - 88.0*ba)*eps4*r2;
+        float term3 = 120.0*eps2*r2*r2*(1.0-ba);
+        float term4 = 48.0*(1.0-ba)*rm*(r5 - re*re*re*re*re);  // r*(r⁵ - rε⁵)
+        A_cusp = 2.0/(eps4*re5) * (term1 + term2 + term3 + term4);
+
+        // B coefficient
+        float bt1 = 2.0*eps2*r2*(4.0*re - 5.0*rm);
+        float bt2 = 4.0*r2*r2*(re - rm);
+        float bt3 = eps4*(4.0*re - 7.0*rm);
+        B_cusp = -12.0*ba / (eps4*rm*re5) * (bt1 + bt2 + bt3);
+    } else {
+        // r→0: cusp tip — finite value, use limiting form
+        A_cusp = (15.0 - 10.0*ba) / eps2;  // leading term as r→0
+        B_cusp = 0.0;
+    }
+
+    // Smooth Laplacian for blending (Eq. 15)
+    float re7 = pow(re, 7.0);
+    A_smooth = (15.0*eps4 - 2.0*ba*re*re*(5.0*eps2 + 2.0*r2)) / (2.0*re7);
+    B_smooth = 3.0*ba*(7.0*eps2 + 2.0*r2) / re7;
+
+} else {
+    // === Cusped Bi-Laplacian Kelvinlet (Eq. 18) ===
+    // Use R = r/ε for numerical stability; zero for R >= 5
+    float R = rm / eps;
+
+    if (R < 5.0) {
+        float R2  = R*R;
+        float R1  = sqrt(R2 + 1.0);   // rε/ε = √(R²+1)
+        float R1p = R1;
+        float R9  = pow(R1, 9.0);
+        float R10 = R9*R1;
+
+        // A coefficient (eq 18, divided by a=1, with b=ba)
+        // A = 9/(ε⁵*R¹⁰) * [1*(stuff with a) + 2ba*(stuff)]
+        // Careful factored form from paper:
+        float polyA = ((((512.0*R2 + 2304.0)*R2 + 4032.0)*R2 + 3360.0)*R2 + 1260.0)*R2 + 105.0;
+        float aterm = -512.0*R*R10 + polyA * R1;
+        float polyB_A = 35.0 + R2*(280.0 + R2*(560.0 + R2*(448.0 + 128.0*R2)));
+        float bterm_A = 128.0*R*R10 - R1*R1*R1 * polyB_A;  // R1³ * polyB_A
+
+        A_cusp = 9.0/(pow(eps,5.0)*pow(R1,10.0)) * (aterm + 2.0*ba*bterm_A);
+
+        // B coefficient (eq 18)
+        float polyB = R2*(R2*(R2*(128.0*R2 + 576.0) + 1008.0) + 840.0) + 315.0;
+        float bterm = 128.0*R9 - R * polyB;
+        B_cusp = 18.0*ba / (pow(eps,7.0)*R*R9) * bterm;
+
+    } else {
+        // Numerically zero beyond R=5 (rapid O(1/r⁹) decay)
+        A_cusp = 0.0;
+        B_cusp = 0.0;
+    }
+
+    // Smooth Bi-Laplacian for blending (Eq. 16)
+    float re11 = pow(re, 11.0);
+    A_smooth = 105.0*eps4 * (3.0*(eps2 - 2.0*r2) - 2.0*ba*re*re) / (2.0*re11);
+    B_smooth = 945.0*ba*eps4 / re11;
+}
+
+// Blend between cusped and smooth
+float A = lerp(A_cusp, A_smooth, sblend);
+float B = lerp(B_cusp, B_smooth, sblend);
+
+vector disp = A * force + B * dot(r, force) * r;
+@P += disp;

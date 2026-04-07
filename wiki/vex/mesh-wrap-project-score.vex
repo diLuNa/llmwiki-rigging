@@ -1,0 +1,63 @@
+// mesh-wrap-project-score.vex
+// Mesh Wrap — Closest-Point Projection and Score  (§3)
+// Source: de Goes & Martinez, SIGGRAPH Talks 2019
+//
+// Per-point Geometry Wrangle on the WRAP mesh M (input 0).
+// Projects each vertex xi to its nearest point on the TARGET mesh T (input 1).
+// Computes the proximity score:
+//
+//   pi = Π(xi)  —  closest point on T
+//   mi = 1 / ( 1 + µ · ‖pi − xi‖² )   ∈ (0, 1]
+//
+// mi = 1 when xi is on T; mi → 0 as xi moves away.
+// µ is a stiffness parameter ramped up across iterations (§5).
+//
+// Inputs:
+//   Input 0: wrap mesh M (vertices xi = @P)
+//   Input 1: target mesh T (point cloud or mesh for xyzdist lookup)
+//   Detail float "mu" — current stiffness (start 0.1, ×10 every 10 iters)
+//
+// Outputs:
+//   @proj_P  (vector) — closest point pi on T
+//   @score   (float)  — proximity score mi ∈ (0,1]
+//   @proj_dist (float)— ‖pi − xi‖ (debug)
+
+float mu  = detail(0, "mu", 0.1);
+
+// ── Closest point on target (input 1) ─────────────────────────────────────
+vector proj_pos;
+int    prim_idx;
+float  u, v;
+
+float dist = xyzdist(1, @P, prim_idx, u, v);
+proj_pos   = primuv(1, "P", prim_idx, set(u, v, 0));
+
+// ── Proximity score mi = 1 / (1 + µ ‖pi − xi‖²) ──────────────────────────
+float dist2  = dist * dist;
+float score  = 1.0 / (1.0 + mu * dist2);
+
+@proj_P    = proj_pos;
+@proj_dist = dist;
+@score     = score;
+
+// ── Usage in solve (§5) ──────────────────────────────────────────────────
+// In Python, after running this wrangle each iteration:
+//
+//   P_mat = np.array([pt.attribValue("proj_P") for pt in geo.points()])  # (n,3)
+//   scores = np.array([pt.attribValue("score") for pt in geo.points()])  # (n,)
+//   M_diag = sp.diags(scores)
+//
+//   # RHS contribution from fitting: µ M^T M P
+//   rhs_fit = mu * M_diag.T @ M_diag @ P_mat
+//
+//   # LHS fitting block: µ M^T M
+//   lhs_fit = mu * M_diag.T @ M_diag
+
+// ── Stiffness ramp schedule (§5) ─────────────────────────────────────────
+// In Houdini, drive "mu" via a For-Each loop with a Python expression:
+//
+//   round_num = hou.pwd().input(0).evalParm("iteration_count") // 10
+//   mu = 0.1 * (10 ** round_num)    # 0.1 → 1 → 10 → 100 → ...
+//   hou.pwd().parm("mu").set(mu)
+//
+// Convergence: stop when max(dist) < 1e-4 or after 100 total iterations.

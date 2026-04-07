@@ -1,0 +1,50 @@
+// ============================================================
+// Regularized Kelvinlet — Grab Brush (Single-Scale, 3D)
+// de Goes & James, SIGGRAPH 2018, Eq. (6) / (7)
+//
+// Usage: Geometry Wrangle SOP (run Over Points)
+// Each point @P is displaced by the elastic grab deformation.
+//
+// Inputs (detail or primitive attributes, or promote to detail):
+//   vector brush_center  — brush tip position x0
+//   vector brush_disp    — desired displacement u at brush tip
+//   float  epsilon       — brush radius (regularization scale)
+//   float  nu            — Poisson ratio [0, 0.5]; 0.5 = incompressible
+// ============================================================
+
+vector center = detail(0, "brush_center", {0,0,0});
+vector u_tip  = detail(0, "brush_disp",   {0,1,0});
+float  eps    = detail(0, "epsilon",       1.0);
+float  nu     = detail(0, "nu",            0.5);   // 0.5 = incompressible
+
+// --- Material constants (mu cancels out via tip-displacement parameterization)
+// a = 1/(4*pi*mu),  b = a / (4*(1-nu))
+// We work with ratio b/a = 1/(4*(1-nu)) so mu drops out.
+float ba = 1.0 / (4.0 * (1.0 - nu));   // b = ba * a,  we factor a out
+
+// --- Parameterization constant: c = 2 / (3 - 2*ba)
+// From u_eps(0) = u_tip  =>  f = u_tip / (c * eps * K_eps(0)[xx])
+// K_eps(0) diagonal entry = (a-b)/eps + a/2 * eps/eps^2 + b/eps^3*0
+//   = a*(1-ba)/eps + a/(2*eps) = a*(3/2 - ba)/eps
+// u_eps(0) = c*eps * a*(3/2 - ba)/eps = c * a*(3/2 - ba)
+// Setting =1: c = 1/(a*(3/2-ba)). With a factored: c_normalized = 2/(3 - 2*ba)
+float c = 2.0 / (3.0 - 2.0 * ba);
+
+// --- Per-point evaluation
+vector r   = @P - center;
+float  r2  = dot(r, r);
+float  re  = sqrt(r2 + eps*eps);         // rε = sqrt(||r||² + ε²)
+float  re3 = re * re * re;
+
+// Regularized Kelvinlet matrix applied to u_tip (eq 7):
+//   u_eps(r) = c*eps * K_eps(r) * u_tip
+//   K_eps(r) = [(1-ba)/re * I  +  ba/re3 * outer(r,r)  +  0.5*eps²/re3 * I]
+// Applied to vector:
+//   K_eps(r)*v = [(1-ba)/re + 0.5*eps²/re3] * v  +  ba/re3 * dot(r,v) * r
+
+float A = (1.0 - ba) / re  +  0.5 * eps*eps / re3;   // scalar coeff of force
+float B = ba / re3;                                    // scalar coeff of r*dot(r,f)
+
+vector disp = c * eps * (A * u_tip + B * dot(r, u_tip) * r);
+
+@P += disp;
