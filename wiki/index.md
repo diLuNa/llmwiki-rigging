@@ -116,6 +116,20 @@ Master catalog of all pages. Updated on every ingest.
 | [[papers/li-2022-ncloth]] | N-Cloth: Predicting 3D Cloth Deformation with Mesh-Based Networks | Eurographics 2022 | `simulation` `neural` `cloth` `skinning` |
 | [[papers/bertiche-2022-neural-cloth-sim]] | Neural Cloth Simulation | ACM TOG (SIGGRAPH Asia 2022) | `simulation` `neural` `cloth` `secondary-motion` |
 | [[papers/hou-2024-neutral-facial-rigging]] | Neutral Facial Rigging from Limited Spatiotemporal Meshes | Electronics 2024 | `rig-generation` `blendshapes` `neural` `auto-rigging` |
+| [[papers/giebenhain-2023-nphm]] | Learning Neural Parametric Head Models | CVPR 2023 | `neural` `digital-human` `blendshapes` `implicit-surfaces` |
+| [[papers/danecek-2022-emoca]] | EMOCA: Emotion Driven Monocular Face Capture and Animation | CVPR 2022 | `neural` `digital-human` `blendshapes` `facial-capture` |
+| [[papers/zielonka-2022-mica]] | Towards Metrical Reconstruction of Human Faces | ECCV 2022 | `neural` `digital-human` `blendshapes` `facial-capture` |
+| [[papers/retsinas-2024-smirk]] | SMIRK: 3D Facial Expressions through Analysis-by-Neural-Synthesis | CVPR 2024 | `neural` `digital-human` `blendshapes` `facial-capture` |
+| [[papers/qian-2024-gaussian-avatars]] | GaussianAvatars: Photorealistic Head Avatars with Rigged 3D Gaussians | CVPR 2024 | `neural` `digital-human` `blendshapes` `appearance` |
+| [[papers/ma-2024-gaussian-blendshapes]] | 3D Gaussian Blendshapes for Head Avatar Animation | SIGGRAPH 2024 | `neural` `digital-human` `blendshapes` `appearance` |
+| [[papers/giebenhain-2024-npga]] | NPGA: Neural Parametric Gaussian Avatars | SIGGRAPH Asia 2024 | `neural` `digital-human` `blendshapes` `appearance` |
+| [[papers/ming-2024-mesh-blendshapes]] | High-Quality Mesh Blendshape Generation from Face Videos via Neural Inverse Rendering | ECCV 2024 | `neural` `blendshapes` `rig-generation` `facial-capture` |
+| [[papers/potamias-2024-shapefusion]] | ShapeFusion: A 3D Diffusion Model for Localized Shape Editing | ECCV 2024 | `neural` `digital-human` `blendshapes` |
+| [[papers/sevastopolsky-2024-headcraft]] | HeadCraft: Modeling High-Detail Shape Variations for Animated 3DMMs | 3DV 2025 | `neural` `digital-human` `blendshapes` |
+| [[papers/qiu-2024-freeavatar]] | FreeAvatar: Robust 3D Facial Animation Transfer by Learning an Expression Foundation Model | SIGGRAPH Asia 2024 | `neural` `digital-human` `blendshapes` `facial-capture` |
+| [[papers/zou-2024-4d-expression-diffusion]] | 4D Facial Expression Diffusion Model | ACM TOMM 2024 | `neural` `digital-human` `blendshapes` `speech-driven-animation` |
+| [[papers/zhuang-2022-mofanerf]] | MoFaNeRF: Morphable Facial Neural Radiance Field | ECCV 2022 | `neural` `digital-human` `blendshapes` `appearance` |
+| [[papers/yu-2023-nofa]] | NOFA: NeRF-based One-shot Facial Avatar Reconstruction | SIGGRAPH 2023 | `neural` `digital-human` `blendshapes` `facial-capture` `appearance` |
 
 ---
 
@@ -144,6 +158,10 @@ Master catalog of all pages. Updated on every ingest.
 | [[concepts/speech-driven-animation]] | Audio-driven lip/jaw/tongue animation for virtual characters |
 | [[concepts/secondary-motion]] | Hair, skin jiggle, soft-tissue lag; rig-space vs simulation vs data-driven |
 | [[concepts/auto-rigging]] | End-to-end skeleton/blendshape rig generation from mesh; neural and template-based |
+| [[concepts/mesh-graph-nets]] | GNN simulators on mesh representations; Encode-Process-Decode; cloth, soft tissue, face shape |
+| [[concepts/facial-blendshape-rigs]] | Production facial rigs: FACS blendshapes, PSD correctives, muscle systems, performance capture |
+| [[concepts/nonlinear-face-models]] | Nonlinear 3DMMs, mesh autoencoders, implicit neural faces, DiffusionRig, neural auto-rigging |
+| [[concepts/muscles]] | Muscle systems as rig controls (facial/body) and soft tissue FEM simulation |
 
 ---
 
@@ -152,8 +170,16 @@ Master catalog of all pages. Updated on every ingest.
 | Page | Summary |
 |------|---------|
 | [[techniques/sculpt-transfer-vex]] | VEX implementation of sculpt transfer |
-| [[techniques/bandage-smoothing-vex]] | Bi-Laplacian bandage smoothing in VEX |
+| [[techniques/bandage-smoothing-vex]] | Bi-Laplacian bandage smoothing in VEX; two-pass Gauss-Seidel, cotangent weights |
 | [[techniques/blendshape-usd]] | Authoring blendshapes in UsdSkel / Houdini Solaris |
+
+---
+
+## VEX Snippets
+
+Full index with algorithm tables: [[vex/index]]
+
+39 snippets across: Kelvinlets, CurveNet, Cage deformation, BBW, Blendshapes, Mesh wrap, Wrinkles, Animatomy, Sliding deformation.
 
 ---
 
@@ -204,6 +230,8 @@ Master catalog of all pages. Updated on every ingest.
 | [[authors/aberman-kfir]] | Google Research |
 | [[authors/kalogerakis-evangelos]] | University of Massachusetts Amherst |
 | [[authors/saito-jun]] | Adobe Research |
+| [[authors/niessner-matthias]] | Technical University of Munich |
+| [[authors/bolkart-timo]] | Max Planck Institute for Intelligent Systems |
 
 ---
 
@@ -222,4 +250,4 @@ Master catalog of all pages. Updated on every ingest.
 
 ---
 
-*Last updated: 2026-04-07 — Ingested 10 new PDFs. New concept: auto-rigging. New authors: kalogerakis-evangelos, saito-jun. Wiki: 100 paper pages, 21 concepts, 30 authors.*
+*Last updated: 2026-04-07 — New concept: muscles. Wiki: 113 paper pages, 25 concepts, 34 authors, 3 techniques, 39 VEX snippets, 4 Python snippets.*

@@ -32,6 +32,7 @@ Transfer rigs from a known template mesh via dense correspondences (e.g., deform
 - [[papers/ma-2025-riganyface]] — extends NFR with disconnected components + 2D-supervised scaling
 - [[papers/canrig-2026-neural-face-rigging]] — cross-attention neural face rigging; variable local control
 - [[papers/hou-2024-neutral-facial-rigging]] — bidirectional rig gen + recognition from limited data
+- [[papers/ming-2024-mesh-blendshapes]] — FACS-compatible blendshapes from video via neural inverse rendering; directly production-importable
 - [[papers/le-2012-ssdr]] — SSDR: auto-extracts LBS rig from an animation sequence (inverse direction)
 - [[papers/holden-2015-inverse-rig]] — inverse rig mapping from pose to rig parameters (related problem)
 

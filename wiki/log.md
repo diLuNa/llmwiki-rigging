@@ -325,3 +325,108 @@ Created 5 Houdini VEX snippets from JTDP03, FACEIT, and Lewis 2014 STAR (blendsh
 - blendshape-nlls-faceit.vex    — 2D landmark projection (VEX) + NLLS LM weight solve (Python) (FACEIT)
 - blendshape-corrective-psd.vex — corrective weight evaluation: product, min, Gaussian RBF (Lewis 2014 §3; Lewis 2000 PSD)
 Updated wiki/vex/index.md with Blendshape Fitting section (39 total snippets across 11 papers).
+
+## [2026-04-07] lint | Wiki lint pass
+
+**Fixed:**
+- index.md footer counts corrected: 99 papers (was 100), 32 authors (was 30)
+- Added VEX Snippets section to index.md pointing to vex/index.md (39 snippets, not previously in main catalog)
+- Flagged missing file: techniques/bandage-smoothing-vex.md (in index but not on disk)
+
+**Orphan pages:**
+- authors/aberman-kfir.md — no paper page links to this author; appears in log.md/index.md only. Author was added to wiki but no paper has been ingested for them yet.
+
+**Missing concept pages (suggested):**
+- concepts/mesh-graph-nets — 6 papers tagged mesh-graph-nets (pfaff-2021-meshgraphnets, libao-2023-meshgraphnetsrp, fortunato-2022-multiscale-mgn, grigorev-2023-hood, ranjan-2018-coma, li-2022-ncloth) with no dedicated concept page
+- concepts/muscles — 6 papers tagged muscles with no dedicated concept page
+
+**No broken wikilinks detected.**
+**No contradictions detected.**
+
+## [2026-04-07] concept | mesh-graph-nets
+
+Created wiki/concepts/mesh-graph-nets.md.
+Covers: flat MGN, hierarchical/multi-scale variants, production-mesh focus, architectural precursor (CoMA).
+Links 6 papers: pfaff-2021-meshgraphnets, fortunato-2022-multiscale-mgn, grigorev-2023-hood, libao-2023-meshgraphnetsrp, li-2022-ncloth, ranjan-2018-coma.
+Updated index.md (22 concepts total).
+
+## [2026-04-07] concept | facial-blendshape-rigs + nonlinear-face-models
+
+Created two concept pages covering 24 facial rigging and nonlinear face model papers:
+
+**wiki/concepts/facial-blendshape-rigs.md**
+Covers: muscle-based systems (PDI ANTZ, Animatomy), linear FACS rigs (Lewis STAR, DWA, Pixar IO2), PSD correctives, physics-enriched rigs (Bradley), baked rigs (FaceBaker), empirical controls (jaw rig), performance capture & rig inversion (JTDP03, Bermano, FACEIT).
+Links 13 papers.
+
+**wiki/concepts/nonlinear-face-models.md**
+Covers: mesh autoencoders (CoMA, Compositional VAE, Mesh VAE+RIMD), CNN encoder-decoder (Nonlinear 3DMM), implicit neural (ImFace, ImFace++), neural detail on FLAME (DECA), diffusion appearance (DiffusionRig), neural blend shapes (Li 2021), cross-identity retargeting (sol-2025), neural auto-rigging (NFR, Hou, RigAnyFace, CANRIG).
+Links 15 papers.
+
+Updated index.md (24 concepts total).
+
+## [2026-04-07] ingest | 14 nonlinear face model papers (neural search + retrieve)
+
+Searched for and downloaded 14 recent papers on nonlinear facial rigging techniques not previously indexed:
+
+**FLAME reconstruction lineage (MPI-IS):**
+- EMOCA: Emotion Driven Monocular Face Capture and Animation (Danecek, Black, Bolkart — CVPR 2022)
+- MICA: Towards Metrical Reconstruction of Human Faces (Zielonka, Bolkart, Thies — ECCV 2022)
+- SMIRK: 3D Facial Expressions through Analysis-by-Neural-Synthesis (Retsinas et al. — CVPR 2024)
+
+**Neural parametric head models (TUM/Nießner group):**
+- NPHM: Learning Neural Parametric Head Models (Giebenhain et al. — CVPR 2023)
+- HeadCraft: Modeling High-Detail Shape Variations for Animated 3DMMs (Sevastopolsky et al. — 3DV 2025)
+
+**3D Gaussian avatar lineage:**
+- GaussianAvatars: Photorealistic Head Avatars with Rigged 3D Gaussians (Qian et al. — CVPR 2024)
+- 3D Gaussian Blendshapes for Head Avatar Animation (Ma et al. — SIGGRAPH 2024)
+- NPGA: Neural Parametric Gaussian Avatars (Giebenhain et al. — SIGGRAPH Asia 2024)
+
+**Rig generation from video:**
+- High-Quality Mesh Blendshape Generation from Face Videos via Neural Inverse Rendering (Ming et al. — ECCV 2024)
+
+**Diffusion-based shape models:**
+- ShapeFusion: A 3D Diffusion Model for Localized Shape Editing (Potamias et al. — ECCV 2024)
+- 4D Facial Expression Diffusion Model (Zou et al. — ACM TOMM 2024)
+
+**NeRF-based face models:**
+- MoFaNeRF: Morphable Facial Neural Radiance Field (Zhuang et al. — ECCV 2022)
+- NOFA: NeRF-based One-shot Facial Avatar Reconstruction (Yu et al. — SIGGRAPH 2023)
+
+**Retargeting:**
+- FreeAvatar: Robust 3D Facial Animation Transfer by Learning an Expression Foundation Model (Qiu et al. — SIGGRAPH Asia 2024)
+
+New authors: niessner-matthias (TUM), bolkart-timo (MPI-IS).
+All 14 PDFs downloaded to raw/papers/.
+Updated: index.md (113 papers, 34 authors), nonlinear-face-models concept page (to be updated separately).
+
+## [2026-04-07] lint | Concept update + full lint pass
+
+**Concept pages updated:**
+- nonlinear-face-models.md — major expansion: added FLAME reconstruction lineage (EMOCA, MICA, SMIRK), NPHM/HeadCraft implicit SDF cluster, NeRF-based face models (MoFaNeRF, NOFA), 3DGS avatar cluster (GaussianAvatars, 3D Gaussian Blendshapes, NPGA), diffusion models (ShapeFusion, 4D Expression Diffusion), retargeting (FreeAvatar); representation evolution table; updated connections
+- facial-blendshape-rigs.md — added: performance capture section extended (EMOCA, MICA, SMIRK); new "Rig Generation from Video" section (ming-2024); new "Retargeting" section (sol-2025, FreeAvatar)
+- auto-rigging.md — added ming-2024-mesh-blendshapes
+- digital-human-appearance.md — added neural geometry papers (DECA, EMOCA) and neural avatar rendering section (GaussianAvatars, Gaussian Blendshapes, NPGA, MoFaNeRF, NOFA, DiffusionRig)
+
+**Orphan authors resolved:**
+- aberman-kfir — added [[authors/aberman-kfir]] to li-2021-neural-blend-shapes
+- bolkart-timo — added [[authors/bolkart-timo]] to danecek-2022-emoca, zielonka-2022-mica, retsinas-2024-smirk
+
+**Missing technique file created:**
+- techniques/bandage-smoothing-vex.md — bi-Laplacian bandage smoothing; two-pass Gauss-Seidel + cotangent variant; HDA setup
+
+**Lint results:**
+- 0 broken wikilinks
+- 0 orphan author pages
+- 0 index/filesystem mismatches
+- Missing concept pages suggested: `muscles` (14 papers tagged, no page)
+- Index footer corrected: 113 papers, 24 concepts, 34 authors, 3 techniques
+
+Health: CLEAN
+
+## [2026-04-07] concept | muscles
+
+Created wiki/concepts/muscles.md.
+Covers: facial muscle systems as rig controls (PDI ANTZ, DWA, Animatomy, jaw rig, Fabrig), full musculoskeletal simulation (Murai), soft tissue FEM (Smith Neo-Hookean, McAdams, Kim course, Projective Dynamics), physics-enriched rigs (Coros, Hahn rig-space physics, Bradley blendshape+FEM), neural surrogates (MeshGraphNets).
+Links 14 papers. Includes Animatomy strain formula, flesh simulation material model comparison table, rig-space physics description.
+Updated index.md (25 concepts total).

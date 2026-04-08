@@ -66,6 +66,7 @@ where $U_k^j$ is the per-joint scalar weight for blend shape $k$, predicted by a
 - [[concepts/linear-blend-skinning]] — the LBS base deformation on which correctives are applied
 - [[concepts/pose-space-deformation]] — this is the automated, neural version of PSD
 - [[authors/sorkine-olga]]
+- [[authors/aberman-kfir]]
 
 ## Implementation Notes
 The forward pass at runtime:

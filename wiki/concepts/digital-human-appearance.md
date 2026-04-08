@@ -18,7 +18,18 @@ Learn a generative distribution over appearance from captured datasets. Enable s
 
 ### Neural Geometry
 Learned non-linear face shape representations (VAE, PCA) replacing linear blendshape bases for per-subject reconstruction and parameterization.
-- Key paper: [[papers/bagautdinov-2018-facial-cvae]] — compositional VAE for face geometry
+- [[papers/bagautdinov-2018-facial-cvae]] — compositional VAE for face geometry
+- [[papers/feng-2021-deca]] — FLAME + per-identity neural displacement; wrinkles conditioned on expression; in-the-wild images
+- [[papers/danecek-2022-emoca]] — emotion-faithful FLAME reconstruction from monocular video
+
+### Neural Avatar Rendering (3DGS / NeRF)
+Real-time photorealistic rendering of parametrically controlled face avatars using neural representations.
+- [[papers/qian-2024-gaussian-avatars]] — 3DGS bound to FLAME triangles; rig-driven real-time rendering
+- [[papers/ma-2024-gaussian-blendshapes]] — Gaussian blendshape bases; ~370 fps; high-frequency detail beyond mesh rigs
+- [[papers/giebenhain-2024-npga]] — NPHM-conditioned Gaussian avatars; +2.6 dB PSNR over prior methods
+- [[papers/zhuang-2022-mofanerf]] — morphable NeRF face model; shape/expression/appearance in one MLP
+- [[papers/yu-2023-nofa]] — one-shot NeRF avatar from single image via EG3D GAN inversion
+- [[papers/ding-2023-diffusionrig]] — diffusion model conditioned on FLAME rig for personalized appearance editing
 
 ### Rendering Integration
 Multi-modal maps (albedo, specular, displacement, normals) consumed by standard rendering pipelines (path tracing, RSL/OSL shaders). Displacement maps tiled for skin pore detail.
