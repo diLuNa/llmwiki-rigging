@@ -304,4 +304,4 @@ Full index with algorithm tables: [[vex/index]]
 
 ---
 
-*Last updated: 2026-04-09 — Sorted papers by tag. Wiki: 150 paper pages, 25 concepts, 47 authors, 4 techniques, 46 VEX snippets, 5 Python snippets.*
+*Last updated: 2026-04-09 — Sorted papers by tag. Wiki: 150 paper pages, 25 concepts, 50 authors, 4 techniques, 46 VEX snippets, 5 Python snippets.*

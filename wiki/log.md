@@ -505,3 +505,18 @@ Created wiki/python/forearm_partial_twist.py — NumPy module with:
 - Runnable __main__ demo (90° pronation test; verifies ~30°/60° fractional twists)
 
 Updated: python/index.md (4 → 5 modules, 13 → 17 functions), vex/index.md (technique cross-link added), index.md (3 → 4 techniques, 4 → 5 Python snippets).
+
+## [2026-04-09] lint | Wiki lint pass
+
+**Fixed:**
+- `papers/chan-2022-eg3d.md` line 39: `[[papers/nguyen-2023-next3d]]` → `[[papers/sun-2023-next3d]]` (wrong author in slug; paper is by Sun et al. CVPR 2023)
+- `wiki/index.md` footer: author count 47 → 50 (three authors added in muscle-batch ingest were not counted)
+
+**No issues:**
+- 0 broken wikilinks remaining (1 fixed above)
+- 0 orphan pages — all 150 papers, 25 concepts, 50 authors, 4 techniques referenced from index or cross-links
+- 0 index/filesystem mismatches — 150 paper files, 25 concepts, 50 authors, 4 techniques all match index table
+- 0 concept pages missing — all tags in use have dedicated pages
+- 0 technique pages missing — forearm-partial-twist.md added this session
+
+Health: CLEAN

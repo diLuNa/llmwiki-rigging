@@ -36,7 +36,7 @@ Prior 3D-aware GANs use either implicit representations (slow, poor geometry) or
 ## Connections
 - [[concepts/nonlinear-face-models]] — EG3D defines the generative 3D face representation most neural avatars build on
 - [[papers/yu-2023-nofa]] — NOFA uses EG3D as its generative prior for one-shot avatar reconstruction
-- [[papers/nguyen-2023-next3d]] — Next3D builds Generative Texture-Rasterized Tri-planes on top of EG3D
+- [[papers/sun-2023-next3d]] — Next3D builds Generative Texture-Rasterized Tri-planes on top of EG3D
 - [[papers/giebenhain-2024-npga]] — NPGA references tri-plane representations; EG3D is the lineage
 
 ## Implementation Notes
