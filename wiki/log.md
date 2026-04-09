@@ -431,6 +431,36 @@ Covers: facial muscle systems as rig controls (PDI ANTZ, DWA, Animatomy, jaw rig
 Links 14 papers. Includes Animatomy strain formula, flesh simulation material model comparison table, rig-space physics description.
 Updated index.md (25 concepts total).
 
+## [2026-04-09] query | MetaHuman rig internal architecture
+
+Researched MetaHuman Creator facial rig technical internals. Created wiki/papers/epic-2021-metahuman-rig.md and wiki/queries/metahuman-rig-internals.md.
+
+Key findings: DNA four-layer format (Descriptor/Definition/Behavior/Geometry); RigLogic y=Kx linear evaluation with dense block-partitioned joint groups (~6× vs sparse CRS); ~200 FACS controls → 258–669 blendshapes + 397–713 joints; 1,000+ PSD/RBF corrective shapes; 8 head LODs; identical evaluation in Maya + UE via RigLogicModule. Open-sourced DNA Calibration library Nov 2022.
+
+Updated: concepts/facial-blendshape-rigs (new "Production Real-Time Rigs" subsection), index.md (150 papers).
+
+## [2026-04-09] ingest | Muscle-Based Face Systems — 21-paper batch
+
+Created 21 wiki paper pages covering the muscle-based facial animation and physics face simulation literature:
+
+**Foundational (1987–1995):** waters-1987-muscle-model, terzopoulos-1990-physically-based-face, terzopoulos-1993-facial-analysis, lee-1995-realistic-face-modeling
+
+**ILM/Fedkiw FEM Pipeline (2005–2019):** teran-2005-quasistatic-flesh, sifakis-2005-anatomy-muscles, sifakis-2006-speech-muscle, cong-2015-anatomy-pipeline, cong-2016-art-directed-blendshapes, cong-2017-kong-muscle-talk, bao-2019-face-capture-muscles
+
+**EPFL Physics Face Models (2017–2019):** ichim-2017-phace, kadlecek-2019-physics-face-data
+
+**Disney Research Zürich Cluster (2020–2024):** zoss-2020-secondary-dynamics-capture, yang-2023-implicit-physical-face, yang-2024-generalized-physical-face, chandran-2024-anatomically-constrained-face
+
+**Realtime & Neural Physics (2021–2024):** zeng-2021-neuromuscular-face, wagner-2023-softdeca, park-2024-realtime-face-sim-superres
+
+**DWA Production (2017):** lan-2017-digipro
+
+Created 13 new author pages: waters-keith, terzopoulos-demetri, fedkiw-ronald, teran-joseph, cong-matthew, bao-michael, ichim-alexandru, pauly-mark, kadlecek-petr, yang-lingchen, chandran-prashanth, zoss-gaspard, wagner-nicolas, zeng-xiao, park-hyojoon, lan-lana.
+
+Massively expanded concepts/muscles.md to include all 21 new papers with full taxonomy (foundational → production → ILM pipeline → EPFL → Disney Research → realtime).
+
+Updated index.md: 128 → 149 paper pages, 34 → 47 authors. Re-sorted papers table by tag.
+
 ## [2026-04-08] ingest | Neural Face Skinning for Mesh-agnostic Facial Expression Cloning (Cha et al., EG 2025)
 
 Ingested 2505.22416.pdf. Created wiki/papers/cha-2025-neural-face-skinning.md.

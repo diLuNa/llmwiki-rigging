@@ -52,7 +52,10 @@
       "WebFetch(domain:archive.org)",
       "WebFetch(domain:www.unrealengine.com)",
       "WebFetch(domain:dev.epicgames.com)",
-      "WebFetch(domain:docs.polyhammer.com)"
+      "WebFetch(domain:docs.polyhammer.com)",
+      "Bash(git checkout:*)",
+      "WebFetch(domain:80.lv)",
+      "WebFetch(domain:www.metahuman.com)"
     ]
   }
 }

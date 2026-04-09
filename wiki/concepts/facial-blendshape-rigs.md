@@ -33,6 +33,10 @@ Corrective blendshapes that activate as nonlinear functions of pose, fixing inte
 FEM or material simulation layered on top of a kinematic blendshape target. The blendshape rig sets the *goal*; physics drives the actual mesh toward it with volume preservation, inertia, damping.
 - [[papers/bradley-2017-blendshape-physics]] — co-rotational FEM on blendshape target; physically plausible soft-tissue jiggle
 
+### Production Real-Time Rigs (DNA + RigLogic)
+Cross-DCC, LOD-scalable facial rigs encoded in a portable data format and evaluated by a fast linear engine. The canonical example is MetaHuman.
+- [[papers/epic-2021-metahuman-rig]] — MetaHuman Creator (Epic/3Lateral); DNA four-layer format; RigLogic $\mathbf{y} = K\mathbf{x}$ evaluation; ~200 controls → 258–669 blendshapes + 397–713 joints; dense block-partitioned joint groups (~6× SIMD speedup over sparse CRS); 8 LOD levels; identical evaluation in Maya + UE
+
 ### Baked / Approximated Rigs
 Complex procedural rigs (simulation, layered PSD networks) approximated by a lighter ML-based model for portability and real-time evaluation.
 - [[papers/radzihovsky-2020-facebaker]] — Pixar FaceBaker; ML baking of facial rig deformations to compact representation

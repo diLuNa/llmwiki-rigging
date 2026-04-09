@@ -27,6 +27,8 @@ Master catalog of all pages. Updated on every ingest.
 | [[papers/bermano-2013-facial-performance]] | Facial Performance Enhancement Using Dynamic Shape Space Analysis | ACM TOG 2013 | `blendshapes` `facial-capture` `digital-human` |
 | [[papers/choi-2022-animatomy]] | Animatomy: Anatomy-inspired facial rig system | SIGGRAPH Asia 2022 | `blendshapes` `muscles` `rig-generation` |
 | [[papers/pdi-1998-facial-antz]] | The PDI Facial Animation System for ANTZ | SIGGRAPH Sketches 1998 | `blendshapes` `muscles` `rig-generation` |
+| [[papers/epic-2021-metahuman-rig]] | MetaHuman Creator: Face Rig Architecture (RigLogic + DNA) | GDC 2021 / Epic Docs | `blendshapes` `rig-generation` `digital-human` `facial-capture` `real-time` |
+| [[papers/cong-2016-art-directed-blendshapes]] | Art-Directed Muscle Simulation for Film Characters | SIGGRAPH 2016 | `blendshapes` `simulation` `muscles` `digital-human` `rig-generation` |
 | [[papers/zhu-2024-fabrig]] | Fabrig: Cloth-Simulated Transferable 3D Face Parameterization | ACM 2024 | `blendshapes` `simulation` `muscles` |
 | [[papers/chen-2022-go-green]] | Go Green: General Regularized Green's Functions | SIGGRAPH 2022 | `cage-deformation` `elasticity` |
 | [[papers/chen-2023-somigliana]] | Somigliana Coordinates | SIGGRAPH 2023 | `cage-deformation` `math` |
@@ -50,6 +52,22 @@ Master catalog of all pages. Updated on every ingest.
 | [[papers/jain-2010-hand-secondary]] | Augmenting Hand Animation with Three-Dimensional Secondary Motion | SCA 2010 | `hand-animation` `simulation` `secondary-motion` |
 | [[papers/degoes-2020-discrete-ops]] | Discrete Differential Operators on Polygonal Meshes | SIGGRAPH 2020 | `math` `laplacian` |
 | [[papers/degoes-2019-mesh-wrap]] | Mesh Wrap based on Affine-Invariant Coordinates | SIGGRAPH Talks 2019 | `mesh-wrap` `deformation` |
+| [[papers/waters-1987-muscle-model]] | A Muscle Model for Animating Three-Dimensional Facial Expression | SIGGRAPH 1987 | `muscles` `blendshapes` `digital-human` `rig-generation` |
+| [[papers/terzopoulos-1993-facial-analysis]] | Analysis and Synthesis of Facial Image Sequences Using Physical and Anatomical Models | IEEE TPAMI 1993 | `muscles` `digital-human` `facial-capture` |
+| [[papers/lee-1995-realistic-face-modeling]] | Realistic Modeling for Facial Animation | SIGGRAPH 1995 | `muscles` `digital-human` `simulation` |
+| [[papers/bao-2019-face-capture-muscles]] | High-Fidelity Facial Capture Using Anatomical Muscles | CVPR 2019 | `muscles` `facial-capture` `simulation` `digital-human` |
+| [[papers/sifakis-2005-anatomy-muscles]] | Automatic Determination of Facial Muscle Activations from Sparse Motion Capture Marker Data | SIGGRAPH 2005 | `muscles` `facial-capture` `simulation` `digital-human` |
+| [[papers/cong-2017-kong-muscle-talk]] | Muscle Simulation for Film Characters: Deploying the System for King Kong | SIGGRAPH Talks 2017 | `muscles` `simulation` `blendshapes` `digital-human` |
+| [[papers/lan-2017-digipro]] | Physics-Based Facial Animation at DreamWorks Animation | DigiPro 2017 | `muscles` `simulation` `blendshapes` `digital-human` |
+| [[papers/chandran-2024-anatomically-constrained-face]] | Anatomically-Constrained Implicit Face Models | SIGGRAPH 2024 | `muscles` `simulation` `digital-human` `neural` `implicit-surfaces` |
+| [[papers/cong-2015-anatomy-pipeline]] | Fully Automatic Generation of Anatomical Face Simulation Models | SIGGRAPH 2015 | `muscles` `simulation` `digital-human` `rig-generation` |
+| [[papers/ichim-2017-phace]] | Phace: Physics-Based Face Modeling and Animation | SIGGRAPH 2017 | `muscles` `simulation` `digital-human` `facial-capture` |
+| [[papers/kadlecek-2019-physics-face-data]] | Reconstructing Personalized Anatomical Models for Physics-Based Body Animation | PACMCGIT 2019 | `muscles` `simulation` `digital-human` `facial-capture` |
+| [[papers/terzopoulos-1990-physically-based-face]] | Physically-Based Facial Modelling, Analysis, and Animation | JVCA 1990 | `muscles` `simulation` `digital-human` |
+| [[papers/yang-2023-implicit-physical-face]] | Implicit Physical Face Model | SIGGRAPH 2023 | `muscles` `simulation` `digital-human` `neural` |
+| [[papers/yang-2024-generalized-physical-face]] | Generalized Implicit Physical Face Model | SIGGRAPH 2024 | `muscles` `simulation` `digital-human` `neural` |
+| [[papers/zeng-2021-neuromuscular-face]] | Neuromuscular Control of the Face | SIGGRAPH 2021 | `muscles` `simulation` `digital-human` `neural` |
+| [[papers/sifakis-2006-speech-muscle]] | Simulating the Musculotendon Mechanics of the Human Tongue | SIGGRAPH 2006 | `muscles` `simulation` `speech-driven-animation` `digital-human` |
 | [[papers/bagautdinov-2018-facial-cvae]] | Modeling Facial Geometry using Compositional VAEs | CVPR 2018 | `neural` `blendshapes` `digital-human` |
 | [[papers/cha-2025-neural-face-skinning]] | Neural Face Skinning for Mesh-agnostic Facial Expression Cloning | Eurographics 2025 | `neural` `blendshapes` `rig-generation` `skinning` `digital-human` `auto-rigging` |
 | [[papers/ming-2024-mesh-blendshapes]] | High-Quality Mesh Blendshape Generation from Face Videos via Neural Inverse Rendering | ECCV 2024 | `neural` `blendshapes` `rig-generation` `facial-capture` |
@@ -109,10 +127,14 @@ Master catalog of all pages. Updated on every ingest.
 | [[papers/hahn-2014-subspace-cloth]] | Subspace Clothing Simulation Using Adaptive Bases | SIGGRAPH 2014 | `simulation` `correctives` |
 | [[papers/james-2020-phong-deformation]] | Phong Deformation | SIGGRAPH 2020 | `simulation` `deformation` |
 | [[papers/olmos-2025-cloth-draping]] | Directing Cloth Draping through Blended UVs | SIGGRAPH Talks 2025 | `simulation` `deformation` |
+| [[papers/park-2024-realtime-face-sim-superres]] | Real-Time Physics-Based Facial Animation via Super-Resolution | SIGGRAPH 2024 | `simulation` `digital-human` `blendshapes` `neural` `real-time` |
+| [[papers/wagner-2023-softdeca]] | SoftDECA: Soft Physics for Facial Animation | SIGGRAPH 2023 | `simulation` `digital-human` `blendshapes` `neural` `facial-capture` |
+| [[papers/zoss-2020-secondary-dynamics-capture]] | Empirical Capture of Secondary Dynamics from Single-View Video | SIGGRAPH 2020 | `simulation` `facial-capture` `digital-human` `secondary-motion` |
 | [[papers/iben-2019-hair-shape]] | Holding the Shape in Hair Simulation | SIGGRAPH Talks 2019 | `simulation` `hair` |
 | [[papers/degoes-2020-garment-refit]] | Garment Refitting for Digital Characters | SIGGRAPH Talks 2020 | `simulation` `mesh-wrap` |
 | [[papers/murai-2016-musculoskeletal-skin]] | Dynamic Skin Deformation Simulation Using Musculoskeletal Model | Pacific Graphics 2016 | `simulation` `muscles` `skinning` |
 | [[papers/smith-2018-neo-hookean]] | Stable Neo-Hookean Flesh Simulation | SIGGRAPH 2018 | `simulation` `muscles` `volumes` |
+| [[papers/teran-2005-quasistatic-flesh]] | Robust Quasistatic Finite Elements and Flesh Simulation | SCA 2005 | `simulation` `muscles` `volumes` |
 | [[papers/kim-2022-dynamic-deformables]] | Dynamic Deformables (course) | SIGGRAPH Course 2022 | `simulation` `muscles` |
 | [[papers/bertiche-2022-neural-cloth-sim]] | Neural Cloth Simulation | ACM TOG (SIGGRAPH Asia 2022) | `simulation` `neural` `cloth` `secondary-motion` |
 | [[papers/li-2022-ncloth]] | N-Cloth: Predicting 3D Cloth Deformation with Mesh-Based Networks | Eurographics 2022 | `simulation` `neural` `cloth` `skinning` |
@@ -145,6 +167,7 @@ Master catalog of all pages. Updated on every ingest.
 | [[papers/taylor-2017-speech-animation]] | A Deep Learning Approach for Generalized Speech Animation | SIGGRAPH 2017 | `speech-driven-animation` `neural` `blendshapes` |
 | [[papers/xing-2023-codetalker]] | CodeTalker: Speech-Driven 3D Facial Animation with Discrete Motion Prior | CVPR 2023 | `speech-driven-animation` `neural` `blendshapes` `digital-human` |
 | [[papers/medina-2022-tongue-animation]] | Speech Driven Tongue Animation | CVPR 2022 | `speech-driven-animation` `neural` `digital-human` |
+
 ---
 
 ## Concepts
@@ -246,6 +269,22 @@ Full index with algorithm tables: [[vex/index]]
 | [[authors/saito-jun]] | Adobe Research |
 | [[authors/niessner-matthias]] | Technical University of Munich |
 | [[authors/bolkart-timo]] | Max Planck Institute for Intelligent Systems |
+| [[authors/waters-keith]] | Xerox PARC / DEC Cambridge Research Lab |
+| [[authors/terzopoulos-demetri]] | NYU / UCLA |
+| [[authors/fedkiw-ronald]] | Stanford University |
+| [[authors/teran-joseph]] | UCLA |
+| [[authors/cong-matthew]] | Industrial Light & Magic / Stanford |
+| [[authors/bao-michael]] | Industrial Light & Magic / Stanford |
+| [[authors/ichim-alexandru]] | EPFL → Disney Research / Meta |
+| [[authors/pauly-mark]] | EPFL |
+| [[authors/kadlecek-petr]] | Czech Technical University / EPFL |
+| [[authors/yang-lingchen]] | Disney Research Zürich |
+| [[authors/chandran-prashanth]] | Disney Research Zürich |
+| [[authors/zoss-gaspard]] | Disney Research Zürich |
+| [[authors/wagner-nicolas]] | EPFL / Disney Research Zürich |
+| [[authors/zeng-xiao]] | University of Edinburgh / Tencent AI Lab |
+| [[authors/park-hyojoon]] | KAIST |
+| [[authors/lan-lana]] | DreamWorks Animation |
 
 ---
 
@@ -264,4 +303,4 @@ Full index with algorithm tables: [[vex/index]]
 
 ---
 
-*Last updated: 2026-04-08 — Sorted papers by tag. Wiki: 128 paper pages, 25 concepts, 34 authors, 3 techniques, 39 VEX snippets, 4 Python snippets.*
+*Last updated: 2026-04-09 — Sorted papers by tag. Wiki: 150 paper pages, 25 concepts, 47 authors, 3 techniques, 39 VEX snippets, 4 Python snippets.*
