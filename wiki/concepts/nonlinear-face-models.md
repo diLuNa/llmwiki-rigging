@@ -51,12 +51,30 @@ Represent face geometry as a continuous signed distance field rather than a fixe
 - [[papers/zheng-2022-imface]] **(ImFace, CVPR 2022)** — SDF with separate identity deformation field $\phi_\text{id}$ and expression deformation field $\phi_\text{exp}$; disentangled by design; no fixed vertex count
 - [[papers/zheng-2023-imface-pp]] **(ImFace++, TPAMI 2024)** — RDF (Radial Deformation Field) space; two-stage coarse/fine architecture; adds expression transfer and face editing
 
+### Generative 3D Head GANs
+
+StyleGAN-based methods that learn a 3D-aware generative model of faces, decoupling geometry from appearance via efficient 3D representations.
+
+- [[papers/chan-2022-eg3d]] **(EG3D, CVPR 2022)** — tri-plane hybrid 3D representation; StyleGAN2 backbone; ~30ms/image; foundational architecture for Next3D, NPGA, NOFA downstream
+- [[papers/sun-2023-next3d]] **(Next3D, CVPR 2023)** — Generative Texture-Rasterized Tri-planes atop EG3D; explicit mesh-guided UV texture generation; better geometry + appearance than EG3D
+
 ### NeRF-Based Morphable Face Models
 
 Map shape, expression, and appearance codes plus 3D coordinate/view direction jointly through a neural radiance field.
 
+- [[papers/hong-2022-headnerf]] **(HeadNeRF, CVPR 2022)** — real-time parametric head NeRF; identity + expression + pose + appearance codes; 25ms/frame on single GPU; direct 3DMM analogue in NeRF space
 - [[papers/zhuang-2022-mofanerf]] **(MoFaNeRF, ECCV 2022)** — first morphable NeRF face model; single MLP jointly encodes shape, expression, appearance; supports fitting, generation, rigging, editing, novel-view synthesis
 - [[papers/yu-2023-nofa]] **(NOFA, SIGGRAPH 2023)** — one-shot NeRF avatar via EG3D GAN inversion; single source image; expression driven by FLAME tracker
+
+### Video-Driven Neural Head Avatars
+
+One-shot or monocular-video-driven methods that reconstruct a personalized head avatar, typically combining a coarse geometry model (FLAME/mesh) with a neural appearance component.
+
+- [[papers/khakhulin-2022-rome]] **(ROME, ECCV 2022)** — one-shot mesh+neural-texture avatar; DECA mesh coarse geometry, deformable neural texture for fine appearance; fixed identity from single photo; real-time compatible
+- [[papers/zheng-2023-pointavatar]] **(PointAvatar, CVPR 2023)** — deformable point-based avatar; disentangles albedo from shading via SH illumination model; reconstructs from in-the-wild monocular video
+- [[papers/zielonka-2023-insta]] **(INSTA, CVPR 2023)** — Instant-NGP hash-grid anchored to FLAME mesh surface; <10 min reconstruction from monocular video; real-time rendering via FLAME-guided warping
+- [[papers/bai-2023-monoavatar]] **(MonoAvatar, CVPR 2023)** — UV-space CNN features latent anchored to 3DMM surface normal map; personalized identity-conditioned expression rendering (Google)
+- [[papers/bai-2024-monoavatar-pp]] **(MonoAvatar++, CVPR 2024)** — replaces CNN UV features with hash-table blendshapes; >30fps real-time; dramatically faster inference than MonoAvatar
 
 ### 3D Gaussian Splatting Avatars
 
@@ -65,6 +83,8 @@ Real-time-renderable avatars with rig-compatible expression control via 3D Gauss
 - [[papers/qian-2024-gaussian-avatars]] **(GaussianAvatars, CVPR 2024)** — 3DGS splats bound to FLAME triangle local frames; rig-driven real-time rendering; per-Gaussian offset optimization for fine detail
 - [[papers/ma-2024-gaussian-blendshapes]] **(3D Gaussian Blendshapes, SIGGRAPH 2024)** — explicit Gaussian $\Delta$ bases; $G(\alpha) = G_0 + \sum \alpha_i G_i$; direct 3DGS analogue of mesh blendshapes; ~370 fps
 - [[papers/giebenhain-2024-npga]] **(NPGA, SIGGRAPH Asia 2024)** — NPHM-conditioned Gaussians (richer expression than FLAME); backward-to-forward deformation distillation; +2.6 dB PSNR over prior methods
+- [[papers/xiang-2024-flashavatar]] **(FlashAvatar, CVPR 2024)** — surface-embedded 3DGS bound to parametric mesh; per-splat offset network; 300 fps rendering from monocular video; fastest 3DGS head avatar
+- [[papers/shao-2024-splattingavatar]] **(SplattingAvatar, CVPR 2024)** — barycentric+displacement Gaussian embedding on mesh surface; walking-on-mesh optimization; generalizes to full body + head; fine-grained deformation control
 
 ### Diffusion-Based Shape Models
 
@@ -97,6 +117,7 @@ End-to-end systems that generate FACS-compatible blendshape rigs for arbitrary m
 | [[papers/hou-2024-neutral-facial-rigging]] | Electronics 2024 | RigGenNet (param → joints) + RigRecogNet (GAN inverse); local constraints on eyes/lips |
 | [[papers/ma-2025-riganyface]] | NeurIPS 2025 | DiffusionNet + 2D optical flow supervision on unlabeled meshes; disconnected parts; non-humanoid faces |
 | [[papers/canrig-2026-neural-face-rigging]] | EG 2026 | Cross-attention for spatially variable local/global control influence; per-control attention masks |
+| [[papers/cha-2025-neural-face-skinning]] | EG 2025 | Skinning-weight prediction via FACS segmentation supervision; topology-agnostic; handles stylized non-human characters |
 
 ## Key Concepts
 
@@ -112,7 +133,9 @@ End-to-end systems that generate FACS-compatible blendshape rigs for arbitrary m
 |-----|---------------|-----------|-------------------|
 | Pre-2018 | Mesh PCA (FLAME, Basel) | Rasterizer | Linear weights |
 | 2018–2021 | GCN / VAE on mesh | Diff. rasterizer | Latent code |
-| 2021–2022 | SDF / NeRF | Volume render | Latent code |
+| 2021–2022 | SDF / NeRF / Hash-grid | Volume render | Latent code |
+| 2022–2023 | GAN tri-plane (EG3D, Next3D) | Rasterize + render | StyleGAN latent |
+| 2022–2024 | Video-driven mesh+neural-texture | Neural rasterizer | FLAME params |
 | 2023–2024 | 3DGS bound to FLAME/NPHM | Gaussian splat | Rig params |
 | 2024– | Diffusion over mesh/latent | — | Masked / conditioned |
 
@@ -132,5 +155,6 @@ End-to-end systems that generate FACS-compatible blendshape rigs for arbitrary m
 - [[concepts/digital-human-appearance]] — DiffusionRig and DECA both model photorealistic appearance on top of face geometry; GaussianAvatars and NPGA handle rendering
 - [[concepts/mesh-graph-nets]] — CoMA shares the spectral GCN architecture with MeshGraphNets
 - [[concepts/pose-space-deformation]] — nonlinear neural blend shapes are the automated, data-driven version of PSD
-- [[concepts/speech-driven-animation]] — 4D expression diffusion is applicable to audio-conditioned expression sequence generation
+- [[concepts/speech-driven-animation]] — 3DMM output from FaceFormer/DiffPoseTalk drives nonlinear face models; 4D expression diffusion applicable to audio-conditioned generation
 - [[concepts/implicit-surfaces]] — NPHM, ImFace, MoFaNeRF use SDF/implicit representations
+- [[concepts/linear-blend-skinning]] — Neural Face Skinning uses skinning weights as the rig representation for expression cloning

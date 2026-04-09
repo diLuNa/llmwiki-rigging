@@ -135,7 +135,7 @@ When told to ingest a source:
 4. Create or update any `wiki/concepts/` pages referenced.
 5. Create or update `wiki/authors/` pages for key authors.
 6. Update `wiki/overview.md` if the paper shifts the synthesis.
-7. Update `wiki/index.md` — add all new/updated pages.
+7. Update `wiki/index.md` — add all new/updated pages and sort them by Tags.
 8. Append to `wiki/log.md`: `## [YYYY-MM-DD] ingest | Paper Title`.
 9. Report what was touched.
 
@@ -206,6 +206,7 @@ When asked to python:
 - **Math**: use LaTeX fences ` ```math ` for display math, `$...$` for inline.
 - **Figures**: reference as `![[raw/assets/filename.png]]`.
 - **Always update index.md and log.md** on any ingest or major edit.
+- Sort the papers listed in index.md by Tags
 
 ---
 

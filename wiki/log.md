@@ -430,3 +430,9 @@ Created wiki/concepts/muscles.md.
 Covers: facial muscle systems as rig controls (PDI ANTZ, DWA, Animatomy, jaw rig, Fabrig), full musculoskeletal simulation (Murai), soft tissue FEM (Smith Neo-Hookean, McAdams, Kim course, Projective Dynamics), physics-enriched rigs (Coros, Hahn rig-space physics, Bradley blendshape+FEM), neural surrogates (MeshGraphNets).
 Links 14 papers. Includes Animatomy strain formula, flesh simulation material model comparison table, rig-space physics description.
 Updated index.md (25 concepts total).
+
+## [2026-04-08] ingest | Neural Face Skinning for Mesh-agnostic Facial Expression Cloning (Cha et al., EG 2025)
+
+Ingested 2505.22416.pdf. Created wiki/papers/cha-2025-neural-face-skinning.md.
+Key contribution: topology-agnostic FACS-compatible skinning weight prediction via indirect FACS segmentation supervision; global latent deformation + local skinning decoder; handles highly stylized non-human characters.
+Updated: concepts/nonlinear-face-models (added to Neural Facial Auto-Rigging table and Connections), concepts/auto-rigging (added to Key Papers), concepts/speech-driven-animation (added topology lock-in note + cross-link). New concept connections: linear-blend-skinning, blendshapes, sol-2025, riganyface.
