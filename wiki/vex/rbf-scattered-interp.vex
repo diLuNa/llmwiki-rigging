@@ -1,0 +1,139 @@
+// ============================================================
+// rbf-scattered-interp.vex
+// 3D Scattered Data Interpolation via RBF
+//
+// Sources:
+//   General RBF scattered interpolation (Buhmann 2003, Hardy 1971)
+//   Applied in: muscle influence zones (Waters 1987), PSD, expression retargeting (sol-2025)
+//   Related: Kelvinlets use fundamental solutions of elasticity (not RBF but same scattering idea)
+//
+// Use case: given N scattered 3D control points (each with a known function value),
+// interpolate the function value at any query 3D position.
+//
+// Examples:
+//   - Waters 1987 muscle influence: f(p) = activation × linear falloff from muscle origin
+//   - Spatial blending of rig controls (regional influence maps)
+//   - Expression space retargeting (sol-2025 §4: f: R^M_src → R^M_tgt)
+//   - Paint-mask generation from sparse brush strokes
+//
+// Run on QUERY MESH (surface you want to evaluate on).
+// Input 0: query mesh
+// Input 1: scattered data geometry (one point per data site, with "data_val" float[K])
+//
+// Outputs: "rbf_interp" float[K] per query point
+// ============================================================
+
+// ------------------------------------------------------------------
+// USER PARAMS (detail attrs)
+// ------------------------------------------------------------------
+float eps    = detail(0, "rbf_eps", 1.0);   // shape param (Gaussian) or support radius (Wendland)
+int   kern   = detail(0, "rbf_kernel", 0);  // 0=Gaussian, 2=InvMQ, 5=Cubic, 6=Wendland
+int   norm   = detail(0, "rbf_normalize", 0); // 1 = Shepard-style normalization
+int   K      = detail(0, "rbf_K", 1);       // output dimension
+
+// ------------------------------------------------------------------
+// READ SCATTERED DATA SITES
+// ------------------------------------------------------------------
+int N_sites = npoints(1);   // number of data sites
+
+// Pre-read all site positions and values
+// (For large N, cache as detail arrays instead)
+float site_vals[];
+resize(site_vals, N_sites * K);
+for (int i = 0; i < N_sites; i++) {
+    vector spos = point(1, "P", i);
+    float sval[] = point(1, "data_val", i);
+    for (int k = 0; k < K; k++)
+        site_vals[i * K + k] = sval[k];
+}
+
+// RBF coefficients — must be pre-solved (offline via rbf-gram-matrix.vex + Python)
+// and stored as detail "rbf_lambdas" float[N_sites * K] on input 1
+float lambdas[] = detail(1, "rbf_lambdas");
+int has_lambdas = (len(lambdas) == N_sites * K) ? 1 : 0;
+
+// ------------------------------------------------------------------
+// EVALUATE AT CURRENT QUERY POINT @P
+// ------------------------------------------------------------------
+float out[];
+resize(out, K);
+for (int k = 0; k < K; k++) out[k] = 0.0;
+
+float phi_sum = 0.0;
+
+for (int i = 0; i < N_sites; i++) {
+    vector spos = point(1, "P", i);
+    float r = distance(@P, spos);
+    float dist2 = r * r;
+
+    float phi = 0.0;
+    if      (kern == 0) phi = exp(-(eps*eps)*dist2);
+    else if (kern == 2) phi = 1.0 / sqrt(1.0 + (eps*eps)*dist2);
+    else if (kern == 4) phi = r;
+    else if (kern == 5) phi = r * r * r;
+    else if (kern == 6) {
+        if (r < eps) { float t=r/eps; phi=(1-t)*(1-t)*(1-t)*(1-t)*(4*t+1); }
+    }
+
+    phi_sum += phi;
+
+    for (int k = 0; k < K; k++) {
+        if (has_lambdas) {
+            // Standard RBF: f(x) = Σ λ_i φ(||x - x_i||)
+            out[k] += lambdas[i * K + k] * phi;
+        } else {
+            // Shepard's method fallback (no solve needed; K=1 only):
+            // f(x) = Σ φ(||x - x_i||) * v_i / Σ φ(||x - x_i||)
+            out[k] += phi * site_vals[i * K + k];
+        }
+    }
+}
+
+// Shepard normalization (weighted average)
+if (norm || !has_lambdas) {
+    if (phi_sum > 1e-10)
+        for (int k = 0; k < K; k++) out[k] /= phi_sum;
+}
+
+setpointattrib(0, "rbf_interp", @ptnum, out);
+
+// ------------------------------------------------------------------
+// WATERS 1987 MUSCLE INFLUENCE ZONE (specialized instance)
+//
+// Waters defines two influence types as position-space falloffs
+// equivalent to compact-support RBF evaluations:
+//
+// Linear muscle influence (§2, Eq. 1):
+//   φ(p) = activation * max(0, 1 - dist(p, origin) / d_max)
+// where d_max = muscle radius of influence.
+// This is equivalent to a compactly-supported linear RBF centered at the muscle origin,
+// scaled by activation. NOT in rbf-kernels.vex because it's not positive-definite —
+// it's a simple falloff, not an interpolant.
+//
+// VEX for Waters linear muscle (per-vertex, run directly):
+//
+//   vector origin = detail(0, "muscle_origin");
+//   vector insertion = detail(0, "muscle_insertion");
+//   float activation = detail(0, "muscle_activation");  // [0,1]
+//   float d_max = detail(0, "muscle_radius");
+//   float r = distance(@P, origin);
+//   float w = max(0.0, 1.0 - r / d_max);   // linear falloff
+//   vector pull_dir = normalize(insertion - origin);
+//   @P += w * activation * pull_dir * detail(0, "muscle_scale");
+//
+// Waters sphincter muscle (§2, Eq. 2):
+//   Influence zone is a torus (ring) at radius R from center c.
+//   φ(p) = activation * max(0, 1 - |dist(p,ring) - 0| / d_width)
+//   where dist(p,ring) = | dist(p,c) - R |  (distance from ring circle)
+//
+//   vector c = detail(0, "sphincter_center");
+//   float R = detail(0, "sphincter_radius");     // ring radius
+//   float w = detail(0, "sphincter_width");      // falloff width
+//   float activation = detail(0, "muscle_activation");
+//   // Project P onto ring plane (assume ring is in XZ plane for simplicity)
+//   vector p_flat = set(@P.x, 0, @P.z);         // project onto ring plane
+//   float d_ring = abs(length(p_flat - set(c.x,0,c.z)) - R);  // dist from ring
+//   float falloff = max(0.0, 1.0 - d_ring / w);
+//   vector radial = normalize(p_flat - set(c.x,0,c.z));        // pull toward center
+//   @P += falloff * activation * (-radial) * detail(0, "muscle_scale");
+// ------------------------------------------------------------------

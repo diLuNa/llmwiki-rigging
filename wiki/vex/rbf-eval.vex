@@ -1,0 +1,108 @@
+// ============================================================
+// rbf-eval.vex
+// Runtime: Evaluate an RBF interpolant f(x) = Σ_i λ_i φ(||x - x_i||)
+//
+// Sources:
+//   Lewis 2000 §2 — runtime RBF evaluation for PSD correctives
+//   Animatomy §5.5 — normalized Gaussian jaw proxy (rbf_normalize = 1)
+//   epic-2021-metahuman-rig — PSD/RBF corrective activation
+//
+// Run on QUERY geometry (current animation state).
+// Each point = one query location in pose/weight space.
+//
+// Requires (set on detail before running):
+//   "rbf_centers"   float[]  — N*D array of center pose vectors, row-major
+//   "rbf_lambdas"   float[]  — N*K array of RBF coefficients, row-major
+//   "rbf_N"         int      — number of RBF centers
+//   "rbf_D"         int      — dimension of pose space
+//   "rbf_K"         int      — dimension of output (e.g. corrective weights)
+//   "rbf_eps"       float    — kernel shape parameter
+//   "rbf_kernel"    int      — 0=Gaussian, 2=InvMQ, 4=Linear, 5=Cubic, 6=Wendland
+//   "rbf_wendland_R" float   — support radius (Wendland only)
+//   "rbf_normalize" int      — 0=standard sum, 1=normalized (Animatomy jaw style)
+//   "query_pose"    float[]  — D-dim query pose vector (per-point or detail)
+//
+// Output:
+//   "rbf_out"       float[]  — K-dim interpolated output values (per-point)
+// ============================================================
+
+int   N     = detail(0, "rbf_N", 0);
+int   D     = detail(0, "rbf_D", 0);
+int   K     = detail(0, "rbf_K", 1);
+float eps   = detail(0, "rbf_eps", 1.0);
+int   kern  = detail(0, "rbf_kernel", 0);
+float wend_R = detail(0, "rbf_wendland_R", 10.0);
+int   norm  = detail(0, "rbf_normalize", 0);
+
+float centers[] = detail(0, "rbf_centers");   // length N*D
+float lambdas[] = detail(0, "rbf_lambdas");   // length N*K
+
+// Query pose — stored per-point (or fall back to detail for single-query setups)
+float qpose[];
+qpose = point(0, "query_pose", @ptnum);
+if (len(qpose) == 0)
+    qpose = detail(0, "query_pose");
+
+// ------------------------------------------------------------------
+// EVALUATE  f(x) = Σ_i λ_i φ(||x - c_i||)
+// ------------------------------------------------------------------
+float out[];
+resize(out, K);
+for (int k = 0; k < K; k++) out[k] = 0.0;
+
+float phi_sum = 0.0;   // for normalized mode
+
+for (int i = 0; i < N; i++) {
+    // Compute ||x - c_i||
+    float dist2 = 0.0;
+    for (int d = 0; d < D; d++) {
+        float dd = qpose[d] - centers[i * D + d];
+        dist2 += dd * dd;
+    }
+    float r = sqrt(dist2);
+
+    // Kernel φ(r)
+    float phi = 0.0;
+    if      (kern == 0) phi = exp(-(eps*eps)*dist2);                       // Gaussian
+    else if (kern == 2) phi = 1.0 / sqrt(1.0 + (eps*eps)*dist2);         // Inv. MQ
+    else if (kern == 4) phi = r;                                           // Linear
+    else if (kern == 5) phi = r * r * r;                                   // Cubic
+    else if (kern == 6) {                                                   // Wendland C2
+        if (r < wend_R) { float t = r/wend_R; phi = (1-t)*(1-t)*(1-t)*(1-t)*(4*t+1); }
+    }
+
+    phi_sum += phi;
+
+    // Accumulate weighted output
+    for (int k = 0; k < K; k++)
+        out[k] += lambdas[i * K + k] * phi;
+}
+
+// Normalized mode: divide by Σ φ_i  (Animatomy jaw proxy; prevents drift)
+if (norm && phi_sum > 1e-10) {
+    for (int k = 0; k < K; k++)
+        out[k] /= phi_sum;
+}
+
+setpointattrib(0, "rbf_out", @ptnum, out);
+
+// ------------------------------------------------------------------
+// OUTPUT INTERPRETATION
+//
+// For PSD correctives (Lewis 2000):
+//   K = number of corrective shapes
+//   rbf_out[m] = activation weight of corrective shape m (clamped [0,1] before applying)
+//
+// For jaw proxy (Animatomy §5.5, norm=1):
+//   K = 6  (tx, ty, tz, rx, ry, rz jaw transform)
+//   rbf_out is the interpolated jaw transform at query pose
+//
+// For MetaHuman corrective RBF:
+//   Query pose = subset of primary blendshape weights (the "drivers" for this corrective)
+//   K = 1 (activation weight for this specific corrective shape)
+//   One rbf-eval.vex invocation per corrective (or batch all correctives, K = n_correctives)
+//
+// CLAMPING: RBF extrapolates outside the training set. Always clamp outputs to safe ranges:
+//   corrective weight: clamp(rbf_out[m], 0, 1)
+//   jaw translation:   clamp each channel to anatomical limits
+// ------------------------------------------------------------------

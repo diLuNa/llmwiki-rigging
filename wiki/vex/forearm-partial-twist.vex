@@ -1,0 +1,194 @@
+// ============================================================
+// forearm-partial-twist.vex
+// Partial twist joint for forearm pronation/supination
+//
+// Problem: the hand rotates around the forearm axis (twist).
+// Intermediate forearm joints must receive a fraction of that twist,
+// so the deformation rolls gradually along the arm rather than all
+// snapping at the wrist.
+//
+// Method: Swing-Twist Decomposition
+//   Any rotation Q can be split into:
+//     Q = Swing × Twist
+//   where Swing = rotation PERPENDICULAR to a reference axis (bending)
+//         Twist = rotation AROUND that axis (pronation/supination)
+//   The intermediate joint receives:  slerp(identity, Twist, t)
+//   where t ∈ [0,1] is how far down the forearm the joint sits.
+//
+// Setup: Geometry Wrangle SOP on a 1-point geometry.
+//   Plug elbow skeleton SOP into input 1, hand/wrist into input 2.
+//   Or supply world transforms as detail matrix4 attributes.
+//
+// Inputs (detail attributes on this geometry):
+//   "elbow_xform"     matrix4  — elbow joint world-space transform
+//   "hand_xform"      matrix4  — hand/wrist joint world-space transform
+//   "twist_fraction"  float    — [0,1]: 0 = pure elbow (no twist), 1 = full wrist twist
+//                                Typical values: 0.33 for upper forearm, 0.66 for lower
+//   "twist_axis"      vector   — bone roll axis in ELBOW local space (default {1,0,0})
+//
+// Output (detail attribute):
+//   "forearm_xform"   matrix4  — world transform for the partial-twist forearm joint
+//
+// Optionally reads elbow/hand xform from skeleton input geometry:
+//   set detail "use_inputs" = 1  to read from inputs 1 and 2.
+// ============================================================
+
+// ------------------------------------------------------------------
+// 1. READ INPUTS
+// ------------------------------------------------------------------
+int use_inputs = detail(0, "use_inputs", 0);
+
+matrix4 elbow_xf, hand_xf;
+if (use_inputs) {
+    // Read from skeleton SOP inputs (one point each = joint)
+    elbow_xf = point(1, "xform", 0);   // elbow joint local→world
+    hand_xf  = point(2, "xform", 0);   // hand/wrist joint local→world
+} else {
+    elbow_xf = detail(0, "elbow_xform");
+    hand_xf  = detail(0, "hand_xform");
+}
+
+float  t          = detail(0, "twist_fraction", 0.5);
+vector twist_axis = detail(0, "twist_axis", {1, 0, 0});   // bone roll axis in elbow local
+
+// ------------------------------------------------------------------
+// 2. RELATIVE TRANSFORM: elbow → hand in elbow local space
+//    rel_xf = inv(elbow) * hand
+//    This is how much the hand has rotated relative to the elbow.
+// ------------------------------------------------------------------
+matrix4 elbow_inv = invert(elbow_xf);
+matrix4 rel_xf    = elbow_inv * hand_xf;
+
+// Extract pure rotation (strip translation and scale)
+matrix3 rel_rot3 = matrix3(rel_xf);
+
+// Orthonormalize to remove scale
+vector  rx = normalize(set(rel_rot3.xx, rel_rot3.yx, rel_rot3.zx));
+vector  ry = normalize(set(rel_rot3.xy, rel_rot3.yy, rel_rot3.zy));
+vector  rz = cross(rx, ry);
+         ry = cross(rz, rx);
+matrix3 rel_rot = set(rx.x, ry.x, rz.x,
+                      rx.y, ry.y, rz.y,
+                      rx.z, ry.z, rz.z);
+
+// Convert relative rotation to quaternion (Houdini: w,x,y,z stored as {x,y,z,w})
+vector4 q_rel = quaternion(rel_rot);   // {x, y, z, w}
+
+// ------------------------------------------------------------------
+// 3. SWING-TWIST DECOMPOSITION
+//
+// Given quaternion q = {x,y,z,w} and twist axis A:
+//   Project the rotation axis (imaginary part {x,y,z}) onto A.
+//   twist_q = normalize({ proj.x, proj.y, proj.z, w })
+//   swing_q = q * conjugate(twist_q)
+//
+// The twist_q captures ONLY the rotation around A.
+// We ignore swing_q for twist joint computation.
+// ------------------------------------------------------------------
+
+// Twist axis must be normalized in elbow local space
+vector A = normalize(twist_axis);
+
+// Imaginary (rotation axis × sin(θ/2)) part of the quaternion
+vector imag = set(q_rel.x, q_rel.y, q_rel.z);
+
+// Project imaginary part onto twist axis
+float  proj_len = dot(imag, A);
+vector proj     = proj_len * A;
+
+// Build the twist quaternion {proj, w}
+vector4 twist_q = set(proj.x, proj.y, proj.z, q_rel.w);
+
+// Normalize (required — projection shortens the vector)
+float tq_len = sqrt(dot(set(twist_q.x,twist_q.y,twist_q.z), set(twist_q.x,twist_q.y,twist_q.z))
+                    + twist_q.w * twist_q.w);
+if (tq_len > 1e-8)
+    twist_q /= tq_len;
+else
+    twist_q = {0, 0, 0, 1};   // identity fallback (no twist)
+
+// ------------------------------------------------------------------
+// 4. PARTIAL TWIST: slerp(identity, twist_q, t)
+//    t = 0.0 → no twist (elbow stays put)
+//    t = 1.0 → full twist (matches hand roll exactly)
+// ------------------------------------------------------------------
+vector4 identity_q    = {0, 0, 0, 1};
+vector4 partial_twist = slerp(identity_q, twist_q, t);
+
+// Ensure correct hemisphere (avoid long-path slerp)
+if (dot(partial_twist, identity_q) < 0)
+    partial_twist = -partial_twist;
+
+// ------------------------------------------------------------------
+// 5. BUILD OUTPUT TRANSFORM
+//    Start from elbow position, apply partial twist rotation,
+//    then place the joint at (1-t) elbow + t hand position.
+// ------------------------------------------------------------------
+
+// Elbow world position
+vector elbow_pos = set(elbow_xf.wx, elbow_xf.wy, elbow_xf.wz);
+// Hand world position
+vector hand_pos  = set(hand_xf.wx, hand_xf.wy, hand_xf.wz);
+
+// Interpolated position along forearm
+vector joint_pos = lerp(elbow_pos, hand_pos, t);
+
+// Rotation: elbow base rotation × partial twist
+matrix3 elbow_rot3 = matrix3(elbow_xf);
+
+// Orthonormalize elbow rotation (strip scale)
+vector ex = normalize(set(elbow_rot3.xx, elbow_rot3.yx, elbow_rot3.zx));
+vector ey = normalize(set(elbow_rot3.xy, elbow_rot3.yy, elbow_rot3.zy));
+vector ez = cross(ex, ey);
+       ey = cross(ez, ex);
+matrix3 elbow_rot = set(ex.x, ey.x, ez.x,
+                        ex.y, ey.y, ez.y,
+                        ex.z, ey.z, ez.z);
+
+// Apply partial twist on top of elbow base rotation
+matrix3 twist_rot3   = qconvert(partial_twist);
+matrix3 final_rot3   = elbow_rot * twist_rot3;
+
+// Assemble output matrix4
+matrix4 out_xf = set(
+    final_rot3.xx, final_rot3.xy, final_rot3.xz, 0,
+    final_rot3.yx, final_rot3.yy, final_rot3.yz, 0,
+    final_rot3.zx, final_rot3.zy, final_rot3.zz, 0,
+    joint_pos.x,   joint_pos.y,   joint_pos.z,   1
+);
+
+setdetailattrib(0, "forearm_xform", out_xf);
+
+// Also write Euler angles for debugging / KineFX channel promotion
+vector euler = cracktransform(0, 0, 0, {0,0,0}, out_xf);
+setdetailattrib(0, "forearm_r", euler);
+setdetailattrib(0, "forearm_t", joint_pos);
+
+// ------------------------------------------------------------------
+// QUICK SETUP GUIDE
+//
+// In a Houdini forearm chain:
+//
+//   UpperArm → Elbow → ForearmTwist1 → ForearmTwist2 → Wrist → Hand
+//
+//   ForearmTwist1:  twist_fraction = 0.33  (1/3 of wrist twist)
+//   ForearmTwist2:  twist_fraction = 0.66  (2/3 of wrist twist)
+//   Wrist:          twist_fraction = 1.00  (full twist — driven by FK/IK solver)
+//
+// The twist_axis is the bone's long axis in LOCAL elbow space.
+// In Maya/Houdini default: X-axis points along the bone (+X bone direction).
+// Confirm by printing:  vector bone_dir_local = {1,0,0};
+//                       vector bone_dir_world  = bone_dir_local * matrix3(elbow_xf);
+// Verify that bone_dir_world points from elbow toward wrist.
+//
+// ALTERNATIVE: read twist_axis automatically from bone direction:
+//   vector bone_world = normalize(hand_pos - elbow_pos);
+//   matrix3 inv_elbow_rot = invert(matrix3(elbow_xf));
+//   vector A = normalize(bone_world * inv_elbow_rot);  // bone dir in elbow local
+//
+// QUATERNION FLIP PREVENTION:
+//   The slerp always takes the short path (< 180°).
+//   If the wrist rotates more than 180° (full roll), the dot-product check
+//   above (line 4) flips the sign to stay in the correct hemisphere.
+//   For full 360° rolls add an integer turn counter (not shown here).
+// ------------------------------------------------------------------

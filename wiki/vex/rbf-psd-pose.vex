@@ -1,0 +1,133 @@
+// ============================================================
+// rbf-psd-pose.vex
+// Pose Parameterization for Pose Space Deformation
+//
+// Sources:
+//   Lewis 2000 §2 — "pose parameters": joint rotations as pose-space vectors
+//   SMPL §3.1 — pose correctives via flattened rotation matrices R_k − R*_k
+//   Animatomy §5.2 — FLAME-style pose correctives Σ(R_k − R*_k)P_k
+//   epic-2021-metahuman-rig — ~200 FACS control values as pose space for correctives
+//
+// Run on SKELETON geometry (one point per joint).
+// Each point carries joint rotation as a detail (or you flatten the whole pose here).
+//
+// Outputs:
+//   detail "pose_vec" float[D] — flattened pose parameter vector for RBF input
+//
+// Three parameterization modes (set detail "pose_mode" int):
+//   0 = Blendshape weight space: pose_vec = primary blendshape weights α (MetaHuman style)
+//   1 = Quaternion space:        pose_vec = [qx, qy, qz, qw] per joint (4K dims for K joints)
+//   2 = Rotation matrix space:   pose_vec = flattened R − R* per joint (9K dims, SMPL/Animatomy style)
+// ============================================================
+
+int mode = detail(0, "pose_mode", 0);
+
+// ------------------------------------------------------------------
+// MODE 0: Blendshape weight space (MetaHuman / FACS-based PSD)
+//
+// Primary blendshape weights α ∈ [0,1]^M are the pose space.
+// PSD correctives activate when specific weight combinations occur.
+// Typical M = 51 FACS AUs or ~200 MetaHuman controls.
+//
+// Input: detail "primary_weights" float[M]
+// Output: detail "pose_vec" = primary_weights (identity mapping)
+// ------------------------------------------------------------------
+if (mode == 0) {
+    float w[] = detail(0, "primary_weights");
+    setdetailattrib(0, "pose_vec", w);
+}
+
+// ------------------------------------------------------------------
+// MODE 1: Quaternion-space pose vector
+//
+// Each joint contributes a unit quaternion [qx, qy, qz, qw].
+// Pose vector = concatenation of per-joint quaternions.
+// Dimension = 4 * K (K = number of joints).
+//
+// Input: per-point attributes "qx", "qy", "qz", "qw" (joint quaternion)
+//         detail "rest_quat" float[4*K] = rest-pose quaternions
+// Output: detail "pose_vec" float[4*K]
+//
+// NOTE: Quaternion space is not flat (quaternions live on S³).
+// For small deformations from rest, the linear approximation is acceptable.
+// For large rotations, prefer log-map or rotation-matrix mode.
+// ------------------------------------------------------------------
+else if (mode == 1) {
+    int K = npoints(0);
+    float rest[] = detail(0, "rest_quat");   // 4*K floats
+    float pv[];
+    resize(pv, 4 * K);
+
+    for (int k = 0; k < K; k++) {
+        vector4 q = set(
+            point(0, "qx", k),
+            point(0, "qy", k),
+            point(0, "qz", k),
+            point(0, "qw", k)
+        );
+        // Normalize (safety)
+        float qlen = sqrt(q.x*q.x + q.y*q.y + q.z*q.z + q.w*q.w);
+        if (qlen > 1e-8) q /= qlen;
+
+        // Optionally subtract rest quaternion (relative parameterization)
+        // pv[4k..4k+3] = q - q_rest  (small angle approximation)
+        pv[4*k + 0] = q.x - rest[4*k + 0];
+        pv[4*k + 1] = q.y - rest[4*k + 1];
+        pv[4*k + 2] = q.z - rest[4*k + 2];
+        pv[4*k + 3] = q.w - rest[4*k + 3];
+    }
+    setdetailattrib(0, "pose_vec", pv);
+}
+
+// ------------------------------------------------------------------
+// MODE 2: Rotation matrix space — flattened (R_k − R*_k)
+//
+// Each joint k contributes a flattened 3×3 rotation matrix delta.
+// Pose vector = concatenation of 9-vectors (R_k − R*_k) for K joints.
+// Dimension = 9 * K.
+//
+// This is the SMPL/FLAME/Animatomy convention: pose correctives are linear
+// in (R_k − R*_k), which is effectively RBF with a linear kernel in rot-mat space.
+//
+// Input: per-point "xform" matrix3 (current joint local rotation)
+//         detail "rest_xform" float[9*K] (rest-pose rotation matrices, row-major)
+// Output: detail "pose_vec" float[9*K]
+//
+// The flattening order (row-major):
+//   [R00, R01, R02, R10, R11, R12, R20, R21, R22]
+// ------------------------------------------------------------------
+else if (mode == 2) {
+    int K = npoints(0);
+    float rest[] = detail(0, "rest_xform");  // 9*K floats
+    float pv[];
+    resize(pv, 9 * K);
+
+    for (int k = 0; k < K; k++) {
+        matrix3 R = point(0, "xform", k);
+
+        for (int row = 0; row < 3; row++) {
+            for (int col = 0; col < 3; col++) {
+                int idx = 9*k + row*3 + col;
+                float r_ij = getcomp(R, row, col);
+                float r0_ij = rest[idx];
+                pv[idx] = r_ij - r0_ij;
+            }
+        }
+    }
+    setdetailattrib(0, "pose_vec", pv);
+}
+
+// ------------------------------------------------------------------
+// DIMENSION REFERENCE
+//
+// | Mode | Content                  | Dims per joint | Total for K=51 joints |
+// |------|--------------------------|----------------|----------------------|
+// | 0    | FACS/blendshape weights  | 1 per shape    | M (e.g. 51 or 200)   |
+// | 1    | Quaternion               | 4              | 204                  |
+// | 2    | Rotation matrix delta    | 9              | 459                  |
+//
+// MetaHuman: mode=0, M=~200 control values (blendshape weights)
+// SMPL/FLAME: mode=2, K=23 body joints → 207-dim pose space
+// Animatomy pose correctives: mode=2, K=3 (jaw + 2 face joints) → 27-dim
+// Lewis 2000: mode=0 or mode=1 depending on rig type
+// ------------------------------------------------------------------

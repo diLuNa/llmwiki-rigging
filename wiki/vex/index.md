@@ -1,4 +1,4 @@
-# VEX Snippets Index
+2# VEX Snippets Index
 
 All Houdini VEX snippets extracted from wiki papers.
 Each snippet is a self-contained Geometry Wrangle SOP unless noted otherwise.
@@ -596,6 +596,158 @@ for (int k = 0; k < K; k++)
 
 ---
 
+## RBF (Radial Basis Functions) — Lewis 2000, Animatomy §5.5, MetaHuman, Waters 1987
+
+Source papers: [[papers/lewis-2000-psd]] · [[papers/choi-2022-animatomy]] · [[papers/epic-2021-metahuman-rig]] · [[papers/waters-1987-muscle-model]]
+
+| File | Algorithm | Source | Notes |
+|------|-----------|--------|-------|
+| [rbf-kernels.vex](rbf-kernels.vex) | Complete RBF kernel library: Gaussian, multiquadric, inv-MQ, TPS, linear, cubic, Wendland C2 | Buhmann 2003; Lewis 2000 | `rbf_kernel` int selects; includes kernel selection guide table |
+| [rbf-gram-matrix.vex](rbf-gram-matrix.vex) | Offline Gram matrix assembly Φ_ij = φ(‖x_i−x_j‖) + Python solve Φλ = f | Lewis 2000 §2 | Single-threaded; Python Tikhonov solve embedded in comments |
+| [rbf-eval.vex](rbf-eval.vex) | Runtime: f(x) = Σ λ_i φ(‖x−x_i‖); normalized mode for Animatomy jaw proxy | Lewis 2000, Animatomy §5.5 | `rbf_normalize=1` → Shepard-style; handles any dimension D and output K |
+| [rbf-psd-pose.vex](rbf-psd-pose.vex) | Pose parameterization: blendshape weights (mode 0), quaternions (mode 1), rotation matrix delta R−R* (mode 2) | Lewis 2000; SMPL §3.1; Animatomy §5.2 | Three modes; outputs detail "pose_vec" as RBF input |
+| [rbf-psd-correctives.vex](rbf-psd-correctives.vex) | Full PSD corrective evaluation: per-corrective Gaussian RBF → weight → apply delta to @P | Lewis 2000 §2; epic-2021 MetaHuman | Handles n_corr correctives with per-corrective driver subsets; performance skip <1e-5 |
+| [rbf-scattered-interp.vex](rbf-scattered-interp.vex) | 3D scattered data interpolation; Waters muscle influence zones (linear + sphincter) inline | Waters 1987; Buhmann 2003 | Shepard fallback if no solve; Waters linear/sphincter muscles in comments |
+
+### Quick-start: Pose Space Deformation (Lewis 2000 / MetaHuman style)
+
+```
+OFFLINE (rig build):
+  example_poses geometry (N points, "pose_vec" float[D], "target_val" float[K])
+  → rbf-gram-matrix.vex   (VEX: Gram matrix assembly)
+  → Python: solve Φλ = F  → "lambda_vec" float[K] per example point
+
+RUNTIME (every frame):
+  current_rig_state → rbf-psd-pose.vex     (mode 0: "pose_vec" = primary weights)
+  rbf_centers + rbf_lambdas (from offline)
+  → rbf-psd-correctives.vex               (per corrective RBF eval + apply delta)
+```
+
+### Quick-start: General Scattered Interpolation (Shepard, no solve needed)
+
+```
+scattered_sites (input 1, "data_val" float[K] per point, no "rbf_lambdas" needed)
+query_mesh      (input 0)
+  → rbf-scattered-interp.vex  (rbf_normalize=1 for Shepard)
+  → "rbf_interp" float[K] per query vertex
+```
+
+### Key formulas
+
+**Gaussian kernel (Lewis 2000 — standard for PSD):**
+```vex
+float phi = exp(-(eps*eps) * dist2);   // dist2 = ||pose - center||²
+```
+
+**Full RBF evaluation:**
+```vex
+float w_m = 0;
+for (int i = 0; i < N; i++)
+    w_m += lambda[i] * exp(-(eps*eps) * dist2(query_pose, center[i]));
+w_m = clamp(w_m, 0.0, 1.0);
+@P += w_m * corrective_delta[@ptnum];
+```
+
+**Normalized Gaussian (Animatomy jaw, rbf-eval.vex with normalize=1):**
+```vex
+float phi_i = exp(-(sigma_i*sigma_i) * dot(p - mu_i, p - mu_i));
+out += lambda_i * phi_i;
+phi_sum += phi_i;
+out /= phi_sum;   // prevents drift outside training set
+```
+
+**Pose vector: rotation matrix delta (SMPL/Animatomy mode 2):**
+```vex
+pv[9*k..9*k+8] = R_curr[k] - R_rest[k];   // 9-vector per joint k
+```
+
+**Waters linear muscle (from rbf-scattered-interp.vex):**
+```vex
+float w = max(0.0, 1.0 - dist(@P, origin) / d_max);
+@P += w * activation * normalize(insertion - origin) * scale;
+```
+
+**Tikhonov regularization (Python solve):**
+```python
+Phi_reg = Phi + 1e-5 * np.eye(N)
+Lambdas = np.linalg.solve(Phi_reg, F)   # F = target values at examples
+```
+
+### Kernel selection guide
+
+| Kernel | Type | Key property | Best use in rigging |
+|--------|------|-------------|---------------------|
+| Gaussian | PD | Smooth, narrow | PSD correctives (Lewis 2000, MetaHuman) |
+| Inv. multiquadric | PD | Smooth, wide | General interpolation |
+| Wendland C2 | PD + compact | Sparse Gram matrix | Large N (>50 example poses) |
+| Cubic r³ | Semi-PD | Simple, stable | Deformation fields |
+| Linear r | Semi-PD | Minimal | Rough region maps |
+| TPS (r² ln r) | Semi-PD + poly | Minimal bending | 2D expression retargeting |
+| Normalized Gauss | Partition-of-unity | No drift | Jaw proxy, region blends |
+
+---
+
+## Forearm Twist — Swing-Twist Decomposition
+
+Source: General character rigging technique (game/film industry standard); see [[techniques/forearm-partial-twist]] · [[concepts/linear-blend-skinning]]
+
+| File | Algorithm | Notes |
+|------|-----------|-------|
+| [forearm-partial-twist.vex](forearm-partial-twist.vex) | Swing-Twist quaternion decomposition → partial forearm pronation/supination | `twist_fraction` ∈ [0,1]: 0.33 = upper forearm, 0.66 = lower, 1.0 = wrist |
+
+### Problem
+
+When the hand rotates around the forearm axis (pronation/supination), a naive single-joint wrist produces a sharp candy-wrapper twist at the wrist. The fix: insert one or two intermediate forearm joints that each receive a *fraction* of the total twist, so the deformation rolls gradually along the arm.
+
+### Quick-start parameter guide
+
+Setup: **Geometry Wrangle SOP on a 1-point geometry** (not per-vertex).
+
+| Attribute | Type | Where | Meaning |
+|-----------|------|-------|---------|
+| `elbow_xform` | matrix4 | detail | Elbow joint world-space transform |
+| `hand_xform` | matrix4 | detail | Hand/wrist joint world-space transform |
+| `twist_fraction` | float | detail | 0 = no twist (elbow), 1 = full wrist twist |
+| `twist_axis` | vector | detail | Bone roll axis in elbow local space (default `{1,0,0}`) |
+| `use_inputs` | int | detail | 1 = read xforms from SOP inputs 1 & 2 instead of detail attrs |
+
+**Output:** `forearm_xform` (matrix4), `forearm_r` (euler), `forearm_t` (position) on detail.
+
+**Typical chain:**
+```
+UpperArm → Elbow → ForearmTwist1 (t=0.33) → ForearmTwist2 (t=0.66) → Wrist (t=1.0) → Hand
+```
+
+Run this snippet twice (once per twist joint) with different `twist_fraction` values.
+
+### Key formulas
+
+**Swing-Twist decomposition (any quaternion Q around axis A):**
+```vex
+vector imag   = set(q.x, q.y, q.z);       // imaginary part (axis × sin θ/2)
+float  proj   = dot(imag, A);              // projection length
+vector proj_v = proj * A;                  // projected onto twist axis
+vector4 twist_q = normalize({proj_v.x, proj_v.y, proj_v.z, q.w});
+// swing_q = q * conjugate(twist_q)  (ignored here)
+```
+
+**Partial twist via slerp:**
+```vex
+vector4 identity_q    = {0, 0, 0, 1};
+vector4 partial_twist = slerp(identity_q, twist_q, t);
+// Hemisphere check (prevent long-path slerp):
+if (dot(partial_twist, identity_q) < 0)
+    partial_twist = -partial_twist;
+```
+
+**Final joint transform:**
+```vex
+matrix3 final_rot3 = elbow_rot * qconvert(partial_twist);
+vector  joint_pos  = lerp(elbow_pos, hand_pos, t);
+```
+
+---
+
 ## Health summary
 
 - **7** snippets — Regularized Kelvinlets + Sharp Kelvinlets (all algorithms)
@@ -607,6 +759,8 @@ for (int k = 0; k < K; k++)
 - **3** snippets — Sliding Deformation (tangent basis, direction propagation, surface displacement)
 - **4** snippets — Mesh Wrap: affine-invariant coordinates, projection, distortion, solve
 - **5** snippets — Blendshape Fitting: eval (delta + replacement), marker softmax, QP fit, NLLS/FACEIT, PSD correctives
-- **Total: 39 snippets across 11 papers**
+- **6** snippets — RBF Techniques: kernel library, Gram matrix+solve, runtime eval, pose parameterization, PSD correctives, scattered interpolation
+- **1** snippet  — Forearm Twist: swing-twist decomposition for pronation/supination correction
+- **Total: 46 snippets across 13 papers + 1 general technique**
 
 Not yet implemented: Dynamic Kelvinlets (2018), Delta Mush, ARAP, Stochastic Barycentric Coordinates, CoR Skinning, Rig-Space Secondary Motion.

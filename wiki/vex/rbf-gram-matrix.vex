@@ -1,0 +1,123 @@
+// ============================================================
+// rbf-gram-matrix.vex
+// Offline: Assemble the RBF Gram matrix from N example poses
+//
+// Sources:
+//   Lewis 2000 §2 — RBF interpolation in pose space for correctives
+//   Epic MetaHuman (epic-2021-metahuman-rig) — PSD/RBF for 1000+ correctives
+//
+// Run ONCE (offline, at rig-build time) on the EXAMPLE geometry:
+//   Each point = one example pose
+//   Point attribute "pose_vec" (float[D]) = D-dim pose parameter vector at this example
+//   Point attribute "target_val" (float[K]) = K-dim target values (corrective weights,
+//                                              or vertex displacements flattened)
+//
+// Output (detail attributes):
+//   "gram_flat"  float[]  — N×N Gram matrix, row-major
+//   "lambdas"    float[]  — RBF coefficients λ (computed in Python pass below)
+//
+// *** SINGLE-THREADED wrangle — disable multithreading in SOP ***
+// ============================================================
+
+// ------------------------------------------------------------------
+// USER PARAMETERS (set as detail attrs before running)
+// ------------------------------------------------------------------
+float eps     = detail(0, "rbf_eps", 1.0);     // Gaussian shape parameter ε
+int   kernel  = detail(0, "rbf_kernel", 0);    // 0=Gaussian, 1=IMQ, 6=Wendland (see rbf-kernels.vex)
+float wend_R  = detail(0, "rbf_wendland_R", 10.0);  // support radius for Wendland only
+
+// ------------------------------------------------------------------
+// GRAM MATRIX ASSEMBLY (run per-point i — single-threaded)
+// ------------------------------------------------------------------
+int N = npoints(0);   // number of example poses
+
+// Only process on first point (assembly loop does full matrix)
+if (@ptnum == 0) {
+    float gram[];
+    resize(gram, N * N);
+
+    for (int i = 0; i < N; i++) {
+        float pose_i[] = point(0, "pose_vec", i);   // D-dim vector
+        for (int j = 0; j < N; j++) {
+            float pose_j[] = point(0, "pose_vec", j);
+
+            // Compute ||pose_i - pose_j||
+            float dist2 = 0.0;
+            int D = len(pose_i);
+            for (int d = 0; d < D; d++) {
+                float dd = pose_i[d] - pose_j[d];
+                dist2 += dd * dd;
+            }
+            float r = sqrt(dist2);
+
+            // Kernel evaluation
+            float phi = 0.0;
+            if      (kernel == 0) phi = exp(-(eps*eps)*dist2);                           // Gaussian
+            else if (kernel == 2) phi = 1.0 / sqrt(1.0 + (eps*eps)*dist2);             // Inv. MQ
+            else if (kernel == 4) phi = r;                                               // Linear
+            else if (kernel == 5) phi = r * r * r;                                      // Cubic
+            else if (kernel == 6) {                                                      // Wendland C2
+                if (r < wend_R) { float t = r/wend_R; phi = (1-t)*(1-t)*(1-t)*(1-t)*(4*t+1); }
+                else phi = 0.0;
+            }
+
+            gram[i * N + j] = phi;
+        }
+    }
+
+    setdetailattrib(0, "gram_flat", gram);
+}
+
+// =========================================================
+// PYTHON PASS (run after this wrangle in a Python SOP or shelf tool):
+// Solves Φ λ = f  for RBF coefficients λ given target values f.
+// =========================================================
+// import numpy as np
+// from scipy.linalg import solve
+// import hou
+//
+// node = hou.pwd()
+// geo  = node.geometry()
+//
+// N = geo.points().__len__()  # number of example poses
+// K = ...                     # number of output dimensions (e.g. corrective weight count)
+//
+// # Read Gram matrix
+// gram_flat = np.array(geo.attribValue("gram_flat"), dtype=float)
+// Phi = gram_flat.reshape(N, N)
+//
+// # Read target values: each point has "target_val" float[K]
+// F = np.zeros((N, K))
+// for i, pt in enumerate(geo.points()):
+//     F[i, :] = pt.attribValue("target_val")
+//
+// # Regularize for numerical stability (Tikhonov)
+// reg = 1e-6
+// Phi_reg = Phi + reg * np.eye(N)
+//
+// # Solve: Φ λ = F  (solve column by column, or batch)
+// Lambdas = np.linalg.solve(Phi_reg, F)   # shape (N, K)
+//
+// # Write coefficients back to points
+// geo.addAttrib(hou.attribType.Point, "lambda_vec", [0.0] * K)
+// for i, pt in enumerate(geo.points()):
+//     pt.setAttribValue("lambda_vec", Lambdas[i, :].tolist())
+//
+// print(f"RBF solve complete: {N} centers, {K} outputs")
+// =========================================================
+
+// ------------------------------------------------------------------
+// NOTES ON REGULARIZATION
+//
+// Tikhonov (L2) regularization: Φ_reg = Φ + λ_reg * I
+//   Small λ_reg (1e-6 to 1e-4): minimal smoothing, interpolates examples exactly.
+//   Larger λ_reg (0.01 to 0.1): smoothing/approximation, more robust with noisy training data.
+//
+// For PSD correctives: use λ_reg ~ 1e-5; you want to hit examples exactly.
+// For shape fitting:  use λ_reg ~ 1e-3; training data may have noise.
+//
+// POLYNOMIAL AUGMENTATION (for multiquadric, thin-plate spline):
+// Augment Φ with rows/columns of [1, x1, x2, ..., xD] for consistency conditions.
+// Adds D+1 unknowns; append zero rows to F for the polynomial constraints.
+// Required for conditional positive-definiteness; see Fasshauer 2007.
+// ------------------------------------------------------------------

@@ -1,0 +1,123 @@
+// ============================================================
+// rbf-psd-correctives.vex
+// Runtime Pose Space Deformation: RBF corrective shape evaluation and application
+//
+// Sources:
+//   Lewis 2000 §2 — foundational PSD: RBF interpolation of corrective deltas in pose space
+//   Lewis 2014 STAR §3 — corrective shape taxonomy (product, min, Gaussian RBF)
+//   epic-2021-metahuman-rig — 1,000+ PSD/RBF corrective shapes in MetaHuman
+//
+// Pipeline (run in order):
+//   1. rbf-psd-pose.vex      → computes detail "pose_vec" from current rig state
+//   2. [Python solve]         → offline: rbf-gram-matrix.vex + Python solve → lambdas stored
+//   3. rbf-eval.vex           → evaluates corrective weights from pose_vec
+//   4. rbf-psd-correctives.vex → applies corrective displacements to mesh
+//
+// Alternatively: this snippet does ALL of step 3+4 inline for the simple case
+// where correctives are driven by primary blendshape weights (MetaHuman / FACS style).
+//
+// Run on SURFACE MESH geometry (face mesh).
+// Requires (detail attributes):
+//   "corr_centers"   float[]  — n_corr * D_driver  (driver pose centers per corrective)
+//   "corr_lambdas"   float[]  — n_corr * N_i coefficients (ragged — use offsets)
+//   "corr_lambdas_flat" float[] — flat: for simple case N_i = N_centers (same for all)
+//   "corr_N"         int      — number of corrective shapes
+//   "corr_drivers"   int[][]  — driver indices per corrective (which primary weights drive it)
+//   "primary_weights" float[] — current primary blendshape weights (pose)
+//   "rbf_eps"        float    — Gaussian shape param ε
+// Corrective shape deltas (input mesh attributes, one per corrective):
+//   "corr_delta_m"   vector[] — corrective delta per vertex for shape m (m=0..n_corr-1)
+//   OR stored as stacked array "corr_deltas" float[] = n_corr * npts * 3, row-major
+// ============================================================
+
+int   n_corr  = detail(0, "corr_N", 0);
+float eps     = detail(0, "rbf_eps", 1.0);
+int   n_pts   = npoints(0);
+float primary[] = detail(0, "primary_weights");   // M-dim primary weights
+
+// For each corrective shape m, compute activation weight w_m via Gaussian RBF
+// then add w_m * delta_m to @P.
+
+// *** SIMPLE CASE: all correctives have same number of centers (N_centers) ***
+// This matches MetaHuman-style PSD where each corrective has its own small center set.
+
+int N_centers = detail(0, "corr_centers_N", 0);  // centers per corrective (same for all)
+float corr_centers[] = detail(0, "corr_centers");  // n_corr * N_centers * D_driver
+float corr_lambdas[] = detail(0, "corr_lambdas");  // n_corr * N_centers (1 output per corrective)
+int   driver_D = detail(0, "corr_driver_D", 2);    // driver dimensionality (e.g. 2 for 2-AU corrective)
+
+// Corrective deltas: stacked as detail float array
+// Index: m * n_pts * 3 + @ptnum * 3 + axis
+float corr_deltas[] = detail(0, "corr_deltas");
+
+vector total_disp = {0,0,0};
+
+for (int m = 0; m < n_corr; m++) {
+    // Build driver pose vector for this corrective (subset of primary weights)
+    float driver_pose[];
+    resize(driver_pose, driver_D);
+    // Corrective m's driver indices are stored in "corr_driver_idx" int[] detail,
+    // packed as: corr_driver_idx[m * driver_D + d] = global primary weight index
+    for (int d = 0; d < driver_D; d++) {
+        int global_idx = detail(0, "corr_driver_idx")[ m * driver_D + d ];
+        driver_pose[d] = primary[global_idx];
+    }
+
+    // Evaluate RBF:  w_m = Σ_i λ_i exp(-ε² ||driver_pose - center_i||²)
+    float w_m = 0.0;
+    for (int i = 0; i < N_centers; i++) {
+        // Compute ||driver_pose - center_i||²
+        float dist2 = 0.0;
+        for (int d = 0; d < driver_D; d++) {
+            float dd = driver_pose[d] - corr_centers[(m * N_centers + i) * driver_D + d];
+            dist2 += dd * dd;
+        }
+        float phi = exp(-(eps*eps)*dist2);
+        w_m += corr_lambdas[m * N_centers + i] * phi;
+    }
+
+    // Clamp corrective weight to safe range
+    w_m = clamp(w_m, 0.0, 1.0);
+
+    // Apply corrective delta: disp += w_m * delta_m[@ptnum]
+    if (w_m > 1e-5) {   // skip negligible contributions (performance)
+        int base = m * n_pts * 3 + @ptnum * 3;
+        vector delta = set(corr_deltas[base], corr_deltas[base+1], corr_deltas[base+2]);
+        total_disp += w_m * delta;
+    }
+}
+
+@P += total_disp;
+
+// ------------------------------------------------------------------
+// SIMPLIFIED VERSION: Product/Min correctives (cheaper, no solve needed)
+// Use blendshape-corrective-psd.vex for these.
+//
+// FULL PSD PIPELINE SUMMARY:
+//
+// OFFLINE (rig build time):
+//   for each corrective m:
+//     1. Identify K driver primary weights (which AUs trigger this corrective)
+//     2. Collect N_i training examples: (driver weights, corrective activation) pairs
+//     3. Assemble K×K Gram matrix Φ_m via rbf-gram-matrix.vex
+//     4. Solve Φ_m λ_m = f_m in Python → store λ_m as "corr_lambdas[m*N_centers..]"
+//
+// RUNTIME (every frame):
+//   1. rbf-psd-pose.vex → primary_weights (current FACS controls)
+//   2. rbf-psd-correctives.vex → loop over n_corr, eval RBF per corrective, apply delta
+//
+// COMPLEXITY:
+//   O(n_corr * N_centers * driver_D)  per vertex
+//   MetaHuman: ~1000 correctives * ~5 centers * ~2 drivers ≈ 10,000 ops/frame
+//   Independent of mesh vertex count — only the *apply* step is O(n_pts)
+//
+// PERFORMANCE TIP: Sort correctives by expected activation frequency.
+//   Eye correctives activate every frame; brow+lip combination correctives rarely.
+//   Early-exit (skip if max possible w_m < 1e-5) drastically reduces runtime cost.
+//
+// METAHUMAN OBSERVATION:
+//   MetaHuman docs state "1,000+ corrective shapes with RBF/PSD activation."
+//   Each corrective is driven by 1-4 primary controls. With N_centers ~= 3-10 per corrective
+//   and driver_D = 1-4, the total RBF evaluation cost is O(few thousand FLOPs/vertex),
+//   which is negligible vs the 258-669 primary blendshape evaluations.
+// ------------------------------------------------------------------

@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "wiki/index.md",
+                "file": "wiki/techniques/forearm-partial-twist.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "index"
+              "title": "forearm-partial-twist"
             }
           }
         ],
@@ -200,8 +200,24 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "6ed45ffe2638f0d8",
+  "active": "e1e94846dc220d36",
   "lastOpenFiles": [
+    "wiki/techniques/sculpt-transfer-vex.md",
+    "wiki/python/forearm_partial_twist.py",
+    "wiki/techniques/forearm-partial-twist.md",
+    "wiki/techniques/blendshape-usd.md",
+    "wiki/python/index.md",
+    "CLAUDE.md",
+    "wiki/techniques/bandage-smoothing-vex.md",
+    "wiki/index.md",
+    "wiki/vex/index.md",
+    "wiki/vex/forearm-partial-twist.vex",
+    "wiki/vex/rbf-scattered-interp.vex",
+    "wiki/vex/rbf-psd-correctives.vex",
+    "wiki/vex/rbf-psd-pose.vex",
+    "wiki/vex/rbf-eval.vex",
+    "wiki/vex/rbf-gram-matrix.vex",
+    "wiki/vex/rbf-kernels.vex",
     "wiki/queries/metahuman-rig-internals.md",
     "wiki/papers/epic-2021-metahuman-rig.md",
     "wiki/concepts/wrinkle-systems.md",
@@ -220,23 +236,7 @@
     "wiki/authors/teran-joseph.md",
     "wiki/authors/fedkiw-ronald.md",
     "wiki/authors/terzopoulos-demetri.md",
-    "wiki/authors/waters-keith.md",
-    "wiki/papers/park-2024-realtime-face-sim-superres.md",
-    "wiki/papers/wagner-2023-softdeca.md",
-    "wiki/papers/zeng-2021-neuromuscular-face.md",
-    "wiki/papers/chandran-2024-anatomically-constrained-face.md",
-    "wiki/papers/yang-2024-generalized-physical-face.md",
-    "wiki/papers/yang-2023-implicit-physical-face.md",
-    "wiki/papers/zoss-2020-secondary-dynamics-capture.md",
     "raw/papers/ichim-2017-phace.pdf",
-    "raw/papers/terzopoulos-1993-analysis-synthesis.pdf",
-    "raw/papers/waters-1987-muscle-model.pdf",
-    "raw/papers/lan-2017-digipro-anatomy-muscle.pdf",
-    "raw/papers/sifakis-2005-facial-muscle-activations.pdf",
-    "raw/papers/wagner-2023-softdeca.pdf",
-    "raw/papers/yang-2023-implicit-physical-face.pdf",
-    "raw/papers/zoss-2020-secondary-dynamics-capture.pdf",
-    "raw/papers/yang-2024-generalized-physical-face.pdf",
-    "raw/papers/kadlecek-2019-physics-face-data.pdf"
+    "raw/papers/terzopoulos-1993-analysis-synthesis.pdf"
   ]
 }

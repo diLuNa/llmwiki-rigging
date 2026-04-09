@@ -209,6 +209,7 @@ Master catalog of all pages. Updated on every ingest.
 | [[techniques/sculpt-transfer-vex]] | VEX implementation of sculpt transfer |
 | [[techniques/bandage-smoothing-vex]] | Bi-Laplacian bandage smoothing in VEX; two-pass Gauss-Seidel, cotangent weights |
 | [[techniques/blendshape-usd]] | Authoring blendshapes in UsdSkel / Houdini Solaris |
+| [[techniques/forearm-partial-twist]] | Forearm partial twist joints via swing-twist decomposition; VEX + Python; KineFX setup |
 
 ---
 
@@ -216,7 +217,7 @@ Master catalog of all pages. Updated on every ingest.
 
 Full index with algorithm tables: [[vex/index]]
 
-39 snippets across: Kelvinlets, CurveNet, Cage deformation, BBW, Blendshapes, Mesh wrap, Wrinkles, Animatomy, Sliding deformation.
+45 snippets across: Kelvinlets, CurveNet, Cage deformation, BBW, Blendshapes, Mesh wrap, Wrinkles, Animatomy, Sliding deformation, RBF (Pose Space Deformation, kernel library, Gram solve, scattered interp, Waters muscles).
 
 ---
 
@@ -303,4 +304,4 @@ Full index with algorithm tables: [[vex/index]]
 
 ---
 
-*Last updated: 2026-04-09 — Sorted papers by tag. Wiki: 150 paper pages, 25 concepts, 47 authors, 3 techniques, 39 VEX snippets, 4 Python snippets.*
+*Last updated: 2026-04-09 — Sorted papers by tag. Wiki: 150 paper pages, 25 concepts, 47 authors, 4 techniques, 46 VEX snippets, 5 Python snippets.*

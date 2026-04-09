@@ -178,6 +178,14 @@ When asked to lint:
 - Suggest missing papers worth finding.
 - Report a health summary.
 
+### Technique
+When asked to describe a technique:
+- Research the technique in the ingested papers.
+- Research the technique in external URLs and add them to the wiki and relevant pages.
+- Create or update any `wiki/techniques/` pages referenced.
+- Create any `wiki/vex/` and `wiki/python/` code required to explain the technique implementation.
+- Report a health summary.
+
 ### Vex
 When asked to vex:
 - Convert every algorithm found in a paper into Houdini Vex snippets where possible

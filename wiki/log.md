@@ -431,6 +431,19 @@ Covers: facial muscle systems as rig controls (PDI ANTZ, DWA, Animatomy, jaw rig
 Links 14 papers. Includes Animatomy strain formula, flesh simulation material model comparison table, rig-space physics description.
 Updated index.md (25 concepts total).
 
+## [2026-04-09] vex | RBF (Radial Basis Function) Techniques
+
+Created 6 VEX snippets covering all RBF algorithms referenced in the wiki:
+- rbf-kernels.vex — complete kernel library (Gaussian, multiquadric, inv-MQ, TPS, linear, cubic, Wendland C2) with selection guide
+- rbf-gram-matrix.vex — offline Gram matrix assembly (single-threaded wrangle) + Python Tikhonov solve (Φλ = F)
+- rbf-eval.vex — runtime f(x) = Σλ_i φ(||x−x_i||); supports normalized Animatomy jaw style (rbf_normalize=1)
+- rbf-psd-pose.vex — three pose parameterization modes: blendshape weights (MetaHuman), quaternion, rotation-matrix delta (SMPL/Animatomy)
+- rbf-psd-correctives.vex — full Pose Space Deformation pipeline: per-corrective Gaussian RBF → weight → apply delta to @P; complexity analysis for MetaHuman 1000+ correctives
+- rbf-scattered-interp.vex — 3D scattered data interpolation; Waters 1987 linear + sphincter muscle influence zones inline
+
+Updated: vex/index.md (new RBF section with pipeline diagrams, kernel guide table, 39 → 45 snippets), index.md footer (39 → 45 VEX).
+Sources: [[papers/lewis-2000-psd]] [[papers/choi-2022-animatomy]] [[papers/epic-2021-metahuman-rig]] [[papers/waters-1987-muscle-model]]
+
 ## [2026-04-09] query | MetaHuman rig internal architecture
 
 Researched MetaHuman Creator facial rig technical internals. Created wiki/papers/epic-2021-metahuman-rig.md and wiki/queries/metahuman-rig-internals.md.
@@ -466,3 +479,29 @@ Updated index.md: 128 → 149 paper pages, 34 → 47 authors. Re-sorted papers t
 Ingested 2505.22416.pdf. Created wiki/papers/cha-2025-neural-face-skinning.md.
 Key contribution: topology-agnostic FACS-compatible skinning weight prediction via indirect FACS segmentation supervision; global latent deformation + local skinning decoder; handles highly stylized non-human characters.
 Updated: concepts/nonlinear-face-models (added to Neural Facial Auto-Rigging table and Connections), concepts/auto-rigging (added to Key Papers), concepts/speech-driven-animation (added topology lock-in note + cross-link). New concept connections: linear-blend-skinning, blendshapes, sol-2025, riganyface.
+
+## [2026-04-09] vex | Forearm Partial Twist — Swing-Twist Decomposition
+
+Indexed forearm-partial-twist.vex in vex/index.md (was created but not indexed).
+Added new section: Forearm Twist / Swing-Twist Decomposition.
+- forearm-partial-twist.vex — quaternion swing-twist decomposition for forearm pronation/supination; slerp(identity, twist_q, t) produces a partial twist joint at fraction t along the forearm
+
+Total: 45 → 46 VEX snippets. Updated index.md footer count.
+
+## [2026-04-09] technique | Forearm Partial Twist
+
+Created wiki/techniques/forearm-partial-twist.md — full technique page covering:
+- The candy-wrapper problem and why LBS / DQS / CoR don't fully solve it
+- Swing-Twist quaternion decomposition theory and step-by-step algorithm
+- VEX implementation guide (Geometry Wrangle SOP, parameter table, key formulas)
+- Python implementation guide (forearm_partial_twist.py)
+- KineFX integration notes + auto-derive twist axis from skeleton
+- Gotchas: hemisphere flip for >180° rolls, twist axis verification, scale in transforms, joint count tradeoffs
+- Comparison table: plain LBS vs partial twist vs DQS vs CoR vs PSD
+
+Created wiki/python/forearm_partial_twist.py — NumPy module with:
+- `relative_quaternion`, `swing_twist_decompose`, `partial_twist_xform`, `build_forearm_chain`
+- Houdini Python SOP helper (run_in_houdini_python_sop)
+- Runnable __main__ demo (90° pronation test; verifies ~30°/60° fractional twists)
+
+Updated: python/index.md (4 → 5 modules, 13 → 17 functions), vex/index.md (technique cross-link added), index.md (3 → 4 techniques, 4 → 5 Python snippets).

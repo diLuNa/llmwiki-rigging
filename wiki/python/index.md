@@ -74,9 +74,50 @@ forces = np.linalg.solve(K_mat, disps.flatten()).reshape(n, 3)
 
 ---
 
+## Forearm Partial Twist — Swing-Twist Decomposition
+
+Source: General character rigging technique; see [[techniques/forearm-partial-twist]]
+
+| File | Functions | Notes |
+|------|-----------|-------|
+| [forearm_partial_twist.py](forearm_partial_twist.py) | `swing_twist_decompose`, `partial_twist_xform`, `build_forearm_chain`, `relative_quaternion` | NumPy; includes Houdini Python SOP helper and runnable demo |
+
+### Quick-start
+
+```python
+import numpy as np
+from forearm_partial_twist import build_forearm_chain
+
+# elbow_xf, hand_xf: (4,4) world-space transforms
+xforms = build_forearm_chain(
+    elbow_xf, hand_xf,
+    twist_axis=np.array([1., 0., 0.]),
+    fractions=(0.33, 0.66),       # two intermediate twist joints
+)
+# xforms[0] → ForearmTwist1 world transform
+# xforms[1] → ForearmTwist2 world transform
+```
+
+### Key formulas
+
+**Swing-Twist decomposition:**
+```python
+imag    = q[:3]                         # imaginary part (axis × sin θ/2)
+proj    = np.dot(imag, twist_axis) * twist_axis
+q_twist = normalize([proj[0], proj[1], proj[2], q[3]])
+```
+
+**Partial twist via slerp:**
+```python
+q_partial = slerp(identity_q, q_twist, t)   # t in [0,1]
+```
+
+---
+
 ## Health summary
 
 - **4** modules — Kelvinlets: grab (single/bi/tri), affine (twist/scale/pinch), constrained solve, sharp family
-- **Total: 4 modules, 13 functions across 2 papers**
+- **1** module  — Forearm Partial Twist: swing-twist decomposition, partial twist xform, chain builder, Houdini SOP helper
+- **Total: 5 modules, 17 functions across 2 papers + 1 general technique**
 - All modules: NumPy only, no dependencies beyond standard scientific Python
 - Each has a runnable `__main__` example

@@ -1,0 +1,113 @@
+// ============================================================
+// rbf-kernels.vex
+// RBF Kernel Library — all standard kernels used in PSD, jaw rigs, and scattered interpolation
+//
+// Sources:
+//   Lewis 2000 §2 — Gaussian RBF in pose space
+//   Animatomy §5.5 — normalized Gaussian jaw proxy
+//   General RBF literature (Buhmann 2003)
+//
+// Run as: Geometry Wrangle SOP on a 1-point geometry for testing.
+// Set detail attributes: rbf_r (float, distance), rbf_eps (float, shape param), rbf_kernel (int, 0-5)
+// Output: detail float "rbf_phi" = φ(r)
+// ============================================================
+
+// ------------------------------------------------------------------
+// FUNCTION LIBRARY
+// ------------------------------------------------------------------
+
+// Gaussian:  φ(r) = exp(-ε²r²)
+// Smoothest; best for pose-space correctives (Lewis 2000).
+// ε = 1/(2σ²) — large ε = narrow bell; small ε = wide bell.
+function float rbf_gaussian(float r; float eps) {
+    return exp(-(eps * eps) * (r * r));
+}
+
+// Multiquadric:  φ(r) = sqrt(1 + ε²r²)
+// Slightly less smooth; good for shape-from-data fitting.
+// Gram matrix is negative-definite; requires augmented polynomial term for solvability.
+function float rbf_multiquadric(float r; float eps) {
+    return sqrt(1.0 + (eps * eps) * (r * r));
+}
+
+// Inverse multiquadric:  φ(r) = 1/sqrt(1 + ε²r²)
+// Positive-definite; decays to 0 at infinity; good for interpolation without polynomial.
+function float rbf_inverse_multiquadric(float r; float eps) {
+    return 1.0 / sqrt(1.0 + (eps * eps) * (r * r));
+}
+
+// Thin-plate spline (2D):  φ(r) = r² ln(r)  (with φ(0)=0)
+// Classic for 2D warp/retargeting (expression space mapping).
+// Requires polynomial augmentation (constant + linear) for solvability.
+function float rbf_thin_plate_spline(float r) {
+    if (r < 1e-10) return 0.0;
+    return (r * r) * log(r);
+}
+
+// Biharmonic (linear):  φ(r) = r
+// Simplest positive semi-definite kernel. Used in basic scattered interp.
+function float rbf_linear(float r) {
+    return r;
+}
+
+// Cubic:  φ(r) = r³
+// Positive semi-definite; smoother than linear; good for deformation fields.
+function float rbf_cubic(float r) {
+    return r * r * r;
+}
+
+// Compactly-supported Wendland C2:  φ(r) = (1 - r/R)^4 * (4r/R + 1)   for r <= R, else 0
+// Sparse Gram matrix (only nearby centers interact); good for large N (many examples).
+// R = support radius; scale your distances accordingly.
+function float rbf_wendland_c2(float r; float R) {
+    if (r >= R) return 0.0;
+    float t = r / R;
+    float s = 1.0 - t;
+    return (s * s * s * s) * (4.0 * t + 1.0);
+}
+
+// Normalized Gaussian (Animatomy §5.5 jaw proxy):
+//   g_i(p) = exp(-σ_i² ||p - μ_i||²)
+//   φ_norm(p) = g_i / Σ_j g_j
+// Note: normalization is done in rbf-eval.vex, not here.
+// This function just computes the raw Gaussian g_i for one center.
+function float rbf_normalized_gauss_raw(vector p; vector mu; float sigma) {
+    vector d = p - mu;
+    return exp(-(sigma * sigma) * dot(d, d));
+}
+
+// ------------------------------------------------------------------
+// MAIN (demo: evaluate one kernel at detail attribute rbf_r)
+// ------------------------------------------------------------------
+float r   = detail(0, "rbf_r",   1.0);
+float eps = detail(0, "rbf_eps", 1.0);
+int   k   = detail(0, "rbf_kernel", 0);
+
+float phi = 0.0;
+if      (k == 0) phi = rbf_gaussian(r, eps);
+else if (k == 1) phi = rbf_multiquadric(r, eps);
+else if (k == 2) phi = rbf_inverse_multiquadric(r, eps);
+else if (k == 3) phi = rbf_thin_plate_spline(r);
+else if (k == 4) phi = rbf_linear(r);
+else if (k == 5) phi = rbf_cubic(r);
+else if (k == 6) phi = rbf_wendland_c2(r, eps);   // eps = support radius R here
+
+setdetailattrib(0, "rbf_phi", phi);
+
+// ------------------------------------------------------------------
+// KERNEL SELECTION GUIDE
+//
+// | Kernel           | Def-pos | Needs poly | Sparse | Best use                        |
+// |------------------|---------|-----------|--------|---------------------------------|
+// | Gaussian         | Yes     | No        | No     | PSD correctives (Lewis 2000)    |
+// | Multiquadric     | No(neg) | Yes (+1)  | No     | Shape fitting                   |
+// | Inverse MQ       | Yes     | No        | No     | General interpolation           |
+// | Thin-plate (2D)  | Semi    | Yes       | No     | 2D expression retargeting       |
+// | Linear r         | Semi    | No        | No     | Simple deformation              |
+// | Cubic r³         | Semi    | No        | No     | Smooth deformation              |
+// | Wendland C2      | Yes     | No        | YES    | Large N (many example poses)    |
+//
+// For PSD correctives: Gaussian is standard (Lewis 2000, MetaHuman).
+// For jaw rig proxy: Normalized Gaussian (Animatomy §5.5).
+// For 2D expression mapping: Thin-plate spline (standard in retargeting).
+// ------------------------------------------------------------------
