@@ -748,6 +748,97 @@ vector  joint_pos  = lerp(elbow_pos, hand_pos, t);
 
 ---
 
+## Rigid Body Resting Analysis (Baktash, Sharp, Zhou, Jacobson, Crane — ACM ToG / SIGGRAPH 2025)
+
+Source paper: [[papers/baktash-2025-resting-rigid-bodies]]
+
+| File | Snippet | Algorithm | Run Mode | Notes |
+|------|---------|-----------|----------|-------|
+| [rigid-body-rest-analysis.vex](rigid-body-rest-analysis.vex) | A | Support function h(n) = max_{x∈K} n·x | Over Points | Inputs: query directions (input 0), convex mesh (input 1) |
+| [rigid-body-rest-analysis.vex](rigid-body-rest-analysis.vex) | B | Face stability check — COM projection inside face | Over Primitives | 2D winding number point-in-polygon test |
+| [rigid-body-rest-analysis.vex](rigid-body-rest-analysis.vex) | C | Resting probability from spherical Voronoi cell areas | Over Primitives | Reads `voronoi_area[]` detail array from Python SOP |
+| [rigid-body-rest-analysis.vex](rigid-body-rest-analysis.vex) | D | Quasi-static drop step (gradient descent on S²) | Over Points (1-pt geo) | Iterates in For-Each SOP; tracks `contact_n`, `settled` state |
+
+### Quick-start parameter guide
+
+**Full pipeline in Houdini:**
+```
+INPUT MESH
+  → Convex Hull SOP
+  → Normal SOP (Primitives, outward @N)
+  → Primitive Wrangle: detail "com" = centroid of original mesh
+
+STABILITY CHECK (Snippet B, run over primitives)
+  → Outputs: @stable (int), @margin (float) per face
+
+VORONOI AREAS (Python SOP — rigid_body_rest.py)
+  → Sets detail array "voronoi_area" (one float per face)
+
+RESTING PROBABILITIES (Snippet C, run over primitives)
+  → @rest_prob per face; normalize downstream
+
+DROP TRAJECTORY (Snippet D)
+  → 1-pt geometry with "contact_n" set to initial drop direction
+  → For-Each SOP (50 iters) → Trail SOP on Gauss sphere
+```
+
+**Snippet A — Support Function** (run Over Points, query directions as @P):
+
+| Attribute | Type | Where | Meaning |
+|-----------|------|-------|---------|
+| `@P` | vector | point (input 0) | Unit direction n to query |
+| `support_h` | float | point output | h(n) = max dot product (extent in direction n) |
+| `support_pt` | int | point output | Index of supporting vertex |
+| `potential_V` | float | point output | V(n) = h(-n) — COM height when contacting in direction n |
+
+**Snippet B — Stability Check** (run Over Primitives):
+
+| Attribute | Type | Where | Meaning |
+|-----------|------|-------|---------|
+| `com` | vector | detail | Center of mass of the original body |
+| `@N` | vector | prim | Outward face normal (from Normal SOP) |
+| `stable` | int | prim output | 1 = stable resting configuration |
+| `margin` | float | prim output | Signed distance of COM projection from face boundary |
+
+**Snippet D — Drop State** (1-point geometry, iterated):
+
+| Attribute | Type | Where | Meaning |
+|-----------|------|-------|---------|
+| `contact_n` | vector | detail | Current contact normal (pointing up from floor) |
+| `contact_type` | int | detail | 0=vertex, 1=edge/transition, 2=face (settled) |
+| `settled` | int | detail | 1 when stable face reached |
+
+### Key formulas
+
+**Support function (Snippet A):**
+```vex
+vector n = normalize(@P);
+float h_max = -1e30;
+for (int i = 0; i < npoints(1); i++) {
+    float d = dot(n, point(1, "P", i));
+    if (d > h_max) h_max = d;
+}
+f@support_h = h_max;
+f@potential_V = max(dot(-n, P[i]) for all i);   // = h(-n)
+```
+
+**Winding number point-in-polygon (Snippet B):**
+```vex
+// For edge (ax,ay)→(bx,by), test point (cx,cy) in face local 2D frame:
+float cross2d = (bx - ax) * (cy - ay) - (cx - ax) * (by - ay);
+if (ay <= cy && by > cy  && cross2d > 0) winding++;
+if (ay > cy  && by <= cy && cross2d < 0) winding--;
+i@stable = (winding != 0) ? 1 : 0;
+```
+
+**Resting probability (Snippet C):**
+```vex
+float cell_area = voronoi_area[@primnum];   // from scipy SphericalVoronoi
+f@rest_prob = is_stable ? cell_area / (4.0 * PI) : 0.0;
+```
+
+---
+
 ## Health summary
 
 - **7** snippets — Regularized Kelvinlets + Sharp Kelvinlets (all algorithms)
@@ -761,6 +852,7 @@ vector  joint_pos  = lerp(elbow_pos, hand_pos, t);
 - **5** snippets — Blendshape Fitting: eval (delta + replacement), marker softmax, QP fit, NLLS/FACEIT, PSD correctives
 - **6** snippets — RBF Techniques: kernel library, Gram matrix+solve, runtime eval, pose parameterization, PSD correctives, scattered interpolation
 - **1** snippet  — Forearm Twist: swing-twist decomposition for pronation/supination correction
-- **Total: 46 snippets across 13 papers + 1 general technique**
+- **4** snippets — Rigid Body Resting Analysis: support function, face stability (winding number), resting probability, quasi-static drop trajectory
+- **Total: 50 snippets across 14 papers + 1 general technique**
 
 Not yet implemented: Dynamic Kelvinlets (2018), Delta Mush, ARAP, Stochastic Barycentric Coordinates, CoR Skinning, Rig-Space Secondary Motion.

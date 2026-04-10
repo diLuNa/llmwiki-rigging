@@ -136,6 +136,7 @@ Master catalog of all pages. Updated on every ingest.
 | [[papers/iben-2019-hair-shape]] | Holding the Shape in Hair Simulation | SIGGRAPH Talks 2019 | `simulation` `hair` |
 | [[papers/degoes-2020-garment-refit]] | Garment Refitting for Digital Characters | SIGGRAPH Talks 2020 | `simulation` `mesh-wrap` |
 | [[papers/murai-2016-musculoskeletal-skin]] | Dynamic Skin Deformation Simulation Using Musculoskeletal Model | Pacific Graphics 2016 | `simulation` `muscles` `skinning` |
+| [[papers/baktash-2025-resting-rigid-bodies]] | Putting Rigid Bodies to Rest | ACM ToG / SIGGRAPH 2025 | `simulation` `math` `volumes` `houdini` `vex` `python` |
 | [[papers/smith-2018-neo-hookean]] | Stable Neo-Hookean Flesh Simulation | SIGGRAPH 2018 | `simulation` `muscles` `volumes` |
 | [[papers/teran-2005-quasistatic-flesh]] | Robust Quasistatic Finite Elements and Flesh Simulation | SCA 2005 | `simulation` `muscles` `volumes` |
 | [[papers/kim-2022-dynamic-deformables]] | Dynamic Deformables (course) | SIGGRAPH Course 2022 | `simulation` `muscles` |
@@ -223,7 +224,7 @@ Master catalog of all pages. Updated on every ingest.
 
 Full index with algorithm tables: [[vex/index]]
 
-46 snippets across: Kelvinlets, CurveNet, Cage deformation, BBW, Blendshapes, Mesh wrap, Wrinkles, Animatomy, Sliding deformation, RBF (Pose Space Deformation, kernel library, Gram solve, scattered interp, Waters muscles), Forearm Twist.
+50 snippets across: Kelvinlets, CurveNet, Cage deformation, BBW, Blendshapes, Mesh wrap, Wrinkles, Animatomy, Sliding deformation, RBF (Pose Space Deformation, kernel library, Gram solve, scattered interp, Waters muscles), Forearm Twist, Rigid Body Resting Analysis.
 
 ---
 
@@ -235,6 +236,8 @@ Full index with algorithm tables: [[vex/index]]
 | [[python/kelvinlet_affine.py]] | `twist`, `scale`, `pinch` | [[papers/degoes-2018-kelvinlets]] |
 | [[python/kelvinlet_constrained.py]] | `solve_forces`, `deform`, `apply_constrained` | [[papers/degoes-2018-kelvinlets]] |
 | [[python/kelvinlet_sharp.py]] | `laplacian`, `bilaplacian`, `cusped_laplacian`, `cusped_bilaplacian`, `sharp_blend` | [[papers/degoes-2019-sharp-kelvinlets]] |
+| [[python/forearm_partial_twist.py]] | `swing_twist_decompose`, `partial_twist_xform`, `build_forearm_chain`, `relative_quaternion` | General technique |
+| [[python/rigid_body_rest.py]] | `support_function`, `potential_energy`, `convex_hull_gauss_map`, `check_face_stability`, `compute_spherical_voronoi_areas`, `resting_probabilities`, `drop_trajectory`, `inverse_design_target_probs` | [[papers/baktash-2025-resting-rigid-bodies]] |
 
 ---
 
@@ -292,6 +295,8 @@ Full index with algorithm tables: [[vex/index]]
 | [[authors/zeng-xiao]] | University of Edinburgh / Tencent AI Lab |
 | [[authors/park-hyojoon]] | KAIST |
 | [[authors/lan-lana]] | DreamWorks Animation |
+| [[authors/crane-keenan]] | Carnegie Mellon University |
+| [[authors/sharp-nicholas]] | NVIDIA (formerly University of Toronto) |
 
 ---
 
@@ -310,4 +315,4 @@ Full index with algorithm tables: [[vex/index]]
 
 ---
 
-*Last updated: 2026-04-10 — ARKit + OpenXR investigation: added concepts/arkit-blendshapes, concepts/openxr-face-tracking, papers/deng-2023-facial-capture-survey. Wiki: 153 paper pages, 28 concepts, 50 authors, 4 techniques, 46 VEX snippets, 5 Python snippets.*
+*Last updated: 2026-04-09 — VEX + Python for Baktash 2025 (rigid body resting): added vex/rigid-body-rest-analysis.vex (4 snippets), python/rigid_body_rest.py (8 functions), authors/crane-keenan, authors/sharp-nicholas. Wiki: 154 paper pages, 28 concepts, 52 authors, 4 techniques, 50 VEX snippets, 6 Python snippets.*

@@ -1,0 +1,307 @@
+// ============================================================
+// rigid-body-rest-analysis.vex
+// Geometric resting analysis of convex rigid bodies
+//
+// Source: "Putting Rigid Bodies to Rest"
+//   Baktash, Sharp, Zhou, Jacobson, Crane — ACM ToG / SIGGRAPH 2025
+//   DOI: 10.1145/3731203
+//
+// Theory:
+//   A convex body at rest on a flat floor is characterized by its
+//   contact normal n ∈ S². Stable resting faces correspond to local
+//   minima of the potential V(n) = h(-n) on S², where h is the
+//   support function. The probability of landing on face i equals
+//   the area of its Morse-Smale basin on the Gauss sphere / 4π.
+//
+// This file provides THREE geometry wrangle snippets:
+//
+//   SNIPPET A — Support Function Evaluation (run over query directions)
+//     Input 0: query geometry (one point per direction to query)
+//     Input 1: the convex mesh (candidate body)
+//     Output: @support_h  float  — max dot product in each direction
+//             @support_pt int    — index of supporting point
+//
+//   SNIPPET B — Face Stability Check (run over faces of convex hull)
+//     Input 0: convex hull mesh with @P, @N (face normals), @com detail
+//     Output: @stable  int     — 1 if face is a stable resting configuration
+//             @margin  float   — signed distance of COM projection from face boundary
+//
+//   SNIPPET C — Resting Probability from Spherical Voronoi (run over faces)
+//     Input 0: convex hull faces with precomputed @voronoi_area detail float[]
+//     Output: @rest_prob  float  — probability of landing on this face
+//
+// Setup notes:
+//   - Run on convex hull geometry (use Convex Hull SOP on input mesh first)
+//   - Set "com" detail attribute = center of mass of the original body
+//   - voronoi_area[] computed externally (Python SOP) — see rigid_body_rest.py
+// ============================================================
+
+// ==================================================================
+// SNIPPET A — SUPPORT FUNCTION h(n) = max_x (n · x)
+//
+// Run over a set of query direction points (normalized vectors).
+// Evaluates the support function of the convex body at each direction.
+//
+// Setup: Geometry Wrangle, run Over Points.
+//   Input 0 = query direction geometry (each @P is a unit direction n)
+//   Input 1 = convex mesh (points only needed)
+// ==================================================================
+
+vector n = normalize(@P);   // query direction — each point IS the direction
+
+int    npts    = npoints(1);
+float  h_max   = -1e30;
+int    best_pt = 0;
+
+for (int i = 0; i < npts; i++) {
+    vector x   = point(1, "P", i);
+    float  dot = dot(n, x);
+    if (dot > h_max) {
+        h_max   = dot;
+        best_pt = i;
+    }
+}
+
+// Support function value: extent of body in direction n
+f@support_h  = h_max;
+// Which point achieves the maximum (supporting point)
+i@support_pt = best_pt;
+
+// Height of COM when body contacts floor in direction -n:
+// V(n) = h(-n) = max_x ((-n) · x) = -min_x (n · x)
+// Equivalently, if you think of the body oriented so that n faces up,
+// the floor is at height -h(-n) = h(n) from the body's origin.
+// potential_energy ∝ h(-n):
+vector neg_n  = -n;
+float  V      = 0.0;
+for (int i = 0; i < npts; i++) {
+    float d = dot(neg_n, point(1, "P", i));
+    if (d > V || i == 0) V = d;
+}
+f@potential_V = V;   // = h(-n), the COM height when contacting in direction n
+
+
+// ==================================================================
+// SNIPPET B — FACE STABILITY CHECK
+//
+// For each face of the convex hull, checks whether the body is in
+// stable equilibrium when resting on that face.
+// Stability condition: center of mass (COM) projects INSIDE the face.
+//
+// Run: Over Primitives (faces).
+//   Needs: @N (primitive normals, outward), detail "com" vector.
+//          Primitive must be convex polygon.
+// ==================================================================
+
+// Read COM
+vector com = detail(0, "com", {0, 0, 0});
+
+// Outward face normal (normalized)
+vector N = normalize(prim(0, "N", @primnum));
+
+// Get face vertices
+int pts[] = primpoints(0, @primnum);
+int n_verts = len(pts);
+
+if (n_verts < 3) {
+    i@stable = 0;
+    f@margin = -1.0;
+} else {
+    // Project COM onto the face plane
+    vector p0   = point(0, "P", pts[0]);
+    float  dist = dot(com - p0, N);          // signed dist from face plane
+    vector proj = com - dist * N;            // projected COM in world space
+
+    // Build local 2D coordinate frame in the face plane
+    vector e1 = normalize(point(0, "P", pts[1]) - p0);
+    vector e2 = cross(N, e1);
+
+    // Project COM_proj and all vertices into 2D
+    float cx = dot(proj - p0, e1);
+    float cy = dot(proj - p0, e2);
+
+    // Point-in-polygon test (winding number, 2D)
+    int   winding = 0;
+    float min_signed_dist = 1e30;   // margin = distance to nearest edge (signed)
+
+    for (int j = 0; j < n_verts; j++) {
+        vector vj  = point(0, "P", pts[j]);
+        vector vjn = point(0, "P", pts[(j+1) % n_verts]);
+
+        float ax = dot(vj  - p0, e1);   float ay = dot(vj  - p0, e2);
+        float bx = dot(vjn - p0, e1);   float by = dot(vjn - p0, e2);
+
+        // Winding number contribution
+        if (ay <= cy) {
+            if (by > cy) {
+                float cross2d = (bx - ax) * (cy - ay) - (cx - ax) * (by - ay);
+                if (cross2d > 0) winding++;
+            }
+        } else {
+            if (by <= cy) {
+                float cross2d = (bx - ax) * (cy - ay) - (cx - ax) * (by - ay);
+                if (cross2d < 0) winding--;
+            }
+        }
+
+        // Signed distance from (cx,cy) to edge (ax,ay)→(bx,by)
+        float ex = bx - ax,  ey = by - ay;
+        float len_e = sqrt(ex*ex + ey*ey);
+        if (len_e > 1e-10) {
+            // Perpendicular signed distance (positive = inside half-plane)
+            float sd = ((cx - ax) * ey - (cy - ay) * ex) / len_e;
+            if (abs(sd) < abs(min_signed_dist)) min_signed_dist = sd;
+        }
+    }
+
+    i@stable = (winding != 0) ? 1 : 0;   // non-zero winding = inside
+    f@margin = min_signed_dist;           // positive = COM well inside face
+}
+
+
+// ==================================================================
+// SNIPPET C — RESTING PROBABILITY PER FACE
+//
+// Uses precomputed Spherical Voronoi cell areas (from Python SOP)
+// as an approximation to the Morse-Smale basin areas.
+// For convex polyhedra where each face normal is a Gauss-map point,
+// the Voronoi cell area ≈ basin area when COM is always well inside faces.
+//
+// Run: Over Primitives (faces).
+//   Needs: detail float array "voronoi_area" (one entry per face),
+//          detail int "n_faces".
+//   Set "rest_stable" (int[]) = per-face stability flags from Snippet B.
+// ==================================================================
+
+float FOUR_PI = 4.0 * 3.14159265358979;
+
+float vor_area[];
+vor_area = detail(0, "voronoi_area");   // precomputed per-face cell areas on S²
+
+float cell_area = 0.0;
+if (@primnum < len(vor_area)) {
+    cell_area = vor_area[@primnum];
+}
+
+// Raw probability from Gauss-sphere cell area
+float p_raw = cell_area / FOUR_PI;
+
+// Zero out unstable faces (no real resting basin)
+int is_stable = prim(0, "stable", @primnum);
+f@rest_prob = is_stable ? p_raw : 0.0;
+
+// Note: probabilities won't sum to 1.0 exactly due to the Voronoi
+// approximation. Normalize across all faces in a downstream wrangle:
+//   float total = sum(prim(0,"rest_prob",i) for all i);
+//   @rest_prob /= total;
+
+
+// ==================================================================
+// SNIPPET D — QUASI-STATIC DROP STEP (gradient descent on S²)
+//
+// Simulates one step of quasi-static rolling from current contact normal.
+// Run on a 1-point geometry (the "rolling state"). Iterate in a For-Each SOP.
+//
+// State attributes (on the 1-point geometry):
+//   "contact_n"    vector   — current contact normal (pointing up from floor)
+//   "contact_type" int      — 0=vertex, 1=edge, 2=face
+//   "settled"      int      — 1 when stable face reached
+//
+// Input 1: convex hull mesh (faces + normals)
+// ==================================================================
+
+int settled = detail(0, "settled", 0);
+if (settled) return;   // already at rest
+
+vector n_curr = detail(0, "contact_n", {0, 1, 0});
+int    nprims = nprimitives(1);
+
+// Evaluate potential V(n) = h(-n) for current direction and all face normals
+float V_curr = 0.0;
+{
+    vector neg_n = -n_curr;
+    int npts1 = npoints(1);
+    for (int i = 0; i < npts1; i++) {
+        float d = dot(neg_n, point(1, "P", i));
+        if (d > V_curr || i == 0) V_curr = d;
+    }
+}
+
+// Find the face with the lowest V (deepest potential well reachable)
+// Simplified: project gradient onto S², find descending face direction
+float  best_V    = V_curr;
+vector best_n    = n_curr;
+int    best_face = -1;
+
+for (int fi = 0; fi < nprims; fi++) {
+    vector fn = normalize(prim(1, "N", fi));
+
+    // V at this face normal
+    vector neg_fn = -fn;
+    int npts1 = npoints(1);
+    float V_face = 0.0;
+    for (int i = 0; i < npts1; i++) {
+        float d = dot(neg_fn, point(1, "P", i));
+        if (d > V_face || i == 0) V_face = d;
+    }
+
+    // Slerp step toward this face normal (small step)
+    float step = 0.1;
+    vector n_try = normalize(lerp(n_curr, fn, step));
+
+    // V at interpolated direction
+    vector neg_try = -n_try;
+    float V_try = 0.0;
+    for (int i = 0; i < npts1; i++) {
+        float d = dot(neg_try, point(1, "P", i));
+        if (d > V_try || i == 0) V_try = d;
+    }
+
+    if (V_try < best_V) {
+        best_V    = V_try;
+        best_n    = n_try;
+        best_face = fi;
+    }
+}
+
+if (best_face < 0) {
+    // No downhill direction found — at local minimum → settled
+    setdetailattrib(0, "settled", 1);
+    setdetailattrib(0, "contact_type", 2);   // face contact
+} else {
+    // Take the step
+    setdetailattrib(0, "contact_n", normalize(best_n));
+    setdetailattrib(0, "contact_type", 1);   // edge/transition
+}
+
+// ------------------------------------------------------------------
+// QUICK SETUP GUIDE
+//
+// Full pipeline in Houdini:
+//
+//   1. INPUT MESH
+//      → Convex Hull SOP          (compute convex hull)
+//      → Normal SOP (Primitives)  (outward face normals @N)
+//      → Primitive Wrangle: set detail "com" = centroid of original mesh
+//
+//   2. STABILITY CHECK (Snippet B)
+//      → Primitive Wrangle (this snippet, Snippet B section)
+//      → Outputs: @stable (int), @margin (float) per face
+//
+//   3. VORONOI AREAS (Python SOP)
+//      → See rigid_body_rest.py: compute_spherical_voronoi_areas()
+//      → Sets detail array "voronoi_area" with one float per face
+//
+//   4. RESTING PROBABILITIES (Snippet C)
+//      → Primitive Wrangle (Snippet C section)
+//      → Output: @rest_prob per face; normalize downstream
+//
+//   5. VISUALIZATION
+//      → Color faces by @rest_prob (Attribute from Map or manual color ramp)
+//      → Delete unstable faces (@stable == 0) for clean display
+//
+//   6. DROP TRAJECTORY (Snippet D)
+//      → Create 1-pt geometry, set "contact_n" to initial drop direction
+//      → For-Each SOP (count: 50 iterations) → Snippet D each iteration
+//      → Trail SOP on point position to visualize path on Gauss sphere
+// ------------------------------------------------------------------

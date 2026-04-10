@@ -2,7 +2,7 @@
 title: "Muscles & Soft Tissue Simulation"
 tags: [muscles, simulation, volumes, skinning, rig-generation, digital-human]
 ---
-
+2
 ## Definition
 Muscle and soft tissue systems in character rigging encompass two related but distinct problems:
 

@@ -565,3 +565,43 @@ Springer 2023 survey on facial capture pipeline evolution: hardware (markers→R
 - `index.md` — 2 new concepts added (arkit-blendshapes, openxr-face-tracking); 1 new paper; footer updated (152→153 papers, 26→28 concepts)
 
 **Key finding:** ARKit's 52-weight parameterization is now the de facto interchange format across Apple, Epic MetaHuman, HTC OpenXR, and Unity/Unreal pipelines. OpenXR extensions explicitly designed for ARKit compatibility (HTC 52-weight lip component). A rig built on ARKit-named blendshapes works across all current XR platforms without remapping.
+
+## [2026-04-09] ingest | Putting Rigid Bodies to Rest (Baktash, Sharp, Zhou, Jacobson, Crane — ACM ToG / SIGGRAPH 2025)
+
+Downloaded paper content via project page and GitHub README (DOI: 10.1145/3731203).
+Created `wiki/papers/baktash-2025-resting-rigid-bodies.md`.
+
+Key contribution: pure geometric characterization of all stable resting orientations and their exact probabilities for convex rigid bodies via the Morse-Smale complex of the support function over the Gauss sphere. Enables inverse design (fair/loaded dice, orientation-biased props) at interactive speed.
+
+New author pages: `wiki/authors/crane-keenan.md` (CMU; DDG, heat method, conformal geometry), `wiki/authors/sharp-nicholas.md` (NVIDIA; Polyscope, geometry processing, 3D ML). Updated: `wiki/authors/jacobson-alec.md` (added baktash-2025 to Papers in Wiki).
+
+## [2026-04-09] vex | Rigid Body Resting Analysis VEX snippets
+
+Created `wiki/vex/rigid-body-rest-analysis.vex` — 4 Houdini Geometry Wrangle snippets covering the full Baktash 2025 pipeline:
+
+- **Snippet A** (Over Points) — Support function h(n) = max_{x∈K} n·x; also computes V(n) = h(-n) (COM height / potential energy). Outputs `@support_h`, `@support_pt`, `@potential_V`.
+- **Snippet B** (Over Primitives) — Face stability check: projects COM onto face plane, performs 2D winding-number point-in-polygon test in local face frame. Outputs `@stable` (int), `@margin` (float — signed distance to nearest edge).
+- **Snippet C** (Over Primitives) — Resting probability from precomputed spherical Voronoi cell areas: `@rest_prob = is_stable ? voronoi_area[@primnum] / 4π : 0.0`.
+- **Snippet D** (1-point geo, For-Each) — Quasi-static drop step: slerps toward face normal with lowest V(n); sets `contact_n`, `contact_type`, `settled` state attributes. Full Houdini pipeline setup guide in header comment.
+
+Updated `wiki/vex/index.md`: added Rigid Body Resting Analysis section with parameter table and key formulas. Total: 46 → 50 VEX snippets.
+
+## [2026-04-09] python | Rigid Body Resting Analysis Python module
+
+Created `wiki/python/rigid_body_rest.py` — complete NumPy/SciPy implementation:
+
+Functions:
+- `support_function(vertices, directions)` — vectorized h(n) via numpy matmul
+- `potential_energy(vertices, normals)` — V(n) = h(-n) for all query normals
+- `convex_hull_gauss_map(vertices)` — scipy ConvexHull wrapper; returns face normals, areas, COM
+- `check_face_stability(hull, vertices, com)` — COM inside face → 2D cross-product test; returns (stable bool[], margins float[])
+- `compute_spherical_voronoi_areas(face_normals)` — scipy SphericalVoronoi; handles duplicate normals (parallel faces) via np.unique with uniform fallback
+- `resting_probabilities(vertices, com)` — full pipeline dict; prob[i] = voronoi_area[i] / 4π if stable
+- `drop_trajectory(vertices, com, n0, steps, step_size)` — (T,3) gradient descent on S²; tangent-plane finite-difference gradient; snaps to face normal when cos > 0.999
+- `inverse_design_target_probs(vertices, com, target_face_idx, target_probs, iters, lr)` — numerical gradient on vertex positions; returns (verts_opt, loss_history)
+- `run_in_houdini_python_sop(node)` — writes stable, rest_prob, margin prim attrs + voronoi_area detail array + com detail vector
+
+Runnable __main__ demo: unit cube (expect 6 stable faces ~1/6 each) + regular tetrahedron (4 faces ~1/4 each).
+
+Updated `wiki/python/index.md`: added Rigid Body Resting Analysis section. Total: 5 → 6 Python modules, 17 → 26 functions.
+Updated `wiki/index.md`: added baktash-2025 paper, crane-keenan and sharp-nicholas authors, updated VEX/Python counts in footer and VEX section text.

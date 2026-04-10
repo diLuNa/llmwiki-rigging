@@ -55,7 +55,11 @@
       "WebFetch(domain:docs.polyhammer.com)",
       "Bash(git checkout:*)",
       "WebFetch(domain:80.lv)",
-      "WebFetch(domain:www.metahuman.com)"
+      "WebFetch(domain:www.metahuman.com)",
+      "WebFetch(domain:dl.acm.org)",
+      "WebFetch(domain:www.cs.cmu.edu)",
+      "Bash(curl -L \"https://www.cs.cmu.edu/~kmcrane/Projects/RestingBodies/PuttingRigidBodiesToRest.pdf\" -o \"/Users/lucaprasso/Research/LLM_Wiki/rigging-wiki/raw/papers/baktash-2025-resting-rigid-bodies.pdf\" --progress-bar)",
+      "WebFetch(domain:hbaktash.github.io)"
     ]
   }
 }

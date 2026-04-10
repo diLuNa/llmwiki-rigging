@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "wiki/concepts/facs.md",
+                "file": "wiki/queries/metahuman-rig-internals.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "facs"
+              "title": "metahuman-rig-internals"
             }
           },
           {
@@ -216,10 +216,19 @@
   },
   "active": "e1e94846dc220d36",
   "lastOpenFiles": [
+    "wiki/python/rigid_body_rest.py",
+    "wiki/vex/rigid-body-rest-analysis.vex",
+    "wiki/authors/sharp-nicholas.md",
+    "wiki/authors/crane-keenan.md",
+    "wiki/papers/baktash-2025-resting-rigid-bodies.md",
+    "wiki/concepts/muscles.md",
+    "wiki/overview.md",
+    "wiki/index.md",
+    "wiki/concepts/facs.md",
+    "raw/papers/baktash-2025-resting-rigid-bodies.pdf",
     "wiki/papers/deng-2023-facial-capture-survey.md",
     "wiki/concepts/openxr-face-tracking.md",
     "wiki/concepts/arkit-blendshapes.md",
-    "wiki/concepts/facs.md",
     "CLAUDE.md",
     "wiki/papers/deng-noh-2007-facial-animation-survey.md",
     "wiki/papers/ekman-friesen-1978-facs.md",
@@ -229,7 +238,6 @@
     "wiki/techniques/blendshape-usd.md",
     "wiki/python/index.md",
     "wiki/techniques/bandage-smoothing-vex.md",
-    "wiki/index.md",
     "wiki/vex/index.md",
     "wiki/vex/forearm-partial-twist.vex",
     "wiki/vex/rbf-scattered-interp.vex",
@@ -243,14 +251,6 @@
     "wiki/concepts/wrinkle-systems.md",
     "wiki/authors/bao-michael.md",
     "wiki/authors/lan-lana.md",
-    "wiki/authors/park-hyojoon.md",
-    "wiki/authors/zeng-xiao.md",
-    "wiki/authors/wagner-nicolas.md",
-    "wiki/authors/zoss-gaspard.md",
-    "wiki/authors/chandran-prashanth.md",
-    "wiki/authors/yang-lingchen.md",
-    "wiki/authors/kadlecek-petr.md",
-    "raw/papers/ichim-2017-phace.pdf",
-    "raw/papers/terzopoulos-1993-analysis-synthesis.pdf"
+    "wiki/authors/park-hyojoon.md"
   ]
 }
