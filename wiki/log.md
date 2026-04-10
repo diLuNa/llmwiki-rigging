@@ -520,3 +520,48 @@ Updated: python/index.md (4 → 5 modules, 13 → 17 functions), vex/index.md (t
 - 0 technique pages missing — forearm-partial-twist.md added this session
 
 Health: CLEAN
+
+## [2026-04-10] ingest | FACS investigation — concept + 2 papers
+
+Researched FACS (Facial Action Coding System) literature. Identified that FACS was referenced in 31 wiki files but had no dedicated concept page and no paper page for the foundational Ekman & Friesen manual.
+
+**Created:**
+- `wiki/concepts/facs.md` — comprehensive FACS concept page: 44 AU table (upper/lower face + head/gaze), intensity A–E scale, bilateral AU conventions, 7 universal expressions with FACS signatures, CG blendshape naming conventions (ARKit, ICT FaceKit, MetaHuman/DNA, Maya), FACS as neural supervision signal (NFR, RigAnyFace, CANRIG, Cha 2025), muscle vs FACS comparison, implementation notes (bilateral AUs, anti-synergies, intensity mapping), key papers table, and external URL references (Paul Ekman Group, CMU FACS, Py-Feat, Melinda Ozel cheat sheet, OpenFACS, FACSvatar)
+- `wiki/papers/ekman-friesen-1978-facs.md` — the canonical 1978 FACS manual; full paper page with method, key results, limitations, production implementation notes, and two representative quotes
+- `wiki/papers/deng-noh-2007-facial-animation-survey.md` — 2007 Springer CG facial animation survey; bridges FACS psychophysical literature with CG blendshape, muscle, and performance capture pipelines
+
+**Updated:**
+- `concepts/blendshapes.md` — FACS section now links [[concepts/facs]] and [[papers/ekman-friesen-1978-facs]]
+- `concepts/facial-blendshape-rigs.md` — FACS paragraph and Connections section now link [[concepts/facs]]
+- `index.md` — facs concept added to Concepts table; 2 new papers added in blendshapes group; VEX count corrected (45→46); footer updated (150→152 papers, 25→26 concepts)
+
+**External URLs researched and referenced in concepts/facs.md:**
+- https://www.paulekman.com/facial-action-coding-system/ — official FACS 2002 manual
+- https://www.cs.cmu.edu/~face/facs.htm — CMU AU reference
+- https://py-feat.org/pages/au_reference.html — Py-Feat AU table
+- https://melindaozel.com/facs-cheat-sheet/ — practitioner AU guide
+- https://melindaozel.com/arkit-to-facs-cheat-sheet/ — ARKit→FACS mapping
+- https://github.com/phuselab/openFACS — OpenFACS open source toolkit
+- https://github.com/NumesSanguis/FACSvatar — FACSvatar real-time pipeline
+
+## [2026-04-10] ingest | ARKit and OpenXR face tracking formats
+
+Investigated ARKit and OpenXR as real-time facial animation standards. Both were referenced in the wiki but had no dedicated concept pages.
+
+**Created:**
+
+`wiki/concepts/arkit-blendshapes.md`
+Apple ARKit Face Tracking: TrueDepth camera architecture (30K dot IR, 1,220-pt mesh, 60 Hz); full canonical list of 52 blend shape names grouped by region (eyes 14, brows 6, nose 2, jaw 4, mouth/lips 24, cheeks 2); ARKit→FACS spot mapping table; engine integration (Unreal Live Link Face: pipeline + timecode sync; Unity ARFoundation: ARFaceManager, SkinnedMeshRenderer); MetaHuman 52-name streaming layer; ARKit as research data source (SAiD, UniTalker, REFA, Express4D); standardization position table vs FACS/OpenXR/MPEG-4; 8 external URLs.
+
+`wiki/concepts/openxr-face-tracking.md`
+Khronos OpenXR face tracking extensions: XR_FB_face_tracking (Meta, 70 FACS-derived weights, xrGetFaceExpressionWeightsFB, confidence per region); XR_FB_face_tracking2 (multimodal visual+audio, xrGetFaceExpressionWeights2FB); XR_HTC_facial_tracking (HTC, 37 eye + 52 ARKit-compatible lip weights, separate create/query per type); XR_EXT_eye_gaze_interaction (gaze direction only, not weights); weight count comparison table; cross-platform rig strategy (52 ARKit-named blendshapes work across iPhone, Quest Pro, Vive XR Elite); engine integration (Unreal: VIVE OpenXR+MetaHuman, Meta Movement SDK; Unity: Meta Movement SDK, HTC OpenXR, Android XR); Meta 70 vs ARKit 52 delta explained; 11 external URLs + Khronos spec links.
+
+`wiki/papers/deng-2023-facial-capture-survey.md`
+Springer 2023 survey on facial capture pipeline evolution: hardware (markers→RGB-D→ARKit), tracking algorithms (FLAME fitting, neural reconstruction), FACS as intermediate representation, real-time delivery (Live Link Face, OpenXR), MetaHuman integration. Modern update to the 2007 survey by same first author.
+
+**Updated:**
+- `concepts/facs.md` — added "Real-Time Implementations" section pointing to ARKit and OpenXR concept pages
+- `concepts/facial-blendshape-rigs.md` — Connections section now links [[concepts/arkit-blendshapes]] and [[concepts/openxr-face-tracking]]
+- `index.md` — 2 new concepts added (arkit-blendshapes, openxr-face-tracking); 1 new paper; footer updated (152→153 papers, 26→28 concepts)
+
+**Key finding:** ARKit's 52-weight parameterization is now the de facto interchange format across Apple, Epic MetaHuman, HTC OpenXR, and Unity/Unreal pipelines. OpenXR extensions explicitly designed for ARKit compatibility (HTC 52-weight lip component). A rig built on ARKit-named blendshapes works across all current XR platforms without remapping.

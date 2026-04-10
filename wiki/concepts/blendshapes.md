@@ -19,7 +19,7 @@ Two major conventions:
 The non-normalized convention is important for USD/Houdini Solaris pipelines — see [[concepts/usdskel]].
 
 ## FACS
-The Facial Action Coding System defines a standard vocabulary of facial blendshapes (Action Units). Common in facial rigging.
+The Facial Action Coding System ([[concepts/facs]]) defines a standard vocabulary of facial blendshapes mapped to anatomically-distinct Action Units (AUs). In practice, each AU becomes one or two blendshapes (bilateral AUs split L/R). See [[papers/ekman-friesen-1978-facs]] for the canonical reference.
 
 ## Key Papers
 - [[papers/lewis-2000-psd]] — PSD as framework for corrective blendshapes

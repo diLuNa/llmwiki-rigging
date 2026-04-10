@@ -79,9 +79,12 @@ Transferring expression from one rig's weight space to another without matching 
 - *Min* corrective: activates as $\min(\alpha_i, \alpha_j)$
 - *Gaussian RBF*: full PSD, pose-space interpolation
 
-**FACS (Facial Action Coding System):** Anatomically-grounded AU labeling. Not every production rig uses FACS directly but neural auto-rigging systems (NFR, RigAnyFace) target FACS-compatible output for interoperability.
+**FACS (Facial Action Coding System):** Anatomically-grounded AU labeling system ([[concepts/facs]], [[papers/ekman-friesen-1978-facs]]). Most production rigs ground their control palette in FACS AUs. Neural auto-rigging systems (NFR, RigAnyFace) explicitly target FACS-compatible output for interoperability with existing pipelines.
 
 ## Connections
+- [[concepts/facs]] — the AU taxonomy underlying all FACS-based rigs
+- [[concepts/arkit-blendshapes]] — ARKit 52-weight standard; the de facto real-time streaming target for production rigs
+- [[concepts/openxr-face-tracking]] — XR headset extensions (Meta 70, HTC 52+37) that drive the same rig
 - [[concepts/pose-space-deformation]] — the corrective mechanism that makes blendshape rigs nonlinear in practice
 - [[concepts/rig-inversion]] — the inverse problem: signals → blendshape weights
 - [[concepts/nonlinear-face-models]] — neural/generative alternatives and extensions to linear blendshape spaces

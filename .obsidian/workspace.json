@@ -27,12 +27,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "wiki/techniques/forearm-partial-twist.md",
+                "file": "wiki/concepts/facs.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "forearm-partial-twist"
+              "title": "facs"
+            }
+          },
+          {
+            "id": "e30f8c435b50da1a",
+            "type": "leaf",
+            "state": {
+              "type": "webviewer",
+              "state": {
+                "url": "https://www.paulekman.com/facial-action-coding-system/",
+                "title": "Facial Action Coding System - Paul Ekman Group",
+                "mode": "webview"
+              },
+              "icon": "globe-2",
+              "title": "Facial Action Coding System - Paul Ekman Group"
             }
           }
         ],
@@ -202,12 +216,18 @@
   },
   "active": "e1e94846dc220d36",
   "lastOpenFiles": [
+    "wiki/papers/deng-2023-facial-capture-survey.md",
+    "wiki/concepts/openxr-face-tracking.md",
+    "wiki/concepts/arkit-blendshapes.md",
+    "wiki/concepts/facs.md",
+    "CLAUDE.md",
+    "wiki/papers/deng-noh-2007-facial-animation-survey.md",
+    "wiki/papers/ekman-friesen-1978-facs.md",
+    "wiki/techniques/forearm-partial-twist.md",
     "wiki/techniques/sculpt-transfer-vex.md",
     "wiki/python/forearm_partial_twist.py",
-    "wiki/techniques/forearm-partial-twist.md",
     "wiki/techniques/blendshape-usd.md",
     "wiki/python/index.md",
-    "CLAUDE.md",
     "wiki/techniques/bandage-smoothing-vex.md",
     "wiki/index.md",
     "wiki/vex/index.md",
@@ -230,12 +250,6 @@
     "wiki/authors/chandran-prashanth.md",
     "wiki/authors/yang-lingchen.md",
     "wiki/authors/kadlecek-petr.md",
-    "wiki/authors/pauly-mark.md",
-    "wiki/authors/ichim-alexandru.md",
-    "wiki/authors/cong-matthew.md",
-    "wiki/authors/teran-joseph.md",
-    "wiki/authors/fedkiw-ronald.md",
-    "wiki/authors/terzopoulos-demetri.md",
     "raw/papers/ichim-2017-phace.pdf",
     "raw/papers/terzopoulos-1993-analysis-synthesis.pdf"
   ]

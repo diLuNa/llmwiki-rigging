@@ -17,6 +17,9 @@ Master catalog of all pages. Updated on every ingest.
 
 | Page | Title | Venue | Tags |
 |------|-------|-------|------|
+| [[papers/ekman-friesen-1978-facs]] | Facial Action Coding System | Manual 1978 (2002 rev.) | `blendshapes` `facial-capture` `facs` `rig-generation` `digital-human` |
+| [[papers/deng-noh-2007-facial-animation-survey]] | Computer Facial Animation: A Survey | Springer Book Chapter 2007 | `blendshapes` `muscles` `facial-capture` `facs` `survey` |
+| [[papers/deng-2023-facial-capture-survey]] | A Survey on the Pipeline Evolution of Facial Capture and Tracking for Digital Humans | Multimedia Systems (Springer) 2023 | `blendshapes` `facial-capture` `facs` `digital-human` `survey` |
 | [[papers/sol-2025-blendshape-retargeting]] | A New Blendshape-Based Retargeting for 3D Facial Expression | International Journal 2025 | `blendshapes` `correctives` `digital-human` `neural` |
 | [[papers/jtdp-2003-blendshape-fitting]] | Blendshape Weight Estimation from Markers | ~2003 | `blendshapes` `correctives` `facial-capture` `rig-generation` |
 | [[papers/lewis-2014-blendshape-star]] | State of the Art Report: Facial Blendshape Animation | Eurographics 2014 | `blendshapes` `correctives` `pose-space` `survey` |
@@ -196,6 +199,9 @@ Master catalog of all pages. Updated on every ingest.
 | [[concepts/secondary-motion]] | Hair, skin jiggle, soft-tissue lag; rig-space vs simulation vs data-driven |
 | [[concepts/auto-rigging]] | End-to-end skeleton/blendshape rig generation from mesh; neural and template-based |
 | [[concepts/mesh-graph-nets]] | GNN simulators on mesh representations; Encode-Process-Decode; cloth, soft tissue, face shape |
+| [[concepts/facs]] | Facial Action Coding System: 44 AUs, intensity scale, 7 universal expressions, CG rig mapping, ARKit/MetaHuman conventions, external AU references |
+| [[concepts/arkit-blendshapes]] | Apple ARKit 52 blend shapes: canonical names, TrueDepth pipeline, FACS mapping, Live Link Face, Unity/Unreal integration, de facto real-time standard |
+| [[concepts/openxr-face-tracking]] | OpenXR face tracking extensions: XR_FB (70 weights), XR_HTC (37+52, ARKit-compatible), eye gaze; Khronos spec URLs; cross-platform rig strategy |
 | [[concepts/facial-blendshape-rigs]] | Production facial rigs: FACS blendshapes, PSD correctives, muscle systems, performance capture |
 | [[concepts/nonlinear-face-models]] | Nonlinear 3DMMs, mesh autoencoders, implicit neural faces, DiffusionRig, neural auto-rigging |
 | [[concepts/muscles]] | Muscle systems as rig controls (facial/body) and soft tissue FEM simulation |
@@ -217,7 +223,7 @@ Master catalog of all pages. Updated on every ingest.
 
 Full index with algorithm tables: [[vex/index]]
 
-45 snippets across: Kelvinlets, CurveNet, Cage deformation, BBW, Blendshapes, Mesh wrap, Wrinkles, Animatomy, Sliding deformation, RBF (Pose Space Deformation, kernel library, Gram solve, scattered interp, Waters muscles).
+46 snippets across: Kelvinlets, CurveNet, Cage deformation, BBW, Blendshapes, Mesh wrap, Wrinkles, Animatomy, Sliding deformation, RBF (Pose Space Deformation, kernel library, Gram solve, scattered interp, Waters muscles), Forearm Twist.
 
 ---
 
@@ -304,4 +310,4 @@ Full index with algorithm tables: [[vex/index]]
 
 ---
 
-*Last updated: 2026-04-09 — Sorted papers by tag. Wiki: 150 paper pages, 25 concepts, 50 authors, 4 techniques, 46 VEX snippets, 5 Python snippets.*
+*Last updated: 2026-04-10 — ARKit + OpenXR investigation: added concepts/arkit-blendshapes, concepts/openxr-face-tracking, papers/deng-2023-facial-capture-survey. Wiki: 153 paper pages, 28 concepts, 50 authors, 4 techniques, 46 VEX snippets, 5 Python snippets.*
