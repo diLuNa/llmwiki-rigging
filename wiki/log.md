@@ -761,3 +761,18 @@ Implemented full Python and VEX code for Gustafson, Lo, Kanyuk SIGGRAPH Talks 20
 **Updated indexes:**
 - `wiki/python/index.md` — added inverse_rig_mapping.py section with quick-start, class table, formulas
 - `wiki/vex/index.md` — added inverse-rig-mapping.vex section; health summary: 50 → 53 snippets
+
+## [2026-04-13] technique | Inverse Rig Mapping
+
+Created `wiki/techniques/inverse-rig-mapping.md` covering the full Gustafson et al. 2020 technique:
+- Problem framing (rig inversion bottleneck, Jacobian cost)
+- Three stages: classification, sorting, Gauss-Newton inversion
+- Operator taxonomy: RotationOp, TranslationOp, ForearmTwistOp
+- Arm + forearm twist concrete example with annotated 15×5 Jacobian
+- Python usage (ArmRig, LearnedRigApproximation, RigInverter)
+- Houdini VEX usage (Snippets A/B/C from inverse-rig-mapping.vex)
+- Gotchas: nonlinear params, same-joint ordering, discarded params, VEX solver limits
+- Performance notes (~2ms, 5000× speedup)
+- Comparison table vs. numerical Jacobian, FaceBaker, Dem Bones, ML Deformer
+
+Updated `wiki/index.md` — added technique row.

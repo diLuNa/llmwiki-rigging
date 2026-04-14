@@ -216,6 +216,9 @@
   },
   "active": "e1e94846dc220d36",
   "lastOpenFiles": [
+    "wiki/techniques/inverse-rig-mapping.md",
+    "wiki/vex/inverse-rig-mapping.vex",
+    "wiki/python/inverse_rig_mapping.py",
     "wiki/papers/aberman-2020-skeleton-aware-retargeting.md",
     "wiki/papers/aberman-2020-unpaired-motion-style.md",
     "wiki/papers/peng-2021-amp.md",
@@ -241,7 +244,6 @@
     "wiki/papers/he-2025-lam.md",
     "wiki/papers/kavan-2024-compressed-skinning.md",
     "wiki/papers/deng-2025-anymate.md",
-    "wiki/papers/gat-2025-anytop.md",
     "raw/papers/2786784.2786788.pdf",
     "raw/papers/rigfunction.pdf",
     "wiki/python/rigid_body_rest.py",
@@ -249,8 +251,6 @@
     "raw/papers/baktash-2025-resting-rigid-bodies.pdf",
     "wiki/python/forearm_partial_twist.py",
     "wiki/vex/forearm-partial-twist.vex",
-    "wiki/vex/rbf-scattered-interp.vex",
-    "wiki/vex/rbf-psd-correctives.vex",
-    "wiki/vex/rbf-psd-pose.vex"
+    "wiki/vex/rbf-scattered-interp.vex"
   ]
 }

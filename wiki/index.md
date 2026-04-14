@@ -251,6 +251,7 @@ Master catalog of all pages. Updated on every ingest.
 | [[techniques/forearm-partial-twist]] | Forearm partial twist joints via swing-twist decomposition; VEX + Python; KineFX setup |
 | [[techniques/dem-bones]] | Dem Bones (EA SEED) — SSDR skinning decomposition; 3 operating modes; Houdini SOP setup; sim/rig baking workflows |
 | [[techniques/ml-deformer]] | ML Deformer (Houdini 20+) — neural deformation approximation; 4 approaches (CNN residual, differential subspace, joint learning, hierarchical); production workflows |
+| [[techniques/inverse-rig-mapping]] | Analytically Learning an Inverse Rig Mapping (Gustafson et al. 2020) — offline operator classification + sorting, analytic Jacobian, Gauss-Newton inversion; Python + VEX; arm/forearm twist example |
 
 ---
 
