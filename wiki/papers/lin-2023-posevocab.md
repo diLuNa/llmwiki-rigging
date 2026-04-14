@@ -36,7 +36,7 @@ Standard pose embeddings treat the full pose as a single vector, failing to capt
 ## Connections
 - [[papers/loper-2015-smpl]] — parametric human body model
 - [[concepts/blendshapes]] — joint-based appearance control
-- [[papers/ranja-2018-coma]] — mesh-based human shape learning
+- [[papers/ranjan-2018-coma]] — mesh-based human shape learning
 - [[papers/li-2021-neural-blend-shapes]] — neural learned deformations
 - [[techniques/ml-deformer]] — learned appearance deformation
 

@@ -806,3 +806,39 @@ Extended `ArmRig` from 3 joints (shoulder, elbow, hand) to 6 joints (shoulder, e
 - `wiki/vex/index.md`: Snippet C table row updated to "6 joints × 7 params (18×7)"; joint layout table extended to 6 rows; Jacobian code block updated with 1/3 entries; CompoundOp note added
 - `wiki/python/index.md`: quick-start comments updated for 6-joint layout; ArmRig entry updated; joint layout diagram updated to 18-vector with CompoundOp notation
 - `wiki/techniques/inverse-rig-mapping.md`: arm example section renamed and rewritten; 18×7 Jacobian table; CompoundOp classification explanation; Python and VEX code blocks updated
+
+
+## [2026-04-14] ingest | Marquis Bolduc & Phan 2022 — Rig Inversion by Training a Differentiable Rig Function
+
+Ingested three raw PDFs added to `raw/papers/`, all in the rig-inversion family:
+
+**New pages created:**
+- `wiki/papers/marquis-bolduc-2022-differentiable-rig.md` — SIGGRAPH Asia 2022 Technical Communications; key contribution: train differentiable MLP rig approximation L̂_d, then use it to train inverse rig model with mesh loss instead of parameter loss; handles non-injective/non-surjective rigs; 3–4× lower error than Holden 2015 on EA facial rig (137 params, 8447 vertices)
+- `wiki/papers/holden-2017-inverse-rig-tvcg.md` — IEEE TVCG 2017 extended journal version of Holden SCA 2015; adds Gaussian Process Regression (with farthest-point active subsampling) as alternative to MLP; super-sampling augmentation; method selection guide (GPR vs MLP)
+- `wiki/authors/marquis-bolduc-mathieu.md` — new author page (SEED, EA)
+
+**Updated pages:**
+- `wiki/papers/holden-2015-inverse-rig.md` — source PDF added (`2786784.2786788.pdf`); summary and connections expanded; added link to TVCG 2017 journal version and Marquis Bolduc 2022
+- `wiki/papers/gustafson-2020-inverse-rig.md` — added connections to Holden 2015/2017 and Marquis Bolduc 2022
+- `wiki/concepts/rig-inversion.md` — taxonomy expanded with differentiable rig approximation variant; Key Papers section now lists all four rig-inversion papers
+- `wiki/authors/holden-daniel.md` — added TVCG 2017 paper
+- `wiki/index.md` — two new paper rows, one new author row
+
+## [2026-04-14] lint | Wiki lint pass
+
+**Broken links fixed (4):**
+- `papers/lin-2023-posevocab.md`: typo `ranja-2018-coma` → `ranjan-2018-coma`
+- `concepts/rig-inversion.md`: added `[[techniques/inverse-rig-mapping]]` link (technique page was orphaned)
+
+**Missing pages created (3):**
+- `concepts/motion-synthesis.md` — covers physics-based (AMP), data-driven, neural generative, retargeting, crowd synthesis; links 9 orphan papers
+- `concepts/simulation.md` — covers FEM, projective dynamics, rig-space physics, ML surrogates, cloth, facial sim; links 12 orphan papers
+- `authors/komura-taku.md` — missing author referenced from `holden-2017-inverse-rig-tvcg.md`
+
+**Index updated:** `concepts/simulation`, `concepts/motion-synthesis`, `authors/komura-taku` rows added
+
+**Remaining known issues (not fixed — low priority or need user action):**
+- 18 papers lack local PDFs (classical foundational works: delta-mush, BBW, ARAP, green-coords, etc.)
+- `papers/aberman-2020-unpaired-motion-style.md` references `[[papers/aberman-2017-style-transfer]]` — paper not yet ingested
+- 31 orphan pages remain; most are covered by the new concept pages but not all are explicitly linked from within the knowledge graph (they appear in index.md)
+- `log.md` historical entries mention `nguyen-2023-next3d` (renamed to `sun-2023-next3d`) — left as-is since log is append-only

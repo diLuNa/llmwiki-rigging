@@ -122,7 +122,9 @@ Master catalog of all pages. Updated on every ingest.
 | [[papers/zoss-2018-jaw-rig]] | An Empirical Rig for Jaw Animation | ACM ToG SIGGRAPH 2018 | `rig-generation` `muscles` |
 | [[papers/xu-2020-rignet]] | RigNet: Neural Rigging for Articulated Characters | SIGGRAPH 2020 | `rig-generation` `neural` `skinning` `auto-rigging` |
 | [[papers/gustafson-2020-inverse-rig]] | Analytically Learning an Inverse Rig Mapping | SIGGRAPH Talks 2020 | `rig-generation` `neural` |
-| [[papers/holden-2015-inverse-rig]] | Learning an Inverse Rig Mapping | SCA 2015 | `rig-generation` `neural` |
+| [[papers/holden-2015-inverse-rig]] | Learning an Inverse Rig Mapping for Character Animation | SCA 2015 | `rig-generation` `neural` |
+| [[papers/holden-2017-inverse-rig-tvcg]] | Learning Inverse Rig Mappings by Nonlinear Regression | IEEE TVCG 2017 | `rig-generation` `neural` `math` |
+| [[papers/marquis-bolduc-2022-differentiable-rig]] | Rig Inversion by Training a Differentiable Rig Function | SIGGRAPH Asia 2022 | `rig-generation` `neural` |
 | [[papers/singleton-2025-alien-rigs]] | Crafting Expressive Non-Humanoid Alien Characters | SIGGRAPH Talks 2025 | `rig-generation` `skinning` |
 | [[papers/hessler-2016-autospline]] | AutoSpline: Animation Controls When and Where You Need Them | SIGGRAPH Talks 2016 | `rig-generation` |
 | [[papers/willett-2023-curvecrafter]] | CurveCrafter | SIGGRAPH 2023 | `rig-generation` |
@@ -238,6 +240,8 @@ Master catalog of all pages. Updated on every ingest.
 | [[concepts/facial-blendshape-rigs]] | Production facial rigs: FACS blendshapes, PSD correctives, muscle systems, performance capture |
 | [[concepts/nonlinear-face-models]] | Nonlinear 3DMMs, mesh autoencoders, implicit neural faces, DiffusionRig, neural auto-rigging |
 | [[concepts/muscles]] | Muscle systems as rig controls (facial/body) and soft tissue FEM simulation |
+| [[concepts/simulation]] | Physical simulation for character deformation: FEM, projective dynamics, rig-space physics, ML surrogates, cloth, facial |
+| [[concepts/motion-synthesis]] | Automated character motion generation: physics-based (AMP), data-driven, neural generative, retargeting, crowd |
 
 ---
 
@@ -304,6 +308,8 @@ Full index with algorithm tables: [[vex/index]]
 | [[authors/sumner-robert]] | Disney Research Zürich |
 | [[authors/le-binh]] | Activision |
 | [[authors/holden-daniel]] | Ubisoft La Forge |
+| [[authors/marquis-bolduc-mathieu]] | SEED, Electronic Arts |
+| [[authors/komura-taku]] | University of Hong Kong |
 | [[authors/bouaziz-sofien]] | Google |
 | [[authors/hessler-mark]] | Pixar Animation Studios |
 | [[authors/talbot-jeremie]] | Pixar Animation Studios |

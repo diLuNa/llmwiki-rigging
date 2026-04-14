@@ -28,6 +28,9 @@ The analytic Jacobian is derived from the learned approximation, making per-fram
 - Requires offline training data collection (rig sampling).
 
 ## Connections
+- [[papers/holden-2015-inverse-rig]] — seminal prior work; learned direct inverse mapping via MLP
+- [[papers/holden-2017-inverse-rig-tvcg]] — extended journal version of Holden 2015; adds GPR
+- [[papers/marquis-bolduc-2022-differentiable-rig]] — complementary approach for black-box rigs where operators cannot be classified (uses differentiable rig approximation + mesh loss)
 - [[papers/radzihovsky-2020-facebaker]] — related rig approximation via ML
 - [[concepts/rig-inversion]]
 - [[authors/kanyuk-paul]]

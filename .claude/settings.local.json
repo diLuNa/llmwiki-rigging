@@ -75,7 +75,12 @@
       "Bash(grep -r \"UniRig\\\\|AnyTop\\\\|Anymate\\\\|StiffGIPC\\\\|JGS2\\\\|LAM.*Large Avatar\\\\|SOAP.*Style-Omniscient\\\\|3DGH\\\\|AutoKeyframe\\\\|AnimPortrait3D\\\\|RigGS\\\\|ASMR.*Adaptive Skeleton\\\\|LayGA\\\\|Compressed Skinning for Facial\\\\|Taming Diffusion.*Character Control\\\\|Morig\\\\|Refined Inverse Rigging\\\\|DrawingSpinUp\\\\|Contact Edit\\\\|Kinematic Motion Retargeting\\\\|AniPortraitGAN\\\\|Bidirectional GaitNet\\\\|PoseVocab\\\\|Fast Complementary Dynamics\\\\|Hierarchical Neural Skinning\\\\|EMOTE\\\\|Skeleton-Aware Networks.*Deep Motion\\\\|Unpaired Motion Style Transfer\\\\|AMP.*Adversarial Motion\" /Users/lucaprasso/Research/LLM_Wiki/rigging-wiki/wiki/papers/*.md)",
       "Bash(pdftotext raw/papers/2024.SiggraphPapers.GD.pdf -)",
       "Bash(wc:*)",
-      "Bash(brew install:*)"
+      "Bash(brew install:*)",
+      "Bash(pdftotext /Users/lucaprasso/Research/LLM_Wiki/rigging-wiki/raw/papers/2301.09567v1.pdf -)",
+      "Bash(pdftotext /Users/lucaprasso/Research/LLM_Wiki/rigging-wiki/raw/papers/rigfunction.pdf -)",
+      "Bash(pdftotext --version)",
+      "Bash(pip install:*)",
+      "Bash(pip show:*)"
     ]
   }
 }
