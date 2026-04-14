@@ -138,55 +138,71 @@ Because the approximation F̂ is stateless (no rig dependencies), all Jacobian c
 
 ---
 
-## Arm + Forearm Twist Example
+## Arm + Forearm + Hand Example
 
-A five-parameter arm rig demonstrates all operator types:
+A seven-parameter arm rig with three procedural forearm twist joints demonstrates the full classification pipeline including **CompoundOp** — one parameter driving heterogeneous operators on multiple joints simultaneously:
 
 ```
-Parameters: shoulder_rx, shoulder_ry, shoulder_rz, elbow_bend, forearm_twist
-Joints:     shoulder(0), elbow(1), forearm_1(2), forearm_2(3), forearm_3(4)
+Parameters: shoulder_rx, shoulder_ry, shoulder_rz, elbow_bend, hand_rx, hand_ry, hand_rz
+Joints:     shoulder(0), elbow(1), forearm_1(2), forearm_2(3), forearm_3(4), hand(5)
 ```
 
 **Forward kinematics:**
 
 ```python
-R_shoulder = Rz(sz) @ Ry(sy) @ Rx(sx)   # ZYX Euler, 3 parameters
-R_elbow    = Rx(eb)                       # pure bend, 1 parameter
-R_forearm_k = Rx(ft / 3)                 # same for k=1,2,3
+R_shoulder = Rx(sx) @ Ry(sy) @ Rz(sz)   # ZYX Euler, 3 parameters
+R_elbow    = Rx(eb)                       # pure Rx hinge, 1 parameter
+inc        = hx / 3.0                     # forearm incremental twist
+R_forearm1 = Rx(inc)                      # cumulative twist: hx/3
+R_forearm2 = Rx(inc)                      # cumulative twist: 2*hx/3
+R_forearm3 = Rx(inc)                      # cumulative twist: hx
+R_hand     = Rx(hx) @ Ry(hy) @ Rz(hz)   # ZYX Euler, 3 parameters
 ```
+
+The forearm joints are **procedural** — they are not driven by independent rig controls. Instead, `hand_rx` simultaneously drives a `ForearmTwistOp` (joints 2,3,4) and a `RotationOp` (joint 5). The classification algorithm detects this by sampling `hand_rx` in isolation: four joints respond, with rates 1/3, 1/3, 1/3, 1.0. The rate-grouping step produces a `CompoundOp` wrapping:
+
+- `ForearmTwistOp(joints=[2,3,4], fractions=[1/3, 2/3, 1.0], axis=X, rate=1.0)` — equal-rate group
+- `RotationOp(joint=5, axis=X, rate=1.0)` — single-joint group
 
 **Classified operators:**
 
-| Parameter | Operator type | Joints affected |
-|-----------|--------------|-----------------|
-| shoulder_rx | RotationOp(X, rate=1.0) | joint 0 |
-| shoulder_ry | RotationOp(Y, rate=1.0) | joint 0 |
-| shoulder_rz | RotationOp(Z, rate=1.0) | joint 0 |
-| elbow_bend | RotationOp(X, rate=1.0) | joint 1 |
-| forearm_twist | ForearmTwistOp(fracs=[1/3, 2/3, 1.0]) | joints 2, 3, 4 |
+| Parameter | Operator type | Joints affected | Notes |
+|-----------|--------------|-----------------|-------|
+| shoulder_rx | RotationOp(X, rate=1.0) | joint 0 | |
+| shoulder_ry | RotationOp(Y, rate=1.0) | joint 0 | |
+| shoulder_rz | RotationOp(Z, rate=1.0) | joint 0 | |
+| elbow_bend | RotationOp(X, rate=1.0) | joint 1 | |
+| hand_rx | **CompoundOp** | joints 2,3,4,5 | ForearmTwistOp(2,3,4) + RotationOp(5) |
+| hand_ry | RotationOp(Y, rate=1.0) | joint 5 | |
+| hand_rz | RotationOp(Z, rate=1.0) | joint 5 | |
 
-**Jacobian structure (15 × 5):**
+**Jacobian structure (18 × 7):**
 
 ```
-           shoulder_rx  shoulder_ry  shoulder_rz  elbow_bend  forearm_twist
-joint 0 x:     1            0            0            0            0
-joint 0 y:     0            1            0            0            0
-joint 0 z:     0            0            1            0            0
-joint 1 x:     0            0            0            1            0
-joint 1 y:     0            0            0            0            0
-joint 1 z:     0            0            0            0            0
-joint 2 x:     0            0            0            0           1/3
-joint 2 y:     0            0            0            0            0
-joint 2 z:     0            0            0            0            0
-joint 3 x:     0            0            0            0           1/3
-joint 3 y:     0            0            0            0            0
-joint 3 z:     0            0            0            0            0
-joint 4 x:     0            0            0            0           1/3
-joint 4 y:     0            0            0            0            0
-joint 4 z:     0            0            0            0            0
+               sh_rx  sh_ry  sh_rz  el_bend  hand_rx  hand_ry  hand_rz
+joint 0 x:       1      0      0      0        0        0        0
+joint 0 y:       0      1      0      0        0        0        0
+joint 0 z:       0      0      1      0        0        0        0
+joint 1 x:       0      0      0      1        0        0        0
+joint 1 y:       0      0      0      0        0        0        0
+joint 1 z:       0      0      0      0        0        0        0
+joint 2 x:       0      0      0      0       1/3       0        0     ← forearm_1
+joint 2 y:       0      0      0      0        0        0        0
+joint 2 z:       0      0      0      0        0        0        0
+joint 3 x:       0      0      0      0       1/3       0        0     ← forearm_2
+joint 3 y:       0      0      0      0        0        0        0
+joint 3 z:       0      0      0      0        0        0        0
+joint 4 x:       0      0      0      0       1/3       0        0     ← forearm_3
+joint 4 y:       0      0      0      0        0        0        0
+joint 4 z:       0      0      0      0        0        0        0
+joint 5 x:       0      0      0      0        1        0        0     ← hand
+joint 5 y:       0      0      0      0        0        1        0
+joint 5 z:       0      0      0      0        0        0        1
 ```
 
-The `forearm_twist` column distributes 1/3 of the derivative to each forearm joint's x-component, because each joint locally receives `ft/3` and `d(ft/3)/d(ft) = 1/3`. This directly connects to the [[techniques/forearm-partial-twist]] technique.
+At rest (β = 0) all blocks are identity-diagonal except the `hand_rx` column (index 4), which has values 1/3 at the three forearm rx rows and 1.0 at the hand rx row. This makes `JᵀJ[4,4] = 3*(1/3)² + 1² = 4/3` — the only non-unit diagonal entry. Gauss-Seidel handles this correctly because the off-diagonal coupling of `hand_rx` with `hand_ry/rz` is zero (orthogonal axes at rest). At nonzero β, the log-map Jacobian chain rule captures ZYX Euler coupling analytically.
+
+**Elbow rows 4, 5 are zero** — the elbow is a pure Rx hinge. The solver exploits this sparsity through the JᵀJ structure automatically.
 
 ---
 
@@ -200,8 +216,13 @@ from inverse_rig_mapping import ArmRig, LearnedRigApproximation, RigInverter
 
 # 1. Define rig (or wrap your own via rig_fn callable)
 rig = ArmRig()
+# Params:  shoulder_rx, shoulder_ry, shoulder_rz, elbow_bend, hand_rx, hand_ry, hand_rz
+# Joints:  shoulder(0), elbow(1), forearm_1(2), forearm_2(3), forearm_3(4), hand(5)
+# hand_rx is a CompoundOp: drives forearm_1/2/3 (ForearmTwistOp) AND hand (RotationOp)
 
 # 2. Offline: classify operators + sort composition order
+#    Classification auto-detects the CompoundOp from rate-grouping:
+#    forearm joints respond at rate=1/3, hand at rate=1.0 → CompoundOp
 approx = LearnedRigApproximation.train(
     rig.evaluate, rig.num_params, rig.num_joints,
     test_lambdas=[0.1, 0.3, 0.5, 0.7, 1.0],
@@ -212,11 +233,11 @@ approx = LearnedRigApproximation.train(
 inverter = RigInverter(approx)
 
 # 4. Per-frame: invert a target pose
-beta_target = np.array([0.3, 0.1, -0.2, 0.8, 1.2])
-target_joints = rig.evaluate(beta_target)          # list of 4×4 matrices
+beta_target = np.array([0.3, 0.1, -0.2, 0.8, 0.2, -0.1, 0.4])
+target_joints = rig.evaluate(beta_target)   # list of 6 × (4×4) matrices (incl. forearm joints)
 
 beta_solved, info = inverter.invert(target_joints)
-# info: {'iterations': 4, 'residual': 2.3e-8, 'method': 'gauss-newton'}
+# info: {'iters': 3, 'residual': 1.8e-9, 'method': 'GN'}
 
 # Validate
 print(np.linalg.norm(beta_solved - beta_target))   # → < 1e-5 for linear rig
@@ -271,19 +292,24 @@ geo.setGlobalAttribValue("pose_rest", approx.evaluate(np.zeros(rig.num_params)).
 // Solved via Gauss-Seidel iterations (avoids matrix inversion in VEX)
 ```
 
-**Snippet C — Standalone arm example (no setup needed):**
+**Snippet C — Standalone arm + forearm + hand example (no setup needed):**
 
 ```vex
-// Hardcoded 15×5 Jacobian for the 5-param arm rig.
-// Set "target_pose" (15 floats) on a 1-point geometry.
-// Outputs beta_solved, residual.
-Jc[0  * 5 + 0] = 1.0;        // shoulder_rx → joint 0 x
-Jc[1  * 5 + 1] = 1.0;        // shoulder_ry → joint 0 y
-Jc[2  * 5 + 2] = 1.0;        // shoulder_rz → joint 0 z
-Jc[3  * 5 + 3] = 1.0;        // elbow_bend  → joint 1 x
-Jc[6  * 5 + 4] = 1.0 / 3.0;  // forearm_twist → joint 2 x
-Jc[9  * 5 + 4] = 1.0 / 3.0;  // forearm_twist → joint 3 x
-Jc[12 * 5 + 4] = 1.0 / 3.0;  // forearm_twist → joint 4 x
+// Hardcoded 18×7 Jacobian for the 7-param arm+forearm+hand rig.
+// 6 joints: shoulder(0), elbow(1), forearm_1(2), forearm_2(3), forearm_3(4), hand(5)
+// Set "target_pose" (18 floats) on a 1-point geometry.
+// Outputs beta_solved, shoulder_rx/ry/rz, elbow_bend, hand_rx/ry/rz, residual.
+Jc[ 0 * 7 + 0] = 1.0;        // shoulder_rx → joint 0 x
+Jc[ 1 * 7 + 1] = 1.0;        // shoulder_ry → joint 0 y
+Jc[ 2 * 7 + 2] = 1.0;        // shoulder_rz → joint 0 z
+Jc[ 3 * 7 + 3] = 1.0;        // elbow_bend  → joint 1 x  (ry/rz rows 4,5 stay zero)
+Jc[ 6 * 7 + 4] = 1.0/3.0;   // hand_rx → forearm_1 x   (CompoundOp ForearmTwistOp)
+Jc[ 9 * 7 + 4] = 1.0/3.0;   // hand_rx → forearm_2 x   (CompoundOp ForearmTwistOp)
+Jc[12 * 7 + 4] = 1.0/3.0;   // hand_rx → forearm_3 x   (CompoundOp ForearmTwistOp)
+Jc[15 * 7 + 4] = 1.0;        // hand_rx → hand x        (CompoundOp RotationOp)
+Jc[16 * 7 + 5] = 1.0;        // hand_ry → hand y
+Jc[17 * 7 + 6] = 1.0;        // hand_rz → hand z
+// JᵀJ[4,4] = 3*(1/3)² + 1² = 4/3  (hand_rx column is non-unit diagonal)
 ```
 
 ---

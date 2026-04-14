@@ -186,7 +186,7 @@ VEX companion: [[vex/inverse-rig-mapping.vex]]
 
 | File | Functions | Notes |
 |------|-----------|-------|
-| [inverse_rig_mapping.py](inverse_rig_mapping.py) | `RotationOp`, `TranslationOp`, `ForearmTwistOp`, `LearnedRigApproximation`, `RigInverter`, `ArmRig`, `demo_arm_rig` | NumPy only; full train+invert pipeline; arm+forearm twist example; runnable demo |
+| [inverse_rig_mapping.py](inverse_rig_mapping.py) | `RotationOp`, `TranslationOp`, `ForearmTwistOp`, `LearnedRigApproximation`, `RigInverter`, `ArmRig`, `demo_arm_rig` | NumPy only; full train+invert pipeline; arm+hand 7-param example; runnable demo |
 
 ### Quick-start
 
@@ -196,8 +196,13 @@ from inverse_rig_mapping import ArmRig, LearnedRigApproximation, RigInverter
 
 # 1. Define rig
 rig = ArmRig()
+# Params:  shoulder_rx, shoulder_ry, shoulder_rz, elbow_bend, hand_rx, hand_ry, hand_rz
+# Joints:  shoulder(0), elbow(1), forearm_1(2), forearm_2(3), forearm_3(4), hand(5)
+# Note:    hand_rx is a CompoundOp — drives forearm_1/2/3 twist AND hand rotation simultaneously
 
 # 2. Learn analytic approximation (offline, ~seconds)
+#    Classification auto-detects CompoundOp from rate-grouping:
+#    forearm joints at rate=1/3, hand at rate=1.0 → CompoundOp(ForearmTwistOp + RotationOp)
 approx = LearnedRigApproximation.train(
     rig.evaluate, rig.num_params, rig.num_joints
 )
@@ -206,12 +211,12 @@ approx = LearnedRigApproximation.train(
 inverter = RigInverter(approx)
 
 # 4. Synthesize a target pose and invert it
-beta_target = np.array([0.3, 0.1, -0.2, 0.8, 1.2])   # shoulder+elbow+twist
-target_joints = rig.evaluate(beta_target)
+beta_target = np.array([0.3, 0.1, -0.2, 0.8, 0.2, -0.1, 0.4])
+target_joints = rig.evaluate(beta_target)   # list of 6 × (4×4) matrices
 
 beta_solved, info = inverter.invert(target_joints)
 print(f"Error: {np.linalg.norm(beta_solved - beta_target):.4f}")
-print(f"Iterations: {info['iterations']}, Residual: {info['residual']:.6f}")
+print(f"Iterations: {info['iters']}, Residual: {info['residual']:.6f}")
 ```
 
 ### Classes and functions
@@ -220,14 +225,14 @@ print(f"Iterations: {info['iterations']}, Residual: {info['residual']:.6f}")
 |-----------------|-------------|
 | `RotationOp(joint_idx, axis, rate)` | Single-joint rotation: R(β) = exp([axis]× · rate · β) |
 | `TranslationOp(joint_idx, direction, rate)` | Single-joint translation: T(β) = rate · β · direction |
-| `ForearmTwistOp(joint_indices, fractions, axis, rate)` | Multi-joint twist: distributes one parameter across N joints via cumulative fractions |
+| `ForearmTwistOp(joint_indices, fractions, axis, rate)` | Multi-joint twist: distributes one parameter across N joints via cumulative fractions (available for custom rigs) |
 | `LearnedRigApproximation.train(rig_fn, n_params, n_joints)` | Classifies each parameter → Op; sorts composition order; returns approximation |
 | `LearnedRigApproximation.evaluate(beta)` | Forward pass: returns (3·n_joints,) rotation vector array |
 | `LearnedRigApproximation.jacobian(beta)` | Analytic (3·n_joints × n_params) Jacobian via SO(3) log-map chain rule |
 | `LearnedRigApproximation.jacobian_fd(beta)` | Finite-difference Jacobian (validation) |
 | `RigInverter.invert(target_pose, beta_init)` | Gauss-Newton (30 iter) + LM fallback; returns (beta_solved, info_dict) |
-| `ArmRig` | 5-param concrete rig: shoulder (3-DOF ZYX Euler), elbow (1-DOF), forearm twist (1-DOF → 3 joints) |
-| `demo_arm_rig()` | Trains approx on ArmRig, runs inversion, prints parameter errors |
+| `ArmRig` | 7-param, 6-joint concrete rig: shoulder (3-DOF ZYX Euler), elbow (1-DOF pure Rx), forearm_1/2/3 (procedural twist via CompoundOp), hand (3-DOF ZYX Euler) |
+| `demo_arm_rig()` | Trains approx on ArmRig, runs inversion on 7 test cases, prints parameter errors |
 
 ### Key formulas
 
@@ -246,13 +251,6 @@ J_r_inv = I + 0.5 * skew(rv) + a * skew(rv) @ skew(rv)
 # a = 1/θ² - sin(θ)/(2θ(1-cos(θ)))   (θ = ||rv||)
 ```
 
-**ForearmTwist incremental fractions:**
-```python
-# cumulative = [1/3, 2/3, 1.0]  →  incremental = [1/3, 1/3, 1/3]
-# Each joint k: angle_k = (frac_k - frac_{k-1}) * rate * param
-# Jacobian contribution: d(rotvec_x)/dparam = (frac_k - frac_{k-1}) * rate
-```
-
 **Gauss-Newton update:**
 ```python
 J  = approx.jacobian(beta)        # (3*n_joints, n_params)
@@ -261,15 +259,20 @@ db = np.linalg.solve(J.T @ J, J.T @ r)   # normal equations
 beta += db
 ```
 
-### Arm rig joint layout
+### Arm + Forearm + Hand rig joint layout
 
 ```
-Param index → joint rows in 15-vector output:
-  0: shoulder_rx  → joint 0 [0:3]   (rx component)
-  1: shoulder_ry  → joint 0 [0:3]   (ry component)
-  2: shoulder_rz  → joint 0 [0:3]   (rz component)
-  3: elbow_bend   → joint 1 [3:6]   (rx only; ry/rz = 0)
-  4: forearm_twist → joints 2,3,4 [6:15] each receives 1/3 of twist
+Param index → joint rows in 18-vector output:
+  0: shoulder_rx  → joint 0 [0:3]    (rx component)
+  1: shoulder_ry  → joint 0 [0:3]    (ry component)
+  2: shoulder_rz  → joint 0 [0:3]    (rz component)
+  3: elbow_bend   → joint 1 [3:6]    (rx only; ry/rz = 0)
+  4: hand_rx      → joint 2 [6:9]    (rx, rate=1/3 via CompoundOp ForearmTwistOp)
+                 → joint 3 [9:12]   (rx, rate=1/3 via CompoundOp ForearmTwistOp)
+                 → joint 4 [12:15]  (rx, rate=1/3 via CompoundOp ForearmTwistOp)
+                 → joint 5 [15:18]  (rx, rate=1.0 via CompoundOp RotationOp)
+  5: hand_ry      → joint 5 [15:18]  (ry component)
+  6: hand_rz      → joint 5 [15:18]  (rz component)
 ```
 
 ---

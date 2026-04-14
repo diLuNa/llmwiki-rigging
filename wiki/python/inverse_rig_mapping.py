@@ -21,17 +21,22 @@ Core Pipeline
    Because F̂ is stateless, all Jacobian columns can be parallelised.
    Fallback to Levenberg-Marquardt if GN stalls.
 
-Arm + Forearm Twist Example
-────────────────────────────
-   Rig parameters : shoulder_rx, shoulder_ry, shoulder_rz, elbow_bend, forearm_twist
-   Skeleton joints: shoulder, elbow, forearm_1, forearm_2, forearm_3 (5 joints)
+Arm + Hand + Forearm Partial Twist Example
+──────────────────────────────────────────
+   Rig parameters : shoulder_rx, shoulder_ry, shoulder_rz,
+                    elbow_bend,
+                    hand_rx, hand_ry, hand_rz
+   Skeleton joints: shoulder, elbow, forearm_1, forearm_2, forearm_3, hand  (6 joints)
 
-   forearm_twist distributes rotation across 3 bones:
-     forearm_1 local Rx = twist * 1/3
-     forearm_2 local Rx = twist * 1/3  (cumulative world = 2/3)
-     forearm_3 local Rx = twist * 1/3  (cumulative world = full)
+   shoulder:   ZYX Euler (Rx @ Ry @ Rz)
+   elbow:      pure bend about local X
+   forearm_1/2/3: procedural — each receives hand_rx / 3 (partial twist extraction)
+   hand:       ZYX Euler (Rx @ Ry @ Rz)
 
-   This matches the partial-twist VEX technique in wiki/vex/forearm-partial-twist.vex.
+   The forearm joints are driven by the hand_rx parameter (the X-axis component of
+   the hand rotation, which approximates the twist around the forearm bone axis).
+   hand_rx is therefore a CompoundOp: it drives ForearmTwistOp(joints 2,3,4) AND
+   RotationOp(joint 5) simultaneously.
 
 Usage
 ─────
@@ -39,7 +44,7 @@ Usage
    model = LearnedRigApproximation.train(rig.evaluate, rig.num_params, rig.num_joints)
    inv   = RigInverter(model)
 
-   target = rig.evaluate([0.3, 0.1, -0.2, 0.8, 0.4])   # example target pose
+   target = rig.evaluate([0.3, 0.1, -0.2, 0.8, 0.2, -0.1, 0.4])
    solved = inv.invert(target)                           # recover rig params
 """
 
@@ -189,6 +194,55 @@ class ForearmTwistOp:
         return out
 
 
+@dataclass
+class CompoundOp:
+    """
+    One rig parameter driving multiple operators simultaneously.
+
+    Used when a single parameter has heterogeneous effects: e.g. hand_rx drives
+    a ForearmTwistOp (partial twist across forearm_1/2/3) AND a RotationOp on
+    the hand joint.  sub_ops is an ordered list of RotationOp / TranslationOp /
+    ForearmTwistOp, all evaluated at the same scalar parameter value.
+
+    The set of joint indices across sub_ops must be disjoint (each joint appears
+    in exactly one sub_op).
+    """
+    sub_ops: List  # heterogeneous list; each element is a single-param op
+
+    def _apply(self, local_mats: List[np.ndarray], param: float) -> None:
+        """Apply all sub-ops to local_mats in-place."""
+        for sub_op in self.sub_ops:
+            if isinstance(sub_op, (RotationOp, TranslationOp)):
+                M = sub_op.matrix(param)
+                local_mats[sub_op.joint_idx] = local_mats[sub_op.joint_idx] @ M
+            elif isinstance(sub_op, ForearmTwistOp):
+                for j_idx, M in sub_op.matrices(param):
+                    local_mats[j_idx] = local_mats[j_idx] @ M
+
+    def jacobian_contributions(
+            self, local_mats: List[np.ndarray], param: float
+    ) -> List[Tuple[int, np.ndarray]]:
+        """
+        Return list of (joint_idx, d_rotvec) for every affected joint.
+        Caller accumulates these into the Jacobian column.
+        """
+        out = []
+        for sub_op in self.sub_ops:
+            if isinstance(sub_op, (RotationOp, TranslationOp)):
+                ji   = sub_op.joint_idx
+                dM   = sub_op.dmatrix_dparam(param)
+                A    = local_mats[ji] @ np.linalg.inv(sub_op.matrix(param))
+                dLoc = A @ dM
+                out.append((ji, _dmat_to_drotvec(local_mats[ji], dLoc)))
+            elif isinstance(sub_op, ForearmTwistOp):
+                for ki, (ji, dM) in enumerate(sub_op.dmatrices_dparam(param)):
+                    cur_M = sub_op.matrices(param)[ki][1]
+                    A    = local_mats[ji] @ np.linalg.inv(cur_M)
+                    dLoc = A @ dM
+                    out.append((ji, _dmat_to_drotvec(local_mats[ji], dLoc)))
+        return out
+
+
 # ══════════════════════════════════════════════════════════════════════════════
 # Learned Rig Approximation
 # ══════════════════════════════════════════════════════════════════════════════
@@ -225,18 +279,19 @@ class LearnedRigApproximation:
         Evaluate F̂(β) → flat rotation-vector pose (3 * n_joints,).
         Starts from zero_pose, applies each operator in order.
         """
-        # Build per-joint local matrices, starting from identity
         local = [np.eye(4) for _ in range(self.n_joints)]
 
         for i, op in enumerate(self.ops):
+            if op is None:
+                continue
             p = beta[i]
             if isinstance(op, (RotationOp, TranslationOp)):
-                M = op.matrix(p)
-                local[op.joint_idx] = local[op.joint_idx] @ M
+                local[op.joint_idx] = local[op.joint_idx] @ op.matrix(p)
             elif isinstance(op, ForearmTwistOp):
                 for j_idx, M in op.matrices(p):
                     local[j_idx] = local[j_idx] @ M
-            # None ops (discarded parameters) are skipped
+            elif isinstance(op, CompoundOp):
+                op._apply(local, p)
 
         return _pose_to_vec(local)
 
@@ -255,41 +310,42 @@ class LearnedRigApproximation:
         n_p     = len(beta)
         J       = np.zeros((n_dof, n_p))
 
-        # Current rotation matrices per joint (needed for analytic dR)
+        # Forward pass: build current local matrices (needed for dR chain rule)
         local = [np.eye(4) for _ in range(self.n_joints)]
         for i, op in enumerate(self.ops):
+            if op is None:
+                continue
             p = beta[i]
             if isinstance(op, (RotationOp, TranslationOp)):
                 local[op.joint_idx] = local[op.joint_idx] @ op.matrix(p)
             elif isinstance(op, ForearmTwistOp):
                 for j_idx, M in op.matrices(p):
                     local[j_idx] = local[j_idx] @ M
+            elif isinstance(op, CompoundOp):
+                op._apply(local, p)
 
-        # Column j: how does pose change w.r.t. beta[j]?
+        # Backward pass: one Jacobian column per parameter
         for j, op in enumerate(self.ops):
             if op is None:
                 continue
             p = beta[j]
             if isinstance(op, (RotationOp, TranslationOp)):
-                ji = op.joint_idx
-                dM = op.dmatrix_dparam(p)
-                # d(rotvec) / dparam via the chain rule:
-                # If local[ji] = A @ M(p), then d(local[ji])/dp = A @ dM/dp
-                # d(rotvec)/d(local matrix) is approximated linearly near current pose
-                A    = local[ji] @ np.linalg.inv(op.matrix(p))  # pre-multiplier
+                ji   = op.joint_idx
+                dM   = op.dmatrix_dparam(p)
+                A    = local[ji] @ np.linalg.inv(op.matrix(p))
                 dLoc = A @ dM
-                # Map dLoc to d(rotvec): d(rotvec) ≈ rotvec_derivative(R) @ vec(dR)
-                dRV = _dmat_to_drotvec(local[ji], dLoc)
-                J[3*ji: 3*ji+3, j] = dRV
+                J[3*ji: 3*ji+3, j] = _dmat_to_drotvec(local[ji], dLoc)
 
             elif isinstance(op, ForearmTwistOp):
-                contributions = op.dmatrices_dparam(p)
-                for ji, dM in contributions:
-                    A    = local[ji] @ np.linalg.inv(op.matrices(p)[
-                        op.joint_indices.index(ji)][1])
+                mats = op.matrices(p)
+                for ki, (ji, dM) in enumerate(op.dmatrices_dparam(p)):
+                    A    = local[ji] @ np.linalg.inv(mats[ki][1])
                     dLoc = A @ dM
-                    dRV  = _dmat_to_drotvec(local[ji], dLoc)
-                    J[3*ji: 3*ji+3, j] = dRV
+                    J[3*ji: 3*ji+3, j] = _dmat_to_drotvec(local[ji], dLoc)
+
+            elif isinstance(op, CompoundOp):
+                for ji, dRV in op.jacobian_contributions(local, p):
+                    J[3*ji: 3*ji+3, j] += dRV   # += handles multiple sub_ops on same joint
 
         return J
 
@@ -349,9 +405,17 @@ class LearnedRigApproximation:
             op = _classify_parameter(rig_fn, i, n_params, n_joints,
                                      pose0, inv0, test_lambdas, sigma)
             ops.append(op)
-            name = "rotation" if isinstance(op, RotationOp) else \
-                   "translation" if isinstance(op, TranslationOp) else \
-                   "forearm_twist" if isinstance(op, ForearmTwistOp) else "discarded"
+            if isinstance(op, RotationOp):
+                name = f"rotation(joint={op.joint_idx}, axis={op.axis.round(2)}, rate={op.rate:.3f})"
+            elif isinstance(op, TranslationOp):
+                name = f"translation(joint={op.joint_idx})"
+            elif isinstance(op, ForearmTwistOp):
+                name = f"forearm_twist(joints={op.joint_indices}, rate={op.rate:.3f})"
+            elif isinstance(op, CompoundOp):
+                parts = [type(s).__name__ for s in op.sub_ops]
+                name = f"compound({'+'.join(parts)})"
+            else:
+                name = "discarded"
             print(f"  param {i}: classified as {name}")
 
         # ── Step 4: sort (simplified — full pairwise sort is O(n log n)) ────
@@ -398,22 +462,65 @@ def _classify_parameter(rig_fn, param_idx, n_params, n_joints,
         j, op = next(iter(affected.items()))
         return op
 
-    # ── Multiple joints: check for ForearmTwistOp pattern ───────────────────
-    # All affected joints should show rotation about the same axis,
-    # with rates proportional to a monotonically increasing fraction.
+    # ── Multiple joints: check for ForearmTwistOp / CompoundOp pattern ─────
+    # All affected joints must show rotation about a common axis.
     rot_ops = {j: op for j, op in affected.items() if isinstance(op, RotationOp)}
-    if len(rot_ops) == len(affected) and len(rot_ops) >= 2:
-        axes  = np.array([op.axis  for op in rot_ops.values()])
-        rates = np.array([op.rate  for op in rot_ops.values()])
-        # Check axes are parallel
-        ref = axes[0]
-        if all(np.allclose(np.abs(a @ ref), 1.0, atol=0.05) for a in axes[1:]):
-            # Axes are consistent — form a ForearmTwistOp
-            # Fractions are rates / max(rate)
-            max_rate  = float(np.max(np.abs(rates)))
-            fractions = [float(op.rate / max_rate) for op in rot_ops.values()]
-            joint_ids = list(rot_ops.keys())
-            return ForearmTwistOp(joint_ids, fractions, ref, max_rate)
+    if len(rot_ops) < len(affected):
+        # Some joints have non-rotation effects — too complex to classify
+        return None
+
+    if len(rot_ops) < 2:
+        return None
+
+    # Check all axes are parallel
+    axes = np.array([op.axis for op in rot_ops.values()])
+    ref  = axes[0]
+    if not all(np.allclose(np.abs(a @ ref), 1.0, atol=0.05) for a in axes[1:]):
+        return None   # inconsistent axes
+
+    # Group joints by their individual rate (5% relative tolerance)
+    rates    = np.array([op.rate for op in rot_ops.values()])
+    joint_list = list(rot_ops.keys())
+
+    rate_groups = {}   # {representative_rate: [(joint_idx, RotationOp), ...]}
+    for j, op in rot_ops.items():
+        placed = False
+        for key in list(rate_groups.keys()):
+            if abs(op.rate - key) < 0.05 * max(op.rate, key, 1e-8):
+                rate_groups[key].append((j, op))
+                placed = True
+                break
+        if not placed:
+            rate_groups[op.rate] = [(j, op)]
+
+    if len(rate_groups) == 1:
+        # ── All same rate → equal incremental ForearmTwistOp ──────────────
+        # N joints each rotating locally by rate*param/N ≡ ind_rate*param.
+        # Represent as ForearmTwistOp with cumulative fracs [1/N, 2/N, ..., 1].
+        N          = len(rot_ops)
+        ind_rate   = float(np.mean(np.abs(rates)))
+        full_rate  = ind_rate * N
+        joint_ids  = sorted(joint_list)
+        fracs      = [(k + 1) / N for k in range(N)]   # cumulative [1/N … 1.0]
+        return ForearmTwistOp(joint_ids, fracs, ref, full_rate)
+
+    else:
+        # ── Mixed rates → CompoundOp ───────────────────────────────────────
+        # Build one sub-op per rate group:
+        #   groups with N>1 joints at equal rate → ForearmTwistOp
+        #   groups with  1 joint at its rate     → RotationOp
+        sub_ops = []
+        for rate_key, group in sorted(rate_groups.items()):
+            if len(group) > 1:
+                N         = len(group)
+                full_rate = rate_key * N
+                jids      = sorted([j for j, _ in group])
+                fracs     = [(k + 1) / N for k in range(N)]
+                sub_ops.append(ForearmTwistOp(jids, fracs, ref, full_rate))
+            else:
+                j, op = group[0]
+                sub_ops.append(op)   # already a correctly fitted RotationOp
+        return CompoundOp(sub_ops)
 
     # Multiple joints with different axes — parameter has complex dependency
     return None
@@ -698,102 +805,121 @@ class RigInverter:
 
 class ArmRig:
     """
-    Synthetic arm rig simulating a real character rig.
+    Synthetic arm rig: shoulder (3-DOF) + elbow (1-DOF) +
+    forearm partial twist (3 procedural joints) + hand (3-DOF).
 
     Joints
     ──────
       0  shoulder   : 3-DOF rotation (rx, ry, rz)
       1  elbow      : 1-DOF rotation (Rx only, i.e. elbow_bend)
-      2  forearm_1  : 1-DOF rotation (Rx, partial twist = 1/3)
-      3  forearm_2  : 1-DOF rotation (Rx, incremental, total = 2/3)
-      4  forearm_3  : 1-DOF rotation (Rx, incremental, total = 3/3)
+      2  forearm_1  : procedural — local Rx = hand_rx / 3  (1/3 of extracted twist)
+      3  forearm_2  : procedural — local Rx = hand_rx / 3  (cumulative 2/3)
+      4  forearm_3  : procedural — local Rx = hand_rx / 3  (cumulative 3/3)
+      5  hand       : 3-DOF rotation (rx, ry, rz)
 
-    Rig Parameters
+    Rig Parameters (7)
     ──────────────
       0  shoulder_rx  [-π, π]
       1  shoulder_ry  [-π, π]
       2  shoulder_rz  [-π, π]
-      3  elbow_bend   [ 0, π]   (bend angle in radians)
-      4  forearm_twist [-π, π]  (full pronation/supination range)
+      3  elbow_bend   [ 0, π]
+      4  hand_rx      [-π, π]   ← ALSO drives forearm partial twist
+      5  hand_ry      [-π, π]
+      6  hand_rz      [-π, π]
 
-    The forearm_twist parameter distributes rotation with cumulative fractions
-    [1/3, 2/3, 1.0] across forearm_1, forearm_2, forearm_3.
-    Incremental local Rx per bone = twist * (1/3).
+    hand_rx is a CompoundOp:
+      - ForearmTwistOp(joints=[2,3,4], fracs=[1/3,2/3,1.0], axis=X, rate=1.0)
+        drives forearm_1/2/3 with incremental local Rx = hand_rx/3 each.
+      - RotationOp(joint=5, axis=X, rate=1.0)
+        drives the hand's Rx component.
+    hand_ry and hand_rz are plain RotationOps on joint 5.
+
+    Both shoulder and hand use ZYX Euler order: R = Rx @ Ry @ Rz.
     """
 
-    num_params = 5
-    num_joints = 5
+    num_params  = 7
+    num_joints  = 6
     param_names = ["shoulder_rx", "shoulder_ry", "shoulder_rz",
-                   "elbow_bend", "forearm_twist"]
-    joint_names = ["shoulder", "elbow", "forearm_1", "forearm_2", "forearm_3"]
-    TWIST_FRACS = [1/3, 2/3, 1.0]  # cumulative world fractions
+                   "elbow_bend",
+                   "hand_rx", "hand_ry", "hand_rz"]
+    joint_names = ["shoulder", "elbow", "forearm_1", "forearm_2", "forearm_3", "hand"]
 
     def evaluate(self, beta: np.ndarray) -> List[np.ndarray]:
         """
-        F(β) → list of 5 local 4×4 rotation matrices.
+        F(β) → list of 6 local 4×4 rotation matrices.
 
-        This IS the ground-truth rig function that will be approximated.
-        In production, this would be the DCC's rig evaluation.
+        The forearm joints are procedural: each receives hand_rx/3,
+        approximating a swing-twist extraction of the hand Rx component.
         """
-        sx, sy, sz, eb, ft = beta
+        sx, sy, sz, eb, hx, hy, hz = beta
 
-        # Shoulder: Rx then Ry then Rz (common ZYX Euler convention reversed)
-        R_sh = (_rot_x(sx) @ _rot_y(sy) @ _rot_z(sz))
+        R_sh   = _rot_x(sx) @ _rot_y(sy) @ _rot_z(sz)   # shoulder ZYX Euler
+        R_el   = _rot_x(eb)                               # elbow pure Rx
+        inc    = hx / 3.0                                 # incremental forearm twist
+        R_f1   = _rot_x(inc)                              # forearm_1: world twist = hx/3
+        R_f2   = _rot_x(inc)                              # forearm_2: world twist = 2hx/3
+        R_f3   = _rot_x(inc)                              # forearm_3: world twist = hx
+        R_hand = _rot_x(hx) @ _rot_y(hy) @ _rot_z(hz)   # hand ZYX Euler
 
-        # Elbow: pure bend about local X
-        R_el = _rot_x(eb)
-
-        # Forearm twist: incremental local rotation per bone
-        inc  = ft / 3.0          # incremental twist each bone
-        R_f1 = _rot_x(inc)       # forearm_1: total world = ft * 1/3
-        R_f2 = _rot_x(inc)       # forearm_2: local = 1/3, world = ft * 2/3
-        R_f3 = _rot_x(inc)       # forearm_3: local = 1/3, world = ft * 1/1
-
-        return [R_sh, R_el, R_f1, R_f2, R_f3]
+        return [R_sh, R_el, R_f1, R_f2, R_f3, R_hand]
 
     def ground_truth_jacobian(self, beta: np.ndarray) -> np.ndarray:
         """
-        The analytic Jacobian of this specific rig for validation.
-        J is (15 × 5): 3 rotvec DOFs × 5 joints, 5 rig params.
+        Analytic Jacobian of this rig for validation.
+        J is (18 × 7): 3 rotvec DOFs × 6 joints, 7 rig params.
 
-        Because each parameter acts on exactly one group of joints
-        (and in LOCAL space), the Jacobian is sparse and clear.
+        Structure:
+          rows  0: 3  — shoulder   (params 0,1,2)
+          rows  3: 6  — elbow      (param  3)
+          rows  6: 9  — forearm_1  (param  4,  rate 1/3)
+          rows  9:12  — forearm_2  (param  4,  rate 1/3)
+          rows 12:15  — forearm_3  (param  4,  rate 1/3)
+          rows 15:18  — hand       (params 4,5,6)
         """
-        sx, sy, sz, eb, ft = beta
-        J = np.zeros((15, 5))
+        sx, sy, sz, eb, hx, hy, hz = beta
+        J = np.zeros((18, 7))
 
-        # Shoulder rotation in ZYX: shoulder_rx affects shoulder rotvec[0]
-        # (exact linear tangent at current pose)
-        R_sh = _rot_x(sx)[:3,:3] @ _rot_y(sy)[:3,:3] @ _rot_z(sz)[:3,:3]
-        rv_sh = Rotation.from_matrix(R_sh).as_rotvec()
+        # ── Shoulder (ZYX Euler: R = Rx @ Ry @ Rz) ─────────────────────────
+        Rx_sh = _rot_x(sx)[:3, :3]
+        Ry_sh = _rot_y(sy)[:3, :3]
+        Rz_sh = _rot_z(sz)[:3, :3]
+        R_sh  = Rx_sh @ Ry_sh @ Rz_sh
+        dRx_s = Rotation.from_rotvec(sx * np.array([1.,0.,0.])).as_matrix() \
+                @ _skew(np.array([1.,0.,0.]))
+        dRy_s = Rotation.from_rotvec(sy * np.array([0.,1.,0.])).as_matrix() \
+                @ _skew(np.array([0.,1.,0.]))
+        dRz_s = Rotation.from_rotvec(sz * np.array([0.,0.,1.])).as_matrix() \
+                @ _skew(np.array([0.,0.,1.]))
+        J[ 0: 3, 0] = _dmat33_to_drotvec(R_sh, dRx_s @ Ry_sh @ Rz_sh)
+        J[ 0: 3, 1] = _dmat33_to_drotvec(R_sh, Rx_sh @ dRy_s @ Rz_sh)
+        J[ 0: 3, 2] = _dmat33_to_drotvec(R_sh, Rx_sh @ Ry_sh @ dRz_s)
 
-        # dRx/drx: axis = (1,0,0), rate = 1
-        dRx_sh = Rotation.from_rotvec(sx * np.array([1,0,0])).as_matrix() @ _skew(np.array([1.,0.,0.]))
-        dRy_sy = Rotation.from_rotvec(sy * np.array([0,1,0])).as_matrix() @ _skew(np.array([0.,1.,0.]))
-        dRz_sz = Rotation.from_rotvec(sz * np.array([0,0,1])).as_matrix() @ _skew(np.array([0.,0.,1.]))
-
-        # shoulder_rx: dR_sh/d(sx) = dRx/d(sx) @ Ry @ Rz
-        Ry = _rot_y(sy)[:3,:3]; Rz = _rot_z(sz)[:3,:3]
-        Rx = _rot_x(sx)[:3,:3]
-        dSh_sx = dRx_sh @ Ry @ Rz
-        dSh_sy = Rx @ dRy_sy @ Rz
-        dSh_sz = Rx @ Ry @ dRz_sz
-        J[ 0: 3, 0] = _dmat33_to_drotvec(R_sh, dSh_sx)
-        J[ 0: 3, 1] = _dmat33_to_drotvec(R_sh, dSh_sy)
-        J[ 0: 3, 2] = _dmat33_to_drotvec(R_sh, dSh_sz)
-
-        # Elbow: d(Rx(eb))/d(eb) → only affects joint 1
-        R_el = _rot_x(eb)[:3,:3]
+        # ── Elbow (pure Rx hinge) ────────────────────────────────────────────
+        R_el = _rot_x(eb)[:3, :3]
         dEl  = R_el @ _skew(np.array([1.,0.,0.]))
         J[ 3: 6, 3] = _dmat33_to_drotvec(R_el, dEl)
 
-        # Forearm twist: incremental rotation = ft/3 per bone
-        # d(Rx(ft/3))/d(ft) = (1/3) * R @ [1,0,0]_×
-        R_f = _rot_x(ft/3)[:3,:3]
-        dF  = R_f @ _skew(np.array([1.,0.,0.])) * (1.0/3.0)
-        J[ 6: 9, 4] = _dmat33_to_drotvec(R_f, dF)
-        J[ 9:12, 4] = _dmat33_to_drotvec(R_f, dF)
-        J[12:15, 4] = _dmat33_to_drotvec(R_f, dF)
+        # ── Forearm joints (each: Rx(hx/3), d/d(hx) = (1/3)*R_f @ [X]×) ───
+        R_f  = _rot_x(hx / 3.0)[:3, :3]
+        dF   = R_f @ _skew(np.array([1.,0.,0.])) * (1.0 / 3.0)
+        J[ 6: 9, 4] = _dmat33_to_drotvec(R_f, dF)   # forearm_1
+        J[ 9:12, 4] = _dmat33_to_drotvec(R_f, dF)   # forearm_2
+        J[12:15, 4] = _dmat33_to_drotvec(R_f, dF)   # forearm_3
+
+        # ── Hand (ZYX Euler: R = Rx @ Ry @ Rz) ─────────────────────────────
+        Rx_h   = _rot_x(hx)[:3, :3]
+        Ry_h   = _rot_y(hy)[:3, :3]
+        Rz_h   = _rot_z(hz)[:3, :3]
+        R_hand = Rx_h @ Ry_h @ Rz_h
+        dhRx   = Rotation.from_rotvec(hx * np.array([1.,0.,0.])).as_matrix() \
+                 @ _skew(np.array([1.,0.,0.]))
+        dhRy   = Rotation.from_rotvec(hy * np.array([0.,1.,0.])).as_matrix() \
+                 @ _skew(np.array([0.,1.,0.]))
+        dhRz   = Rotation.from_rotvec(hz * np.array([0.,0.,1.])).as_matrix() \
+                 @ _skew(np.array([0.,0.,1.]))
+        J[15:18, 4] = _dmat33_to_drotvec(R_hand, dhRx @ Ry_h @ Rz_h)
+        J[15:18, 5] = _dmat33_to_drotvec(R_hand, Rx_h @ dhRy @ Rz_h)
+        J[15:18, 6] = _dmat33_to_drotvec(R_hand, Rx_h @ Ry_h @ dhRz)
 
         return J
 
@@ -816,8 +942,11 @@ def _dmat33_to_drotvec(R: np.ndarray, dR: np.ndarray) -> np.ndarray:
 
 def demo_arm_rig():
     print("=" * 60)
-    print("Analytic Inverse Rig Mapping — Arm + Forearm Twist Demo")
+    print("Analytic Inverse Rig Mapping — Arm + Forearm + Hand Demo")
     print("=" * 60)
+    print("Params: shoulder_rx/ry/rz, elbow_bend, hand_rx/ry/rz  (7 params)")
+    print("Joints: shoulder, elbow, forearm_1, forearm_2, forearm_3, hand  (6 joints)")
+    print("hand_rx drives BOTH forearm partial twist AND hand Rx (CompoundOp)")
 
     rig = ArmRig()
 
@@ -831,7 +960,8 @@ def demo_arm_rig():
 
     # ── 2. Validate Jacobian ─────────────────────────────────────────────────
     print("\n[2] Jacobian validation (analytic vs. FD vs. ground truth)...")
-    beta_test = np.array([0.3, -0.2, 0.1, 0.7, 1.2])
+    print("    Expected: J is (18×7); hand_rx col has 1/3 in forearm rows + 1.0 in hand row")
+    beta_test = np.array([0.3, -0.2, 0.1, 0.7, 0.2, -0.3, 0.4])
     J_analytic = model.jacobian(beta_test)
     J_fd       = model.jacobian_fd(beta_test)
     J_gt       = rig.ground_truth_jacobian(beta_test)
@@ -843,11 +973,22 @@ def demo_arm_rig():
     inverter = RigInverter(model, max_gn_iters=30, max_lm_iters=30)
 
     test_cases = [
-        ("rest pose",         np.zeros(5)),
-        ("shoulder only",     np.array([0.4, 0.2, -0.1,  0,    0  ])),
-        ("elbow bend 90°",    np.array([0,   0,    0,    np.pi/2, 0])),
-        ("full forearm twist",np.array([0.1, 0.0,  0.2,  0.4,  1.5])),
-        ("combined pose",     np.array([0.3,-0.2,  0.1,  0.7,  1.2])),
+        ("rest pose",
+         np.zeros(7)),
+        ("shoulder only",
+         np.array([0.4,  0.2, -0.1,  0.0,  0.0,  0.0,  0.0])),
+        ("elbow bend 90°",
+         np.array([0.0,  0.0,  0.0,  np.pi/2, 0.0, 0.0, 0.0])),
+        ("hand_rx only (twist)",
+         np.array([0.0,  0.0,  0.0,  0.0, 1.2,  0.0,  0.0])),
+        ("hand_rx/ry/rz",
+         np.array([0.0,  0.0,  0.0,  0.0, 0.4, -0.2,  0.5])),
+        ("shoulder + elbow",
+         np.array([0.3,  0.1, -0.2,  0.8,  0.0,  0.0,  0.0])),
+        ("elbow + hand (full)",
+         np.array([0.0,  0.0,  0.0,  0.6,  0.4, -0.1,  0.3])),
+        ("full combined",
+         np.array([0.3, -0.2,  0.1,  0.7,  0.2, -0.3,  0.4])),
     ]
 
     for name, beta_true in test_cases:

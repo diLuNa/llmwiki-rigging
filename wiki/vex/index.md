@@ -848,11 +848,11 @@ Python companion: [[python/inverse_rig_mapping.py]]
 |------|---------|-----------|----------|-------|
 | [inverse-rig-mapping.vex](inverse-rig-mapping.vex) | A | Python SOP — write Jacobian columns as detail float[] attrs | Python SOP | One-time setup; uses `LearnedRigApproximation.jacobian()` from Python module |
 | [inverse-rig-mapping.vex](inverse-rig-mapping.vex) | B | Gauss-Newton + LM solver from stored Jacobian | KineFX Geometry Wrangle | Reads `jac_col_k`, `target_pose`, `pose_rest`; writes `beta_solved` + named channels |
-| [inverse-rig-mapping.vex](inverse-rig-mapping.vex) | C | Arm + forearm twist: hardcoded 5-param Jacobian, inline solve | KineFX Geometry Wrangle | 5 joints × 5 params; no offline training required; self-contained |
+| [inverse-rig-mapping.vex](inverse-rig-mapping.vex) | C | Arm + forearm + hand: hardcoded 18×7 Jacobian, inline solve | KineFX Geometry Wrangle | 6 joints × 7 params (shoulder_rx/ry/rz, elbow_bend, hand_rx/ry/rz); forearm_1/2/3 driven by CompoundOp; no offline training; self-contained |
 
 ### Problem
 
-Inverse rig mapping asks: given a set of target joint transforms (from mocap, retargeting, or a pose library), what are the high-level rig control values (e.g. shoulder_rx, elbow_bend, forearm_twist) that produce those transforms? Solving this analytically requires a Jacobian of the rig function.
+Inverse rig mapping asks: given a set of target joint transforms (from mocap, retargeting, or a pose library), what are the high-level rig control values (e.g. shoulder_rx, elbow_bend, hand_rx) that produce those transforms? Solving this analytically requires a Jacobian of the rig function. Procedural joints (forearm partial twist) are driven by a **CompoundOp**: one parameter (`hand_rx`) simultaneously drives a `ForearmTwistOp` on three forearm joints and a `RotationOp` on the hand joint.
 
 ### Quick-start parameter guide
 
@@ -860,32 +860,40 @@ Inverse rig mapping asks: given a set of target joint transforms (from mocap, re
 ```
 OFFLINE (Snippet A — Python SOP):
   ArmRig().evaluate  →  LearnedRigApproximation.train()  →  jacobian(beta=0)
-  → set detail attrs: n_params, n_joints, jac_col_0..4, pose_rest, beta_rest
+  → set detail attrs: n_params, n_joints, jac_col_0..6, pose_rest, beta_rest
 
 RUNTIME (Snippet B — KineFX Wrangle, per frame):
   KineFX joint xforms → rotation_vectors → set "target_pose" detail attr
-  → Snippet B: Gauss-Newton 30 iters → beta_solved, shoulder_rx/ry/rz, elbow_bend, forearm_twist
+  → Snippet B: Gauss-Newton 30 iters → beta_solved, shoulder_rx/ry/rz, elbow_bend, hand_rx/ry/rz
 
 STANDALONE TEST (Snippet C — no setup needed):
-  Set "target_pose" (15 floats) on 1-point geometry → Snippet C → beta_solved
+  Set "target_pose" (18 floats) on 1-point geometry → Snippet C → beta_solved
 ```
 
-**Arm joint layout (5 joints, 15 DOFs total):**
+**Arm + forearm + hand joint layout (6 joints, 18 DOFs total):**
 
 | Joint idx | Name | Params driving it | Rows in pose vector |
 |-----------|------|-------------------|---------------------|
 | 0 | shoulder | shoulder_rx, shoulder_ry, shoulder_rz | 0:3 |
 | 1 | elbow | elbow_bend | 3:6 (only rx; ry/rz = 0) |
-| 2 | forearm_1 | forearm_twist × 1/3 | 6:9 |
-| 3 | forearm_2 | forearm_twist × 1/3 | 9:12 |
-| 4 | forearm_3 | forearm_twist × 1/3 | 12:15 |
+| 2 | forearm_1 | hand_rx (rate=1/3, CompoundOp ForearmTwistOp) | 6:9 (only rx) |
+| 3 | forearm_2 | hand_rx (rate=1/3, CompoundOp ForearmTwistOp) | 9:12 (only rx) |
+| 4 | forearm_3 | hand_rx (rate=1/3, CompoundOp ForearmTwistOp) | 12:15 (only rx) |
+| 5 | hand | hand_rx (rate=1.0, CompoundOp RotationOp), hand_ry, hand_rz | 15:18 |
 
-**Forearm twist Jacobian column (param 4):**
+**Snippet C Jacobian (18×7) — hardcoded at rest:**
 ```vex
-// Snippet C — hardcoded column for forearm_twist
-Jc[6  * 5 + 4] = 1.0 / 3.0;   // joint 2 x-component
-Jc[9  * 5 + 4] = 1.0 / 3.0;   // joint 3 x-component
-Jc[12 * 5 + 4] = 1.0 / 3.0;   // joint 4 x-component
+Jc[ 0 * 7 + 0] = 1.0;        // shoulder_rx → joint 0 x
+Jc[ 1 * 7 + 1] = 1.0;        // shoulder_ry → joint 0 y
+Jc[ 2 * 7 + 2] = 1.0;        // shoulder_rz → joint 0 z
+Jc[ 3 * 7 + 3] = 1.0;        // elbow_bend  → joint 1 x  (rows 4,5 stay zero)
+Jc[ 6 * 7 + 4] = 1.0/3.0;   // hand_rx → forearm_1 x  (CompoundOp ForearmTwistOp, frac=1/3)
+Jc[ 9 * 7 + 4] = 1.0/3.0;   // hand_rx → forearm_2 x  (CompoundOp ForearmTwistOp, frac=1/3)
+Jc[12 * 7 + 4] = 1.0/3.0;   // hand_rx → forearm_3 x  (CompoundOp ForearmTwistOp, frac=1/3)
+Jc[15 * 7 + 4] = 1.0;        // hand_rx → hand x       (CompoundOp RotationOp, rate=1.0)
+Jc[16 * 7 + 5] = 1.0;        // hand_ry → hand y
+Jc[17 * 7 + 6] = 1.0;        // hand_rz → hand z
+// Note: hand_rx column (4) couples forearm + hand — JᵀJ[4,4] = 3*(1/3)² + 1² = 4/3, non-diagonal
 ```
 
 | Attribute | Type | Where | Meaning |
@@ -897,9 +905,9 @@ Jc[12 * 5 + 4] = 1.0 / 3.0;   // joint 4 x-component
 | `target_pose` | float[3*n_joints] | detail | Per-frame target joint rotation vectors |
 | `beta_solved` | float[n_params] | detail | Solved rig parameters (output) |
 | `residual` | float | detail | Final L2 residual of the inversion |
-| `shoulder_rx/ry/rz` | float | detail | Individual arm channels (arm example) |
+| `shoulder_rx/ry/rz` | float | detail | Shoulder Euler angles (radians) |
 | `elbow_bend` | float | detail | Elbow flex angle (radians) |
-| `forearm_twist` | float | detail | Total forearm twist angle (radians) |
+| `hand_rx/ry/rz` | float | detail | Hand/wrist Euler angles (radians) |
 
 ### Key formulas
 
@@ -923,12 +931,17 @@ for (int a = 0; a < n_params; a++) {
 }
 ```
 
-**Forearm twist distribution (incremental, 3 joints):**
+**CompoundOp forearm twist distribution (incremental, 3 joints):**
 ```vex
-// Each joint receives ft/3 radians in local X.
-// World cumulative: ft/3, 2*ft/3, ft (distributes candy-wrapper twist).
-float inc = forearm_twist / 3.0;
-// Jacobian: d(joint_k_rotvec_x)/d(forearm_twist) = 1/3 for k = 2,3,4
+// hand_rx drives 3 forearm joints (each at rate=1/3) AND the hand joint (rate=1.0).
+// Forearm cumulative world twist: hx/3, 2*hx/3, hx (candy-wrapper twist).
+float inc = hand_rx / 3.0;
+// Jacobian column 4 (hand_rx):
+//   forearm_1 rx row: 1/3    (ForearmTwistOp sub-op)
+//   forearm_2 rx row: 1/3    (ForearmTwistOp sub-op)
+//   forearm_3 rx row: 1/3    (ForearmTwistOp sub-op)
+//   hand rx row:      1.0    (RotationOp sub-op)
+// JᵀJ[4,4] = 3*(1/3)^2 + 1^2 = 1/3 + 1 = 4/3
 ```
 
 ---

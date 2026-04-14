@@ -776,3 +776,33 @@ Created `wiki/techniques/inverse-rig-mapping.md` covering the full Gustafson et 
 - Comparison table vs. numerical Jacobian, FaceBaker, Dem Bones, ML Deformer
 
 Updated `wiki/index.md` — added technique row.
+
+## [2026-04-14] update | Inverse Rig Mapping — extend ArmRig to shoulder+elbow+hand
+
+Extended the concrete rig example from a 5-param forearm-twist rig to a 7-param arm+hand rig:
+
+**Changes:**
+- `ArmRig`: num_params 5→7, num_joints 5→3; removed forearm_1/2/3 joints; added hand joint (3-DOF ZYX Euler); forward kinematics now evaluates shoulder, elbow, hand independently
+- `ArmRig.ground_truth_jacobian`: updated from (15×5) to (9×7); hand block (rows 6:9, params 4:7) mirrors shoulder ZYX Euler structure
+- `demo_arm_rig()`: test cases updated to 7-element beta vectors; 7 new test cases covering shoulder-only, elbow-only, hand-only, mixed combinations
+- Module docstring updated to reflect new param/joint layout
+- `wiki/vex/inverse-rig-mapping.vex` Snippet C: rewritten from 15×5 to 9×7 Jacobian; `forearm_twist` channels replaced with `hand_rx/ry/rz`; Gauss-Seidel loop updated for 7 params
+- `wiki/vex/index.md`: Snippet C table row, joint layout table, Jacobian code block, attribute table updated
+- `wiki/python/index.md`: quick-start example, ArmRig description, joint layout diagram updated
+- `wiki/techniques/inverse-rig-mapping.md`: arm example section rewritten; new 9×7 Jacobian table; Python and VEX usage code blocks updated
+
+## [2026-04-13] update | Inverse Rig Mapping — add forearm partial twist procedural joints via CompoundOp
+
+Extended `ArmRig` from 3 joints (shoulder, elbow, hand) to 6 joints (shoulder, elbow, forearm_1, forearm_2, forearm_3, hand). Forearm joints are procedural: they receive `hand_rx / 3` each as a candy-wrapper twist distribution.
+
+**Key architectural addition — `CompoundOp`:**
+- One parameter (`hand_rx`) simultaneously drives a `ForearmTwistOp(joints=[2,3,4], fracs=[1/3,2/3,1.0], axis=X, rate=1.0)` and a `RotationOp(joint=5, axis=X, rate=1.0)`
+- Classification auto-detects this via rate-grouping: joints with equal rate (1/3) → ForearmTwistOp; joint with different rate (1.0) → RotationOp; multiple groups → CompoundOp wrapper
+- Jacobian for `hand_rx` column has entries 1/3 at forearm rx rows and 1.0 at hand rx row; `JᵀJ[4,4] = 4/3` (non-unit)
+
+**Changes:**
+- `wiki/python/inverse_rig_mapping.py`: added `CompoundOp` class (with `_apply()`, `jacobian_contributions()`); updated `evaluate()`, `jacobian()`, `_classify_parameter()` for CompoundOp; rewrote `ArmRig` (num_joints 3→6, new FK, new ground-truth Jacobian (18×7)); updated `demo_arm_rig()` with 8 test cases
+- `wiki/vex/inverse-rig-mapping.vex` Snippet C: rewritten from 9×7 to 18×7 Jacobian; 6-joint layout; hand_rx column with 1/3 at forearm rows + 1.0 at hand row; Gauss-Seidel on 18 DOFs / 7×7 JᵀJ
+- `wiki/vex/index.md`: Snippet C table row updated to "6 joints × 7 params (18×7)"; joint layout table extended to 6 rows; Jacobian code block updated with 1/3 entries; CompoundOp note added
+- `wiki/python/index.md`: quick-start comments updated for 6-joint layout; ArmRig entry updated; joint layout diagram updated to 18-vector with CompoundOp notation
+- `wiki/techniques/inverse-rig-mapping.md`: arm example section renamed and rewritten; 18×7 Jacobian table; CompoundOp classification explanation; Python and VEX code blocks updated

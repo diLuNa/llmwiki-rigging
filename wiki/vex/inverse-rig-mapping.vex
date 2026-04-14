@@ -194,125 +194,153 @@ setdetailattrib(0, "residual",    residual);
 
 // B.8 — Scatter solved parameters back to named channels
 // (map by index: 0=shoulder_rx, 1=shoulder_ry, 2=shoulder_rz,
-//                3=elbow_bend, 4=forearm_twist for the arm example)
+//                3=elbow_bend, 4=hand_rx, 5=hand_ry, 6=hand_rz)
 string param_names[] = array("shoulder_rx","shoulder_ry","shoulder_rz",
-                              "elbow_bend","forearm_twist");
+                              "elbow_bend",
+                              "hand_rx","hand_ry","hand_rz");
 for (int a = 0; a < n_params && a < len(param_names); a++)
     setdetailattrib(0, param_names[a], beta_solved[a]);
 
 
 // ============================================================================
-// SNIPPET C — Arm + Forearm Twist: Hardcoded Analytic Jacobian
+// SNIPPET C — Arm + Forearm Partial Twist + Hand: Hardcoded Analytic Jacobian
 // Standalone Geometry Wrangle for testing without offline training.
-// Joints (by index): 0=shoulder, 1=elbow, 2=forearm_1, 3=forearm_2, 4=forearm_3
-// Params:            0=shoulder_rx, 1=shoulder_ry, 2=shoulder_rz,
-//                    3=elbow_bend, 4=forearm_twist
 //
-// Rig forward kinematics (ZYX Euler shoulder, pure-X elbow, distributed twist):
-//   R_shoulder = Rz(sz) * Ry(sy) * Rx(sx)
-//   R_elbow    = Rx(eb)
-//   R_forearm_k = Rx(ft/3)  for k=1,2,3  (distributes twist uniformly)
+// Joints (by index):
+//   0 = shoulder   (3-DOF: shoulder_rx, shoulder_ry, shoulder_rz)
+//   1 = elbow      (1-DOF: elbow_bend, pure Rx hinge)
+//   2 = forearm_1  (procedural: Rx = hand_rx / 3)
+//   3 = forearm_2  (procedural: Rx = hand_rx / 3)
+//   4 = forearm_3  (procedural: Rx = hand_rx / 3)
+//   5 = hand       (3-DOF: hand_rx, hand_ry, hand_rz)
 //
-// Rotation vector (axis * angle) stored per joint, concatenated to (15,) vector.
-// Jacobian columns dF/d(beta_k) computed analytically below.
+// Params (7 total):
+//   0 = shoulder_rx,  1 = shoulder_ry,  2 = shoulder_rz
+//   3 = elbow_bend
+//   4 = hand_rx  ← CompoundOp: drives forearm_1/2/3 (1/3 each) AND hand (full Rx)
+//   5 = hand_ry,      6 = hand_rz
 //
-// Usage: feed target_pose (15 floats) into detail attr; reads beta_init if present.
+// Rig forward kinematics:
+//   R_shoulder  = Rx(sx) @ Ry(sy) @ Rz(sz)      (ZYX Euler)
+//   R_elbow     = Rx(eb)                          (pure hinge)
+//   R_forearm_k = Rx(hx/3)  for k=1,2,3          (incremental partial twist)
+//   R_hand      = Rx(hx) @ Ry(hy) @ Rz(hz)       (ZYX Euler)
+//
+// Pose vector: 18 floats  [sh(3), el(3), f1(3), f2(3), f3(3), hand(3)]
+// Jacobian J: (18 rows × 7 cols), row-major in float array Jc[126]
+//
+// Jacobian at rest (linearized):
+//          sh_rx  sh_ry  sh_rz  el_bend  hand_rx  hand_ry  hand_rz
+// sh_x  [   1      0      0      0        0        0        0  ]  row 0
+// sh_y  [   0      1      0      0        0        0        0  ]  row 1
+// sh_z  [   0      0      1      0        0        0        0  ]  row 2
+// el_x  [   0      0      0      1        0        0        0  ]  row 3
+// el_y  [   0      0      0      0        0        0        0  ]  row 4  (zero)
+// el_z  [   0      0      0      0        0        0        0  ]  row 5  (zero)
+// f1_x  [   0      0      0      0       1/3       0        0  ]  row 6
+// f1_y  [   0      0      0      0        0        0        0  ]  row 7
+// f1_z  [   0      0      0      0        0        0        0  ]  row 8
+// f2_x  [   0      0      0      0       1/3       0        0  ]  row 9
+// f2_y  [   0      0      0      0        0        0        0  ]  row 10
+// f2_z  [   0      0      0      0        0        0        0  ]  row 11
+// f3_x  [   0      0      0      0       1/3       0        0  ]  row 12
+// f3_y  [   0      0      0      0        0        0        0  ]  row 13
+// f3_z  [   0      0      0      0        0        0        0  ]  row 14
+// ha_x  [   0      0      0      0        1        0        0  ]  row 15
+// ha_y  [   0      0      0      0        0        1        0  ]  row 16
+// ha_z  [   0      0      0      0        0        0        1  ]  row 17
+//
+// hand_rx (col 4) has 1/3 in each forearm x-row AND 1.0 in hand x-row.
+// This is the CompoundOp signature: ForearmTwistOp + RotationOp same column.
+//
+// Usage: feed target_pose (18 floats) into detail attr; reads beta_init if present.
 // ============================================================================
 
-// C.1 — Read target and initial guess
-float target[] = detail(0, "target_pose", array(0,0,0, 0,0,0, 0,0,0, 0,0,0, 0,0,0));
+// C.1 — Read target and initial guess (18 DOFs: 6 joints × 3)
+float target[] = detail(0, "target_pose",
+    array(0,0,0, 0,0,0, 0,0,0, 0,0,0, 0,0,0, 0,0,0));
 float beta[];
-resize(beta, 5);
+resize(beta, 7);
 
-// Use prior solution or zero
 float prior[] = detail(0, "beta_solved", {});
-for (int a = 0; a < 5; a++)
+for (int a = 0; a < 7; a++)
     beta[a] = (len(prior) > a ? prior[a] : 0.0);
 
-// C.2 — Hardcoded analytic Jacobian for the arm rig (at current beta)
-// dF/d(shoulder_rx): only affects joint 0 (shoulder rotation vector x-axis)
-//   For small angles: d(rotvec_x)/d(sx) ≈ rate = 1.0 along local X
-//   Full: d(R)/dparam = R @ skew(axis) * rate → d(rotvec) via log-map Jacobian
-//
-// Approximation for production (re-linearize each frame around current beta):
-// J[:,0] = [1,0,0,  0,0,0, 0,0,0, 0,0,0, 0,0,0]  shoulder_rx → joint 0 x-row
-// J[:,1] = [0,1,0,  0,0,0, 0,0,0, 0,0,0, 0,0,0]  shoulder_ry → joint 0 y-row
-// J[:,2] = [0,0,1,  0,0,0, 0,0,0, 0,0,0, 0,0,0]  shoulder_rz → joint 0 z-row
-// J[:,3] = [0,0,0,  1,0,0, 0,0,0, 0,0,0, 0,0,0]  elbow_bend  → joint 1 x-row
-// J[:,4] = [0,0,0,  0,0,0, .333,0,0, .333,0,0, .333,0,0]  forearm_twist → joints 2,3,4
-
-// Assemble as 15×5 row-major (linearization at origin):
+// C.2 — Hardcoded analytic Jacobian (18×7), row-major in Jc[126]
 float Jc[];
-resize(Jc, 75);  // 15 rows × 5 cols
+resize(Jc, 126);   // 18 rows × 7 cols
+for (int i = 0; i < 126; i++) Jc[i] = 0.0;
 
-// Zero fill
-for (int i = 0; i < 75; i++) Jc[i] = 0.0;
+// shoulder_rx → row 0, col 0
+Jc[ 0 * 7 + 0] = 1.0;
+// shoulder_ry → row 1, col 1
+Jc[ 1 * 7 + 1] = 1.0;
+// shoulder_rz → row 2, col 2
+Jc[ 2 * 7 + 2] = 1.0;
+// elbow_bend  → row 3, col 3  (pure Rx; rows 4,5 stay zero)
+Jc[ 3 * 7 + 3] = 1.0;
+// hand_rx     → forearm_1 x-row (row 6), col 4  — CompoundOp: ForearmTwistOp fraction
+Jc[ 6 * 7 + 4] = 1.0 / 3.0;
+// hand_rx     → forearm_2 x-row (row 9),  col 4
+Jc[ 9 * 7 + 4] = 1.0 / 3.0;
+// hand_rx     → forearm_3 x-row (row 12), col 4
+Jc[12 * 7 + 4] = 1.0 / 3.0;
+// hand_rx     → hand x-row (row 15), col 4  — CompoundOp: RotationOp full rate
+Jc[15 * 7 + 4] = 1.0;
+// hand_ry     → hand y-row (row 16), col 5
+Jc[16 * 7 + 5] = 1.0;
+// hand_rz     → hand z-row (row 17), col 6
+Jc[17 * 7 + 6] = 1.0;
 
-// shoulder_rx → row 0 col 0
-Jc[0  * 5 + 0] = 1.0;
-// shoulder_ry → row 1 col 1
-Jc[1  * 5 + 1] = 1.0;
-// shoulder_rz → row 2 col 2
-Jc[2  * 5 + 2] = 1.0;
-// elbow_bend  → row 3 col 3 (joint 1 x-component)
-Jc[3  * 5 + 3] = 1.0;
-// forearm_twist → joints 2,3,4, all x-component only (1/3 each)
-Jc[6  * 5 + 4] = 1.0 / 3.0;   // joint 2, x-row = index 6
-Jc[9  * 5 + 4] = 1.0 / 3.0;   // joint 3, x-row = index 9
-Jc[12 * 5 + 4] = 1.0 / 3.0;   // joint 4, x-row = index 12
-
-// C.3 — Gauss-Newton iterations (same as Snippet B, inline for clarity)
-// Build JᵀJ and Jᵀr
+// C.3 — Gauss-Newton iterations
+// 18 DOFs, 7 params → JᵀJ is 7×7, Jᵀr is 7-vector.
 float JtJc[];
 float Jtrc[];
-resize(JtJc, 25);
-resize(Jtrc, 5);
+resize(JtJc, 49);   // 7×7
+resize(Jtrc,  7);
 
 float rc[];
-resize(rc, 15);
-for (int i = 0; i < 15; i++)
-    rc[i] = target[i];  // residual = target - approx(beta); starts at rest
+resize(rc, 18);
 
 for (int gn_iter = 0; gn_iter < 30; gn_iter++) {
 
-    // Recompute residual: r = target - J * beta  (linearized model)
-    for (int i = 0; i < 15; i++) {
+    // Residual: r = target - J * beta  (linearized model at rest)
+    for (int i = 0; i < 18; i++) {
         float Jb = 0.0;
-        for (int a = 0; a < 5; a++)
-            Jb += Jc[i * 5 + a] * beta[a];
+        for (int a = 0; a < 7; a++)
+            Jb += Jc[i * 7 + a] * beta[a];
         rc[i] = target[i] - Jb;
     }
 
     // Build JᵀJ + λI and Jᵀr
-    for (int a = 0; a < 5; a++) {
+    for (int a = 0; a < 7; a++) {
         Jtrc[a] = 0.0;
-        for (int i = 0; i < 15; i++)
-            Jtrc[a] += Jc[i * 5 + a] * rc[i];
-        for (int b = 0; b < 5; b++) {
+        for (int i = 0; i < 18; i++)
+            Jtrc[a] += Jc[i * 7 + a] * rc[i];
+        for (int b = 0; b < 7; b++) {
             float s = 0.0;
-            for (int i = 0; i < 15; i++)
-                s += Jc[i * 5 + a] * Jc[i * 5 + b];
-            JtJc[a * 5 + b] = s + (a == b ? 1e-4 : 0.0);
+            for (int i = 0; i < 18; i++)
+                s += Jc[i * 7 + a] * Jc[i * 7 + b];
+            JtJc[a * 7 + b] = s + (a == b ? 1e-4 : 0.0);
         }
     }
 
     // Gauss-Seidel solve for Δβ
     float db[];
-    resize(db, 5);
-    for (int a = 0; a < 5; a++) db[a] = 0.0;
+    resize(db, 7);
+    for (int a = 0; a < 7; a++) db[a] = 0.0;
 
     for (int gs = 0; gs < 20; gs++) {
-        for (int a = 0; a < 5; a++) {
+        for (int a = 0; a < 7; a++) {
             float rhs = Jtrc[a];
-            for (int b = 0; b < 5; b++)
-                if (b != a) rhs -= JtJc[a * 5 + b] * db[b];
-            db[a] = rhs / JtJc[a * 5 + a];
+            for (int b = 0; b < 7; b++)
+                if (b != a) rhs -= JtJc[a * 7 + b] * db[b];
+            db[a] = rhs / JtJc[a * 7 + a];
         }
     }
 
-    // Update beta
     float conv = 0.0;
-    for (int a = 0; a < 5; a++) {
+    for (int a = 0; a < 7; a++) {
         conv = max(conv, abs(db[a]));
         beta[a] += db[a];
     }
@@ -320,27 +348,28 @@ for (int gn_iter = 0; gn_iter < 30; gn_iter++) {
 }
 
 // C.4 — Write solved parameters
-setdetailattrib(0, "beta_solved",    beta);
-setdetailattrib(0, "shoulder_rx",    beta[0]);
-setdetailattrib(0, "shoulder_ry",    beta[1]);
-setdetailattrib(0, "shoulder_rz",    beta[2]);
-setdetailattrib(0, "elbow_bend",     beta[3]);
-setdetailattrib(0, "forearm_twist",  beta[4]);
+setdetailattrib(0, "beta_solved",  beta);
+setdetailattrib(0, "shoulder_rx",  beta[0]);
+setdetailattrib(0, "shoulder_ry",  beta[1]);
+setdetailattrib(0, "shoulder_rz",  beta[2]);
+setdetailattrib(0, "elbow_bend",   beta[3]);
+setdetailattrib(0, "hand_rx",      beta[4]);
+setdetailattrib(0, "hand_ry",      beta[5]);
+setdetailattrib(0, "hand_rz",      beta[6]);
 
-// C.5 — Verify: recompute approximate pose from solved beta
+// C.5 — Verify: recompute approximate pose and residual
 float approx_pose[];
-resize(approx_pose, 15);
-for (int i = 0; i < 15; i++) {
+resize(approx_pose, 18);
+for (int i = 0; i < 18; i++) {
     float v = 0.0;
-    for (int a = 0; a < 5; a++)
-        v += Jc[i * 5 + a] * beta[a];
+    for (int a = 0; a < 7; a++)
+        v += Jc[i * 7 + a] * beta[a];
     approx_pose[i] = v;
 }
 setdetailattrib(0, "approx_pose", approx_pose);
 
-// Residual norm
 float res = 0.0;
-for (int i = 0; i < 15; i++) {
+for (int i = 0; i < 18; i++) {
     float d = target[i] - approx_pose[i];
     res += d * d;
 }
@@ -351,32 +380,36 @@ setdetailattrib(0, "residual", sqrt(res));
 // PARAMETER REFERENCE
 //
 // Detail attributes (written by Snippet A Python SOP):
-//   n_params      int         — number of rig control parameters
-//   n_joints      int         — number of skeleton joints
-//   jac_col_k     float[3*n_joints] — Jacobian column k (dF/d(beta_k))
-//   pose_rest     float[3*n_joints] — rest-pose rotation vectors
-//   beta_rest     float[n_params]   — rest rig parameters (usually zeros)
+//   n_params      int                — number of rig control parameters (7)
+//   n_joints      int                — number of skeleton joints (6)
+//   jac_col_k     float[3*n_joints]  — Jacobian column k, k=0..6
+//   pose_rest     float[18]          — rest-pose rotation vectors
+//   beta_rest     float[7]           — rest rig parameters (usually zeros)
 //
 // Detail attributes (set each frame from upstream):
-//   target_pose   float[3*n_joints] — target joint rotation vectors
+//   target_pose   float[18]          — target joint rotation vectors
 //
 // Detail attributes (written by solver):
-//   beta_solved   float[n_params]   — solved rig parameters
-//   beta_delta    float[n_params]   — delta from rest
-//   residual      float             — final L2 residual
-//   shoulder_rx/ry/rz float        — individual arm channels (arm example)
-//   elbow_bend    float             — elbow flex angle (radians)
-//   forearm_twist float             — total forearm twist angle (radians)
+//   beta_solved   float[7]           — solved rig parameters
+//   beta_delta    float[7]           — delta from rest
+//   residual      float              — final L2 residual
+//   shoulder_rx/ry/rz float         — shoulder Euler angles (radians)
+//   elbow_bend    float              — elbow flex angle (radians)
+//   hand_rx/ry/rz float             — hand Euler angles (radians)
+//                                      (hand_rx also encodes forearm twist)
 //
-// Arm-specific joint layout (Snippet C):
-//   Joint 0  — shoulder  (3-DOF: rx, ry, rz)   rows 0:3
-//   Joint 1  — elbow     (1-DOF: rx)             rows 3:6 (ry/rz constrained=0)
-//   Joint 2  — forearm_1 (1/3 twist fraction)    rows 6:9
-//   Joint 3  — forearm_2 (1/3 twist fraction)    rows 9:12
-//   Joint 4  — forearm_3 (1/3 twist fraction)    rows 12:15
+// Arm + Forearm + Hand joint layout (Snippet C):
+//   Joint 0  — shoulder   (3-DOF)            pose vector rows  0: 3
+//   Joint 1  — elbow      (1-DOF rx)         pose vector rows  3: 6  (ry/rz=0)
+//   Joint 2  — forearm_1  (1-DOF rx=hx/3)   pose vector rows  6: 9
+//   Joint 3  — forearm_2  (1-DOF rx=hx/3)   pose vector rows  9:12
+//   Joint 4  — forearm_3  (1-DOF rx=hx/3)   pose vector rows 12:15
+//   Joint 5  — hand       (3-DOF)            pose vector rows 15:18
 //
-// Forearm twist distribution:
-//   Each forearm joint receives ft/3 radians in local X.
-//   World-space cumulative: ft/3, 2*ft/3, ft.
-//   Jacobian column for forearm_twist: [1/3, 0, 0] at joints 2, 3, 4.
+// CompoundOp structure for hand_rx (param 4):
+//   Jc[row=6,7,8   col=4] = 1/3   (forearm_1 x-component, y/z=0)
+//   Jc[row=9,10,11 col=4] = 1/3   (forearm_2 x-component, y/z=0)
+//   Jc[row=12..14  col=4] = 1/3   (forearm_3 x-component, y/z=0)
+//   Jc[row=15      col=4] = 1.0   (hand x-component, full rate)
+//   → JᵀJ[4,4] = 3*(1/3)² + 1² = 1/3 + 1 = 4/3  (not diagonal-dominant — LM helps)
 // ============================================================================

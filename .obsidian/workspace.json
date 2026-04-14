@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "wiki/queries/gauss-newton-algorithm.md",
+                "file": "wiki/techniques/inverse-rig-mapping.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "gauss-newton-algorithm"
+              "title": "inverse-rig-mapping"
             }
           },
           {
@@ -216,6 +216,7 @@
   },
   "active": "e1e94846dc220d36",
   "lastOpenFiles": [
+    "wiki/queries/gauss-newton-algorithm.md",
     "wiki/techniques/inverse-rig-mapping.md",
     "wiki/vex/inverse-rig-mapping.vex",
     "wiki/python/inverse_rig_mapping.py",
@@ -243,7 +244,6 @@
     "wiki/papers/wu-2025-animportrait3d.md",
     "wiki/papers/he-2025-lam.md",
     "wiki/papers/kavan-2024-compressed-skinning.md",
-    "wiki/papers/deng-2025-anymate.md",
     "raw/papers/2786784.2786788.pdf",
     "raw/papers/rigfunction.pdf",
     "wiki/python/rigid_body_rest.py",
