@@ -71,10 +71,13 @@ Master catalog of all pages. Updated on every ingest.
 | [[papers/yang-2024-generalized-physical-face]] | Generalized Implicit Physical Face Model | SIGGRAPH 2024 | `muscles` `simulation` `digital-human` `neural` |
 | [[papers/zeng-2021-neuromuscular-face]] | Neuromuscular Control of the Face | SIGGRAPH 2021 | `muscles` `simulation` `digital-human` `neural` |
 | [[papers/sifakis-2006-speech-muscle]] | Simulating the Musculotendon Mechanics of the Human Tongue | SIGGRAPH 2006 | `muscles` `simulation` `speech-driven-animation` `digital-human` |
+| [[papers/arcelin-2024-ml-deformer-crowds]] | Implementing a Machine Learning Deformer for CG Crowds: Our Journey | SIGGRAPH DIGIPRO 2024 | `neural` `skinning` `real-time` `crowd-animation` `production` |
+| [[papers/bailey-2020-fast-deep-facial]] | Fast and Deep Facial Deformations | SIGGRAPH 2020 | `neural` `blendshapes` `facial-capture` `real-time` `correctives` |
 | [[papers/bagautdinov-2018-facial-cvae]] | Modeling Facial Geometry using Compositional VAEs | CVPR 2018 | `neural` `blendshapes` `digital-human` |
 | [[papers/cha-2025-neural-face-skinning]] | Neural Face Skinning for Mesh-agnostic Facial Expression Cloning | Eurographics 2025 | `neural` `blendshapes` `rig-generation` `skinning` `digital-human` `auto-rigging` |
 | [[papers/ming-2024-mesh-blendshapes]] | High-Quality Mesh Blendshape Generation from Face Videos via Neural Inverse Rendering | ECCV 2024 | `neural` `blendshapes` `rig-generation` `facial-capture` |
 | [[papers/radzihovsky-2020-facebaker]] | FaceBaker: Baking Character Facial Rigs with ML | SIGGRAPH Talks 2020 | `neural` `blendshapes` |
+| [[papers/song-2020-differential-subspace]] | Accurate Face Rig Approximation with Deep Differential Subspace Reconstruction | SIGGRAPH 2020 | `neural` `blendshapes` `facial-capture` `real-time` `correctives` `math` |
 | [[papers/bai-2023-monoavatar]] | MonoAvatar: Learning Personalized High Quality Volumetric Head Avatars | CVPR 2023 | `neural` `digital-human` `appearance` `facial-capture` |
 | [[papers/bai-2024-monoavatar-pp]] | MonoAvatar++: Real-time Monocular Head Avatars with Hash-Table Blendshapes | CVPR 2024 | `neural` `digital-human` `appearance` `blendshapes` |
 | [[papers/chan-2022-eg3d]] | EG3D: Efficient Geometry-aware 3D Generative Adversarial Networks | CVPR 2022 | `neural` `digital-human` `appearance` |
@@ -157,6 +160,7 @@ Master catalog of all pages. Updated on every ingest.
 | [[papers/kenwright-2012-dual-quaternion]] | A Beginners Guide to Dual-Quaternions | WSCG 2012 | `skinning` `dqs` `math` |
 | [[papers/loper-2015-smpl]] | SMPL: A Skinned Multi-Person Linear Model | SIGGRAPH Asia 2015 | `skinning` `lbs` `blendshapes` `pose-space` `body-model` |
 | [[papers/le-2012-ssdr]] | Smooth Skinning Decomposition with Rigid Bones | SIGGRAPH Asia 2012 | `skinning` `lbs` `rig-generation` `weights` |
+| [[papers/le-2014-skeletal-rigging]] | Robust and Accurate Skeletal Rigging from Mesh Sequences | SIGGRAPH 2014 | `skinning` `lbs` `rig-generation` `weights` `auto-rigging` |
 | [[papers/jacobson-2012-fast-skinning]] | Fast Automatic Skinning Transformations | SIGGRAPH 2012 | `skinning` `lbs` |
 | [[papers/le-2016-cor-skinning]] | Real-time Skeletal Skinning with Optimized Centers of Rotation | SIGGRAPH 2016 | `skinning` `lbs` |
 | [[papers/le-2019-direct-delta-mush]] | Direct Delta Mush Skinning and Variants | SIGGRAPH 2019 | `skinning` `lbs` |
@@ -173,6 +177,34 @@ Master catalog of all pages. Updated on every ingest.
 | [[papers/medina-2022-tongue-animation]] | Speech Driven Tongue Animation | CVPR 2022 | `speech-driven-animation` `neural` `digital-human` |
 
 ---
+
+| [[papers/peng-2021-amp]] | AMP: Adversarial Motion Priors for Stylized Physics-Based Character Control | SIGGRAPH 2021 | `character-control` `physics-based-animation` `reinforcement-learning` `gans` `motion-synthesis` |
+| [[papers/deng-2025-anymate]] | Anymate: A Dataset and Baselines for Learning 3D Object Rigging | SIGGRAPH 2025 | `dataset` `rig-generation` `auto-rigging` `skinning` `3D-objects` |
+| [[papers/an-2024-refined-inverse-rigging]] | Refined Inverse Rigging: A Balanced Approach to High-fidelity Blendshape Animation | SIGGRAPH Asia 2024 | `facial-animation` `blendshapes` `inverse-kinematics` `performance-driven-animation` `rigging` |
+| [[papers/ghosh-2023-emote]] | EMOTE: Emotional Speech-Driven Animation with Content-Emotion Disentanglement | SIGGRAPH Asia 2023 | `facial-animation` `speech-driven` `blendshapes` `emotion-control` `performance-driven-animation` |
+| [[papers/nam-2023-bidirectional-gaitnet]] | Bidirectional GaitNet: A Bidirectional Prediction Model of Human Gait and Anatomical Conditions | SIGGRAPH 2023 | `gait-animation` `musculoskeletal-models` `variational-autoencoder` `biomechanics` `synthesis` |
+| [[papers/aberman-2020-skeleton-aware-retargeting]] | Skeleton-Aware Networks for Deep Motion Retargeting | SIGGRAPH 2020 | `motion-retargeting` `neural-networks` `skeleton-hierarchy` `deep-learning` `animation` |
+| [[papers/aberman-2020-unpaired-motion-style]] | Unpaired Motion Style Transfer from Video to Animation | SIGGRAPH 2020 | `motion-retargeting` `style-transfer` `video-input` `unsupervised-learning` `animation` |
+| [[papers/tang-2024-decoupling-contact]] | Decoupling Contact for Fine-Grained Motion Style Transfer | SIGGRAPH Asia 2024 | `motion-retargeting` `style-transfer` `contact-modeling` `motion-synthesis` |
+| [[papers/ye-2024-kinematic-motion-retargeting]] | Kinematic Motion Retargeting for Contact-Rich Anthropomorphic Manipulations | ACM ToG 2024 | `motion-retargeting` `hand-animation` `contact-modeling` `inverse-kinematics` `manipulation` |
+| [[papers/chen-2024-taming-diffusion]] | Taming Diffusion Probabilistic Models for Character Control | SIGGRAPH 2024 | `neural` `diffusion` `character-animation` `motion-synthesis` `real-time-control` |
+| [[papers/gao-2024-hierarchical-neural-skinning]] | Hierarchical Neural Skinning Deformation with Self-supervised Training for Character Animation | ACM ToG 2024 | `neural` `deformation` `secondary-motion` `self-supervised` `character-animation` `muscles` |
+| [[papers/gat-2025-anytop]] | AnyTop: Character Animation Diffusion with Any Topology | SIGGRAPH 2025 | `neural` `motion-synthesis` `diffusion` `animation` `topology-agnostic` |
+| [[papers/he-2025-3dgh]] | 3DGH: 3D Head Generation with Composable Hair and Face | SIGGRAPH 2025 | `neural` `3d-generation` `head-geometry` `hair-modeling` `avatar-generation` |
+| [[papers/he-2025-lam]] | LAM: Large Avatar Model for One-shot Animatable Gaussian Head | SIGGRAPH 2025 | `neural` `avatars` `gaussian-splatting` `facial-animation` `head-generation` |
+| [[papers/liang-2024-drawingspinup]] | DrawingSpinUp: 3D Animation from Single Character Drawings | SIGGRAPH Asia 2024 | `neural` `3d-generation` `image-to-3d` `character-animation` `stylization` |
+| [[papers/lin-2024-layga]] | LayGA: Layered Gaussian Avatars for Animatable Clothing Transfer | SIGGRAPH 2024 | `neural` `gaussian-splatting` `avatars` `clothing` `virtual-try-on` |
+| [[papers/tan-2024-soap]] | SOAP: Style-Omniscient Animatable Portraits | SIGGRAPH 2024 | `neural` `avatar-generation` `3d-diffusion` `facial-animation` `portrait-generation` |
+| [[papers/wu-2023-aniportraitgan]] | AniPortraitGAN: Animatable 3D Portrait Generation from 2D Image Collections | SIGGRAPH Asia 2023 | `neural` `3d-generation` `gans` `facial-animation` `portrait-modeling` |
+| [[papers/wu-2025-animportrait3d]] | AnimPortrait3D: Text-based Animatable 3D Avatars with Morphable Model Alignment | SIGGRAPH 2025 | `neural` `text-to-3d` `avatar-generation` `facial-rigging` `morphable-models` |
+| [[papers/xu-2022-morig]] | MoRig: Motion-Aware Rigging of Character Meshes from Point Clouds | SIGGRAPH Asia 2022 | `neural` `auto-rigging` `skeleton-extraction` `point-cloud-input` `motion-capture` |
+| [[papers/zhang-2025-unirig]] | UniRig: One Model to Rig Them All: Diverse Skeleton Rigging with UniRig | SIGGRAPH 2025 | `neural` `rig-generation` `skeleton` `auto-rigging` `skinning` |
+| [[papers/zheng-2025-autokeyframe]] | AutoKeyframe: Autoregressive Keyframe Generation for Human Motion Synthesis and Editing | SIGGRAPH 2025 | `neural` `motion-synthesis` `keyframing` `character-animation` `diffusion` |
+| [[papers/lin-2023-posevocab]] | PoseVocab: Learning Joint-structured Pose Embeddings for Human Avatar Modeling | SIGGRAPH 2023 | `neural-rendering` `pose-embeddings` `appearance-modeling` `human-avatars` `joint-structure` |
+| [[papers/benchekroun-2023-fast-complementary-dynamics]] | Fast Complementary Dynamics via Skinning Eigenmodes | SIGGRAPH 2023 | `simulation` `secondary-motion` `reduced-space` `eigenmode-decomposition` `character-animation` |
+| [[papers/benchekroun-2024-stiffgipc]] | StiffGIPC: Advancing GPU IPC for Stiff Affine-Deformable Simulation | SIGGRAPH 2024 | `simulation` `contact` `gpu-computing` `deformable-objects` `incremental-potential` |
+| [[papers/lan-2025-jgs2]] | JGS2: Near Second-order Converging Jacobi/Gauss-Seidel for GPU Elastodynamics | SIGGRAPH 2025 | `simulation` `deformable-objects` `gpu-computing` `elastodynamics` `linear-solvers` |
+| [[papers/kavan-2024-compressed-skinning]] | Compressed Skinning for Facial Blendshapes | SIGGRAPH 2024 | `skinning` `blendshapes` `compression` `facial-animation` `lbs` |
 
 ## Concepts
 
@@ -217,6 +249,8 @@ Master catalog of all pages. Updated on every ingest.
 | [[techniques/bandage-smoothing-vex]] | Bi-Laplacian bandage smoothing in VEX; two-pass Gauss-Seidel, cotangent weights |
 | [[techniques/blendshape-usd]] | Authoring blendshapes in UsdSkel / Houdini Solaris |
 | [[techniques/forearm-partial-twist]] | Forearm partial twist joints via swing-twist decomposition; VEX + Python; KineFX setup |
+| [[techniques/dem-bones]] | Dem Bones (EA SEED) — SSDR skinning decomposition; 3 operating modes; Houdini SOP setup; sim/rig baking workflows |
+| [[techniques/ml-deformer]] | ML Deformer (Houdini 20+) — neural deformation approximation; 4 approaches (CNN residual, differential subspace, joint learning, hierarchical); production workflows |
 
 ---
 
@@ -245,6 +279,8 @@ Full index with algorithm tables: [[vex/index]]
 
 | Page | Affiliation |
 |------|-------------|
+| [[authors/arcelin-bastien]] | Golaem |
+| [[authors/bailey-stephen]] | UC Berkeley / Industry |
 | [[authors/degoes-fernando]] | Pixar Animation Studios |
 | [[authors/jacobson-alec]] | University of Toronto |
 | [[authors/kavan-ladislav]] | University of Pennsylvania |
@@ -261,6 +297,7 @@ Full index with algorithm tables: [[vex/index]]
 | [[authors/meyer-mark]] | Pixar Animation Studios |
 | [[authors/speirs-jacob]] | Pixar Animation Studios |
 | [[authors/singleton-kevin]] | Pixar Animation Studios |
+| [[authors/song-steven]] | Blue Sky Studios |
 | [[authors/lipman-yaron]] | Meta AI / Weizmann Institute |
 | [[authors/sorkine-olga]] | ETH Zürich |
 | [[authors/sumner-robert]] | Disney Research Zürich |
@@ -311,8 +348,11 @@ Full index with algorithm tables: [[vex/index]]
 
 ## Queries
 
-*(Saved answers will appear here)*
+| Page | Question |
+|------|----------|
+| [[queries/jacobian-matrix]] | What is the Jacobian Matrix and why does it matter in character rigging? |
+| [[queries/gauss-newton-algorithm]] | What is the Gauss-Newton algorithm and when is it used in character rigging? |
 
 ---
 
-*Last updated: 2026-04-09 — VEX + Python for Baktash 2025 (rigid body resting): added vex/rigid-body-rest-analysis.vex (4 snippets), python/rigid_body_rest.py (8 functions), authors/crane-keenan, authors/sharp-nicholas. Wiki: 154 paper pages, 28 concepts, 52 authors, 4 techniques, 50 VEX snippets, 6 Python snippets.*
+*Last updated: 2026-04-13 — Ingested 23 SIGGRAPH 2020-2025 character rigging papers (AutoKeyframe, LAM, AnimPortrait3D, 3DGH, JGS2, SOAP, LayGA, Taming Diffusion, Hierarchical Neural Skinning, StiffGIPC, Kinematic Retargeting, DrawingSpinUp, Refined Inverse Rigging, Decoupling Contact, MoRig, Bidirectional GaitNet, PoseVocab, Fast Complementary Dynamics, EMOTE, AniPortraitGAN, Skeleton-Aware Retargeting, Unpaired Motion Style Transfer, AMP). Wiki: 181 papers, 28 concepts, 55 authors, 6 techniques, 50 VEX snippets, 6 Python modules, 2 queries.*

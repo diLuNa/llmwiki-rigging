@@ -42,19 +42,26 @@ Sparsity ($p \le 4$) is enforced by iteratively removing the smallest weight and
 - Runtime is $O(FNK)$ per iteration; slow for very dense meshes or long sequences.
 
 ## Connections
+- [[papers/le-2014-skeletal-rigging]] — direct extension: adds joint positions, smoothness regularization, and bone pruning
 - [[papers/le-2019-direct-delta-mush]] — same first author; Direct Delta Mush is a later, closed-form alternative
 - [[papers/jacobson-2011-bbw]] — BBW computes LBS weights from rest pose; SSDR learns them from motion
 - [[papers/loper-2015-smpl]] — SMPL learns LBS weights from a scan database; same spirit as SSDR but statistical
 - [[papers/bailey-2018-deep-deformation]] — neural alternative to SSDR: neural net approximates full rig
 - [[concepts/linear-blend-skinning]] — SSDR produces an LBS rig
 - [[concepts/bounded-biharmonic-weights]] — alternative weight computation method (geometry-based vs data-driven)
+- [[techniques/dem-bones]] — EA open-source library implementing SSDR; Houdini SOP integration
 - [[authors/le-binh]] — first author
 
 ## Implementation Notes
 SSDR is most useful in Houdini as a **rig baking** tool:
 1. Feed a DOP/FEM simulation or complex Python rig as a mesh sequence.
-2. Run SSDR (Python; use the `ssdr` pip package or reimplement the alternating opt).
-3. Import extracted weights as point attributes `bbw_0..K-1`; bone xforms as per-frame matrices.
+2. Use the **Dem Bones Skinning Converter SOP** (SideFX Labs) — wraps the EA Dem Bones library directly. See [[techniques/dem-bones]] for full setup guide.
+3. Or implement the alternating optimization in Python (NNLS + SVD Procrustes loop).
 4. At runtime: use `bbw-lbs-apply.vex` with the extracted weights.
 
 Key hyperparameter: sparsity $p$. For skin: $p=4$; for cloth: $p=2$ often sufficient.
+
+## External References
+- EA Dem Bones library: [github.com/electronicarts/dem-bones](https://github.com/electronicarts/dem-bones)
+- Project page: [binh.graphics/papers/2012sa-ssdr](https://binh.graphics/papers/2012sa-ssdr/)
+- ACM DL: [doi.org/10.1145/2366145.2366218](https://doi.org/10.1145/2366145.2366218)

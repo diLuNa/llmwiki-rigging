@@ -839,6 +839,100 @@ f@rest_prob = is_stable ? cell_area / (4.0 * PI) : 0.0;
 
 ---
 
+## Inverse Rig Mapping — Gustafson, Lo, Kanyuk (SIGGRAPH Talks 2020)
+
+Source paper: [[papers/gustafson-2020-inverse-rig]]
+Python companion: [[python/inverse_rig_mapping.py]]
+
+| File | Snippet | Algorithm | Run Mode | Notes |
+|------|---------|-----------|----------|-------|
+| [inverse-rig-mapping.vex](inverse-rig-mapping.vex) | A | Python SOP — write Jacobian columns as detail float[] attrs | Python SOP | One-time setup; uses `LearnedRigApproximation.jacobian()` from Python module |
+| [inverse-rig-mapping.vex](inverse-rig-mapping.vex) | B | Gauss-Newton + LM solver from stored Jacobian | KineFX Geometry Wrangle | Reads `jac_col_k`, `target_pose`, `pose_rest`; writes `beta_solved` + named channels |
+| [inverse-rig-mapping.vex](inverse-rig-mapping.vex) | C | Arm + forearm twist: hardcoded 5-param Jacobian, inline solve | KineFX Geometry Wrangle | 5 joints × 5 params; no offline training required; self-contained |
+
+### Problem
+
+Inverse rig mapping asks: given a set of target joint transforms (from mocap, retargeting, or a pose library), what are the high-level rig control values (e.g. shoulder_rx, elbow_bend, forearm_twist) that produce those transforms? Solving this analytically requires a Jacobian of the rig function.
+
+### Quick-start parameter guide
+
+**Full pipeline:**
+```
+OFFLINE (Snippet A — Python SOP):
+  ArmRig().evaluate  →  LearnedRigApproximation.train()  →  jacobian(beta=0)
+  → set detail attrs: n_params, n_joints, jac_col_0..4, pose_rest, beta_rest
+
+RUNTIME (Snippet B — KineFX Wrangle, per frame):
+  KineFX joint xforms → rotation_vectors → set "target_pose" detail attr
+  → Snippet B: Gauss-Newton 30 iters → beta_solved, shoulder_rx/ry/rz, elbow_bend, forearm_twist
+
+STANDALONE TEST (Snippet C — no setup needed):
+  Set "target_pose" (15 floats) on 1-point geometry → Snippet C → beta_solved
+```
+
+**Arm joint layout (5 joints, 15 DOFs total):**
+
+| Joint idx | Name | Params driving it | Rows in pose vector |
+|-----------|------|-------------------|---------------------|
+| 0 | shoulder | shoulder_rx, shoulder_ry, shoulder_rz | 0:3 |
+| 1 | elbow | elbow_bend | 3:6 (only rx; ry/rz = 0) |
+| 2 | forearm_1 | forearm_twist × 1/3 | 6:9 |
+| 3 | forearm_2 | forearm_twist × 1/3 | 9:12 |
+| 4 | forearm_3 | forearm_twist × 1/3 | 12:15 |
+
+**Forearm twist Jacobian column (param 4):**
+```vex
+// Snippet C — hardcoded column for forearm_twist
+Jc[6  * 5 + 4] = 1.0 / 3.0;   // joint 2 x-component
+Jc[9  * 5 + 4] = 1.0 / 3.0;   // joint 3 x-component
+Jc[12 * 5 + 4] = 1.0 / 3.0;   // joint 4 x-component
+```
+
+| Attribute | Type | Where | Meaning |
+|-----------|------|-------|---------|
+| `n_params` | int | detail | Number of rig parameters |
+| `n_joints` | int | detail | Number of skeleton joints |
+| `jac_col_k` | float[3*n_joints] | detail | Jacobian column k = dF/d(beta_k) |
+| `pose_rest` | float[3*n_joints] | detail | Rest-pose rotation vectors |
+| `target_pose` | float[3*n_joints] | detail | Per-frame target joint rotation vectors |
+| `beta_solved` | float[n_params] | detail | Solved rig parameters (output) |
+| `residual` | float | detail | Final L2 residual of the inversion |
+| `shoulder_rx/ry/rz` | float | detail | Individual arm channels (arm example) |
+| `elbow_bend` | float | detail | Elbow flex angle (radians) |
+| `forearm_twist` | float | detail | Total forearm twist angle (radians) |
+
+### Key formulas
+
+**Gauss-Newton normal equations:**
+```vex
+// JᵀJ Δβ = Jᵀr   where r = target_pose - approx_pose
+for (int a = 0; a < n_params; a++) {
+    Jtr[a] = 0.0;
+    for (int i = 0; i < n_dof; i++)
+        Jtr[a] += J[i * n_params + a] * r[i];
+}
+```
+
+**Gauss-Seidel solve of (JᵀJ + λI) Δβ = Jᵀr:**
+```vex
+for (int a = 0; a < n_params; a++) {
+    float rhs = Jtr[a];
+    for (int b = 0; b < n_params; b++)
+        if (b != a) rhs -= JtJ[a * n_params + b] * db[b];
+    db[a] = rhs / JtJ[a * n_params + a];  // JtJ diag includes λ
+}
+```
+
+**Forearm twist distribution (incremental, 3 joints):**
+```vex
+// Each joint receives ft/3 radians in local X.
+// World cumulative: ft/3, 2*ft/3, ft (distributes candy-wrapper twist).
+float inc = forearm_twist / 3.0;
+// Jacobian: d(joint_k_rotvec_x)/d(forearm_twist) = 1/3 for k = 2,3,4
+```
+
+---
+
 ## Health summary
 
 - **7** snippets — Regularized Kelvinlets + Sharp Kelvinlets (all algorithms)
@@ -853,6 +947,7 @@ f@rest_prob = is_stable ? cell_area / (4.0 * PI) : 0.0;
 - **6** snippets — RBF Techniques: kernel library, Gram matrix+solve, runtime eval, pose parameterization, PSD correctives, scattered interpolation
 - **1** snippet  — Forearm Twist: swing-twist decomposition for pronation/supination correction
 - **4** snippets — Rigid Body Resting Analysis: support function, face stability (winding number), resting probability, quasi-static drop trajectory
-- **Total: 50 snippets across 14 papers + 1 general technique**
+- **3** snippets — Inverse Rig Mapping: Jacobian attribute setup (Python SOP), Gauss-Newton solver, arm+forearm twist standalone example
+- **Total: 53 snippets across 15 papers + 1 general technique**
 
 Not yet implemented: Dynamic Kelvinlets (2018), Delta Mush, ARAP, Stochastic Barycentric Coordinates, CoR Skinning, Rig-Space Secondary Motion.

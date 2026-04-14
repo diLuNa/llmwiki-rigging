@@ -605,3 +605,159 @@ Runnable __main__ demo: unit cube (expect 6 stable faces ~1/6 each) + regular te
 
 Updated `wiki/python/index.md`: added Rigid Body Resting Analysis section. Total: 5 → 6 Python modules, 17 → 26 functions.
 Updated `wiki/index.md`: added baktash-2025 paper, crane-keenan and sharp-nicholas authors, updated VEX/Python counts in footer and VEX section text.
+
+## [2026-04-13] lint | Wiki lint pass
+
+**Broken links fixed (2):**
+- `singleton-2025-alien-rigs.md` line 19: `[[Hessler & Talbot 2016]]` → `([[authors/hessler-mark]] & Talbot 2016)` (citation-style link, not a valid wikilink)
+- `singleton-2025-alien-rigs.md` line 21: `[[Speirs et al. 2024]]` → `([[authors/speirs-jacob]] et al. 2024)` (same issue)
+
+**False positive (no action needed):**
+- `[[ia, ib, ic]]` in `cage-green-coords.vex` — NumPy fancy indexing `cage_verts[[ia, ib, ic]]` inside a Python code comment; not a wikilink.
+
+**Noted (not fixable — log is append-only):**
+- `[[papers/nguyen-2023-next3d]]` in `log.md` historical entry — file was renamed to `sun-2023-next3d.md` and was fixed in the source paper last session, but the log record remains.
+
+**No issues:**
+- 0 orphan pages — all 154 papers, 28 concepts, 52 authors, 4 techniques have inbound links
+- 0 index/disk mismatches — 154 papers, 28 concepts, 52 authors, 4 techniques all match index table
+- Footer counts verified correct (154 papers, 28 concepts, 52 authors, 4 techniques, 50 VEX snippets, 6 Python modules)
+
+Health: CLEAN
+
+## [2026-04-13] ingest | Dem Bones — Skinning Decomposition Technique
+
+Researched "Dem Bones" and identified it as the EA SEED open-source C++ library implementing SSDR (Smooth Skinning Decomposition with Rigid Bones). The primary SSDR paper (Le & Deng 2012) was already in the wiki. Ingested the follow-up SIGGRAPH 2014 paper and created a full technique page.
+
+**Created:**
+- `wiki/papers/le-2014-skeletal-rigging.md` — "Robust and Accurate Skeletal Rigging from Mesh Sequences" (Le & Deng, ACM ToG SIGGRAPH 2014, DOI: 10.1145/2601097.2601161). Extends SSDR with joint position estimation via closed-form least-squares, weight smoothness regularization (Laplacian term), and automated bone pruning. Generates complete skeletal rig (joints + hierarchy + weights) from mesh sequences alone.
+- `wiki/techniques/dem-bones.md` — Full technique page: what Dem Bones is, 3 operating modes (auto joints+weights / weight-solving given skeleton / transform-solving given weights), Houdini Dem Bones Skinning Converter SOP parameter guide + pipeline diagram, algorithm pseudocode (SSDR alternating opt + joint update), comparison table (SSDR vs Le 2014 vs Dem Bones vs Maya Bake Deformer vs RigNet), 5 production use cases, 5 external URLs.
+
+**Updated:**
+- `wiki/papers/le-2012-ssdr.md` — added Connections to le-2014-skeletal-rigging and techniques/dem-bones; updated Implementation Notes to reference the Houdini SOP; added 3 External References
+- `wiki/authors/le-binh.md` — added le-2014-skeletal-rigging to Papers in Wiki
+- `wiki/index.md` — added le-2014-skeletal-rigging to skinning group, added dem-bones to Techniques table; footer updated (154→155 papers, 4→5 techniques)
+
+**External URLs researched and referenced:**
+- https://github.com/electronicarts/dem-bones — EA SEED official library (BSD 3-Clause, C++, Eigen+OpenMP)
+- https://www.ea.com/seed/news/open-source-dem-bones — EA announcement + production context (in use since 2015)
+- https://www.sidefx.com/docs/houdini/nodes/sop/dembones_skinningconverter.html — Houdini SOP full documentation
+- https://sidefxlabs.artstation.com/projects/AqOz4L — SideFX Labs showcase
+- https://robertjoosten.github.io/projects/dem_bones/ — Maya implementation reference
+- https://binh.graphics/papers/2014s-ske/ — Le 2014 author project page
+- https://doi.org/10.1145/2601097.2601161 — ACM DL
+
+## [2026-04-13] ingest | ML Deformer — Neural Deformation Approximation
+
+Researched "ML Deformer" and discovered it is both a Houdini 20+ official tool and a technique family for neural facial/body rig approximation. No single originating paper, but a convergence of related SIGGRAPH 2020 works.
+
+**Created:**
+- `wiki/papers/bailey-2020-fast-deep-facial.md` — "Fast and Deep Facial Deformations" (Bailey, Omens, Dilorenzo, O'Brien; SIGGRAPH 2020, DOI: 10.1145/3386569.3392397). CNN-based decomposition: v_final = v_LBS + CNN(pose_params). 17× speedup on hero facial rigs. [GitHub](https://github.com/stephen-w-bailey/fast-n-deep-faces).
+- `wiki/papers/song-2020-differential-subspace.md` — "Accurate Face Rig Approximation with Deep Differential Subspace Reconstruction" (Song, Shi, Reed; Blue Sky Studios; SIGGRAPH 2020, DOI: 10.1145/3386569.3392491). Differential coordinate approach: learns offsets in Laplacian space, reconstructs via harmonic solve. Smoother error distribution than CNN.
+- `wiki/papers/arcelin-2024-ml-deformer-crowds.md` — "Implementing a Machine Learning Deformer for CG Crowds: Our Journey" (Arcelin, Maraux, Chaverou; Golaem; DIGIPRO 2024, arXiv:2406.09783, DOI: 10.1145/3665320.3670994). Production case study comparing Bailey/Song/Li/Radzihovsky approaches; selected Song 2020 for Golaem pipeline.
+- `wiki/techniques/ml-deformer.md` — Full technique page: what ML Deformer is, the problem it solves, 4 architectural approaches (CNN residual, differential subspace, joint learning, FaceBaker hierarchical), Houdini SOP setup (ML Train Deformer + ML Deform), training best practices, 5 use cases, comparison table, 5 external URLs.
+
+**Created author pages:**
+- `wiki/authors/bailey-stephen.md` — UC Berkeley / Industry; Neural deformation approximation pioneer
+- `wiki/authors/song-steven.md` — Blue Sky Studios; Differential subspace deformation learning
+- `wiki/authors/arcelin-bastien.md` — Golaem; ML deformer production implementation
+
+**Updated:**
+- `wiki/papers/radzihovsky-2020-facebaker.md` — Connections now link to bailey-2020, song-2020, arcelin-2024, li-2021, techniques/ml-deformer
+- `wiki/papers/li-2021-neural-blend-shapes.md` — Connections now link to bailey-2020, song-2020, radzihovsky-2020, techniques/ml-deformer
+- `wiki/index.md` — added bailey-2020 and song-2020 papers, arcelin-2024 paper, ml-deformer technique, 3 new authors (bailey-stephen, song-steven, arcelin-bastien); footer updated (155→158 papers, 52→55 authors, 5→6 techniques)
+
+**External URLs researched and referenced:**
+- https://github.com/stephen-w-bailey/fast-n-deep-faces — Bailey CNN implementation (BSD licensed)
+- https://github.com/PeizhuoLi/neural-blend-shapes — Li et al. neural blend shapes (from li-2021)
+- https://www.sidefx.com/docs/houdini/ml/mldeformer.html — Houdini official ML Deformer SOP documentation
+- https://www.sidefx.com/docs/houdini/nodes/sop/ml_deform.html — ML Deform SOP node docs
+- https://www.sidefx.com/contentlibrary/ml-deformer/ — SideFX Labs content library (H20/20.5 examples)
+- https://arxiv.org/abs/2406.09783 — Arcelin et al. arXiv preprint
+
+**Key Finding:** ML Deformer is a convergence of 4 distinct 2020 approaches (Bailey CNN, Song differential, Radzihovsky hierarchical, plus Li's end-to-end); no single paper. Houdini 20 integrated this as official ONNX-based ML Train Deformer + ML Deform SOPs. Production validation: Golaem selected Song 2020 approach; Pixar validated FaceBaker; Bailey approach widely used in industry.
+
+## [2026-04-13] ingest | SIGGRAPH 2020-2025 Character Rigging Papers (23 papers)
+
+Completed comprehensive ingestion of 23 remaining SIGGRAPH character rigging papers (2020-2025), bringing total ingested papers from this research batch to 27. All papers cover core rigging, animation, facial, hand, and motion synthesis topics.
+
+**SIGGRAPH 2025 Papers (5):**
+- `wiki/papers/zheng-2025-autokeyframe.md` — Autoregressive keyframe generation from mixed dense/sparse motion controls
+- `wiki/papers/he-2025-lam.md` — Large avatar model for one-shot animatable Gaussian head synthesis
+- `wiki/papers/wu-2025-animportrait3d.md` — Text-based animatable 3D avatars with morphable model alignment
+- `wiki/papers/he-2025-3dgh.md` — 3D head generation with composable hair and face components
+- `wiki/papers/lan-2025-jgs2.md` — Near second-order Jacobi/Gauss-Seidel GPU elastodynamics solver
+
+**SIGGRAPH 2024 & Asia 2024 Papers (9):**
+- `wiki/papers/tan-2024-soap.md` — Style-omniscient animatable portraits from 2D images
+- `wiki/papers/lin-2024-layga.md` — Layered Gaussian avatars for clothing transfer
+- `wiki/papers/chen-2024-taming-diffusion.md` — Real-time character control via motion diffusion models
+- `wiki/papers/gao-2024-hierarchical-neural-skinning.md` — Self-supervised hierarchical soft-body deformation
+- `wiki/papers/benchekroun-2024-stiffgipc.md` — GPU IPC for stiff affine-deformable simulation
+- `wiki/papers/ye-2024-kinematic-motion-retargeting.md` — Contact-aware hand manipulation retargeting
+- `wiki/papers/liang-2024-drawingspinup.md` — 3D animation from single character drawings
+- `wiki/papers/an-2024-refined-inverse-rigging.md` — Quartic-smooth blendshape weight solving
+- `wiki/papers/tang-2024-decoupling-contact.md` — Fine-grained contact control in motion style transfer
+
+**SIGGRAPH 2023 & Asia 2023 Papers (4):**
+- `wiki/papers/nam-2023-bidirectional-gaitnet.md` — Bidirectional gait-anatomy prediction model
+- `wiki/papers/lin-2023-posevocab.md` — Joint-structured pose embeddings for avatar appearance
+- `wiki/papers/benchekroun-2023-fast-complementary-dynamics.md` — Reduced-space secondary motion via skinning eigenmodes
+- `wiki/papers/ghosh-2023-emote.md` — Emotional speech-driven animation with content-emotion disentanglement
+
+**SIGGRAPH 2022 & Earlier Papers (5):**
+- `wiki/papers/xu-2022-morig.md` — Motion-aware rigging from point cloud motion sequences (SIGGRAPH Asia 2022)
+- `wiki/papers/peng-2021-amp.md` — Adversarial motion priors for physics-based character control (SIGGRAPH 2021)
+- `wiki/papers/wu-2023-aniportraitgan.md` — Animatable 3D portrait generation from 2D images (SIGGRAPH Asia 2023)
+- `wiki/papers/aberman-2020-unpaired-motion-style.md` — Unpaired motion style transfer from video (SIGGRAPH 2020)
+- `wiki/papers/aberman-2020-skeleton-aware-retargeting.md` — Skeleton-aware networks for deep motion retargeting (SIGGRAPH 2020)
+
+**Topics covered:**
+- Automated keyframing and motion synthesis (AutoKeyframe, Taming Diffusion, AnyTop, AMP)
+- Neural avatar and head generation (LAM, AnimPortrait3D, 3DGH, SOAP, LayGA, AniPortraitGAN)
+- Auto-rigging and skeleton extraction (MoRig, DrawingSpinUp, UniRig, Anymate, Zhang-UniRig)
+- Facial animation and blendshapes (Refined Inverse Rigging, EMOTE, Compressed Skinning)
+- Motion retargeting and style transfer (Decoupling Contact, Skeleton-Aware, Unpaired Style Transfer, Kinematic Retargeting)
+- Physics-based simulation (StiffGIPC, Fast Complementary Dynamics, JGS2, Hierarchical Neural Skinning)
+- Specialized animation (Bidirectional GaitNet, PoseVocab)
+
+**Meta-statistics:**
+- 4 papers already ingested from research batch (Zhang UniRig, Gat AnyTop, Deng Anymate, Kavan Compressed Skinning)
+- 23 new papers added this session
+- Total SIGGRAPH 2020-2025 character rigging papers in wiki: 27
+- Venues: SIGGRAPH 2020-2025, SIGGRAPH Asia 2022-2024
+- Year range: 2020-2025
+- Total wiki papers now: 181 (154 → 181)
+
+## [2026-04-13] python | Analytically Learning an Inverse Rig Mapping
+
+Implemented full Python and VEX code for Gustafson, Lo, Kanyuk SIGGRAPH Talks 2020.
+
+**Files created:**
+- `wiki/python/inverse_rig_mapping.py` — complete Python implementation (~450 lines)
+- `wiki/vex/inverse-rig-mapping.vex` — 3-snippet Houdini VEX implementation
+
+**Python module (`inverse_rig_mapping.py`):**
+- `RotationOp` — single-joint rotation operator with analytic matrix() and dmatrix_dparam()
+- `TranslationOp` — single-joint translation operator
+- `ForearmTwistOp` — multi-joint twist operator; distributes one parameter across N joints via cumulative fractions (extension for partial-twist rigs not covered by paper's general framework)
+- `LearnedRigApproximation.train()` — classifies each parameter to an Op type, sorts composition order via pairwise test (paper eq. 6), returns learned approximation
+- `LearnedRigApproximation.evaluate()` / `.jacobian()` — forward pass and analytic (3·n_joints × n_params) Jacobian using SO(3) log-map chain rule
+- `RigInverter.invert()` — Gauss-Newton (30 iter) + Levenberg-Marquardt fallback
+- `ArmRig` — concrete 5-param example: shoulder_rx/ry/rz (ZYX Euler), elbow_bend, forearm_twist → 5 joints (shoulder, elbow, forearm_1/2/3)
+- `demo_arm_rig()` — trains approximation, inverts random poses, prints parameter and residual errors
+
+**VEX file (`inverse-rig-mapping.vex`):**
+- Snippet A — Python SOP pseudocode: writes Jacobian columns as detail float[] attributes
+- Snippet B — KineFX Geometry Wrangle: Gauss-Newton solver reading stored Jacobian; outputs `beta_solved` + named rig channels
+- Snippet C — Standalone arm + forearm twist example: hardcoded 5-param × 5-joint Jacobian, inline Gauss-Newton, no offline training required
+
+**Key algorithmic decisions:**
+- SO(3) log-map Jacobian: J_r^-1 = I + 0.5·[rv]× + a·[rv]×² (falls back to vee() at θ < 1e-8)
+- ForearmTwistOp detects multi-joint parameters with parallel rotation axes and monotonically increasing rates during classification step
+- Sorting via insertion sort with pairwise precedes test (eq. 6 from paper)
+- VEX uses Gauss-Seidel to avoid matrix inversion (VEX has no native linear solver for float arrays)
+
+**Updated indexes:**
+- `wiki/python/index.md` — added inverse_rig_mapping.py section with quick-start, class table, formulas
+- `wiki/vex/index.md` — added inverse-rig-mapping.vex section; health summary: 50 → 53 snippets

@@ -57,6 +57,9 @@ where $U_k^j$ is the per-joint scalar weight for blend shape $k$, predicted by a
 - Performance at extreme out-of-distribution poses depends on training coverage.
 
 ## Connections
+- [[papers/bailey-2020-fast-deep-facial]] — CNN residual on LBS (similar formulation, different architecture)
+- [[papers/song-2020-differential-subspace]] — differential subspace approach to learned facial deformation
+- [[papers/radzihovsky-2020-facebaker]] — Pixar's hierarchical ML rig baking (production validated)
 - [[papers/bailey-2018-deep-deformation]] — same residual-over-LBS formulation; neural blend shapes replace the dense MLP with a structured blend shape basis
 - [[papers/lewis-2000-psd]] — pose-space deformation is the manual alternative; this automates the blend shape discovery
 - [[papers/loper-2015-smpl]] — SMPL's learned blend shapes are a statistical version of the same idea; this method is character-specific
@@ -65,6 +68,7 @@ where $U_k^j$ is the per-joint scalar weight for blend shape $k$, predicted by a
 - [[concepts/blendshapes]] — the discovered $B_k$ are learned corrective blendshapes
 - [[concepts/linear-blend-skinning]] — the LBS base deformation on which correctives are applied
 - [[concepts/pose-space-deformation]] — this is the automated, neural version of PSD
+- [[techniques/ml-deformer]] — Houdini tool implementing this and related neural deformation methods
 - [[authors/sorkine-olga]]
 - [[authors/aberman-kfir]]
 

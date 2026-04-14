@@ -16,9 +16,9 @@ Non-humanoid characters with unique physiologies (blanket wings, multi-segment b
 ## Method
 Character-specific innovations using Pixar's Presto toolkit:
 - **Ambassador Questa** (marine flatworm): hierarchical blanket-wing rig with curvenet controls for the expressive wing membrane.
-- **AutoSplines** [[Hessler & Talbot 2016]]: for segmented/tentacle-like appendages.
+- **AutoSplines** ([[authors/hessler-mark]] & Talbot 2016): for segmented/tentacle-like appendages.
 - **CurveNets** ([[papers/degoes-2022-profile-curves]], [[papers/nguyen-2023-curvenet-elemental]]): for fluid surface control on unusual anatomies.
-- **Tooth-sliding mouth** [[Speirs et al. 2024]]: adapted for non-humanoid face shapes.
+- **Tooth-sliding mouth** ([[authors/speirs-jacob]] et al. 2024): adapted for non-humanoid face shapes.
 - Collaborative Animation+Characters workflow: early previs models in Maya/ZBrush to validate articulation before committing to final rigs.
 
 ## Key Results

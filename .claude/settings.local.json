@@ -59,7 +59,23 @@
       "WebFetch(domain:dl.acm.org)",
       "WebFetch(domain:www.cs.cmu.edu)",
       "Bash(curl -L \"https://www.cs.cmu.edu/~kmcrane/Projects/RestingBodies/PuttingRigidBodiesToRest.pdf\" -o \"/Users/lucaprasso/Research/LLM_Wiki/rigging-wiki/raw/papers/baktash-2025-resting-rigid-bodies.pdf\" --progress-bar)",
-      "WebFetch(domain:hbaktash.github.io)"
+      "WebFetch(domain:hbaktash.github.io)",
+      "Bash(ls /Users/lucaprasso/Research/LLM_Wiki/rigging-wiki/wiki/vex/*.vex)",
+      "Bash(ls /Users/lucaprasso/Research/LLM_Wiki/rigging-wiki/wiki/python/*.py)",
+      "WebFetch(domain:www.ea.com)",
+      "WebFetch(domain:graphics.cs.uh.edu)",
+      "WebFetch(domain:binh.graphics)",
+      "WebFetch(domain:www.sidefx.com)",
+      "WebFetch(domain:graphics.pixar.com)",
+      "WebFetch(domain:graphics.berkeley.edu)",
+      "Bash(find /Users/lucaprasso/Research/LLM_Wiki/rigging-wiki/wiki/papers -name \"*.md\" -type f -exec grep -l \"year.*202[0-5]\" {} \\\\;)",
+      "Bash(find /Users/lucaprasso/Research/LLM_Wiki/rigging-wiki/wiki/papers -name \"*.md\" -type f -exec grep -H \"^title:\" {} \\\\;)",
+      "WebFetch(domain:www.realtimerendering.com)",
+      "Bash(grep -h \"^title:\" /Users/lucaprasso/Research/LLM_Wiki/rigging-wiki/wiki/papers/*.md)",
+      "Bash(grep -r \"UniRig\\\\|AnyTop\\\\|Anymate\\\\|StiffGIPC\\\\|JGS2\\\\|LAM.*Large Avatar\\\\|SOAP.*Style-Omniscient\\\\|3DGH\\\\|AutoKeyframe\\\\|AnimPortrait3D\\\\|RigGS\\\\|ASMR.*Adaptive Skeleton\\\\|LayGA\\\\|Compressed Skinning for Facial\\\\|Taming Diffusion.*Character Control\\\\|Morig\\\\|Refined Inverse Rigging\\\\|DrawingSpinUp\\\\|Contact Edit\\\\|Kinematic Motion Retargeting\\\\|AniPortraitGAN\\\\|Bidirectional GaitNet\\\\|PoseVocab\\\\|Fast Complementary Dynamics\\\\|Hierarchical Neural Skinning\\\\|EMOTE\\\\|Skeleton-Aware Networks.*Deep Motion\\\\|Unpaired Motion Style Transfer\\\\|AMP.*Adversarial Motion\" /Users/lucaprasso/Research/LLM_Wiki/rigging-wiki/wiki/papers/*.md)",
+      "Bash(pdftotext raw/papers/2024.SiggraphPapers.GD.pdf -)",
+      "Bash(wc:*)",
+      "Bash(brew install:*)"
     ]
   }
 }

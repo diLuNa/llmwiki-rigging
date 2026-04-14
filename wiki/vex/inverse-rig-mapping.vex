@@ -1,0 +1,382 @@
+// ============================================================================
+// inverse-rig-mapping.vex
+// Analytically Learning an Inverse Rig Mapping — Gustafson, Lo, Kanyuk 2020
+// SIGGRAPH Talks 2020
+//
+// Houdini KineFX / Geometry Wrangle implementation of the Gauss-Newton
+// rig inversion algorithm using a precomputed analytic Jacobian.
+//
+// Context: KineFX Geometry Wrangle (or SOP Geometry Wrangle on joint geometry)
+//
+// Three snippets:
+//   A — Jacobian precomputation (detail attributes)       [offline/setup SOP]
+//   B — Gauss-Newton inversion solver                     [per-frame runtime]
+//   C — Arm + forearm twist concrete example              [standalone demo]
+// ============================================================================
+
+
+// ============================================================================
+// SNIPPET A — Store the analytic Jacobian as detail attributes
+// Run once per rig to bake the learned approximation into the geometry.
+// This snippet encodes a KineFX rig with:
+//   - n_params rig parameters (beta)
+//   - n_joints skeleton joints
+//   - Jacobian columns J[:,k] for each parameter k
+//
+// Required geometry: joints as points with @name attribute.
+// Outputs detail float arrays: "jac_col_<k>" (length 3 * n_joints).
+//
+// Usage: call from a Python SOP after running LearnedRigApproximation.train()
+//        and write each Jacobian column via:
+//        node.geometry().setGlobalAttribValue("jac_col_0", jac[:,0].tolist())
+// ============================================================================
+
+// Snippet A — Pseudo-code for Python SOP that writes attributes:
+// (run this in a Python SOP node, not a VEX wrangle)
+/*
+python_sop:
+    import numpy as np
+    from inverse_rig_mapping import LearnedRigApproximation, ArmRig
+
+    rig = ArmRig()
+    approx = LearnedRigApproximation.train(rig.evaluate, rig.num_params, rig.num_joints)
+
+    geo = hou.pwd().geometry()
+    geo.addAttrib(hou.attribType.Global, "n_params", rig.num_params)
+    geo.addAttrib(hou.attribType.Global, "n_joints", rig.num_joints)
+
+    # Evaluate Jacobian at zero pose
+    beta0 = np.zeros(rig.num_params)
+    J = approx.jacobian(beta0)   # shape: (3*n_joints, n_params)
+
+    for k in range(rig.num_params):
+        attr_name = "jac_col_{}".format(k)
+        geo.addAttrib(hou.attribType.Global, attr_name, [0.0] * (3 * rig.num_joints))
+        geo.setGlobalAttribValue(attr_name, J[:, k].tolist())
+
+    # Store zero-pose rotation vectors for reference
+    rv0 = approx.evaluate(beta0).tolist()
+    geo.addAttrib(hou.attribType.Global, "pose_rest", rv0)
+    geo.addAttrib(hou.attribType.Global, "beta_rest", beta0.tolist())
+*/
+
+
+// ============================================================================
+// SNIPPET B — Gauss-Newton Inversion Solver
+// Runtime KineFX Geometry Wrangle. Reads Jacobian columns from detail attrs,
+// reads target joint rotations, iterates Gauss-Newton steps.
+//
+// Inputs (detail attributes set by Snippet A or Python SOP):
+//   n_params   int           — number of rig parameters
+//   n_joints   int           — number of joints
+//   jac_col_k  float[]       — Jacobian column k (length 3*n_joints)
+//   pose_rest  float[]       — rest-pose rotation vectors (3*n_joints)
+//   beta_rest  float[]       — rest rig parameters
+//
+// Inputs (set each frame from KineFX):
+//   target_pose  float[]     — target joint rotation vectors (3*n_joints, world)
+//
+// Outputs (written to detail):
+//   beta_solved  float[]     — solved rig parameters
+//   beta_delta   float[]     — delta from rest
+//   residual     float       — final residual norm
+// ============================================================================
+
+// B.1 — Read inputs
+int n_params = detail(0, "n_params", 5);
+int n_joints = detail(0, "n_joints", 5);
+int n_dof    = 3 * n_joints;
+
+float target_pose[] = detail(0, "target_pose", {});
+float rest_pose[]   = detail(0, "pose_rest", {});
+
+if (len(target_pose) == 0 || len(rest_pose) == 0) {
+    error("Missing target_pose or pose_rest attributes.");
+    return;
+}
+
+// B.2 — Compute residual: r = target_pose - rest_pose
+// (simplified: assumes J evaluated at rest. For iterative update, re-read J each iter.)
+float r[];
+resize(r, n_dof);
+for (int i = 0; i < n_dof; i++)
+    r[i] = target_pose[i] - rest_pose[i];
+
+// B.3 — Assemble Jacobian columns into row-major J (n_dof × n_params)
+// Stored as flat float[] for VEX compatibility
+float J[];
+resize(J, n_dof * n_params);
+for (int k = 0; k < n_params; k++) {
+    string attr = sprintf("jac_col_%d", k);
+    float col[] = detail(0, attr, {});
+    for (int i = 0; i < n_dof; i++)
+        J[i * n_params + k] = col[i];
+}
+
+// B.4 — Gauss-Newton: solve (JᵀJ) Δβ = Jᵀr
+// Build JᵀJ (n_params × n_params) and Jᵀr (n_params)
+float JtJ[];
+float Jtr[];
+resize(JtJ, n_params * n_params);
+resize(Jtr, n_params);
+
+for (int a = 0; a < n_params; a++) {
+    Jtr[a] = 0.0;
+    for (int i = 0; i < n_dof; i++)
+        Jtr[a] += J[i * n_params + a] * r[i];
+    for (int b = 0; b < n_params; b++) {
+        float sum = 0.0;
+        for (int i = 0; i < n_dof; i++)
+            sum += J[i * n_params + a] * J[i * n_params + b];
+        JtJ[a * n_params + b] = sum;
+    }
+}
+
+// B.5 — Solve normal equations via Cholesky-like (diagonal-dominant assumption)
+// For n_params <= 5: direct inversion via Cramer's rule or iterative Jacobi.
+// Here: simple Jacobi iterations on (JᵀJ + λI)Δβ = Jᵀr for robustness.
+float lambda = 1e-4;   // LM damping
+float delta_beta[];
+resize(delta_beta, n_params);
+
+// Add LM damping to diagonal
+for (int a = 0; a < n_params; a++)
+    JtJ[a * n_params + a] += lambda;
+
+// Gauss-Seidel solve (fast for small n_params)
+int max_iter = 30;
+for (int a = 0; a < n_params; a++) delta_beta[a] = 0.0;
+
+for (int iter = 0; iter < max_iter; iter++) {
+    float prev[];
+    resize(prev, n_params);
+    for (int a = 0; a < n_params; a++) prev[a] = delta_beta[a];
+
+    for (int a = 0; a < n_params; a++) {
+        float rhs = Jtr[a];
+        for (int b = 0; b < n_params; b++) {
+            if (b != a)
+                rhs -= JtJ[a * n_params + b] * delta_beta[b];
+        }
+        delta_beta[a] = rhs / JtJ[a * n_params + a];
+    }
+
+    // Convergence check
+    float change = 0.0;
+    for (int a = 0; a < n_params; a++)
+        change = max(change, abs(delta_beta[a] - prev[a]));
+    if (change < 1e-6) break;
+}
+
+// B.6 — Accumulate with rest and write outputs
+float beta_rest[] = detail(0, "beta_rest", {});
+float beta_solved[];
+resize(beta_solved, n_params);
+
+for (int a = 0; a < n_params; a++)
+    beta_solved[a] = (len(beta_rest) > a ? beta_rest[a] : 0.0) + delta_beta[a];
+
+// Compute final residual
+float residual = 0.0;
+for (int i = 0; i < n_dof; i++) {
+    float approx_i = 0.0;
+    for (int a = 0; a < n_params; a++)
+        approx_i += J[i * n_params + a] * delta_beta[a];
+    float ri = r[i] - approx_i;
+    residual += ri * ri;
+}
+residual = sqrt(residual);
+
+// B.7 — Write results
+setdetailattrib(0, "beta_solved", beta_solved);
+setdetailattrib(0, "beta_delta",  delta_beta);
+setdetailattrib(0, "residual",    residual);
+
+// B.8 — Scatter solved parameters back to named channels
+// (map by index: 0=shoulder_rx, 1=shoulder_ry, 2=shoulder_rz,
+//                3=elbow_bend, 4=forearm_twist for the arm example)
+string param_names[] = array("shoulder_rx","shoulder_ry","shoulder_rz",
+                              "elbow_bend","forearm_twist");
+for (int a = 0; a < n_params && a < len(param_names); a++)
+    setdetailattrib(0, param_names[a], beta_solved[a]);
+
+
+// ============================================================================
+// SNIPPET C — Arm + Forearm Twist: Hardcoded Analytic Jacobian
+// Standalone Geometry Wrangle for testing without offline training.
+// Joints (by index): 0=shoulder, 1=elbow, 2=forearm_1, 3=forearm_2, 4=forearm_3
+// Params:            0=shoulder_rx, 1=shoulder_ry, 2=shoulder_rz,
+//                    3=elbow_bend, 4=forearm_twist
+//
+// Rig forward kinematics (ZYX Euler shoulder, pure-X elbow, distributed twist):
+//   R_shoulder = Rz(sz) * Ry(sy) * Rx(sx)
+//   R_elbow    = Rx(eb)
+//   R_forearm_k = Rx(ft/3)  for k=1,2,3  (distributes twist uniformly)
+//
+// Rotation vector (axis * angle) stored per joint, concatenated to (15,) vector.
+// Jacobian columns dF/d(beta_k) computed analytically below.
+//
+// Usage: feed target_pose (15 floats) into detail attr; reads beta_init if present.
+// ============================================================================
+
+// C.1 — Read target and initial guess
+float target[] = detail(0, "target_pose", array(0,0,0, 0,0,0, 0,0,0, 0,0,0, 0,0,0));
+float beta[];
+resize(beta, 5);
+
+// Use prior solution or zero
+float prior[] = detail(0, "beta_solved", {});
+for (int a = 0; a < 5; a++)
+    beta[a] = (len(prior) > a ? prior[a] : 0.0);
+
+// C.2 — Hardcoded analytic Jacobian for the arm rig (at current beta)
+// dF/d(shoulder_rx): only affects joint 0 (shoulder rotation vector x-axis)
+//   For small angles: d(rotvec_x)/d(sx) ≈ rate = 1.0 along local X
+//   Full: d(R)/dparam = R @ skew(axis) * rate → d(rotvec) via log-map Jacobian
+//
+// Approximation for production (re-linearize each frame around current beta):
+// J[:,0] = [1,0,0,  0,0,0, 0,0,0, 0,0,0, 0,0,0]  shoulder_rx → joint 0 x-row
+// J[:,1] = [0,1,0,  0,0,0, 0,0,0, 0,0,0, 0,0,0]  shoulder_ry → joint 0 y-row
+// J[:,2] = [0,0,1,  0,0,0, 0,0,0, 0,0,0, 0,0,0]  shoulder_rz → joint 0 z-row
+// J[:,3] = [0,0,0,  1,0,0, 0,0,0, 0,0,0, 0,0,0]  elbow_bend  → joint 1 x-row
+// J[:,4] = [0,0,0,  0,0,0, .333,0,0, .333,0,0, .333,0,0]  forearm_twist → joints 2,3,4
+
+// Assemble as 15×5 row-major (linearization at origin):
+float Jc[];
+resize(Jc, 75);  // 15 rows × 5 cols
+
+// Zero fill
+for (int i = 0; i < 75; i++) Jc[i] = 0.0;
+
+// shoulder_rx → row 0 col 0
+Jc[0  * 5 + 0] = 1.0;
+// shoulder_ry → row 1 col 1
+Jc[1  * 5 + 1] = 1.0;
+// shoulder_rz → row 2 col 2
+Jc[2  * 5 + 2] = 1.0;
+// elbow_bend  → row 3 col 3 (joint 1 x-component)
+Jc[3  * 5 + 3] = 1.0;
+// forearm_twist → joints 2,3,4, all x-component only (1/3 each)
+Jc[6  * 5 + 4] = 1.0 / 3.0;   // joint 2, x-row = index 6
+Jc[9  * 5 + 4] = 1.0 / 3.0;   // joint 3, x-row = index 9
+Jc[12 * 5 + 4] = 1.0 / 3.0;   // joint 4, x-row = index 12
+
+// C.3 — Gauss-Newton iterations (same as Snippet B, inline for clarity)
+// Build JᵀJ and Jᵀr
+float JtJc[];
+float Jtrc[];
+resize(JtJc, 25);
+resize(Jtrc, 5);
+
+float rc[];
+resize(rc, 15);
+for (int i = 0; i < 15; i++)
+    rc[i] = target[i];  // residual = target - approx(beta); starts at rest
+
+for (int gn_iter = 0; gn_iter < 30; gn_iter++) {
+
+    // Recompute residual: r = target - J * beta  (linearized model)
+    for (int i = 0; i < 15; i++) {
+        float Jb = 0.0;
+        for (int a = 0; a < 5; a++)
+            Jb += Jc[i * 5 + a] * beta[a];
+        rc[i] = target[i] - Jb;
+    }
+
+    // Build JᵀJ + λI and Jᵀr
+    for (int a = 0; a < 5; a++) {
+        Jtrc[a] = 0.0;
+        for (int i = 0; i < 15; i++)
+            Jtrc[a] += Jc[i * 5 + a] * rc[i];
+        for (int b = 0; b < 5; b++) {
+            float s = 0.0;
+            for (int i = 0; i < 15; i++)
+                s += Jc[i * 5 + a] * Jc[i * 5 + b];
+            JtJc[a * 5 + b] = s + (a == b ? 1e-4 : 0.0);
+        }
+    }
+
+    // Gauss-Seidel solve for Δβ
+    float db[];
+    resize(db, 5);
+    for (int a = 0; a < 5; a++) db[a] = 0.0;
+
+    for (int gs = 0; gs < 20; gs++) {
+        for (int a = 0; a < 5; a++) {
+            float rhs = Jtrc[a];
+            for (int b = 0; b < 5; b++)
+                if (b != a) rhs -= JtJc[a * 5 + b] * db[b];
+            db[a] = rhs / JtJc[a * 5 + a];
+        }
+    }
+
+    // Update beta
+    float conv = 0.0;
+    for (int a = 0; a < 5; a++) {
+        conv = max(conv, abs(db[a]));
+        beta[a] += db[a];
+    }
+    if (conv < 1e-7) break;
+}
+
+// C.4 — Write solved parameters
+setdetailattrib(0, "beta_solved",    beta);
+setdetailattrib(0, "shoulder_rx",    beta[0]);
+setdetailattrib(0, "shoulder_ry",    beta[1]);
+setdetailattrib(0, "shoulder_rz",    beta[2]);
+setdetailattrib(0, "elbow_bend",     beta[3]);
+setdetailattrib(0, "forearm_twist",  beta[4]);
+
+// C.5 — Verify: recompute approximate pose from solved beta
+float approx_pose[];
+resize(approx_pose, 15);
+for (int i = 0; i < 15; i++) {
+    float v = 0.0;
+    for (int a = 0; a < 5; a++)
+        v += Jc[i * 5 + a] * beta[a];
+    approx_pose[i] = v;
+}
+setdetailattrib(0, "approx_pose", approx_pose);
+
+// Residual norm
+float res = 0.0;
+for (int i = 0; i < 15; i++) {
+    float d = target[i] - approx_pose[i];
+    res += d * d;
+}
+setdetailattrib(0, "residual", sqrt(res));
+
+
+// ============================================================================
+// PARAMETER REFERENCE
+//
+// Detail attributes (written by Snippet A Python SOP):
+//   n_params      int         — number of rig control parameters
+//   n_joints      int         — number of skeleton joints
+//   jac_col_k     float[3*n_joints] — Jacobian column k (dF/d(beta_k))
+//   pose_rest     float[3*n_joints] — rest-pose rotation vectors
+//   beta_rest     float[n_params]   — rest rig parameters (usually zeros)
+//
+// Detail attributes (set each frame from upstream):
+//   target_pose   float[3*n_joints] — target joint rotation vectors
+//
+// Detail attributes (written by solver):
+//   beta_solved   float[n_params]   — solved rig parameters
+//   beta_delta    float[n_params]   — delta from rest
+//   residual      float             — final L2 residual
+//   shoulder_rx/ry/rz float        — individual arm channels (arm example)
+//   elbow_bend    float             — elbow flex angle (radians)
+//   forearm_twist float             — total forearm twist angle (radians)
+//
+// Arm-specific joint layout (Snippet C):
+//   Joint 0  — shoulder  (3-DOF: rx, ry, rz)   rows 0:3
+//   Joint 1  — elbow     (1-DOF: rx)             rows 3:6 (ry/rz constrained=0)
+//   Joint 2  — forearm_1 (1/3 twist fraction)    rows 6:9
+//   Joint 3  — forearm_2 (1/3 twist fraction)    rows 9:12
+//   Joint 4  — forearm_3 (1/3 twist fraction)    rows 12:15
+//
+// Forearm twist distribution:
+//   Each forearm joint receives ft/3 radians in local X.
+//   World-space cumulative: ft/3, 2*ft/3, ft.
+//   Jacobian column for forearm_twist: [1/3, 0, 0] at joints 2, 3, 4.
+// ============================================================================

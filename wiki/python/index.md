@@ -177,11 +177,109 @@ n_next = normalize(n_curr - step_size * grad_tan)
 
 ---
 
+---
+
+## Inverse Rig Mapping — Gustafson, Lo, Kanyuk (SIGGRAPH Talks 2020)
+
+Source paper: [[papers/gustafson-2020-inverse-rig]]
+VEX companion: [[vex/inverse-rig-mapping.vex]]
+
+| File | Functions | Notes |
+|------|-----------|-------|
+| [inverse_rig_mapping.py](inverse_rig_mapping.py) | `RotationOp`, `TranslationOp`, `ForearmTwistOp`, `LearnedRigApproximation`, `RigInverter`, `ArmRig`, `demo_arm_rig` | NumPy only; full train+invert pipeline; arm+forearm twist example; runnable demo |
+
+### Quick-start
+
+```python
+import numpy as np
+from inverse_rig_mapping import ArmRig, LearnedRigApproximation, RigInverter
+
+# 1. Define rig
+rig = ArmRig()
+
+# 2. Learn analytic approximation (offline, ~seconds)
+approx = LearnedRigApproximation.train(
+    rig.evaluate, rig.num_params, rig.num_joints
+)
+
+# 3. Create inverter
+inverter = RigInverter(approx)
+
+# 4. Synthesize a target pose and invert it
+beta_target = np.array([0.3, 0.1, -0.2, 0.8, 1.2])   # shoulder+elbow+twist
+target_joints = rig.evaluate(beta_target)
+
+beta_solved, info = inverter.invert(target_joints)
+print(f"Error: {np.linalg.norm(beta_solved - beta_target):.4f}")
+print(f"Iterations: {info['iterations']}, Residual: {info['residual']:.6f}")
+```
+
+### Classes and functions
+
+| Class / Function | Description |
+|-----------------|-------------|
+| `RotationOp(joint_idx, axis, rate)` | Single-joint rotation: R(β) = exp([axis]× · rate · β) |
+| `TranslationOp(joint_idx, direction, rate)` | Single-joint translation: T(β) = rate · β · direction |
+| `ForearmTwistOp(joint_indices, fractions, axis, rate)` | Multi-joint twist: distributes one parameter across N joints via cumulative fractions |
+| `LearnedRigApproximation.train(rig_fn, n_params, n_joints)` | Classifies each parameter → Op; sorts composition order; returns approximation |
+| `LearnedRigApproximation.evaluate(beta)` | Forward pass: returns (3·n_joints,) rotation vector array |
+| `LearnedRigApproximation.jacobian(beta)` | Analytic (3·n_joints × n_params) Jacobian via SO(3) log-map chain rule |
+| `LearnedRigApproximation.jacobian_fd(beta)` | Finite-difference Jacobian (validation) |
+| `RigInverter.invert(target_pose, beta_init)` | Gauss-Newton (30 iter) + LM fallback; returns (beta_solved, info_dict) |
+| `ArmRig` | 5-param concrete rig: shoulder (3-DOF ZYX Euler), elbow (1-DOF), forearm twist (1-DOF → 3 joints) |
+| `demo_arm_rig()` | Trains approx on ArmRig, runs inversion, prints parameter errors |
+
+### Key formulas
+
+**RotationOp Jacobian (SO(3) right Jacobian):**
+```python
+def dmatrix_dparam(self, param):
+    angle = self.rate * param
+    R     = Rotation.from_rotvec(angle * self.axis).as_matrix()
+    dR    = R @ _skew(self.axis) * self.rate   # dR/dparam
+    # d(rotvec)/dparam via: _dmat_to_drotvec(R44, dR44)
+```
+
+**Log-map Jacobian J_r^-1 for d(rotvec)/dparam:**
+```python
+J_r_inv = I + 0.5 * skew(rv) + a * skew(rv) @ skew(rv)
+# a = 1/θ² - sin(θ)/(2θ(1-cos(θ)))   (θ = ||rv||)
+```
+
+**ForearmTwist incremental fractions:**
+```python
+# cumulative = [1/3, 2/3, 1.0]  →  incremental = [1/3, 1/3, 1/3]
+# Each joint k: angle_k = (frac_k - frac_{k-1}) * rate * param
+# Jacobian contribution: d(rotvec_x)/dparam = (frac_k - frac_{k-1}) * rate
+```
+
+**Gauss-Newton update:**
+```python
+J  = approx.jacobian(beta)        # (3*n_joints, n_params)
+r  = target - approx.evaluate(beta)
+db = np.linalg.solve(J.T @ J, J.T @ r)   # normal equations
+beta += db
+```
+
+### Arm rig joint layout
+
+```
+Param index → joint rows in 15-vector output:
+  0: shoulder_rx  → joint 0 [0:3]   (rx component)
+  1: shoulder_ry  → joint 0 [0:3]   (ry component)
+  2: shoulder_rz  → joint 0 [0:3]   (rz component)
+  3: elbow_bend   → joint 1 [3:6]   (rx only; ry/rz = 0)
+  4: forearm_twist → joints 2,3,4 [6:15] each receives 1/3 of twist
+```
+
+---
+
 ## Health summary
 
 - **4** modules — Kelvinlets: grab (single/bi/tri), affine (twist/scale/pinch), constrained solve, sharp family
 - **1** module  — Forearm Partial Twist: swing-twist decomposition, partial twist xform, chain builder, Houdini SOP helper
 - **1** module  — Rigid Body Resting Analysis: support function, Gauss map, stability check, Voronoi areas, resting probabilities, drop trajectory, inverse design, Houdini SOP helper
-- **Total: 6 modules, 26 functions across 3 papers + 1 general technique**
-- All modules: NumPy + SciPy only (scipy.spatial for ConvexHull and SphericalVoronoi)
+- **1** module  — Inverse Rig Mapping: RotationOp/TranslationOp/ForearmTwistOp operators, LearnedRigApproximation (train+evaluate+jacobian), RigInverter (Gauss-Newton+LM), ArmRig example
+- **Total: 7 modules, ~34 functions across 4 papers + 1 general technique**
+- All modules: NumPy + SciPy only (scipy.spatial for ConvexHull/SphericalVoronoi; scipy.spatial.transform.Rotation for inverse_rig_mapping)
 - Each has a runnable `__main__` example

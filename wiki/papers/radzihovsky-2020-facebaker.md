@@ -30,8 +30,13 @@ Trains a neural network (or similar ML model) mapping rig-control vectors to per
 - Does not generalize across characters without retraining.
 
 ## Connections
+- [[papers/bailey-2020-fast-deep-facial]] — contemporary approach (CNN residual on LBS)
+- [[papers/song-2020-differential-subspace]] — contemporary approach (differential subspace reconstruction)
+- [[papers/arcelin-2024-ml-deformer-crowds]] — production comparison; selected Song 2020 approach for Golaem pipeline
+- [[papers/li-2021-neural-blend-shapes]] — end-to-end neural learning (no pre-existing rig required)
 - [[papers/gustafson-2020-inverse-rig]] — complementary: inverse mapping (rig params from skeleton)
 - [[concepts/blendshapes]] — baked output is effectively a learned blendshape-like model
+- [[techniques/ml-deformer]] — Houdini tool implementing these methods
 - [[authors/degoes-fernando]]
 
 ## Implementation Notes
