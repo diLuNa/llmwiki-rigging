@@ -182,7 +182,10 @@ Master catalog of all pages. Updated on every ingest.
 
 | [[papers/peng-2021-amp]] | AMP: Adversarial Motion Priors for Stylized Physics-Based Character Control | SIGGRAPH 2021 | `character-control` `physics-based-animation` `reinforcement-learning` `gans` `motion-synthesis` |
 | [[papers/deng-2025-anymate]] | Anymate: A Dataset and Baselines for Learning 3D Object Rigging | SIGGRAPH 2025 | `dataset` `rig-generation` `auto-rigging` `skinning` `3D-objects` |
-| [[papers/an-2024-refined-inverse-rigging]] | Refined Inverse Rigging: A Balanced Approach to High-fidelity Blendshape Animation | SIGGRAPH Asia 2024 | `facial-animation` `blendshapes` `inverse-kinematics` `performance-driven-animation` `rigging` |
+| [[papers/an-2024-refined-inverse-rigging]] | Refined Inverse Rigging: A Balanced Approach to High-fidelity Blendshape Animation | SIGGRAPH Asia 2024 | `blendshapes` `correctives` `facial-animation` `pose-space` `math` |
+| [[papers/rackovic-2023-distributed-rig-inversion]] | Distributed Solution of the Blendshape Rig Inversion Problem | SIGGRAPH Asia 2023 Technical Communications | `blendshapes` `correctives` `facial-animation` `pose-space` `math` |
+| [[papers/rackovic-2023-highfidelity-inverse-rig]] | High-fidelity Interpretable Inverse Rig: An Accurate and Sparse Solution Optimizing the Quartic Blendshape Model | arXiv 2023 | `blendshapes` `correctives` `facial-animation` `pose-space` `math` |
+| [[papers/rackovic-2023-accurate-interpretable-inverse-rig]] | Accurate and Interpretable Solution of the Inverse Rig for Realistic Blendshape Models with Quadratic Corrective Terms | arXiv 2023 | `blendshapes` `correctives` `facial-animation` `pose-space` `math` |
 | [[papers/ghosh-2023-emote]] | EMOTE: Emotional Speech-Driven Animation with Content-Emotion Disentanglement | SIGGRAPH Asia 2023 | `facial-animation` `speech-driven` `blendshapes` `emotion-control` `performance-driven-animation` |
 | [[papers/nam-2023-bidirectional-gaitnet]] | Bidirectional GaitNet: A Bidirectional Prediction Model of Human Gait and Anatomical Conditions | SIGGRAPH 2023 | `gait-animation` `musculoskeletal-models` `variational-autoencoder` `biomechanics` `synthesis` |
 | [[papers/aberman-2020-skeleton-aware-retargeting]] | Skeleton-Aware Networks for Deep Motion Retargeting | SIGGRAPH 2020 | `motion-retargeting` `neural-networks` `skeleton-hierarchy` `deep-learning` `animation` |
@@ -207,6 +210,16 @@ Master catalog of all pages. Updated on every ingest.
 | [[papers/benchekroun-2024-stiffgipc]] | StiffGIPC: Advancing GPU IPC for Stiff Affine-Deformable Simulation | SIGGRAPH 2024 | `simulation` `contact` `gpu-computing` `deformable-objects` `incremental-potential` |
 | [[papers/lan-2025-jgs2]] | JGS2: Near Second-order Converging Jacobi/Gauss-Seidel for GPU Elastodynamics | SIGGRAPH 2025 | `simulation` `deformable-objects` `gpu-computing` `elastodynamics` `linear-solvers` |
 | [[papers/kavan-2024-compressed-skinning]] | Compressed Skinning for Facial Blendshapes | SIGGRAPH 2024 | `skinning` `blendshapes` `compression` `facial-animation` `lbs` |
+| [[papers/sederberg-1986-ffd]] | Free-form Deformation of Solid Geometric Models | SIGGRAPH 1986 | `deformation` `cage-deformation` `math` `skinning` |
+| [[papers/ng-thow-hing-1997-bspline-solid]] | Interactive Display and Animation of B-Spline Solids as Muscle Shape Primitives | CAS 1997 | `muscles` `simulation` `deformation` `math` |
+| [[papers/kurenkov-2017-deformnet]] | DeformNet: Free-Form Deformation Network for 3D Shape Reconstruction | WACV 2018 | `neural` `deformation` `cage-deformation` `math` |
+| [[papers/jack-2018-learning-ffd]] | Learning Free-Form Deformations for 3D Object Reconstruction | ACCV 2018 | `neural` `deformation` `cage-deformation` `math` |
+| [[papers/song-2025-spline-deformation-field]] | Spline Deformation Field | SIGGRAPH 2025 | `deformation` `neural` `math` `skinning` `simulation` |
+| [[papers/lykkegaard-2025-ooooo-rig]] | Metaball Madness - The Rigging Of An Implicit Surface Character | SIGGRAPH Talks 2025 | `rig-generation` `implicit-surfaces` `houdini` |
+| [[papers/mohammadi-2026-canrig]] | CANRIG: Cross-Attention Neural Face Rigging with Variable Local Control | Eurographics 2026 | `facial-animation` `blendshapes` `neural` `rig-generation` |
+| [[papers/ma-2025-riganyface]] | RigAnyFace: Scaling Neural Facial Mesh Auto-Rigging with Unlabeled Data | NeurIPS 2025 | `auto-rigging` `facial-animation` `blendshapes` `facs` `neural` |
+| [[papers/cha-2025-neural-face-skinning]] | Neural Face Skinning for Mesh-agnostic Facial Expression Cloning | arXiv 2025 | `facial-animation` `skinning` `neural` `blendshapes` |
+| [[papers/hoffman-2024-insideout2-rig]] | Pixar's Inside Out 2: Character Rig Challenges and Techniques | SIGGRAPH Talks 2024 | `rig-generation` `blendshapes` `correctives` `digital-human` |
 
 ## Concepts
 
@@ -224,7 +237,10 @@ Master catalog of all pages. Updated on every ingest.
 | [[concepts/cage-deformation]] | Free-form deformation via generalized barycentric coordinates |
 | [[concepts/curvenet-rigging]] | Profile-curve-driven character articulation (Pixar) |
 | [[concepts/implicit-surfaces]] | Zero-level-set surface representation; metaballs; SDF |
-| [[concepts/rig-inversion]] | Mapping skeleton poses back to rig control parameters |
+| [[concepts/skinning]] | Overview of all skinning approaches: LBS, DQS, CoR, implicit, neural |
+| [[concepts/b-spline-volumes]] | B-spline/Bernstein trivariate volumes: FFD, muscle primitives, differentiable/learnable variants, PyTorch implementation |
+| [[concepts/correctives]] | Corrective blendshapes: taxonomy (linear/pairwise/quartic), authoring, inversion solvers |
+| [[concepts/rig-inversion]] | Mapping skeleton poses back to rig control parameters; body rig (analytic Jacobian, neural) and blendshape rig (coordinate descent, ADMM, temporal smooth) taxonomies |
 | [[concepts/mesh-wrap]] | Topology transfer / mesh wrap between character shapes |
 | [[concepts/delta-mush]] | Smooth-then-restore deformation layer; eliminates LBS artifacts |
 | [[concepts/wrinkle-systems]] | Kinematic and tension-driven wrinkle deformation systems |
@@ -341,6 +357,7 @@ Full index with algorithm tables: [[vex/index]]
 | [[authors/lan-lana]] | DreamWorks Animation |
 | [[authors/crane-keenan]] | Carnegie Mellon University |
 | [[authors/sharp-nicholas]] | NVIDIA (formerly University of Toronto) |
+| [[authors/rackovic-stevo]] | Instituto Superior Técnico, Lisbon |
 
 ---
 

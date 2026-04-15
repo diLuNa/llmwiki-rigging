@@ -80,7 +80,9 @@
       "Bash(pdftotext /Users/lucaprasso/Research/LLM_Wiki/rigging-wiki/raw/papers/rigfunction.pdf -)",
       "Bash(pdftotext --version)",
       "Bash(pip install:*)",
-      "Bash(pip show:*)"
+      "Bash(pip show:*)",
+      "Bash(ls /Users/lucaprasso/Research/LLM_Wiki/rigging-wiki/wiki/papers/ma-2025*)",
+      "Bash(ls /Users/lucaprasso/Research/LLM_Wiki/rigging-wiki/wiki/papers/cha-2025* /Users/lucaprasso/Research/LLM_Wiki/rigging-wiki/wiki/papers/hoffman-2024*)"
     ]
   }
 }

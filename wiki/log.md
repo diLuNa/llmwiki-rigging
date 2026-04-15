@@ -842,3 +842,58 @@ Ingested three raw PDFs added to `raw/papers/`, all in the rig-inversion family:
 - `papers/aberman-2020-unpaired-motion-style.md` references `[[papers/aberman-2017-style-transfer]]` — paper not yet ingested
 - 31 orphan pages remain; most are covered by the new concept pages but not all are explicitly linked from within the knowledge graph (they appear in index.md)
 - `log.md` historical entries mention `nguyen-2023-next3d` (renamed to `sun-2023-next3d`) — left as-is since log is append-only
+
+## [2026-04-14] ingest | Inverse Rig Mapping — research pass (Rackovic 2023–2024 series)
+
+**Research:** surveyed the full inverse rig mapping literature beyond the existing wiki entries.
+
+**New papers ingested (3):**
+- `papers/rackovic-2023-distributed-rig-inversion.md` — SIGGRAPH Asia 2023 Technical Communications; ADMM distributed blendshape inversion with spatial clustering and overlapping shared weights. Source: `raw/papers/3610543.3626166.pdf`
+- `papers/rackovic-2023-highfidelity-inverse-rig.md` — arXiv 2023 (2302.04820); quartic blendshape model + coordinate descent; >20% sparsity gain vs SOTA
+- `papers/rackovic-2023-accurate-interpretable-inverse-rig.md` — arXiv 2023 (2302.04843); SQP/MM solvers for quadratic correctives; up to 45% RMSE improvement
+
+**Existing paper updated (1):**
+- `papers/an-2024-refined-inverse-rigging.md` — corrected authors (was wrong: An/Park/Nam → correct: Rackovic/Soares/Jakovetic); expanded method (Quartic Smooth, L1+roughness joint optimization, temporal decoupling, MetaHuman evaluation table). Source updated to `raw/papers/3680528.3687670.pdf`
+
+**New author page (1):**
+- `authors/rackovic-stevo.md`
+
+**Concept pages updated (1):**
+- `concepts/rig-inversion.md` — expanded Variants taxonomy to include full blendshape inversion sub-taxonomy (per-frame LS, quartic coordinate descent, quadratic SQP/MM, ADMM distributed, Quartic Smooth temporal)
+
+**Lint fixes — missing concept pages created (2):**
+- `concepts/correctives.md` — comprehensive corrective shape taxonomy (by trigger type and model order), authoring methods, inversion challenge
+- `concepts/skinning.md` — umbrella overview linking LBS, DQS, CoR, implicit, neural skinning and cage-based deformation
+
+**Implementation reference noted:**
+- GitHub: lukaskapp/InverseRigMapping — PyTorch/Maya toolset for mocap retargeting to arbitrary rigs via neural inverse rig (based on Holden 2015)
+
+**Index updated:** 3 new paper rows, 2 new concept rows (correctives, skinning, updated rig-inversion), 1 new author row
+
+## [2026-04-14] ingest | Learnable B-Spline Volumes — research pass
+
+**Research:** surveyed the full B-spline/Bernstein trivariate volume literature from foundational FFD through learnable/differentiable variants and production applications.
+
+**New concept page (1):**
+- `concepts/b-spline-volumes.md` — comprehensive coverage of FFD, B-spline solid muscles, differentiable/learnable FFD (DeformNet, Jack 2018), spline deformation fields; includes PyTorch differentiable FFD implementation and PyGeM usage
+
+**New papers ingested — B-spline volumes / FFD (5):**
+- `papers/sederberg-1986-ffd.md` — foundational FFD (SIGGRAPH 1986); trivariate Bernstein lattice
+- `papers/ng-thow-hing-1997-bspline-solid.md` — B-spline solid as muscle primitive; fibre orientation; spring-mass dynamics (CAS 1997)
+- `papers/kurenkov-2017-deformnet.md` — differentiable FFD layer; CNN predicts control point displacements (WACV 2018)
+- `papers/jack-2018-learning-ffd.md` — learning FFD for 3D reconstruction; SOTA on ShapeNet (ACCV 2018)
+- `papers/song-2025-spline-deformation-field.md` — spline trajectories for dense point motion; analytic velocity/acceleration; SIGGRAPH 2025
+
+**New papers ingested — new raw papers (5):**
+- `papers/lykkegaard-2025-ooooo-rig.md` — Pixar's first mesh-free character rig; SDF hierarchy (BlObjects + BlOperators); SIGGRAPH Talks 2025. Source: `raw/papers/2025.ooooo_rig.pdf`
+- `papers/mohammadi-2026-canrig.md` — CANRIG: cross-attention neural face rigging; variable local control regions; shape-preserving additive layers; DisneyResearch|Studios; Eurographics 2026. Source: `raw/papers/CANRIG-Cross-Attention-Neural-Face-Rigging-with-Variable-Local-Control-Paper.pdf`
+- `papers/ma-2025-riganyface.md` — RigAnyFace: topology-agnostic neural facial auto-rigging; FACS blendshapes; 2D supervision for unlabeled data; NeurIPS 2025. Source: `raw/papers/2511.18601v1.pdf`
+- `papers/cha-2025-neural-face-skinning.md` — Neural Face Skinning: mesh-agnostic expression cloning via learned skinning weights; global+local; arXiv 2025. Source: `raw/papers/2505.22416.pdf`
+- `papers/hoffman-2024-insideout2-rig.md` — Inside Out 2 rig challenges: four-corner lids, eye auto-gaze correction; SIGGRAPH Talks 2024. Source: `raw/papers/2024.SiggraphTalks.HNSZ.pdf`
+
+**Index updated:** 11 new paper rows, 1 new concept row (b-spline-volumes)
+
+**External resources noted:**
+- PyGeM: https://github.com/mathLab/PyGeM — Python FFD library (B-spline + RBF + IDW)
+- FFD.jl: https://github.com/OptimalDesignLab/FFD.jl — Julia B-spline FFD
+- DeformNet project: https://deformnet-site.github.io/DeformNet-website/
