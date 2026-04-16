@@ -6,6 +6,17 @@ Format: `## [YYYY-MM-DD] <operation> | <title>`
 
 ---
 
+## [2026-04-16] research | OpenXR ↔ ARKit blend shape relationship
+
+Researched OpenXR face tracking extensions and their relationship to ARKit blend shape coefficients. Sources consulted: Khronos OpenXR Registry, Meta developer docs, Apple developer docs, Unity ARKit/AndroidXR packages, VRCFaceTracking Unified Expressions, Melinda Ozel ARKit-FACS mapping.
+
+Updated pages:
+- `wiki/concepts/openxr-face-tracking.md` — added full 70-weight XR_FB_face_tracking2 enumeration with descriptions; Android XR / Jetpack XR 68-shape extension; audio-to-expression multimodal section; Unified Expressions interop section; updated weight count table; expanded external resources
+- `wiki/concepts/arkit-blendshapes.md` — added `tongueOut` as explicit tongue section; noted ARKit's 1 tongue weight vs Meta's 7; added Unified Expressions connection
+
+Created pages:
+- `wiki/concepts/unified-expressions.md` — full ARKit 52→Unified Expressions name mapping table; ~100 base shape enumeration; driver support matrix (ARKit / Meta / HTC / ML2 / Android XR); comparison table ARKit vs Unified for practical rig decisions
+
 ## [2026-04-05] init | Wiki initialized
 
 Created directory structure, CLAUDE.md schema, index.md, log.md, overview.md, and stub pages for seed papers and concepts from prior work. Sources in scope: de Goes 2020, Lewis 2000, Kavan 2007, Jacobson 2011.

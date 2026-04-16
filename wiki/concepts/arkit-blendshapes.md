@@ -104,7 +104,12 @@ cheekPuff
 cheekSquintLeft     cheekSquintRight
 ```
 
-**Total: 52** — including `cheekSquintLeft` and `cheekSquintRight`, bringing cheeks to 3 entries (cheekPuff is singular/bilateral).
+### Tongue (1)
+```
+tongueOut
+```
+
+**Total: 52** — including `cheekSquintLeft` and `cheekSquintRight`, bringing cheeks to 3 entries (cheekPuff is singular/bilateral). Note: ARKit exposes only **one tongue weight** (`tongueOut`); for richer viseme coverage, Meta's `XR_FB_face_tracking2` extends this to 7 tongue shapes.
 
 ---
 
@@ -227,6 +232,7 @@ See [[concepts/openxr-face-tracking]] for the XR headset extension ecosystem.
 
 - [[concepts/facs]] — FACS Action Units are the anatomical foundation ARKit blend shapes derive from
 - [[concepts/openxr-face-tracking]] — OpenXR extensions extend ARKit's 52 baseline for XR headsets
+- [[concepts/unified-expressions]] — community interop layer mapping ARKit ↔ OpenXR ↔ SRanipal ↔ FACS
 - [[concepts/facial-blendshape-rigs]] — ARKit weights drive production blendshape rigs
 - [[concepts/nonlinear-face-models]] — many neural face models output or train on ARKit weight spaces
 - [[papers/epic-2021-metahuman-rig]] — MetaHuman's ARKit streaming layer

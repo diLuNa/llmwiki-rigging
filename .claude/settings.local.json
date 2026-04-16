@@ -82,7 +82,14 @@
       "Bash(pip install:*)",
       "Bash(pip show:*)",
       "Bash(ls /Users/lucaprasso/Research/LLM_Wiki/rigging-wiki/wiki/papers/ma-2025*)",
-      "Bash(ls /Users/lucaprasso/Research/LLM_Wiki/rigging-wiki/wiki/papers/cha-2025* /Users/lucaprasso/Research/LLM_Wiki/rigging-wiki/wiki/papers/hoffman-2024*)"
+      "Bash(ls /Users/lucaprasso/Research/LLM_Wiki/rigging-wiki/wiki/papers/cha-2025* /Users/lucaprasso/Research/LLM_Wiki/rigging-wiki/wiki/papers/hoffman-2024*)",
+      "WebFetch(domain:developers.meta.com)",
+      "WebFetch(domain:docs.vrcft.io)",
+      "WebFetch(domain:registry.khronos.org)",
+      "WebFetch(domain:melindaozel.com)",
+      "WebFetch(domain:arkit-face-blendshapes.com)",
+      "WebFetch(domain:docs.unity3d.com)",
+      "WebFetch(domain:docs.hai-vr.dev)"
     ]
   }
 }

@@ -252,7 +252,8 @@ Master catalog of all pages. Updated on every ingest.
 | [[concepts/mesh-graph-nets]] | GNN simulators on mesh representations; Encode-Process-Decode; cloth, soft tissue, face shape |
 | [[concepts/facs]] | Facial Action Coding System: 44 AUs, intensity scale, 7 universal expressions, CG rig mapping, ARKit/MetaHuman conventions, external AU references |
 | [[concepts/arkit-blendshapes]] | Apple ARKit 52 blend shapes: canonical names, TrueDepth pipeline, FACS mapping, Live Link Face, Unity/Unreal integration, de facto real-time standard |
-| [[concepts/openxr-face-tracking]] | OpenXR face tracking extensions: XR_FB (70 weights), XR_HTC (37+52, ARKit-compatible), eye gaze; Khronos spec URLs; cross-platform rig strategy |
+| [[concepts/openxr-face-tracking]] | OpenXR face tracking extensions: XR_FB_face_tracking2 (70 weights + full enum), XR_HTC (37+52 ARKit-compatible), Android XR (68 weights), audio-driven tracking, cross-platform rig strategy |
+| [[concepts/unified-expressions]] | Community interop standard mapping ARKit ↔ OpenXR ↔ SRanipal ↔ FACS; ~100 base shapes; full ARKit 52→Unified mapping table; driver support matrix |
 | [[concepts/facial-blendshape-rigs]] | Production facial rigs: FACS blendshapes, PSD correctives, muscle systems, performance capture |
 | [[concepts/nonlinear-face-models]] | Nonlinear 3DMMs, mesh autoencoders, implicit neural faces, DiffusionRig, neural auto-rigging |
 | [[concepts/muscles]] | Muscle systems as rig controls (facial/body) and soft tissue FEM simulation |
@@ -379,4 +380,4 @@ Full index with algorithm tables: [[vex/index]]
 
 ---
 
-*Last updated: 2026-04-13 — Ingested 23 SIGGRAPH 2020-2025 character rigging papers (AutoKeyframe, LAM, AnimPortrait3D, 3DGH, JGS2, SOAP, LayGA, Taming Diffusion, Hierarchical Neural Skinning, StiffGIPC, Kinematic Retargeting, DrawingSpinUp, Refined Inverse Rigging, Decoupling Contact, MoRig, Bidirectional GaitNet, PoseVocab, Fast Complementary Dynamics, EMOTE, AniPortraitGAN, Skeleton-Aware Retargeting, Unpaired Motion Style Transfer, AMP). Wiki: 181 papers, 28 concepts, 55 authors, 6 techniques, 50 VEX snippets, 6 Python modules, 2 queries.*
+*Last updated: 2026-04-16 — Researched OpenXR ↔ ARKit blend shape relationship; expanded openxr-face-tracking (full XR_FB_face_tracking2 70-weight enumeration, Android XR/Jetpack XR 68 shapes, audio-driven tracking, Unified Expressions interop); updated arkit-blendshapes (tongue note, Unified link); created unified-expressions concept page (ARKit↔Unified full mapping table, driver matrix). Wiki: 181 papers, 29 concepts, 55 authors, 6 techniques, 50 VEX snippets, 6 Python modules, 2 queries.*

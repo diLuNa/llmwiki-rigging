@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "wiki/techniques/inverse-rig-mapping.md",
+                "file": "wiki/concepts/facs.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "inverse-rig-mapping"
+              "title": "facs"
             }
           },
           {
@@ -216,6 +216,12 @@
   },
   "active": "e1e94846dc220d36",
   "lastOpenFiles": [
+    "wiki/concepts/unified-expressions.md",
+    "raw/assets/XrFaceExpression2FB.md",
+    "raw/assets/XrFaceExpression2FB(3).md",
+    "wiki/concepts/b-spline-volumes.md",
+    "wiki/techniques/dem-bones.md",
+    "wiki/techniques/inverse-rig-mapping.md",
     "wiki/papers/mohammadi-2026-canrig.md",
     "wiki/papers/lykkegaard-2025-ooooo-rig.md",
     "wiki/papers/jack-2018-learning-ffd.md",
@@ -223,7 +229,6 @@
     "wiki/papers/kurenkov-2017-deformnet.md",
     "wiki/papers/ng-thow-hing-1997-bspline-solid.md",
     "wiki/papers/sederberg-1986-ffd.md",
-    "wiki/concepts/b-spline-volumes.md",
     "wiki/concepts/skinning.md",
     "wiki/concepts/correctives.md",
     "wiki/authors/rackovic-stevo.md",
@@ -239,13 +244,8 @@
     "wiki/papers/holden-2017-inverse-rig-tvcg.md",
     "wiki/papers/marquis-bolduc-2022-differentiable-rig.md",
     "raw/assets/Using a Differentiable Function for Rig Inversion.md",
-    "raw/assets/Learning an Inverse Rig Mapping for Character Animation.md",
-    "raw/assets/Inverse Rig Mapping - Technical Directing - Animationsinstitut Filmakademie BW.md",
-    "raw/assets/Refined Inverse Rigging_ A Balanced Approach to High-fidelity Blendshape Animation.md",
-    "raw/assets/MIRRORED-Anims_ Motion Inversion for Rig-space Retargeting to Obtain a Reliable Enlarged Dataset of Character Animations _ Proceedings of the 2025 18th ACM SIGGRAPH Conference on Motion, Interaction, and Games.md",
     "raw/papers/2401.16496v1.pdf",
     "raw/papers/2301.09567v1.pdf",
-    "wiki/queries/gauss-newton-algorithm.md",
     "wiki/vex/inverse-rig-mapping.vex",
     "wiki/python/inverse_rig_mapping.py",
     "raw/papers/2786784.2786788.pdf",
