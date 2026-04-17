@@ -385,6 +385,65 @@ tension_expand   = clamp( mean_strain, 0, 1);   // stretch → thin
 
 ---
 
+## Parallel Transport — Bishop Frame & Dihedral Steps
+
+Source technique: [[techniques/parallel-transport]] · Source papers: [[papers/pinskiy-2010-sliding-deformation]] · [[papers/degoes-2022-profile-curves]]
+
+| File | Snippet | Algorithm | Run Mode | Notes |
+|------|---------|-----------|----------|-------|
+| [parallel-transport.vex](parallel-transport.vex) | A | Bishop frame propagation along a polyline via sequential `dihedral()` transport | Per-primitive Geometry Wrangle | Outputs `@pt_T`, `@pt_N`, `@pt_B`; optional torsion correction for closed curves |
+| [parallel-transport.vex](parallel-transport.vex) | B | Single dihedral transport step from one mesh vertex to adjacent vertex | Per-point Geometry Wrangle | Isolated primitive; use as BFS building block; includes antipodal fallback |
+| [parallel-transport.vex](parallel-transport.vex) | C | Bishop frame via `kinefx_hierarchy.h` vertex connectivity; three tangent modes | Per-primitive Geometry Wrangle | Outputs `@orient` quaternion; handles closed curves; forward/backward/averaged tangents; roll/pitch/yaw ramp |
+
+### Quick-start parameter guide
+
+**Snippet A** (per-primitive, run on polyline curves):
+
+| Attribute | Type | Where | Meaning |
+|-----------|------|-------|---------|
+| `seed_normal` | vector | detail | Initial normal at first vertex; auto-computed if zero |
+| `do_torsion_correction` | int | detail | 1 = distribute closing-gap angle uniformly (closed loops) |
+| `pt_T` | vector | point output | Unit tangent at each vertex |
+| `pt_N` | vector | point output | Parallel-transported normal |
+| `pt_B` | vector | point output | Binormal = cross(T, N) |
+
+**Snippet B** (per-point, one step of BFS propagation):
+
+| Attribute | Type | Where | Meaning |
+|-----------|------|-------|---------|
+| `transport_v` | vector | point | Direction being transported (input from processed neighbour, output for current vertex) |
+| `N` | vector | point | Surface normal at current vertex |
+
+### Key formulas
+
+**Bishop frame step (Snippet A core):**
+```vex
+matrix3 R   = dihedral(T[i-1], T[i]);
+vector  n_t = N[i-1] * R;
+n_t -= dot(n_t, T[i]) * T[i];   // re-project onto new tangent plane
+N[i] = (length(n_t) > 1e-8) ? normalize(n_t) : N[i-1];
+B[i] = normalize(cross(T[i], N[i]));
+```
+
+**Torsion correction for closed curves:**
+```vex
+float alpha   = (total_arc > 1e-8) ? arc[i] / total_arc : 0.0;
+float angle_i = alpha * theta;
+matrix3 Rc = ident();
+rotate(Rc, angle_i, T[i]);
+N[i] = normalize(N[i] * Rc);
+```
+
+**Mesh BFS step (Snippet B core):**
+```vex
+matrix3 R = dihedral(N_nb, N_curr);
+vector v_transported = v_nb * R;
+v_transported -= dot(v_transported, N_curr) * N_curr;
+v_transported = normalize(v_transported);
+```
+
+---
+
 ## Sliding Deformation — Shape Preserving Per-Vertex Displacement (Pinskiy 2010)
 
 Source paper: [[papers/pinskiy-2010-sliding-deformation]]
@@ -954,6 +1013,7 @@ float inc = hand_rx / 3.0;
 - **4** snippets — Bounded Biharmonic Weights (cotan Laplacian, mass matrix, LBS, harmonic)
 - **5** snippets — Animatomy: muscle strain, strain blendshapes, pose correctives, jaw RBF, full model
 - **5** snippets — Wrinkle Systems: stress vector, proximity metric, curve displacement, blend, mesh tension
+- **3** snippets — Parallel Transport: Bishop frame/dihedral (Snippet A), single mesh step (Snippet B), kinefx connectivity/orient (Snippet C)
 - **3** snippets — Sliding Deformation (tangent basis, direction propagation, surface displacement)
 - **4** snippets — Mesh Wrap: affine-invariant coordinates, projection, distortion, solve
 - **5** snippets — Blendshape Fitting: eval (delta + replacement), marker softmax, QP fit, NLLS/FACEIT, PSD correctives
@@ -961,6 +1021,6 @@ float inc = hand_rx / 3.0;
 - **1** snippet  — Forearm Twist: swing-twist decomposition for pronation/supination correction
 - **4** snippets — Rigid Body Resting Analysis: support function, face stability (winding number), resting probability, quasi-static drop trajectory
 - **3** snippets — Inverse Rig Mapping: Jacobian attribute setup (Python SOP), Gauss-Newton solver, arm+forearm twist standalone example
-- **Total: 53 snippets across 15 papers + 1 general technique**
+- **Total: 56 snippets across 15 papers + 2 general techniques**
 
 Not yet implemented: Dynamic Kelvinlets (2018), Delta Mush, ARAP, Stochastic Barycentric Coordinates, CoR Skinning, Rig-Space Secondary Motion.

@@ -216,6 +216,11 @@
   },
   "active": "e1e94846dc220d36",
   "lastOpenFiles": [
+    "wiki/techniques/aces-color-management.md",
+    "wiki/vex/parallel-transport.vex",
+    "wiki/techniques/parallel-transport.md",
+    "raw/assets/Revisiting Parallel Transport.md",
+    "raw/assets/An Idiot’s Guide to ACES.md",
     "wiki/concepts/facs.md",
     "wiki/concepts/biomechanical-face-model-architecture.md",
     "raw/assets/face model architecture.pdf",
@@ -239,18 +244,13 @@
     "wiki/concepts/correctives.md",
     "wiki/authors/rackovic-stevo.md",
     "wiki/papers/rackovic-2023-accurate-interpretable-inverse-rig.md",
-    "wiki/papers/rackovic-2023-highfidelity-inverse-rig.md",
-    "wiki/papers/rackovic-2023-distributed-rig-inversion.md",
     "raw/papers/3610543.3626166.pdf",
     "raw/papers/3680528.3687670.pdf",
-    "wiki/authors/komura-taku.md",
-    "wiki/concepts/simulation.md",
     "raw/papers/2401.16496v1.pdf",
     "raw/papers/2301.09567v1.pdf",
     "wiki/vex/inverse-rig-mapping.vex",
     "wiki/python/inverse_rig_mapping.py",
     "raw/papers/2786784.2786788.pdf",
-    "raw/papers/rigfunction.pdf",
-    "wiki/python/rigid_body_rest.py"
+    "raw/papers/rigfunction.pdf"
   ]
 }

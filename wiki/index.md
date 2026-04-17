@@ -276,6 +276,8 @@ Master catalog of all pages. Updated on every ingest.
 | [[techniques/dem-bones]] | Dem Bones (EA SEED) — SSDR skinning decomposition; 3 operating modes; Houdini SOP setup; sim/rig baking workflows |
 | [[techniques/ml-deformer]] | ML Deformer (Houdini 20+) — neural deformation approximation; 4 approaches (CNN residual, differential subspace, joint learning, hierarchical); production workflows |
 | [[techniques/inverse-rig-mapping]] | Analytically Learning an Inverse Rig Mapping (Gustafson et al. 2020) — offline operator classification + sorting, analytic Jacobian, Gauss-Newton inversion; Python + VEX; arm/forearm twist example |
+| [[techniques/parallel-transport]] | Parallel transport for character rigging — Bishop frame propagation along polylines, BFS mesh surface transport, forearm twist axis chains; `dihedral()` VEX primitive; holonomy and torsion correction |
+| [[techniques/aces-color-management]] | ACES color management in DCC — ACEScg working space, OCIO setup, IDT for color vs data textures, RRT gotchas, per-DCC setup (Houdini, Maya, Fusion, Nuke) |
 
 ---
 
@@ -283,7 +285,7 @@ Master catalog of all pages. Updated on every ingest.
 
 Full index with algorithm tables: [[vex/index]]
 
-50 snippets across: Kelvinlets, CurveNet, Cage deformation, BBW, Blendshapes, Mesh wrap, Wrinkles, Animatomy, Sliding deformation, RBF (Pose Space Deformation, kernel library, Gram solve, scattered interp, Waters muscles), Forearm Twist, Rigid Body Resting Analysis.
+56 snippets across: Kelvinlets, CurveNet, Cage deformation, BBW, Blendshapes, Mesh wrap, Wrinkles, Animatomy, Sliding deformation, Parallel Transport, RBF (Pose Space Deformation, kernel library, Gram solve, scattered interp, Waters muscles), Forearm Twist, Rigid Body Resting Analysis, Inverse Rig Mapping.
 
 ---
 
@@ -383,4 +385,4 @@ Full index with algorithm tables: [[vex/index]]
 
 ---
 
-*Last updated: 2026-04-16 — Researched OpenXR ↔ ARKit blend shape relationship; expanded openxr-face-tracking (full XR_FB_face_tracking2 70-weight enumeration, Android XR/Jetpack XR 68 shapes, audio-driven tracking, Unified Expressions interop); updated arkit-blendshapes (tongue note, Unified link); created unified-expressions concept page (ARKit↔Unified full mapping table, driver matrix). Wiki: 181 papers, 29 concepts, 55 authors, 6 techniques, 50 VEX snippets, 6 Python modules, 2 queries.*
+*Last updated: 2026-04-17 — Extended parallel-transport (Snippet C: kinefx connectivity, orient output, 3 tangent modes); created aces-color-management technique page (OCIO setup, IDT guide, per-DCC, RRT gotchas). Wiki: 181 papers, 29 concepts, 55 authors, 9 techniques, 56 VEX snippets, 6 Python modules, 2 queries.*

@@ -6,6 +6,56 @@ Format: `## [YYYY-MM-DD] <operation> | <title>`
 
 ---
 
+## [2026-04-17] technique | ACES Color Management in DCC
+
+New source: `raw/assets/An Idiot's Guide to ACES.md` — toadstorm.com blog (2020-02-25).
+
+- Created `wiki/techniques/aces-color-management.md`
+  - ACEScg vs sRGB primaries; ACES pipeline flow; RRT S-curve
+  - IDT conversion table: color textures (convert) vs data textures (do not convert)
+  - OCIO setup (env var, config download)
+  - Per-DCC setup: Houdini (OCIO VOP, COPs caveat), Maya, Fusion, Nuke
+  - Gotchas: self-illuminated materials, brand colors, RRT pre-inversion trick, floating-point write requirements
+- Updated `wiki/index.md`
+
+## [2026-04-17] ingest | Revisiting Parallel Transport (toadstorm blog)
+
+New source: `raw/assets/Revisiting Parallel Transport.md` — toadstorm.com blog (2026-04-16).
+
+Extended parallel transport coverage with vertex-connectivity approach:
+- Updated `wiki/techniques/parallel-transport.md`
+  - Added Application 4: `kinefx_hierarchy.h` approach (`getchildren()`/`getparent()`)
+  - Three tangent modes (forward, backward, averaged) with comparison
+  - `orient` quaternion output via `maketransform()` + `quaternion()`
+  - Per-point roll/pitch/yaw via `qrotate()` + `qmultiply()`
+  - Added row-vs-column convention gotcha (`rotate()` vs `dihedral()`)
+  - Updated VEX Reference table to include Snippet C
+- Updated `wiki/vex/parallel-transport.vex` — added Snippet C (full implementation)
+- Updated `wiki/vex/index.md` — added Snippet C row; health summary updated to 56 snippets
+- Updated `wiki/index.md`
+
+## [2026-04-17] technique | Parallel Transport
+
+Created full technique page and VEX implementations for parallel transport in character rigging.
+
+- Created `wiki/techniques/parallel-transport.md`
+  - Covers three applications: Bishop frame along polyline curves, BFS mesh surface propagation (Pinskiy 2010), forearm twist axis chains
+  - `dihedral()` VEX primitive as the unified discrete operator
+  - Bishop vs Frenet comparison table, holonomy and Gauss-Bonnet theorem, torsion correction (CurveNet)
+  - Gotchas: near-antipodal normals, re-projection after transport, closed curve holonomy, row-vector convention
+- Created `wiki/vex/parallel-transport.vex`
+  - Snippet A: Per-primitive Geometry Wrangle — full Bishop frame propagation with optional torsion correction; outputs `@pt_T`, `@pt_N`, `@pt_B`
+  - Snippet B: Per-point single dihedral transport step (BFS building block); includes antipodal-normal fallback
+- Updated `wiki/vex/index.md` — added Parallel Transport section with parameter guide and key formulas; health summary updated to 55 snippets
+- Updated `wiki/index.md` — added technique row, updated VEX count to 55, updated footer
+
+## [2026-04-17] sweep | Raw assets consolidation (7 md files in raw/assets/)
+
+All 7 markdown files in `raw/assets/` were previously ingested (sessions 2026-04-14 to 2026-04-16). Gap-fills applied:
+- `wiki/papers/marquis-bolduc-2022-differentiable-rig.md` — added EA SEED video URL and paper download link
+- `wiki/papers/holden-2015-inverse-rig.md` — expanded External References (blog post, paper PDF, SCA 2015 video, Filmakademie video)
+- `wiki/papers/mirrored-anims-2025-rig-retargeting.md` — added `doi: 10.1145/3769047.3769064` to frontmatter
+
 ## [2026-04-16] ingest | Biomechanical Face Model Architecture Design
 
 New source: `raw/assets/face model architecture.pdf` — 7-page design conversation log for the wiki's own face model project.

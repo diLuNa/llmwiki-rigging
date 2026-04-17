@@ -1,0 +1,321 @@
+// parallel-transport.vex
+// Parallel Transport — General Utilities
+// See: wiki/techniques/parallel-transport.md
+//
+// Snippet A: Bishop frame propagation along a polyline
+//   Run as "Per-primitive" Geometry Wrangle on a polygon curve.
+//   Reads point attribute @P; writes @pt_N, @pt_B, @pt_T to each point.
+//
+// Snippet B: Single dihedral transport step (mesh surface)
+//   The primitive dihedral-based operation, isolated for clarity.
+//
+// ============================================================
+
+// ──────────────────────────────────────────────────────────
+// SNIPPET A — Bishop Frame Along a Polyline
+// ──────────────────────────────────────────────────────────
+//
+// Per-primitive Geometry Wrangle on a polyline (open or closed).
+// Builds a rotation-minimising (Bishop) frame at every point.
+//
+// Parameters (detail attributes):
+//   seed_normal  (vector, detail) — initial normal at first vertex.
+//                If zero, computed as cross(t0, world_up) with fallback.
+//   do_torsion_correction (int, detail, default 0) — if 1, distribute
+//                a closing-gap correction for closed loops.
+//
+// Outputs (point attributes):
+//   @pt_T  (vector) — unit tangent
+//   @pt_N  (vector) — parallel-transported normal
+//   @pt_B  (vector) — binormal = cross(T, N)
+
+int npts = primvertexcount(0, @primnum);
+if (npts < 2) return;
+
+// ── Gather points ──────────────────────────────────────────────────────
+int pts[];
+resize(pts, npts);
+for (int i = 0; i < npts; i++)
+    pts[i] = vertexpoint(0, primvertex(0, @primnum, i));
+
+// ── Build tangents ──────────────────────────────────────────────────────
+vector T[];
+resize(T, npts);
+for (int i = 0; i < npts - 1; i++) {
+    vector p0 = point(0, "P", pts[i]);
+    vector p1 = point(0, "P", pts[i+1]);
+    T[i] = normalize(p1 - p0);
+}
+T[npts-1] = T[npts-2];   // repeat last tangent at final vertex
+
+// ── Seed normal ─────────────────────────────────────────────────────────
+vector seed = detail(0, "seed_normal", {0,0,0});
+if (length(seed) < 1e-8) {
+    vector up = {0, 1, 0};
+    seed = cross(T[0], up);
+    if (length(seed) < 1e-6)
+        seed = cross(T[0], {1, 0, 0});
+    seed = normalize(seed);
+} else {
+    seed = normalize(seed);
+    seed -= dot(seed, T[0]) * T[0];   // project onto first tangent plane
+    seed = normalize(seed);
+}
+
+// ── Propagate Bishop frame ───────────────────────────────────────────────
+vector N[];
+vector B[];
+resize(N, npts);
+resize(B, npts);
+N[0] = seed;
+B[0] = normalize(cross(T[0], N[0]));
+
+for (int i = 1; i < npts; i++) {
+    // Parallel-transport N[i-1] from T[i-1]'s tangent plane into T[i]'s
+    matrix3 R   = dihedral(T[i-1], T[i]);
+    vector  n_t = N[i-1] * R;
+    // Re-project onto new tangent plane
+    n_t -= dot(n_t, T[i]) * T[i];
+    N[i] = (length(n_t) > 1e-8) ? normalize(n_t) : N[i-1];
+    B[i] = normalize(cross(T[i], N[i]));
+}
+
+// ── Optional torsion correction (closed curves) ─────────────────────────
+// After propagation, N[npts-1] may differ from N[0] (holonomy).
+// Distribute the closing angle uniformly along the arc.
+int do_correct = detail(0, "do_torsion_correction", 0);
+if (do_correct) {
+    // Compute closing angle θ between transported N at last vertex and seed
+    vector n_close = N[npts-1];
+    float  cos_th  = clamp(dot(n_close, N[0]), -1, 1);
+    float  theta   = acos(cos_th);
+    // Choose sign: positive if n_close is CCW from N[0] around T[0]
+    if (dot(cross(n_close, N[0]), T[0]) < 0.0) theta = -theta;
+    // Compute arc lengths for fractional blending
+    float total_arc = 0.0;
+    float arc[];
+    resize(arc, npts);
+    arc[0] = 0.0;
+    for (int i = 1; i < npts; i++) {
+        vector p0 = point(0, "P", pts[i-1]);
+        vector p1 = point(0, "P", pts[i]);
+        total_arc += length(p1 - p0);
+        arc[i]     = total_arc;
+    }
+    for (int i = 1; i < npts; i++) {
+        float  alpha    = (total_arc > 1e-8) ? arc[i] / total_arc : 0.0;
+        float  angle_i  = alpha * theta;
+        // Rotate N[i] by angle_i around T[i]
+        matrix3 Rc = ident();
+        rotate(Rc, angle_i, T[i]);
+        N[i] = normalize(N[i] * Rc);
+        B[i] = normalize(cross(T[i], N[i]));
+    }
+}
+
+// ── Write output ─────────────────────────────────────────────────────────
+for (int i = 0; i < npts; i++) {
+    setpointattrib(0, "pt_T", pts[i], T[i], "set");
+    setpointattrib(0, "pt_N", pts[i], N[i], "set");
+    setpointattrib(0, "pt_B", pts[i], B[i], "set");
+}
+
+// ── Usage notes ──────────────────────────────────────────────────────────
+// After running this wrangle:
+//   @pt_T, @pt_N, @pt_B form a right-handed orthonormal frame at every point.
+//   Use them to orient geometry, compute ribbon widths, or propagate deformation.
+//
+// Example: attach an object to a curve at parameter u=0.4
+//   int   seg   = floor(u * (npts-1));
+//   float frac  = frac(u * (npts-1));
+//   vector T_at = lerp(pt_T[seg], pt_T[seg+1], frac);
+//   vector N_at = lerp(pt_N[seg], pt_N[seg+1], frac);   // (slerp for accuracy)
+//   vector B_at = normalize(cross(T_at, N_at));
+
+
+// ──────────────────────────────────────────────────────────
+// SNIPPET B — Single Dihedral Transport Step (mesh surface)
+// ──────────────────────────────────────────────────────────
+//
+// Per-point Geometry Wrangle.
+// Transports the vector stored in `@transport_v` on a processed neighbour
+// into the current vertex's tangent plane.  Call this for one step of BFS.
+//
+// For the complete BFS propagation see sliding-direction-propagate.vex.
+//
+// Inputs:
+//   @transport_v (vector, point) — direction to transport (already on neighbour)
+//   @N           (vector, point) — surface normal at CURRENT vertex
+//   neighbour_N  (vector)        — surface normal at the SOURCE neighbour
+//
+// Output:
+//   @transport_v updated in the current vertex's tangent plane.
+
+// ---- called once per (neighbour, current) pair ----
+vector N_curr = @N;
+vector N_nb   = {0,1,0};   // replace with: point(0, "N", nb_ptnum)
+vector v_nb   = {1,0,0};   // replace with: point(0, "transport_v", nb_ptnum)
+
+// 1. Compute the rotation that maps N_nb onto N_curr
+matrix3 R = dihedral(N_nb, N_curr);
+
+// 2. Rotate the incoming vector into the new tangent plane
+vector v_transported = v_nb * R;
+
+// 3. Re-project (removes any residual normal component from float accumulation)
+v_transported -= dot(v_transported, N_curr) * N_curr;
+
+// 4. Guard against degenerate result (e.g. near-antipodal normals)
+if (length(v_transported) < 1e-8) {
+    // Fallback: keep the original neighbour direction
+    v_transported = v_nb - dot(v_nb, N_curr) * N_curr;
+}
+v_transported = normalize(v_transported);
+
+@transport_v = v_transported;
+
+// ──────────────────────────────────────────────────────────
+// SNIPPET C — Vertex-Connectivity Bishop Frame (kinefx_hierarchy)
+// ──────────────────────────────────────────────────────────
+//
+// Per-primitive Geometry Wrangle on a polyline (open or closed).
+// Uses KineFX half-edge connectivity instead of point indices, so the
+// algorithm handles closed curves and joints correctly.
+//
+// Requires: #include <kinefx_hierarchy.h>
+//   getchildren(geo, ptnum) — array of downstream points
+//   getparent(geo, ptnum)   — upstream point (-1 if root)
+//
+// Parameters (detail or channel):
+//   tangent_mode  (int, detail, default 0):
+//     0 = forward  (look to child)
+//     1 = backward (look to parent, reversed)
+//     2 = averaged (blend of forward and backward)
+//   override_first_N (int, channel, default 0) — if 1, use N_override instead of auto-seed
+//   N_override       (vector, channel)          — manual first normal
+//
+// Outputs (point attributes):
+//   @orient (vector4) — quaternion encoding tangent-as-forward, normal-as-up
+//
+// Source: toadstorm.com "Revisiting Parallel Transport" (2026-04-16)
+// See also: techniques/parallel-transport.md Application 4
+
+#include <kinefx_hierarchy.h>
+
+int npts = primvertexcount(0, @primnum);
+if (npts < 2) return;
+
+int pts[];
+resize(pts, npts);
+for (int i = 0; i < npts; i++)
+    pts[i] = vertexpoint(0, primvertex(0, @primnum, i));
+
+int tangent_mode = detail(0, "tangent_mode", 0);
+
+// ── Build tangents via vertex connectivity ───────────────────────────────────
+vector tangents[];
+resize(tangents, npts);
+
+for (int i = 0; i < npts; i++) {
+    vector P_curr = point(0, "P", pts[i]);
+
+    // Forward tangent: look to child
+    int desc[]  = getchildren(0, pts[i]);
+    vector T_fwd;
+    if (len(desc) > 0) {
+        T_fwd = normalize(point(0, "P", desc[0]) - P_curr);
+    } else {
+        T_fwd = (len(tangents) > 0) ? tangents[len(tangents)-1] : {0,1,0};
+    }
+
+    // Backward tangent: look to parent (reversed)
+    int parent = getparent(0, pts[i]);
+    vector T_bwd;
+    if (parent > -1) {
+        T_bwd = normalize(P_curr - point(0, "P", parent));
+    } else {
+        T_bwd = T_fwd;
+    }
+
+    if      (tangent_mode == 0) tangents[i] = T_fwd;
+    else if (tangent_mode == 1) tangents[i] = T_bwd;
+    else                        tangents[i] = normalize(lerp(T_fwd, T_bwd, 0.5));
+}
+
+// ── Seed normal ──────────────────────────────────────────────────────────────
+vector normals[];
+resize(normals, npts);
+
+vector first_normal;
+if (chi("override_first_N")) {
+    first_normal = normalize(chv("N_override"));
+} else {
+    vector up = {0, 1, 0};
+    first_normal = cross(tangents[0], up);
+    if (length(first_normal) < 1e-6)
+        first_normal = cross(tangents[0], {1, 0, 0});
+    first_normal = normalize(first_normal);
+}
+
+// Warn if seed is nearly parallel to first tangent (degenerate frame)
+if (dot(first_normal, tangents[0]) > 0.999) {
+    setdetailattrib(0, "__warning_parallel_transport", 1, "set");
+}
+
+for (int i = 0; i < npts; i++)
+    normals[i] = first_normal;
+
+// ── Transport normals via binormal cross + acos ───────────────────────────────
+// Uses column-vector convention: normals[i+1] = m * normals[i]
+// (rotate() built-in, different from dihedral() which uses v * R row convention)
+for (int i = 0; i < npts - 1; i++) {
+    vector binormal = cross(tangents[i], tangents[i+1]);
+    if (length2(binormal) < 1e-12) {
+        normals[i+1] = normals[i];
+    } else {
+        binormal = normalize(binormal);
+        float theta = acos(clamp(dot(tangents[i], tangents[i+1]), -1.0, 1.0));
+        matrix3 m = ident();
+        rotate(m, theta, binormal);
+        normals[i+1] = normalize(m * normals[i]);
+    }
+}
+
+// ── Write @orient quaternion ──────────────────────────────────────────────────
+for (int i = 0; i < npts; i++) {
+    matrix3 mat = maketransform(tangents[i], normals[i]);  // forward=T, up=N
+    vector4 orient = quaternion(mat);
+    setpointattrib(0, "orient", pts[i], orient, "set");
+}
+
+// ── Usage: per-point roll ramp (run in a separate Point Wrangle) ─────────────
+// vector twist_axis = qrotate(p@orient, {0,0,1});
+// float twist_amount = ch("twist_amount") * chramp("twist_ramp", @__curveu);
+// vector4 twist_q = quaternion(radians(twist_amount), twist_axis);
+// p@orient = qmultiply(twist_q, p@orient);
+
+
+// ──────────────────────────────────────────────────────────
+// COMMON PITFALLS
+// ──────────────────────────────────────────────────────────
+//
+// 1. ROW VS COLUMN: VEX dihedral() returns row-vector matrices: use v * R.
+//    VEX rotate() returns column-vector matrices: use m * v.
+//    Snippets A+B use dihedral() (v * R).  Snippet C uses rotate() (m * v).
+//    Do NOT mix the two conventions in the same loop.
+//
+// 2. NEAR-ANTIPODAL NORMALS (sharp crease, N·N' ≈ -1):
+//    dihedral() is undefined.  Guard:
+//       if (dot(N_nb, N_curr) < -0.999) { ... use fallback axis ... }
+//
+// 3. CLOSED CURVE HOLONOMY:
+//    A frame propagated around a closed loop accumulates a rotation = integral
+//    of enclosed Gaussian curvature. Use torsion correction (Snippet A) to
+//    distribute this gap uniformly if the frame must match at the seam.
+//
+// 4. ALWAYS RE-PROJECT after each dihedral step to prevent normal-component
+//    accumulation across many steps.
+//
+// 5. SEED NORMAL PARALLEL TO TANGENT: on vertical lines and circles, the
+//    default seed (cross(T, world_up)) is degenerate. Check and warn, or
+//    require user to set N_override.
