@@ -6,6 +6,30 @@ Format: `## [YYYY-MM-DD] <operation> | <title>`
 
 ---
 
+## [2026-04-16] ingest | Biomechanical Face Model Architecture Design
+
+New source: `raw/assets/face model architecture.pdf` — 7-page design conversation log for the wiki's own face model project.
+
+- Created `wiki/concepts/biomechanical-face-model-architecture.md`
+  - Architecture: PCA identity encoding (64-dim) + expression encoding (muscle stretch ratios + jaw SE(3), 47-dim) → MLP trunk (111→2048, LayerNorm+GELU) → Conv upsample in UV space → vertex deltas
+  - Design decisions table, loss functions (vertex L1 + Laplacian + neutral anchor + optional disentanglement), HDF5 data format, project structure, next steps
+- Updated `wiki/index.md`
+- Updated `wiki/log.md`
+
+## [2026-04-16] ingest | MIRRORED-Anims + Latent Generative Modelling
+
+New sources from raw/assets/:
+
+**MIRRORED-Anims** (`raw/assets/MIRRORED-Anims_...md`):
+- Created `wiki/papers/mirrored-anims-2025-rig-retargeting.md`
+- Updated `wiki/concepts/rig-inversion.md` — added analytic template inversion variant and key paper entry
+- Updated `wiki/papers/holden-2015-inverse-rig.md` — added MIRRORED-Anims cross-link and Filmakademie student implementation note
+
+**Generative Modelling in Latent Space** (Dieleman 2025 blog, `raw/assets/Generative modelling in latent space.md`):
+- Created `wiki/concepts/latent-generative-modelling.md` — covers two-stage recipe, TSR, KL regularisation, VQGAN lineage, latent diffusion, relevance to neural face models
+
+Both pages added to `wiki/index.md`.
+
 ## [2026-04-16] research | OpenXR ↔ ARKit blend shape relationship
 
 Researched OpenXR face tracking extensions and their relationship to ARKit blend shape coefficients. Sources consulted: Khronos OpenXR Registry, Meta developer docs, Apple developer docs, Unity ARKit/AndroidXR packages, VRCFaceTracking Unified Expressions, Melinda Ozel ARKit-FACS mapping.

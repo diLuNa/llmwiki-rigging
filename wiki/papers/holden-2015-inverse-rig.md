@@ -40,6 +40,10 @@ Optional refinement: after the network prediction, a Newton step using finite-di
 - [[papers/holden-2017-inverse-rig-tvcg]] — extended journal version; adds GPR, super-sampling, larger evaluation
 - [[papers/gustafson-2020-inverse-rig]] — Pixar's follow-up; analytic Jacobian approach eliminates need for training data
 - [[papers/marquis-bolduc-2022-differentiable-rig]] — SIGGRAPH Asia 2022; directly addresses non-injectivity via mesh loss on differentiable rig approximation; 3–4× lower error
+- [[papers/mirrored-anims-2025-rig-retargeting]] — analytic template rig inversion for retargeting; cites Holden as foundational prior work
 - [[papers/hahn-2012-rig-space-physics]] — rig Jacobian used in physics projection
 - [[concepts/rig-inversion]]
 - [[authors/holden-daniel]]
+
+## External Implementation
+Filmakademie Baden-Württemberg student project (Technical Directing course, 2023) implemented the IRM tool in Maya using PyTorch GPR, following this paper's approach. Video: https://www.youtube.com/watch?v=N5rSmC9WJlQ (source: `raw/assets/Inverse Rig Mapping - Technical Directing - Animationsinstitut Filmakademie BW.md`)

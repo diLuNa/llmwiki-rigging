@@ -89,7 +89,9 @@
       "WebFetch(domain:melindaozel.com)",
       "WebFetch(domain:arkit-face-blendshapes.com)",
       "WebFetch(domain:docs.unity3d.com)",
-      "WebFetch(domain:docs.hai-vr.dev)"
+      "WebFetch(domain:docs.hai-vr.dev)",
+      "Bash(pdftotext \"/Users/lucaprasso/Research/LLM_Wiki/rigging-wiki/raw/assets/face model architecture.pdf\" -)",
+      "Bash(grep -v \"^[^a-zA-Z]*$\")"
     ]
   }
 }

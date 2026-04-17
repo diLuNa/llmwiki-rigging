@@ -220,6 +220,7 @@ Master catalog of all pages. Updated on every ingest.
 | [[papers/ma-2025-riganyface]] | RigAnyFace: Scaling Neural Facial Mesh Auto-Rigging with Unlabeled Data | NeurIPS 2025 | `auto-rigging` `facial-animation` `blendshapes` `facs` `neural` |
 | [[papers/cha-2025-neural-face-skinning]] | Neural Face Skinning for Mesh-agnostic Facial Expression Cloning | arXiv 2025 | `facial-animation` `skinning` `neural` `blendshapes` |
 | [[papers/hoffman-2024-insideout2-rig]] | Pixar's Inside Out 2: Character Rig Challenges and Techniques | SIGGRAPH Talks 2024 | `rig-generation` `blendshapes` `correctives` `digital-human` |
+| [[papers/mirrored-anims-2025-rig-retargeting]] | MIRRORED-Anims: Motion Inversion for Rig-space Retargeting | ACM MIG 2025 | `rig-generation` `motion-retargeting` `inverse-rig` `skinning` `lbs` |
 
 ## Concepts
 
@@ -259,6 +260,8 @@ Master catalog of all pages. Updated on every ingest.
 | [[concepts/muscles]] | Muscle systems as rig controls (facial/body) and soft tissue FEM simulation |
 | [[concepts/simulation]] | Physical simulation for character deformation: FEM, projective dynamics, rig-space physics, ML surrogates, cloth, facial |
 | [[concepts/motion-synthesis]] | Automated character motion generation: physics-based (AMP), data-driven, neural generative, retargeting, crowd |
+| [[concepts/latent-generative-modelling]] | Two-stage generative modelling in latent space: autoencoder design (capacity, curation, shape), VQ-VAE lineage, latent diffusion, relevance to neural face models |
+| [[concepts/biomechanical-face-model-architecture]] | Design doc: neural face deformation model driven by muscle stretch ratios + jaw SE(3); MLP trunk + UV-space Conv upsample; ~12M params; identity PCA + expression encoding |
 
 ---
 

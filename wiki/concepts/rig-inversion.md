@@ -20,6 +20,7 @@ where $f: \text{rig params} \to \text{skeleton/mesh}$ is the rig's forward evalu
 - **Analytic Jacobian learning** [[papers/gustafson-2020-inverse-rig]]: offline classification of rig parameters into analytic operators (RotationOp, TranslationOp, ForearmTwistOp); enables exact Jacobian at near-zero runtime cost. Best when rig operators are linear-in-angle. ~5000× speedup.
 - **Neural direct inverse mapping** [[papers/holden-2015-inverse-rig]] [[papers/holden-2017-inverse-rig-tvcg]]: train MLP or GPR to map joint positions → rig parameters. No Jacobian needed; fast at runtime; requires artist animation data; degrades out-of-distribution.
 - **Differentiable rig approximation + mesh loss** [[papers/marquis-bolduc-2022-differentiable-rig]]: train a differentiable MLP to approximate the rig function, then train the inverse model with a vertex-space loss through the frozen rig approximation. Handles non-injective and non-surjective rigs; no artist-posed training data needed; best for large black-box facial rigs.
+- **Analytic template inversion** [[papers/mirrored-anims-2025-rig-retargeting]]: all characters use the same Blender control rig template, so inversion is solved analytically (SVD heel placement, IK endpoint solving, case-disjunction for foot roll, spine rotation distribution). Avg. error 6 mm; used as part of the MIRRORED-Anims motion retargeting pipeline.
 
 ### Blendshape rig inversion (mesh → blendshape weights)
 - **Per-frame least-squares**: minimize ‖B w - (v_target - v₀)‖² s.t. 0 ≤ w ≤ 1. Closed-form for linear blendshapes via NNLS. Baseline for all blendshape inversion work.
@@ -37,6 +38,7 @@ where $f: \text{rig params} \to \text{skeleton/mesh}$ is the rig's forward evalu
 - [[papers/rackovic-2023-accurate-interpretable-inverse-rig]] — SQP/MM solvers for quadratic correctives; up to 45% RMSE improvement (arXiv 2023)
 - [[papers/rackovic-2023-distributed-rig-inversion]] — ADMM clustered distributed inversion (SIGGRAPH Asia 2023 Technical Communications)
 - [[papers/an-2024-refined-inverse-rigging]] — Quartic Smooth: joint temporal + sparsity + accuracy optimization (SIGGRAPH Asia 2024)
+- [[papers/mirrored-anims-2025-rig-retargeting]] — analytic rig inversion for template control rig; part of open-source motion retargeting pipeline; avg. joint error 6 mm (MIG 2025)
 
 ## See Also
 - [[techniques/inverse-rig-mapping]] — implementation guide with Python + VEX; arm/forearm CompoundOp example
