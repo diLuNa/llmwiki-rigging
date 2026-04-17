@@ -45,5 +45,8 @@ Optional refinement: after the network prediction, a Newton step using finite-di
 - [[concepts/rig-inversion]]
 - [[authors/holden-daniel]]
 
-## External Implementation
-Filmakademie Baden-Württemberg student project (Technical Directing course, 2023) implemented the IRM tool in Maya using PyTorch GPR, following this paper's approach. Video: https://www.youtube.com/watch?v=N5rSmC9WJlQ (source: `raw/assets/Inverse Rig Mapping - Technical Directing - Animationsinstitut Filmakademie BW.md`)
+## External References
+- Author page + blog post: https://theorangeduck.com/page/learning-inverse-rig-mapping-character-animation — Daniel Holden's description with abstract, slides, and video. Source: `raw/assets/Learning an Inverse Rig Mapping for Character Animation.md`
+- Paper PDF (author-hosted): http://theorangeduck.com/media/uploads/rigmapping.pdf
+- Presentation video: https://www.youtube.com/watch?v=P4-0esMIvuo (SCA 2015 talk)
+- Filmakademie Baden-Württemberg student project (Technical Directing course, 2023): Maya+PyTorch GPR implementation following this paper. Video: https://www.youtube.com/watch?v=N5rSmC9WJlQ (source: `raw/assets/Inverse Rig Mapping - Technical Directing - Animationsinstitut Filmakademie BW.md`)

@@ -4,6 +4,7 @@ authors: [Unknown; see project page mirrored-anims.github.io]
 venue: ACM SIGGRAPH Conference on Motion, Interaction, and Games (MIG) 2025
 year: 2025
 tags: [rig-generation, motion-retargeting, inverse-rig, skinning, lbs]
+doi: 10.1145/3769047.3769064
 source: raw/assets/MIRRORED-Anims_ Motion Inversion for Rig-space Retargeting to Obtain a Reliable Enlarged Dataset of Character Animations _ Proceedings of the 2025 18th ACM SIGGRAPH Conference on Motion, Interaction, and Games.md
 ---
 

@@ -932,3 +932,25 @@ Ingested three raw PDFs added to `raw/papers/`, all in the rig-inversion family:
 - PyGeM: https://github.com/mathLab/PyGeM — Python FFD library (B-spline + RBF + IDW)
 - FFD.jl: https://github.com/OptimalDesignLab/FFD.jl — Julia B-spline FFD
 - DeformNet project: https://deformnet-site.github.io/DeformNet-website/
+
+## [2026-04-17] sweep | Raw assets consolidation (7 md files in raw/assets/)
+
+Reviewed all 7 markdown files in `raw/assets/`. All were ingested in prior sessions. Applied 3 targeted gap-fills:
+
+**`papers/marquis-bolduc-2022-differentiable-rig.md`** — added External References section:
+- EA SEED YouTube talk https://www.youtube.com/watch?v=sYCz9LGIkuI (source: `raw/assets/Using a Differentiable Function for Rig Inversion.md`)
+- Author-hosted paper PDF https://www.ea.com/seed/news/seed-rig-inversion-differentiable-rig-function
+
+**`papers/holden-2015-inverse-rig.md`** — expanded External Implementation to External References:
+- Daniel Holden's blog https://theorangeduck.com/page/learning-inverse-rig-mapping-character-animation (source: `raw/assets/Learning an Inverse Rig Mapping for Character Animation.md`)
+- Author-hosted PDF http://theorangeduck.com/media/uploads/rigmapping.pdf
+- SCA 2015 video https://www.youtube.com/watch?v=P4-0esMIvuo
+
+**`papers/mirrored-anims-2025-rig-retargeting.md`** — added `doi: 10.1145/3769047.3769064` to frontmatter (from ACM DL source `raw/assets/MIRRORED-Anims_...md`)
+
+Files already fully ingested in prior sessions:
+- `raw/assets/Refined Inverse Rigging...md` → `papers/an-2024-refined-inverse-rigging.md` (2026-04-14)
+- `raw/assets/MIRRORED-Anims_...md` → `papers/mirrored-anims-2025-rig-retargeting.md` (2026-04-16)
+- `raw/assets/XrFaceExpression2FB.md` → `concepts/openxr-face-tracking.md` (2026-04-16)
+- `raw/assets/Generative modelling in latent space.md` → `concepts/latent-generative-modelling.md` (2026-04-16)
+- `raw/assets/Inverse Rig Mapping - Technical Directing...md` → noted in `papers/holden-2015-inverse-rig.md` (2026-04-16)

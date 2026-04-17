@@ -97,6 +97,10 @@ An encoder-shaped inverse model produces naturally smooth parameter trajectories
 - The mesh loss indirectly handles the parameter importance weighting problem: meshes are typically denser in perceptually critical regions (face center, lips, eyes), so errors in parameters that drive those regions receive higher gradient signal.
 - The method works on non-blendshape rigs too (the authors show a full-body skeleton rig qualitatively in Fig. 4) — any rig whose output can be evaluated and compared in a vertex-distance metric is compatible.
 
+## External References
+- Video presentation (SIGGRAPH Asia 2022): https://www.youtube.com/watch?v=sYCz9LGIkuI — EA SEED official talk; includes 4D facial capture retargeting demo and non-blendshape body rig qualitative result. Source: `raw/assets/Using a Differentiable Function for Rig Inversion.md`
+- Paper download: https://www.ea.com/seed/news/seed-rig-inversion-differentiable-rig-function
+
 ## Quotes
 > "We propose to train the deep learning model inverting the rig function by replacing the loss on the output rig parameter vector r by a loss on the mesh L(L̂⁻¹(x)) resulting from the rig parameter vector L⁻¹ when evaluated by the rig function L." (§3.2)
 
