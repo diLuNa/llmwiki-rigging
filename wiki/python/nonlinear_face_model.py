@@ -275,6 +275,8 @@ class NonlinearFaceModel(nn.Module):
         super().__init__()
         self.identity_encoder = IdentityEncoder(n_verts, latent_dim, hidden)
 
+        self.n_muscles = n_muscles  # stored for neutral_anchor_loss
+
         if decoder == "uvconv":
             assert uv_coords is not None, "uv_coords required for UVConvDecoder"
             self.decoder = UVConvDecoder(latent_dim, n_muscles, n_verts, uv_coords, hidden)
@@ -329,15 +331,8 @@ def neutral_anchor_loss(
     Prevents the network from encoding expression information in z_id.
     """
     B = neutral_flat.shape[0]
-    zero_jaw     = torch.zeros(B, 9,  device=device)
-    zero_muscles = torch.zeros(B, model.decoder.n_verts if hasattr(model.decoder, 'n_verts') else 1, device=device)
-    # Get muscle dim from model
-    if isinstance(model.decoder, MLPDecoder):
-        M = model.decoder.net[0].in_features - model.identity_encoder.enc[-1].out_features - 9
-    else:
-        M = model.decoder.trunk[0].in_features - model.identity_encoder.enc[-1].out_features - 9
-    zero_muscles = torch.zeros(B, M, device=device)
-
+    zero_jaw     = torch.zeros(B, 9,            device=device)
+    zero_muscles = torch.zeros(B, model.n_muscles, device=device)
     with torch.no_grad():
         z_id = model.encode_identity(neutral_flat)
     delta_at_neutral = model.decode(z_id, zero_jaw, zero_muscles)
@@ -687,7 +682,9 @@ if __name__ == "__main__":
     import warnings; warnings.filterwarnings("ignore")
 
     rng  = np.random.default_rng(0)
-    N, V, M = 8_000, 5023, 11  # poses, verts, muscles
+    N_MUSCLES_RAW = 11
+    N_SEGMENTS    = 3
+    N, V, M = 8_000, 5023, N_MUSCLES_RAW * N_SEGMENTS  # 33 muscle features (11 muscles × 3 segments)
     DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
     print(f"Device: {DEVICE}")
 
@@ -746,8 +743,11 @@ if __name__ == "__main__":
     from scipy.spatial.transform import Rotation as R_
     jaw_R = R_.from_euler("xyz", [0.05, 0.02, 0.0]).as_matrix()
     jaw_t = np.array([0.0, -0.5, 0.1], dtype=np.float32)
-    test_muscles = np.zeros(M, dtype=np.float32)
-    test_muscles[0] = 0.85   # zygomaticus_major_L contracted (smile)
+    test_muscles = np.ones(M, dtype=np.float32)   # all segments at rest ratio
+    # zygomaticus_major_L: segments 0,1,2 → indices 0,1,2
+    test_muscles[0] = 0.82   # origin segment — contracted (smile)
+    test_muscles[1] = 0.80   # belly segment  — most contracted
+    test_muscles[2] = 0.85   # insertion segment — slightly less
 
     posed = synthesize(
         neutral_verts, jaw_R, jaw_t, test_muscles,

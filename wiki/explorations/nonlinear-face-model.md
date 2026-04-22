@@ -27,8 +27,8 @@ neutral_mesh (V,3)
     ▼ IdentityEncoder
 z_id (64-dim)  ──────────────────┐
                                   │
-jaw SE(3):   [R_6d (6) | t (3)]  ├─► concat (64+9+M) ──► MLPDecoder ──► delta_verts (V,3)
-muscle_ratios:  (M,) zero-mean   ┘
+jaw SE(3):   [R_6d (6) | t (3)]  ├─► concat (64+9+M×S) ──► MLPDecoder ──► delta_verts (V,3)
+muscle_segs: (M×S,) zero-mean   ┘   S=3 segments per muscle (origin/belly/insertion)
                                   │
                                   ▼
                    posed_verts = neutral_verts + delta_verts
@@ -65,14 +65,18 @@ def rotation_from_6d(x):         # (6,) → (3,3) — Gram-Schmidt
 
 Final jaw input: `[R_6d (6) | t / skull_scale (3)]` → 9-dim vector. Jaw translation is normalized by per-subject skull scale for cross-subject comparability.
 
-### Muscle Ratios
+### Muscle Segment Ratios
 
-Each muscle is a scalar: `len_posed / len_neutral`. Active (contracted) muscles have `ratio < 1`; passive stretch gives `ratio > 1`. Normalization: zero-mean across all 100k training poses per muscle dimension.
+Each muscle contributes **3 segment ratios** (origin / belly / insertion) rather than a single global ratio. The curve is resampled to uniform arc length before segmenting, so each segment covers an equal fraction of the rest-pose muscle length regardless of how many raw control points exist.
+
+Feature layout: `[m0_seg0, m0_seg1, m0_seg2, m1_seg0, ..., mM_seg2]` → **(M × 3,)**. For 11 muscles: 33 muscle features total.
+
+Active (contracted) muscles have `ratio < 1`; passive stretch gives `ratio > 1`. The belly segment (seg1) shows the largest signal during peak activation. Normalization: zero-mean per feature dimension across all training poses.
 
 ### MLP Decoder
 
 ```
-in_dim = 64 + 9 + M
+in_dim = 64 + 9 + M*3   # M muscles × 3 segments
 
 Linear(in_dim → 512) → LayerNorm → GELU
 Linear(512 → 512)    → LayerNorm → GELU

@@ -57,35 +57,48 @@ def jaw_se3_to_vec(R: np.ndarray, t: np.ndarray) -> np.ndarray:
     return np.concatenate([q, t])           # (7,)
 ```
 
-### Step 2 — Muscle Stretch Ratio Extraction
+### Step 2 — Muscle Segment Feature Extraction
 
-Each muscle is a polyline: a sequence of 3D points from origin to insertion, passing through any intermediate control points. The stretch ratio = `current_length / rest_length`.
+Each muscle curve is resampled to uniform arc length and divided into **3 segments** (origin / belly / insertion). Each segment yields an independent stretch ratio, capturing where along the muscle the deformation is concentrated — the belly contracts most during peak activation, while origin and insertion segments show more passive stretch from neighbouring tissue.
 
 ```python
-def polyline_length(points: np.ndarray) -> float:
-    """Arc length of a polyline (N, 3)."""
-    return float(np.sum(np.linalg.norm(np.diff(points, axis=0), axis=1)))
+N_SEGMENTS = 3   # origin / belly / insertion
 
-def muscle_stretch_ratio(
+def resample_uniform(points: np.ndarray, n_samples: int) -> np.ndarray:
+    """Resample a polyline to n_samples uniformly spaced by arc length."""
+    diffs = np.diff(points, axis=0)
+    cum = np.concatenate([[0.0], np.cumsum(np.linalg.norm(diffs, axis=1))])
+    total = cum[-1]
+    if total < 1e-8:
+        return np.tile(points[0], (n_samples, 1))
+    t = np.linspace(0.0, total, n_samples)
+    return np.stack([np.interp(t, cum, points[:, ax]) for ax in range(3)], axis=1)
+
+def muscle_segment_ratios(
     posed_verts: np.ndarray,
     neutral_verts: np.ndarray,
     attachment_indices: list[np.ndarray],
-) -> float:
+    n_segments: int = N_SEGMENTS,
+) -> np.ndarray:
     """
-    attachment_indices: list of vertex index arrays, one per control point
-    (origin, [via points], insertion). Each array is averaged to a centroid.
+    Returns (n_segments,) stretch ratio per segment.
+    ratio > 1 = stretched, ratio < 1 = contracted.
     """
-    def sample_point(verts, idx_arr):
-        return verts[idx_arr].mean(0)
+    def centroid(verts, idx): return verts[idx].mean(0)
+    posed_pts   = np.stack([centroid(posed_verts,   i) for i in attachment_indices])
+    neutral_pts = np.stack([centroid(neutral_verts, i) for i in attachment_indices])
 
-    posed_pts = np.stack([sample_point(posed_verts, idx) for idx in attachment_indices])
-    neutral_pts = np.stack([sample_point(neutral_verts, idx) for idx in attachment_indices])
+    posed_r   = resample_uniform(posed_pts,   n_segments + 1)
+    neutral_r = resample_uniform(neutral_pts, n_segments + 1)
 
-    rest_len = polyline_length(neutral_pts)
-    if rest_len < 1e-8:
-        return 1.0
-    return polyline_length(posed_pts) / rest_len
+    return np.array([
+        np.linalg.norm(posed_r[i+1] - posed_r[i]) /
+        max(np.linalg.norm(neutral_r[i+1] - neutral_r[i]), 1e-8)
+        for i in range(n_segments)
+    ], dtype=np.float32)
 ```
+
+Feature layout per muscle: `[seg0_ratio, seg1_ratio, seg2_ratio]` (origin → belly → insertion). Total muscle feature vector: **(M × 3,)** — 11 muscles → 33 features.
 
 ### Step 3 — Batch Extraction
 
@@ -95,14 +108,16 @@ def extract_biomechanical_signals(
     pca_basis: np.ndarray,          # (382, V*3)
     mean_face: np.ndarray,          # (V*3,)
     jaw_mask: np.ndarray,           # mandible vertex indices
-    muscle_attachments: list[list[np.ndarray]],  # per muscle: list of attachment index arrays
+    muscle_attachments: dict,       # name → list of attachment index arrays
+    n_segments: int = 3,
     batch_size: int = 2000,
-) -> tuple[np.ndarray, np.ndarray]:
+) -> tuple[np.ndarray, np.ndarray, list[str]]:
     """
     Returns
     -------
-    jaw_vecs    : (N, 7)   jaw SE(3) as [quat | trans] per pose
-    muscle_ratios: (N, M)  stretch ratio per muscle per pose
+    jaw_vecs       : (N, 7)          jaw SE(3) as [quat | trans] per pose
+    muscle_features: (N, M*3)        3 segment ratios per muscle
+    feature_names  : list[str]       e.g. ['zygomaticus_major_L_seg0', ...]
     """
     from scipy.spatial.transform import Rotation
 

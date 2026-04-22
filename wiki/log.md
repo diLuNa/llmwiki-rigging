@@ -6,6 +6,11 @@ Format: `## [YYYY-MM-DD] <operation> | <title>`
 
 ---
 
+## [2026-04-22] update | Switch to 3-segment muscle features
+- `jaw_muscle_synthesis.py`: replaced scalar `muscle_stretch_ratio` with `resample_uniform` + `muscle_segment_ratios`; `N_SEGMENTS=3` constant; `extract_biomechanical_signals` returns (N, M*3) + segment feature names
+- `nonlinear_face_model.py`: demo updated to M=11×3=33; `neutral_anchor_loss` simplified using `model.n_muscles`; `NonlinearFaceModel` stores `n_muscles` attribute
+- Both exploration pages updated: architecture diagrams, input dim notes, muscle section rewritten
+
 ## [2026-04-22] exploration | Nonlinear face model — moving beyond PCA
 - Created `wiki/explorations/nonlinear-face-model.md`
 - Created `wiki/python/nonlinear_face_model.py`

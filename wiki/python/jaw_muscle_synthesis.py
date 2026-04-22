@@ -18,6 +18,11 @@ mean_face         : (V*3,)     flattened mean face vertices
 jaw_mask          : (K,)       vertex indices covering the mandible/jaw bone
 muscle_attachments: list of lists of np.ndarray — per muscle: list of vertex-index arrays
                     (one array per control point along the polyline; averaged to centroid)
+
+Each muscle produces N_SEGMENTS (3) stretch ratios rather than a single global ratio,
+capturing origin / belly / insertion variation independently.
+Feature layout per muscle: [seg0_ratio, seg1_ratio, seg2_ratio]
+Total muscle feature vector: (M * N_SEGMENTS,)
 """
 
 import numpy as np
@@ -90,33 +95,68 @@ def jaw_se3_to_vec(R: np.ndarray, t: np.ndarray) -> np.ndarray:
 
 
 # ---------------------------------------------------------------------------
-# Muscle stretch ratio
+# Muscle segment features
 # ---------------------------------------------------------------------------
+
+N_SEGMENTS = 3   # origin / belly / insertion
+
 
 def polyline_length(points: np.ndarray) -> float:
     return float(np.sum(np.linalg.norm(np.diff(points, axis=0), axis=1)))
 
 
-def muscle_stretch_ratio(
+def resample_uniform(points: np.ndarray, n_samples: int) -> np.ndarray:
+    """
+    Resample a polyline to n_samples points uniformly spaced by arc length.
+    points: (K, 3)  — original control points (K ≥ 2)
+    Returns (n_samples, 3).
+    """
+    diffs = np.diff(points, axis=0)
+    seg_len = np.linalg.norm(diffs, axis=1)
+    cum = np.concatenate([[0.0], np.cumsum(seg_len)])
+    total = cum[-1]
+    if total < 1e-8:
+        return np.tile(points[0], (n_samples, 1))
+    t = np.linspace(0.0, total, n_samples)
+    return np.stack([np.interp(t, cum, points[:, ax]) for ax in range(3)], axis=1)
+
+
+def muscle_segment_ratios(
     posed_verts: np.ndarray,
     neutral_verts: np.ndarray,
     attachment_indices: list,
-) -> float:
+    n_segments: int = N_SEGMENTS,
+) -> np.ndarray:
     """
-    Stretch ratio = current_length / rest_length.
-    attachment_indices: list of vertex index arrays (one per control point).
+    Stretch ratio per segment along the muscle curve.
+
+    attachment_indices: list of vertex index arrays, one per control point
+                        (origin, [via points], insertion). Each array averaged to a centroid.
+    Returns (n_segments,) — ratio > 1 = stretched, ratio < 1 = contracted.
+
+    The curve is resampled to n_segments+1 nodes by arc length before measuring,
+    so each segment covers an equal fraction of the rest-pose muscle length
+    regardless of how many raw control points are provided.
     """
-    def centroid(verts, idx):
-        return verts[idx].mean(0)
+    def centroid(verts, idx): return verts[idx].mean(0)
 
     posed_pts   = np.stack([centroid(posed_verts,   i) for i in attachment_indices])
     neutral_pts = np.stack([centroid(neutral_verts, i) for i in attachment_indices])
-    rest = polyline_length(neutral_pts)
-    return polyline_length(posed_pts) / rest if rest > 1e-8 else 1.0
+
+    n_nodes = n_segments + 1
+    posed_r   = resample_uniform(posed_pts,   n_nodes)
+    neutral_r = resample_uniform(neutral_pts, n_nodes)
+
+    ratios = np.empty(n_segments, dtype=np.float32)
+    for i in range(n_segments):
+        l_posed   = np.linalg.norm(posed_r[i+1]   - posed_r[i])
+        l_neutral = np.linalg.norm(neutral_r[i+1] - neutral_r[i])
+        ratios[i] = l_posed / l_neutral if l_neutral > 1e-8 else 1.0
+    return ratios
 
 
 # ---------------------------------------------------------------------------
-# Batch extraction: (N, 382) → (N, 7) jaw vecs + (N, M) muscle ratios
+# Batch extraction: (N, 382) → (N, 7) jaw vecs + (N, M*N_SEGMENTS) muscle features
 # ---------------------------------------------------------------------------
 
 def extract_biomechanical_signals(
@@ -125,14 +165,16 @@ def extract_biomechanical_signals(
     mean_face: np.ndarray,
     jaw_mask: np.ndarray | None = None,
     muscle_attachments: dict | None = None,
+    n_segments: int = N_SEGMENTS,
     batch_size: int = 2000,
 ) -> tuple[np.ndarray, np.ndarray, list[str]]:
     """
     Returns
     -------
-    jaw_vecs      : (N, 7)   per-pose jaw SE(3) flat vector
-    muscle_ratios : (N, M)   per-pose stretch ratio for each muscle
-    muscle_names  : list[str]
+    jaw_vecs       : (N, 7)           per-pose jaw SE(3) flat vector
+    muscle_features: (N, M*n_segments) per-pose segment ratios, layout:
+                     [m0_seg0, m0_seg1, m0_seg2, m1_seg0, ..., mM_seg(S-1)]
+    feature_names  : list[str]        e.g. ['zygomaticus_major_L_seg0', ...]
     """
     if jaw_mask is None:
         jaw_mask = FLAME_JAW_MASK
@@ -144,9 +186,10 @@ def extract_biomechanical_signals(
     neutral = mean_face.reshape(V, 3)
     muscle_names = list(muscle_attachments.keys())
     M = len(muscle_names)
+    F = M * n_segments
 
-    jaw_vecs = np.empty((N, 7),  dtype=np.float32)
-    muscle_ratios = np.empty((N, M), dtype=np.float32)
+    jaw_vecs        = np.empty((N, 7), dtype=np.float32)
+    muscle_features = np.empty((N, F), dtype=np.float32)
 
     for start in range(0, N, batch_size):
         end = min(start + batch_size, N)
@@ -157,13 +200,18 @@ def extract_biomechanical_signals(
             R, t = extract_jaw_se3(verts, neutral, jaw_mask)
             jaw_vecs[start + bi] = jaw_se3_to_vec(R, t)
             for mi, name in enumerate(muscle_names):
-                att = muscle_attachments[name]
-                muscle_ratios[start + bi, mi] = muscle_stretch_ratio(verts, neutral, att)
+                segs = muscle_segment_ratios(verts, neutral, muscle_attachments[name], n_segments)
+                muscle_features[start + bi, mi * n_segments:(mi + 1) * n_segments] = segs
 
         if start % (batch_size * 10) == 0:
             print(f"  extracted {end:>7,} / {N:,}")
 
-    return jaw_vecs, muscle_ratios, muscle_names
+    feature_names = [
+        f"{name}_seg{s}"
+        for name in muscle_names
+        for s in range(n_segments)
+    ]
+    return jaw_vecs, muscle_features, feature_names
 
 
 # ---------------------------------------------------------------------------
@@ -322,28 +370,28 @@ if _TORCH:
 
 def muscle_expression_correlation(
     jaw_vecs: np.ndarray,
-    muscle_ratios: np.ndarray,
+    muscle_features: np.ndarray,
     expression_params: np.ndarray,
-    muscle_names: list[str],
+    feature_names: list[str],
     top_n: int = 5,
 ):
     """
-    Pearson correlation between each muscle stretch ratio and each expression PCA component.
-    Prints the top-n expression components most correlated with each muscle.
-    Returns corr_matrix: (M+7, 382).
+    Pearson correlation between each jaw/muscle feature and each expression PCA component.
+    feature_names should come from extract_biomechanical_signals() — includes segment suffixes.
+    Prints the top-n PCA components most correlated with each feature.
+    Returns corr_matrix: (7 + M*S, 382).
     """
-    X = np.concatenate([jaw_vecs, muscle_ratios], axis=1).astype(np.float64)
+    X = np.concatenate([jaw_vecs, muscle_features], axis=1).astype(np.float64)
     Y = expression_params.astype(np.float64)
-    # Normalize
     Xn = (X - X.mean(0)) / (X.std(0) + 1e-8)
     Yn = (Y - Y.mean(0)) / (Y.std(0) + 1e-8)
-    corr = (Xn.T @ Yn) / len(X)  # (7+M, 382)
+    corr = (Xn.T @ Yn) / len(X)
 
-    feature_names = [f"jaw_{i}" for i in range(7)] + muscle_names
-    for fi, fname in enumerate(feature_names):
+    all_names = [f"jaw_{i}" for i in range(7)] + feature_names
+    for fi, fname in enumerate(all_names):
         top_idx = np.argsort(np.abs(corr[fi]))[::-1][:top_n]
         top_r   = corr[fi][top_idx]
-        print(f"{fname:30s}  →  PCA {list(top_idx)}  r={[f'{r:.3f}' for r in top_r]}")
+        print(f"{fname:40s}  →  PCA {list(top_idx)}  r={[f'{r:.3f}' for r in top_r]}")
 
     return corr
 
@@ -361,32 +409,34 @@ if __name__ == "__main__":
     pca_basis = rng.standard_normal((D_expr, V * 3)).astype(np.float32) * 0.001
     mean_face = rng.standard_normal(V * 3).astype(np.float32)
 
-    # --- Extract biomechanical signals ---
-    jaw_vecs, muscle_ratios, muscle_names = extract_biomechanical_signals(
+    # --- Extract biomechanical signals (3 segments per muscle) ---
+    jaw_vecs, muscle_feats, feat_names = extract_biomechanical_signals(
         expression_params, pca_basis, mean_face,
-        batch_size=500,
+        n_segments=N_SEGMENTS, batch_size=500,
     )
-    print(f"jaw_vecs: {jaw_vecs.shape}, muscle_ratios: {muscle_ratios.shape}")
+    # 11 muscles × 3 segments = 33 features
+    print(f"jaw_vecs: {jaw_vecs.shape}, muscle_features: {muscle_feats.shape}")
+    print(f"Feature names ({len(feat_names)}): {feat_names[:6]} ...")
 
     # --- Correlation analysis ---
-    muscle_expression_correlation(jaw_vecs, muscle_ratios, expression_params, muscle_names)
+    muscle_expression_correlation(jaw_vecs, muscle_feats, expression_params, feat_names)
 
     # --- Option A ---
-    reg, scaler_A = fit_linear(jaw_vecs, muscle_ratios, expression_params)
-    mesh_A = synthesize_linear(jaw_vecs[0], muscle_ratios[0], reg, scaler_A, pca_basis, mean_face)
+    reg, scaler_A = fit_linear(jaw_vecs, muscle_feats, expression_params)
+    mesh_A = synthesize_linear(jaw_vecs[0], muscle_feats[0], reg, scaler_A, pca_basis, mean_face)
     print(f"[A] synthesized mesh shape: {mesh_A.shape}")
 
     # --- Option B ---
-    knn, scaler_B, Xs, _ = build_knn(jaw_vecs, muscle_ratios, expression_params, k=8)
-    mesh_B = synthesize_knn(jaw_vecs[0], muscle_ratios[0], knn, scaler_B, Xs,
+    knn, scaler_B, Xs, _ = build_knn(jaw_vecs, muscle_feats, expression_params, k=8)
+    mesh_B = synthesize_knn(jaw_vecs[0], muscle_feats[0], knn, scaler_B, Xs,
                              expression_params, pca_basis, mean_face)
     print(f"[B] synthesized mesh shape: {mesh_B.shape}")
 
     # --- Option C ---
     if _TORCH:
         model, x_mean, x_std = train_mlp(
-            jaw_vecs, muscle_ratios, expression_params, pca_basis, mean_face,
+            jaw_vecs, muscle_feats, expression_params, pca_basis, mean_face,
             epochs=20, batch_size=64,
         )
-        mesh_C = synthesize_mlp(jaw_vecs[0], muscle_ratios[0], model, x_mean, x_std, mean_face)
+        mesh_C = synthesize_mlp(jaw_vecs[0], muscle_feats[0], model, x_mean, x_std, mean_face)
         print(f"[C] synthesized mesh shape: {mesh_C.shape}")
