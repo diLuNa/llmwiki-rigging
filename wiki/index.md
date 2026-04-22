@@ -89,6 +89,7 @@ Master catalog of all pages. Updated on every ingest.
 | [[papers/danecek-2022-emoca]] | EMOCA: Emotion Driven Monocular Face Capture and Animation | CVPR 2022 | `neural` `digital-human` `blendshapes` `facial-capture` |
 | [[papers/ding-2023-diffusionrig]] | DiffusionRig: Learning Personalized Priors for Facial Appearance Editing | CVPR 2023 | `neural` `digital-human` `blendshapes` `appearance` |
 | [[papers/giebenhain-2023-nphm]] | Learning Neural Parametric Head Models | CVPR 2023 | `neural` `digital-human` `blendshapes` `implicit-surfaces` |
+| [[papers/kocasari-2026-face-anything]] | Face Anything: 4D Face Reconstruction from Any Image Sequence | arXiv 2026 | `neural` `digital-human` `facial-capture` `4d-reconstruction` `depth-estimation` `canonical-maps` |
 | [[papers/giebenhain-2024-npga]] | NPGA: Neural Parametric Gaussian Avatars | SIGGRAPH Asia 2024 | `neural` `digital-human` `blendshapes` `appearance` |
 | [[papers/hong-2022-headnerf]] | HeadNeRF: A Real-time NeRF-based Parametric Head Model | CVPR 2022 | `neural` `digital-human` `blendshapes` `appearance` |
 | [[papers/khakhulin-2022-rome]] | ROME: Realistic One-shot Mesh-based Head Avatars | ECCV 2022 | `neural` `digital-human` `blendshapes` `appearance` |
@@ -244,18 +245,20 @@ Master catalog of all pages. Updated on every ingest.
 | [[concepts/rig-inversion]] | Mapping skeleton poses back to rig control parameters; body rig (analytic Jacobian, neural) and blendshape rig (coordinate descent, ADMM, temporal smooth) taxonomies |
 | [[concepts/mesh-wrap]] | Topology transfer / mesh wrap between character shapes |
 | [[concepts/delta-mush]] | Smooth-then-restore deformation layer; eliminates LBS artifacts |
-| [[concepts/wrinkle-systems]] | Kinematic and tension-driven wrinkle deformation systems |
+| [[concepts/wrinkle-systems]] | Kinematic and tension-driven wrinkle deformation systems; anatomical taxonomy: dynamic (expression lines) vs static (gravity, sleep, aging) wrinkles |
 | [[concepts/digital-human-appearance]] | Skin reflectance capture, generative face textures, multi-modal maps |
 | [[concepts/hand-animation]] | Dexterous hand grasping, MANO model, RL and diffusion synthesis |
 | [[concepts/speech-driven-animation]] | Audio-driven lip/jaw/tongue animation for virtual characters |
 | [[concepts/secondary-motion]] | Hair, skin jiggle, soft-tissue lag; rig-space vs simulation vs data-driven |
 | [[concepts/auto-rigging]] | End-to-end skeleton/blendshape rig generation from mesh; neural and template-based |
 | [[concepts/mesh-graph-nets]] | GNN simulators on mesh representations; Encode-Process-Decode; cloth, soft tissue, face shape |
-| [[concepts/facs]] | Facial Action Coding System: 44 AUs, intensity scale, 7 universal expressions, CG rig mapping, ARKit/MetaHuman conventions, external AU references |
-| [[concepts/arkit-blendshapes]] | Apple ARKit 52 blend shapes: canonical names, TrueDepth pipeline, FACS mapping, Live Link Face, Unity/Unreal integration, de facto real-time standard |
+| [[concepts/facs]] | Facial Action Coding System: 44 AUs, intensity scale, 7 universal expressions, CG rig mapping; production gotchas: AU1 corrugator mistake, AU4 three-muscle split, AU10 overuse, AU23 lip cincher, dimple anatomy, frontalis variation |
+| [[concepts/arkit-blendshapes]] | Apple ARKit 52 blend shapes: canonical names, TrueDepth pipeline, FACS mapping (complete Melinda Ozel verified table with critical notes), Live Link Face, Unity/Unreal integration, de facto real-time standard |
+| [[concepts/visemes-speech]] | Visemes — visual speech shapes for lipsync: American English viseme groups, phoneme classification, FACS AU mapping, production rig counts, coarticulation (source: Melinda Ozel) |
 | [[concepts/openxr-face-tracking]] | OpenXR face tracking extensions: XR_FB_face_tracking2 (70 weights + full enum), XR_HTC (37+52 ARKit-compatible), Android XR (68 weights), audio-driven tracking, cross-platform rig strategy |
 | [[concepts/unified-expressions]] | Community interop standard mapping ARKit ↔ OpenXR ↔ SRanipal ↔ FACS; ~100 base shapes; full ARKit 52→Unified mapping table; driver support matrix |
 | [[concepts/facial-blendshape-rigs]] | Production facial rigs: FACS blendshapes, PSD correctives, muscle systems, performance capture |
+| [[concepts/flame-model]] | FLAME parametric face model: math, training, fitting pipeline, downstream ecosystem, Python implementation |
 | [[concepts/nonlinear-face-models]] | Nonlinear 3DMMs, mesh autoencoders, implicit neural faces, DiffusionRig, neural auto-rigging |
 | [[concepts/muscles]] | Muscle systems as rig controls (facial/body) and soft tissue FEM simulation |
 | [[concepts/simulation]] | Physical simulation for character deformation: FEM, projective dynamics, rig-space physics, ML surrogates, cloth, facial |
@@ -299,6 +302,7 @@ Full index with algorithm tables: [[vex/index]]
 | [[python/kelvinlet_sharp.py]] | `laplacian`, `bilaplacian`, `cusped_laplacian`, `cusped_bilaplacian`, `sharp_blend` | [[papers/degoes-2019-sharp-kelvinlets]] |
 | [[python/forearm_partial_twist.py]] | `swing_twist_decompose`, `partial_twist_xform`, `build_forearm_chain`, `relative_quaternion` | General technique |
 | [[python/rigid_body_rest.py]] | `support_function`, `potential_energy`, `convex_hull_gauss_map`, `check_face_stability`, `compute_spherical_voronoi_areas`, `resting_probabilities`, `drop_trajectory`, `inverse_design_target_probs` | [[papers/baktash-2025-resting-rigid-bodies]] |
+| [[python/flame-forward-pass.py]] | `rodrigues`, `lbs`, `flame_forward` — full FLAME forward pass: shape + pose correctives + expression + LBS | [[papers/li-2017-flame]], [[concepts/flame-model]] |
 
 ---
 
@@ -380,6 +384,8 @@ Full index with algorithm tables: [[vex/index]]
 
 | Page | Question |
 |------|----------|
+| [[queries/face-the-facs-site-report]] | Site research report: melindaozel.com FACS Study Guide — full AU inventory, premium catalog, deviations from classic FACS |
+| [[queries/melindaozel-deep-dives]] | Deep-dive notes from 12 premium articles: AU10 vs AU11, frontalis dynamics, AU23 lip cincher, blink asymmetry, AU5 anatomy, dimple cause, frontalis variation, AU1 mistakes, dynamic vs static wrinkles, AU9 context |
 | [[queries/jacobian-matrix]] | What is the Jacobian Matrix and why does it matter in character rigging? |
 | [[queries/gauss-newton-algorithm]] | What is the Gauss-Newton algorithm and when is it used in character rigging? |
 

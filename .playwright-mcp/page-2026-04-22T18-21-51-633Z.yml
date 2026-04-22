@@ -1,0 +1,604 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#content"
+  - navigation "Secondary" [ref=e3]:
+    - list [ref=e6]:
+      - listitem [ref=e7]:
+        - link "Premium Member Access" [ref=e8] [cursor=pointer]:
+          - /url: https://melindaozel.com/premium-resources/
+          - text: Premium Member Access
+          - img [ref=e10]
+        - list:
+          - listitem:
+            - link "Login":
+              - /url: https://melindaozel.com/login/
+          - listitem:
+            - link "Subscribe :)":
+              - /url: https://melindaozel.com/subscription-options/
+      - listitem [ref=e12]:
+        - link "Recorded Lecture Access" [ref=e13] [cursor=pointer]:
+          - /url: https://melindaozel.com/recorded-lectures/
+          - text: Recorded Lecture Access
+          - img [ref=e15]
+        - list:
+          - listitem:
+            - link "FACS Cram Session":
+              - /url: https://melindaozel.com/facs-cram-session/
+          - listitem:
+            - link "All About Lipsync":
+              - /url: https://melindaozel.com/all-about-lipsync-lecture-videos/
+      - listitem [ref=e17]:
+        - link "My Account" [ref=e18] [cursor=pointer]:
+          - /url: https://melindaozel.com/account/
+  - banner "Site" [ref=e19]:
+    - generic [ref=e21]:
+      - link "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e23] [cursor=pointer]:
+        - /url: https://melindaozel.com/
+        - img "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e24]
+      - paragraph [ref=e26]:
+        - link "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e27] [cursor=pointer]:
+          - /url: https://melindaozel.com/
+  - navigation "Primary" [ref=e28]:
+    - list [ref=e31]:
+      - listitem [ref=e32]:
+        - link "Learning Hub" [ref=e33] [cursor=pointer]:
+          - /url: https://melindaozel.com/learning-hub/
+          - text: Learning Hub
+          - img [ref=e35]
+        - list:
+          - listitem:
+            - link "FACS Cheat Sheet":
+              - /url: https://melindaozel.com/facs-cheat-sheet/
+          - listitem:
+            - link "Viseme Cheat Sheet":
+              - /url: https://melindaozel.com/viseme-cheat-sheet/
+          - listitem:
+            - link "All Free Resources":
+              - /url: https://melindaozel.com/free-resources/
+          - listitem:
+            - link "🔒 Premium Resources":
+              - /url: https://melindaozel.com/premium-resources/
+              - img "🔒"
+              - text: Premium Resources
+          - listitem:
+            - link "FAQs":
+              - /url: https://melindaozel.com/faqs/
+      - listitem [ref=e37]:
+        - link "Courses" [ref=e38] [cursor=pointer]:
+          - /url: https://melindaozel.com/online-lectures/
+          - text: Courses
+          - img [ref=e40]
+        - list:
+          - listitem:
+            - link "FACS Cram Session":
+              - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+          - listitem:
+            - link "All About Lipsync":
+              - /url: https://melindaozel.com/all-about-lipsync-course/
+      - listitem [ref=e42]:
+        - link "Full Site Access" [ref=e43] [cursor=pointer]:
+          - /url: https://melindaozel.com/subscription-options/
+          - text: Full Site Access
+          - img [ref=e45]
+        - list:
+          - listitem:
+            - link "Membership Options":
+              - /url: https://melindaozel.com/subscription-options/
+      - listitem [ref=e47]:
+        - link "Services" [ref=e48] [cursor=pointer]:
+          - /url: https://melindaozel.com/services/
+          - text: Services
+          - img [ref=e50]
+        - list:
+          - listitem:
+            - link "FACS Lectures & Training":
+              - /url: https://melindaozel.com/services/lectures-training/
+          - listitem:
+            - link "Consulting":
+              - /url: https://melindaozel.com/services/consulting/
+      - listitem [ref=e52]:
+        - link "About" [ref=e53] [cursor=pointer]:
+          - /url: https://melindaozel.com/who-is-melinda-ozel/
+          - text: About
+          - img [ref=e55]
+        - list:
+          - listitem:
+            - link "About Me":
+              - /url: https://melindaozel.com/who-is-melinda-ozel/
+          - listitem:
+            - link "Cite My Work":
+              - /url: https://melindaozel.com/how-to-cite-my-work-use-my-visuals/
+          - listitem:
+            - link "Contact":
+              - /url: https://melindaozel.com/who-is-melinda-ozel/contact-me/
+  - generic [ref=e58]:
+    - main [ref=e60]:
+      - article [ref=e61]:
+        - generic [ref=e62]:
+          - generic [ref=e63]:
+            - heading "Zygomaticus Major Variations & the Dimple" [level=1] [ref=e64]
+            - generic [ref=e65]:
+              - time [ref=e67]: September 7, 2020
+              - generic [ref=e68]:
+                - text: by
+                - link "Melinda Ozel" [ref=e70] [cursor=pointer]:
+                  - /url: https://melindaozel.com/author/melindaozel/
+          - generic [ref=e77]:
+            - paragraph [ref=e78]:
+              - emphasis [ref=e79]: This post is about a variant of the zygomaticus major muscle and its effects on dimples in smiling. Before getting into the details, it is necessary to clarify which interpretation of “dimple” I am referring to.
+            - heading "the dimple, the dimple – it’s not that simple." [level=2] [ref=e80]
+            - heading "FACS-fueled confusion & linguistic disillusion" [level=3] [ref=e81]
+            - paragraph [ref=e82]: "If you’re familiar with FACS (Facial Action Coding System) terms, you will know that the “dimpler” action or AU14, is caused by the contraction of the buccinator muscle. When buccinator is activated, the corners of our lips pinch inward and push against our molar teeth, as demonstrated below:"
+            - paragraph [ref=e83]:
+              - img "AU14 - dimpler - buccinator muscle" [ref=e84]
+            - paragraph [ref=e85]: Functionally, this action is important for chewing and keeping food in our mouths.
+            - paragraph [ref=e86]: Outside of FACS, the word “dimple” almost always refers to an indentation of the skin (typically near the mouth or chin) caused by genetic muscle variation. For this reason, novice FACS learners often mistake any concave skin deformation as a sign of AU14; however, such assumptions are incorrect.
+            - paragraph [ref=e87]:
+              - generic [ref=e88]:
+                - strong [ref=e90]: "NOTE:"
+                - emphasis [ref=e91]: I have been informed by FACS authorities that the next manual release will feature a re-naming of AU14 – one that is directly descriptive of the action itself. If my memory serves me well – it is to be called “lip corner pincher” – or something of that nature.
+            - heading "what everyone else means by “dimple”" [level=3] [ref=e92]
+            - paragraph [ref=e93]:
+              - text: The most frequently observed facial dimples are smile-based dimples. These dimples are thought to be caused by a variation of the zygomaticus major muscle (the muscle for AU12 –
+              - emphasis [ref=e94]: lip corner puller)
+              - text: – a variation that involves two insertion points rather than one.
+            - paragraph [ref=e95]:
+              - strong [ref=e97]: "NOTE:"
+              - emphasis [ref=e98]: The word “smile” has many interpretations. In this post, I will use “smile” when referring to the contraction of the zygomaticus major muscle.
+            - heading "bifid zygomaticus major" [level=2] [ref=e99]
+            - paragraph [ref=e100]:
+              - img "bifid zygomaticus major" [ref=e101]
+            - heading "variations on a diagram" [level=3] [ref=e102]
+            - paragraph [ref=e103]: "If you’ve ever searched for anatomical representations of zygomaticus major, you may have noticed that some diagrams look like this:"
+            - paragraph [ref=e104]:
+              - emphasis [ref=e105]:
+                - img "single insertion point zygomaticus major muscle" [ref=e106]
+                - text: (single insertion point)
+            - paragraph [ref=e107]: ". . . while others look more like this:"
+            - paragraph [ref=e108]:
+              - img "double insertion point zygomaticus major muscle" [ref=e109]
+            - paragraph [ref=e110]:
+              - emphasis [ref=e111]: (two insertion points)
+            - paragraph [ref=e112]: The latter is an example of a zygomaticus major with two insertion points – the suspected culprit behind dimpled smiles.
+            - heading "existing information on bifid zygomaticus major" [level=3] [ref=e113]
+            - paragraph [ref=e114]: "There is currently not much in-depth information on bifid zygomaticus major; however, there is one good paper that describes its potential implications very well:"
+            - paragraph [ref=e115]:
+              - strong [ref=e117]: “
+              - emphasis [ref=e118]: Clinically, the double or bifid zygomaticus major muscle may explain the formation of cheek ‘dimples.’ The inferior bundle was observed in several specimens to have a dermal attachment along its mid-portion, which tethers the overlying skin. When an individual with this anatomy smiles, traction on the skin may create a dimple due to this dermal tethering effect.
+              - strong [ref=e119]: “
+              - link "– Pessa et al." [ref=e121] [cursor=pointer]:
+                - /url: https://pubmed.ncbi.nlm.nih.gov/9725574/#:~:text=The%20anatomy%20of%20the%20double,of%2050%20hemifacial%20cadaver%20dissections.&text=The%20incidence%20of%20the%20double,17%20of%2050%20cadaver%20dissections.
+            - paragraph
+            - generic [ref=e122]:
+              - link "Embed from Getty Images" [ref=e124] [cursor=pointer]:
+                - /url: http://www.gettyimages.com/detail/871092988
+              - iframe [ref=e126]:
+                - generic [ref=f53e2]:
+                  - generic [ref=f53e3] [cursor=pointer]: ⟨
+                  - generic [ref=f53e4] [cursor=pointer]: ⟩
+                  - generic:
+                    - main [ref=f53e5]:
+                      - 'figure "see more LONDON, ENGLAND - NOVEMBER 05: Julia Roberts at the \"Wonder\" Press Conference at the Langham Hotel on November 5, 2017 in London, England.(Photo by Vera Anderson/WireImage)" [ref=f53e6] [cursor=pointer]':
+                        - list [ref=f53e7]:
+                          - listitem [ref=f53e8]:
+                            - generic "Share on Facebook" [ref=f53e9]
+                          - listitem [ref=f53e10]:
+                            - generic "Share on Twitter" [ref=f53e11]
+                          - listitem [ref=f53e12]:
+                            - generic "Share on Pinterest" [ref=f53e13]
+                        - generic [ref=f53e14]:
+                          - paragraph [ref=f53e15]:
+                            - link "see more" [ref=f53e16]:
+                              - /url: http://www.gettyimages.com/detail/871092988?et=nSXUzKihTfVdKYxvEFrPkQ&referrer=https%3A%2F%2Fmelindaozel.com%2F
+                          - paragraph [ref=f53e17]: "LONDON, ENGLAND - NOVEMBER 05: Julia Roberts at the \"Wonder\" Press Conference at the Langham Hotel on November 5, 2017 in London, England.(Photo by Vera Anderson/WireImage)"
+                        - complementary [ref=f53e18]
+                        - 'link "LONDON, ENGLAND - NOVEMBER 05: Julia Roberts at the \"Wonder\" Press Conference at the Langham Hotel on November 5, 2017 in London, England.(Photo by Vera Anderson/WireImage)" [ref=f53e19]':
+                          - /url: http://www.gettyimages.com/detail/871092988?et=nSXUzKihTfVdKYxvEFrPkQ&referrer=https%3A%2F%2Fmelindaozel.com%2F
+                          - 'img "LONDON, ENGLAND - NOVEMBER 05: Julia Roberts at the \"Wonder\" Press Conference at the Langham Hotel on November 5, 2017 in London, England.(Photo by Vera Anderson/WireImage)" [ref=f53e20]'
+                      - generic [ref=f53e21]:
+                        - img "Getty Images" [ref=f53e23]
+                        - paragraph [ref=f53e24]: WireImage | Vera Anderson
+                    - generic:
+                      - link "SHARE" [ref=f53e25] [cursor=pointer]:
+                        - /url: javascript:(0)
+                      - link [ref=f53e29] [cursor=pointer]:
+                        - /url: javascript:(0)
+                      - link "MORE IMAGES" [ref=f53e31] [cursor=pointer]:
+                        - /url: javascript:(0)
+                  - main [ref=f53e32]:
+                    - 'figure "see more LONDON, ENGLAND - NOVEMBER 05: Julia Roberts at the \"Wonder\" Press Conference at the Langham Hotel on November 5, 2017 in London, England. (Photo by Vera Anderson/WireImage)" [ref=f53e33] [cursor=pointer]':
+                      - list [ref=f53e34]:
+                        - listitem [ref=f53e35]:
+                          - generic "Share on Facebook" [ref=f53e36]
+                        - listitem [ref=f53e37]:
+                          - generic "Share on Twitter" [ref=f53e38]
+                        - listitem [ref=f53e39]:
+                          - generic "Share on Pinterest" [ref=f53e40]
+                      - generic [ref=f53e41]:
+                        - paragraph [ref=f53e42]:
+                          - link "see more" [ref=f53e43]:
+                            - /url: http://www.gettyimages.com/detail/871093072?et=nSXUzKihTfVdKYxvEFrPkQ&referrer=https%3A%2F%2Fmelindaozel.com%2F
+                        - paragraph [ref=f53e44]: "LONDON, ENGLAND - NOVEMBER 05: Julia Roberts at the \"Wonder\" Press Conference at the Langham Hotel on November 5, 2017 in London, England. (Photo by Vera Anderson/WireImage)"
+                      - complementary [ref=f53e45]
+                      - 'link "LONDON, ENGLAND - NOVEMBER 05: Julia Roberts at the \"Wonder\" Press Conference at the Langham Hotel on November 5, 2017 in London, England. (Photo by Vera Anderson/WireImage)" [ref=f53e46]':
+                        - /url: http://www.gettyimages.com/detail/871093072?et=nSXUzKihTfVdKYxvEFrPkQ&referrer=https%3A%2F%2Fmelindaozel.com%2F
+                        - 'img "LONDON, ENGLAND - NOVEMBER 05: Julia Roberts at the \"Wonder\" Press Conference at the Langham Hotel on November 5, 2017 in London, England. (Photo by Vera Anderson/WireImage)" [ref=f53e47]'
+                    - generic [ref=f53e48]:
+                      - img "Getty Images" [ref=f53e50]
+                      - paragraph [ref=f53e51]: WireImage | Vera Anderson
+            - paragraph
+            - paragraph [ref=e127]:
+              - emphasis [ref=e128]:
+                - strong [ref=e130]: ”
+                - text: There are two reports in the literature which
+              - emphasis [ref=e131]: describe the true double zygomaticus major muscle
+              - emphasis [ref=e132]: having an insertion above and below the corner of the
+              - emphasis [ref=e133]: mouth. The earliest report of this anatomical variation
+              - emphasis [ref=e134]: was in 1775 by Domenici Santorini. In his book Anatomici
+              - emphasis [ref=e135]: Summi, Santorini illustrated a double zygomaticus
+              - emphasis [ref=e136]: muscle with an insertion at the corner of the mouth,
+              - emphasis [ref=e137]: and an inferior insertion beneath the depressor anguli
+              - emphasis [ref=e138]:
+                - text: oris muscle (Fig. 3).
+                - strong [ref=e139]: Santorini stated that this muscle
+              - strong [ref=e140]:
+                - emphasis [ref=e141]: rarely divides, but that he had observed this double
+              - emphasis [ref=e142]:
+                - strong [ref=e143]: insertion in two individuals
+                - text: (‘‘nos bis observavimus’’).
+            - paragraph [ref=e144]:
+              - emphasis [ref=e145]: A second report of this variation is from the plastic
+              - emphasis [ref=e146]: surgery literature, in which Zufferey (1992) found one
+              - emphasis [ref=e147]: case of a double zygomaticus major during cadaver dissec
+              - emphasis [ref=e148]: tion. From these two reports, and from the paucity of any
+              - emphasis [ref=e149]: other documentation, this anatomical variation would
+              - emphasis [ref=e150]: seem to be rare. In fact, from the present study, the
+              - emphasis [ref=e151]: double or bifid zygomaticus major muscle represents a
+              - emphasis [ref=e152]:
+                - text: relatively common variation.
+                - strong [ref=e153]: In this series, this varia
+              - emphasis [ref=e154]:
+                - strong [ref=e155]: tion was noted in 34% of the cadaver specimens.
+                - strong [ref=e156]: ”
+              - link "– Pessa et al." [ref=e158] [cursor=pointer]:
+                - /url: https://pubmed.ncbi.nlm.nih.gov/9725574/#:~:text=The%20anatomy%20of%20the%20double,of%2050%20hemifacial%20cadaver%20dissections.&text=The%20incidence%20of%20the%20double,17%20of%2050%20cadaver%20dissections.
+            - heading "my research on bifid zygomaticus major" [level=3] [ref=e159]
+            - paragraph [ref=e160]: "Because there is not a ton of in-depth information on bifid zygomaticus majors, I still have my own unanswered questions:"
+            - list [ref=e161]:
+              - listitem [ref=e162]:
+                - list [ref=e163]:
+                  - listitem [ref=e164]:
+                    - list [ref=e165]:
+                      - listitem [ref=e166]:
+                        - list [ref=e167]:
+                          - listitem [ref=e168]:
+                            - emphasis [ref=e169]: Do trifid zygomaticus majors exist?
+                          - listitem [ref=e170]:
+                            - emphasis [ref=e171]: How does this muscle variation affect the aging process of the face?
+                          - listitem [ref=e172]:
+                            - emphasis [ref=e173]:
+                              - text: What’s with
+                              - link "Willem Dafoe’s smile" [ref=e174] [cursor=pointer]:
+                                - /url: https://en.wikipedia.org/wiki/Willem_Dafoe#/media/File:Willem_Dafoe_Cannes_2019.jpg
+                                - generic [ref=e175]: Willem Dafoe’s smile
+                              - text: "? Does he have a quadrifid zygomaticus major?"
+                              - generic [ref=e176]:
+                                - link "Embed from Getty Images" [ref=e178] [cursor=pointer]:
+                                  - /url: http://www.gettyimages.com/detail/532708468
+                                - iframe [ref=e180]:
+                                  - main [ref=f54e3]:
+                                    - 'figure "see more CANNES, FRANCE - MAY 19: Willem Dafoe and his wife, Giada Colagrande attend the \"Graduation (Bacalaureat)\" Premiere during the 69th annual Cannes Film Festival at the Palais des Festivals on May 19, 2016 in Cannes, France. (Photo by Alex B. Huckle/Getty Images)" [ref=f54e4] [cursor=pointer]':
+                                      - list [ref=f54e5]:
+                                        - listitem [ref=f54e6]:
+                                          - generic "Share on Facebook" [ref=f54e7]
+                                        - listitem [ref=f54e8]:
+                                          - generic "Share on Twitter" [ref=f54e9]
+                                        - listitem [ref=f54e10]:
+                                          - generic "Share on Pinterest" [ref=f54e11]
+                                      - generic [ref=f54e12]:
+                                        - paragraph [ref=f54e13]:
+                                          - link "see more" [ref=f54e14]:
+                                            - /url: http://www.gettyimages.com/detail/532708468?et=iBKdYEgGSI99X8pXyZLrFg&referrer=https%3A%2F%2Fmelindaozel.com%2F
+                                        - paragraph [ref=f54e15]: "CANNES, FRANCE - MAY 19: Willem Dafoe and his wife, Giada Colagrande attend the \"Graduation (Bacalaureat)\" Premiere during the 69th annual Cannes Film Festival at the Palais des Festivals on May 19, 2016 in Cannes, France. (Photo by Alex B. Huckle/Getty Images)"
+                                      - complementary [ref=f54e16]
+                                      - 'link "CANNES, FRANCE - MAY 19: Willem Dafoe and his wife, Giada Colagrande attend the \"Graduation (Bacalaureat)\" Premiere during the 69th annual Cannes Film Festival at the Palais des Festivals on May 19, 2016 in Cannes, France. (Photo by Alex B. Huckle/Getty Images)" [ref=f54e17]':
+                                        - /url: http://www.gettyimages.com/detail/532708468?et=iBKdYEgGSI99X8pXyZLrFg&referrer=https%3A%2F%2Fmelindaozel.com%2F
+                                        - 'img "CANNES, FRANCE - MAY 19: Willem Dafoe and his wife, Giada Colagrande attend the \"Graduation (Bacalaureat)\" Premiere during the 69th annual Cannes Film Festival at the Palais des Festivals on May 19, 2016 in Cannes, France. (Photo by Alex B. Huckle/Getty Images)" [ref=f54e18]'
+                                    - generic [ref=f54e19]:
+                                      - img "Getty Images" [ref=f54e21]
+                                      - paragraph [ref=f54e22]: Getty Images Entertainment | Alex B. Huckle
+                            - paragraph [ref=e181]:
+                              - emphasis
+                          - listitem [ref=e182]:
+                            - emphasis [ref=e183]:
+                              - text: What about
+                              - link "Linda Cardellini" [ref=e186] [cursor=pointer]:
+                                - /url: https://www.imdb.com/name/nm0004802/mediaviewer/rm1142087168
+                              - text: "?"
+                            - generic [ref=e187]:
+                              - link "Embed from Getty Images" [ref=e189] [cursor=pointer]:
+                                - /url: http://www.gettyimages.com/detail/1127310146
+                              - iframe [ref=e191]:
+                                - main [ref=f55e3]:
+                                  - 'figure "see more BEVERLY HILLS, CA - FEBRUARY 24: Linda Cardellini attends the 2019 Vanity Fair Oscar Party hosted by Radhika Jones at Wallis Annenberg Center for the Performing Arts on February 24, 2019 in Beverly Hills, California. (Photo by John Shearer/Getty Images)" [ref=f55e4] [cursor=pointer]':
+                                    - list [ref=f55e5]:
+                                      - listitem [ref=f55e6]:
+                                        - generic "Share on Facebook" [ref=f55e7]
+                                      - listitem [ref=f55e8]:
+                                        - generic "Share on Twitter" [ref=f55e9]
+                                      - listitem [ref=f55e10]:
+                                        - generic "Share on Pinterest" [ref=f55e11]
+                                    - generic [ref=f55e12]:
+                                      - paragraph [ref=f55e13]:
+                                        - link "see more" [ref=f55e14]:
+                                          - /url: http://www.gettyimages.com/detail/1127310146?et=mE2fuzhiS2BQ6x0ddkRisQ&referrer=https%3A%2F%2Fmelindaozel.com%2F
+                                      - paragraph [ref=f55e15]: "BEVERLY HILLS, CA - FEBRUARY 24: Linda Cardellini attends the 2019 Vanity Fair Oscar Party hosted by Radhika Jones at Wallis Annenberg Center for the Performing Arts on February 24, 2019 in Beverly Hills, California. (Photo by John Shearer/Getty Images)"
+                                    - complementary [ref=f55e16]
+                                    - 'link "BEVERLY HILLS, CA - FEBRUARY 24: Linda Cardellini attends the 2019 Vanity Fair Oscar Party hosted by Radhika Jones at Wallis Annenberg Center for the Performing Arts on February 24, 2019 in Beverly Hills, California. (Photo by John Shearer/Getty Images)" [ref=f55e17]':
+                                      - /url: http://www.gettyimages.com/detail/1127310146?et=mE2fuzhiS2BQ6x0ddkRisQ&referrer=https%3A%2F%2Fmelindaozel.com%2F
+                                      - 'img "BEVERLY HILLS, CA - FEBRUARY 24: Linda Cardellini attends the 2019 Vanity Fair Oscar Party hosted by Radhika Jones at Wallis Annenberg Center for the Performing Arts on February 24, 2019 in Beverly Hills, California. (Photo by John Shearer/Getty Images)" [ref=f55e18]'
+                                  - generic [ref=f55e19]:
+                                    - img "Getty Images" [ref=f55e21]
+                                    - paragraph [ref=f55e22]: Getty Images Entertainment | John Shearer
+                            - paragraph
+            - paragraph [ref=e192]: I will likely write a follow-up to this post, as there are still more examples to collect and papers to discover.
+            - paragraph [ref=e193]:
+              - text: If you would like to do your own reading on the bifid subject, any info that was not personal observation was taken from the paper quoted earlier by Pessa et al. – “
+              - 'link "Double or bifid zygomaticus major muscle: anatomy, incidence, and clinical correlations" [ref=e194] [cursor=pointer]':
+                - /url: https://pubmed.ncbi.nlm.nih.gov/9725574/#:~:text=The%20anatomy%20of%20the%20double,of%2050%20hemifacial%20cadaver%20dissections.&text=The%20incidence%20of%20the%20double,17%20of%2050%20cadaver%20dissections.
+                - emphasis [ref=e196]: "Double or bifid zygomaticus major muscle: anatomy, incidence, and clinical correlations"
+              - text: .”
+          - generic "Entry meta" [ref=e197]:
+            - generic [ref=e198]:
+              - img [ref=e200]
+              - generic [ref=e202]: Categories
+              - link "facial expressions" [ref=e203] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/facial-expressions/
+              - text: ","
+              - link "paid content" [ref=e204] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/paid/
+              - text: ","
+              - link "previews" [ref=e205] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/previews/
+            - navigation "Posts" [ref=e206]:
+              - generic [ref=e207]:
+                - img [ref=e209]
+                - link "Webinar With CAVE Academy Via Visual Effects Society" [ref=e212] [cursor=pointer]:
+                  - /url: https://melindaozel.com/webinar-visual-effects-society/
+              - generic [ref=e213]:
+                - img [ref=e215]
+                - link "Leveraging Facial Muscle Variation" [ref=e218] [cursor=pointer]:
+                  - /url: https://melindaozel.com/leveraging-facial-muscle-variation/
+      - generic [ref=e220]:
+        - heading "1 thought on “Zygomaticus Major Variations & the Dimple”" [level=2] [ref=e221]
+        - list [ref=e222]:
+          - listitem [ref=e223]:
+            - generic [ref=e224]:
+              - text: "Pingback:"
+              - link "leveraging facial muscle variation – Face the FACS" [ref=e225] [cursor=pointer]:
+                - /url: https://melindaozel.com/leveraging-facial-muscle-variation/
+        - generic [ref=e226]:
+          - heading "Leave a Comment" [level=3] [ref=e227]
+          - generic [ref=e228]:
+            - paragraph [ref=e229]:
+              - text: Logged in as LucaPrasso.
+              - link "Edit your profile" [ref=e230] [cursor=pointer]:
+                - /url: https://melindaozel.com/wp-admin/profile.php
+              - text: .
+              - link "Log out?" [ref=e231] [cursor=pointer]:
+                - /url: https://melindaozel.com/wp-login.php?action=logout&redirect_to=https%3A%2F%2Fmelindaozel.com%2Fzygomaticus-major-variations-the-dimple%2F&_wpnonce=3fac8055be
+              - generic [ref=e232]: Required fields are marked *
+            - paragraph [ref=e233]:
+              - generic [ref=e234]: Comment
+              - textbox "Comment" [ref=e235]
+            - paragraph [ref=e236]:
+              - button "Post Comment" [ref=e237] [cursor=pointer]
+        - paragraph [ref=e238]:
+          - text: This site uses Akismet to reduce spam.
+          - link "Learn how your comment data is processed." [ref=e239] [cursor=pointer]:
+            - /url: https://akismet.com/privacy/
+    - generic [ref=e241]:
+      - complementary [ref=e242]:
+        - generic [ref=e249]:
+          - figure [ref=e250]:
+            - link "headshot of page author" [ref=e251] [cursor=pointer]:
+              - /url: https://melindaozel.com/melinda-who-zel/
+              - img "headshot of page author" [ref=e252]
+          - paragraph
+          - paragraph [ref=e253]:
+            - text: I’m a Facial Systems Expert specializing in the Facial Action Coding System (FACS) and facial anatomy. My work spans
+            - link "expression tracking" [ref=e254] [cursor=pointer]:
+              - /url: https://patents.justia.com/inventor/melinda-ozel
+              - strong [ref=e255]: expression tracking
+            - text: ", facial animation, and"
+            - link "AI-driven lipsync" [ref=e256] [cursor=pointer]:
+              - /url: http://linkedin.com/in/melindaozel
+              - strong [ref=e257]: AI-driven lipsync
+            - text: . Recent work includes contributions to the de-aging of Tom Hanks and other actors in the
+            - strong [ref=e258]:
+              - link "Zemeckis film, Here" [ref=e259] [cursor=pointer]:
+                - /url: https://www.imdb.com/name/nm15482966/
+            - text: .
+          - paragraph [ref=e260]:
+            - text: Learn more about
+            - link "my background" [ref=e261] [cursor=pointer]:
+              - /url: https://melindaozel.com/melinda-who-zel/
+              - strong [ref=e262]: my background
+            - text: .
+          - paragraph
+      - complementary [ref=e263]:
+        - paragraph [ref=e264]:
+          - strong [ref=e265]: Courses & Workshops
+          - text: "-"
+          - link "FACS Cram Session" [ref=e266] [cursor=pointer]:
+            - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+          - text: "-"
+          - link "All About Lipsync" [ref=e267] [cursor=pointer]:
+            - /url: https://melindaozel.com/all-about-lipsync-course/
+          - text: "-"
+          - link "All Training Services" [ref=e268] [cursor=pointer]:
+            - /url: https://melindaozel.com/services/lectures-training/
+      - complementary [ref=e269]:
+        - paragraph [ref=e270]:
+          - strong [ref=e271]: "\""
+          - text: Melinda Ozel's resources on face anatomy, motion, and FACS are industry standard. During my time working on The Last of Us Part II (and other unannounced Playstation titles) I referred to it almost exclusively on a regular basis. The free material is great but the pay material is worth the cost.
+          - strong [ref=e272]: "\""
+          - strong [ref=e273]: Eric Drobile | Technical Animator
+          - strong [ref=e274]: "\""
+          - text: For most people learning traditional FACS is not feasible. It requires very costly specialized degrees and years long commitment. And the half century old research with fuzzy photos was not made for artists. What Melinda has done for our industry is take the dense scientific information and streamlined it into very easy to digest entries and videos catered to artists.
+          - strong [ref=e275]: "\""
+          - strong [ref=e276]: Paul Liaw | Principal Character Artist
+          - strong [ref=e277]: "\""
+          - text: I've been working as a Facial Blendshape Artist across film and gaming and have watched the quality of my work improve exponentially since I've had access to this wealth of knowledge that Melinda has so thoughtfully put together. Her documentation is clear, appealing, and comprehensive. If Paul Ekman is the father of FACS, Melinda has become the cool aunt.
+          - strong [ref=e278]: "\""
+          - strong [ref=e279]: "Ioana Alexandra Pirvu | Lead Artist: Blendshapes @ Rockstar Games"
+          - strong [ref=e280]: "\""
+          - text: Face the FACS in my opinion is bar-none, the best resource out there for any artist and company dealing with facial animation. The way in which Melinda delivers knowledge is detailed, but fun and compelling enough to make you want to keep learning. For a topic that could have easily been boring, she inspired me to keep learning.
+          - strong [ref=e281]: "\""
+          - strong [ref=e282]: Giovanni Nakpil | Senior Creative 3D Evangelist @ Adobe
+          - strong [ref=e283]: "\""
+          - text: If you're doing AU's (action units), this is the site you're going to need to bookmark. Melinda has gone above and beyond to create what I feel is the ultimate resource guide for AU's. Each AU explained, annotated and demonstrated with extreme clarity. You'll experience plenty of "aha!!" moments using Melinda's work as your guide!
+          - strong [ref=e284]: "\""
+          - strong [ref=e285]: Frank Gravatt
+          - strong [ref=e286]: "| Facial Modeler @ Cloud Chamber"
+      - complementary [ref=e287]:
+        - paragraph
+      - complementary [ref=e288]:
+        - generic [ref=e290]:
+          - paragraph [ref=e291]:
+            - strong [ref=e292]: Connect with me <3
+          - list [ref=e293]:
+            - listitem [ref=e294]:
+              - link "Instagram" [ref=e295] [cursor=pointer]:
+                - /url: https://instagram.com/manicexpression
+                - img [ref=e296]
+                - generic [ref=e298]: Instagram
+            - listitem [ref=e299]:
+              - link "LinkedIn" [ref=e300] [cursor=pointer]:
+                - /url: https://linkedin.com/in/melindaozel
+                - img [ref=e301]
+                - generic [ref=e303]: LinkedIn
+            - listitem [ref=e304]:
+              - link "X" [ref=e305] [cursor=pointer]:
+                - /url: https://x.com/melindaozel
+                - img [ref=e306]
+                - generic [ref=e308]: X
+  - generic [ref=e309]:
+    - generic [ref=e312]:
+      - complementary [ref=e314]:
+        - search [ref=e315]:
+          - generic [ref=e316]: Search
+          - generic [ref=e317]:
+            - searchbox "Search" [ref=e318]
+            - button "Search" [ref=e319] [cursor=pointer]
+      - complementary [ref=e321]:
+        - paragraph [ref=e322]:
+          - link "Terms & Conditions" [ref=e323] [cursor=pointer]:
+            - /url: https://melindaozel.com/terms-conditions/
+    - contentinfo "Site" [ref=e324]:
+      - generic [ref=e326]:
+        - text: Copyright © 2020-2026 Melinda Ozel . All rights reserved.
+        - text: Learn how to
+        - link "cite my work here" [ref=e327] [cursor=pointer]:
+          - /url: https://melindaozel.com/how-to-cite-my-work-use-my-visuals/
+          - generic [ref=e328]: cite my work here
+        - generic [ref=e329]: .
+  - navigation "Website language selector" [ref=e330]:
+    - generic [ref=e331]:
+      - button "Change language":
+        - generic: EN
+      - group "Available languages":
+        - link "ES" [ref=e332] [cursor=pointer]:
+          - /url: https://melindaozel.com/es/zygomaticus-major-variations-the-dimple/
+          - generic [ref=e333]: ES
+        - link "FR" [ref=e334] [cursor=pointer]:
+          - /url: https://melindaozel.com/fr/zygomaticus-major-variations-the-dimple/
+          - generic [ref=e335]: FR
+        - link "ES_VE" [ref=e336] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_ve/zygomaticus-major-variations-the-dimple/
+          - generic [ref=e337]: ES_VE
+        - link "ES_CL" [ref=e338] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_cl/zygomaticus-major-variations-the-dimple/
+          - generic [ref=e339]: ES_CL
+        - link "ES_GT" [ref=e340] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_gt/zygomaticus-major-variations-the-dimple/
+          - generic [ref=e341]: ES_GT
+        - link "PT" [ref=e342] [cursor=pointer]:
+          - /url: https://melindaozel.com/pt/zygomaticus-major-variations-the-dimple/
+          - generic [ref=e343]: PT
+        - link "ZH" [ref=e344] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh/zygomaticus-major-variations-the-dimple/
+          - generic [ref=e345]: ZH
+        - link "ZH_TW" [ref=e346] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh_tw/zygomaticus-major-variations-the-dimple/
+          - generic [ref=e347]: ZH_TW
+        - link "ZH_HK" [ref=e348] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh_hk/zygomaticus-major-variations-the-dimple/
+          - generic [ref=e349]: ZH_HK
+        - link "JA" [ref=e350] [cursor=pointer]:
+          - /url: https://melindaozel.com/ja/zygomaticus-major-variations-the-dimple/
+          - generic [ref=e351]: JA
+        - link "HI" [ref=e352] [cursor=pointer]:
+          - /url: https://melindaozel.com/hi/zygomaticus-major-variations-the-dimple/
+          - generic [ref=e353]: HI
+        - link "DE" [ref=e354] [cursor=pointer]:
+          - /url: https://melindaozel.com/de/zygomaticus-major-variations-the-dimple/
+          - generic [ref=e355]: DE
+        - link "DE_DE" [ref=e356] [cursor=pointer]:
+          - /url: https://melindaozel.com/de_de/zygomaticus-major-variations-the-dimple/
+          - generic [ref=e357]: DE_DE
+        - link "RU" [ref=e358] [cursor=pointer]:
+          - /url: https://melindaozel.com/ru/zygomaticus-major-variations-the-dimple/
+          - generic [ref=e359]: RU
+        - link "PL" [ref=e360] [cursor=pointer]:
+          - /url: https://melindaozel.com/pl/zygomaticus-major-variations-the-dimple/
+          - generic [ref=e361]: PL
+        - link "CS" [ref=e362] [cursor=pointer]:
+          - /url: https://melindaozel.com/cs/zygomaticus-major-variations-the-dimple/
+          - generic [ref=e363]: CS
+        - link "VI" [ref=e364] [cursor=pointer]:
+          - /url: https://melindaozel.com/vi/zygomaticus-major-variations-the-dimple/
+          - generic [ref=e365]: VI
+        - link "IT" [ref=e366] [cursor=pointer]:
+          - /url: https://melindaozel.com/it/zygomaticus-major-variations-the-dimple/
+          - generic [ref=e367]: IT
+        - link "SV" [ref=e368] [cursor=pointer]:
+          - /url: https://melindaozel.com/sv/zygomaticus-major-variations-the-dimple/
+          - generic [ref=e369]: SV
+        - link "SR" [ref=e370] [cursor=pointer]:
+          - /url: https://melindaozel.com/sr/zygomaticus-major-variations-the-dimple/
+          - generic [ref=e371]: SR
+        - link "AR" [ref=e372] [cursor=pointer]:
+          - /url: https://melindaozel.com/ar/zygomaticus-major-variations-the-dimple/
+          - generic [ref=e373]: AR
+        - link "MS" [ref=e374] [cursor=pointer]:
+          - /url: https://melindaozel.com/ms/zygomaticus-major-variations-the-dimple/
+          - generic [ref=e375]: MS
+        - link "FI" [ref=e376] [cursor=pointer]:
+          - /url: https://melindaozel.com/fi/zygomaticus-major-variations-the-dimple/
+          - generic [ref=e377]: FI
+        - link "ES_MX" [ref=e378] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_mx/zygomaticus-major-variations-the-dimple/
+          - generic [ref=e379]: ES_MX
+        - link "KO" [ref=e380] [cursor=pointer]:
+          - /url: https://melindaozel.com/ko/zygomaticus-major-variations-the-dimple/
+          - generic [ref=e381]: KO
+        - link "TR" [ref=e382] [cursor=pointer]:
+          - /url: https://melindaozel.com/tr/zygomaticus-major-variations-the-dimple/
+          - generic [ref=e383]: TR
+        - link "IS" [ref=e384] [cursor=pointer]:
+          - /url: https://melindaozel.com/is/zygomaticus-major-variations-the-dimple/
+          - generic [ref=e385]: IS
+        - link "NL" [ref=e386] [cursor=pointer]:
+          - /url: https://melindaozel.com/nl/zygomaticus-major-variations-the-dimple/
+          - generic [ref=e387]: NL
+        - link "NL_NL" [ref=e388] [cursor=pointer]:
+          - /url: https://melindaozel.com/nl_nl/zygomaticus-major-variations-the-dimple/
+          - generic [ref=e389]: NL_NL
+        - link "ES_AR" [ref=e390] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_ar/zygomaticus-major-variations-the-dimple/
+          - generic [ref=e391]: ES_AR
+        - link "UK" [ref=e392] [cursor=pointer]:
+          - /url: https://melindaozel.com/uk/zygomaticus-major-variations-the-dimple/
+          - generic [ref=e393]: UK
+  - generic [ref=e394]: desktop

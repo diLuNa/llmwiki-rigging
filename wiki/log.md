@@ -6,6 +6,59 @@ Format: `## [YYYY-MM-DD] <operation> | <title>`
 
 ---
 
+## [2026-04-22] ingest | Deep-dive articles — Melinda Ozel (Face the FACS) × 12
+
+Sources (all premium, accessed via member session):
+- /upper-lip-raiser-vs-nasolabial-furrow-deepener/ & /levator-labii-superioris-vs-zygomaticus-minor/ — AU10 vs AU11
+- /forehead-dynamics-frontalis-vs-occipitalis/ — frontalis/occipitalis anatomy
+- /lip-tightener-vs-lip-presser/ & /lip-tightener/ — AU23 horizontal vs vertical lip tightener
+- /advanced-blend-shape-tips-for-blinks/ — blinkles, blink timing asymmetry
+- /all-about-upper-lid-raiser-au5/ — AU5 levator palpebrae anatomy, emotion roles
+- /zygomaticus-major-variations-the-dimple/ — bifid zyg major causes dimples
+- /frontalis-variation/ — frontalis shape diversity and per-subject AU1/AU2 variation
+- /inner-brow-raiser-deep-dive/ — AU1 corrugator contamination, effects
+- /a-wrinkle-in-time-part-ii/ — static wrinkles taxonomy
+- /a-wrinkle-in-time-building-characters-with-real-story-lines/ — dynamic wrinkles, storytelling
+- /breaking-down-nose-wrinkler/ — AU9 full expression context, AU38 note
+
+Pages created/updated:
+- Created `wiki/queries/melindaozel-deep-dives.md`
+- Updated `wiki/concepts/facs.md` — added Production Gotchas section (13 items)
+- Updated `wiki/concepts/wrinkle-systems.md` — added anatomical wrinkle taxonomy
+- Updated `wiki/index.md`
+
+## [2026-04-22] ingest | Viseme & Speech Reference Guide — Melinda Ozel (Face the FACS)
+
+Source: https://melindaozel.com/viseme-speech-guide/ (premium, accessed via member session).  
+Full American English viseme group catalogue: 13 consonant groups, 2 consonant blends, 10 vowel groups.  
+Each group includes IPA, example words, phoneme classification (place + manner + voicing). Vimeo video references per phoneme.
+
+- Created `wiki/concepts/visemes-speech.md`
+  - Complete viseme group table with IPA, example words, phoneme classification
+  - p/b/m production notes (nasal vs. plosive distinction; 3-phase model; labiodental affricate edge case)
+  - Viseme→FACS AU mapping for key groups
+  - Production rig notes (Preston Blair, ARKit, NVIDIA Maxine)
+  - Coarticulation discussion
+- Updated `wiki/index.md`
+
+## [2026-04-22] ingest | ARKit to FACS Translation Guide — Melinda Ozel (Face the FACS)
+
+Source: https://melindaozel.com/arkit-to-facs-translation-guide/ (premium, accessed via member session).  
+Complete verified ARKit→FACS→muscle mapping table (33 entries). Includes critical production notes not in Apple docs.
+
+- Updated `wiki/concepts/arkit-blendshapes.md`
+  - Replaced partial mapping table with complete Melinda Ozel verified table (all 33 ARKit shapes)
+  - Added critical notes: mouthShrugUpper contingency; ICT-FaceKit mistranslation warning
+  - Added missing AUs section (AU11, AU13, AU23, AU38, AU39, vertical lip tightener)
+  - Clarified gaze direction encoding (M61/M62/M63/M64/M65/M66)
+  - Clarified AU26 vs AU27 distinction for jawOpen
+- Updated `wiki/index.md`
+
+## [2026-04-22] query | Face the FACS — FACS Video References (melindaozel.com)
+## [2026-04-22] query | Face the FACS — Emotion References (melindaozel.com)
+## [2026-04-22] query | Face the FACS — Upper Face Expanded (melindaozel.com)
+## [2026-04-22] query | Face the FACS — Eyebrow Combos & Lower Face Cheat Sheets (melindaozel.com)
+
 ## [2026-04-17] technique | ACES Color Management in DCC
 
 New source: `raw/assets/An Idiot's Guide to ACES.md` — toadstorm.com blog (2020-02-25).
@@ -1004,3 +1057,42 @@ Files already fully ingested in prior sessions:
 - `raw/assets/XrFaceExpression2FB.md` → `concepts/openxr-face-tracking.md` (2026-04-16)
 - `raw/assets/Generative modelling in latent space.md` → `concepts/latent-generative-modelling.md` (2026-04-16)
 - `raw/assets/Inverse Rig Mapping - Technical Directing...md` → noted in `papers/holden-2015-inverse-rig.md` (2026-04-16)
+
+## [2026-04-22] ingest | Face Anything: 4D Face Reconstruction from Any Image Sequence
+
+Source: `raw/papers/2604.19702v1.pdf` — Kocasarı, Giebenhain, Shaw, Nießner (arXiv 2026).
+
+- Created `wiki/papers/kocasari-2026-face-anything.md`
+- Created `wiki/authors/giebenhain-simon.md`
+- Updated `wiki/authors/niessner-matthias.md`
+- Updated `wiki/index.md`
+
+## [2026-04-22] ingest | FLAME face model — concept page + Python
+
+Researched FLAME (Li et al. 2017) from `raw/papers/flame_paper.pdf`.
+
+- Created `wiki/concepts/flame-model.md` — full parameterization, training pipeline, fitting pipeline, downstream ecosystem table (10+ papers), implementation gotchas
+- Created `wiki/python/flame-forward-pass.py` — `rodrigues`, `lbs`, `flame_forward` numpy reference implementation
+- Created `wiki/authors/romero-javier.md`
+- Updated `wiki/authors/black-michael.md` — added CoMA, DECA, EMOCA, MICA, SMIRK, HeadCraft
+- Updated `wiki/index.md` — added flame-model concept row, python snippet row
+
+## [2026-04-22] assets | Face the FACS — reference images downloaded
+
+Downloaded all FACS Study Guide images and GIFs from melindaozel.com (premium session).
+
+- 86 files, 145 MB into `raw/assets/melindaozel/` with 8 section subfolders
+- Descriptive AU-named filenames: `AU1-inner-brow-raiser.gif`, `AU23-lip-tightener-vertical-1.gif`, etc.
+- Covers AU1–AU28, fAUx8, and #notFACS entries; GIFs for every AU that has one
+- `raw/assets/melindaozel/README.md` — full annotated index
+
+## [2026-04-22] query | Face the FACS site research report
+
+Logged in to melindaozel.com/facs-study-guide/ (premium account).
+
+- Created `wiki/queries/face-the-facs-site-report.md`
+  - Full AU inventory (AU1–AU28 + notFACS + fAUx entries) with muscle names and section organization
+  - Premium resource catalog (18+ posts across FACS, face tracking, lipsync)
+  - Melinda Ozel AU taxonomy deviations from classic FACS: AU4 3-muscle split, fAUx8 howler mouth, AU14 y/z-axis dimpler, AU23 2-type lip tightener
+  - Cross-links to wiki papers and concepts
+- Updated `wiki/index.md`

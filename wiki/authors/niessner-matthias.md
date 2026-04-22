@@ -8,6 +8,7 @@ affiliation: Technical University of Munich (TUM)
 - [[papers/qian-2024-gaussian-avatars]] (CVPR 2024)
 - [[papers/giebenhain-2024-npga]] (SIGGRAPH Asia 2024)
 - [[papers/sevastopolsky-2024-headcraft]] (3DV 2025)
+- [[papers/kocasari-2026-face-anything]] (arXiv 2026)
 
 ## Research Themes
 Neural representations for 3D scene and face reconstruction: 3D Gaussian splatting, neural radiance fields, parametric head models (NPHM). Heavy focus on photorealistic animatable avatars from video capture. Co-creator of the NeRSemble multi-view capture dataset used for avatar benchmarking.

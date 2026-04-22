@@ -1,0 +1,493 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#content"
+  - navigation "Secondary" [ref=e3]:
+    - list [ref=e6]:
+      - listitem [ref=e7]:
+        - link "Premium Member Access" [ref=e8] [cursor=pointer]:
+          - /url: https://melindaozel.com/premium-resources/
+          - text: Premium Member Access
+          - img [ref=e10]
+        - list:
+          - listitem:
+            - link "Login":
+              - /url: https://melindaozel.com/login/
+          - listitem:
+            - link "Subscribe :)":
+              - /url: https://melindaozel.com/subscription-options/
+      - listitem [ref=e12]:
+        - link "Recorded Lecture Access" [ref=e13] [cursor=pointer]:
+          - /url: https://melindaozel.com/recorded-lectures/
+          - text: Recorded Lecture Access
+          - img [ref=e15]
+        - list:
+          - listitem:
+            - link "FACS Cram Session":
+              - /url: https://melindaozel.com/facs-cram-session/
+          - listitem:
+            - link "All About Lipsync":
+              - /url: https://melindaozel.com/all-about-lipsync-lecture-videos/
+      - listitem [ref=e17]:
+        - link "My Account" [ref=e18] [cursor=pointer]:
+          - /url: https://melindaozel.com/account/
+  - banner "Site" [ref=e19]:
+    - generic [ref=e21]:
+      - link "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e23] [cursor=pointer]:
+        - /url: https://melindaozel.com/
+        - img "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e24]
+      - paragraph [ref=e26]:
+        - link "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e27] [cursor=pointer]:
+          - /url: https://melindaozel.com/
+  - navigation "Primary" [ref=e28]:
+    - list [ref=e31]:
+      - listitem [ref=e32]:
+        - link "Learning Hub" [ref=e33] [cursor=pointer]:
+          - /url: https://melindaozel.com/learning-hub/
+          - text: Learning Hub
+          - img [ref=e35]
+        - list:
+          - listitem:
+            - link "FACS Cheat Sheet":
+              - /url: https://melindaozel.com/facs-cheat-sheet/
+          - listitem:
+            - link "Viseme Cheat Sheet":
+              - /url: https://melindaozel.com/viseme-cheat-sheet/
+          - listitem:
+            - link "All Free Resources":
+              - /url: https://melindaozel.com/free-resources/
+          - listitem:
+            - link "🔒 Premium Resources":
+              - /url: https://melindaozel.com/premium-resources/
+              - img "🔒"
+              - text: Premium Resources
+          - listitem:
+            - link "FAQs":
+              - /url: https://melindaozel.com/faqs/
+      - listitem [ref=e37]:
+        - link "Courses" [ref=e38] [cursor=pointer]:
+          - /url: https://melindaozel.com/online-lectures/
+          - text: Courses
+          - img [ref=e40]
+        - list:
+          - listitem:
+            - link "FACS Cram Session":
+              - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+          - listitem:
+            - link "All About Lipsync":
+              - /url: https://melindaozel.com/all-about-lipsync-course/
+      - listitem [ref=e42]:
+        - link "Full Site Access" [ref=e43] [cursor=pointer]:
+          - /url: https://melindaozel.com/subscription-options/
+          - text: Full Site Access
+          - img [ref=e45]
+        - list:
+          - listitem:
+            - link "Membership Options":
+              - /url: https://melindaozel.com/subscription-options/
+      - listitem [ref=e47]:
+        - link "Services" [ref=e48] [cursor=pointer]:
+          - /url: https://melindaozel.com/services/
+          - text: Services
+          - img [ref=e50]
+        - list:
+          - listitem:
+            - link "FACS Lectures & Training":
+              - /url: https://melindaozel.com/services/lectures-training/
+          - listitem:
+            - link "Consulting":
+              - /url: https://melindaozel.com/services/consulting/
+      - listitem [ref=e52]:
+        - link "About" [ref=e53] [cursor=pointer]:
+          - /url: https://melindaozel.com/who-is-melinda-ozel/
+          - text: About
+          - img [ref=e55]
+        - list:
+          - listitem:
+            - link "About Me":
+              - /url: https://melindaozel.com/who-is-melinda-ozel/
+          - listitem:
+            - link "Cite My Work":
+              - /url: https://melindaozel.com/how-to-cite-my-work-use-my-visuals/
+          - listitem:
+            - link "Contact":
+              - /url: https://melindaozel.com/who-is-melinda-ozel/contact-me/
+  - generic [ref=e58]:
+    - main [ref=e60]:
+      - article [ref=e61]:
+        - generic [ref=e62]:
+          - generic [ref=e63]:
+            - heading "Lip Tightener vs. Lip Presser" [level=1] [ref=e64]
+            - generic [ref=e65]:
+              - time [ref=e67]: March 30, 2022
+              - generic [ref=e68]:
+                - text: by
+                - link "Melinda Ozel" [ref=e70] [cursor=pointer]:
+                  - /url: https://melindaozel.com/author/melindaozel/
+          - generic [ref=e72]:
+            - 'heading "orbicularis oris: a snapshot" [level=2] [ref=e78]'
+            - generic [ref=e80]:
+              - iframe [ref=e85]:
+                - generic [ref=f42e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - link "Link to video owner's profile" [ref=f42e12] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                      - img "Link to video owner's profile" [ref=f42e13]
+                    - generic [ref=f42e14]:
+                      - generic [ref=f42e15]:
+                        - link "lip tightener vs. lip presser" [ref=f42e16] [cursor=pointer]:
+                          - /url: https://vimeo.com/694084207?fl=pl&fe=ti
+                        - generic [ref=f42e17]: lip tightener vs. lip presser
+                      - link "Melinda Ozel" [ref=f42e18] [cursor=pointer]:
+                        - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                        - generic [ref=f42e19]: Melinda Ozel
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f42e20] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f42e22] [cursor=pointer]:
+                        - img [ref=f42e23]
+                        - generic:
+                          - generic: Play
+                      - generic [ref=f42e26]:
+                        - generic [ref=f42e27]:
+                          - slider "Progress Bar" [ref=f42e28] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f42e33]: 01:00
+                        - generic [ref=f42e34]:
+                          - generic [ref=f42e35]:
+                            - button:
+                              - img
+                            - slider
+                          - button:
+                            - img
+                            - generic: Settings
+                          - button:
+                            - img
+                            - generic: Picture-in-Picture
+                          - button:
+                            - img
+                            - generic: Fullscreen
+                          - button "Show controls" [ref=f42e36] [cursor=pointer]:
+                            - img [ref=f42e37]
+                            - generic:
+                              - generic: Show controls
+              - generic [ref=e88]:
+                - paragraph [ref=e89]:
+                  - text: Whether you’re a novice or a pro in the world of facial expressions, there are always pesky details that can trip you up. Every muscle has its own quirks, properties, and inevitable variations. Some muscles, like the
+                  - link "frontalis" [ref=e90] [cursor=pointer]:
+                    - /url: https://melindaozel.com/frontalis-variation/
+                  - text: (basic brow elevator), are straightforward. Others are just not that simple.
+                - paragraph [ref=e91]: Orbicularis oris is one of those tricky muscles. Its complex structure and muscle fiber arrangements give it the ability to form a number of intricate shapes and positions. Think about all of the nuanced mouth movements that go into speech; orbicularis oris is responsible for many of them!
+                - paragraph [ref=e92]:
+                  - text: "Here we will cover two particular orbicularis oris expressions that often get confused:"
+                  - link "lip tightener," [ref=e93] [cursor=pointer]:
+                    - /url: https://melindaozel.com/lip-tightener/
+                  - text: horizontal type (
+                  - link "See FACS Cheat Sheet for clarification on vertical vs. horizontal types." [ref=e94] [cursor=pointer]:
+                    - /url: https://melindaozel.com/facs-cheat-sheet/
+                  - text: ) AKA AU23 and lip presser AKA AU24 .
+                - paragraph [ref=e95]: Let’s start by watching the attached video demo.
+            - generic [ref=e100]:
+              - paragraph [ref=e101]: As you can see from the rope analogy, lip tightener is a thinning, constricting action; whereas lip presser is an action of forces pushing against one another.
+              - paragraph [ref=e102]:
+                - strong [ref=e104]: NOTE
+                - text: ": In the video I manually pull the rope to induce tautness for lip tightener; however, when this action occurs within orbicularis oris, it is not induced by a horizontal pull."
+            - generic [ref=e106]:
+              - img "AU23 - lip tightener - horizontal type" [ref=e110]
+              - img "AU24 - lip presser shape" [ref=e114]
+            - generic [ref=e119]:
+              - paragraph [ref=e120]: Another way to visualize these differences can be seen in the GIFs above. Observe how the top lip collapses onto itself independently of the lower lip and vice versa. In lip presser, on the other hand, the top lip and bottom lip collide, pushing against each other and creating various form changes depending on where the impact is strongest.
+              - paragraph [ref=e121]: Though the many faces of orbicularis oris can be confusing, once you know what clues to look out for, navigating this muscle becomes a lot less intimidating!
+            - generic [ref=e130]:
+              - paragraph [ref=e134]:
+                - text: Connect to stay up-to-date on
+                - emphasis [ref=e135]: Face the FACS
+                - text: ‘s latest posts, announcements, and free content!
+              - link [ref=e140] [cursor=pointer]:
+                - /url: http://linkedin.com/in/melindaozel
+                - img [ref=e141]
+              - link [ref=e147] [cursor=pointer]:
+                - /url: http://instagram.com/manicexpression
+                - img [ref=e148]
+              - link [ref=e154] [cursor=pointer]:
+                - /url: http://twitter.com/melindaozel
+                - img [ref=e155]
+          - generic "Entry meta" [ref=e157]:
+            - generic [ref=e158]:
+              - img [ref=e160]
+              - generic [ref=e162]: Categories
+              - link "action units (FACS AUs)" [ref=e163] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/facial-expressions/action-units/
+              - text: ","
+              - link "animation" [ref=e164] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/art/animation/
+              - text: ","
+              - link "AU23" [ref=e165] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/facial-expressions/action-units/au23-2/
+              - text: ","
+              - link "AU24" [ref=e166] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/facial-expressions/action-units/au24/
+              - text: ","
+              - link "blend shapes" [ref=e167] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/art/blend-shapes/
+              - text: ","
+              - link "facial anatomy" [ref=e168] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/anatomy/
+              - text: ","
+              - link "facial expressions" [ref=e169] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/facial-expressions/
+              - text: ","
+              - link "facial muscles" [ref=e170] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/anatomy/muscles/
+              - text: ","
+              - link "lip tightener" [ref=e171] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/facial-expressions/action-units/au23-2/liptightener/
+              - text: ","
+              - link "orbicularis oris" [ref=e172] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/anatomy/muscles/orbicularis-oris/
+              - text: ","
+              - link "paid content" [ref=e173] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/paid/
+              - text: ","
+              - link "speech" [ref=e174] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/speech/
+            - navigation "Posts" [ref=e175]:
+              - generic [ref=e176]:
+                - img [ref=e178]
+                - link "Eyebrow Shapes and Character Design" [ref=e181] [cursor=pointer]:
+                  - /url: https://melindaozel.com/eyebrow-shapes-and-character-design/
+              - generic [ref=e182]:
+                - img [ref=e184]
+                - 'link "ARKit to FACS: Blendshape Cheat Sheet" [ref=e187] [cursor=pointer]':
+                  - /url: https://melindaozel.com/arkit-to-facs-cheat-sheet/
+      - generic [ref=e189]:
+        - heading "1 thought on “Lip Tightener vs. Lip Presser”" [level=2] [ref=e190]
+        - list [ref=e191]:
+          - listitem [ref=e192]:
+            - generic [ref=e193]:
+              - text: "Pingback:"
+              - link "lip tightener vs. lip presser - PREVIEW - Face the FACS" [ref=e194] [cursor=pointer]:
+                - /url: https://melindaozel.com/lip-tightener-vs-lip-presser-preview/
+        - paragraph [ref=e195]: Comments are closed.
+    - generic [ref=e197]:
+      - complementary [ref=e198]:
+        - generic [ref=e205]:
+          - figure [ref=e206]:
+            - link "headshot of page author" [ref=e207] [cursor=pointer]:
+              - /url: https://melindaozel.com/melinda-who-zel/
+              - img "headshot of page author" [ref=e208]
+          - paragraph
+          - paragraph [ref=e209]:
+            - text: I’m a Facial Systems Expert specializing in the Facial Action Coding System (FACS) and facial anatomy. My work spans
+            - link "expression tracking" [ref=e210] [cursor=pointer]:
+              - /url: https://patents.justia.com/inventor/melinda-ozel
+              - strong [ref=e211]: expression tracking
+            - text: ", facial animation, and"
+            - link "AI-driven lipsync" [ref=e212] [cursor=pointer]:
+              - /url: http://linkedin.com/in/melindaozel
+              - strong [ref=e213]: AI-driven lipsync
+            - text: . Recent work includes contributions to the de-aging of Tom Hanks and other actors in the
+            - strong [ref=e214]:
+              - link "Zemeckis film, Here" [ref=e215] [cursor=pointer]:
+                - /url: https://www.imdb.com/name/nm15482966/
+            - text: .
+          - paragraph [ref=e216]:
+            - text: Learn more about
+            - link "my background" [ref=e217] [cursor=pointer]:
+              - /url: https://melindaozel.com/melinda-who-zel/
+              - strong [ref=e218]: my background
+            - text: .
+          - paragraph
+      - complementary [ref=e219]:
+        - paragraph [ref=e220]:
+          - strong [ref=e221]: Courses & Workshops
+          - text: "-"
+          - link "FACS Cram Session" [ref=e222] [cursor=pointer]:
+            - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+          - text: "-"
+          - link "All About Lipsync" [ref=e223] [cursor=pointer]:
+            - /url: https://melindaozel.com/all-about-lipsync-course/
+          - text: "-"
+          - link "All Training Services" [ref=e224] [cursor=pointer]:
+            - /url: https://melindaozel.com/services/lectures-training/
+      - complementary [ref=e225]:
+        - paragraph [ref=e226]:
+          - strong [ref=e227]: "\""
+          - text: Melinda Ozel's resources on face anatomy, motion, and FACS are industry standard. During my time working on The Last of Us Part II (and other unannounced Playstation titles) I referred to it almost exclusively on a regular basis. The free material is great but the pay material is worth the cost.
+          - strong [ref=e228]: "\""
+          - strong [ref=e229]: Eric Drobile | Technical Animator
+          - strong [ref=e230]: "\""
+          - text: For most people learning traditional FACS is not feasible. It requires very costly specialized degrees and years long commitment. And the half century old research with fuzzy photos was not made for artists. What Melinda has done for our industry is take the dense scientific information and streamlined it into very easy to digest entries and videos catered to artists.
+          - strong [ref=e231]: "\""
+          - strong [ref=e232]: Paul Liaw | Principal Character Artist
+          - strong [ref=e233]: "\""
+          - text: I've been working as a Facial Blendshape Artist across film and gaming and have watched the quality of my work improve exponentially since I've had access to this wealth of knowledge that Melinda has so thoughtfully put together. Her documentation is clear, appealing, and comprehensive. If Paul Ekman is the father of FACS, Melinda has become the cool aunt.
+          - strong [ref=e234]: "\""
+          - strong [ref=e235]: "Ioana Alexandra Pirvu | Lead Artist: Blendshapes @ Rockstar Games"
+          - strong [ref=e236]: "\""
+          - text: Face the FACS in my opinion is bar-none, the best resource out there for any artist and company dealing with facial animation. The way in which Melinda delivers knowledge is detailed, but fun and compelling enough to make you want to keep learning. For a topic that could have easily been boring, she inspired me to keep learning.
+          - strong [ref=e237]: "\""
+          - strong [ref=e238]: Giovanni Nakpil | Senior Creative 3D Evangelist @ Adobe
+          - strong [ref=e239]: "\""
+          - text: If you're doing AU's (action units), this is the site you're going to need to bookmark. Melinda has gone above and beyond to create what I feel is the ultimate resource guide for AU's. Each AU explained, annotated and demonstrated with extreme clarity. You'll experience plenty of "aha!!" moments using Melinda's work as your guide!
+          - strong [ref=e240]: "\""
+          - strong [ref=e241]: Frank Gravatt
+          - strong [ref=e242]: "| Facial Modeler @ Cloud Chamber"
+      - complementary [ref=e243]:
+        - paragraph
+      - complementary [ref=e244]:
+        - generic [ref=e246]:
+          - paragraph [ref=e247]:
+            - strong [ref=e248]: Connect with me <3
+          - list [ref=e249]:
+            - listitem [ref=e250]:
+              - link "Instagram" [ref=e251] [cursor=pointer]:
+                - /url: https://instagram.com/manicexpression
+                - img [ref=e252]
+                - generic [ref=e254]: Instagram
+            - listitem [ref=e255]:
+              - link "LinkedIn" [ref=e256] [cursor=pointer]:
+                - /url: https://linkedin.com/in/melindaozel
+                - img [ref=e257]
+                - generic [ref=e259]: LinkedIn
+            - listitem [ref=e260]:
+              - link "X" [ref=e261] [cursor=pointer]:
+                - /url: https://x.com/melindaozel
+                - img [ref=e262]
+                - generic [ref=e264]: X
+  - generic [ref=e265]:
+    - generic [ref=e268]:
+      - complementary [ref=e270]:
+        - search [ref=e271]:
+          - generic [ref=e272]: Search
+          - generic [ref=e273]:
+            - searchbox "Search" [ref=e274]
+            - button "Search" [ref=e275] [cursor=pointer]
+      - complementary [ref=e277]:
+        - paragraph [ref=e278]:
+          - link "Terms & Conditions" [ref=e279] [cursor=pointer]:
+            - /url: https://melindaozel.com/terms-conditions/
+    - contentinfo "Site" [ref=e280]:
+      - generic [ref=e282]:
+        - text: Copyright © 2020-2026 Melinda Ozel . All rights reserved.
+        - text: Learn how to
+        - link "cite my work here" [ref=e283] [cursor=pointer]:
+          - /url: https://melindaozel.com/how-to-cite-my-work-use-my-visuals/
+          - generic [ref=e284]: cite my work here
+        - generic [ref=e285]: .
+  - navigation "Website language selector" [ref=e286]:
+    - generic [ref=e287]:
+      - button "Change language":
+        - generic: EN
+      - group "Available languages":
+        - link "ES" [ref=e288] [cursor=pointer]:
+          - /url: https://melindaozel.com/es/lip-tightener-vs-lip-presser/
+          - generic [ref=e289]: ES
+        - link "FR" [ref=e290] [cursor=pointer]:
+          - /url: https://melindaozel.com/fr/lip-tightener-vs-lip-presser/
+          - generic [ref=e291]: FR
+        - link "ES_VE" [ref=e292] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_ve/lip-tightener-vs-lip-presser/
+          - generic [ref=e293]: ES_VE
+        - link "ES_CL" [ref=e294] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_cl/lip-tightener-vs-lip-presser/
+          - generic [ref=e295]: ES_CL
+        - link "ES_GT" [ref=e296] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_gt/lip-tightener-vs-lip-presser/
+          - generic [ref=e297]: ES_GT
+        - link "PT" [ref=e298] [cursor=pointer]:
+          - /url: https://melindaozel.com/pt/lip-tightener-vs-lip-presser/
+          - generic [ref=e299]: PT
+        - link "ZH" [ref=e300] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh/lip-tightener-vs-lip-presser/
+          - generic [ref=e301]: ZH
+        - link "ZH_TW" [ref=e302] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh_tw/lip-tightener-vs-lip-presser/
+          - generic [ref=e303]: ZH_TW
+        - link "ZH_HK" [ref=e304] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh_hk/lip-tightener-vs-lip-presser/
+          - generic [ref=e305]: ZH_HK
+        - link "JA" [ref=e306] [cursor=pointer]:
+          - /url: https://melindaozel.com/ja/lip-tightener-vs-lip-presser/
+          - generic [ref=e307]: JA
+        - link "HI" [ref=e308] [cursor=pointer]:
+          - /url: https://melindaozel.com/hi/lip-tightener-vs-lip-presser/
+          - generic [ref=e309]: HI
+        - link "DE" [ref=e310] [cursor=pointer]:
+          - /url: https://melindaozel.com/de/lip-tightener-vs-lip-presser/
+          - generic [ref=e311]: DE
+        - link "DE_DE" [ref=e312] [cursor=pointer]:
+          - /url: https://melindaozel.com/de_de/lip-tightener-vs-lip-presser/
+          - generic [ref=e313]: DE_DE
+        - link "RU" [ref=e314] [cursor=pointer]:
+          - /url: https://melindaozel.com/ru/lip-tightener-vs-lip-presser/
+          - generic [ref=e315]: RU
+        - link "PL" [ref=e316] [cursor=pointer]:
+          - /url: https://melindaozel.com/pl/lip-tightener-vs-lip-presser/
+          - generic [ref=e317]: PL
+        - link "CS" [ref=e318] [cursor=pointer]:
+          - /url: https://melindaozel.com/cs/lip-tightener-vs-lip-presser/
+          - generic [ref=e319]: CS
+        - link "VI" [ref=e320] [cursor=pointer]:
+          - /url: https://melindaozel.com/vi/lip-tightener-vs-lip-presser/
+          - generic [ref=e321]: VI
+        - link "IT" [ref=e322] [cursor=pointer]:
+          - /url: https://melindaozel.com/it/lip-tightener-vs-lip-presser/
+          - generic [ref=e323]: IT
+        - link "SV" [ref=e324] [cursor=pointer]:
+          - /url: https://melindaozel.com/sv/lip-tightener-vs-lip-presser/
+          - generic [ref=e325]: SV
+        - link "SR" [ref=e326] [cursor=pointer]:
+          - /url: https://melindaozel.com/sr/lip-tightener-vs-lip-presser/
+          - generic [ref=e327]: SR
+        - link "AR" [ref=e328] [cursor=pointer]:
+          - /url: https://melindaozel.com/ar/lip-tightener-vs-lip-presser/
+          - generic [ref=e329]: AR
+        - link "MS" [ref=e330] [cursor=pointer]:
+          - /url: https://melindaozel.com/ms/lip-tightener-vs-lip-presser/
+          - generic [ref=e331]: MS
+        - link "FI" [ref=e332] [cursor=pointer]:
+          - /url: https://melindaozel.com/fi/lip-tightener-vs-lip-presser/
+          - generic [ref=e333]: FI
+        - link "ES_MX" [ref=e334] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_mx/lip-tightener-vs-lip-presser/
+          - generic [ref=e335]: ES_MX
+        - link "KO" [ref=e336] [cursor=pointer]:
+          - /url: https://melindaozel.com/ko/lip-tightener-vs-lip-presser/
+          - generic [ref=e337]: KO
+        - link "TR" [ref=e338] [cursor=pointer]:
+          - /url: https://melindaozel.com/tr/lip-tightener-vs-lip-presser/
+          - generic [ref=e339]: TR
+        - link "IS" [ref=e340] [cursor=pointer]:
+          - /url: https://melindaozel.com/is/lip-tightener-vs-lip-presser/
+          - generic [ref=e341]: IS
+        - link "NL" [ref=e342] [cursor=pointer]:
+          - /url: https://melindaozel.com/nl/lip-tightener-vs-lip-presser/
+          - generic [ref=e343]: NL
+        - link "NL_NL" [ref=e344] [cursor=pointer]:
+          - /url: https://melindaozel.com/nl_nl/lip-tightener-vs-lip-presser/
+          - generic [ref=e345]: NL_NL
+        - link "ES_AR" [ref=e346] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_ar/lip-tightener-vs-lip-presser/
+          - generic [ref=e347]: ES_AR
+        - link "UK" [ref=e348] [cursor=pointer]:
+          - /url: https://melindaozel.com/uk/lip-tightener-vs-lip-presser/
+          - generic [ref=e349]: UK
+  - generic [ref=e350]: desktop

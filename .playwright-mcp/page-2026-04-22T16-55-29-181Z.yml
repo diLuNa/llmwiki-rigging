@@ -1,0 +1,406 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#content"
+  - navigation "Secondary" [ref=e3]:
+    - list [ref=e6]:
+      - listitem [ref=e7]:
+        - link "Premium Member Access" [ref=e8] [cursor=pointer]:
+          - /url: https://melindaozel.com/premium-resources/
+          - text: Premium Member Access
+          - img [ref=e10]
+        - list:
+          - listitem:
+            - link "Login":
+              - /url: https://melindaozel.com/login/
+          - listitem:
+            - link "Subscribe :)":
+              - /url: https://melindaozel.com/subscription-options/
+      - listitem [ref=e12]:
+        - link "Recorded Lecture Access" [ref=e13] [cursor=pointer]:
+          - /url: https://melindaozel.com/recorded-lectures/
+          - text: Recorded Lecture Access
+          - img [ref=e15]
+        - list:
+          - listitem:
+            - link "FACS Cram Session":
+              - /url: https://melindaozel.com/facs-cram-session/
+          - listitem:
+            - link "All About Lipsync":
+              - /url: https://melindaozel.com/all-about-lipsync-lecture-videos/
+      - listitem [ref=e17]:
+        - link "My Account" [ref=e18] [cursor=pointer]:
+          - /url: https://melindaozel.com/account/
+  - banner "Site" [ref=e19]:
+    - generic [ref=e21]:
+      - link "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e23] [cursor=pointer]:
+        - /url: https://melindaozel.com/
+        - img "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e24]
+      - paragraph [ref=e26]:
+        - link "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e27] [cursor=pointer]:
+          - /url: https://melindaozel.com/
+  - navigation "Primary" [ref=e28]:
+    - list [ref=e31]:
+      - listitem [ref=e32]:
+        - link "Learning Hub" [ref=e33] [cursor=pointer]:
+          - /url: https://melindaozel.com/learning-hub/
+          - text: Learning Hub
+          - img [ref=e35]
+        - list:
+          - listitem:
+            - link "FACS Cheat Sheet":
+              - /url: https://melindaozel.com/facs-cheat-sheet/
+          - listitem:
+            - link "Viseme Cheat Sheet":
+              - /url: https://melindaozel.com/viseme-cheat-sheet/
+          - listitem:
+            - link "All Free Resources":
+              - /url: https://melindaozel.com/free-resources/
+          - listitem:
+            - link "🔒 Premium Resources":
+              - /url: https://melindaozel.com/premium-resources/
+              - img "🔒"
+              - text: Premium Resources
+          - listitem:
+            - link "FAQs":
+              - /url: https://melindaozel.com/faqs/
+      - listitem [ref=e37]:
+        - link "Courses" [ref=e38] [cursor=pointer]:
+          - /url: https://melindaozel.com/online-lectures/
+          - text: Courses
+          - img [ref=e40]
+        - list:
+          - listitem:
+            - link "FACS Cram Session":
+              - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+          - listitem:
+            - link "All About Lipsync":
+              - /url: https://melindaozel.com/all-about-lipsync-course/
+      - listitem [ref=e42]:
+        - link "Full Site Access" [ref=e43] [cursor=pointer]:
+          - /url: https://melindaozel.com/subscription-options/
+          - text: Full Site Access
+          - img [ref=e45]
+        - list:
+          - listitem:
+            - link "Membership Options":
+              - /url: https://melindaozel.com/subscription-options/
+      - listitem [ref=e47]:
+        - link "Services" [ref=e48] [cursor=pointer]:
+          - /url: https://melindaozel.com/services/
+          - text: Services
+          - img [ref=e50]
+        - list:
+          - listitem:
+            - link "FACS Lectures & Training":
+              - /url: https://melindaozel.com/services/lectures-training/
+          - listitem:
+            - link "Consulting":
+              - /url: https://melindaozel.com/services/consulting/
+      - listitem [ref=e52]:
+        - link "About" [ref=e53] [cursor=pointer]:
+          - /url: https://melindaozel.com/who-is-melinda-ozel/
+          - text: About
+          - img [ref=e55]
+        - list:
+          - listitem:
+            - link "About Me":
+              - /url: https://melindaozel.com/who-is-melinda-ozel/
+          - listitem:
+            - link "Cite My Work":
+              - /url: https://melindaozel.com/how-to-cite-my-work-use-my-visuals/
+          - listitem:
+            - link "Contact":
+              - /url: https://melindaozel.com/who-is-melinda-ozel/contact-me/
+  - generic [ref=e58]:
+    - main [ref=e60]:
+      - article [ref=e61]:
+        - generic [ref=e62]:
+          - heading "Lower Face Cheat Sheet" [level=1] [ref=e64]
+          - generic [ref=e66]:
+            - generic [ref=e72]:
+              - tablist [ref=e73]:
+                - tab "AU 10 - upper lip raiser" [expanded] [selected] [ref=e74] [cursor=pointer]
+                - tab "AU 11 - nasolabial furrow deepener" [ref=e75] [cursor=pointer]
+                - tab "AU 12 - lip corner puller" [ref=e76] [cursor=pointer]
+                - tab "AU 13 - sharp lip puller" [ref=e77] [cursor=pointer]
+                - tab "AU14 - dimpler" [ref=e78] [cursor=pointer]
+                - tab "AU 15 - lip corner depressor" [ref=e79] [cursor=pointer]
+                - tab "AU 16 - lower lip depressor" [ref=e80] [cursor=pointer]
+                - tab "AU 17 - chin raiser" [ref=e81] [cursor=pointer]
+                - tab "AU 18 - lip pucker" [ref=e82] [cursor=pointer]
+                - tab "AU 20 - lip stretcher" [ref=e83] [cursor=pointer]
+                - tab "AU 22 - lip funneler" [ref=e84] [cursor=pointer]
+                - tab "AU 23 - lip tightener" [ref=e85] [cursor=pointer]
+                - tab "AU 24 - lip presser" [ref=e86] [cursor=pointer]
+                - tab "AU 25 - lips part" [ref=e87] [cursor=pointer]
+                - tab "AU 26 - jaw drop" [ref=e88] [cursor=pointer]
+                - tab "AU 27 - mouth stretch" [ref=e89] [cursor=pointer]
+                - tab "AU 28 - lips suck" [ref=e90] [cursor=pointer]
+              - tablist [ref=e91]:
+                - tabpanel "AU 10 - upper lip raiser" [ref=e92]:
+                  - table [ref=e93]:
+                    - rowgroup [ref=e94]:
+                      - row "upper lip raiser levator labii superioris" [ref=e95]:
+                        - columnheader "upper lip raiser levator labii superioris" [ref=e96]:
+                          - heading "upper lip raiser" [level=2] [ref=e97]:
+                            - strong [ref=e98]: upper lip raiser
+                          - heading "levator labii superioris" [level=3] [ref=e99]:
+                            - strong [ref=e100]: levator labii superioris
+                      - 'row "AU 10 upper lip raiser Difficult to perform voluntarily with proper isolation. Often confused with AU9 or AU11. Differs from 9 in that it does not wrinkle the nose and that it pulls the top lip up in more of a square shape. See my YouTube video on AU9 to observe how 9 behaves vs. how 10 behaves, as well as how they behave in combination. Differs from 11 in that 10’s effect on the upper lip is more concentrated in the center of the mouth. Additionally, 10 deforms the top part of the nasolabial furrow, whereas 11 affects the middle section of the furrow. This is difficult to explain via text. → View post here for visuals and more thorough breakdown on 10 vs. 11. Present in some variations of both anger and disgust prototypes: anger In anger, 10 occurs with other upper and lower face AUs. disgust In disgust, 10 may occur alone or with other lower face AUs." [ref=e101]':
+                        - 'cell "AU 10 upper lip raiser Difficult to perform voluntarily with proper isolation. Often confused with AU9 or AU11. Differs from 9 in that it does not wrinkle the nose and that it pulls the top lip up in more of a square shape. See my YouTube video on AU9 to observe how 9 behaves vs. how 10 behaves, as well as how they behave in combination. Differs from 11 in that 10’s effect on the upper lip is more concentrated in the center of the mouth. Additionally, 10 deforms the top part of the nasolabial furrow, whereas 11 affects the middle section of the furrow. This is difficult to explain via text. → View post here for visuals and more thorough breakdown on 10 vs. 11. Present in some variations of both anger and disgust prototypes: anger In anger, 10 occurs with other upper and lower face AUs. disgust In disgust, 10 may occur alone or with other lower face AUs." [ref=e102]':
+                          - paragraph [ref=e103]:
+                            - img "AU 10 upper lip raiser" [ref=e104]
+                          - list [ref=e105]:
+                            - listitem [ref=e106]:
+                              - generic [ref=e107]: Difficult to perform voluntarily with proper isolation.
+                            - listitem [ref=e108]:
+                              - text: Often confused with AU9 or AU11.
+                              - list [ref=e109]:
+                                - listitem [ref=e110]:
+                                  - list [ref=e111]:
+                                    - listitem [ref=e112]:
+                                      - text: Differs from 9 in that it does not wrinkle the nose and that it pulls the top lip up in more of a square shape. See my
+                                      - link "YouTube video on AU9" [ref=e116] [cursor=pointer]:
+                                        - /url: https://www.google.com/url?q=https://www.youtube.com/watch?v%3DTjU_dZlPgO4%26t%3D31s&sa=D&ust=1593968019115000&usg=AOvVaw2FbNXX2MY4OKKcP3EjehpA
+                                      - text: to observe how 9 behaves vs. how 10 behaves, as well as how they behave in combination.
+                                    - listitem [ref=e117]:
+                                      - text: Differs from 11 in that 10’s effect on the upper lip is more concentrated in the center of the mouth. Additionally, 10 deforms the top part of the nasolabial furrow, whereas 11 affects the middle section of the furrow. This is difficult to explain via text. →
+                                      - link "View post here" [ref=e119] [cursor=pointer]:
+                                        - /url: https://www.google.com/url?q=https://www.instagram.com/p/B--sw4mA_kX/&sa=D&ust=1593968019116000&usg=AOvVaw01f7hYmuaqxgXQNHk9llwZ
+                                      - text: for visuals and more thorough breakdown on 10 vs. 11.
+                          - list [ref=e120]:
+                            - listitem [ref=e121]:
+                              - text: "Present in some variations of both anger and disgust prototypes:"
+                              - list [ref=e122]:
+                                - listitem [ref=e123]:
+                                  - strong [ref=e124]: anger
+                                  - list [ref=e125]:
+                                    - listitem [ref=e126]: In anger, 10 occurs with other upper and lower face AUs.
+                                - listitem [ref=e127]:
+                                  - strong [ref=e128]: disgust
+                                  - list [ref=e129]:
+                                    - listitem [ref=e130]: In disgust, 10 may occur alone or with other lower face AUs.
+            - heading "Lip Textures" [level=2] [ref=e136]
+            - generic [ref=e138]:
+              - heading "sticky lips" [level=3] [ref=e142]
+              - heading "glossy lips" [level=2] [ref=e146]
+            - generic [ref=e148]:
+              - img "Close-up GIF of lips parting; the lip tissue briefly sticks and stretches before separating." [ref=e152]
+              - img "non-sticky lips glossy" [ref=e156]
+            - generic [ref=e158]:
+              - generic [ref=e161]:
+                - paragraph [ref=e162]:
+                  - strong [ref=e163]: Post-crying Lip Texture
+                - paragraph [ref=e164]:
+                  - text: This example features imagery of lips taken from a post-crying event. Here, the lips are on the stickier end of things and slightly dry.
+                  - text: When the sympathetic nervous system (the system involved in our “fight-or-flight” response) is stimulated, saliva becomes more viscous and protein-rich. These changes in viscosity and composition can cause the mouth to become dryer and the lips to become stickier.
+                  - text: Distressing emotional events like intense crying can activate the sympathetic nervous system and lead to sticky lips; so always think about context when deciding how sticky to make a character’s mouth!
+              - generic [ref=e167]:
+                - paragraph [ref=e168]:
+                  - strong [ref=e169]: Post-gloss Lip Texture
+                - paragraph [ref=e170]: Here lips have been freshly glossed with saliva. There is effectively no stick.
+    - generic [ref=e172]:
+      - complementary [ref=e173]:
+        - generic [ref=e180]:
+          - figure [ref=e181]:
+            - link "headshot of page author" [ref=e182] [cursor=pointer]:
+              - /url: https://melindaozel.com/melinda-who-zel/
+              - img "headshot of page author" [ref=e183]
+          - paragraph
+          - paragraph [ref=e184]:
+            - text: I’m a Facial Systems Expert specializing in the Facial Action Coding System (FACS) and facial anatomy. My work spans
+            - link "expression tracking" [ref=e185] [cursor=pointer]:
+              - /url: https://patents.justia.com/inventor/melinda-ozel
+              - strong [ref=e186]: expression tracking
+            - text: ", facial animation, and"
+            - link "AI-driven lipsync" [ref=e187] [cursor=pointer]:
+              - /url: http://linkedin.com/in/melindaozel
+              - strong [ref=e188]: AI-driven lipsync
+            - text: . Recent work includes contributions to the de-aging of Tom Hanks and other actors in the
+            - strong [ref=e189]:
+              - link "Zemeckis film, Here" [ref=e190] [cursor=pointer]:
+                - /url: https://www.imdb.com/name/nm15482966/
+            - text: .
+          - paragraph [ref=e191]:
+            - text: Learn more about
+            - link "my background" [ref=e192] [cursor=pointer]:
+              - /url: https://melindaozel.com/melinda-who-zel/
+              - strong [ref=e193]: my background
+            - text: .
+          - paragraph
+      - complementary [ref=e194]:
+        - paragraph [ref=e195]:
+          - strong [ref=e196]: Courses & Workshops
+          - text: "-"
+          - link "FACS Cram Session" [ref=e197] [cursor=pointer]:
+            - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+          - text: "-"
+          - link "All About Lipsync" [ref=e198] [cursor=pointer]:
+            - /url: https://melindaozel.com/all-about-lipsync-course/
+          - text: "-"
+          - link "All Training Services" [ref=e199] [cursor=pointer]:
+            - /url: https://melindaozel.com/services/lectures-training/
+      - complementary [ref=e200]:
+        - paragraph [ref=e201]:
+          - strong [ref=e202]: "\""
+          - text: Melinda Ozel's resources on face anatomy, motion, and FACS are industry standard. During my time working on The Last of Us Part II (and other unannounced Playstation titles) I referred to it almost exclusively on a regular basis. The free material is great but the pay material is worth the cost.
+          - strong [ref=e203]: "\""
+          - strong [ref=e204]: Eric Drobile | Technical Animator
+          - strong [ref=e205]: "\""
+          - text: For most people learning traditional FACS is not feasible. It requires very costly specialized degrees and years long commitment. And the half century old research with fuzzy photos was not made for artists. What Melinda has done for our industry is take the dense scientific information and streamlined it into very easy to digest entries and videos catered to artists.
+          - strong [ref=e206]: "\""
+          - strong [ref=e207]: Paul Liaw | Principal Character Artist
+          - strong [ref=e208]: "\""
+          - text: I've been working as a Facial Blendshape Artist across film and gaming and have watched the quality of my work improve exponentially since I've had access to this wealth of knowledge that Melinda has so thoughtfully put together. Her documentation is clear, appealing, and comprehensive. If Paul Ekman is the father of FACS, Melinda has become the cool aunt.
+          - strong [ref=e209]: "\""
+          - strong [ref=e210]: "Ioana Alexandra Pirvu | Lead Artist: Blendshapes @ Rockstar Games"
+          - strong [ref=e211]: "\""
+          - text: Face the FACS in my opinion is bar-none, the best resource out there for any artist and company dealing with facial animation. The way in which Melinda delivers knowledge is detailed, but fun and compelling enough to make you want to keep learning. For a topic that could have easily been boring, she inspired me to keep learning.
+          - strong [ref=e212]: "\""
+          - strong [ref=e213]: Giovanni Nakpil | Senior Creative 3D Evangelist @ Adobe
+          - strong [ref=e214]: "\""
+          - text: If you're doing AU's (action units), this is the site you're going to need to bookmark. Melinda has gone above and beyond to create what I feel is the ultimate resource guide for AU's. Each AU explained, annotated and demonstrated with extreme clarity. You'll experience plenty of "aha!!" moments using Melinda's work as your guide!
+          - strong [ref=e215]: "\""
+          - strong [ref=e216]: Frank Gravatt
+          - strong [ref=e217]: "| Facial Modeler @ Cloud Chamber"
+      - complementary [ref=e218]:
+        - paragraph
+      - complementary [ref=e219]:
+        - generic [ref=e221]:
+          - paragraph [ref=e222]:
+            - strong [ref=e223]: Connect with me <3
+          - list [ref=e224]:
+            - listitem [ref=e225]:
+              - link "Instagram" [ref=e226] [cursor=pointer]:
+                - /url: https://instagram.com/manicexpression
+                - img [ref=e227]
+                - generic [ref=e229]: Instagram
+            - listitem [ref=e230]:
+              - link "LinkedIn" [ref=e231] [cursor=pointer]:
+                - /url: https://linkedin.com/in/melindaozel
+                - img [ref=e232]
+                - generic [ref=e234]: LinkedIn
+            - listitem [ref=e235]:
+              - link "X" [ref=e236] [cursor=pointer]:
+                - /url: https://x.com/melindaozel
+                - img [ref=e237]
+                - generic [ref=e239]: X
+  - generic [ref=e240]:
+    - generic [ref=e243]:
+      - complementary [ref=e245]:
+        - search [ref=e246]:
+          - generic [ref=e247]: Search
+          - generic [ref=e248]:
+            - searchbox "Search" [ref=e249]
+            - button "Search" [ref=e250] [cursor=pointer]
+      - complementary [ref=e252]:
+        - paragraph [ref=e253]:
+          - link "Terms & Conditions" [ref=e254] [cursor=pointer]:
+            - /url: https://melindaozel.com/terms-conditions/
+    - contentinfo "Site" [ref=e255]:
+      - generic [ref=e257]:
+        - text: Copyright © 2020-2026 Melinda Ozel . All rights reserved.
+        - text: Learn how to
+        - link "cite my work here" [ref=e258] [cursor=pointer]:
+          - /url: https://melindaozel.com/how-to-cite-my-work-use-my-visuals/
+          - generic [ref=e259]: cite my work here
+        - generic [ref=e260]: .
+  - navigation "Website language selector" [ref=e261]:
+    - generic [ref=e262]:
+      - button "Change language":
+        - generic: EN
+      - group "Available languages":
+        - link "ES" [ref=e263] [cursor=pointer]:
+          - /url: https://melindaozel.com/es/lower-face-cheat-sheet/
+          - generic [ref=e264]: ES
+        - link "FR" [ref=e265] [cursor=pointer]:
+          - /url: https://melindaozel.com/fr/lower-face-cheat-sheet/
+          - generic [ref=e266]: FR
+        - link "ES_VE" [ref=e267] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_ve/lower-face-cheat-sheet/
+          - generic [ref=e268]: ES_VE
+        - link "ES_CL" [ref=e269] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_cl/lower-face-cheat-sheet/
+          - generic [ref=e270]: ES_CL
+        - link "ES_GT" [ref=e271] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_gt/lower-face-cheat-sheet/
+          - generic [ref=e272]: ES_GT
+        - link "PT" [ref=e273] [cursor=pointer]:
+          - /url: https://melindaozel.com/pt/lower-face-cheat-sheet/
+          - generic [ref=e274]: PT
+        - link "ZH" [ref=e275] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh/lower-face-cheat-sheet/
+          - generic [ref=e276]: ZH
+        - link "ZH_TW" [ref=e277] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh_tw/lower-face-cheat-sheet/
+          - generic [ref=e278]: ZH_TW
+        - link "ZH_HK" [ref=e279] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh_hk/lower-face-cheat-sheet/
+          - generic [ref=e280]: ZH_HK
+        - link "JA" [ref=e281] [cursor=pointer]:
+          - /url: https://melindaozel.com/ja/lower-face-cheat-sheet/
+          - generic [ref=e282]: JA
+        - link "HI" [ref=e283] [cursor=pointer]:
+          - /url: https://melindaozel.com/hi/lower-face-cheat-sheet/
+          - generic [ref=e284]: HI
+        - link "DE" [ref=e285] [cursor=pointer]:
+          - /url: https://melindaozel.com/de/lower-face-cheat-sheet/
+          - generic [ref=e286]: DE
+        - link "DE_DE" [ref=e287] [cursor=pointer]:
+          - /url: https://melindaozel.com/de_de/lower-face-cheat-sheet/
+          - generic [ref=e288]: DE_DE
+        - link "RU" [ref=e289] [cursor=pointer]:
+          - /url: https://melindaozel.com/ru/lower-face-cheat-sheet/
+          - generic [ref=e290]: RU
+        - link "PL" [ref=e291] [cursor=pointer]:
+          - /url: https://melindaozel.com/pl/lower-face-cheat-sheet/
+          - generic [ref=e292]: PL
+        - link "CS" [ref=e293] [cursor=pointer]:
+          - /url: https://melindaozel.com/cs/lower-face-cheat-sheet/
+          - generic [ref=e294]: CS
+        - link "VI" [ref=e295] [cursor=pointer]:
+          - /url: https://melindaozel.com/vi/lower-face-cheat-sheet/
+          - generic [ref=e296]: VI
+        - link "IT" [ref=e297] [cursor=pointer]:
+          - /url: https://melindaozel.com/it/lower-face-cheat-sheet/
+          - generic [ref=e298]: IT
+        - link "SV" [ref=e299] [cursor=pointer]:
+          - /url: https://melindaozel.com/sv/lower-face-cheat-sheet/
+          - generic [ref=e300]: SV
+        - link "SR" [ref=e301] [cursor=pointer]:
+          - /url: https://melindaozel.com/sr/lower-face-cheat-sheet/
+          - generic [ref=e302]: SR
+        - link "AR" [ref=e303] [cursor=pointer]:
+          - /url: https://melindaozel.com/ar/lower-face-cheat-sheet/
+          - generic [ref=e304]: AR
+        - link "MS" [ref=e305] [cursor=pointer]:
+          - /url: https://melindaozel.com/ms/lower-face-cheat-sheet/
+          - generic [ref=e306]: MS
+        - link "FI" [ref=e307] [cursor=pointer]:
+          - /url: https://melindaozel.com/fi/lower-face-cheat-sheet/
+          - generic [ref=e308]: FI
+        - link "ES_MX" [ref=e309] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_mx/lower-face-cheat-sheet/
+          - generic [ref=e310]: ES_MX
+        - link "KO" [ref=e311] [cursor=pointer]:
+          - /url: https://melindaozel.com/ko/lower-face-cheat-sheet/
+          - generic [ref=e312]: KO
+        - link "TR" [ref=e313] [cursor=pointer]:
+          - /url: https://melindaozel.com/tr/lower-face-cheat-sheet/
+          - generic [ref=e314]: TR
+        - link "IS" [ref=e315] [cursor=pointer]:
+          - /url: https://melindaozel.com/is/lower-face-cheat-sheet/
+          - generic [ref=e316]: IS
+        - link "NL" [ref=e317] [cursor=pointer]:
+          - /url: https://melindaozel.com/nl/lower-face-cheat-sheet/
+          - generic [ref=e318]: NL
+        - link "NL_NL" [ref=e319] [cursor=pointer]:
+          - /url: https://melindaozel.com/nl_nl/lower-face-cheat-sheet/
+          - generic [ref=e320]: NL_NL
+        - link "ES_AR" [ref=e321] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_ar/lower-face-cheat-sheet/
+          - generic [ref=e322]: ES_AR
+        - link "UK" [ref=e323] [cursor=pointer]:
+          - /url: https://melindaozel.com/uk/lower-face-cheat-sheet/
+          - generic [ref=e324]: UK
+  - generic [ref=e325]: desktop

@@ -1,0 +1,2749 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#content"
+  - navigation "Secondary" [ref=e3]:
+    - list [ref=e6]:
+      - listitem [ref=e7]:
+        - link "Premium Member Access" [ref=e8] [cursor=pointer]:
+          - /url: https://melindaozel.com/premium-resources/
+          - text: Premium Member Access
+          - img [ref=e10]
+        - list:
+          - listitem:
+            - link "Login":
+              - /url: https://melindaozel.com/login/
+          - listitem:
+            - link "Subscribe :)":
+              - /url: https://melindaozel.com/subscription-options/
+      - listitem [ref=e12]:
+        - link "Recorded Lecture Access" [ref=e13] [cursor=pointer]:
+          - /url: https://melindaozel.com/recorded-lectures/
+          - text: Recorded Lecture Access
+          - img [ref=e15]
+        - list:
+          - listitem:
+            - link "FACS Cram Session":
+              - /url: https://melindaozel.com/facs-cram-session/
+          - listitem:
+            - link "All About Lipsync":
+              - /url: https://melindaozel.com/all-about-lipsync-lecture-videos/
+      - listitem [ref=e17]:
+        - link "My Account" [ref=e18] [cursor=pointer]:
+          - /url: https://melindaozel.com/account/
+  - banner "Site" [ref=e19]:
+    - generic [ref=e21]:
+      - link "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e23] [cursor=pointer]:
+        - /url: https://melindaozel.com/
+        - img "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e24]
+      - paragraph [ref=e26]:
+        - link "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e27] [cursor=pointer]:
+          - /url: https://melindaozel.com/
+  - navigation "Primary" [ref=e28]:
+    - list [ref=e31]:
+      - listitem [ref=e32]:
+        - link "Learning Hub" [ref=e33] [cursor=pointer]:
+          - /url: https://melindaozel.com/learning-hub/
+          - text: Learning Hub
+          - img [ref=e35]
+        - list:
+          - listitem:
+            - link "FACS Cheat Sheet":
+              - /url: https://melindaozel.com/facs-cheat-sheet/
+          - listitem:
+            - link "Viseme Cheat Sheet":
+              - /url: https://melindaozel.com/viseme-cheat-sheet/
+          - listitem:
+            - link "All Free Resources":
+              - /url: https://melindaozel.com/free-resources/
+          - listitem:
+            - link "🔒 Premium Resources":
+              - /url: https://melindaozel.com/premium-resources/
+              - img "🔒"
+              - text: Premium Resources
+          - listitem:
+            - link "FAQs":
+              - /url: https://melindaozel.com/faqs/
+      - listitem [ref=e37]:
+        - link "Courses" [ref=e38] [cursor=pointer]:
+          - /url: https://melindaozel.com/online-lectures/
+          - text: Courses
+          - img [ref=e40]
+        - list:
+          - listitem:
+            - link "FACS Cram Session":
+              - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+          - listitem:
+            - link "All About Lipsync":
+              - /url: https://melindaozel.com/all-about-lipsync-course/
+      - listitem [ref=e42]:
+        - link "Full Site Access" [ref=e43] [cursor=pointer]:
+          - /url: https://melindaozel.com/subscription-options/
+          - text: Full Site Access
+          - img [ref=e45]
+        - list:
+          - listitem:
+            - link "Membership Options":
+              - /url: https://melindaozel.com/subscription-options/
+      - listitem [ref=e47]:
+        - link "Services" [ref=e48] [cursor=pointer]:
+          - /url: https://melindaozel.com/services/
+          - text: Services
+          - img [ref=e50]
+        - list:
+          - listitem:
+            - link "FACS Lectures & Training":
+              - /url: https://melindaozel.com/services/lectures-training/
+          - listitem:
+            - link "Consulting":
+              - /url: https://melindaozel.com/services/consulting/
+      - listitem [ref=e52]:
+        - link "About" [ref=e53] [cursor=pointer]:
+          - /url: https://melindaozel.com/who-is-melinda-ozel/
+          - text: About
+          - img [ref=e55]
+        - list:
+          - listitem:
+            - link "About Me":
+              - /url: https://melindaozel.com/who-is-melinda-ozel/
+          - listitem:
+            - link "Cite My Work":
+              - /url: https://melindaozel.com/how-to-cite-my-work-use-my-visuals/
+          - listitem:
+            - link "Contact":
+              - /url: https://melindaozel.com/who-is-melinda-ozel/contact-me/
+  - generic [ref=e58]:
+    - main [ref=e60]:
+      - article [ref=e61]:
+        - generic [ref=e62]:
+          - heading "Viseme & Speech Reference Guide" [level=1] [ref=e64]
+          - generic [ref=e66]:
+            - generic [ref=e71]:
+              - paragraph [ref=e72]:
+                - text: Welcome to the
+                - emphasis [ref=e73]: Viseme & Speech Reference Guide!
+                - text: The
+                - emphasis [ref=e74]: Viseme & Speech Reference Guide
+                - text: is a visual guide to American English sounds for audiences working on speech animation.
+              - paragraph [ref=e75]:
+                - strong [ref=e76]: "Things to note:"
+              - list [ref=e77]:
+                - listitem [ref=e78]:
+                  - text: This sheet is meant to go more in depth than the
+                  - link "Viseme Cheat Sheet" [ref=e79] [cursor=pointer]:
+                    - /url: https://melindaozel.com/viseme-cheat-sheet/
+                    - emphasis [ref=e80]: Viseme Cheat Sheet
+                  - text: .
+                - listitem [ref=e81]: Each viseme is variable. While some visemes possess fixed characteristics required for mechanical production (e.g. m/b/p will always need the lips to close entirely or nearly entirely), facial actions required for each viseme will fluctuate depending on numerous factors including – but not limited to – individual facial features, speech context, etc.
+                - listitem [ref=e82]: This guide primarily displays posed visemes. As mentioned above, there are many factors that influence how the lips, jaw, and tongue come together during natural speech; however, being able to observe visemes in their unobstructed forms is an important first step.
+            - paragraph [ref=e95]: basic consonants
+            - heading "neutral / silent" [level=2] [ref=e101]
+            - generic [ref=e103]:
+              - heading "no sound, relaxed" [level=3] [ref=e107]
+              - img "neutral / sil" [ref=e111]
+            - generic [ref=e122]:
+              - heading "p/b/m" [level=2] [ref=e124]
+              - generic [ref=e126]:
+                - link "p/b/m viseme reference - bilabial - nasal - plosive" [ref=e127] [cursor=pointer]:
+                  - /url: https://i0.wp.com/melindaozel.com/wp-content/uploads/2024/11/pbm-front-viseme-references-for-animators.jpg?fit=841%2C632&ssl=1
+                  - img "p/b/m viseme reference - bilabial - nasal - plosive" [ref=e128]
+                - link "p/b/m reference - bilabial - nasal - plosive" [ref=e129] [cursor=pointer]:
+                  - /url: https://i0.wp.com/melindaozel.com/wp-content/uploads/2024/11/pbm-34-viseme-references-for-animators.jpg?fit=693%2C520&ssl=1
+                  - img "p/b/m reference - bilabial - nasal - plosive" [ref=e130]
+            - generic [ref=e134]:
+              - heading "p/b/m overview" [level=3] [ref=e136]
+              - paragraph [ref=e138]:
+                - text: The p/b/m viseme group features phonemes that involve the upper and lower lips coming together for a full closure.
+                - superscript [ref=e139]: NOTE 1
+                - text: Phonemes that require full or near lip closure are known as
+                - strong [ref=e140]: bilabials
+                - text: .
+              - paragraph [ref=e142]:
+                - superscript [ref=e143]:
+                  - text: "NOTE 1: Though the p/b/m phonemes are classified as full-closure bilabials, unique circumstances can lead to the incomplete closure of an m/b/p. Documented cases involve conditions where a /p/ is followed by an /f/ – e.g. in words like “stepfather,” “hopeful,” “helpful,” etc. In some of these instances, a hybrid version of /p/ and /f/ is created, causing the /p/ to lose part of its closure during its transition into /f/. These types of /p/’s are referred to as"
+                  - link "voiceless labiodental affricates" [ref=e144] [cursor=pointer]:
+                    - /url: https://en.wikipedia.org/wiki/Voiceless_labiodental_affricate
+                  - text: .
+              - heading "p/b/m important differences" [level=3] [ref=e146]
+              - generic [ref=e147]:
+                - paragraph [ref=e148]: Though p/b/m is considered one viseme group, there are critical differences in how /m/ is produced compared to how /b/ & /p/ are produced.
+                - paragraph [ref=e149]: "While all three phonemes start with closed lips:"
+                - list [ref=e150]:
+                  - listitem [ref=e151]:
+                    - text: /m/ is a
+                    - strong [ref=e152]: nasal
+                    - text: sound. This means the /m/ sound can be produced while the lips are closed, because air is able to escape through the nose.
+                - list [ref=e153]:
+                  - listitem [ref=e154]:
+                    - text: /p/ and /b/ are
+                    - strong [ref=e155]: plosives
+                    - text: (also known as
+                    - strong [ref=e156]: stops
+                    - text: "). They require a burst of air to be released in order to produce their sounds. The closed lip configuration serves as a precursor to help build pressure before sound release during lip reopening. This process can be described as having three phases:"
+                    - list [ref=e157]:
+                      - listitem [ref=e158]:
+                        - list [ref=e159]:
+                          - listitem [ref=e160]:
+                            - strong [ref=e162]: approach
+                            - text: – the lips come together
+                          - listitem [ref=e163]:
+                            - generic [ref=e164]:
+                              - strong [ref=e165]: hold
+                              - text: (or
+                              - strong [ref=e166]: occlusion
+                              - text: or
+                              - strong [ref=e167]: closure
+                              - text: )
+                            - text: – the lips are held in the closed position to block airstream
+                          - listitem [ref=e168]:
+                            - strong [ref=e169]: release
+                            - generic [ref=e170]:
+                              - text: (or
+                              - strong [ref=e171]: burst
+                              - text: or
+                              - strong [ref=e172]: plosion)
+                            - text: – the lips separate, releasing the built up air pressure
+              - paragraph [ref=e174]:
+                - link "READ POST ON p/b/m SHAPE & ASYMMETRY HERE." [ref=e175] [cursor=pointer]:
+                  - /url: https://melindaozel.com/m-b-p-bilabial-visemes/
+            - paragraph [ref=e181]:
+              - generic [ref=e182]:
+                - strong [ref=e183]:
+                  - generic [ref=e184]: IMPORTANT
+                - text: ": /b/ and /p/ require the lips to part after the initial lip closure in order to propel air for the plosive sound."
+            - generic [ref=e186]:
+              - generic [ref=e188]:
+                - heading "p" [level=3] [ref=e190]
+                - heading "as in pout" [level=4] [ref=e192]
+                - paragraph [ref=e194]: posed
+                - paragraph [ref=e196]:
+                  - text: bilabial. plosive
+                  - generic [ref=e197]: ","
+                  - generic [ref=e198]:
+                    - text: voiceless
+                    - text: realtime, then slowmo
+              - iframe [ref=e203]:
+                - generic [ref=f1e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - link "Link to video owner's profile" [ref=f1e12] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                      - img "Link to video owner's profile" [ref=f1e13]
+                    - generic [ref=f1e14]:
+                      - generic [ref=f1e15]:
+                        - link "P phoneme" [ref=f1e16] [cursor=pointer]:
+                          - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                        - generic [ref=f1e17]: P phoneme
+                      - link "Melinda Ozel" [ref=f1e18] [cursor=pointer]:
+                        - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                        - generic [ref=f1e19]: Melinda Ozel
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f1e20] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f1e22] [cursor=pointer]:
+                        - img [ref=f1e23]
+                        - generic:
+                          - generic: Play
+                      - generic [ref=f1e26]:
+                        - generic [ref=f1e27]:
+                          - slider "Progress Bar" [ref=f1e28] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f1e33]: 00:04
+                        - generic:
+                          - generic:
+                            - generic [ref=f1e34]:
+                              - button "Mute" [ref=f1e35] [cursor=pointer]:
+                                - img [ref=f1e36]
+                              - slider "Volume (use up/down arrow keys to change)"
+                            - button "Settings" [ref=f1e38] [cursor=pointer]:
+                              - img [ref=f1e39]
+                              - generic:
+                                - generic: Settings
+                            - button "Picture-in-Picture" [ref=f1e41] [cursor=pointer]:
+                              - img [ref=f1e42]
+                              - generic:
+                                - generic: Picture-in-Picture
+                            - button "Fullscreen" [ref=f1e44] [cursor=pointer]:
+                              - img [ref=f1e45]
+                              - generic:
+                                - generic: Fullscreen
+            - generic [ref=e205]:
+              - generic [ref=e207]:
+                - heading "b" [level=3] [ref=e209]
+                - heading "as in buccinator" [level=4] [ref=e211]
+                - paragraph [ref=e213]: posed
+                - paragraph [ref=e215]:
+                  - text: bilabial, plosive, voiced
+                  - text: realtime, then slowmo
+              - iframe [ref=e220]:
+                - generic [ref=f2e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - link "Link to video owner's profile" [ref=f2e12] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                      - img "Link to video owner's profile" [ref=f2e13]
+                    - generic [ref=f2e14]:
+                      - generic [ref=f2e15]:
+                        - link "B phoneme" [ref=f2e16] [cursor=pointer]:
+                          - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                        - generic [ref=f2e17]: B phoneme
+                      - link "Melinda Ozel" [ref=f2e18] [cursor=pointer]:
+                        - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                        - generic [ref=f2e19]: Melinda Ozel
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f2e20] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f2e22] [cursor=pointer]:
+                        - img [ref=f2e23]
+                        - generic:
+                          - generic: Play
+                      - generic [ref=f2e26]:
+                        - generic [ref=f2e27]:
+                          - slider "Progress Bar" [ref=f2e28] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f2e33]: 00:04
+                        - generic:
+                          - generic:
+                            - generic [ref=f2e34]:
+                              - button "Mute" [ref=f2e35] [cursor=pointer]:
+                                - img [ref=f2e36]
+                              - slider "Volume (use up/down arrow keys to change)"
+                            - button "Settings" [ref=f2e38] [cursor=pointer]:
+                              - img [ref=f2e39]
+                              - generic:
+                                - generic: Settings
+                            - button "Picture-in-Picture" [ref=f2e41] [cursor=pointer]:
+                              - img [ref=f2e42]
+                              - generic:
+                                - generic: Picture-in-Picture
+                            - button "Fullscreen" [ref=f2e44] [cursor=pointer]:
+                              - img [ref=f2e45]
+                              - generic:
+                                - generic: Fullscreen
+            - generic [ref=e222]:
+              - generic [ref=e224]:
+                - heading "m" [level=3] [ref=e226]
+                - heading "as in masseter" [level=4] [ref=e228]
+                - paragraph [ref=e230]: posed
+                - paragraph [ref=e232]:
+                  - text: bilabial, nasal, voiced
+                  - text: realtime, then slowmo
+              - iframe [ref=e237]:
+                - generic [ref=f3e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - link "Link to video owner's profile" [ref=f3e12] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                      - img "Link to video owner's profile" [ref=f3e13]
+                    - generic [ref=f3e14]:
+                      - generic [ref=f3e15]:
+                        - link "M phoneme" [ref=f3e16] [cursor=pointer]:
+                          - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                        - generic [ref=f3e17]: M phoneme
+                      - link "Melinda Ozel" [ref=f3e18] [cursor=pointer]:
+                        - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                        - generic [ref=f3e19]: Melinda Ozel
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f3e20] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f3e22] [cursor=pointer]:
+                        - img [ref=f3e23]
+                        - generic:
+                          - generic: Play
+                      - generic [ref=f3e26]:
+                        - generic [ref=f3e27]:
+                          - slider "Progress Bar" [ref=f3e28] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f3e33]: 00:05
+                        - generic:
+                          - generic:
+                            - generic [ref=f3e34]:
+                              - button "Mute" [ref=f3e35] [cursor=pointer]:
+                                - img [ref=f3e36]
+                              - slider "Volume (use up/down arrow keys to change)"
+                            - button "Settings" [ref=f3e38] [cursor=pointer]:
+                              - img [ref=f3e39]
+                              - generic:
+                                - generic: Settings
+                            - button "Picture-in-Picture" [ref=f3e41] [cursor=pointer]:
+                              - img [ref=f3e42]
+                              - generic:
+                                - generic: Picture-in-Picture
+                            - button "Fullscreen" [ref=f3e44] [cursor=pointer]:
+                              - img [ref=f3e45]
+                              - generic:
+                                - generic: Fullscreen
+            - generic [ref=e241]:
+              - heading "ʧ / ʤ / ʃ / ʒ" [level=2] [ref=e243]
+              - generic [ref=e245]:
+                - link "ch/sh viseme reference" [ref=e246] [cursor=pointer]:
+                  - /url: https://i0.wp.com/melindaozel.com/wp-content/uploads/2024/11/chsh-front-viseme-references-for-animators.jpg?fit=755%2C566&ssl=1
+                  - img "ch/sh viseme reference" [ref=e247]
+                - link "ch/sh funneled lips reference" [ref=e248] [cursor=pointer]:
+                  - /url: https://i0.wp.com/melindaozel.com/wp-content/uploads/2024/11/chsh-34-viseme-references-for-animators.jpg?fit=692%2C519&ssl=1
+                  - img "ch/sh funneled lips reference" [ref=e249]
+            - generic [ref=e251]:
+              - generic [ref=e253]:
+                - heading "ʧ" [level=3] [ref=e255]
+                - heading "as in chin" [level=4] [ref=e257]
+                - paragraph [ref=e259]: posed
+                - paragraph [ref=e261]:
+                  - text: post-alveolar, affricate, voiceless
+                  - text: realtime, then slowmo
+              - iframe [ref=e266]:
+                - generic [ref=f4e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - link "Link to video owner's profile" [ref=f4e11] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                      - img "Link to video owner's profile" [ref=f4e12]
+                    - generic [ref=f4e13]:
+                      - generic [ref=f4e14]:
+                        - link "CH phoneme" [ref=f4e15] [cursor=pointer]:
+                          - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                        - generic [ref=f4e16]: CH phoneme
+                      - link "Melinda Ozel" [ref=f4e17] [cursor=pointer]:
+                        - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                        - generic [ref=f4e18]: Melinda Ozel
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f4e19] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f4e21] [cursor=pointer]:
+                        - img [ref=f4e22]
+                        - generic:
+                          - generic: Play
+                      - generic [ref=f4e25]:
+                        - generic [ref=f4e26]:
+                          - slider "Progress Bar" [ref=f4e27] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f4e32]: 00:04
+                        - generic:
+                          - generic:
+                            - generic [ref=f4e33]:
+                              - button "Mute" [ref=f4e34] [cursor=pointer]:
+                                - img [ref=f4e35]
+                              - slider "Volume (use up/down arrow keys to change)"
+                            - button "Settings" [ref=f4e37] [cursor=pointer]:
+                              - img [ref=f4e38]
+                              - generic:
+                                - generic: Settings
+                            - button "Picture-in-Picture" [ref=f4e40] [cursor=pointer]:
+                              - img [ref=f4e41]
+                              - generic:
+                                - generic: Picture-in-Picture
+                            - button "Fullscreen" [ref=f4e43] [cursor=pointer]:
+                              - img [ref=f4e44]
+                              - generic:
+                                - generic: Fullscreen
+            - generic [ref=e268]:
+              - generic [ref=e270]:
+                - heading "ʤ" [level=3] [ref=e272]
+                - heading "as in jaw, gem" [level=4] [ref=e274]
+                - paragraph [ref=e276]: posed
+                - paragraph [ref=e278]:
+                  - text: post-alveolar, affricate, voiced
+                  - text: realtime, then slowmo
+              - iframe [ref=e283]:
+                - generic [ref=f5e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - link "Link to video owner's profile" [ref=f5e11] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                      - img "Link to video owner's profile" [ref=f5e12]
+                    - generic [ref=f5e13]:
+                      - generic [ref=f5e14]:
+                        - link "JJ phoneme" [ref=f5e15] [cursor=pointer]:
+                          - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                        - generic [ref=f5e16]: JJ phoneme
+                      - link "Melinda Ozel" [ref=f5e17] [cursor=pointer]:
+                        - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                        - generic [ref=f5e18]: Melinda Ozel
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f5e19] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f5e21] [cursor=pointer]:
+                        - img [ref=f5e22]
+                        - generic:
+                          - generic: Play
+                      - generic [ref=f5e25]:
+                        - generic [ref=f5e26]:
+                          - slider "Progress Bar" [ref=f5e27] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f5e32]: 00:04
+                        - generic:
+                          - generic:
+                            - generic [ref=f5e33]:
+                              - button "Mute" [ref=f5e34] [cursor=pointer]:
+                                - img [ref=f5e35]
+                              - slider "Volume (use up/down arrow keys to change)"
+                            - button "Settings" [ref=f5e37] [cursor=pointer]:
+                              - img [ref=f5e38]
+                              - generic:
+                                - generic: Settings
+                            - button "Picture-in-Picture" [ref=f5e40] [cursor=pointer]:
+                              - img [ref=f5e41]
+                              - generic:
+                                - generic: Picture-in-Picture
+                            - button "Fullscreen" [ref=f5e43] [cursor=pointer]:
+                              - img [ref=f5e44]
+                              - generic:
+                                - generic: Fullscreen
+            - generic [ref=e285]:
+              - generic [ref=e287]:
+                - heading "ʃ" [level=3] [ref=e289]
+                - heading "as in shine, spatial" [level=4] [ref=e291]
+                - paragraph [ref=e293]: posed
+                - paragraph [ref=e295]:
+                  - text: post-alveolar, fricative, voiceless
+                  - text: realtime, then slowmo
+              - iframe [ref=e300]:
+                - generic [ref=f6e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - link "Link to video owner's profile" [ref=f6e11] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                      - img "Link to video owner's profile" [ref=f6e12]
+                    - generic [ref=f6e13]:
+                      - generic [ref=f6e14]:
+                        - link "SH phoneme" [ref=f6e15] [cursor=pointer]:
+                          - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                        - generic [ref=f6e16]: SH phoneme
+                      - link "Melinda Ozel" [ref=f6e17] [cursor=pointer]:
+                        - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                        - generic [ref=f6e18]: Melinda Ozel
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f6e19] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f6e21] [cursor=pointer]:
+                        - img [ref=f6e22]
+                        - generic:
+                          - generic: Play
+                      - generic [ref=f6e25]:
+                        - generic [ref=f6e26]:
+                          - slider "Progress Bar" [ref=f6e27] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f6e32]: 00:04
+                        - generic:
+                          - generic:
+                            - generic [ref=f6e33]:
+                              - button "Mute" [ref=f6e34] [cursor=pointer]:
+                                - img [ref=f6e35]
+                              - slider "Volume (use up/down arrow keys to change)"
+                            - button "Settings" [ref=f6e37] [cursor=pointer]:
+                              - img [ref=f6e38]
+                              - generic:
+                                - generic: Settings
+                            - button "Picture-in-Picture" [ref=f6e40] [cursor=pointer]:
+                              - img [ref=f6e41]
+                              - generic:
+                                - generic: Picture-in-Picture
+                            - button "Fullscreen" [ref=f6e43] [cursor=pointer]:
+                              - img [ref=f6e44]
+                              - generic:
+                                - generic: Fullscreen
+            - generic [ref=e302]:
+              - generic [ref=e304]:
+                - heading "ʒ" [level=3] [ref=e306]
+                - heading "as in genre, measure" [level=4] [ref=e308]
+              - paragraph [ref=e312]: Video example not present. ʒ is in the same viseme category as the others above.
+            - generic [ref=e323]:
+              - heading "t/d" [level=2] [ref=e325]
+              - generic [ref=e327]:
+                - link "t/d viseme reference" [ref=e328] [cursor=pointer]:
+                  - /url: https://i0.wp.com/melindaozel.com/wp-content/uploads/2024/11/td-front-viseme-references-for-animators.jpg?fit=645%2C485&ssl=1
+                  - img "t/d viseme reference" [ref=e329]
+                - link "t/d phoneme reference" [ref=e330] [cursor=pointer]:
+                  - /url: https://i0.wp.com/melindaozel.com/wp-content/uploads/2024/11/td-34-viseme-references-for-animators.jpg?fit=597%2C448&ssl=1
+                  - img "t/d phoneme reference" [ref=e331]
+            - generic [ref=e333]:
+              - generic [ref=e335]:
+                - heading /t/ [level=3] [ref=e337]
+                - heading "as in temporalis" [level=4] [ref=e339]
+                - paragraph [ref=e341]: posed
+                - paragraph [ref=e343]:
+                  - text: alveolar, plosive, voiceless
+                  - text: realtime, then slowmo
+              - iframe [ref=e348]:
+                - generic [ref=f7e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - link "Link to video owner's profile" [ref=f7e11] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                      - img "Link to video owner's profile" [ref=f7e12]
+                    - generic [ref=f7e13]:
+                      - generic [ref=f7e14]:
+                        - link "T phoneme" [ref=f7e15] [cursor=pointer]:
+                          - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                        - generic [ref=f7e16]: T phoneme
+                      - link "Melinda Ozel" [ref=f7e17] [cursor=pointer]:
+                        - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                        - generic [ref=f7e18]: Melinda Ozel
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f7e19] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f7e21] [cursor=pointer]:
+                        - img [ref=f7e22]
+                        - generic:
+                          - generic: Play
+                      - generic [ref=f7e25]:
+                        - generic [ref=f7e26]:
+                          - slider "Progress Bar" [ref=f7e27] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f7e32]: 00:04
+                        - generic:
+                          - generic:
+                            - generic [ref=f7e33]:
+                              - button "Mute" [ref=f7e34] [cursor=pointer]:
+                                - img [ref=f7e35]
+                              - slider "Volume (use up/down arrow keys to change)"
+                            - button "Settings" [ref=f7e37] [cursor=pointer]:
+                              - img [ref=f7e38]
+                              - generic:
+                                - generic: Settings
+                            - button "Picture-in-Picture" [ref=f7e40] [cursor=pointer]:
+                              - img [ref=f7e41]
+                              - generic:
+                                - generic: Picture-in-Picture
+                            - button "Fullscreen" [ref=f7e43] [cursor=pointer]:
+                              - img [ref=f7e44]
+                              - generic:
+                                - generic: Fullscreen
+            - generic [ref=e350]:
+              - generic [ref=e352]:
+                - heading /d/ [level=3] [ref=e354]
+                - heading "as in depressor" [level=4] [ref=e356]
+                - paragraph [ref=e358]: posed
+                - paragraph [ref=e360]:
+                  - text: alveolar, plosive, voiced
+                  - text: realtime, then slowmo
+              - iframe [ref=e365]:
+                - generic [ref=f8e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - link "Link to video owner's profile" [ref=f8e12] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                      - img "Link to video owner's profile" [ref=f8e13]
+                    - generic [ref=f8e14]:
+                      - generic [ref=f8e15]:
+                        - link "D phoneme" [ref=f8e16] [cursor=pointer]:
+                          - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                        - generic [ref=f8e17]: D phoneme
+                      - link "Melinda Ozel" [ref=f8e18] [cursor=pointer]:
+                        - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                        - generic [ref=f8e19]: Melinda Ozel
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f8e20] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f8e22] [cursor=pointer]:
+                        - img [ref=f8e23]
+                        - generic:
+                          - generic: Play
+                      - generic [ref=f8e26]:
+                        - generic [ref=f8e27]:
+                          - slider "Progress Bar" [ref=f8e28] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f8e33]: 00:05
+                        - generic:
+                          - generic:
+                            - generic [ref=f8e34]:
+                              - button "Mute" [ref=f8e35] [cursor=pointer]:
+                                - img [ref=f8e36]
+                              - slider "Volume (use up/down arrow keys to change)"
+                            - button "Settings" [ref=f8e38] [cursor=pointer]:
+                              - img [ref=f8e39]
+                              - generic:
+                                - generic: Settings
+                            - button "Picture-in-Picture" [ref=f8e41] [cursor=pointer]:
+                              - img [ref=f8e42]
+                              - generic:
+                                - generic: Picture-in-Picture
+                            - button "Fullscreen" [ref=f8e44] [cursor=pointer]:
+                              - img [ref=f8e45]
+                              - generic:
+                                - generic: Fullscreen
+            - generic [ref=e376]:
+              - heading "f / v" [level=2] [ref=e378]
+              - generic [ref=e380]:
+                - link "f/v viseme reference" [ref=e381] [cursor=pointer]:
+                  - /url: https://i0.wp.com/melindaozel.com/wp-content/uploads/2024/11/fv-front-viseme-references-for-animators.jpg?fit=755%2C566&ssl=1
+                  - img "f/v viseme reference" [ref=e382]
+                - link "f/v viseme reference" [ref=e383] [cursor=pointer]:
+                  - /url: https://i0.wp.com/melindaozel.com/wp-content/uploads/2024/11/fv-34-viseme-references-for-animators.jpg?fit=735%2C550&ssl=1
+                  - img "f/v viseme reference" [ref=e384]
+            - generic [ref=e386]:
+              - generic [ref=e388]:
+                - heading "f" [level=3] [ref=e390]
+                - heading "as in face" [level=4] [ref=e392]
+                - paragraph [ref=e394]: posed
+                - paragraph [ref=e396]:
+                  - text: labiodental, fricative, voiceless
+                  - text: realtime, then slowmo
+              - iframe [ref=e401]:
+                - generic [ref=f9e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - link "Link to video owner's profile" [ref=f9e11] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                      - img "Link to video owner's profile" [ref=f9e12]
+                    - generic [ref=f9e13]:
+                      - generic [ref=f9e14]:
+                        - link "F phoneme" [ref=f9e15] [cursor=pointer]:
+                          - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                        - generic [ref=f9e16]: F phoneme
+                      - link "Melinda Ozel" [ref=f9e17] [cursor=pointer]:
+                        - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                        - generic [ref=f9e18]: Melinda Ozel
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f9e19] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f9e21] [cursor=pointer]:
+                        - img [ref=f9e22]
+                        - generic:
+                          - generic: Play
+                      - generic [ref=f9e25]:
+                        - generic [ref=f9e26]:
+                          - slider "Progress Bar" [ref=f9e27] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f9e32]: 00:05
+                        - generic:
+                          - generic:
+                            - generic [ref=f9e33]:
+                              - button "Mute" [ref=f9e34] [cursor=pointer]:
+                                - img [ref=f9e35]
+                              - slider "Volume (use up/down arrow keys to change)"
+                            - button "Settings" [ref=f9e37] [cursor=pointer]:
+                              - img [ref=f9e38]
+                              - generic:
+                                - generic: Settings
+                            - button "Picture-in-Picture" [ref=f9e40] [cursor=pointer]:
+                              - img [ref=f9e41]
+                              - generic:
+                                - generic: Picture-in-Picture
+                            - button "Fullscreen" [ref=f9e43] [cursor=pointer]:
+                              - img [ref=f9e44]
+                              - generic:
+                                - generic: Fullscreen
+            - generic [ref=e403]:
+              - generic [ref=e405]:
+                - heading "v" [level=3] [ref=e407]
+                - heading "as in viseme" [level=4] [ref=e409]
+                - paragraph [ref=e411]: posed
+                - paragraph [ref=e413]:
+                  - text: labiodental, fricative, voiced
+                  - text: realtime, then slowmo
+              - iframe [ref=e418]:
+                - generic [ref=f10e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - link "Link to video owner's profile" [ref=f10e11] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                      - img "Link to video owner's profile" [ref=f10e12]
+                    - generic [ref=f10e13]:
+                      - generic [ref=f10e14]:
+                        - link "V phoneme" [ref=f10e15] [cursor=pointer]:
+                          - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                        - generic [ref=f10e16]: V phoneme
+                      - link "Melinda Ozel" [ref=f10e17] [cursor=pointer]:
+                        - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                        - generic [ref=f10e18]: Melinda Ozel
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f10e19] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f10e21] [cursor=pointer]:
+                        - img [ref=f10e22]
+                        - generic:
+                          - generic: Play
+                      - generic [ref=f10e25]:
+                        - generic [ref=f10e26]:
+                          - slider "Progress Bar" [ref=f10e27] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f10e32]: 00:05
+                        - generic:
+                          - generic:
+                            - generic [ref=f10e33]:
+                              - button "Mute" [ref=f10e34] [cursor=pointer]:
+                                - img [ref=f10e35]
+                              - slider "Volume (use up/down arrow keys to change)"
+                            - button "Settings" [ref=f10e37] [cursor=pointer]:
+                              - img [ref=f10e38]
+                              - generic:
+                                - generic: Settings
+                            - button "Picture-in-Picture" [ref=f10e40] [cursor=pointer]:
+                              - img [ref=f10e41]
+                              - generic:
+                                - generic: Picture-in-Picture
+                            - button "Fullscreen" [ref=f10e43] [cursor=pointer]:
+                              - img [ref=f10e44]
+                              - generic:
+                                - generic: Fullscreen
+            - generic [ref=e429]:
+              - heading "k/g" [level=2] [ref=e431]
+              - generic [ref=e433]:
+                - link "k/g viseme referenece" [ref=e434] [cursor=pointer]:
+                  - /url: https://i0.wp.com/melindaozel.com/wp-content/uploads/2024/11/kg-front-viseme-references-for-animators.jpg?fit=653%2C491&ssl=1
+                  - img "k/g viseme referenece" [ref=e435]
+                - link "k/g lip sync referenece" [ref=e436] [cursor=pointer]:
+                  - /url: https://i0.wp.com/melindaozel.com/wp-content/uploads/2024/11/kg-34-viseme-references-for-animators.jpg?fit=653%2C490&ssl=1
+                  - img "k/g lip sync referenece" [ref=e437]
+            - generic [ref=e439]:
+              - generic [ref=e441]:
+                - heading "k" [level=3] [ref=e443]
+                - heading "as in king" [level=4] [ref=e445]
+                - paragraph [ref=e447]: posed
+                - paragraph [ref=e449]:
+                  - text: velar, plosive, voiceless
+                  - text: realtime, then slowmo
+              - iframe [ref=e454]:
+                - generic [ref=f11e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - link "Link to video owner's profile" [ref=f11e11] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                      - img "Link to video owner's profile" [ref=f11e12]
+                    - generic [ref=f11e13]:
+                      - generic [ref=f11e14]:
+                        - link "K phoneme" [ref=f11e15] [cursor=pointer]:
+                          - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                        - generic [ref=f11e16]: K phoneme
+                      - link "Melinda Ozel" [ref=f11e17] [cursor=pointer]:
+                        - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                        - generic [ref=f11e18]: Melinda Ozel
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f11e19] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f11e21] [cursor=pointer]:
+                        - img [ref=f11e22]
+                        - generic:
+                          - generic: Play
+                      - generic [ref=f11e25]:
+                        - generic [ref=f11e26]:
+                          - slider "Progress Bar" [ref=f11e27] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f11e32]: 00:04
+                        - generic:
+                          - generic:
+                            - generic [ref=f11e33]:
+                              - button "Mute" [ref=f11e34] [cursor=pointer]:
+                                - img [ref=f11e35]
+                              - slider "Volume (use up/down arrow keys to change)"
+                            - button "Settings" [ref=f11e37] [cursor=pointer]:
+                              - img [ref=f11e38]
+                              - generic:
+                                - generic: Settings
+                            - button "Picture-in-Picture" [ref=f11e40] [cursor=pointer]:
+                              - img [ref=f11e41]
+                              - generic:
+                                - generic: Picture-in-Picture
+                            - button "Fullscreen" [ref=f11e43] [cursor=pointer]:
+                              - img [ref=f11e44]
+                              - generic:
+                                - generic: Fullscreen
+            - generic [ref=e456]:
+              - generic [ref=e458]:
+                - heading "g" [level=3] [ref=e460]
+                - heading "as in guess" [level=4] [ref=e462]
+                - paragraph [ref=e464]: posed
+                - paragraph [ref=e466]:
+                  - text: velar, plosive, voiced
+                  - text: realtime, then slowmo
+              - iframe [ref=e471]:
+                - generic [ref=f12e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - link "Link to video owner's profile" [ref=f12e11] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                      - img "Link to video owner's profile" [ref=f12e12]
+                    - generic [ref=f12e13]:
+                      - generic [ref=f12e14]:
+                        - link "G phoneme" [ref=f12e15] [cursor=pointer]:
+                          - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                        - generic [ref=f12e16]: G phoneme
+                      - link "Melinda Ozel" [ref=f12e17] [cursor=pointer]:
+                        - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                        - generic [ref=f12e18]: Melinda Ozel
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f12e19] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f12e21] [cursor=pointer]:
+                        - img [ref=f12e22]
+                        - generic:
+                          - generic: Play
+                      - generic [ref=f12e25]:
+                        - generic [ref=f12e26]:
+                          - slider "Progress Bar" [ref=f12e27] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f12e32]: 00:04
+                        - generic:
+                          - generic:
+                            - generic [ref=f12e33]:
+                              - button "Mute" [ref=f12e34] [cursor=pointer]:
+                                - img [ref=f12e35]
+                              - slider "Volume (use up/down arrow keys to change)"
+                            - button "Settings" [ref=f12e37] [cursor=pointer]:
+                              - img [ref=f12e38]
+                              - generic:
+                                - generic: Settings
+                            - button "Picture-in-Picture" [ref=f12e40] [cursor=pointer]:
+                              - img [ref=f12e41]
+                              - generic:
+                                - generic: Picture-in-Picture
+                            - button "Fullscreen" [ref=f12e43] [cursor=pointer]:
+                              - img [ref=f12e44]
+                              - generic:
+                                - generic: Fullscreen
+            - generic [ref=e482]:
+              - heading "h" [level=2] [ref=e484]
+              - generic [ref=e486]:
+                - link "h viseme reference" [ref=e487] [cursor=pointer]:
+                  - /url: https://i0.wp.com/melindaozel.com/wp-content/uploads/2024/11/h-front-viseme-references-for-animators.jpg?fit=674%2C507&ssl=1
+                  - img "h viseme reference" [ref=e488]
+                - link "h viseme reference - or ah vowels" [ref=e489] [cursor=pointer]:
+                  - /url: https://i0.wp.com/melindaozel.com/wp-content/uploads/2024/11/h-34-viseme-references-for-animators.jpg?fit=626%2C469&ssl=1
+                  - img "h viseme reference - or ah vowels" [ref=e490]
+            - generic [ref=e492]:
+              - generic [ref=e494]:
+                - heading "h" [level=3] [ref=e496]
+                - heading "as in hippocampus, happy" [level=4] [ref=e498]
+                - paragraph [ref=e500]: posed
+                - paragraph [ref=e502]:
+                  - text: glottal, fricative, voiceless
+                  - text: realtime, then slowmo
+              - iframe [ref=e507]:
+                - generic [ref=f13e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - link "Link to video owner's profile" [ref=f13e11] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                      - img "Link to video owner's profile" [ref=f13e12]
+                    - generic [ref=f13e13]:
+                      - generic [ref=f13e14]:
+                        - link "H phoneme" [ref=f13e15] [cursor=pointer]:
+                          - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                        - generic [ref=f13e16]: H phoneme
+                      - link "Melinda Ozel" [ref=f13e17] [cursor=pointer]:
+                        - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                        - generic [ref=f13e18]: Melinda Ozel
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f13e19] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f13e21] [cursor=pointer]:
+                        - img [ref=f13e22]
+                        - generic:
+                          - generic: Play
+                      - generic [ref=f13e25]:
+                        - generic [ref=f13e26]:
+                          - slider "Progress Bar" [ref=f13e27] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f13e32]: 00:05
+                        - generic:
+                          - generic:
+                            - generic [ref=f13e33]:
+                              - button "Mute" [ref=f13e34] [cursor=pointer]:
+                                - img [ref=f13e35]
+                              - slider "Volume (use up/down arrow keys to change)"
+                            - button "Settings" [ref=f13e37] [cursor=pointer]:
+                              - img [ref=f13e38]
+                              - generic:
+                                - generic: Settings
+                            - button "Picture-in-Picture" [ref=f13e40] [cursor=pointer]:
+                              - img [ref=f13e41]
+                              - generic:
+                                - generic: Picture-in-Picture
+                            - button "Fullscreen" [ref=f13e43] [cursor=pointer]:
+                              - img [ref=f13e44]
+                              - generic:
+                                - generic: Fullscreen
+            - heading "(light) l" [level=2] [ref=e520]
+            - generic [ref=e522]:
+              - generic [ref=e524]:
+                - heading "l" [level=3] [ref=e526]
+                - heading "as in labial" [level=4] [ref=e528]
+                - paragraph [ref=e530]: posed
+                - paragraph [ref=e532]:
+                  - text: alveolar, lateral, voiced
+                  - text: realtime, then slowmo
+              - iframe [ref=e537]:
+                - generic [ref=f14e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - link "Link to video owner's profile" [ref=f14e11] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                      - img "Link to video owner's profile" [ref=f14e12]
+                    - generic [ref=f14e13]:
+                      - generic [ref=f14e14]:
+                        - link "L phoneme" [ref=f14e15] [cursor=pointer]:
+                          - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                        - generic [ref=f14e16]: L phoneme
+                      - link "Melinda Ozel" [ref=f14e17] [cursor=pointer]:
+                        - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                        - generic [ref=f14e18]: Melinda Ozel
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f14e19] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f14e21] [cursor=pointer]:
+                        - img [ref=f14e22]
+                        - generic:
+                          - generic: Play
+                      - generic [ref=f14e25]:
+                        - generic [ref=f14e26]:
+                          - slider "Progress Bar" [ref=f14e27] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f14e32]: 00:04
+                        - generic:
+                          - generic:
+                            - generic [ref=f14e33]:
+                              - button "Mute" [ref=f14e34] [cursor=pointer]:
+                                - img [ref=f14e35]
+                              - slider "Volume (use up/down arrow keys to change)"
+                            - button "Settings" [ref=f14e37] [cursor=pointer]:
+                              - img [ref=f14e38]
+                              - generic:
+                                - generic: Settings
+                            - button "Picture-in-Picture" [ref=f14e40] [cursor=pointer]:
+                              - img [ref=f14e41]
+                              - generic:
+                                - generic: Picture-in-Picture
+                            - button "Fullscreen" [ref=f14e43] [cursor=pointer]:
+                              - img [ref=f14e44]
+                              - generic:
+                                - generic: Fullscreen
+            - generic [ref=e542]:
+              - paragraph [ref=e543]: "Shown here is what linguists refer to as a “light” /l/. A light /l/ typically takes place at the beginning of a word or syllable. It involves the tip of the tongue behind the top teeth (either directly behind or near the gum area) or below and slightly in front of the top teeth (as shown in clip). However, a second type of L also exists in the English language: the “dark ” /l/. The dark /l/ more often occurs at the end of a word or syllable. The tongue position for the dark /l/ differs from the tongue position for the light /l/ and does not pass the front teeth. Dark /l/ makes more sense to be grouped with /n/, and it could be argued that a light /l/ makes sense to be grouped with θ / ð (th)."
+              - paragraph [ref=e544]
+              - paragraph [ref=e545]:
+                - link "Learn more about dark and light L’s here" [ref=e546] [cursor=pointer]:
+                  - /url: https://sandiegovoiceandaccent.com/videos/how-to-pronounce-the-l-sound-light-l-vs-dark-l
+                - text: .
+              - paragraph [ref=e547]: e.g. The word “lift” contains a light L. The word “smile” contains a dark L.
+            - generic [ref=e558]:
+              - heading "n/l (dark l)" [level=2] [ref=e560]
+              - generic [ref=e562]:
+                - link "n and dark l viseme references" [ref=e563] [cursor=pointer]:
+                  - /url: https://i0.wp.com/melindaozel.com/wp-content/uploads/2024/11/nl-front-viseme-references-for-animators.jpg?fit=755%2C566&ssl=1
+                  - img "n and dark l viseme references" [ref=e564]
+                - link "stylized lips mouthing /n/" [ref=e565] [cursor=pointer]:
+                  - /url: https://i0.wp.com/melindaozel.com/wp-content/uploads/2024/11/nl-34-viseme-references-for-animators.jpg?fit=755%2C566&ssl=1
+                  - img "stylized lips mouthing /n/" [ref=e566]
+            - generic [ref=e568]:
+              - generic [ref=e570]:
+                - heading "n" [level=3] [ref=e572]
+                - heading "as in nasal" [level=4] [ref=e574]
+                - paragraph [ref=e576]: posed
+                - paragraph [ref=e578]:
+                  - text: alveolar, nasal, voiced
+                  - text: realtime, then slowmo
+              - iframe [ref=e583]:
+                - generic [ref=f15e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - link "Link to video owner's profile" [ref=f15e11] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                      - img "Link to video owner's profile" [ref=f15e12]
+                    - generic [ref=f15e13]:
+                      - generic [ref=f15e14]:
+                        - link "N phoneme" [ref=f15e15] [cursor=pointer]:
+                          - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                        - generic [ref=f15e16]: N phoneme
+                      - link "Melinda Ozel" [ref=f15e17] [cursor=pointer]:
+                        - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                        - generic [ref=f15e18]: Melinda Ozel
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f15e19] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f15e21] [cursor=pointer]:
+                        - img [ref=f15e22]
+                        - generic:
+                          - generic: Play
+                      - generic [ref=f15e25]:
+                        - generic [ref=f15e26]:
+                          - slider "Progress Bar" [ref=f15e27] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f15e32]: 00:04
+                        - generic:
+                          - generic:
+                            - generic [ref=f15e33]:
+                              - button "Mute" [ref=f15e34] [cursor=pointer]:
+                                - img [ref=f15e35]
+                              - slider "Volume (use up/down arrow keys to change)"
+                            - button "Settings" [ref=f15e37] [cursor=pointer]:
+                              - img [ref=f15e38]
+                              - generic:
+                                - generic: Settings
+                            - button "Picture-in-Picture" [ref=f15e40] [cursor=pointer]:
+                              - img [ref=f15e41]
+                              - generic:
+                                - generic: Picture-in-Picture
+                            - button "Fullscreen" [ref=f15e43] [cursor=pointer]:
+                              - img [ref=f15e44]
+                              - generic:
+                                - generic: Fullscreen
+            - paragraph [ref=e589]: /n/ is more discernible when the jaw is open enough to show the tongue position. What makes /n/ and the dark /l/ compatible is their similar upward tongue placements.
+            - generic [ref=e600]:
+              - heading "r/w/oo" [level=2] [ref=e602]
+              - generic [ref=e604]:
+                - link "rounded consonant viseme for /r/, /w/, and /u:/" [ref=e605] [cursor=pointer]:
+                  - /url: https://i0.wp.com/melindaozel.com/wp-content/uploads/2024/11/rwoo-34-viseme-references-for-animators.jpg?fit=758%2C568&ssl=1
+                  - img "rounded consonant viseme for /r/, /w/, and /u:/" [ref=e606]
+                - link "rounded consonant for /ɹ/, /w/, and /u:/" [ref=e607] [cursor=pointer]:
+                  - /url: https://i0.wp.com/melindaozel.com/wp-content/uploads/2024/11/wroo-34-viseme-references-for-animators.jpg?fit=726%2C544&ssl=1
+                  - img "rounded consonant for /ɹ/, /w/, and /u:/" [ref=e608]
+            - generic [ref=e610]:
+              - generic [ref=e612]:
+                - heading "r" [level=3] [ref=e614]
+                - heading "as in red" [level=4] [ref=e616]
+                - paragraph [ref=e618]: posed
+                - paragraph [ref=e620]:
+                  - text: post-alveolar, approximant, voiced
+                  - text: realtime, then slowmo
+              - iframe [ref=e625]:
+                - generic [ref=f16e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - link "Link to video owner's profile" [ref=f16e11] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                      - img "Link to video owner's profile" [ref=f16e12]
+                    - generic [ref=f16e13]:
+                      - generic [ref=f16e14]:
+                        - link "R phoneme" [ref=f16e15] [cursor=pointer]:
+                          - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                        - generic [ref=f16e16]: R phoneme
+                      - link "Melinda Ozel" [ref=f16e17] [cursor=pointer]:
+                        - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                        - generic [ref=f16e18]: Melinda Ozel
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f16e19] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f16e21] [cursor=pointer]:
+                        - img [ref=f16e22]
+                        - generic:
+                          - generic: Play
+                      - generic [ref=f16e25]:
+                        - generic [ref=f16e26]:
+                          - slider "Progress Bar" [ref=f16e27] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f16e32]: 00:05
+                        - generic:
+                          - generic:
+                            - generic [ref=f16e33]:
+                              - button "Mute" [ref=f16e34] [cursor=pointer]:
+                                - img [ref=f16e35]
+                              - slider "Volume (use up/down arrow keys to change)"
+                            - button "Settings" [ref=f16e37] [cursor=pointer]:
+                              - img [ref=f16e38]
+                              - generic:
+                                - generic: Settings
+                            - button "Picture-in-Picture" [ref=f16e40] [cursor=pointer]:
+                              - img [ref=f16e41]
+                              - generic:
+                                - generic: Picture-in-Picture
+                            - button "Fullscreen" [ref=f16e43] [cursor=pointer]:
+                              - img [ref=f16e44]
+                              - generic:
+                                - generic: Fullscreen
+            - generic [ref=e630]:
+              - paragraph [ref=e631]: Similar to how /l/ can be expressed as “light” or “dark” depending on where it appears in a word or syllable, the way we produce /r/ also varies. These variations are especially important, because they affect lip shape.
+              - paragraph [ref=e632]: When /r/ occurs at the beginning of a word or syllable (rad, rib), the lip shape required to make the /r/ sound is quite distinct. As shown in the video above, the lips are rounded and tightened, creating a constricted opening. When R occurs at the end of a word or syllable (hither, tither), however, the distinct enclosed lip shape relaxes greatly and becomes a lot more ambiguous/reliant on contextual shapes. The above video is an example of a constricted /r/ occurring at the beginning of a word or syllable.
+              - paragraph [ref=e633]: Visual examples coming soon.
+            - generic [ref=e635]:
+              - generic [ref=e637]:
+                - heading "u" [level=3] [ref=e639]
+                - heading "as in food, rue, mood" [level=4] [ref=e641]
+              - iframe [ref=e646]:
+                - generic [ref=f17e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - link "Link to video owner's profile" [ref=f17e11] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                      - img "Link to video owner's profile" [ref=f17e12]
+                    - generic [ref=f17e13]:
+                      - generic [ref=f17e14]:
+                        - link "u (oo) phoneme" [ref=f17e15] [cursor=pointer]:
+                          - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                        - generic [ref=f17e16]: u (oo) phoneme
+                      - link "Melinda Ozel" [ref=f17e17] [cursor=pointer]:
+                        - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                        - generic [ref=f17e18]: Melinda Ozel
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f17e19] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f17e21] [cursor=pointer]:
+                        - img [ref=f17e22]
+                        - generic:
+                          - generic: Play
+                      - generic [ref=f17e25]:
+                        - generic [ref=f17e26]:
+                          - slider "Progress Bar" [ref=f17e27] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f17e32]: 00:04
+                        - generic:
+                          - generic:
+                            - generic [ref=f17e33]:
+                              - button "Mute" [ref=f17e34] [cursor=pointer]:
+                                - img [ref=f17e35]
+                              - slider "Volume (use up/down arrow keys to change)"
+                            - button "Settings" [ref=f17e37] [cursor=pointer]:
+                              - img [ref=f17e38]
+                              - generic:
+                                - generic: Settings
+                            - button "Picture-in-Picture" [ref=f17e40] [cursor=pointer]:
+                              - img [ref=f17e41]
+                              - generic:
+                                - generic: Picture-in-Picture
+                            - button "Fullscreen" [ref=f17e43] [cursor=pointer]:
+                              - img [ref=f17e44]
+                              - generic:
+                                - generic: Fullscreen
+            - generic [ref=e657]:
+              - heading "s / z" [level=2] [ref=e659]
+              - generic [ref=e661]:
+                - link "lax s/z viseme" [ref=e662] [cursor=pointer]:
+                  - /url: https://i0.wp.com/melindaozel.com/wp-content/uploads/2024/11/sz-front-viseme-references-for-animators.jpg?fit=883%2C663&ssl=1
+                  - img "lax s/z viseme" [ref=e663]
+                - link "lax s/z phoneme visual" [ref=e664] [cursor=pointer]:
+                  - /url: https://i0.wp.com/melindaozel.com/wp-content/uploads/2024/11/sz-34-viseme-references-for-animators.jpg?fit=705%2C529&ssl=1
+                  - img "lax s/z phoneme visual" [ref=e665]
+            - generic [ref=e667]:
+              - generic [ref=e669]:
+                - heading "s" [level=3] [ref=e671]
+                - heading "as in see" [level=4] [ref=e673]
+                - paragraph [ref=e675]: posed
+                - paragraph [ref=e677]:
+                  - text: alveolar, fricative, voiceless
+                  - text: realtime, then slowmo
+              - iframe [ref=e682]:
+                - generic [ref=f18e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - link "Link to video owner's profile" [ref=f18e11] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                      - img "Link to video owner's profile" [ref=f18e12]
+                    - generic [ref=f18e13]:
+                      - generic [ref=f18e14]:
+                        - link "S phoneme" [ref=f18e15] [cursor=pointer]:
+                          - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                        - generic [ref=f18e16]: S phoneme
+                      - link "Melinda Ozel" [ref=f18e17] [cursor=pointer]:
+                        - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                        - generic [ref=f18e18]: Melinda Ozel
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f18e19] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f18e21] [cursor=pointer]:
+                        - img [ref=f18e22]
+                        - generic:
+                          - generic: Play
+                      - generic [ref=f18e25]:
+                        - generic [ref=f18e26]:
+                          - slider "Progress Bar" [ref=f18e27] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f18e32]: 00:04
+                        - generic:
+                          - generic:
+                            - generic [ref=f18e33]:
+                              - button "Mute" [ref=f18e34] [cursor=pointer]:
+                                - img [ref=f18e35]
+                              - slider "Volume (use up/down arrow keys to change)"
+                            - button "Settings" [ref=f18e37] [cursor=pointer]:
+                              - img [ref=f18e38]
+                              - generic:
+                                - generic: Settings
+                            - button "Picture-in-Picture" [ref=f18e40] [cursor=pointer]:
+                              - img [ref=f18e41]
+                              - generic:
+                                - generic: Picture-in-Picture
+                            - button "Fullscreen" [ref=f18e43] [cursor=pointer]:
+                              - img [ref=f18e44]
+                              - generic:
+                                - generic: Fullscreen
+            - generic [ref=e684]:
+              - generic [ref=e686]:
+                - heading "z" [level=3] [ref=e688]
+                - heading "as in zygomatic" [level=4] [ref=e690]
+                - paragraph [ref=e692]: posed
+                - paragraph [ref=e694]:
+                  - text: alveolar, fricative, voiced
+                  - text: realtime, then slowmo
+              - iframe [ref=e699]:
+                - generic [ref=f19e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - link "Link to video owner's profile" [ref=f19e11] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                      - img "Link to video owner's profile" [ref=f19e12]
+                    - generic [ref=f19e13]:
+                      - generic [ref=f19e14]:
+                        - link "Z phoneme" [ref=f19e15] [cursor=pointer]:
+                          - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                        - generic [ref=f19e16]: Z phoneme
+                      - link "Melinda Ozel" [ref=f19e17] [cursor=pointer]:
+                        - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                        - generic [ref=f19e18]: Melinda Ozel
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f19e19] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f19e21] [cursor=pointer]:
+                        - img [ref=f19e22]
+                        - generic:
+                          - generic: Play
+                      - generic [ref=f19e25]:
+                        - generic [ref=f19e26]:
+                          - slider "Progress Bar" [ref=f19e27] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f19e32]: 00:04
+                        - generic:
+                          - generic:
+                            - generic [ref=f19e33]:
+                              - button "Mute" [ref=f19e34] [cursor=pointer]:
+                                - img [ref=f19e35]
+                              - slider "Volume (use up/down arrow keys to change)"
+                            - button "Settings" [ref=f19e37] [cursor=pointer]:
+                              - img [ref=f19e38]
+                              - generic:
+                                - generic: Settings
+                            - button "Picture-in-Picture" [ref=f19e40] [cursor=pointer]:
+                              - img [ref=f19e41]
+                              - generic:
+                                - generic: Picture-in-Picture
+                            - button "Fullscreen" [ref=f19e43] [cursor=pointer]:
+                              - img [ref=f19e44]
+                              - generic:
+                                - generic: Fullscreen
+            - generic [ref=e710]:
+              - heading "θ / ð (th)" [level=2] [ref=e712]
+              - generic [ref=e714]:
+                - link "th viseme reference" [ref=e715] [cursor=pointer]:
+                  - /url: https://i0.wp.com/melindaozel.com/wp-content/uploads/2024/11/th-front-viseme-references-for-animators.jpg?fit=707%2C531&ssl=1
+                  - img "th viseme reference" [ref=e716]
+                - link "th viseme reference" [ref=e717] [cursor=pointer]:
+                  - /url: https://i0.wp.com/melindaozel.com/wp-content/uploads/2024/11/th-34-viseme-references-for-animators.jpg?fit=693%2C520&ssl=1
+                  - img "th viseme reference" [ref=e718]
+            - generic [ref=e720]:
+              - generic [ref=e722]:
+                - heading "θ" [level=3] [ref=e724]
+                - heading "as in wreath (voiceless)" [level=4] [ref=e726]
+                - paragraph [ref=e728]: posed
+                - paragraph [ref=e730]:
+                  - text: dental, fricative, voiceless
+                  - text: realtime, then slowmo
+              - iframe [ref=e735]:
+                - generic [ref=f20e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - link "Link to video owner's profile" [ref=f20e11] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                      - img "Link to video owner's profile" [ref=f20e12]
+                    - generic [ref=f20e13]:
+                      - generic [ref=f20e14]:
+                        - link "θ (TH) phoneme" [ref=f20e15] [cursor=pointer]:
+                          - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                        - generic [ref=f20e16]: θ (TH) phoneme
+                      - link "Melinda Ozel" [ref=f20e17] [cursor=pointer]:
+                        - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                        - generic [ref=f20e18]: Melinda Ozel
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f20e19] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f20e21] [cursor=pointer]:
+                        - img [ref=f20e22]
+                        - generic:
+                          - generic: Play
+                      - generic [ref=f20e25]:
+                        - generic [ref=f20e26]:
+                          - slider "Progress Bar" [ref=f20e27] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f20e32]: 00:05
+                        - generic:
+                          - generic:
+                            - generic [ref=f20e33]:
+                              - button "Mute" [ref=f20e34] [cursor=pointer]:
+                                - img [ref=f20e35]
+                              - slider "Volume (use up/down arrow keys to change)"
+                            - button "Settings" [ref=f20e37] [cursor=pointer]:
+                              - img [ref=f20e38]
+                              - generic:
+                                - generic: Settings
+                            - button "Picture-in-Picture" [ref=f20e40] [cursor=pointer]:
+                              - img [ref=f20e41]
+                              - generic:
+                                - generic: Picture-in-Picture
+                            - button "Fullscreen" [ref=f20e43] [cursor=pointer]:
+                              - img [ref=f20e44]
+                              - generic:
+                                - generic: Fullscreen
+            - generic [ref=e737]:
+              - generic [ref=e739]:
+                - heading "ð" [level=3] [ref=e741]
+                - heading "as in thoracic (voiced)" [level=4] [ref=e743]
+                - paragraph [ref=e745]: dental, fricative, voiced
+              - paragraph [ref=e749]: Video example not present. ð is in the same viseme category as θ.
+            - paragraph [ref=e762]: common consonant blends
+            - heading "bl" [level=2] [ref=e768]
+            - generic [ref=e770]:
+              - generic [ref=e772]:
+                - heading "bl" [level=3] [ref=e774]
+                - heading "as in blot, blender" [level=4] [ref=e776]
+              - iframe [ref=e781]:
+                - generic [ref=f21e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - link "Link to video owner's profile" [ref=f21e11] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                      - img "Link to video owner's profile" [ref=f21e12]
+                    - generic [ref=f21e13]:
+                      - generic [ref=f21e14]:
+                        - link "BL consonant blend" [ref=f21e15] [cursor=pointer]:
+                          - /url: https://vimeo.com/702467715?fl=pl&fe=ti
+                        - generic [ref=f21e16]: BL consonant blend
+                      - link "Melinda Ozel" [ref=f21e17] [cursor=pointer]:
+                        - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                        - generic [ref=f21e18]: Melinda Ozel
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f21e19] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f21e21] [cursor=pointer]:
+                        - img [ref=f21e22]
+                        - generic:
+                          - generic: Play
+                      - generic [ref=f21e25]:
+                        - generic [ref=f21e26]:
+                          - slider "Progress Bar" [ref=f21e27] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f21e32]: 00:10
+                        - generic:
+                          - generic:
+                            - generic [ref=f21e33]:
+                              - button "Mute" [ref=f21e34] [cursor=pointer]:
+                                - img [ref=f21e35]
+                              - slider "Volume (use up/down arrow keys to change)"
+                            - button "CC/subtitles" [ref=f21e37] [cursor=pointer]:
+                              - img [ref=f21e38]
+                              - generic:
+                                - generic: CC/subtitles
+                            - button "Settings" [ref=f21e40] [cursor=pointer]:
+                              - img [ref=f21e41]
+                              - generic:
+                                - generic: Settings
+                            - button "Transcript" [ref=f21e43] [cursor=pointer]:
+                              - img [ref=f21e44]
+                              - generic:
+                                - generic: Transcript
+                            - button "Picture-in-Picture" [ref=f21e46] [cursor=pointer]:
+                              - img [ref=f21e47]
+                              - generic:
+                                - generic: Picture-in-Picture
+                            - button "Fullscreen" [ref=f21e49] [cursor=pointer]:
+                              - img [ref=f21e50]
+                              - generic:
+                                - generic: Fullscreen
+            - heading "gl" [level=2] [ref=e787]
+            - generic [ref=e789]:
+              - generic [ref=e791]:
+                - heading "gl" [level=3] [ref=e793]
+                - heading "as in glow, glamor" [level=4] [ref=e795]
+              - iframe [ref=e800]:
+                - generic [ref=f22e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - link "Link to video owner's profile" [ref=f22e11] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                      - img "Link to video owner's profile" [ref=f22e12]
+                    - generic [ref=f22e13]:
+                      - generic [ref=f22e14]:
+                        - link "GL consonant blend" [ref=f22e15] [cursor=pointer]:
+                          - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                        - generic [ref=f22e16]: GL consonant blend
+                      - link "Melinda Ozel" [ref=f22e17] [cursor=pointer]:
+                        - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                        - generic [ref=f22e18]: Melinda Ozel
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f22e19] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f22e21] [cursor=pointer]:
+                        - img [ref=f22e22]
+                        - generic:
+                          - generic: Play
+                      - generic [ref=f22e25]:
+                        - generic [ref=f22e26]:
+                          - slider "Progress Bar" [ref=f22e27] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f22e32]: 00:09
+                        - generic:
+                          - generic:
+                            - generic [ref=f22e33]:
+                              - button "Mute" [ref=f22e34] [cursor=pointer]:
+                                - img [ref=f22e35]
+                              - slider "Volume (use up/down arrow keys to change)"
+                            - button "CC/subtitles" [ref=f22e37] [cursor=pointer]:
+                              - img [ref=f22e38]
+                              - generic:
+                                - generic: CC/subtitles
+                            - button "Settings" [ref=f22e40] [cursor=pointer]:
+                              - img [ref=f22e41]
+                              - generic:
+                                - generic: Settings
+                            - button "Transcript" [ref=f22e43] [cursor=pointer]:
+                              - img [ref=f22e44]
+                              - generic:
+                                - generic: Transcript
+                            - button "Picture-in-Picture" [ref=f22e46] [cursor=pointer]:
+                              - img [ref=f22e47]
+                              - generic:
+                                - generic: Picture-in-Picture
+                            - button "Fullscreen" [ref=f22e49] [cursor=pointer]:
+                              - img [ref=f22e50]
+                              - generic:
+                                - generic: Fullscreen
+            - paragraph [ref=e806]:
+              - emphasis [ref=e807]:
+                - text: Check back soon
+                - img "🙂" [ref=e808]
+            - paragraph [ref=e821]: the vowels
+            - heading "ɑ (ah)" [level=2] [ref=e827]
+            - generic [ref=e829]:
+              - generic [ref=e831]:
+                - heading "ɑ" [level=3] [ref=e833]
+                - heading "as in jaw, cause, stop" [level=4] [ref=e835]
+                - generic [ref=e836]: not distinguishing between [ɑ] and [ɔ]
+              - iframe [ref=e841]:
+                - generic [ref=f23e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - link "Link to video owner's profile" [ref=f23e11] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                      - img "Link to video owner's profile" [ref=f23e12]
+                    - generic [ref=f23e13]:
+                      - generic [ref=f23e14]:
+                        - link "ɑ phoneme" [ref=f23e15] [cursor=pointer]:
+                          - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                        - generic [ref=f23e16]: ɑ phoneme
+                      - link "Melinda Ozel" [ref=f23e17] [cursor=pointer]:
+                        - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                        - generic [ref=f23e18]: Melinda Ozel
+                    - generic:
+                      - button "Play" [ref=f23e20] [cursor=pointer]:
+                        - img [ref=f23e21]
+                        - generic:
+                          - generic: Play
+                      - generic [ref=f23e24]:
+                        - generic [ref=f23e25]:
+                          - slider "Progress Bar" [ref=f23e26] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f23e31]: 00:04
+                        - generic:
+                          - generic:
+                            - generic [ref=f23e32]:
+                              - button "Mute" [ref=f23e33] [cursor=pointer]:
+                                - img [ref=f23e34]
+                              - slider "Volume (use up/down arrow keys to change)"
+                            - button "Settings" [ref=f23e36] [cursor=pointer]:
+                              - img [ref=f23e37]
+                              - generic:
+                                - generic: Settings
+                            - button "Picture-in-Picture" [ref=f23e39] [cursor=pointer]:
+                              - img [ref=f23e40]
+                              - generic:
+                                - generic: Picture-in-Picture
+                            - button "Fullscreen" [ref=f23e42] [cursor=pointer]:
+                              - img [ref=f23e43]
+                              - generic:
+                                - generic: Fullscreen
+            - heading "æ" [level=2] [ref=e854]
+            - generic [ref=e856]:
+              - generic [ref=e858]:
+                - heading "æ" [level=3] [ref=e860]
+                - heading "as in cat, FACS, zygomaticus" [level=4] [ref=e862]
+              - iframe [ref=e867]:
+                - generic [ref=f24e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - link "Link to video owner's profile" [ref=f24e11] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                      - img "Link to video owner's profile" [ref=f24e12]
+                    - generic [ref=f24e13]:
+                      - generic [ref=f24e14]:
+                        - link "æ phoneme" [ref=f24e15] [cursor=pointer]:
+                          - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                        - generic [ref=f24e16]: æ phoneme
+                      - link "Melinda Ozel" [ref=f24e17] [cursor=pointer]:
+                        - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                        - generic [ref=f24e18]: Melinda Ozel
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f24e19] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f24e21] [cursor=pointer]:
+                        - img [ref=f24e22]
+                        - generic:
+                          - generic: Play
+                      - generic [ref=f24e25]:
+                        - generic [ref=f24e26]:
+                          - slider "Progress Bar" [ref=f24e27] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f24e32]: 00:04
+                        - generic:
+                          - generic:
+                            - generic [ref=f24e33]:
+                              - button "Mute" [ref=f24e34] [cursor=pointer]:
+                                - img [ref=f24e35]
+                              - slider "Volume (use up/down arrow keys to change)"
+                            - button "Settings" [ref=f24e37] [cursor=pointer]:
+                              - img [ref=f24e38]
+                              - generic:
+                                - generic: Settings
+                            - button "Picture-in-Picture" [ref=f24e40] [cursor=pointer]:
+                              - img [ref=f24e41]
+                              - generic:
+                                - generic: Picture-in-Picture
+                            - button "Fullscreen" [ref=f24e43] [cursor=pointer]:
+                              - img [ref=f24e44]
+                              - generic:
+                                - generic: Fullscreen
+            - heading "ɛ (eh)" [level=2] [ref=e880]
+            - generic [ref=e882]:
+              - generic [ref=e884]:
+                - heading "ɛ" [level=3] [ref=e886]
+                - heading "as in any, kept, levator" [level=4] [ref=e888]
+              - iframe [ref=e893]:
+                - generic [ref=f25e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - link "Link to video owner's profile" [ref=f25e11] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                      - img "Link to video owner's profile" [ref=f25e12]
+                    - generic [ref=f25e13]:
+                      - generic [ref=f25e14]:
+                        - link "ɛ phoneme" [ref=f25e15] [cursor=pointer]:
+                          - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                        - generic [ref=f25e16]: ɛ phoneme
+                      - link "Melinda Ozel" [ref=f25e17] [cursor=pointer]:
+                        - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                        - generic [ref=f25e18]: Melinda Ozel
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f25e19] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f25e21] [cursor=pointer]:
+                        - img [ref=f25e22]
+                        - generic:
+                          - generic: Play
+                      - generic [ref=f25e25]:
+                        - generic [ref=f25e26]:
+                          - slider "Progress Bar" [ref=f25e27] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f25e32]: 00:04
+                        - generic:
+                          - generic:
+                            - generic [ref=f25e33]:
+                              - button "Mute" [ref=f25e34] [cursor=pointer]:
+                                - img [ref=f25e35]
+                              - slider "Volume (use up/down arrow keys to change)"
+                            - button "Settings" [ref=f25e37] [cursor=pointer]:
+                              - img [ref=f25e38]
+                              - generic:
+                                - generic: Settings
+                            - button "Picture-in-Picture" [ref=f25e40] [cursor=pointer]:
+                              - img [ref=f25e41]
+                              - generic:
+                                - generic: Picture-in-Picture
+                            - button "Fullscreen" [ref=f25e43] [cursor=pointer]:
+                              - img [ref=f25e44]
+                              - generic:
+                                - generic: Fullscreen
+            - heading "i (ee)" [level=2] [ref=e906]
+            - generic [ref=e908]:
+              - generic [ref=e910]:
+                - heading "i (ee)" [level=3] [ref=e912]
+                - heading "as in eel, cheese, meat" [level=4] [ref=e914]
+              - iframe [ref=e919]:
+                - generic [ref=f26e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - link "Link to video owner's profile" [ref=f26e11] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                      - img "Link to video owner's profile" [ref=f26e12]
+                    - generic [ref=f26e13]:
+                      - generic [ref=f26e14]:
+                        - link "i (ee) phoneme" [ref=f26e15] [cursor=pointer]:
+                          - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                        - generic [ref=f26e16]: i (ee) phoneme
+                      - link "Melinda Ozel" [ref=f26e17] [cursor=pointer]:
+                        - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                        - generic [ref=f26e18]: Melinda Ozel
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f26e19] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f26e21] [cursor=pointer]:
+                        - img [ref=f26e22]
+                        - generic:
+                          - generic: Play
+                      - generic [ref=f26e25]:
+                        - generic [ref=f26e26]:
+                          - slider "Progress Bar" [ref=f26e27] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f26e32]: 00:07
+                        - generic:
+                          - generic:
+                            - generic [ref=f26e33]:
+                              - button "Mute" [ref=f26e34] [cursor=pointer]:
+                                - img [ref=f26e35]
+                              - slider "Volume (use up/down arrow keys to change)"
+                            - button "Settings" [ref=f26e37] [cursor=pointer]:
+                              - img [ref=f26e38]
+                              - generic:
+                                - generic: Settings
+                            - button "Picture-in-Picture" [ref=f26e40] [cursor=pointer]:
+                              - img [ref=f26e41]
+                              - generic:
+                                - generic: Picture-in-Picture
+                            - button "Fullscreen" [ref=f26e43] [cursor=pointer]:
+                              - img [ref=f26e44]
+                              - generic:
+                                - generic: Fullscreen
+            - heading "ɪ (ih)" [level=2] [ref=e932]
+            - generic [ref=e934]:
+              - generic [ref=e936]:
+                - heading "ɪ" [level=3] [ref=e938]
+                - heading "as in lip, which" [level=4] [ref=e940]
+              - iframe [ref=e945]:
+                - generic [ref=f27e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - link "Link to video owner's profile" [ref=f27e11] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                      - img "Link to video owner's profile" [ref=f27e12]
+                    - generic [ref=f27e13]:
+                      - generic [ref=f27e14]:
+                        - link "ɪ phoneme" [ref=f27e15] [cursor=pointer]:
+                          - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                        - generic [ref=f27e16]: ɪ phoneme
+                      - link "Melinda Ozel" [ref=f27e17] [cursor=pointer]:
+                        - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                        - generic [ref=f27e18]: Melinda Ozel
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f27e19] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f27e21] [cursor=pointer]:
+                        - img [ref=f27e22]
+                        - generic:
+                          - generic: Play
+                      - generic [ref=f27e25]:
+                        - generic [ref=f27e26]:
+                          - slider "Progress Bar" [ref=f27e27] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f27e32]: 00:05
+                        - generic:
+                          - generic:
+                            - generic [ref=f27e33]:
+                              - button "Mute" [ref=f27e34] [cursor=pointer]:
+                                - img [ref=f27e35]
+                              - slider "Volume (use up/down arrow keys to change)"
+                            - button "Settings" [ref=f27e37] [cursor=pointer]:
+                              - img [ref=f27e38]
+                              - generic:
+                                - generic: Settings
+                            - button "Picture-in-Picture" [ref=f27e40] [cursor=pointer]:
+                              - img [ref=f27e41]
+                              - generic:
+                                - generic: Picture-in-Picture
+                            - button "Fullscreen" [ref=f27e43] [cursor=pointer]:
+                              - img [ref=f27e44]
+                              - generic:
+                                - generic: Fullscreen
+            - generic [ref=e956]:
+              - heading "u (oo)" [level=2] [ref=e958]
+              - heading "part of consonant group above for r/w" [level=3] [ref=e960]
+            - generic [ref=e962]:
+              - generic [ref=e964]:
+                - heading "u" [level=3] [ref=e966]
+                - heading "as in food, rue, mood" [level=4] [ref=e968]
+              - iframe [ref=e973]:
+                - generic [ref=f28e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - link "Link to video owner's profile" [ref=f28e11] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                      - img "Link to video owner's profile" [ref=f28e12]
+                    - generic [ref=f28e13]:
+                      - generic [ref=f28e14]:
+                        - link "u (oo) phoneme" [ref=f28e15] [cursor=pointer]:
+                          - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                        - generic [ref=f28e16]: u (oo) phoneme
+                      - link "Melinda Ozel" [ref=f28e17] [cursor=pointer]:
+                        - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                        - generic [ref=f28e18]: Melinda Ozel
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f28e19] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f28e21] [cursor=pointer]:
+                        - img [ref=f28e22]
+                        - generic:
+                          - generic: Play
+                      - generic [ref=f28e25]:
+                        - generic [ref=f28e26]:
+                          - slider "Progress Bar" [ref=f28e27] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f28e32]: 00:04
+                        - generic:
+                          - generic:
+                            - generic [ref=f28e33]:
+                              - button "Mute" [ref=f28e34] [cursor=pointer]:
+                                - img [ref=f28e35]
+                              - slider "Volume (use up/down arrow keys to change)"
+                            - button "Settings" [ref=f28e37] [cursor=pointer]:
+                              - img [ref=f28e38]
+                              - generic:
+                                - generic: Settings
+                            - button "Picture-in-Picture" [ref=f28e40] [cursor=pointer]:
+                              - img [ref=f28e41]
+                              - generic:
+                                - generic: Picture-in-Picture
+                            - button "Fullscreen" [ref=f28e43] [cursor=pointer]:
+                              - img [ref=f28e44]
+                              - generic:
+                                - generic: Fullscreen
+            - heading "ʊ (ouh)" [level=2] [ref=e986]
+            - generic [ref=e988]:
+              - generic [ref=e990]:
+                - heading "ʊ" [level=3] [ref=e992]
+                - heading "as in puller, look, good" [level=4] [ref=e994]
+              - iframe [ref=e999]:
+                - generic [ref=f29e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - link "Link to video owner's profile" [ref=f29e11] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                      - img "Link to video owner's profile" [ref=f29e12]
+                    - generic [ref=f29e13]:
+                      - generic [ref=f29e14]:
+                        - link "ʊ phoneme" [ref=f29e15] [cursor=pointer]:
+                          - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                        - generic [ref=f29e16]: ʊ phoneme
+                      - link "Melinda Ozel" [ref=f29e17] [cursor=pointer]:
+                        - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                        - generic [ref=f29e18]: Melinda Ozel
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f29e19] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f29e21] [cursor=pointer]:
+                        - img [ref=f29e22]
+                        - generic:
+                          - generic: Play
+                      - generic [ref=f29e25]:
+                        - generic [ref=f29e26]:
+                          - slider "Progress Bar" [ref=f29e27] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f29e32]: 00:05
+                        - generic:
+                          - generic:
+                            - generic [ref=f29e33]:
+                              - button "Mute" [ref=f29e34] [cursor=pointer]:
+                                - img [ref=f29e35]
+                              - slider "Volume (use up/down arrow keys to change)"
+                            - button "Settings" [ref=f29e37] [cursor=pointer]:
+                              - img [ref=f29e38]
+                              - generic:
+                                - generic: Settings
+                            - button "Picture-in-Picture" [ref=f29e40] [cursor=pointer]:
+                              - img [ref=f29e41]
+                              - generic:
+                                - generic: Picture-in-Picture
+                            - button "Fullscreen" [ref=f29e43] [cursor=pointer]:
+                              - img [ref=f29e44]
+                              - generic:
+                                - generic: Fullscreen
+            - heading "oʊ (oh)" [level=2] [ref=e1012]
+            - generic [ref=e1014]:
+              - generic [ref=e1016]:
+                - heading "oʊ" [level=3] [ref=e1018]
+                - heading "as in lowerer, slow, moat" [level=4] [ref=e1020]
+              - iframe [ref=e1025]:
+                - generic [ref=f30e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - link "Link to video owner's profile" [ref=f30e11] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                      - img "Link to video owner's profile" [ref=f30e12]
+                    - generic [ref=f30e13]:
+                      - generic [ref=f30e14]:
+                        - link "oʊ phoneme" [ref=f30e15] [cursor=pointer]:
+                          - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                        - generic [ref=f30e16]: oʊ phoneme
+                      - link "Melinda Ozel" [ref=f30e17] [cursor=pointer]:
+                        - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                        - generic [ref=f30e18]: Melinda Ozel
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f30e46] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f30e20] [cursor=pointer]:
+                        - img [ref=f30e21]
+                        - generic:
+                          - generic: Play
+                      - generic [ref=f30e24]:
+                        - generic [ref=f30e25]:
+                          - slider "Progress Bar" [ref=f30e26] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f30e31]: 00:04
+                        - generic:
+                          - generic:
+                            - generic [ref=f30e32]:
+                              - button "Mute" [ref=f30e33] [cursor=pointer]:
+                                - img [ref=f30e34]
+                              - slider "Volume (use up/down arrow keys to change)"
+                            - button "Settings" [ref=f30e36] [cursor=pointer]:
+                              - img [ref=f30e37]
+                              - generic:
+                                - generic: Settings
+                            - button "Picture-in-Picture" [ref=f30e39] [cursor=pointer]:
+                              - img [ref=f30e40]
+                              - generic:
+                                - generic: Picture-in-Picture
+                            - button "Fullscreen" [ref=f30e42] [cursor=pointer]:
+                              - img [ref=f30e43]
+                              - generic:
+                                - generic: Fullscreen
+            - heading "ɔɪ (oy)" [level=2] [ref=e1038]
+            - generic [ref=e1040]:
+              - generic [ref=e1042]:
+                - heading "ɔɪ" [level=3] [ref=e1044]
+                - heading "as in joy, soy, join" [level=4] [ref=e1046]
+                - paragraph [ref=e1048]: diphthong
+              - iframe [ref=e1053]:
+                - generic [ref=f31e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - link "Link to video owner's profile" [ref=f31e11] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                      - img "Link to video owner's profile" [ref=f31e12]
+                    - generic [ref=f31e13]:
+                      - generic [ref=f31e14]:
+                        - link "ɔɪ (oy) phoneme" [ref=f31e15] [cursor=pointer]:
+                          - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                        - generic [ref=f31e16]: ɔɪ (oy) phoneme
+                      - link "Melinda Ozel" [ref=f31e17] [cursor=pointer]:
+                        - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                        - generic [ref=f31e18]: Melinda Ozel
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f31e19] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f31e21] [cursor=pointer]:
+                        - img [ref=f31e22]
+                        - generic:
+                          - generic: Play
+                      - generic [ref=f31e25]:
+                        - generic [ref=f31e26]:
+                          - slider "Progress Bar" [ref=f31e27] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f31e32]: 00:03
+                        - generic:
+                          - generic:
+                            - generic [ref=f31e33]:
+                              - button "Mute" [ref=f31e34] [cursor=pointer]:
+                                - img [ref=f31e35]
+                              - slider "Volume (use up/down arrow keys to change)"
+                            - button "Settings" [ref=f31e37] [cursor=pointer]:
+                              - img [ref=f31e38]
+                              - generic:
+                                - generic: Settings
+                            - button "Picture-in-Picture" [ref=f31e40] [cursor=pointer]:
+                              - img [ref=f31e41]
+                              - generic:
+                                - generic: Picture-in-Picture
+                            - button "Fullscreen" [ref=f31e43] [cursor=pointer]:
+                              - img [ref=f31e44]
+                              - generic:
+                                - generic: Fullscreen
+            - heading "ə (uh)" [level=2] [ref=e1066]
+            - generic [ref=e1068]:
+              - generic [ref=e1070]:
+                - heading "ə" [level=3] [ref=e1072]
+                - heading "as in upper, other" [level=4] [ref=e1074]
+              - iframe [ref=e1079]:
+                - generic [ref=f32e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - link "Link to video owner's profile" [ref=f32e11] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                      - img "Link to video owner's profile" [ref=f32e12]
+                    - generic [ref=f32e13]:
+                      - generic [ref=f32e14]:
+                        - link "ə phoneme" [ref=f32e15] [cursor=pointer]:
+                          - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                        - generic [ref=f32e16]: ə phoneme
+                      - link "Melinda Ozel" [ref=f32e17] [cursor=pointer]:
+                        - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                        - generic [ref=f32e18]: Melinda Ozel
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f32e19] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f32e21] [cursor=pointer]:
+                        - img [ref=f32e22]
+                        - generic:
+                          - generic: Play
+                      - generic [ref=f32e25]:
+                        - generic [ref=f32e26]:
+                          - slider "Progress Bar" [ref=f32e27] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f32e32]: 00:05
+                        - generic:
+                          - generic:
+                            - generic [ref=f32e33]:
+                              - button "Mute" [ref=f32e34] [cursor=pointer]:
+                                - img [ref=f32e35]
+                              - slider "Volume (use up/down arrow keys to change)"
+                            - button "Settings" [ref=f32e37] [cursor=pointer]:
+                              - img [ref=f32e38]
+                              - generic:
+                                - generic: Settings
+                            - button "Picture-in-Picture" [ref=f32e40] [cursor=pointer]:
+                              - img [ref=f32e41]
+                              - generic:
+                                - generic: Picture-in-Picture
+                            - button "Fullscreen" [ref=f32e43] [cursor=pointer]:
+                              - img [ref=f32e44]
+                              - generic:
+                                - generic: Fullscreen
+            - paragraph [ref=e1085]:
+              - emphasis [ref=e1086]:
+                - text: Check back soon
+                - img "🙂" [ref=e1087]
+    - generic [ref=e1096]:
+      - complementary [ref=e1097]:
+        - generic [ref=e1104]:
+          - figure [ref=e1105]:
+            - link "headshot of page author" [ref=e1106] [cursor=pointer]:
+              - /url: https://melindaozel.com/melinda-who-zel/
+              - img "headshot of page author" [ref=e1107]
+          - paragraph
+          - paragraph [ref=e1108]:
+            - text: I’m a Facial Systems Expert specializing in the Facial Action Coding System (FACS) and facial anatomy. My work spans
+            - link "expression tracking" [ref=e1109] [cursor=pointer]:
+              - /url: https://patents.justia.com/inventor/melinda-ozel
+              - strong [ref=e1110]: expression tracking
+            - text: ", facial animation, and"
+            - link "AI-driven lipsync" [ref=e1111] [cursor=pointer]:
+              - /url: http://linkedin.com/in/melindaozel
+              - strong [ref=e1112]: AI-driven lipsync
+            - text: . Recent work includes contributions to the de-aging of Tom Hanks and other actors in the
+            - strong [ref=e1113]:
+              - link "Zemeckis film, Here" [ref=e1114] [cursor=pointer]:
+                - /url: https://www.imdb.com/name/nm15482966/
+            - text: .
+          - paragraph [ref=e1115]:
+            - text: Learn more about
+            - link "my background" [ref=e1116] [cursor=pointer]:
+              - /url: https://melindaozel.com/melinda-who-zel/
+              - strong [ref=e1117]: my background
+            - text: .
+          - paragraph
+      - complementary [ref=e1118]:
+        - paragraph [ref=e1119]:
+          - strong [ref=e1120]: Courses & Workshops
+          - text: "-"
+          - link "FACS Cram Session" [ref=e1121] [cursor=pointer]:
+            - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+          - text: "-"
+          - link "All About Lipsync" [ref=e1122] [cursor=pointer]:
+            - /url: https://melindaozel.com/all-about-lipsync-course/
+          - text: "-"
+          - link "All Training Services" [ref=e1123] [cursor=pointer]:
+            - /url: https://melindaozel.com/services/lectures-training/
+      - complementary [ref=e1124]:
+        - paragraph [ref=e1125]:
+          - strong [ref=e1126]: "\""
+          - text: Melinda Ozel's resources on face anatomy, motion, and FACS are industry standard. During my time working on The Last of Us Part II (and other unannounced Playstation titles) I referred to it almost exclusively on a regular basis. The free material is great but the pay material is worth the cost.
+          - strong [ref=e1127]: "\""
+          - strong [ref=e1128]: Eric Drobile | Technical Animator
+          - strong [ref=e1129]: "\""
+          - text: For most people learning traditional FACS is not feasible. It requires very costly specialized degrees and years long commitment. And the half century old research with fuzzy photos was not made for artists. What Melinda has done for our industry is take the dense scientific information and streamlined it into very easy to digest entries and videos catered to artists.
+          - strong [ref=e1130]: "\""
+          - strong [ref=e1131]: Paul Liaw | Principal Character Artist
+          - strong [ref=e1132]: "\""
+          - text: I've been working as a Facial Blendshape Artist across film and gaming and have watched the quality of my work improve exponentially since I've had access to this wealth of knowledge that Melinda has so thoughtfully put together. Her documentation is clear, appealing, and comprehensive. If Paul Ekman is the father of FACS, Melinda has become the cool aunt.
+          - strong [ref=e1133]: "\""
+          - strong [ref=e1134]: "Ioana Alexandra Pirvu | Lead Artist: Blendshapes @ Rockstar Games"
+          - strong [ref=e1135]: "\""
+          - text: Face the FACS in my opinion is bar-none, the best resource out there for any artist and company dealing with facial animation. The way in which Melinda delivers knowledge is detailed, but fun and compelling enough to make you want to keep learning. For a topic that could have easily been boring, she inspired me to keep learning.
+          - strong [ref=e1136]: "\""
+          - strong [ref=e1137]: Giovanni Nakpil | Senior Creative 3D Evangelist @ Adobe
+          - strong [ref=e1138]: "\""
+          - text: If you're doing AU's (action units), this is the site you're going to need to bookmark. Melinda has gone above and beyond to create what I feel is the ultimate resource guide for AU's. Each AU explained, annotated and demonstrated with extreme clarity. You'll experience plenty of "aha!!" moments using Melinda's work as your guide!
+          - strong [ref=e1139]: "\""
+          - strong [ref=e1140]: Frank Gravatt
+          - strong [ref=e1141]: "| Facial Modeler @ Cloud Chamber"
+      - complementary [ref=e1142]:
+        - paragraph
+      - complementary [ref=e1143]:
+        - generic [ref=e1145]:
+          - paragraph [ref=e1146]:
+            - strong [ref=e1147]: Connect with me <3
+          - list [ref=e1148]:
+            - listitem [ref=e1149]:
+              - link "Instagram" [ref=e1150] [cursor=pointer]:
+                - /url: https://instagram.com/manicexpression
+                - img [ref=e1151]
+                - generic [ref=e1153]: Instagram
+            - listitem [ref=e1154]:
+              - link "LinkedIn" [ref=e1155] [cursor=pointer]:
+                - /url: https://linkedin.com/in/melindaozel
+                - img [ref=e1156]
+                - generic [ref=e1158]: LinkedIn
+            - listitem [ref=e1159]:
+              - link "X" [ref=e1160] [cursor=pointer]:
+                - /url: https://x.com/melindaozel
+                - img [ref=e1161]
+                - generic [ref=e1163]: X
+  - generic [ref=e1164]:
+    - generic [ref=e1167]:
+      - complementary [ref=e1169]:
+        - search [ref=e1170]:
+          - generic [ref=e1171]: Search
+          - generic [ref=e1172]:
+            - searchbox "Search" [ref=e1173]
+            - button "Search" [ref=e1174] [cursor=pointer]
+      - complementary [ref=e1176]:
+        - paragraph [ref=e1177]:
+          - link "Terms & Conditions" [ref=e1178] [cursor=pointer]:
+            - /url: https://melindaozel.com/terms-conditions/
+    - contentinfo "Site" [ref=e1179]:
+      - generic [ref=e1181]:
+        - text: Copyright © 2020-2026 Melinda Ozel . All rights reserved.
+        - text: Learn how to
+        - link "cite my work here" [ref=e1182] [cursor=pointer]:
+          - /url: https://melindaozel.com/how-to-cite-my-work-use-my-visuals/
+          - generic [ref=e1183]: cite my work here
+        - generic [ref=e1184]: .
+  - navigation "Website language selector" [ref=e1185]:
+    - generic [ref=e1186]:
+      - button "Change language":
+        - generic: EN
+      - group "Available languages":
+        - link "ES" [ref=e1187] [cursor=pointer]:
+          - /url: https://melindaozel.com/es/viseme-speech-guide/
+          - generic [ref=e1188]: ES
+        - link "FR" [ref=e1189] [cursor=pointer]:
+          - /url: https://melindaozel.com/fr/viseme-speech-guide/
+          - generic [ref=e1190]: FR
+        - link "ES_VE" [ref=e1191] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_ve/viseme-speech-guide/
+          - generic [ref=e1192]: ES_VE
+        - link "ES_CL" [ref=e1193] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_cl/viseme-speech-guide/
+          - generic [ref=e1194]: ES_CL
+        - link "ES_GT" [ref=e1195] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_gt/viseme-speech-guide/
+          - generic [ref=e1196]: ES_GT
+        - link "PT" [ref=e1197] [cursor=pointer]:
+          - /url: https://melindaozel.com/pt/viseme-speech-guide/
+          - generic [ref=e1198]: PT
+        - link "ZH" [ref=e1199] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh/viseme-speech-guide/
+          - generic [ref=e1200]: ZH
+        - link "ZH_TW" [ref=e1201] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh_tw/viseme-speech-guide/
+          - generic [ref=e1202]: ZH_TW
+        - link "ZH_HK" [ref=e1203] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh_hk/viseme-speech-guide/
+          - generic [ref=e1204]: ZH_HK
+        - link "JA" [ref=e1205] [cursor=pointer]:
+          - /url: https://melindaozel.com/ja/viseme-speech-guide/
+          - generic [ref=e1206]: JA
+        - link "HI" [ref=e1207] [cursor=pointer]:
+          - /url: https://melindaozel.com/hi/viseme-speech-guide/
+          - generic [ref=e1208]: HI
+        - link "DE" [ref=e1209] [cursor=pointer]:
+          - /url: https://melindaozel.com/de/viseme-speech-guide/
+          - generic [ref=e1210]: DE
+        - link "DE_DE" [ref=e1211] [cursor=pointer]:
+          - /url: https://melindaozel.com/de_de/viseme-speech-guide/
+          - generic [ref=e1212]: DE_DE
+        - link "RU" [ref=e1213] [cursor=pointer]:
+          - /url: https://melindaozel.com/ru/viseme-speech-guide/
+          - generic [ref=e1214]: RU
+        - link "PL" [ref=e1215] [cursor=pointer]:
+          - /url: https://melindaozel.com/pl/viseme-speech-guide/
+          - generic [ref=e1216]: PL
+        - link "CS" [ref=e1217] [cursor=pointer]:
+          - /url: https://melindaozel.com/cs/viseme-speech-guide/
+          - generic [ref=e1218]: CS
+        - link "VI" [ref=e1219] [cursor=pointer]:
+          - /url: https://melindaozel.com/vi/viseme-speech-guide/
+          - generic [ref=e1220]: VI
+        - link "IT" [ref=e1221] [cursor=pointer]:
+          - /url: https://melindaozel.com/it/viseme-speech-guide/
+          - generic [ref=e1222]: IT
+        - link "SV" [ref=e1223] [cursor=pointer]:
+          - /url: https://melindaozel.com/sv/viseme-speech-guide/
+          - generic [ref=e1224]: SV
+        - link "SR" [ref=e1225] [cursor=pointer]:
+          - /url: https://melindaozel.com/sr/viseme-speech-guide/
+          - generic [ref=e1226]: SR
+        - link "AR" [ref=e1227] [cursor=pointer]:
+          - /url: https://melindaozel.com/ar/viseme-speech-guide/
+          - generic [ref=e1228]: AR
+        - link "MS" [ref=e1229] [cursor=pointer]:
+          - /url: https://melindaozel.com/ms/viseme-speech-guide/
+          - generic [ref=e1230]: MS
+        - link "FI" [ref=e1231] [cursor=pointer]:
+          - /url: https://melindaozel.com/fi/viseme-speech-guide/
+          - generic [ref=e1232]: FI
+        - link "ES_MX" [ref=e1233] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_mx/viseme-speech-guide/
+          - generic [ref=e1234]: ES_MX
+        - link "KO" [ref=e1235] [cursor=pointer]:
+          - /url: https://melindaozel.com/ko/viseme-speech-guide/
+          - generic [ref=e1236]: KO
+        - link "TR" [ref=e1237] [cursor=pointer]:
+          - /url: https://melindaozel.com/tr/viseme-speech-guide/
+          - generic [ref=e1238]: TR
+        - link "IS" [ref=e1239] [cursor=pointer]:
+          - /url: https://melindaozel.com/is/viseme-speech-guide/
+          - generic [ref=e1240]: IS
+        - link "NL" [ref=e1241] [cursor=pointer]:
+          - /url: https://melindaozel.com/nl/viseme-speech-guide/
+          - generic [ref=e1242]: NL
+        - link "NL_NL" [ref=e1243] [cursor=pointer]:
+          - /url: https://melindaozel.com/nl_nl/viseme-speech-guide/
+          - generic [ref=e1244]: NL_NL
+        - link "ES_AR" [ref=e1245] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_ar/viseme-speech-guide/
+          - generic [ref=e1246]: ES_AR
+        - link "UK" [ref=e1247] [cursor=pointer]:
+          - /url: https://melindaozel.com/uk/viseme-speech-guide/
+          - generic [ref=e1248]: UK
+  - generic [ref=e1249]: desktop

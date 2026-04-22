@@ -1,0 +1,496 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#content"
+  - navigation "Secondary" [ref=e3]:
+    - list [ref=e6]:
+      - listitem [ref=e7]:
+        - link "Premium Member Access" [ref=e8] [cursor=pointer]:
+          - /url: https://melindaozel.com/premium-resources/
+          - text: Premium Member Access
+          - img [ref=e10]
+        - list:
+          - listitem:
+            - link "Login":
+              - /url: https://melindaozel.com/login/
+          - listitem:
+            - link "Subscribe :)":
+              - /url: https://melindaozel.com/subscription-options/
+      - listitem [ref=e12]:
+        - link "Recorded Lecture Access" [ref=e13] [cursor=pointer]:
+          - /url: https://melindaozel.com/recorded-lectures/
+          - text: Recorded Lecture Access
+          - img [ref=e15]
+        - list:
+          - listitem:
+            - link "FACS Cram Session":
+              - /url: https://melindaozel.com/facs-cram-session/
+          - listitem:
+            - link "All About Lipsync":
+              - /url: https://melindaozel.com/all-about-lipsync-lecture-videos/
+      - listitem [ref=e17]:
+        - link "My Account" [ref=e18] [cursor=pointer]:
+          - /url: https://melindaozel.com/account/
+  - banner "Site" [ref=e19]:
+    - generic [ref=e21]:
+      - link "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e23] [cursor=pointer]:
+        - /url: https://melindaozel.com/
+        - img "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e24]
+      - paragraph [ref=e26]:
+        - link "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e27] [cursor=pointer]:
+          - /url: https://melindaozel.com/
+  - navigation "Primary" [ref=e28]:
+    - list [ref=e31]:
+      - listitem [ref=e32]:
+        - link "Learning Hub" [ref=e33] [cursor=pointer]:
+          - /url: https://melindaozel.com/learning-hub/
+          - text: Learning Hub
+          - img [ref=e35]
+        - list:
+          - listitem:
+            - link "FACS Cheat Sheet":
+              - /url: https://melindaozel.com/facs-cheat-sheet/
+          - listitem:
+            - link "Viseme Cheat Sheet":
+              - /url: https://melindaozel.com/viseme-cheat-sheet/
+          - listitem:
+            - link "All Free Resources":
+              - /url: https://melindaozel.com/free-resources/
+          - listitem:
+            - link "🔒 Premium Resources":
+              - /url: https://melindaozel.com/premium-resources/
+              - img "🔒"
+              - text: Premium Resources
+          - listitem:
+            - link "FAQs":
+              - /url: https://melindaozel.com/faqs/
+      - listitem [ref=e37]:
+        - link "Courses" [ref=e38] [cursor=pointer]:
+          - /url: https://melindaozel.com/online-lectures/
+          - text: Courses
+          - img [ref=e40]
+        - list:
+          - listitem:
+            - link "FACS Cram Session":
+              - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+          - listitem:
+            - link "All About Lipsync":
+              - /url: https://melindaozel.com/all-about-lipsync-course/
+      - listitem [ref=e42]:
+        - link "Full Site Access" [ref=e43] [cursor=pointer]:
+          - /url: https://melindaozel.com/subscription-options/
+          - text: Full Site Access
+          - img [ref=e45]
+        - list:
+          - listitem:
+            - link "Membership Options":
+              - /url: https://melindaozel.com/subscription-options/
+      - listitem [ref=e47]:
+        - link "Services" [ref=e48] [cursor=pointer]:
+          - /url: https://melindaozel.com/services/
+          - text: Services
+          - img [ref=e50]
+        - list:
+          - listitem:
+            - link "FACS Lectures & Training":
+              - /url: https://melindaozel.com/services/lectures-training/
+          - listitem:
+            - link "Consulting":
+              - /url: https://melindaozel.com/services/consulting/
+      - listitem [ref=e52]:
+        - link "About" [ref=e53] [cursor=pointer]:
+          - /url: https://melindaozel.com/who-is-melinda-ozel/
+          - text: About
+          - img [ref=e55]
+        - list:
+          - listitem:
+            - link "About Me":
+              - /url: https://melindaozel.com/who-is-melinda-ozel/
+          - listitem:
+            - link "Cite My Work":
+              - /url: https://melindaozel.com/how-to-cite-my-work-use-my-visuals/
+          - listitem:
+            - link "Contact":
+              - /url: https://melindaozel.com/who-is-melinda-ozel/contact-me/
+  - generic [ref=e58]:
+    - main [ref=e60]:
+      - article [ref=e61]:
+        - generic [ref=e62]:
+          - generic [ref=e63]:
+            - 'heading "Wrinkle Tips For Character Artists, Part II: Static Forms" [level=1] [ref=e64]'
+            - generic [ref=e65]:
+              - time [ref=e67]: May 11, 2020
+              - generic [ref=e68]:
+                - text: by
+                - link "Melinda Ozel" [ref=e70] [cursor=pointer]:
+                  - /url: https://melindaozel.com/author/melindaozel/
+          - generic [ref=e71]:
+            - paragraph [ref=e72]:
+              - text: "When designing characters, remember: every wrinkle tells a story. This post is Part II of a series on wrinkle types."
+              - link "Part I" [ref=e74] [cursor=pointer]:
+                - /url: https://melindaozel.com/a-wrinkle-in-time-building-characters-with-real-story-lines/
+              - text: "focused on wrinkles caused by repeated facial expressions – dynamic wrinkles. Part II will focus on another class of wrinkles: static wrinkles. While static wrinkles might not seem as exciting as dynamic expression wrinkles, they are just as important to consider when designing your character."
+            - paragraph [ref=e75]:
+              - img "Thanos with text overlaid describing types of wrinkles and wrinkle treatment plans" [ref=e76]
+            - paragraph [ref=e77]:
+              - emphasis [ref=e78]: modified image of Thanos fan art used with permission from Rodion Vlasov
+            - heading "Static “Wrinkles”" [level=2] [ref=e79]
+            - paragraph [ref=e80]: Static wrinkles are set in place on the skin; they are visible with or without facial movement. Static wrinkles can be caused by repeated expressions, gravitational forces, and loss of skin elasticity.
+            - paragraph [ref=e81]:
+              - strong [ref=e83]: NOTE
+              - strong [ref=e84]: ":"
+              - text: In Part I, we already covered how
+              - link "dynamic expression lines" [ref=e85] [cursor=pointer]:
+                - /url: https://melindaozel.com/a-wrinkle-in-time-building-characters-with-real-story-lines/
+              - text: can turn into static lines as well. We will therefore only cover the non-expression-based lines in this article.
+            - paragraph [ref=e86]: "There are various types of static skin creases. Because the technical definition of “wrinkle” is still debated, it is important to know that the following list is a mix of wrinkles and skin characteristics. Technicalities aside, each of the following categories is useful to study if you want to apply natural-looking skin texture and shape changes to your character designs:"
+            - list [ref=e87]:
+              - listitem [ref=e88]: microrelief
+              - listitem [ref=e89]: atrophic crinkling rhytids
+              - listitem [ref=e90]: permanent elastoic creases
+              - listitem [ref=e91]: sleep creases
+              - listitem [ref=e92]: gravitational folds
+            - heading "Microrelief" [level=2] [ref=e93]
+            - paragraph [ref=e94]: Microrelief is the fine, irregular geometric patterns that cover the skin surface. Microrelief characteristics come together to create skin texture.
+            - generic [ref=e95]:
+              - figure [ref=e96]:
+                - link [ref=e98] [cursor=pointer]:
+                  - /url: https://melindaozel.com/a-wrinkle-in-time-part-ii/screen-shot-2020-05-04-at-4-12-31-am/#main
+              - figure [ref=e99]:
+                - link [ref=e101] [cursor=pointer]:
+                  - /url: https://melindaozel.com/a-wrinkle-in-time-part-ii/img_9253/#main
+            - paragraph [ref=e102]: Microrelief quality is affected by aging and multiple environmental factors.
+            - paragraph
+            - paragraph [ref=e103]:
+              - link "“The innate polygonal pattern becomes more anisotropic with increasing age.”" [ref=e105] [cursor=pointer]:
+                - /url: https://onlinelibrary.wiley.com/doi/full/10.1111/j.1467-2494.2006.00342.x
+            - heading "(Wiki) Anisotropy (/ˌæn.ə-, ˌæn.aɪˈsɒtr.əp.i/) is the property of being directionally dependent, which implies different properties in different directions, as opposed to isotropy." [level=3] [ref=e107]:
+              - emphasis [ref=e109]:
+                - generic [ref=e111]:
+                  - link "(Wiki) Anisotropy" [ref=e112] [cursor=pointer]:
+                    - /url: https://en.wikipedia.org/wiki/Anisotropy
+                    - generic [ref=e113]:
+                      - text: (Wiki)
+                      - generic [ref=e114]: Anisotropy
+                  - text: (/ˌæn.ə-, ˌæn.aɪˈsɒtr.əp.i/) is the property of being directionally dependent, which implies different properties in different directions, as opposed to isotropy.
+            - heading [level=3] [ref=e115]
+            - heading [level=3] [ref=e116]
+            - heading "Basically – microrelief starts off as randomized geometric patterns in younger skin; however, as the skin ages, the surface lines are deformed on more of a directional basis. This concept makes sense, as over time, more environmental factors stress and influence the properties of the skin." [level=3] [ref=e117]
+            - heading [level=3] [ref=e118]
+            - generic [ref=e119]:
+              - heading "Why should character artists care about microrelief?" [level=3] [ref=e120]
+              - paragraph [ref=e121]: Microrelief is one of the foundations of skin texture. Being familiar with the basic structure and geometric patterns of the skin surface as well as how it changes over time will allow you to create realistic texture in your art. This type of information is especially critical to artists and researchers working on digital humans.
+            - heading "Atrophic Crinkling Rhytids" [level=2] [ref=e123]
+            - paragraph [ref=e124]: Atrophic crinkling rhytids are the fine lines that surround your skin. If mircorelief is considered the first layer, atrophic crinkling rhytids (ACRs) are the next level. ACRs are typically parallel lines that form above the microrelief. ACRs get deeper and saggier over time, and are more apparent when the skin is thin.
+            - paragraph [ref=e125]:
+              - img "closeupatrophic" [ref=e126]
+            - heading "Why should character artists care about atrophic crinkling rhytids?" [level=3] [ref=e127]
+            - paragraph [ref=e128]: As mentioned in the “microrelief” section, the fundamental details of the skin are crucial in creating realistic skin textures for your character, especially with the new digital human trend. Atrophic crinkling rhytids are the next layer after microrelief. Their parallel patterns provide a less chaotic structure than microrelief.
+            - heading "Permanent Elastoic Creases" [level=2] [ref=e129]
+            - paragraph [ref=e130]: Permanent elastoic creases (PECs) are wrinkles that form when the skin is in a certain position but stretch when the skin is taut. They can be creases around your lips or on your wrists, elbows, neck, etc.
+            - paragraph [ref=e131]: PECs get worse and more defined as you age. You can reduce elastoic wrinkles by reducing repetitive movements. For example, if you have lines around your lips from regularly drinking with a straw or lines across your neck from looking down at your phone or computer, decreasing how often you drink with straws or look down will decrease the speed at which your elastoic wrinkles deepen.
+            - paragraph [ref=e132]:
+              - img "permanentelastoic" [ref=e133]
+            - heading "Why should character artists care about elastoic creases?" [level=3] [ref=e134]
+            - paragraph [ref=e135]: At points of joint intersection or areas of skin that require regular bending (or puckering, like the lips), elastoic wrinkles can be used to illustrate behavioral history. You can adjust the depth of these wrinkles based on the angle of movement, the frequency of movement, and the age of the character. For character artists, these wrinkles are what you would want to put in the topology.
+            - heading "Sleep Creases" [level=2] [ref=e136]
+            - paragraph [ref=e137]: Sleep creases form over time from habitually sleeping on one side. They typically form on the lateral side of the forehead but occur in other parts of the face as well – basically, anywhere that can be squished while lying sideways. If you see a deep wrinkle that cannot be explained by muscle movement, consider sleep creases.
+            - paragraph [ref=e138]:
+              - text: "Anthony Hopkins has a deep vertical crease on the left half of his forehead. This line cannot be explained by any type of muscle movement, but it can be explained by longterm pressure from repetitive sleeping positions. If you ever wanted to know about Anthony Hopkins’s preferred sleeping side: He likes to sleep on his left, which is"
+              - link "arguably the best side to sleep on" [ref=e140] [cursor=pointer]:
+                - /url: https://www.healthline.com/health/healthy-sleep/sleep-effects-digestion#side-sleeping
+              - text: – especially for your gut. Nice job, Hopkins!
+            - paragraph [ref=e141]: Thanos on the other hand, who has equally distributed sleep creases on both sides of his forehead, clearly has no favorite side.
+            - paragraph [ref=e142]: I see a lot of character models that include sleep creases. Based on the way in which these creases are being applied (usually bilaterally with even depth), it is likely most artists are using sleep creases as cosmetic accessories rather than truly understanding their function.
+            - paragraph [ref=e143]:
+              - img "Anthony Hopkins's sleep creases" [ref=e144]
+            - heading "Why should artists character artists care about sleep creases?" [level=4] [ref=e145]
+            - paragraph [ref=e146]: If you really want to get into detailed story building, you can get down to the minutia of everyday life, like sleeping habits and environmental conditions.
+            - heading "Gravitational Folds" [level=2] [ref=e147]
+            - paragraph [ref=e148]: Gravitational folds are skin folds that droop from gravity. Older and thinner skin is more susceptible to this type of sagging. Drooping eyelids and jowls are types of gravitational folds.
+            - paragraph [ref=e149]:
+              - img "nasolabial fold" [ref=e150]
+            - heading "Why should character artists care about gravitational folds?" [level=3] [ref=e151]
+            - paragraph [ref=e152]: Understanding how skin characteristics affect facial features can help you paint a more realistic portrait. You can deform targeted areas of the skin based on conditions such as age and skin thickness.
+            - heading "Takeaways" [level=2] [ref=e153]
+            - paragraph [ref=e154]: With all of the different layers of the skin and varying depths/types of lines, you can read facial movement and tell even more detailed stories about environment, genetics, age, and lifestyle.
+            - paragraph
+            - heading [level=2] [ref=e155]
+            - paragraph
+          - generic "Entry meta" [ref=e157]:
+            - generic [ref=e158]:
+              - img [ref=e160]
+              - generic [ref=e162]: Categories
+              - link "action units (FACS AUs)" [ref=e163] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/facial-expressions/action-units/
+              - text: ","
+              - link "AU1" [ref=e164] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/facial-expressions/action-units/au1/
+              - text: ","
+              - link "AU2" [ref=e165] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/facial-expressions/action-units/au2/
+              - text: ","
+              - link "facial anatomy" [ref=e166] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/anatomy/
+              - text: ","
+              - link "facial expressions" [ref=e167] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/facial-expressions/
+              - text: ","
+              - link "frontalis" [ref=e168] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/anatomy/muscles/frontalis/
+              - text: ","
+              - link "inner brow raiser" [ref=e169] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/facial-expressions/action-units/au1/inner-brow-raiser/
+              - text: ","
+              - link "outer brow raiser" [ref=e170] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/facial-expressions/action-units/au2/outer-brow-raiser/
+              - text: ","
+              - link "paid content" [ref=e171] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/paid/
+              - text: ","
+              - link "premium previews" [ref=e172] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/paid/premium-previews/
+              - text: ","
+              - link "wrinkles" [ref=e173] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/facial-expressions/wrinkles/
+            - navigation "Posts" [ref=e174]:
+              - generic [ref=e175]:
+                - img [ref=e177]
+                - 'link "A Wrinkle In Time, Part I: How to Build Characters With Real Story Lines" [ref=e180] [cursor=pointer]':
+                  - /url: https://melindaozel.com/a-wrinkle-in-time-building-characters-with-real-story-lines/
+              - generic [ref=e181]:
+                - img [ref=e183]
+                - link "ARKit & Other Face Tracking Mistakes" [ref=e186] [cursor=pointer]:
+                  - /url: https://melindaozel.com/arkit-other-face-tracking-mistakes/
+      - generic [ref=e188]:
+        - 'heading "1 thought on “Wrinkle Tips For Character Artists, Part II: Static Forms”" [level=2] [ref=e189]'
+        - list [ref=e190]:
+          - listitem [ref=e191]:
+            - generic [ref=e192]:
+              - text: "Pingback:"
+              - link "faking aging in characters – Face the FACS" [ref=e193] [cursor=pointer]:
+                - /url: https://melindaozel.com/faking-aging-in-characters/
+        - generic [ref=e194]:
+          - heading "Leave a Comment" [level=3] [ref=e195]
+          - generic [ref=e196]:
+            - paragraph [ref=e197]:
+              - text: Logged in as LucaPrasso.
+              - link "Edit your profile" [ref=e198] [cursor=pointer]:
+                - /url: https://melindaozel.com/wp-admin/profile.php
+              - text: .
+              - link "Log out?" [ref=e199] [cursor=pointer]:
+                - /url: https://melindaozel.com/wp-login.php?action=logout&redirect_to=https%3A%2F%2Fmelindaozel.com%2Fa-wrinkle-in-time-part-ii%2F&_wpnonce=3fac8055be
+              - generic [ref=e200]: Required fields are marked *
+            - paragraph [ref=e201]:
+              - generic [ref=e202]: Comment
+              - textbox "Comment" [ref=e203]
+            - paragraph [ref=e204]:
+              - button "Post Comment" [ref=e205] [cursor=pointer]
+        - paragraph [ref=e206]:
+          - text: This site uses Akismet to reduce spam.
+          - link "Learn how your comment data is processed." [ref=e207] [cursor=pointer]:
+            - /url: https://akismet.com/privacy/
+    - generic [ref=e209]:
+      - complementary [ref=e210]:
+        - generic [ref=e217]:
+          - figure [ref=e218]:
+            - link "headshot of page author" [ref=e219] [cursor=pointer]:
+              - /url: https://melindaozel.com/melinda-who-zel/
+              - img "headshot of page author" [ref=e220]
+          - paragraph
+          - paragraph [ref=e221]:
+            - text: I’m a Facial Systems Expert specializing in the Facial Action Coding System (FACS) and facial anatomy. My work spans
+            - link "expression tracking" [ref=e222] [cursor=pointer]:
+              - /url: https://patents.justia.com/inventor/melinda-ozel
+              - strong [ref=e223]: expression tracking
+            - text: ", facial animation, and"
+            - link "AI-driven lipsync" [ref=e224] [cursor=pointer]:
+              - /url: http://linkedin.com/in/melindaozel
+              - strong [ref=e225]: AI-driven lipsync
+            - text: . Recent work includes contributions to the de-aging of Tom Hanks and other actors in the
+            - strong [ref=e226]:
+              - link "Zemeckis film, Here" [ref=e227] [cursor=pointer]:
+                - /url: https://www.imdb.com/name/nm15482966/
+            - text: .
+          - paragraph [ref=e228]:
+            - text: Learn more about
+            - link "my background" [ref=e229] [cursor=pointer]:
+              - /url: https://melindaozel.com/melinda-who-zel/
+              - strong [ref=e230]: my background
+            - text: .
+          - paragraph
+      - complementary [ref=e231]:
+        - paragraph [ref=e232]:
+          - strong [ref=e233]: Courses & Workshops
+          - text: "-"
+          - link "FACS Cram Session" [ref=e234] [cursor=pointer]:
+            - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+          - text: "-"
+          - link "All About Lipsync" [ref=e235] [cursor=pointer]:
+            - /url: https://melindaozel.com/all-about-lipsync-course/
+          - text: "-"
+          - link "All Training Services" [ref=e236] [cursor=pointer]:
+            - /url: https://melindaozel.com/services/lectures-training/
+      - complementary [ref=e237]:
+        - paragraph [ref=e238]:
+          - strong [ref=e239]: "\""
+          - text: Melinda Ozel's resources on face anatomy, motion, and FACS are industry standard. During my time working on The Last of Us Part II (and other unannounced Playstation titles) I referred to it almost exclusively on a regular basis. The free material is great but the pay material is worth the cost.
+          - strong [ref=e240]: "\""
+          - strong [ref=e241]: Eric Drobile | Technical Animator
+          - strong [ref=e242]: "\""
+          - text: For most people learning traditional FACS is not feasible. It requires very costly specialized degrees and years long commitment. And the half century old research with fuzzy photos was not made for artists. What Melinda has done for our industry is take the dense scientific information and streamlined it into very easy to digest entries and videos catered to artists.
+          - strong [ref=e243]: "\""
+          - strong [ref=e244]: Paul Liaw | Principal Character Artist
+          - strong [ref=e245]: "\""
+          - text: I've been working as a Facial Blendshape Artist across film and gaming and have watched the quality of my work improve exponentially since I've had access to this wealth of knowledge that Melinda has so thoughtfully put together. Her documentation is clear, appealing, and comprehensive. If Paul Ekman is the father of FACS, Melinda has become the cool aunt.
+          - strong [ref=e246]: "\""
+          - strong [ref=e247]: "Ioana Alexandra Pirvu | Lead Artist: Blendshapes @ Rockstar Games"
+          - strong [ref=e248]: "\""
+          - text: Face the FACS in my opinion is bar-none, the best resource out there for any artist and company dealing with facial animation. The way in which Melinda delivers knowledge is detailed, but fun and compelling enough to make you want to keep learning. For a topic that could have easily been boring, she inspired me to keep learning.
+          - strong [ref=e249]: "\""
+          - strong [ref=e250]: Giovanni Nakpil | Senior Creative 3D Evangelist @ Adobe
+          - strong [ref=e251]: "\""
+          - text: If you're doing AU's (action units), this is the site you're going to need to bookmark. Melinda has gone above and beyond to create what I feel is the ultimate resource guide for AU's. Each AU explained, annotated and demonstrated with extreme clarity. You'll experience plenty of "aha!!" moments using Melinda's work as your guide!
+          - strong [ref=e252]: "\""
+          - strong [ref=e253]: Frank Gravatt
+          - strong [ref=e254]: "| Facial Modeler @ Cloud Chamber"
+      - complementary [ref=e255]:
+        - paragraph
+      - complementary [ref=e256]:
+        - generic [ref=e258]:
+          - paragraph [ref=e259]:
+            - strong [ref=e260]: Connect with me <3
+          - list [ref=e261]:
+            - listitem [ref=e262]:
+              - link "Instagram" [ref=e263] [cursor=pointer]:
+                - /url: https://instagram.com/manicexpression
+                - img [ref=e264]
+                - generic [ref=e266]: Instagram
+            - listitem [ref=e267]:
+              - link "LinkedIn" [ref=e268] [cursor=pointer]:
+                - /url: https://linkedin.com/in/melindaozel
+                - img [ref=e269]
+                - generic [ref=e271]: LinkedIn
+            - listitem [ref=e272]:
+              - link "X" [ref=e273] [cursor=pointer]:
+                - /url: https://x.com/melindaozel
+                - img [ref=e274]
+                - generic [ref=e276]: X
+  - generic [ref=e277]:
+    - generic [ref=e280]:
+      - complementary [ref=e282]:
+        - search [ref=e283]:
+          - generic [ref=e284]: Search
+          - generic [ref=e285]:
+            - searchbox "Search" [ref=e286]
+            - button "Search" [ref=e287] [cursor=pointer]
+      - complementary [ref=e289]:
+        - paragraph [ref=e290]:
+          - link "Terms & Conditions" [ref=e291] [cursor=pointer]:
+            - /url: https://melindaozel.com/terms-conditions/
+    - contentinfo "Site" [ref=e292]:
+      - generic [ref=e294]:
+        - text: Copyright © 2020-2026 Melinda Ozel . All rights reserved.
+        - text: Learn how to
+        - link "cite my work here" [ref=e295] [cursor=pointer]:
+          - /url: https://melindaozel.com/how-to-cite-my-work-use-my-visuals/
+          - generic [ref=e296]: cite my work here
+        - generic [ref=e297]: .
+  - navigation "Website language selector" [ref=e298]:
+    - generic [ref=e299]:
+      - button "Change language":
+        - generic: EN
+      - group "Available languages":
+        - link "ES" [ref=e300] [cursor=pointer]:
+          - /url: https://melindaozel.com/es/a-wrinkle-in-time-part-ii/
+          - generic [ref=e301]: ES
+        - link "FR" [ref=e302] [cursor=pointer]:
+          - /url: https://melindaozel.com/fr/a-wrinkle-in-time-part-ii/
+          - generic [ref=e303]: FR
+        - link "ES_VE" [ref=e304] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_ve/a-wrinkle-in-time-part-ii/
+          - generic [ref=e305]: ES_VE
+        - link "ES_CL" [ref=e306] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_cl/a-wrinkle-in-time-part-ii/
+          - generic [ref=e307]: ES_CL
+        - link "ES_GT" [ref=e308] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_gt/a-wrinkle-in-time-part-ii/
+          - generic [ref=e309]: ES_GT
+        - link "PT" [ref=e310] [cursor=pointer]:
+          - /url: https://melindaozel.com/pt/a-wrinkle-in-time-part-ii/
+          - generic [ref=e311]: PT
+        - link "ZH" [ref=e312] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh/a-wrinkle-in-time-part-ii/
+          - generic [ref=e313]: ZH
+        - link "ZH_TW" [ref=e314] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh_tw/a-wrinkle-in-time-part-ii/
+          - generic [ref=e315]: ZH_TW
+        - link "ZH_HK" [ref=e316] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh_hk/a-wrinkle-in-time-part-ii/
+          - generic [ref=e317]: ZH_HK
+        - link "JA" [ref=e318] [cursor=pointer]:
+          - /url: https://melindaozel.com/ja/a-wrinkle-in-time-part-ii/
+          - generic [ref=e319]: JA
+        - link "HI" [ref=e320] [cursor=pointer]:
+          - /url: https://melindaozel.com/hi/a-wrinkle-in-time-part-ii/
+          - generic [ref=e321]: HI
+        - link "DE" [ref=e322] [cursor=pointer]:
+          - /url: https://melindaozel.com/de/a-wrinkle-in-time-part-ii/
+          - generic [ref=e323]: DE
+        - link "DE_DE" [ref=e324] [cursor=pointer]:
+          - /url: https://melindaozel.com/de_de/a-wrinkle-in-time-part-ii/
+          - generic [ref=e325]: DE_DE
+        - link "RU" [ref=e326] [cursor=pointer]:
+          - /url: https://melindaozel.com/ru/a-wrinkle-in-time-part-ii/
+          - generic [ref=e327]: RU
+        - link "PL" [ref=e328] [cursor=pointer]:
+          - /url: https://melindaozel.com/pl/a-wrinkle-in-time-part-ii/
+          - generic [ref=e329]: PL
+        - link "CS" [ref=e330] [cursor=pointer]:
+          - /url: https://melindaozel.com/cs/a-wrinkle-in-time-part-ii/
+          - generic [ref=e331]: CS
+        - link "VI" [ref=e332] [cursor=pointer]:
+          - /url: https://melindaozel.com/vi/a-wrinkle-in-time-part-ii/
+          - generic [ref=e333]: VI
+        - link "IT" [ref=e334] [cursor=pointer]:
+          - /url: https://melindaozel.com/it/a-wrinkle-in-time-part-ii/
+          - generic [ref=e335]: IT
+        - link "SV" [ref=e336] [cursor=pointer]:
+          - /url: https://melindaozel.com/sv/a-wrinkle-in-time-part-ii/
+          - generic [ref=e337]: SV
+        - link "SR" [ref=e338] [cursor=pointer]:
+          - /url: https://melindaozel.com/sr/a-wrinkle-in-time-part-ii/
+          - generic [ref=e339]: SR
+        - link "AR" [ref=e340] [cursor=pointer]:
+          - /url: https://melindaozel.com/ar/a-wrinkle-in-time-part-ii/
+          - generic [ref=e341]: AR
+        - link "MS" [ref=e342] [cursor=pointer]:
+          - /url: https://melindaozel.com/ms/a-wrinkle-in-time-part-ii/
+          - generic [ref=e343]: MS
+        - link "FI" [ref=e344] [cursor=pointer]:
+          - /url: https://melindaozel.com/fi/a-wrinkle-in-time-part-ii/
+          - generic [ref=e345]: FI
+        - link "ES_MX" [ref=e346] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_mx/a-wrinkle-in-time-part-ii/
+          - generic [ref=e347]: ES_MX
+        - link "KO" [ref=e348] [cursor=pointer]:
+          - /url: https://melindaozel.com/ko/a-wrinkle-in-time-part-ii/
+          - generic [ref=e349]: KO
+        - link "TR" [ref=e350] [cursor=pointer]:
+          - /url: https://melindaozel.com/tr/a-wrinkle-in-time-part-ii/
+          - generic [ref=e351]: TR
+        - link "IS" [ref=e352] [cursor=pointer]:
+          - /url: https://melindaozel.com/is/a-wrinkle-in-time-part-ii/
+          - generic [ref=e353]: IS
+        - link "NL" [ref=e354] [cursor=pointer]:
+          - /url: https://melindaozel.com/nl/a-wrinkle-in-time-part-ii/
+          - generic [ref=e355]: NL
+        - link "NL_NL" [ref=e356] [cursor=pointer]:
+          - /url: https://melindaozel.com/nl_nl/a-wrinkle-in-time-part-ii/
+          - generic [ref=e357]: NL_NL
+        - link "ES_AR" [ref=e358] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_ar/a-wrinkle-in-time-part-ii/
+          - generic [ref=e359]: ES_AR
+        - link "UK" [ref=e360] [cursor=pointer]:
+          - /url: https://melindaozel.com/uk/a-wrinkle-in-time-part-ii/
+          - generic [ref=e361]: UK
+  - generic [ref=e362]: desktop

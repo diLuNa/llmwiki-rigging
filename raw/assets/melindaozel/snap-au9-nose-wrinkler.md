@@ -1,0 +1,782 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#content"
+  - navigation "Secondary" [ref=e3]:
+    - list [ref=e6]:
+      - listitem [ref=e7]:
+        - link "Premium Member Access" [ref=e8] [cursor=pointer]:
+          - /url: https://melindaozel.com/premium-resources/
+          - text: Premium Member Access
+          - img [ref=e10]
+        - list:
+          - listitem:
+            - link "Login":
+              - /url: https://melindaozel.com/login/
+          - listitem:
+            - link "Subscribe :)":
+              - /url: https://melindaozel.com/subscription-options/
+      - listitem [ref=e12]:
+        - link "Recorded Lecture Access" [ref=e13] [cursor=pointer]:
+          - /url: https://melindaozel.com/recorded-lectures/
+          - text: Recorded Lecture Access
+          - img [ref=e15]
+        - list:
+          - listitem:
+            - link "FACS Cram Session":
+              - /url: https://melindaozel.com/facs-cram-session/
+          - listitem:
+            - link "All About Lipsync":
+              - /url: https://melindaozel.com/all-about-lipsync-lecture-videos/
+      - listitem [ref=e17]:
+        - link "My Account" [ref=e18] [cursor=pointer]:
+          - /url: https://melindaozel.com/account/
+  - banner "Site" [ref=e19]:
+    - generic [ref=e21]:
+      - link "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e23] [cursor=pointer]:
+        - /url: https://melindaozel.com/
+        - img "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e24]
+      - paragraph [ref=e26]:
+        - link "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e27] [cursor=pointer]:
+          - /url: https://melindaozel.com/
+  - navigation "Primary" [ref=e28]:
+    - list [ref=e31]:
+      - listitem [ref=e32]:
+        - link "Learning Hub" [ref=e33] [cursor=pointer]:
+          - /url: https://melindaozel.com/learning-hub/
+          - text: Learning Hub
+          - img [ref=e35]
+        - list:
+          - listitem:
+            - link "FACS Cheat Sheet":
+              - /url: https://melindaozel.com/facs-cheat-sheet/
+          - listitem:
+            - link "Viseme Cheat Sheet":
+              - /url: https://melindaozel.com/viseme-cheat-sheet/
+          - listitem:
+            - link "All Free Resources":
+              - /url: https://melindaozel.com/free-resources/
+          - listitem:
+            - link "🔒 Premium Resources":
+              - /url: https://melindaozel.com/premium-resources/
+              - img "🔒"
+              - text: Premium Resources
+          - listitem:
+            - link "FAQs":
+              - /url: https://melindaozel.com/faqs/
+      - listitem [ref=e37]:
+        - link "Courses" [ref=e38] [cursor=pointer]:
+          - /url: https://melindaozel.com/online-lectures/
+          - text: Courses
+          - img [ref=e40]
+        - list:
+          - listitem:
+            - link "FACS Cram Session":
+              - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+          - listitem:
+            - link "All About Lipsync":
+              - /url: https://melindaozel.com/all-about-lipsync-course/
+      - listitem [ref=e42]:
+        - link "Full Site Access" [ref=e43] [cursor=pointer]:
+          - /url: https://melindaozel.com/subscription-options/
+          - text: Full Site Access
+          - img [ref=e45]
+        - list:
+          - listitem:
+            - link "Membership Options":
+              - /url: https://melindaozel.com/subscription-options/
+      - listitem [ref=e47]:
+        - link "Services" [ref=e48] [cursor=pointer]:
+          - /url: https://melindaozel.com/services/
+          - text: Services
+          - img [ref=e50]
+        - list:
+          - listitem:
+            - link "FACS Lectures & Training":
+              - /url: https://melindaozel.com/services/lectures-training/
+          - listitem:
+            - link "Consulting":
+              - /url: https://melindaozel.com/services/consulting/
+      - listitem [ref=e52]:
+        - link "About" [ref=e53] [cursor=pointer]:
+          - /url: https://melindaozel.com/who-is-melinda-ozel/
+          - text: About
+          - img [ref=e55]
+        - list:
+          - listitem:
+            - link "About Me":
+              - /url: https://melindaozel.com/who-is-melinda-ozel/
+          - listitem:
+            - link "Cite My Work":
+              - /url: https://melindaozel.com/how-to-cite-my-work-use-my-visuals/
+          - listitem:
+            - link "Contact":
+              - /url: https://melindaozel.com/who-is-melinda-ozel/contact-me/
+  - generic [ref=e58]:
+    - main [ref=e60]:
+      - article [ref=e61]:
+        - generic [ref=e62]:
+          - generic [ref=e63]:
+            - heading "Breaking Down Nose Wrinkler (AU9)" [level=1] [ref=e64]
+            - generic [ref=e65]:
+              - time [ref=e67]: March 30, 2020
+              - generic [ref=e68]:
+                - text: by
+                - link "Melinda Ozel" [ref=e70] [cursor=pointer]:
+                  - /url: https://melindaozel.com/author/melindaozel/
+          - generic [ref=e71]:
+            - paragraph [ref=e72]:
+              - img "Screenshot 2020-03-24 04.09.31" [ref=e73]
+            - paragraph [ref=e74]:
+              - text: The following text is a breakdown of my
+              - emphasis [ref=e77]: nose wrinkler
+              - generic [ref=e78]: video
+              - text: (viewable
+              - strong [ref=e80]:
+                - link "here" [ref=e81] [cursor=pointer]:
+                  - /url: http://youtu.be/TjU_dZlPgO4
+              - text: "or in the “Timestamp” section). Watch the video and refer to the corresponding notes to learn about:"
+            - list [ref=e82]:
+              - listitem [ref=e83]: the evolution of layered expressions
+              - listitem [ref=e84]: the differences between nose wrinkler and similar expressions
+              - listitem [ref=e85]:
+                - text: nose wrinkler with and without various actions –
+                - list [ref=e86]:
+                  - listitem [ref=e87]:
+                    - emphasis [ref=e88]: outer brow raiser
+                  - listitem [ref=e89]:
+                    - emphasis [ref=e90]: brow lowerer
+                  - listitem [ref=e91]:
+                    - emphasis [ref=e92]: upper lid raiser
+                  - listitem [ref=e93]:
+                    - emphasis [ref=e94]: cheek raiser
+                  - listitem [ref=e95]:
+                    - emphasis [ref=e96]: lid tightener
+                  - listitem [ref=e97]:
+                    - emphasis [ref=e98]: upper lip raiser
+                  - listitem [ref=e99]:
+                    - emphasis [ref=e100]: lip corner lowerer
+                  - listitem [ref=e101]:
+                    - emphasis [ref=e102]: chin raiser
+                  - listitem [ref=e103]:
+                    - emphasis [ref=e104]: lip tightener
+                  - listitem [ref=e105]:
+                    - emphasis [ref=e106]: lip presser
+            - paragraph [ref=e107]: Notes are written in Facial Action Coding System action units. While I do provide a translation of the anatomy name to FACS name/FACS code, I want to stress the utility of learning FACS nomenclature.
+            - separator [ref=e108]
+            - heading "WHY YOU SHOULD LEARN FACS (FACIAL ACTION CODING SYSTEM):" [level=3] [ref=e109]
+            - list [ref=e110]:
+              - listitem [ref=e111]: So you can understand my facial coding notes. Duh.
+              - listitem [ref=e112]: It’s way easier to call a brow furrow – “4” – than – “corrugator supercilii, depressor supercilii, depressor glabellae.” I mean, yeah, I voluntarily took a year of Latin in college, but 1 vs. 16 syllables can make a big difference in time and breath.
+              - listitem [ref=e113]: The orbicularis oris is a mess. It does too many things. Latin muscle naming just doesn’t do the trick. FACS breaks down overachieving muscles into recognizable movements.
+            - separator [ref=e114]
+            - heading "MUSCLE CHEAT CODES" [level=2] [ref=e115]: MUSCLE CHEAT CODES
+            - list [ref=e116]:
+              - listitem [ref=e117]:
+                - generic [ref=e118]: AU 1
+                - list [ref=e119]:
+                  - listitem [ref=e120]: FACS name → inner brow raiser
+                  - listitem [ref=e121]:
+                    - text: muscle/s →
+                    - generic [ref=e122]: frontalis, pars medialis
+              - listitem [ref=e123]:
+                - generic [ref=e124]: AU 2
+                - list [ref=e125]:
+                  - listitem [ref=e126]: FACS name → outer brow raiser
+                  - listitem [ref=e127]:
+                    - text: muscle/s →
+                    - generic [ref=e128]: frontalis, pars lateralis
+              - listitem [ref=e129]:
+                - generic [ref=e130]: AU 4
+                - list [ref=e131]:
+                  - listitem [ref=e132]: FACS name → brow lowerer
+                  - listitem [ref=e133]:
+                    - text: muscle/s →
+                    - generic [ref=e134]: corrugator supercilii, depressor supercilii, depressor glabellae (aka procerus)
+              - listitem [ref=e135]:
+                - generic [ref=e136]: AU 05
+                - list [ref=e137]:
+                  - listitem [ref=e138]:
+                    - generic [ref=e139]: FACS name → upper lid raiser
+                  - listitem [ref=e140]:
+                    - generic [ref=e141]: muscle/s
+                    - generic [ref=e142]: →
+                    - generic [ref=e143]: levator palpebrae superioris
+              - listitem [ref=e144]:
+                - generic [ref=e145]: AU 06
+                - list [ref=e146]:
+                  - listitem [ref=e147]:
+                    - generic [ref=e148]: FACS name → cheek raiser
+                  - listitem [ref=e149]: muscle/s → orbicularis oculi, pars orbitalis
+              - listitem [ref=e150]:
+                - generic [ref=e151]: AU 7
+                - list [ref=e152]:
+                  - listitem [ref=e153]:
+                    - generic [ref=e154]: FACS name → lid tightener
+                  - listitem [ref=e155]: muscle/s → orbicularis oculi, pars palpebralis
+              - listitem [ref=e156]:
+                - generic [ref=e157]: AU 9
+                - list [ref=e158]:
+                  - listitem [ref=e159]:
+                    - generic [ref=e160]: FACS name → nose wrinkler
+                  - listitem [ref=e161]:
+                    - generic [ref=e162]: muscle/s → levator labii superioris alaquae nasi
+              - listitem [ref=e163]:
+                - generic [ref=e164]: AU 10
+                - list [ref=e165]:
+                  - listitem [ref=e166]:
+                    - generic [ref=e167]: FACS name → upper lip raiser
+                  - listitem [ref=e168]:
+                    - generic [ref=e169]: muscle/s → levator labii superioris
+              - listitem [ref=e170]:
+                - generic [ref=e171]: AU 15
+                - list [ref=e172]:
+                  - listitem [ref=e173]:
+                    - generic [ref=e174]: FACS name → lip corner depressor
+                  - listitem [ref=e175]:
+                    - generic [ref=e176]: muscle/s → depressor anguli oris (aka triangularis)
+              - listitem [ref=e177]:
+                - generic [ref=e178]: AU 17
+                - list [ref=e179]:
+                  - listitem [ref=e180]:
+                    - generic [ref=e181]: FACS name → chin raiser
+                  - listitem [ref=e182]:
+                    - generic [ref=e183]: muscle/s → mentalis
+              - listitem [ref=e184]:
+                - generic [ref=e185]: AU 23
+                - list [ref=e186]:
+                  - listitem [ref=e187]:
+                    - generic [ref=e188]: FACS name → lip tightener
+                  - listitem [ref=e189]:
+                    - generic [ref=e190]: muscle/s → orbicularis oris
+              - listitem [ref=e191]:
+                - generic [ref=e192]: AU 24
+                - list [ref=e193]:
+                  - listitem [ref=e194]:
+                    - generic [ref=e195]: FACS name → lip presser
+                  - listitem [ref=e196]:
+                    - generic [ref=e197]: muscle/s → orbicularis oris
+              - listitem [ref=e198]:
+                - strong [ref=e200]: AU 25
+                - list [ref=e201]:
+                  - listitem [ref=e202]:
+                    - generic [ref=e203]: FACS name → lips part
+                  - listitem [ref=e204]:
+                    - generic [ref=e205]: muscle/s → orbicularis oris
+            - separator [ref=e206]
+            - heading "TIMESTAMPS" [level=2] [ref=e207]
+            - iframe [ref=e209]:
+              - generic [active] [ref=f70e1]:
+                - generic "YouTube Video Player" [ref=f70e3]
+                - generic [ref=f70e5]:
+                  - generic:
+                    - generic:
+                      - button "Play video" [ref=f70e10] [cursor=pointer]
+                      - button "Hide player controls" [ref=f70e12] [cursor=pointer]
+                      - generic [ref=f70e14]:
+                        - generic [ref=f70e19]:
+                          - generic [ref=f70e20]:
+                            - link "AU9 / nose wrinkler / levator labii superioris, alaquae nasi" [ref=f70e21] [cursor=pointer]:
+                              - /url: https://www.youtube.com/watch?v=TjU_dZlPgO4
+                            - link "Melinda Ozel" [ref=f70e22] [cursor=pointer]:
+                              - /url: /channel/UCKwZm8qJ0xLWcN4XmG8cN-Q
+                              - generic [ref=f70e23]: Melinda Ozel
+                          - generic [ref=f70e24]:
+                            - button [ref=f70e25] [cursor=pointer]
+                            - generic [ref=f70e27]:
+                              - generic: Melinda Ozel
+                              - generic: 1.51K subscribers
+                        - generic [ref=f70e28]:
+                          - button "Share" [ref=f70e31] [cursor=pointer]:
+                            - generic [ref=f70e35]:
+                              - img
+                          - link "Watch on YouTube" [ref=f70e42] [cursor=pointer]:
+                            - /url: https://www.youtube.com/watch?v=TjU_dZlPgO4
+                            - generic [ref=f70e45]:
+                              - text: Watch on
+                              - img [ref=f70e47]:
+                                - generic [ref=f70e49]:
+                                  - img
+            - paragraph [ref=e210]:
+              - text: "NOTE 1:"
+              - generic [ref=e211]: Until 01:23 I do not code any lower face actions besides 9 and 10; however, in some cases, the 9s are paired with 17.
+              - text: "NOTE 2: Every time the lips are parted, assume AU 25 ("
+              - emphasis [ref=e213]: lips part
+              - generic [ref=e214]: ).
+              - text: "NOTE 3: I did not code the prevalent nostril flaring, but it’s there. Watch out!"
+            - list [ref=e215]:
+              - listitem [ref=e216]:
+                - strong [ref=e217]:
+                  - text: 00:02
+                  - emphasis [ref=e218]: →
+                - emphasis [ref=e220]: beginning of 9 with
+                - emphasis [ref=e222]: "no"
+                - emphasis [ref=e224]: "4"
+                - list [ref=e225]:
+                  - listitem [ref=e226]: A common mistake I see in expression shape building is → the erroneous addition of AU4 to AU9 shapes. While AU9 does in fact pull down the inner portion of the brows, this pull does not involve AU4.
+                  - listitem [ref=e227]: When 4 is added to 9, the brows will not simply be pulled down by their inner tips. They will be pushed down from the outer brow area, typically where corrugator is. You can compare the difference between a 4+9 and a 9 in the next timestamp below (@ ~5s).
+                  - listitem [ref=e228]:
+                    - text: In my scientific journal adventures, I have found that some people – more than you may think – are missing corrugator. (
+                    - generic [ref=e229]: Ozel Conspiracy Theory 86,000
+                    - generic [ref=e230]: ": Emilia Clarke is such a power brow contortionist, because she’s missing corrugator."
+                    - text: )
+                  - listitem [ref=e231]: In the case that someone is missing corrugator, look for additional movement in the middle forehead. This additional movement will likely come from procerus. When procerus kicks in, you should see forehead bunching out of sync with the movement of 9. In the scenario of simultaneous activation, it is harder to break down the movement. You would need to refer back to different movements of 9 and compare the different versions.
+              - listitem [ref=e232]:
+                - strong [ref=e233]:
+                  - text: 00:05
+                  - emphasis [ref=e234]: →
+                - emphasis [ref=e236]: addition of 4 and slight 7 to the 9
+                - list [ref=e237]:
+                  - listitem [ref=e238]: Notice how this new addition of 4 not only further pushes down the brows but pushes down the upper eyelids as well.
+                  - listitem [ref=e239]: It is not just 4+9 vs. 9 you should consider. You will also want to be careful regarding the distinction of 7+9 vs. 9. While 9 does narrow the eyelids, especially when intense, the way it narrows the eyelids is different from the way 7 narrows the eyelids.
+                  - listitem [ref=e240]: 9 narrows the lids by pushing up the infraorbital triangle, whereas 7 narrows the lids by pushing the skin under the eyes (the eye bag area) toward the nose.
+                  - listitem [ref=e241]:
+                    - text: (Refer below to my 80s retro chic image mapping out the “infraorbital triangle.”)
+                    - list [ref=e242]:
+                      - listitem [ref=e243]:
+                        - img "infraorbital triangle" [ref=e244]
+                  - listitem [ref=e245]: If you want to create a clean shape, be very careful with how you craft your 9-based eye narrowing.
+              - listitem [ref=e246]:
+                - strong [ref=e247]:
+                  - text: 00:08
+                  - emphasis [ref=e248]: →
+                - emphasis [ref=e249]: 4 increases, 10 is added (4+7+9+10)
+                - list [ref=e250]:
+                  - listitem [ref=e251]: Another common mistake I see in expression shape building is → confusion between AU9 and AU10-based upper lip pulling. 9 and 10 are different actions. While both pull up the upper lip, they do so in different ways. 10 typically causes the laugh lines to round out, while 9 usually gives them a straighter look. If you see a 10 creeping in to an already-present 9, you should see the laugh lines fanning out and the area near the nostrils widening.
+                  - listitem [ref=e252]: In this case, when 10 pops in, you can clearly see a nice movement in the skin around the laugh lines as it thickens and rounds.
+              - listitem [ref=e253]:
+                - emphasis [ref=e255]: RESET
+                - text: –
+                - emphasis [ref=e256]: aka – My face has returned to neutral.
+              - listitem [ref=e257]:
+                - strong [ref=e258]: 00:12 →
+                - emphasis [ref=e259]: 9 comes back
+              - listitem [ref=e260]:
+                - strong [ref=e261]: 00:13 →
+                - emphasis [ref=e262]: 4 kicks in (4+9)
+              - listitem [ref=e263]:
+                - strong [ref=e264]: 00:14 →
+                - emphasis [ref=e265]: 7 kicks in slightly (4+7+9)
+              - listitem [ref=e266]:
+                - emphasis [ref=e268]: RESET
+              - listitem [ref=e269]:
+                - strong [ref=e270]: 00:17 →
+                - emphasis [ref=e271]: 9 starts to flutter (
+                - text: flutter
+                - emphasis [ref=e272]: ": subtle and unstable flicker of an action)"
+                - list [ref=e273]:
+                  - listitem [ref=e274]: This low-intensity 9 movement may look like 10, because the 9 is so subtle; however, you can see the pull above the side of the nose and the slight lowering of the inner brow happening in sync with the nose raising.
+              - listitem [ref=e275]:
+                - strong [ref=e276]: 00:18 →
+                - emphasis [ref=e277]: Break time! *face shake*
+              - listitem [ref=e278]:
+                - strong [ref=e279]: 00:21 – 00:47 →
+                - emphasis [ref=e280]: 9 starts again – 9 back and forth, different angles
+                - list [ref=e281]:
+                  - listitem [ref=e282]: You may see a couple outer brow raise twitches during this interval. (Fluttering is hard, okay?)
+              - listitem [ref=e283]:
+                - emphasis [ref=e285]: RESET
+              - listitem [ref=e286]:
+                - strong [ref=e287]: 00:48 →
+                - emphasis [ref=e288]: 9 starts again
+              - listitem [ref=e289]:
+                - strong [ref=e290]: 00:49 →
+                - emphasis [ref=e291]: 4 is added to 9 and then 7 is added
+              - listitem [ref=e292]:
+                - emphasis [ref=e294]: RESET
+              - listitem [ref=e295]:
+                - strong [ref=e296]: 00:52 →
+                - emphasis [ref=e297]: 9 is back
+              - listitem [ref=e298]:
+                - emphasis [ref=e300]: RESET
+              - listitem [ref=e301]:
+                - strong [ref=e302]: 00:53 →
+                - emphasis [ref=e303]: 4 joins 4+9
+              - listitem [ref=e304]:
+                - emphasis [ref=e306]: RESET
+              - listitem [ref=e307]:
+                - strong [ref=e308]: 00:56 →
+                - emphasis [ref=e309]: 9 again
+              - listitem [ref=e310]:
+                - strong [ref=e311]: 00:57 →
+                - emphasis [ref=e312]: 4 added and some 7 (4+7+9)
+              - listitem [ref=e313]:
+                - emphasis [ref=e315]: RESET
+              - listitem [ref=e316]:
+                - strong [ref=e317]: 01:00 →
+                - emphasis [ref=e318]: 9 again – then later in the second, 7 joins 9
+              - listitem [ref=e319]:
+                - emphasis [ref=e321]: RESET
+              - listitem [ref=e322]:
+                - strong [ref=e323]: 01:03 →
+                - emphasis [ref=e324]: 9 again then later in 01:03, 4 is added to the 9
+              - listitem [ref=e325]:
+                - emphasis [ref=e328]: RESET
+              - listitem [ref=e329]:
+                - strong [ref=e330]: 01:04 →
+                - emphasis [ref=e331]: 9 again
+              - listitem [ref=e332]:
+                - strong [ref=e333]: 01:05 →
+                - emphasis [ref=e334]: 4 is added and then 10 is also added (4+9+10) and then 7 is added (4+7+9+10) then 6 is added (4+6+7+9+10)
+              - listitem [ref=e335]:
+                - emphasis [ref=e337]: RESET
+              - listitem [ref=e338]:
+                - strong [ref=e339]: 01:06 →
+                - emphasis [ref=e340]: 9 again
+              - listitem [ref=e341]:
+                - strong [ref=e342]: 01:07 →
+                - emphasis [ref=e343]: 4 joins 9 then strong 10 joins (4+7+9+10)
+              - listitem [ref=e344]:
+                - strong [ref=e345]: 01:08 →
+                - emphasis [ref=e346]: nearly all of 9 is released, leaving only a strong 10
+              - listitem [ref=e347]:
+                - emphasis [ref=e349]: RESET
+              - listitem [ref=e350]:
+                - strong [ref=e351]: 01:08 →
+                - emphasis [ref=e352]: (later in the second) 9 again
+              - listitem [ref=e353]:
+                - strong [ref=e354]: 01:09 →
+                - emphasis [ref=e355]: 9 then 10 added (9+10)
+              - listitem [ref=e356]:
+                - emphasis [ref=e358]: RESET
+              - listitem [ref=e359]:
+                - strong [ref=e360]: 01:11 →
+                - emphasis [ref=e361]: 10 on screen left with traces of 9 → then higher intensity 9 added
+              - listitem [ref=e362]:
+                - emphasis [ref=e364]: RESET
+              - listitem [ref=e365]:
+                - strong [ref=e366]: 01:11 →
+                - emphasis [ref=e367]: 9 again
+              - listitem [ref=e368]:
+                - strong [ref=e369]: 01:12 →
+                - emphasis [ref=e370]: 10 added to 9 (9+10)
+              - listitem [ref=e371]:
+                - emphasis [ref=e373]: RESET
+              - listitem [ref=e374]:
+                - strong [ref=e375]: 01:14 →
+                - emphasis [ref=e376]: 9 again
+              - listitem [ref=e377]:
+                - strong [ref=e378]: 01:15 →
+                - emphasis [ref=e379]: one-sided 10 (screen right) added to 9
+              - listitem [ref=e380]:
+                - emphasis [ref=e382]: RESET
+              - listitem [ref=e383]:
+                - strong [ref=e384]: 01:17 →
+                - emphasis [ref=e385]: "5"
+              - listitem [ref=e386]:
+                - emphasis [ref=e388]: RESET
+              - listitem [ref=e389]:
+                - strong [ref=e390]: 01:17 →
+                - emphasis [ref=e391]: 9 again
+              - listitem [ref=e392]:
+                - strong [ref=e393]: 01:18 →
+                - emphasis [ref=e394]: 5 added to 9 (5+9) → then 5 intensifies while 9 stays
+              - listitem [ref=e395]:
+                - emphasis [ref=e397]: RESET
+              - listitem [ref=e398]:
+                - strong [ref=e399]: 01:19 →
+                - emphasis [ref=e400]: 9 again
+              - listitem [ref=e401]:
+                - strong [ref=e402]: 01:20 →
+                - emphasis [ref=e403]: intense 5 added to 9 (5+9)
+              - listitem [ref=e404]:
+                - strong [ref=e405]: 01:21 →
+                - emphasis [ref=e406]: 7 added to 5+9 → (5+7+9)
+              - listitem [ref=e407]:
+                - strong [ref=e408]: 01:22 →
+                - emphasis [ref=e409]: 6 added 5+7+9 → 5+6+7+9
+              - listitem [ref=e410]:
+                - strong [ref=e411]: 01:23 →
+                - emphasis [ref=e412]: 2+17 added to 5+6+7+9 → 2+5+6+7+9+17
+              - listitem [ref=e413]:
+                - strong [ref=e414]: 01:24 →
+                - emphasis [ref=e415]: 10 added to 2+5+6+7+9+17 → 2+5+6+7+9+10+17
+              - listitem [ref=e416]:
+                - strong [ref=e417]: 01:25 →
+                - emphasis [ref=e418]: 4 added to 2+5+6+7+9+10+17 → 2+4+5+6+7+9 then 15+17 added → 2+4+5+6+7+9+10+15+17
+              - listitem [ref=e419]:
+                - emphasis [ref=e420]:
+                  - strong [ref=e421]: 01:26 →
+                  - text: 24 added to 2+4+5+6+7+9+10+15+17 and 5 becomes relaxed → 2+4+6+7+9+10+15+17+24
+              - listitem [ref=e422]:
+                - strong [ref=e423]: 01:27 →
+                - emphasis [ref=e424]: increased 10 to 2+4+6+7+9+10+15+17+24 then 24 goes away and is replaced by 23 → 2+4+6+7+9+10+15+17+23
+              - listitem [ref=e425]:
+                - strong [ref=e427]: 01:29
+                - emphasis [ref=e428]: → Okay, I couldn’t help it. I lol’d.
+            - paragraph [ref=e429]
+            - paragraph [ref=e430]: Stills from the evolution of layered actions on top of 9.
+            - figure "Highly recommend right clicking and selecting “Open Image in New Tab” to see larger version." [ref=e431]:
+              - img "nose wrinkler and more" [ref=e432]
+              - generic [ref=e433]: Highly recommend right clicking and selecting “Open Image in New Tab” to see larger version.
+            - paragraph [ref=e434]:
+              - img "Screenshot 2020-03-24 04.09.31" [ref=e435]
+              - img "nose wrinkler and other combos" [ref=e436]
+          - generic "Entry meta" [ref=e437]:
+            - generic [ref=e438]:
+              - img [ref=e440]
+              - generic [ref=e442]: Categories
+              - link "action units (FACS AUs)" [ref=e443] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/facial-expressions/action-units/
+              - text: ","
+              - link "AU10" [ref=e444] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/facial-expressions/action-units/au10/
+              - text: ","
+              - link "AU9" [ref=e445] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/facial-expressions/action-units/au9/
+              - text: ","
+              - link "facial expressions" [ref=e446] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/facial-expressions/
+              - text: ","
+              - link "facial muscles" [ref=e447] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/anatomy/muscles/
+              - text: ","
+              - link "nose wrinkler" [ref=e448] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/facial-expressions/action-units/au9/nose-wrinkler/
+              - text: ","
+              - link "paid content" [ref=e449] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/paid/
+              - text: ","
+              - link "upper lip raiser" [ref=e450] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/facial-expressions/action-units/au10/upper-lip-raiser/
+            - navigation "Posts" [ref=e451]:
+              - generic [ref=e452]:
+                - img [ref=e454]
+                - link "Big Tech’s Homogeneous Hiring Habits Are Harming Our Data" [ref=e457] [cursor=pointer]:
+                  - /url: https://melindaozel.com/big-techs-homogeneous-hiring-habits-are-harming-our-data/
+              - generic [ref=e458]:
+                - img [ref=e460]
+                - link "Bypassing VR Headset Occlusion in Face Tracking" [ref=e463] [cursor=pointer]:
+                  - /url: https://melindaozel.com/bypassing-vr-headset-occlusion-in-face-tracking/
+      - generic [ref=e465]:
+        - heading "1 thought on “Breaking Down Nose Wrinkler (AU9)”" [level=2] [ref=e466]
+        - list [ref=e467]:
+          - listitem [ref=e468]:
+            - generic [ref=e469]:
+              - text: "Pingback:"
+              - link "animation tips for smiles - Face the FACS" [ref=e470] [cursor=pointer]:
+                - /url: https://melindaozel.com/animation-tips-for-smiles/
+        - generic [ref=e471]:
+          - heading "Leave a Comment" [level=3] [ref=e472]
+          - generic [ref=e473]:
+            - paragraph [ref=e474]:
+              - text: Logged in as LucaPrasso.
+              - link "Edit your profile" [ref=e475] [cursor=pointer]:
+                - /url: https://melindaozel.com/wp-admin/profile.php
+              - text: .
+              - link "Log out?" [ref=e476] [cursor=pointer]:
+                - /url: https://melindaozel.com/wp-login.php?action=logout&redirect_to=https%3A%2F%2Fmelindaozel.com%2Fbreaking-down-nose-wrinkler%2F&_wpnonce=3fac8055be
+              - generic [ref=e477]: Required fields are marked *
+            - paragraph [ref=e478]:
+              - generic [ref=e479]: Comment
+              - textbox "Comment" [ref=e480]
+            - paragraph [ref=e481]:
+              - button "Post Comment" [ref=e482] [cursor=pointer]
+        - paragraph [ref=e483]:
+          - text: This site uses Akismet to reduce spam.
+          - link "Learn how your comment data is processed." [ref=e484] [cursor=pointer]:
+            - /url: https://akismet.com/privacy/
+    - generic [ref=e486]:
+      - complementary [ref=e487]:
+        - generic [ref=e494]:
+          - figure [ref=e495]:
+            - link "headshot of page author" [ref=e496] [cursor=pointer]:
+              - /url: https://melindaozel.com/melinda-who-zel/
+              - img "headshot of page author" [ref=e497]
+          - paragraph
+          - paragraph [ref=e498]:
+            - text: I’m a Facial Systems Expert specializing in the Facial Action Coding System (FACS) and facial anatomy. My work spans
+            - link "expression tracking" [ref=e499] [cursor=pointer]:
+              - /url: https://patents.justia.com/inventor/melinda-ozel
+              - strong [ref=e500]: expression tracking
+            - text: ", facial animation, and"
+            - link "AI-driven lipsync" [ref=e501] [cursor=pointer]:
+              - /url: http://linkedin.com/in/melindaozel
+              - strong [ref=e502]: AI-driven lipsync
+            - text: . Recent work includes contributions to the de-aging of Tom Hanks and other actors in the
+            - strong [ref=e503]:
+              - link "Zemeckis film, Here" [ref=e504] [cursor=pointer]:
+                - /url: https://www.imdb.com/name/nm15482966/
+            - text: .
+          - paragraph [ref=e505]:
+            - text: Learn more about
+            - link "my background" [ref=e506] [cursor=pointer]:
+              - /url: https://melindaozel.com/melinda-who-zel/
+              - strong [ref=e507]: my background
+            - text: .
+          - paragraph
+      - complementary [ref=e508]:
+        - paragraph [ref=e509]:
+          - strong [ref=e510]: Courses & Workshops
+          - text: "-"
+          - link "FACS Cram Session" [ref=e511] [cursor=pointer]:
+            - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+          - text: "-"
+          - link "All About Lipsync" [ref=e512] [cursor=pointer]:
+            - /url: https://melindaozel.com/all-about-lipsync-course/
+          - text: "-"
+          - link "All Training Services" [ref=e513] [cursor=pointer]:
+            - /url: https://melindaozel.com/services/lectures-training/
+      - complementary [ref=e514]:
+        - paragraph [ref=e515]:
+          - strong [ref=e516]: "\""
+          - text: Melinda Ozel's resources on face anatomy, motion, and FACS are industry standard. During my time working on The Last of Us Part II (and other unannounced Playstation titles) I referred to it almost exclusively on a regular basis. The free material is great but the pay material is worth the cost.
+          - strong [ref=e517]: "\""
+          - strong [ref=e518]: Eric Drobile | Technical Animator
+          - strong [ref=e519]: "\""
+          - text: For most people learning traditional FACS is not feasible. It requires very costly specialized degrees and years long commitment. And the half century old research with fuzzy photos was not made for artists. What Melinda has done for our industry is take the dense scientific information and streamlined it into very easy to digest entries and videos catered to artists.
+          - strong [ref=e520]: "\""
+          - strong [ref=e521]: Paul Liaw | Principal Character Artist
+          - strong [ref=e522]: "\""
+          - text: I've been working as a Facial Blendshape Artist across film and gaming and have watched the quality of my work improve exponentially since I've had access to this wealth of knowledge that Melinda has so thoughtfully put together. Her documentation is clear, appealing, and comprehensive. If Paul Ekman is the father of FACS, Melinda has become the cool aunt.
+          - strong [ref=e523]: "\""
+          - strong [ref=e524]: "Ioana Alexandra Pirvu | Lead Artist: Blendshapes @ Rockstar Games"
+          - strong [ref=e525]: "\""
+          - text: Face the FACS in my opinion is bar-none, the best resource out there for any artist and company dealing with facial animation. The way in which Melinda delivers knowledge is detailed, but fun and compelling enough to make you want to keep learning. For a topic that could have easily been boring, she inspired me to keep learning.
+          - strong [ref=e526]: "\""
+          - strong [ref=e527]: Giovanni Nakpil | Senior Creative 3D Evangelist @ Adobe
+          - strong [ref=e528]: "\""
+          - text: If you're doing AU's (action units), this is the site you're going to need to bookmark. Melinda has gone above and beyond to create what I feel is the ultimate resource guide for AU's. Each AU explained, annotated and demonstrated with extreme clarity. You'll experience plenty of "aha!!" moments using Melinda's work as your guide!
+          - strong [ref=e529]: "\""
+          - strong [ref=e530]: Frank Gravatt
+          - strong [ref=e531]: "| Facial Modeler @ Cloud Chamber"
+      - complementary [ref=e532]:
+        - paragraph
+      - complementary [ref=e533]:
+        - generic [ref=e535]:
+          - paragraph [ref=e536]:
+            - strong [ref=e537]: Connect with me <3
+          - list [ref=e538]:
+            - listitem [ref=e539]:
+              - link "Instagram" [ref=e540] [cursor=pointer]:
+                - /url: https://instagram.com/manicexpression
+                - img [ref=e541]
+                - generic [ref=e543]: Instagram
+            - listitem [ref=e544]:
+              - link "LinkedIn" [ref=e545] [cursor=pointer]:
+                - /url: https://linkedin.com/in/melindaozel
+                - img [ref=e546]
+                - generic [ref=e548]: LinkedIn
+            - listitem [ref=e549]:
+              - link "X" [ref=e550] [cursor=pointer]:
+                - /url: https://x.com/melindaozel
+                - img [ref=e551]
+                - generic [ref=e553]: X
+  - generic [ref=e554]:
+    - generic [ref=e557]:
+      - complementary [ref=e559]:
+        - search [ref=e560]:
+          - generic [ref=e561]: Search
+          - generic [ref=e562]:
+            - searchbox "Search" [ref=e563]
+            - button "Search" [ref=e564] [cursor=pointer]
+      - complementary [ref=e566]:
+        - paragraph [ref=e567]:
+          - link "Terms & Conditions" [ref=e568] [cursor=pointer]:
+            - /url: https://melindaozel.com/terms-conditions/
+    - contentinfo "Site" [ref=e569]:
+      - generic [ref=e571]:
+        - text: Copyright © 2020-2026 Melinda Ozel . All rights reserved.
+        - text: Learn how to
+        - link "cite my work here" [ref=e572] [cursor=pointer]:
+          - /url: https://melindaozel.com/how-to-cite-my-work-use-my-visuals/
+          - generic [ref=e573]: cite my work here
+        - generic [ref=e574]: .
+  - navigation "Website language selector" [ref=e575]:
+    - generic [ref=e576]:
+      - button "Change language":
+        - generic: EN
+      - group "Available languages":
+        - link "ES" [ref=e577] [cursor=pointer]:
+          - /url: https://melindaozel.com/es/breaking-down-nose-wrinkler/
+          - generic [ref=e578]: ES
+        - link "FR" [ref=e579] [cursor=pointer]:
+          - /url: https://melindaozel.com/fr/breaking-down-nose-wrinkler/
+          - generic [ref=e580]: FR
+        - link "ES_VE" [ref=e581] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_ve/breaking-down-nose-wrinkler/
+          - generic [ref=e582]: ES_VE
+        - link "ES_CL" [ref=e583] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_cl/breaking-down-nose-wrinkler/
+          - generic [ref=e584]: ES_CL
+        - link "ES_GT" [ref=e585] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_gt/breaking-down-nose-wrinkler/
+          - generic [ref=e586]: ES_GT
+        - link "PT" [ref=e587] [cursor=pointer]:
+          - /url: https://melindaozel.com/pt/breaking-down-nose-wrinkler/
+          - generic [ref=e588]: PT
+        - link "ZH" [ref=e589] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh/breaking-down-nose-wrinkler/
+          - generic [ref=e590]: ZH
+        - link "ZH_TW" [ref=e591] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh_tw/breaking-down-nose-wrinkler/
+          - generic [ref=e592]: ZH_TW
+        - link "ZH_HK" [ref=e593] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh_hk/breaking-down-nose-wrinkler/
+          - generic [ref=e594]: ZH_HK
+        - link "JA" [ref=e595] [cursor=pointer]:
+          - /url: https://melindaozel.com/ja/breaking-down-nose-wrinkler/
+          - generic [ref=e596]: JA
+        - link "HI" [ref=e597] [cursor=pointer]:
+          - /url: https://melindaozel.com/hi/breaking-down-nose-wrinkler/
+          - generic [ref=e598]: HI
+        - link "DE" [ref=e599] [cursor=pointer]:
+          - /url: https://melindaozel.com/de/breaking-down-nose-wrinkler/
+          - generic [ref=e600]: DE
+        - link "DE_DE" [ref=e601] [cursor=pointer]:
+          - /url: https://melindaozel.com/de_de/breaking-down-nose-wrinkler/
+          - generic [ref=e602]: DE_DE
+        - link "RU" [ref=e603] [cursor=pointer]:
+          - /url: https://melindaozel.com/ru/breaking-down-nose-wrinkler/
+          - generic [ref=e604]: RU
+        - link "PL" [ref=e605] [cursor=pointer]:
+          - /url: https://melindaozel.com/pl/breaking-down-nose-wrinkler/
+          - generic [ref=e606]: PL
+        - link "CS" [ref=e607] [cursor=pointer]:
+          - /url: https://melindaozel.com/cs/breaking-down-nose-wrinkler/
+          - generic [ref=e608]: CS
+        - link "VI" [ref=e609] [cursor=pointer]:
+          - /url: https://melindaozel.com/vi/breaking-down-nose-wrinkler/
+          - generic [ref=e610]: VI
+        - link "IT" [ref=e611] [cursor=pointer]:
+          - /url: https://melindaozel.com/it/breaking-down-nose-wrinkler/
+          - generic [ref=e612]: IT
+        - link "SV" [ref=e613] [cursor=pointer]:
+          - /url: https://melindaozel.com/sv/breaking-down-nose-wrinkler/
+          - generic [ref=e614]: SV
+        - link "SR" [ref=e615] [cursor=pointer]:
+          - /url: https://melindaozel.com/sr/breaking-down-nose-wrinkler/
+          - generic [ref=e616]: SR
+        - link "AR" [ref=e617] [cursor=pointer]:
+          - /url: https://melindaozel.com/ar/breaking-down-nose-wrinkler/
+          - generic [ref=e618]: AR
+        - link "MS" [ref=e619] [cursor=pointer]:
+          - /url: https://melindaozel.com/ms/breaking-down-nose-wrinkler/
+          - generic [ref=e620]: MS
+        - link "FI" [ref=e621] [cursor=pointer]:
+          - /url: https://melindaozel.com/fi/breaking-down-nose-wrinkler/
+          - generic [ref=e622]: FI
+        - link "ES_MX" [ref=e623] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_mx/breaking-down-nose-wrinkler/
+          - generic [ref=e624]: ES_MX
+        - link "KO" [ref=e625] [cursor=pointer]:
+          - /url: https://melindaozel.com/ko/breaking-down-nose-wrinkler/
+          - generic [ref=e626]: KO
+        - link "TR" [ref=e627] [cursor=pointer]:
+          - /url: https://melindaozel.com/tr/breaking-down-nose-wrinkler/
+          - generic [ref=e628]: TR
+        - link "IS" [ref=e629] [cursor=pointer]:
+          - /url: https://melindaozel.com/is/breaking-down-nose-wrinkler/
+          - generic [ref=e630]: IS
+        - link "NL" [ref=e631] [cursor=pointer]:
+          - /url: https://melindaozel.com/nl/breaking-down-nose-wrinkler/
+          - generic [ref=e632]: NL
+        - link "NL_NL" [ref=e633] [cursor=pointer]:
+          - /url: https://melindaozel.com/nl_nl/breaking-down-nose-wrinkler/
+          - generic [ref=e634]: NL_NL
+        - link "ES_AR" [ref=e635] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_ar/breaking-down-nose-wrinkler/
+          - generic [ref=e636]: ES_AR
+        - link "UK" [ref=e637] [cursor=pointer]:
+          - /url: https://melindaozel.com/uk/breaking-down-nose-wrinkler/
+          - generic [ref=e638]: UK
+  - generic [ref=e639]: desktop

@@ -1,0 +1,566 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#content"
+  - navigation "Secondary" [ref=e3]:
+    - list [ref=e6]:
+      - listitem [ref=e7]:
+        - link "Premium Member Access" [ref=e8] [cursor=pointer]:
+          - /url: https://melindaozel.com/premium-resources/
+          - text: Premium Member Access
+          - img [ref=e10]
+        - list:
+          - listitem:
+            - link "Login":
+              - /url: https://melindaozel.com/login/
+          - listitem:
+            - link "Subscribe :)":
+              - /url: https://melindaozel.com/subscription-options/
+      - listitem [ref=e12]:
+        - link "Recorded Lecture Access" [ref=e13] [cursor=pointer]:
+          - /url: https://melindaozel.com/recorded-lectures/
+          - text: Recorded Lecture Access
+          - img [ref=e15]
+        - list:
+          - listitem:
+            - link "FACS Cram Session":
+              - /url: https://melindaozel.com/facs-cram-session/
+          - listitem:
+            - link "All About Lipsync":
+              - /url: https://melindaozel.com/all-about-lipsync-lecture-videos/
+      - listitem [ref=e17]:
+        - link "My Account" [ref=e18] [cursor=pointer]:
+          - /url: https://melindaozel.com/account/
+  - banner "Site" [ref=e19]:
+    - generic [ref=e21]:
+      - link "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e23] [cursor=pointer]:
+        - /url: https://melindaozel.com/
+        - img "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e24]
+      - paragraph [ref=e26]:
+        - link "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e27] [cursor=pointer]:
+          - /url: https://melindaozel.com/
+  - navigation "Primary" [ref=e28]:
+    - list [ref=e31]:
+      - listitem [ref=e32]:
+        - link "Learning Hub" [ref=e33] [cursor=pointer]:
+          - /url: https://melindaozel.com/learning-hub/
+          - text: Learning Hub
+          - img [ref=e35]
+        - list:
+          - listitem:
+            - link "FACS Cheat Sheet":
+              - /url: https://melindaozel.com/facs-cheat-sheet/
+          - listitem:
+            - link "Viseme Cheat Sheet":
+              - /url: https://melindaozel.com/viseme-cheat-sheet/
+          - listitem:
+            - link "All Free Resources":
+              - /url: https://melindaozel.com/free-resources/
+          - listitem:
+            - link "🔒 Premium Resources":
+              - /url: https://melindaozel.com/premium-resources/
+              - img "🔒"
+              - text: Premium Resources
+          - listitem:
+            - link "FAQs":
+              - /url: https://melindaozel.com/faqs/
+      - listitem [ref=e37]:
+        - link "Courses" [ref=e38] [cursor=pointer]:
+          - /url: https://melindaozel.com/online-lectures/
+          - text: Courses
+          - img [ref=e40]
+        - list:
+          - listitem:
+            - link "FACS Cram Session":
+              - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+          - listitem:
+            - link "All About Lipsync":
+              - /url: https://melindaozel.com/all-about-lipsync-course/
+      - listitem [ref=e42]:
+        - link "Full Site Access" [ref=e43] [cursor=pointer]:
+          - /url: https://melindaozel.com/subscription-options/
+          - text: Full Site Access
+          - img [ref=e45]
+        - list:
+          - listitem:
+            - link "Membership Options":
+              - /url: https://melindaozel.com/subscription-options/
+      - listitem [ref=e47]:
+        - link "Services" [ref=e48] [cursor=pointer]:
+          - /url: https://melindaozel.com/services/
+          - text: Services
+          - img [ref=e50]
+        - list:
+          - listitem:
+            - link "FACS Lectures & Training":
+              - /url: https://melindaozel.com/services/lectures-training/
+          - listitem:
+            - link "Consulting":
+              - /url: https://melindaozel.com/services/consulting/
+      - listitem [ref=e52]:
+        - link "About" [ref=e53] [cursor=pointer]:
+          - /url: https://melindaozel.com/who-is-melinda-ozel/
+          - text: About
+          - img [ref=e55]
+        - list:
+          - listitem:
+            - link "About Me":
+              - /url: https://melindaozel.com/who-is-melinda-ozel/
+          - listitem:
+            - link "Cite My Work":
+              - /url: https://melindaozel.com/how-to-cite-my-work-use-my-visuals/
+          - listitem:
+            - link "Contact":
+              - /url: https://melindaozel.com/who-is-melinda-ozel/contact-me/
+  - generic [ref=e58]:
+    - main [ref=e60]:
+      - article [ref=e61]:
+        - generic [ref=e62]:
+          - generic [ref=e64]:
+            - time [ref=e66]: July 20, 2022
+            - generic [ref=e67]:
+              - text: by
+              - link "Melinda Ozel" [ref=e69] [cursor=pointer]:
+                - /url: https://melindaozel.com/author/melindaozel/
+          - generic [ref=e71]:
+            - heading "forehead dynamics" [level=1] [ref=e77]
+            - heading "frontalis vs. occipitalis" [level=2] [ref=e83]
+            - generic [ref=e88]:
+              - paragraph [ref=e89]: "When it comes to forehead expressions, two categories of facial movements get all the attention:"
+              - list [ref=e90]:
+                - listitem [ref=e91]: eyebrow raising – caused by frontalis
+                - listitem [ref=e92]: eyebrow lowering – caused by procerus, depressor supercilii, and corrugator supercilii (Corrugator also knit the brows.)
+              - paragraph [ref=e93]: While it’s crucial to know how different facial muscles drive our brow expressions, the eyebrows don’t tell the whole story. There is more at play in the forehead region.
+            - heading "secret functions of the frontalis" [level=2] [ref=e99]
+            - paragraph [ref=e105]: We are generally familiar with frontalis’s work as an eyebrow elevator; however, it is often neglected knowledge that frontalis also works as a hairline depressor. Though this idea may seem counterintuitive, once you are familiar with some muscle basics, things will start to make sense. Watch the video below for a visual breakdown of how it works.
+            - generic [ref=e111]:
+              - iframe [ref=e112]:
+                - generic [ref=f39e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - link "Link to video owner's profile" [ref=f39e12] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                      - img "Link to video owner's profile" [ref=f39e13]
+                    - generic [ref=f39e14]:
+                      - generic [ref=f39e15]:
+                        - link "frontalis and occipitalis - forehead dynamics" [ref=f39e16] [cursor=pointer]:
+                          - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                        - generic [ref=f39e17]: frontalis and occipitalis - forehead dynamics
+                      - link "Melinda Ozel" [ref=f39e18] [cursor=pointer]:
+                        - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                        - generic [ref=f39e19]: Melinda Ozel
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f39e20] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f39e22] [cursor=pointer]:
+                        - img [ref=f39e23]
+                        - generic:
+                          - generic: Play
+                      - generic [ref=f39e26]:
+                        - generic [ref=f39e27]:
+                          - slider "Progress Bar" [ref=f39e28] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f39e33]: 00:38
+                        - generic [ref=f39e48]:
+                          - generic [ref=f39e34]:
+                            - button "Mute" [ref=f39e35] [cursor=pointer]:
+                              - img [ref=f39e36]
+                            - slider "Volume (use up/down arrow keys to change)"
+                          - button "Settings" [ref=f39e38] [cursor=pointer]:
+                            - img [ref=f39e39]
+                            - generic:
+                              - generic: Settings
+                          - button "Picture-in-Picture" [ref=f39e41] [cursor=pointer]:
+                            - img [ref=f39e42]
+                            - generic:
+                              - generic: Picture-in-Picture
+                          - button "Fullscreen" [ref=f39e44] [cursor=pointer]:
+                            - img [ref=f39e45]
+                            - generic:
+                              - generic: Fullscreen
+              - button "Video abspielen über frontalis and occipitalis - video" [ref=e114] [cursor=pointer]:
+                - img [ref=e115]
+            - generic [ref=e121]:
+              - paragraph [ref=e122]: VIDEO TRANSLATION
+              - paragraph [ref=e123]:
+                - strong [ref=e124]: (0:01)
+                - text: Let’s talk about the frontalis and occipitalis muscle(s).
+                - strong [ref=e125]: (0:02)
+                - text: Some sources consider these two to be distinct muscles,
+                - strong [ref=e126]: (0:03)
+                - text: while others consider them to be two bellies of the same muscle.
+                - strong [ref=e127]: (0:05)
+                - text: Regardless of whether frontalis and occipitalis are the same muscle or two distinct muscles, they each have important differences in where they attach and how they function.
+                - strong [ref=e128]: (0:08)
+                - text: The frontalis originates from a tendinous sheet known as the galea aponeurotica and attaches to the superficial muscles of the lower forehead (i.e. corrugator, procerus, orbicularis oculi).
+                - strong [ref=e129]: (0:11)
+                - text: "One critical thing to note is: The frontalis has no bony attachments!"
+                - strong [ref=e130]: (0:13)
+                - text: Therefore, when it contracts to pull up the eyebrows, it drags part of the scalp forward.
+                - strong [ref=e131]: (0:15)
+                - text: "Like so:"
+                - strong [ref=e132]: (0:19)
+                - text: Now for the occipitalis . . .
+                - strong [ref=e133]: (0:20)
+                - text: Unlike the frontalis, the occipitalis has a bony attachments. Its origin is near the base of the skull.
+                - strong [ref=e134]: (0:22)
+                - text: Occipitalis also attaches to the galea aponeurotica; however, this attachment is occipitalis’s insertion point. (Frontalis attaches there at its origin.)
+                - strong [ref=e135]: (0:25)
+                - text: The function of occipitalis is to retract the scalp (pull it back).
+                - strong [ref=e136]: (0:28)
+                - text: As frontalis elevates the brow and strains the scalp skin, occipitalis helps anchor the scalp down by retracting it.
+                - strong [ref=e137]: (0:30)
+                - text: Depending on how you look at it, the combined effects of frontalis and occipitalis can be considered synergistic or antagonistic.
+                - strong [ref=e138]: (0:31)
+                - text: As frontalis elevates the brow and strains the scalp skin, occipitalis helps anchor the scalp down by retracting it.
+                - strong [ref=e139]: (0:34)
+                - text: This co-activation balances the forces of the frontalis.
+            - 'heading "hairline drag: beyond the basics" [level=2] [ref=e145]'
+            - generic [ref=e150]:
+              - paragraph [ref=e151]: Now that we’ve covered how. . .
+              - list [ref=e152]:
+                - listitem [ref=e153]: frontalis has a raising effect on the brows and a lowering effect on the hairline
+                - listitem [ref=e154]: occipitalis plays a role in mitigating the hairline lowering effect from frontalis
+              - paragraph [ref=e155]: . . . let’s talk about what factors contribute to different degrees of hairline drag.
+              - paragraph [ref=e156]: The extent to which the scalp drags from frontalis varies on multiple levels. It can vary from person to person as well as from situation to situation.
+            - heading "individual variation" [level=3] [ref=e162]
+            - generic [ref=e167]:
+              - paragraph [ref=e168]:
+                - text: As covered in
+                - link "“Frontalis Variation,”" [ref=e169] [cursor=pointer]:
+                  - /url: https://melindaozel.com/frontalis-variation/
+                - text: frontalis varies across humans in shape, size, angle, length, and relative placement among surrounding muscles. Any of these factors can affect the strength of a frontalis contraction and the strength of its strain on the scalp.
+              - paragraph [ref=e170]: In addition to frontalis variation, potential occipitalis variation must also be considered. The relative strength of frontalis versus occipitalis will also affect how much a hairline may be dragged.
+            - heading "situational variation" [level=3] [ref=e176]
+            - generic [ref=e181]:
+              - paragraph [ref=e182]: It is not simply structural differences that influence scalp drag during frontalis contraction. There are also situational conditions to take into account.
+              - paragraph [ref=e183]: At any given time, frontalis can be contracting anywhere from minimum to maximum intensity; the same goes with occipitalis. On a structural level, if an individual has a stronger frontalis relative to their occipitalis, it is likely that they will have more forehead drag. This assumption can only be made if both frontalis and occipitalis are activated at the same intensity. In reality, the intensity of our facial muscle activity is in constant flux; so it cannot be expected that frontalis and occipitalis will reliably co-activate at the same intensity level. For this reason, scalp drag will not simply differ from individual to individual – but also from situation to situation.
+            - heading "breaking it down" [level=2] [ref=e189]
+            - generic [ref=e194]:
+              - paragraph [ref=e195]: Consider the GIFs below. GIFs A and B features myself and my brother. In this context he has significantly more hairline drag than I do.
+              - paragraph [ref=e196]: Now observe GIF C. GIF C features myself and a friend. In GIF C both of our scalp drag is so minimal that it is difficult to detect without careful inspection. (If you’re having trouble seeing it, observe the movement of the hair beyond the hairline and focus on the top center of the hairline.) In both A/B and C, I am contracting my frontalis at a rather strong intensity; however the hairline drag is noticeably different, being much stronger in A/B than in C – a perfect example of situational variation.
+              - paragraph [ref=e197]: "Besides individual and situational differences regarding frontalis vs. occipitalis strength, there are a number of other factors that may affect scalp drag, including – but not limited to:"
+              - list [ref=e198]:
+                - listitem [ref=e199]: hairstyle (Pony tails, buns, hair towels, etc. can all influence hairline drag!)
+                - listitem [ref=e200]: skin motility
+                - listitem [ref=e201]: relationships with surrounding muscles
+            - figure "A" [ref=e207]:
+              - img "frontalis variation within families" [ref=e208]
+              - generic [ref=e209]: A
+            - figure "B" [ref=e215]:
+              - img "frontalis variation within families" [ref=e216]
+              - generic [ref=e217]: B
+            - figure "C" [ref=e223]:
+              - img "full brow raise - frontalis" [ref=e224]
+              - generic [ref=e225]: C
+            - heading "final words" [level=2] [ref=e231]
+            - paragraph [ref=e237]: "To sum it all up: In most cases, the hairline and scalp will be pulled down from frontalis contraction. However, the degree to which it is lowered will vary from person to person and context to context; so always observe carefully and pay attention to the details."
+            - heading "sources + further reading" [level=2] [ref=e243]
+            - list [ref=e249]:
+              - listitem [ref=e250]: "Hiatt, J. L., & Gartner, L. P. (2010). Textbook of head and neck anatomy (4th ed.). Philadelphia, PA: Lippincott Williams & Wilkins."
+              - listitem [ref=e251]: "Moore, K. L., Dalley, A. F., & Agur, A. M. R. (2014). Clinically Oriented Anatomy (7th ed.). Philadelphia, PA: Lippincott Williams & Wilkins."
+              - listitem [ref=e252]: "Palastanga, N., & Soames, R. (2012). Anatomy and human movement: structure and function (6th ed.). Edinburgh: Churchill Livingstone."
+              - listitem [ref=e253]: "Standring, S. (2016). Gray’s Anatomy (41tst ed.). Edinburgh: Elsevier Churchill Livingstone."
+            - generic [ref=e257]:
+              - heading "explore more premium content" [level=2] [ref=e262]
+              - list [ref=e268]:
+                - listitem [ref=e269]:
+                  - link "nose wrinkler, brow furrow, upper lid raiser" [ref=e270] [cursor=pointer]:
+                    - /url: https://melindaozel.com/bypassing-vr-headset-occlusion-in-face-tracking/
+                    - img "nose wrinkler, brow furrow, upper lid raiser" [ref=e272]
+                  - heading "Bypassing VR Headset Occlusion in Face Tracking" [level=3] [ref=e274]:
+                    - link "Bypassing VR Headset Occlusion in Face Tracking" [ref=e275] [cursor=pointer]:
+                      - /url: https://melindaozel.com/bypassing-vr-headset-occlusion-in-face-tracking/
+                - listitem [ref=e276]:
+                  - link [ref=e277] [cursor=pointer]:
+                    - /url: https://melindaozel.com/breaking-down-nose-wrinkler/
+                  - heading "Breaking Down Nose Wrinkler (AU9)" [level=3] [ref=e280]:
+                    - link "Breaking Down Nose Wrinkler (AU9)" [ref=e281] [cursor=pointer]:
+                      - /url: https://melindaozel.com/breaking-down-nose-wrinkler/
+                - listitem [ref=e282]:
+                  - link "woman raising her top lips with drawovers" [ref=e283] [cursor=pointer]:
+                    - /url: https://melindaozel.com/upper-lip-raiser-vs-nasolabial-furrow-deepener/
+                    - img "woman raising her top lips with drawovers" [ref=e285]
+                  - heading "Upper Lip Raiser vs. Nasolabial Furrow Deepener" [level=3] [ref=e287]:
+                    - link "Upper Lip Raiser vs. Nasolabial Furrow Deepener" [ref=e288] [cursor=pointer]:
+                      - /url: https://melindaozel.com/upper-lip-raiser-vs-nasolabial-furrow-deepener/
+                - listitem [ref=e289]:
+                  - link [ref=e290] [cursor=pointer]:
+                    - /url: https://melindaozel.com/a-wrinkle-in-time-building-characters-with-real-story-lines/
+                  - 'heading "A Wrinkle In Time, Part I: How to Build Characters With Real Story Lines" [level=3] [ref=e293]':
+                    - 'link "A Wrinkle In Time, Part I: How to Build Characters With Real Story Lines" [ref=e294] [cursor=pointer]':
+                      - /url: https://melindaozel.com/a-wrinkle-in-time-building-characters-with-real-story-lines/
+                - listitem [ref=e295]:
+                  - 'heading "Wrinkle Tips For Character Artists, Part II: Static Forms" [level=3] [ref=e297]':
+                    - 'link "Wrinkle Tips For Character Artists, Part II: Static Forms" [ref=e298] [cursor=pointer]':
+                      - /url: https://melindaozel.com/a-wrinkle-in-time-part-ii/
+                - listitem [ref=e299]:
+                  - link "inner brow raiser wrong" [ref=e300] [cursor=pointer]:
+                    - /url: https://melindaozel.com/inner-brow-raiser-deep-dive/
+                    - img "inner brow raiser wrong" [ref=e302]
+                  - 'heading "Inner Brow Raiser: Deep Dive" [level=3] [ref=e304]':
+                    - 'link "Inner Brow Raiser: Deep Dive" [ref=e305] [cursor=pointer]':
+                      - /url: https://melindaozel.com/inner-brow-raiser-deep-dive/
+          - generic "Entry meta" [ref=e309]:
+            - generic [ref=e310]:
+              - img [ref=e312]
+              - generic [ref=e314]: Categories
+              - link "art" [ref=e315] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/art/
+              - text: ","
+              - link "character rigging" [ref=e316] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/art/character-rigging/
+              - text: ","
+              - link "facial anatomy" [ref=e317] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/anatomy/
+              - text: ","
+              - link "facial expressions" [ref=e318] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/facial-expressions/
+              - text: ","
+              - link "facial muscles" [ref=e319] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/anatomy/muscles/
+              - text: ","
+              - link "frontalis" [ref=e320] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/anatomy/muscles/frontalis/
+              - text: ","
+              - link "paid content" [ref=e321] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/paid/
+            - navigation "Posts" [ref=e322]:
+              - generic [ref=e323]:
+                - img [ref=e325]
+                - link "Chimpanzee vs. Human Expressions, Part II" [ref=e328] [cursor=pointer]:
+                  - /url: https://melindaozel.com/chimpanzee-vs-human-brow-raiser/
+              - generic [ref=e329]:
+                - img [ref=e331]
+                - link "Eyelid Crease Variation" [ref=e334] [cursor=pointer]:
+                  - /url: https://melindaozel.com/eyelid-crease-variation/
+      - generic [ref=e336]:
+        - heading "1 thought on “Forehead Dynamics – Frontalis vs. Occipitalis”" [level=2] [ref=e337]
+        - list [ref=e338]:
+          - listitem [ref=e339]:
+            - generic [ref=e340]:
+              - text: "Pingback:"
+              - link "chimpanzee vs. human expressions, part II - Face the FACS" [ref=e341] [cursor=pointer]:
+                - /url: https://melindaozel.com/chimpanzee-vs-human-brow-raiser/
+        - paragraph [ref=e342]: Comments are closed.
+    - generic [ref=e344]:
+      - complementary [ref=e345]:
+        - generic [ref=e352]:
+          - figure [ref=e353]:
+            - link "headshot of page author" [ref=e354] [cursor=pointer]:
+              - /url: https://melindaozel.com/melinda-who-zel/
+              - img "headshot of page author" [ref=e355]
+          - paragraph
+          - paragraph [ref=e356]:
+            - text: I’m a Facial Systems Expert specializing in the Facial Action Coding System (FACS) and facial anatomy. My work spans
+            - link "expression tracking" [ref=e357] [cursor=pointer]:
+              - /url: https://patents.justia.com/inventor/melinda-ozel
+              - strong [ref=e358]: expression tracking
+            - text: ", facial animation, and"
+            - link "AI-driven lipsync" [ref=e359] [cursor=pointer]:
+              - /url: http://linkedin.com/in/melindaozel
+              - strong [ref=e360]: AI-driven lipsync
+            - text: . Recent work includes contributions to the de-aging of Tom Hanks and other actors in the
+            - strong [ref=e361]:
+              - link "Zemeckis film, Here" [ref=e362] [cursor=pointer]:
+                - /url: https://www.imdb.com/name/nm15482966/
+            - text: .
+          - paragraph [ref=e363]:
+            - text: Learn more about
+            - link "my background" [ref=e364] [cursor=pointer]:
+              - /url: https://melindaozel.com/melinda-who-zel/
+              - strong [ref=e365]: my background
+            - text: .
+          - paragraph
+      - complementary [ref=e366]:
+        - paragraph [ref=e367]:
+          - strong [ref=e368]: Courses & Workshops
+          - text: "-"
+          - link "FACS Cram Session" [ref=e369] [cursor=pointer]:
+            - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+          - text: "-"
+          - link "All About Lipsync" [ref=e370] [cursor=pointer]:
+            - /url: https://melindaozel.com/all-about-lipsync-course/
+          - text: "-"
+          - link "All Training Services" [ref=e371] [cursor=pointer]:
+            - /url: https://melindaozel.com/services/lectures-training/
+      - complementary [ref=e372]:
+        - paragraph [ref=e373]:
+          - strong [ref=e374]: "\""
+          - text: Melinda Ozel's resources on face anatomy, motion, and FACS are industry standard. During my time working on The Last of Us Part II (and other unannounced Playstation titles) I referred to it almost exclusively on a regular basis. The free material is great but the pay material is worth the cost.
+          - strong [ref=e375]: "\""
+          - strong [ref=e376]: Eric Drobile | Technical Animator
+          - strong [ref=e377]: "\""
+          - text: For most people learning traditional FACS is not feasible. It requires very costly specialized degrees and years long commitment. And the half century old research with fuzzy photos was not made for artists. What Melinda has done for our industry is take the dense scientific information and streamlined it into very easy to digest entries and videos catered to artists.
+          - strong [ref=e378]: "\""
+          - strong [ref=e379]: Paul Liaw | Principal Character Artist
+          - strong [ref=e380]: "\""
+          - text: I've been working as a Facial Blendshape Artist across film and gaming and have watched the quality of my work improve exponentially since I've had access to this wealth of knowledge that Melinda has so thoughtfully put together. Her documentation is clear, appealing, and comprehensive. If Paul Ekman is the father of FACS, Melinda has become the cool aunt.
+          - strong [ref=e381]: "\""
+          - strong [ref=e382]: "Ioana Alexandra Pirvu | Lead Artist: Blendshapes @ Rockstar Games"
+          - strong [ref=e383]: "\""
+          - text: Face the FACS in my opinion is bar-none, the best resource out there for any artist and company dealing with facial animation. The way in which Melinda delivers knowledge is detailed, but fun and compelling enough to make you want to keep learning. For a topic that could have easily been boring, she inspired me to keep learning.
+          - strong [ref=e384]: "\""
+          - strong [ref=e385]: Giovanni Nakpil | Senior Creative 3D Evangelist @ Adobe
+          - strong [ref=e386]: "\""
+          - text: If you're doing AU's (action units), this is the site you're going to need to bookmark. Melinda has gone above and beyond to create what I feel is the ultimate resource guide for AU's. Each AU explained, annotated and demonstrated with extreme clarity. You'll experience plenty of "aha!!" moments using Melinda's work as your guide!
+          - strong [ref=e387]: "\""
+          - strong [ref=e388]: Frank Gravatt
+          - strong [ref=e389]: "| Facial Modeler @ Cloud Chamber"
+      - complementary [ref=e390]:
+        - paragraph
+      - complementary [ref=e391]:
+        - generic [ref=e393]:
+          - paragraph [ref=e394]:
+            - strong [ref=e395]: Connect with me <3
+          - list [ref=e396]:
+            - listitem [ref=e397]:
+              - link "Instagram" [ref=e398] [cursor=pointer]:
+                - /url: https://instagram.com/manicexpression
+                - img [ref=e399]
+                - generic [ref=e401]: Instagram
+            - listitem [ref=e402]:
+              - link "LinkedIn" [ref=e403] [cursor=pointer]:
+                - /url: https://linkedin.com/in/melindaozel
+                - img [ref=e404]
+                - generic [ref=e406]: LinkedIn
+            - listitem [ref=e407]:
+              - link "X" [ref=e408] [cursor=pointer]:
+                - /url: https://x.com/melindaozel
+                - img [ref=e409]
+                - generic [ref=e411]: X
+  - generic [ref=e412]:
+    - generic [ref=e415]:
+      - complementary [ref=e417]:
+        - search [ref=e418]:
+          - generic [ref=e419]: Search
+          - generic [ref=e420]:
+            - searchbox "Search" [ref=e421]
+            - button "Search" [ref=e422] [cursor=pointer]
+      - complementary [ref=e424]:
+        - paragraph [ref=e425]:
+          - link "Terms & Conditions" [ref=e426] [cursor=pointer]:
+            - /url: https://melindaozel.com/terms-conditions/
+    - contentinfo "Site" [ref=e427]:
+      - generic [ref=e429]:
+        - text: Copyright © 2020-2026 Melinda Ozel . All rights reserved.
+        - text: Learn how to
+        - link "cite my work here" [ref=e430] [cursor=pointer]:
+          - /url: https://melindaozel.com/how-to-cite-my-work-use-my-visuals/
+          - generic [ref=e431]: cite my work here
+        - generic [ref=e432]: .
+  - navigation "Website language selector" [ref=e433]:
+    - generic [ref=e434]:
+      - button "Change language":
+        - generic: EN
+      - group "Available languages":
+        - link "ES" [ref=e435] [cursor=pointer]:
+          - /url: https://melindaozel.com/es/forehead-dynamics-frontalis-vs-occipitalis/
+          - generic [ref=e436]: ES
+        - link "FR" [ref=e437] [cursor=pointer]:
+          - /url: https://melindaozel.com/fr/forehead-dynamics-frontalis-vs-occipitalis/
+          - generic [ref=e438]: FR
+        - link "ES_VE" [ref=e439] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_ve/forehead-dynamics-frontalis-vs-occipitalis/
+          - generic [ref=e440]: ES_VE
+        - link "ES_CL" [ref=e441] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_cl/forehead-dynamics-frontalis-vs-occipitalis/
+          - generic [ref=e442]: ES_CL
+        - link "ES_GT" [ref=e443] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_gt/forehead-dynamics-frontalis-vs-occipitalis/
+          - generic [ref=e444]: ES_GT
+        - link "PT" [ref=e445] [cursor=pointer]:
+          - /url: https://melindaozel.com/pt/forehead-dynamics-frontalis-vs-occipitalis/
+          - generic [ref=e446]: PT
+        - link "ZH" [ref=e447] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh/forehead-dynamics-frontalis-vs-occipitalis/
+          - generic [ref=e448]: ZH
+        - link "ZH_TW" [ref=e449] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh_tw/forehead-dynamics-frontalis-vs-occipitalis/
+          - generic [ref=e450]: ZH_TW
+        - link "ZH_HK" [ref=e451] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh_hk/forehead-dynamics-frontalis-vs-occipitalis/
+          - generic [ref=e452]: ZH_HK
+        - link "JA" [ref=e453] [cursor=pointer]:
+          - /url: https://melindaozel.com/ja/forehead-dynamics-frontalis-vs-occipitalis/
+          - generic [ref=e454]: JA
+        - link "HI" [ref=e455] [cursor=pointer]:
+          - /url: https://melindaozel.com/hi/forehead-dynamics-frontalis-vs-occipitalis/
+          - generic [ref=e456]: HI
+        - link "DE" [ref=e457] [cursor=pointer]:
+          - /url: https://melindaozel.com/de/forehead-dynamics-frontalis-vs-occipitalis/
+          - generic [ref=e458]: DE
+        - link "DE_DE" [ref=e459] [cursor=pointer]:
+          - /url: https://melindaozel.com/de_de/forehead-dynamics-frontalis-vs-occipitalis/
+          - generic [ref=e460]: DE_DE
+        - link "RU" [ref=e461] [cursor=pointer]:
+          - /url: https://melindaozel.com/ru/forehead-dynamics-frontalis-vs-occipitalis/
+          - generic [ref=e462]: RU
+        - link "PL" [ref=e463] [cursor=pointer]:
+          - /url: https://melindaozel.com/pl/forehead-dynamics-frontalis-vs-occipitalis/
+          - generic [ref=e464]: PL
+        - link "CS" [ref=e465] [cursor=pointer]:
+          - /url: https://melindaozel.com/cs/forehead-dynamics-frontalis-vs-occipitalis/
+          - generic [ref=e466]: CS
+        - link "VI" [ref=e467] [cursor=pointer]:
+          - /url: https://melindaozel.com/vi/forehead-dynamics-frontalis-vs-occipitalis/
+          - generic [ref=e468]: VI
+        - link "IT" [ref=e469] [cursor=pointer]:
+          - /url: https://melindaozel.com/it/forehead-dynamics-frontalis-vs-occipitalis/
+          - generic [ref=e470]: IT
+        - link "SV" [ref=e471] [cursor=pointer]:
+          - /url: https://melindaozel.com/sv/forehead-dynamics-frontalis-vs-occipitalis/
+          - generic [ref=e472]: SV
+        - link "SR" [ref=e473] [cursor=pointer]:
+          - /url: https://melindaozel.com/sr/forehead-dynamics-frontalis-vs-occipitalis/
+          - generic [ref=e474]: SR
+        - link "AR" [ref=e475] [cursor=pointer]:
+          - /url: https://melindaozel.com/ar/forehead-dynamics-frontalis-vs-occipitalis/
+          - generic [ref=e476]: AR
+        - link "MS" [ref=e477] [cursor=pointer]:
+          - /url: https://melindaozel.com/ms/forehead-dynamics-frontalis-vs-occipitalis/
+          - generic [ref=e478]: MS
+        - link "FI" [ref=e479] [cursor=pointer]:
+          - /url: https://melindaozel.com/fi/forehead-dynamics-frontalis-vs-occipitalis/
+          - generic [ref=e480]: FI
+        - link "ES_MX" [ref=e481] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_mx/forehead-dynamics-frontalis-vs-occipitalis/
+          - generic [ref=e482]: ES_MX
+        - link "KO" [ref=e483] [cursor=pointer]:
+          - /url: https://melindaozel.com/ko/forehead-dynamics-frontalis-vs-occipitalis/
+          - generic [ref=e484]: KO
+        - link "TR" [ref=e485] [cursor=pointer]:
+          - /url: https://melindaozel.com/tr/forehead-dynamics-frontalis-vs-occipitalis/
+          - generic [ref=e486]: TR
+        - link "IS" [ref=e487] [cursor=pointer]:
+          - /url: https://melindaozel.com/is/forehead-dynamics-frontalis-vs-occipitalis/
+          - generic [ref=e488]: IS
+        - link "NL" [ref=e489] [cursor=pointer]:
+          - /url: https://melindaozel.com/nl/forehead-dynamics-frontalis-vs-occipitalis/
+          - generic [ref=e490]: NL
+        - link "NL_NL" [ref=e491] [cursor=pointer]:
+          - /url: https://melindaozel.com/nl_nl/forehead-dynamics-frontalis-vs-occipitalis/
+          - generic [ref=e492]: NL_NL
+        - link "ES_AR" [ref=e493] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_ar/forehead-dynamics-frontalis-vs-occipitalis/
+          - generic [ref=e494]: ES_AR
+        - link "UK" [ref=e495] [cursor=pointer]:
+          - /url: https://melindaozel.com/uk/forehead-dynamics-frontalis-vs-occipitalis/
+          - generic [ref=e496]: UK
+  - generic [ref=e497]: desktop

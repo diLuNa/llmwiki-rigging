@@ -117,33 +117,82 @@ tongueOut
 
 ARKit blend shapes do not map 1:1 to FACS Action Units. Key differences:
 - ARKit splits most bilateral AUs into `Left`/`Right` (e.g., `mouthSmileLeft` = AU12L)
-- Some FACS AUs are not represented (e.g., AU11 nasolabial deepener)
-- Some ARKit shapes are functional rather than anatomical (e.g., `jawForward` maps to AU28 approximately)
+- Some FACS AUs are not represented in ARKit at all (see Missing AUs below)
 - ARKit uses descriptive English names, not AU numbers
 
-**Canonical mapping resource:** Melinda Ozel  
-→ [ARKit to FACS Cheat Sheet](https://melindaozel.com/arkit-to-facs-cheat-sheet/)  
-→ [ARKit to FACS Translation Guide](https://melindaozel.com/arkit-to-facs-translation-guide/)
+**Canonical mapping source:** Melinda Ozel, *ARKit to FACS Translation Guide*  
+→ https://melindaozel.com/arkit-to-facs-translation-guide/ (premium)
 
-Key spot mappings (partial):
+### Complete ARKit → FACS Table
 
-| ARKit Name | FACS AU | FACS Name |
-|-----------|---------|-----------|
-| `browInnerUp` | AU1 | Inner Brow Raise |
-| `browOuterUpLeft/Right` | AU2 L/R | Outer Brow Raise |
-| `browDownLeft/Right` | AU4 L/R | Brow Lowerer |
-| `eyeWideLeft/Right` | AU5 L/R | Upper Lid Raiser |
-| `cheekSquintLeft/Right` | AU6 L/R | Cheek Raiser |
-| `eyeSquintLeft/Right` | AU7 L/R | Lid Tightener |
-| `noseSneerLeft/Right` | AU9 L/R | Nose Wrinkler |
-| `mouthSmileLeft/Right` | AU12 L/R | Lip Corner Puller |
-| `mouthDimpleLeft/Right` | AU14 L/R | Dimpler |
-| `mouthFrownLeft/Right` | AU15 L/R | Lip Corner Depressor |
-| `mouthStretchLeft/Right` | AU20 L/R | Lip Stretcher |
-| `mouthFunnel` | AU22 | Lip Funneler |
-| `mouthPucker` | AU18 | Lip Puckerer |
-| `mouthClose` | AU23/24 | Lip Tightener / Pressor |
-| `jawOpen` | AU26/27 | Jaw Drop / Mouth Stretch |
+| ARKit Label | FACS AU / Name | Primary Muscle(s) |
+|---|---|---|
+| `browInnerUp` | AU1 — inner brow raiser | frontalis, medial portion |
+| `browOuterUpLeft` / `browOuterUpRight` | AU2 — outer brow raiser | frontalis, lateral portion |
+| `browDownLeft` / `browDownRight` | AU4 — brow lowerer | corrugator supercilii, depressor supercilii, procerus |
+| `eyeWideLeft` / `eyeWideRight` | AU5 — upper lid raiser | levator palpebrae superioris |
+| `cheekSquintLeft` / `cheekSquintRight` | AU6 — cheek raiser | orbicularis oculi, orbital portion |
+| `eyeSquintLeft` / `eyeSquintRight` | AU7 — lid tightener | orbicularis oculi, palpebral portion |
+| `eyeBlinkLeft` / `eyeBlinkRight` | AU45 — blink | relaxation of levator palpebrae superioris + contraction of palpebral orbicularis oculi |
+| `eyeLookUpLeft` / `eyeLookUpRight` | M63 — eyes up | superior rectus & inferior oblique* |
+| `eyeLookDownLeft` / `eyeLookDownRight` | M64 — eyes down | inferior rectus & superior oblique* |
+| `eyeLookInLeft` / `eyeLookInRight` | AU66 — crosseye (both); or paired with eyeLookOut for rightward (M62) / leftward (M61) gaze | medial rectus* |
+| `eyeLookOutLeft` / `eyeLookOutRight` | AU65 — walleye (both); see eyeLookIn note for directional gaze | lateral rectus* |
+| `noseSneerLeft` / `noseSneerRight` | AU9 — nose wrinkler | levator labii superioris alaeque nasi |
+| `mouthUpperUpLeft` / `mouthUpperUpRight` | AU10 — upper lip raiser | levator labii superioris |
+| `mouthSmileLeft` / `mouthSmileRight` | AU12 — lip corner puller | zygomaticus major |
+| `mouthLeft` / `mouthRight` | see critical note below | see critical note below |
+| `mouthDimpleLeft` / `mouthDimpleRight` | AU14 — dimpler | buccinator |
+| `mouthFrownLeft` / `mouthFrownRight` | AU15 — lip corner depressor | depressor anguli oris |
+| `mouthLowerDownLeft` / `mouthLowerDownRight` | AU16 — lower lip depressor | depressor labii inferioris |
+| `mouthShrugUpper` | AU17 — chin raiser, upper split | secondary effect from the mentalis |
+| `mouthShrugLower` | AU17 — chin raiser, lower split | mentalis |
+| `cheekPuff` | AD34 — puff | buccinator |
+| `mouthPucker` | AU18 — lip pucker | incisivus labii superioris, incisivus labii inferioris |
+| `mouthStretchLeft` / `mouthStretchRight` | AU20 — lip stretcher | risorius |
+| `mouthFunnel` | AU22 — lip funneler | orbicularis oris |
+| `mouthPressLeft` / `mouthPressRight` | AU24 — lip presser | orbicularis oris |
+| `mouthClose` | AU8 — see critical note below | orbicularis oris — see critical note below |
+| `mouthRollUpper` / `mouthRollLower` | AU28 — lips suck | orbicularis oris |
+| `jawOpen` | AU26 — jaw drop **or** AU27 — mouth stretch | (AU26) relaxation of masseter, temporalis, internal pterygoid; (AU27) lateral pterygoid + suprahyoid muscles |
+| `jawLeft` / `jawRight` | AD30 — jaw sideways | pterygoids and temporalis |
+| `jawForward` | AD29 — jaw thrust | pterygoids and masseter |
+
+*Gaze muscles are simplified — they work as a relational system; these are the most relevant single-muscle correlates.
+
+---
+
+### Critical Notes
+
+**mouthShrugUpper:**  
+`mouthShrugUpper` is **contingent on `mouthShrugLower`** and is only applicable when the lips are already touching, or will be touching due to the intensity of `mouthShrugLower`. This distinction was confirmed with former FaceShift members (the company whose face shapes ARKit is derived from, before Apple acquired them).  
+**ICT-FaceKit mistranslation:** The ICT-FaceKit incorrectly labels `mouthShrugUpper` as "upper lip raiser" and mistranslates `mouthUpperUpLeft`/`mouthUpperUpRight` as "nasolabial furrow deepener."
+
+**mouthLeft / mouthRight:**  
+These are lateral translation shapes (jaw sideways compensation at the lip level). Not a standard FACS AU; see comprehensive guide for full notes.
+
+**mouthClose:**  
+Mapped to AU8 with caveats. In Melinda Ozel's taxonomy, AU8 (classic FACS "lips toward each other") is vague; she uses `fAUx8` (Howler Mouth) for the sphincter-like orbicularis oris action. `mouthClose` best corresponds to high-intensity orbicularis oris contraction but its exact usage depends on context. See [[concepts/facs]] for fAUx8 definition.
+
+**jawOpen (AU26 vs AU27):**  
+AU26 (jaw drop) is passive — relaxation of masticatory muscles. AU27 (mouth stretch) is active — requires pterygoid contraction. ARKit's single `jawOpen` conflates both; animators must distinguish by context.
+
+---
+
+### AUs Missing from ARKit
+
+ARKit does not expose dedicated shapes for several FACS-official AUs:
+
+| Missing | FACS Name | Muscle |
+|---------|-----------|--------|
+| AU11 | nasolabial furrow deepener | zygomaticus minor |
+| AU13 | sharp lip puller | levator anguli oris |
+| AU23 | lip tightener (horizontal type) | orbicularis oris |
+| AU38 | nostril dilator | dilator naris |
+| AU39 | nostril compressor | depressor septi nasi + transverse nasalis |
+| — | vertical lip tightener (AU23 Type 2, Melinda's extension) | orbicularis oris |
+
+These must be approximated additively or handled as correctives in production rigs targeting ARKit input.
 
 See [[concepts/facs]] for the full AU reference.
 

@@ -1,0 +1,572 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#content"
+  - navigation "Secondary" [ref=e3]:
+    - list [ref=e6]:
+      - listitem [ref=e7]:
+        - link "Premium Member Access" [ref=e8] [cursor=pointer]:
+          - /url: https://melindaozel.com/premium-resources/
+          - text: Premium Member Access
+          - img [ref=e10]
+        - list:
+          - listitem:
+            - link "Login":
+              - /url: https://melindaozel.com/login/
+          - listitem:
+            - link "Subscribe :)":
+              - /url: https://melindaozel.com/subscription-options/
+      - listitem [ref=e12]:
+        - link "Recorded Lecture Access" [ref=e13] [cursor=pointer]:
+          - /url: https://melindaozel.com/recorded-lectures/
+          - text: Recorded Lecture Access
+          - img [ref=e15]
+        - list:
+          - listitem:
+            - link "FACS Cram Session":
+              - /url: https://melindaozel.com/facs-cram-session/
+          - listitem:
+            - link "All About Lipsync":
+              - /url: https://melindaozel.com/all-about-lipsync-lecture-videos/
+      - listitem [ref=e17]:
+        - link "My Account" [ref=e18] [cursor=pointer]:
+          - /url: https://melindaozel.com/account/
+  - banner "Site" [ref=e19]:
+    - generic [ref=e21]:
+      - link "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e23] [cursor=pointer]:
+        - /url: https://melindaozel.com/
+        - img "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e24]
+      - paragraph [ref=e26]:
+        - link "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e27] [cursor=pointer]:
+          - /url: https://melindaozel.com/
+  - navigation "Primary" [ref=e28]:
+    - list [ref=e31]:
+      - listitem [ref=e32]:
+        - link "Learning Hub" [ref=e33] [cursor=pointer]:
+          - /url: https://melindaozel.com/learning-hub/
+          - text: Learning Hub
+          - img [ref=e35]
+        - list:
+          - listitem:
+            - link "FACS Cheat Sheet":
+              - /url: https://melindaozel.com/facs-cheat-sheet/
+          - listitem:
+            - link "Viseme Cheat Sheet":
+              - /url: https://melindaozel.com/viseme-cheat-sheet/
+          - listitem:
+            - link "All Free Resources":
+              - /url: https://melindaozel.com/free-resources/
+          - listitem:
+            - link "🔒 Premium Resources":
+              - /url: https://melindaozel.com/premium-resources/
+              - img "🔒"
+              - text: Premium Resources
+          - listitem:
+            - link "FAQs":
+              - /url: https://melindaozel.com/faqs/
+      - listitem [ref=e37]:
+        - link "Courses" [ref=e38] [cursor=pointer]:
+          - /url: https://melindaozel.com/online-lectures/
+          - text: Courses
+          - img [ref=e40]
+        - list:
+          - listitem:
+            - link "FACS Cram Session":
+              - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+          - listitem:
+            - link "All About Lipsync":
+              - /url: https://melindaozel.com/all-about-lipsync-course/
+      - listitem [ref=e42]:
+        - link "Full Site Access" [ref=e43] [cursor=pointer]:
+          - /url: https://melindaozel.com/subscription-options/
+          - text: Full Site Access
+          - img [ref=e45]
+        - list:
+          - listitem:
+            - link "Membership Options":
+              - /url: https://melindaozel.com/subscription-options/
+      - listitem [ref=e47]:
+        - link "Services" [ref=e48] [cursor=pointer]:
+          - /url: https://melindaozel.com/services/
+          - text: Services
+          - img [ref=e50]
+        - list:
+          - listitem:
+            - link "FACS Lectures & Training":
+              - /url: https://melindaozel.com/services/lectures-training/
+          - listitem:
+            - link "Consulting":
+              - /url: https://melindaozel.com/services/consulting/
+      - listitem [ref=e52]:
+        - link "About" [ref=e53] [cursor=pointer]:
+          - /url: https://melindaozel.com/who-is-melinda-ozel/
+          - text: About
+          - img [ref=e55]
+        - list:
+          - listitem:
+            - link "About Me":
+              - /url: https://melindaozel.com/who-is-melinda-ozel/
+          - listitem:
+            - link "Cite My Work":
+              - /url: https://melindaozel.com/how-to-cite-my-work-use-my-visuals/
+          - listitem:
+            - link "Contact":
+              - /url: https://melindaozel.com/who-is-melinda-ozel/contact-me/
+  - generic [ref=e58]:
+    - main [ref=e60]:
+      - article [ref=e61]:
+        - generic [ref=e62]:
+          - heading "Emotion References" [level=1] [ref=e64]
+          - generic [ref=e66]:
+            - generic [ref=e70]:
+              - paragraph [ref=e72]:
+                - emphasis [ref=e73]: All clips below feature unposed expressions of emotion. I regularly record and document moments of authentic emotion and do my best to account for potential exaggeration due to camera presence. Situations where disingenuousness is a possibility are noted.
+              - heading "happiness spectrum" [level=1] [ref=e78]
+            - generic [ref=e85]:
+              - heading "laughing" [level=2] [ref=e87]
+              - generic [ref=e88]:
+                - paragraph [ref=e89]: While posing Friend H for a brow raise reference recording, we both started laughing spontaneously. The laughter was caught on camera.
+                - list [ref=e90]:
+                  - listitem [ref=e91]:
+                    - emphasis [ref=e92]: laughing at absurdity
+                  - listitem [ref=e93]:
+                    - emphasis [ref=e94]: relaxed setting with friends
+            - generic [ref=e103]:
+              - heading "laughing + hard blink" [level=2] [ref=e105]
+              - paragraph [ref=e107]:
+                - text: Another expression session with a friend, Friend A. Just as in the above reference with Friend H, the target expression for Friend A was not laughter – but it was caught on camera
+                - img "🙂" [ref=e108]
+            - generic [ref=e117]:
+              - heading "trying not to laugh" [level=2] [ref=e119]
+              - generic [ref=e120]:
+                - paragraph [ref=e121]: Same session with Friend A. In this context, she’s trying to stop laughing and get back to expression posing. This is a great example of genuine laughter + attempt to stop laughing.
+                - paragraph [ref=e122]: Observe the lip pressing action (among other lip-based actions). She uses lip presser here to counteract the impending open-mouth smile – but is unsuccessful.
+            - heading "sadness spectrum" [level=1] [ref=e136]
+            - generic [ref=e143]:
+              - heading "crying while talking" [level=2] [ref=e145]
+              - generic [ref=e146]:
+                - paragraph [ref=e147]:
+                  - text: This moment is from a series called
+                  - emphasis [ref=e148]: August Anxcriety.
+                  - text: It is one of the many breakdowns I experienced and recorded during 2020.
+                - paragraph [ref=e149]: In this clip, I had been sobbing for an hour from stress / anxiety / depression; out of frustration, I began talking to the camera in various accents about my internal conflicts.
+            - generic [ref=e156]:
+              - generic [ref=e158]:
+                - heading "laughing transition to crying NEW*" [level=2] [ref=e160]
+                - generic [ref=e161]:
+                  - paragraph [ref=e162]: Sometimes when I have anxiety, if I laugh too hard for too long, I’ll start crying. This is one of those occasions.
+                  - paragraph [ref=e163]: Notice how the first 3 seconds of the video are of obvious laughter. Then around seconds 3 (late) to 6 (early) the features from crying and laughing become very muddled. By second 8, I have transitioned to full cry mode.
+              - iframe [ref=e168]:
+                - generic [ref=f7e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f7e11] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f7e13] [cursor=pointer]:
+                        - img [ref=f7e14]
+                        - generic:
+                          - generic: Play
+                      - generic [ref=f7e17]:
+                        - generic [ref=f7e18]:
+                          - slider "Progress Bar" [ref=f7e19] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f7e24]: 00:14
+                        - generic [ref=f7e25]:
+                          - generic:
+                            - generic [ref=f7e26]:
+                              - button "Mute" [ref=f7e27] [cursor=pointer]:
+                                - img [ref=f7e28]
+                              - slider "Volume (use up/down arrow keys to change)"
+                            - button "Settings" [ref=f7e30] [cursor=pointer]:
+                              - img [ref=f7e31]
+                              - generic:
+                                - generic: Settings
+                            - button "Picture-in-Picture" [ref=f7e33] [cursor=pointer]:
+                              - img [ref=f7e34]
+                              - generic:
+                                - generic: Picture-in-Picture
+                            - button "Fullscreen" [ref=f7e36] [cursor=pointer]:
+                              - img [ref=f7e37]
+                              - generic:
+                                - generic: Fullscreen
+                          - link "Watch on Vimeo" [ref=f7e39] [cursor=pointer]:
+                            - /url: https://vimeo.com/639686718/e78d15ef6f?fl=pl&fe=vl
+                            - img [ref=f7e40]
+            - generic [ref=e172]:
+              - heading "mixed laughing while crying" [level=2] [ref=e174]
+              - generic [ref=e175]:
+                - paragraph [ref=e176]:
+                  - text: Another moment from
+                  - emphasis [ref=e177]: August Anxicriety,
+                  - text: a continuation from the above clip.
+                - paragraph [ref=e178]: After speaking to the camera in accents, I recognized the ridiculous nature of the situation and began laughing briefly.
+            - generic [ref=e187]:
+              - heading "sadness to laughter" [level=2] [ref=e189]
+              - generic [ref=e190]:
+                - paragraph [ref=e191]: More 2020 depression cries.
+                - paragraph [ref=e192]: Here, I was intermittently crying while watching a movie. A funny scene made me laugh.
+            - generic [ref=e201]:
+              - heading "sticky lips, post-cry" [level=2] [ref=e203]
+              - generic [ref=e204]:
+                - paragraph [ref=e205]:
+                  - text: More clips from
+                  - emphasis [ref=e206]: August Anxcriety
+                  - text: .
+                - paragraph [ref=e207]: If you are applying sticky lips to a character, the consistency and stickiness levels vary in different contexts.
+                - paragraph [ref=e208]: I’ve observed lip stickiness to increase heavily after a long cry. See here.
+            - generic [ref=e217]:
+              - heading "blowing nose, post-cry" [level=2] [ref=e219]
+              - paragraph [ref=e221]:
+                - emphasis [ref=e222]: August Anxcriety
+                - text: nose blow.
+            - heading "disgust spectrum" [level=1] [ref=e236]
+            - generic [ref=e243]:
+              - heading "reaction to gross drink" [level=2] [ref=e245]
+              - generic [ref=e246]:
+                - paragraph [ref=e247]: Drinking an unappealing beverage in harsh, bright light. Though most of my reaction is due to the taste of the drink, it is important to factor in the lighting conditions, which likely played a part in my upper face expressions.
+                - paragraph [ref=e248]:
+                  - text: "NOTE:"
+                  - emphasis [ref=e249]: While this is a genuine reaction, I did not take my usual measures to control for exaggeration.
+            - heading "miscellaneous" [level=1] [ref=e263]
+            - generic [ref=e268]:
+              - generic [ref=e270]:
+                - heading "sassy vibes" [level=2] [ref=e272]
+                - generic [ref=e273]:
+                  - paragraph [ref=e274]: Subject in clip had just broken up with somebody and is happily/sassily celebrating. While this is not a spontaneous reaction, it’s still a great example of a catty fake smile. Also, the subject is a great reference for asymmetric mouth movements. This asymmetry is consistent across all of her expressions – genuine and posed alike.
+                  - paragraph [ref=e275]:
+                    - text: "NOTE:"
+                    - emphasis [ref=e276]: Clip is in slowmo from second 2 ’til end.
+              - iframe [ref=e281]:
+                - generic [ref=f8e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f8e11] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f8e13] [cursor=pointer]:
+                        - img [ref=f8e14]
+                        - generic:
+                          - generic: Play
+                      - generic [ref=f8e17]:
+                        - generic [ref=f8e18]:
+                          - slider "Progress Bar" [ref=f8e19] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f8e24]: 00:07
+                        - generic [ref=f8e25]:
+                          - generic:
+                            - generic [ref=f8e26]:
+                              - button "Mute" [ref=f8e27] [cursor=pointer]:
+                                - img [ref=f8e28]
+                              - slider "Volume (use up/down arrow keys to change)"
+                            - button "Settings" [ref=f8e30] [cursor=pointer]:
+                              - img [ref=f8e31]
+                              - generic:
+                                - generic: Settings
+                            - button "Picture-in-Picture" [ref=f8e33] [cursor=pointer]:
+                              - img [ref=f8e34]
+                              - generic:
+                                - generic: Picture-in-Picture
+                            - button "Fullscreen" [ref=f8e36] [cursor=pointer]:
+                              - img [ref=f8e37]
+                              - generic:
+                                - generic: Fullscreen
+                          - link "Watch on Vimeo" [ref=f8e39] [cursor=pointer]:
+                            - /url: https://vimeo.com/639696159/5e3629cadd?fl=pl&fe=vl
+                            - img [ref=f8e40]
+            - generic [ref=e283]:
+              - generic [ref=e285]:
+                - heading "venting frustration and bitterness" [level=2] [ref=e287]
+                - paragraph [ref=e289]: Subject in clip is speaking about recent encounters with a dangerous person no longer in her life. This clip is from an Instagram story; so while in context it appears to be predominantly authentic (vouching as someone who followed the entire story), in the end, it is from an IG story and that fact can’t be disregarded.
+              - iframe [ref=e294]:
+                - generic [ref=f9e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f9e11] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f9e13] [cursor=pointer]:
+                        - img [ref=f9e14]
+                        - generic:
+                          - generic: Play
+                      - generic [ref=f9e17]:
+                        - generic [ref=f9e18]:
+                          - slider "Progress Bar" [ref=f9e19] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f9e24]: 00:10
+                        - generic [ref=f9e25]:
+                          - generic:
+                            - generic [ref=f9e26]:
+                              - button "Mute" [ref=f9e27] [cursor=pointer]:
+                                - img [ref=f9e28]
+                              - slider "Volume (use up/down arrow keys to change)"
+                            - button "Settings" [ref=f9e30] [cursor=pointer]:
+                              - img [ref=f9e31]
+                              - generic:
+                                - generic: Settings
+                            - button "Picture-in-Picture" [ref=f9e33] [cursor=pointer]:
+                              - img [ref=f9e34]
+                              - generic:
+                                - generic: Picture-in-Picture
+                            - button "Fullscreen" [ref=f9e36] [cursor=pointer]:
+                              - img [ref=f9e37]
+                              - generic:
+                                - generic: Fullscreen
+                          - link "Watch on Vimeo" [ref=f9e39] [cursor=pointer]:
+                            - /url: https://vimeo.com/?fl=pl&fe=vl
+                            - img [ref=f9e40]
+    - generic [ref=e296]:
+      - complementary [ref=e297]:
+        - generic [ref=e304]:
+          - figure [ref=e305]:
+            - link "headshot of page author" [ref=e306] [cursor=pointer]:
+              - /url: https://melindaozel.com/melinda-who-zel/
+              - img "headshot of page author" [ref=e307]
+          - paragraph
+          - paragraph [ref=e308]:
+            - text: I’m a Facial Systems Expert specializing in the Facial Action Coding System (FACS) and facial anatomy. My work spans
+            - link "expression tracking" [ref=e309] [cursor=pointer]:
+              - /url: https://patents.justia.com/inventor/melinda-ozel
+              - strong [ref=e310]: expression tracking
+            - text: ", facial animation, and"
+            - link "AI-driven lipsync" [ref=e311] [cursor=pointer]:
+              - /url: http://linkedin.com/in/melindaozel
+              - strong [ref=e312]: AI-driven lipsync
+            - text: . Recent work includes contributions to the de-aging of Tom Hanks and other actors in the
+            - strong [ref=e313]:
+              - link "Zemeckis film, Here" [ref=e314] [cursor=pointer]:
+                - /url: https://www.imdb.com/name/nm15482966/
+            - text: .
+          - paragraph [ref=e315]:
+            - text: Learn more about
+            - link "my background" [ref=e316] [cursor=pointer]:
+              - /url: https://melindaozel.com/melinda-who-zel/
+              - strong [ref=e317]: my background
+            - text: .
+          - paragraph
+      - complementary [ref=e318]:
+        - paragraph [ref=e319]:
+          - strong [ref=e320]: Courses & Workshops
+          - text: "-"
+          - link "FACS Cram Session" [ref=e321] [cursor=pointer]:
+            - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+          - text: "-"
+          - link "All About Lipsync" [ref=e322] [cursor=pointer]:
+            - /url: https://melindaozel.com/all-about-lipsync-course/
+          - text: "-"
+          - link "All Training Services" [ref=e323] [cursor=pointer]:
+            - /url: https://melindaozel.com/services/lectures-training/
+      - complementary [ref=e324]:
+        - paragraph [ref=e325]:
+          - strong [ref=e326]: "\""
+          - text: Melinda Ozel's resources on face anatomy, motion, and FACS are industry standard. During my time working on The Last of Us Part II (and other unannounced Playstation titles) I referred to it almost exclusively on a regular basis. The free material is great but the pay material is worth the cost.
+          - strong [ref=e327]: "\""
+          - strong [ref=e328]: Eric Drobile | Technical Animator
+          - strong [ref=e329]: "\""
+          - text: For most people learning traditional FACS is not feasible. It requires very costly specialized degrees and years long commitment. And the half century old research with fuzzy photos was not made for artists. What Melinda has done for our industry is take the dense scientific information and streamlined it into very easy to digest entries and videos catered to artists.
+          - strong [ref=e330]: "\""
+          - strong [ref=e331]: Paul Liaw | Principal Character Artist
+          - strong [ref=e332]: "\""
+          - text: I've been working as a Facial Blendshape Artist across film and gaming and have watched the quality of my work improve exponentially since I've had access to this wealth of knowledge that Melinda has so thoughtfully put together. Her documentation is clear, appealing, and comprehensive. If Paul Ekman is the father of FACS, Melinda has become the cool aunt.
+          - strong [ref=e333]: "\""
+          - strong [ref=e334]: "Ioana Alexandra Pirvu | Lead Artist: Blendshapes @ Rockstar Games"
+          - strong [ref=e335]: "\""
+          - text: Face the FACS in my opinion is bar-none, the best resource out there for any artist and company dealing with facial animation. The way in which Melinda delivers knowledge is detailed, but fun and compelling enough to make you want to keep learning. For a topic that could have easily been boring, she inspired me to keep learning.
+          - strong [ref=e336]: "\""
+          - strong [ref=e337]: Giovanni Nakpil | Senior Creative 3D Evangelist @ Adobe
+          - strong [ref=e338]: "\""
+          - text: If you're doing AU's (action units), this is the site you're going to need to bookmark. Melinda has gone above and beyond to create what I feel is the ultimate resource guide for AU's. Each AU explained, annotated and demonstrated with extreme clarity. You'll experience plenty of "aha!!" moments using Melinda's work as your guide!
+          - strong [ref=e339]: "\""
+          - strong [ref=e340]: Frank Gravatt
+          - strong [ref=e341]: "| Facial Modeler @ Cloud Chamber"
+      - complementary [ref=e342]:
+        - paragraph
+      - complementary [ref=e343]:
+        - generic [ref=e345]:
+          - paragraph [ref=e346]:
+            - strong [ref=e347]: Connect with me <3
+          - list [ref=e348]:
+            - listitem [ref=e349]:
+              - link "Instagram" [ref=e350] [cursor=pointer]:
+                - /url: https://instagram.com/manicexpression
+                - img [ref=e351]
+                - generic [ref=e353]: Instagram
+            - listitem [ref=e354]:
+              - link "LinkedIn" [ref=e355] [cursor=pointer]:
+                - /url: https://linkedin.com/in/melindaozel
+                - img [ref=e356]
+                - generic [ref=e358]: LinkedIn
+            - listitem [ref=e359]:
+              - link "X" [ref=e360] [cursor=pointer]:
+                - /url: https://x.com/melindaozel
+                - img [ref=e361]
+                - generic [ref=e363]: X
+  - generic [ref=e364]:
+    - generic [ref=e367]:
+      - complementary [ref=e369]:
+        - search [ref=e370]:
+          - generic [ref=e371]: Search
+          - generic [ref=e372]:
+            - searchbox "Search" [ref=e373]
+            - button "Search" [ref=e374] [cursor=pointer]
+      - complementary [ref=e376]:
+        - paragraph [ref=e377]:
+          - link "Terms & Conditions" [ref=e378] [cursor=pointer]:
+            - /url: https://melindaozel.com/terms-conditions/
+    - contentinfo "Site" [ref=e379]:
+      - generic [ref=e381]:
+        - text: Copyright © 2020-2026 Melinda Ozel . All rights reserved.
+        - text: Learn how to
+        - link "cite my work here" [ref=e382] [cursor=pointer]:
+          - /url: https://melindaozel.com/how-to-cite-my-work-use-my-visuals/
+          - generic [ref=e383]: cite my work here
+        - generic [ref=e384]: .
+  - navigation "Website language selector" [ref=e385]:
+    - generic [ref=e386]:
+      - button "Change language":
+        - generic: EN
+      - group "Available languages":
+        - link "ES" [ref=e387] [cursor=pointer]:
+          - /url: https://melindaozel.com/es/emotion-references/
+          - generic [ref=e388]: ES
+        - link "FR" [ref=e389] [cursor=pointer]:
+          - /url: https://melindaozel.com/fr/emotion-references/
+          - generic [ref=e390]: FR
+        - link "ES_VE" [ref=e391] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_ve/emotion-references/
+          - generic [ref=e392]: ES_VE
+        - link "ES_CL" [ref=e393] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_cl/emotion-references/
+          - generic [ref=e394]: ES_CL
+        - link "ES_GT" [ref=e395] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_gt/emotion-references/
+          - generic [ref=e396]: ES_GT
+        - link "PT" [ref=e397] [cursor=pointer]:
+          - /url: https://melindaozel.com/pt/emotion-references/
+          - generic [ref=e398]: PT
+        - link "ZH" [ref=e399] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh/emotion-references/
+          - generic [ref=e400]: ZH
+        - link "ZH_TW" [ref=e401] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh_tw/emotion-references/
+          - generic [ref=e402]: ZH_TW
+        - link "ZH_HK" [ref=e403] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh_hk/emotion-references/
+          - generic [ref=e404]: ZH_HK
+        - link "JA" [ref=e405] [cursor=pointer]:
+          - /url: https://melindaozel.com/ja/emotion-references/
+          - generic [ref=e406]: JA
+        - link "HI" [ref=e407] [cursor=pointer]:
+          - /url: https://melindaozel.com/hi/emotion-references/
+          - generic [ref=e408]: HI
+        - link "DE" [ref=e409] [cursor=pointer]:
+          - /url: https://melindaozel.com/de/emotion-references/
+          - generic [ref=e410]: DE
+        - link "DE_DE" [ref=e411] [cursor=pointer]:
+          - /url: https://melindaozel.com/de_de/emotion-references/
+          - generic [ref=e412]: DE_DE
+        - link "RU" [ref=e413] [cursor=pointer]:
+          - /url: https://melindaozel.com/ru/emotion-references/
+          - generic [ref=e414]: RU
+        - link "PL" [ref=e415] [cursor=pointer]:
+          - /url: https://melindaozel.com/pl/emotion-references/
+          - generic [ref=e416]: PL
+        - link "CS" [ref=e417] [cursor=pointer]:
+          - /url: https://melindaozel.com/cs/emotion-references/
+          - generic [ref=e418]: CS
+        - link "VI" [ref=e419] [cursor=pointer]:
+          - /url: https://melindaozel.com/vi/emotion-references/
+          - generic [ref=e420]: VI
+        - link "IT" [ref=e421] [cursor=pointer]:
+          - /url: https://melindaozel.com/it/emotion-references/
+          - generic [ref=e422]: IT
+        - link "SV" [ref=e423] [cursor=pointer]:
+          - /url: https://melindaozel.com/sv/emotion-references/
+          - generic [ref=e424]: SV
+        - link "SR" [ref=e425] [cursor=pointer]:
+          - /url: https://melindaozel.com/sr/emotion-references/
+          - generic [ref=e426]: SR
+        - link "AR" [ref=e427] [cursor=pointer]:
+          - /url: https://melindaozel.com/ar/emotion-references/
+          - generic [ref=e428]: AR
+        - link "MS" [ref=e429] [cursor=pointer]:
+          - /url: https://melindaozel.com/ms/emotion-references/
+          - generic [ref=e430]: MS
+        - link "FI" [ref=e431] [cursor=pointer]:
+          - /url: https://melindaozel.com/fi/emotion-references/
+          - generic [ref=e432]: FI
+        - link "ES_MX" [ref=e433] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_mx/emotion-references/
+          - generic [ref=e434]: ES_MX
+        - link "KO" [ref=e435] [cursor=pointer]:
+          - /url: https://melindaozel.com/ko/emotion-references/
+          - generic [ref=e436]: KO
+        - link "TR" [ref=e437] [cursor=pointer]:
+          - /url: https://melindaozel.com/tr/emotion-references/
+          - generic [ref=e438]: TR
+        - link "IS" [ref=e439] [cursor=pointer]:
+          - /url: https://melindaozel.com/is/emotion-references/
+          - generic [ref=e440]: IS
+        - link "NL" [ref=e441] [cursor=pointer]:
+          - /url: https://melindaozel.com/nl/emotion-references/
+          - generic [ref=e442]: NL
+        - link "NL_NL" [ref=e443] [cursor=pointer]:
+          - /url: https://melindaozel.com/nl_nl/emotion-references/
+          - generic [ref=e444]: NL_NL
+        - link "ES_AR" [ref=e445] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_ar/emotion-references/
+          - generic [ref=e446]: ES_AR
+        - link "UK" [ref=e447] [cursor=pointer]:
+          - /url: https://melindaozel.com/uk/emotion-references/
+          - generic [ref=e448]: UK
+  - generic [ref=e449]: desktop

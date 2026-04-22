@@ -155,6 +155,54 @@ Some rigs allow negative weights (overshooting past neutral) for artistic flexib
 
 ---
 
+## Production Gotchas (Melinda Ozel)
+
+Sourced from [[queries/melindaozel-deep-dives]]. These are practitioner-level distinctions absent from academic FACS documentation.
+
+### AU1 — Inner Brow Raiser
+**Common mistake:** adding corrugator supercilii (AU4) to the AU1 shape. Any brow convergence, glabellar bunching, or inner-brow depression in your AU1 shape means it contains AU4. The shape must isolate medial upward pull only.  
+**Variation:** AU1 appearance varies dramatically per individual due to frontalis muscle shape (bifurcation depth/position). Medial raise location can shift from the innermost brow tip to center-brow.
+
+### AU4 — Brow Lowerer (Three Independent Sub-Muscles)
+Treat as three independently activatable muscles for maximum expressivity:
+- **Corrugator supercilii** → brow convergence + vertical glabellar wrinkles
+- **Procerus** → medial brow depression + horizontal nasal-root wrinkle
+- **Depressor supercilii** → inner-brow pull-down with different vector
+
+These are **not additive LBS equivalents** of each other; each produces a distinct movement pattern.
+
+### AU5 — Upper Lid Raiser
+LPS is active whenever the eyes are open — AU5 is coded only for *noticeable increases*. Strong AU1+2 can create a false impression of AU5 (sclera exposure without actual LPS increase) — a known false-positive in automated FACS coding.
+
+### AU9 — Nose Wrinkler
+The brow-lowering visible in nose wrinkler is driven by **depressor supercilii/procerus (AU4 components)**, not LLSAN. Full typical nose wrinkler = AU4+6+7+9+10+15+17. **AU38 (nostril dilator) is almost always present but frequently not coded** — include it in disgust/nose-wrinkle shape sets. Some individuals are missing corrugator entirely.
+
+### AU10 vs AU11 — The Upper Lip Overuse Problem
+**AU10 (levator labii superioris)** is systematically overused in art/tech as the default upper-lip-elevation shape, due to name bias. There are three upper lip elevators:
+1. Levator labii superioris → AU10 (medial, straight-up pull)
+2. LLSAN → AU9 (also lifts lip + flares nostril)
+3. **Zygomaticus minor → AU11** (lateral pull, changes cheek contour)
+
+Key distinction: AU10 pulls the philtrum straight up; AU11 pulls diagonally/laterally and causes visible cheek-contour change. Zygomaticus minor is highly variable in size and insertion — AU11 shapes may need per-character tuning.
+
+### AU12 — Dimples (Bifid Zygomaticus Major)
+Smile dimples are caused by a **bifid variant** of zygomaticus major (two insertion points instead of one). Cannot be reproduced by linear blend of AU12 alone — requires a dedicated corrective tied to the secondary insertion point.
+
+### AU23 — Lip Tightener (Horizontal) + Vertical Lip Tightener
+**AU23 is almost universally misrepresented** in online references — most show AU18 (pucker), AU24 (presser), or the vertical "lip cincher" instead.  
+True AU23 (horizontal type): taut lip edges, no protrusion, no pressing contact, no vertical narrowing.  
+**Vertical lip tightener ("lip cincher")** — Melinda's coined action not in FACS: orbicularis tightens vertically (top lip drawn down, bottom slightly up). Frequently confused with AU23. **Highly valuable lipsync blendshape to include** even though not FACS-official.
+
+### AU23 vs AU24 Disambiguation
+- AU23: lips tighten/taut horizontally — no lip contact required
+- AU24: lips press together with visible compression force — contact between upper and lower lip
+- AU24 is the **primary laughter-suppression shape** (holding back a smile)
+
+### Frontalis / AU1 / AU2 — Individual Variation
+Frontalis shape (bifurcation depth, width, position) governs where AU1 ends and AU2 begins. AU1 and AU2 are **moving targets** — their visual appearance is per-subject. Face tracking systems assuming a standard frontalis topology will produce inconsistent AU1/AU2 separation across subjects.
+
+---
+
 ## Key Papers
 
 | Paper | Contribution |

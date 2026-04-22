@@ -1,0 +1,514 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#content"
+  - navigation "Secondary" [ref=e3]:
+    - list [ref=e6]:
+      - listitem [ref=e7]:
+        - link "Premium Member Access" [ref=e8] [cursor=pointer]:
+          - /url: https://melindaozel.com/premium-resources/
+          - text: Premium Member Access
+          - img [ref=e10]
+        - list:
+          - listitem:
+            - link "Login":
+              - /url: https://melindaozel.com/login/
+          - listitem:
+            - link "Subscribe :)":
+              - /url: https://melindaozel.com/subscription-options/
+      - listitem [ref=e12]:
+        - link "Recorded Lecture Access" [ref=e13] [cursor=pointer]:
+          - /url: https://melindaozel.com/recorded-lectures/
+          - text: Recorded Lecture Access
+          - img [ref=e15]
+        - list:
+          - listitem:
+            - link "FACS Cram Session":
+              - /url: https://melindaozel.com/facs-cram-session/
+          - listitem:
+            - link "All About Lipsync":
+              - /url: https://melindaozel.com/all-about-lipsync-lecture-videos/
+      - listitem [ref=e17]:
+        - link "My Account" [ref=e18] [cursor=pointer]:
+          - /url: https://melindaozel.com/account/
+  - banner "Site" [ref=e19]:
+    - generic [ref=e21]:
+      - link "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e23] [cursor=pointer]:
+        - /url: https://melindaozel.com/
+        - img "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e24]
+      - paragraph [ref=e26]:
+        - link "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e27] [cursor=pointer]:
+          - /url: https://melindaozel.com/
+  - navigation "Primary" [ref=e28]:
+    - list [ref=e31]:
+      - listitem [ref=e32]:
+        - link "Learning Hub" [ref=e33] [cursor=pointer]:
+          - /url: https://melindaozel.com/learning-hub/
+          - text: Learning Hub
+          - img [ref=e35]
+        - list:
+          - listitem:
+            - link "FACS Cheat Sheet":
+              - /url: https://melindaozel.com/facs-cheat-sheet/
+          - listitem:
+            - link "Viseme Cheat Sheet":
+              - /url: https://melindaozel.com/viseme-cheat-sheet/
+          - listitem:
+            - link "All Free Resources":
+              - /url: https://melindaozel.com/free-resources/
+          - listitem:
+            - link "🔒 Premium Resources":
+              - /url: https://melindaozel.com/premium-resources/
+              - img "🔒"
+              - text: Premium Resources
+          - listitem:
+            - link "FAQs":
+              - /url: https://melindaozel.com/faqs/
+      - listitem [ref=e37]:
+        - link "Courses" [ref=e38] [cursor=pointer]:
+          - /url: https://melindaozel.com/online-lectures/
+          - text: Courses
+          - img [ref=e40]
+        - list:
+          - listitem:
+            - link "FACS Cram Session":
+              - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+          - listitem:
+            - link "All About Lipsync":
+              - /url: https://melindaozel.com/all-about-lipsync-course/
+      - listitem [ref=e42]:
+        - link "Full Site Access" [ref=e43] [cursor=pointer]:
+          - /url: https://melindaozel.com/subscription-options/
+          - text: Full Site Access
+          - img [ref=e45]
+        - list:
+          - listitem:
+            - link "Membership Options":
+              - /url: https://melindaozel.com/subscription-options/
+      - listitem [ref=e47]:
+        - link "Services" [ref=e48] [cursor=pointer]:
+          - /url: https://melindaozel.com/services/
+          - text: Services
+          - img [ref=e50]
+        - list:
+          - listitem:
+            - link "FACS Lectures & Training":
+              - /url: https://melindaozel.com/services/lectures-training/
+          - listitem:
+            - link "Consulting":
+              - /url: https://melindaozel.com/services/consulting/
+      - listitem [ref=e52]:
+        - link "About" [ref=e53] [cursor=pointer]:
+          - /url: https://melindaozel.com/who-is-melinda-ozel/
+          - text: About
+          - img [ref=e55]
+        - list:
+          - listitem:
+            - link "About Me":
+              - /url: https://melindaozel.com/who-is-melinda-ozel/
+          - listitem:
+            - link "Cite My Work":
+              - /url: https://melindaozel.com/how-to-cite-my-work-use-my-visuals/
+          - listitem:
+            - link "Contact":
+              - /url: https://melindaozel.com/who-is-melinda-ozel/contact-me/
+  - generic [ref=e57]:
+    - generic [ref=e58]:
+      - generic [ref=e59]:
+        - main [ref=e60]:
+          - article [ref=e61]:
+            - generic [ref=e62]:
+              - generic [ref=e64]:
+                - time [ref=e66]: April 27, 2021
+                - generic [ref=e67]:
+                  - text: by
+                  - link "Melinda Ozel" [ref=e69] [cursor=pointer]:
+                    - /url: https://melindaozel.com/author/melindaozel/
+              - generic [ref=e70]:
+                - generic [ref=e71]:
+                  - generic [ref=e72]:
+                    - generic [ref=e73]:
+                      - generic [ref=e74]:
+                        - generic [ref=e75]:
+                          - heading "upper lip raiser vs. nasolabial furrow deepener" [level=1] [ref=e77]
+                          - paragraph [ref=e82]:
+                            - text: The following content is a preview of a premium content post.
+                            - link "If you are a subscriber, you can access the full post here" [ref=e83] [cursor=pointer]:
+                              - /url: https://melindaozel.com/upper-lip-raiser-vs-nasolabial-furrow-deepener/
+                            - text: . If you would like to subscribe to access this post and all other content,
+                            - link "subscribe here." [ref=e84] [cursor=pointer]:
+                              - /url: https://melindaozel.com/subscription-options/
+                          - heading "complications of levator labii superioris & zygomaticus minor muscles" [level=2] [ref=e86]
+                          - generic [ref=e87]:
+                            - paragraph [ref=e88]:
+                              - generic [ref=e89]:
+                                - text: In the land of facial expressions, there are many, many facial actions that are easy to confuse and difficult to tell apart. Among the contenders for most-difficult-to-distinguish-facial-actions are two upper lip elevators known as
+                                - emphasis [ref=e90]: upper lip raiser
+                                - text: and
+                                - emphasis [ref=e91]: nasolabial furrow deepener
+                                - text: . (These terms are defined by the Facial Action Coding System – FACS.)
+                            - paragraph [ref=e92]:
+                              - text: Though
+                              - emphasis [ref=e93]: upper lip raiser
+                              - text: and
+                              - emphasis [ref=e94]: nasolabial furrow deepener
+                              - text: are each driven by distinct muscles (levator labii superioris and zygomaticus minor, respectively) their associated muscles are situated in very close proximity. When muscles with overlapping
+                              - strong [ref=e95]: primary expressive outcomes
+                              - text: (both lift the upper lip and alter the shape of the nasoalabial furrow) are situated so closely together, differentiating their movements is often challenging.
+                            - paragraph [ref=e96]:
+                              - text: Distinguishing
+                              - emphasis [ref=e97]: upper lip raiser
+                              - text: from
+                              - emphasis [ref=e98]: nasolabial furrow deepener
+                              - text: "is further complicated when we consider anatomical variation. Though all facial muscles are prone to diversity in multiple aspects, zygomaticus minor is documented as one of the more variable facial muscles. Zygomaticus minor varies in terms of its:"
+                            - list [ref=e99]:
+                              - listitem [ref=e100]: shape.
+                              - listitem [ref=e101]: size.
+                              - listitem [ref=e102]: relationship with neighboring muscles (including levator labii superioris).
+                              - listitem [ref=e103]: presence or absence in individuals.
+                          - heading "lip elevator pitch" [level=2] [ref=e105]
+                          - generic [ref=e106]:
+                            - paragraph [ref=e107]:
+                              - text: As mentioned, both levator labii superioris (
+                              - emphasis [ref=e108]: upper lip raiser
+                              - text: ) and zygomaticus minor (
+                              - emphasis [ref=e109]: nasolabial furrow deepener
+                              - text: ) are upper lip elevator muscles. Though there are three upper lip elevators recognized in anatomy (levator labii superioris, levator labii superioris alaeque nasi, and zygomaticus minor), in art and technology,
+                              - emphasis [ref=e110]: upper lip raiser
+                              - text: (via levator labii superioris) is often designated as the go-to action for lifting the top lip. This designation is likely due to a bias created by
+                              - emphasis [ref=e111]: upper lip raiser
+                              - text: ‘s name. From the names of the other two lip elevators,
+                              - emphasis [ref=e112]: nasolabial furrow deepener
+                              - text: and
+                              - emphasis [ref=e113]: nose wrinkler,
+                              - text: it is not readily obvious that these actions are just as much of lip elevators as
+                              - emphasis [ref=e114]: upper lip raiser
+                              - text: . As a consequence, name-based assumptions have led to the unfortunate domination and widespread overuse of upper lip raiser as the main upper lip raising action in art and tech. What’s in a name? A lot of assumptions.
+                            - paragraph [ref=e115]:
+                              - text: For more on upper lip raiser overuse, see
+                              - link "Building Smiles – The Right Way" [ref=e116] [cursor=pointer]:
+                                - /url: https://melindaozel.com/building-smiles-the-right-way/
+                              - text: .
+                          - heading "let's get visual" [level=2] [ref=e118]
+                          - generic [ref=e119]:
+                            - paragraph [ref=e120]:
+                              - text: When observing facial expressions in the wild,
+                              - emphasis [ref=e121]: nasolabial furrow deepener
+                              - text: is not easy to pick out. On top of this, the FACS Manual and most anatomy documents/textbooks have done a poor job of defining and providing visual examples for
+                              - emphasis [ref=e122]: nasolabial furrow deepener
+                              - text: / zygomaticus minor. In aims to help clarify the differences between
+                              - emphasis [ref=e123]: upper lip raiser
+                              - text: and
+                              - emphasis [ref=e124]: nasolabial furrow deepener
+                              - text: ", I have provided a set of side-by-side GIFs that highlight their differences in movement and appearance."
+                            - paragraph [ref=e125]:
+                              - text: The “Unmarked Set” GIF shows upper lip raiser on the left and
+                              - emphasis [ref=e126]: nasolabial furrow deepener
+                              - text: on the right. The top and bottom images feature multiple angles of each action occurring at the same moment in time (i.e. top image for
+                              - emphasis [ref=e127]: upper lip raiser
+                              - text: is occurring at the same time as the bottom image; same with nasolabial furrow deepener). These mutli-angle shots were achieved with a mirror.
+                            - paragraph [ref=e128]:
+                              - text: Without markers, these two motions can appear dizzyingly similar. Observe the “Pores and Feature Highlights” and “Pores, Feature Highlights, and Arrows” GIFs.
+                              - generic [ref=e129]:
+                                - text: From the markings on these GIFs (i.e. pores, lip highlights, and arrows), you can see that though
+                                - emphasis [ref=e130]: upper lip raiser
+                                - text: and
+                                - emphasis [ref=e131]: nasolabial furrow deepener
+                                - text: both pull the top lip upwards, they do so in distinctly different manners. Further specifications are called out in the text below the marked GIFs.
+                          - generic [ref=e132]:
+                            - heading "Unmarked Set" [level=3] [ref=e133]:
+                              - text: Unmarked Set
+                              - strong
+                            - strong
+                          - strong [ref=e134]:
+                            - paragraph [ref=e136]: IMAGE REMOVED FROM PREVIEW
+                            - heading "Pores and Feature Highlights" [level=3] [ref=e138]
+                            - paragraph [ref=e140]: IMAGE REMOVED FROM PREVIEW
+                            - generic [ref=e141]:
+                              - paragraph [ref=e142]: "In the marked GIF above, watch how the:"
+                              - list [ref=e143]:
+                                - listitem [ref=e144]:
+                                  - strong [ref=e145]: TEXT REMOVED FROM PREVIEW
+                                - listitem [ref=e146]:
+                                  - strong [ref=e147]: TEXT REMOVED FROM PREVIEW
+                                - listitem [ref=e148]:
+                                  - strong [ref=e149]: TEXT REMOVED FROM PREVIEW
+                              - paragraph [ref=e150]:
+                                - strong [ref=e152]: NOTE
+                                - text: ": For facial landmark clarification, refer to the facial landmark image diagram below."
+                            - img "Melinda Ozel - nasolabial furrow deepener - infraorbital triangle - facial landmarks" [ref=e154]
+                            - heading "Pores, Feature Highlights, and Arrows" [level=3] [ref=e156]
+                            - paragraph [ref=e158]: IMAGE REMOVED FROM PREVIEW
+                            - generic [ref=e159]:
+                              - paragraph [ref=e160]: "In the marked GIF above, arrows have been added to bring attention to the:"
+                              - list [ref=e161]:
+                                - listitem [ref=e162]: TEXT REMOVED FROM PREVIEW.
+                                - listitem [ref=e163]:
+                                  - generic [ref=e164]: TEXT REMOVED FROM PREVIEW.
+                              - paragraph [ref=e165]: "Observe how in:"
+                              - list [ref=e166]:
+                                - listitem [ref=e167]: TEXT REMOVED FROM PREVIEW.
+                                - listitem [ref=e168]: TEXT REMOVED FROM PREVIEW.
+                                - listitem [ref=e169]: TEXT REMOVED FROM PREVIEW.
+                            - heading "closing thoughts" [level=2] [ref=e171]
+                            - generic [ref=e172]:
+                              - paragraph [ref=e173]:
+                                - text: As you can see, upper lip raiser and
+                                - emphasis [ref=e174]: nasolabial furrow deepener
+                                - text: share many similarities but when observed closely, are contrasted by some fundamental differences.
+                              - paragraph [ref=e175]: When observing the fast-paced faces of the natural world, it can sometimes be impossible to differentiate these movements. However, luckily we have great quality phone cameras and tons and tons of recorded video footage on social media and streaming services to source references from. Now that you know what key differences to look for, you can more easily extrapolate features from video footage and build more informed reference libraries!
+                              - paragraph [ref=e176]: If you would like more personalized assessments and help, please reach out to me for consulting (facetheFACS@melindaozel.com).
+                            - heading "notes" [level=2] [ref=e178]
+                            - paragraph [ref=e180]:
+                              - strong [ref=e181]: Primary expressive outcome
+                              - text: was first defined in
+                              - link "Stylized Facial Expression Design" [ref=e182] [cursor=pointer]:
+                                - /url: https://melindaozel.com/stylized-facial-expression-design/
+                              - text: and refers to “the primary feature-based changes integral to communicating the presence of a particular facial action.”
+                            - paragraph [ref=e184]:
+                              - text: The above content is a preview of a premium content post.
+                              - link "If you are a subscriber, you can access the full post here" [ref=e185] [cursor=pointer]:
+                                - /url: https://melindaozel.com/upper-lip-raiser-vs-nasolabial-furrow-deepener/
+                              - text: . If you would like to subscribe to access this post and all other content,
+                              - link "subscribe here." [ref=e186] [cursor=pointer]:
+                                - /url: https://melindaozel.com/subscription-options/
+                            - link [ref=e189] [cursor=pointer]:
+                              - /url: https://melindaozel.com/
+                              - img [ref=e190]
+                        - strong
+                      - strong
+                    - strong
+                  - strong
+                - strong
+              - strong [ref=e192]:
+                - generic "Entry meta" [ref=e193]:
+                  - generic [ref=e194]:
+                    - img [ref=e196]
+                    - generic [ref=e198]: Categories
+                    - link "facial expressions" [ref=e199] [cursor=pointer]:
+                      - /url: https://melindaozel.com/category/facial-expressions/
+                    - text: ","
+                    - link "paid content" [ref=e200] [cursor=pointer]:
+                      - /url: https://melindaozel.com/category/paid/
+                    - text: ","
+                    - link "premium previews" [ref=e201] [cursor=pointer]:
+                      - /url: https://melindaozel.com/category/paid/premium-previews/
+                  - navigation "Posts" [ref=e202]:
+                    - generic [ref=e203]:
+                      - img [ref=e205]
+                      - link "Faces You Don’t Want to See During UX Research – Especially For VR" [ref=e208] [cursor=pointer]:
+                        - /url: https://melindaozel.com/faces-you-dont-want-to-see-during-ux-research-especially-for-vr/
+                    - generic [ref=e209]:
+                      - img [ref=e211]
+                      - 'link "“It’s All In the Eyes” and Other Lies: A Critique On Contemporary Emotion Research" [ref=e214] [cursor=pointer]':
+                        - /url: https://melindaozel.com/its-all-in-the-eyes-and-other-lies/
+            - strong
+          - strong
+        - strong
+      - strong [ref=e215]:
+        - generic [ref=e217]:
+          - complementary [ref=e218]:
+            - generic [ref=e225]:
+              - figure [ref=e226]:
+                - link "headshot of page author" [ref=e227] [cursor=pointer]:
+                  - /url: https://melindaozel.com/melinda-who-zel/
+                  - img "headshot of page author" [ref=e228]
+              - paragraph
+              - paragraph [ref=e229]:
+                - text: I’m a Facial Systems Expert specializing in the Facial Action Coding System (FACS) and facial anatomy. My work spans
+                - link "expression tracking" [ref=e230] [cursor=pointer]:
+                  - /url: https://patents.justia.com/inventor/melinda-ozel
+                  - strong [ref=e231]: expression tracking
+                - text: ", facial animation, and"
+                - link "AI-driven lipsync" [ref=e232] [cursor=pointer]:
+                  - /url: http://linkedin.com/in/melindaozel
+                  - strong [ref=e233]: AI-driven lipsync
+                - text: . Recent work includes contributions to the de-aging of Tom Hanks and other actors in the
+                - strong [ref=e234]:
+                  - link "Zemeckis film, Here" [ref=e235] [cursor=pointer]:
+                    - /url: https://www.imdb.com/name/nm15482966/
+                - text: .
+              - paragraph [ref=e236]:
+                - text: Learn more about
+                - link "my background" [ref=e237] [cursor=pointer]:
+                  - /url: https://melindaozel.com/melinda-who-zel/
+                  - strong [ref=e238]: my background
+                - text: .
+              - paragraph
+          - complementary [ref=e239]:
+            - paragraph [ref=e240]:
+              - strong [ref=e241]: Courses & Workshops
+              - text: "-"
+              - link "FACS Cram Session" [ref=e242] [cursor=pointer]:
+                - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+              - text: "-"
+              - link "All About Lipsync" [ref=e243] [cursor=pointer]:
+                - /url: https://melindaozel.com/all-about-lipsync-course/
+              - text: "-"
+              - link "All Training Services" [ref=e244] [cursor=pointer]:
+                - /url: https://melindaozel.com/services/lectures-training/
+          - complementary [ref=e245]:
+            - paragraph [ref=e246]:
+              - strong [ref=e247]: "\""
+              - text: Melinda Ozel's resources on face anatomy, motion, and FACS are industry standard. During my time working on The Last of Us Part II (and other unannounced Playstation titles) I referred to it almost exclusively on a regular basis. The free material is great but the pay material is worth the cost.
+              - strong [ref=e248]: "\""
+              - strong [ref=e249]: Eric Drobile | Technical Animator
+              - strong [ref=e250]: "\""
+              - text: For most people learning traditional FACS is not feasible. It requires very costly specialized degrees and years long commitment. And the half century old research with fuzzy photos was not made for artists. What Melinda has done for our industry is take the dense scientific information and streamlined it into very easy to digest entries and videos catered to artists.
+              - strong [ref=e251]: "\""
+              - strong [ref=e252]: Paul Liaw | Principal Character Artist
+              - strong [ref=e253]: "\""
+              - text: I've been working as a Facial Blendshape Artist across film and gaming and have watched the quality of my work improve exponentially since I've had access to this wealth of knowledge that Melinda has so thoughtfully put together. Her documentation is clear, appealing, and comprehensive. If Paul Ekman is the father of FACS, Melinda has become the cool aunt.
+              - strong [ref=e254]: "\""
+              - strong [ref=e255]: "Ioana Alexandra Pirvu | Lead Artist: Blendshapes @ Rockstar Games"
+              - strong [ref=e256]: "\""
+              - text: Face the FACS in my opinion is bar-none, the best resource out there for any artist and company dealing with facial animation. The way in which Melinda delivers knowledge is detailed, but fun and compelling enough to make you want to keep learning. For a topic that could have easily been boring, she inspired me to keep learning.
+              - strong [ref=e257]: "\""
+              - strong [ref=e258]: Giovanni Nakpil | Senior Creative 3D Evangelist @ Adobe
+              - strong [ref=e259]: "\""
+              - text: If you're doing AU's (action units), this is the site you're going to need to bookmark. Melinda has gone above and beyond to create what I feel is the ultimate resource guide for AU's. Each AU explained, annotated and demonstrated with extreme clarity. You'll experience plenty of "aha!!" moments using Melinda's work as your guide!
+              - strong [ref=e260]: "\""
+              - strong [ref=e261]: Frank Gravatt
+              - strong [ref=e262]: "| Facial Modeler @ Cloud Chamber"
+          - complementary [ref=e263]:
+            - paragraph
+          - complementary [ref=e264]:
+            - generic [ref=e266]:
+              - paragraph [ref=e267]:
+                - strong [ref=e268]: Connect with me <3
+              - list [ref=e269]:
+                - listitem [ref=e270]:
+                  - link "Instagram" [ref=e271] [cursor=pointer]:
+                    - /url: https://instagram.com/manicexpression
+                    - img [ref=e272]
+                    - generic [ref=e274]: Instagram
+                - listitem [ref=e275]:
+                  - link "LinkedIn" [ref=e276] [cursor=pointer]:
+                    - /url: https://linkedin.com/in/melindaozel
+                    - img [ref=e277]
+                    - generic [ref=e279]: LinkedIn
+                - listitem [ref=e280]:
+                  - link "X" [ref=e281] [cursor=pointer]:
+                    - /url: https://x.com/melindaozel
+                    - img [ref=e282]
+                    - generic [ref=e284]: X
+    - strong
+  - strong [ref=e285]:
+    - generic [ref=e286]:
+      - generic [ref=e289]:
+        - complementary [ref=e291]:
+          - search [ref=e292]:
+            - generic [ref=e293]: Search
+            - generic [ref=e294]:
+              - searchbox "Search" [ref=e295]
+              - button "Search" [ref=e296] [cursor=pointer]
+        - complementary [ref=e298]:
+          - paragraph [ref=e299]:
+            - link "Terms & Conditions" [ref=e300] [cursor=pointer]:
+              - /url: https://melindaozel.com/terms-conditions/
+      - contentinfo "Site" [ref=e301]:
+        - generic [ref=e303]:
+          - text: Copyright © 2020-2026 Melinda Ozel . All rights reserved.
+          - text: Learn how to
+          - link "cite my work here" [ref=e304] [cursor=pointer]:
+            - /url: https://melindaozel.com/how-to-cite-my-work-use-my-visuals/
+            - generic [ref=e305]: cite my work here
+          - generic [ref=e306]: .
+    - navigation "Website language selector" [ref=e307]:
+      - generic [ref=e308]:
+        - button "Change language":
+          - generic: EN
+        - group "Available languages":
+          - link "ES" [ref=e309] [cursor=pointer]:
+            - /url: https://melindaozel.com/es/levator-labii-superioris-vs-zygomaticus-minor/
+            - generic [ref=e310]: ES
+          - link "FR" [ref=e311] [cursor=pointer]:
+            - /url: https://melindaozel.com/fr/levator-labii-superioris-vs-zygomaticus-minor/
+            - generic [ref=e312]: FR
+          - link "ES_VE" [ref=e313] [cursor=pointer]:
+            - /url: https://melindaozel.com/es_ve/levator-labii-superioris-vs-zygomaticus-minor/
+            - generic [ref=e314]: ES_VE
+          - link "ES_CL" [ref=e315] [cursor=pointer]:
+            - /url: https://melindaozel.com/es_cl/levator-labii-superioris-vs-zygomaticus-minor/
+            - generic [ref=e316]: ES_CL
+          - link "ES_GT" [ref=e317] [cursor=pointer]:
+            - /url: https://melindaozel.com/es_gt/levator-labii-superioris-vs-zygomaticus-minor/
+            - generic [ref=e318]: ES_GT
+          - link "PT" [ref=e319] [cursor=pointer]:
+            - /url: https://melindaozel.com/pt/levator-labii-superioris-vs-zygomaticus-minor/
+            - generic [ref=e320]: PT
+          - link "ZH" [ref=e321] [cursor=pointer]:
+            - /url: https://melindaozel.com/zh/levator-labii-superioris-vs-zygomaticus-minor/
+            - generic [ref=e322]: ZH
+          - link "ZH_TW" [ref=e323] [cursor=pointer]:
+            - /url: https://melindaozel.com/zh_tw/levator-labii-superioris-vs-zygomaticus-minor/
+            - generic [ref=e324]: ZH_TW
+          - link "ZH_HK" [ref=e325] [cursor=pointer]:
+            - /url: https://melindaozel.com/zh_hk/levator-labii-superioris-vs-zygomaticus-minor/
+            - generic [ref=e326]: ZH_HK
+          - link "JA" [ref=e327] [cursor=pointer]:
+            - /url: https://melindaozel.com/ja/levator-labii-superioris-vs-zygomaticus-minor/
+            - generic [ref=e328]: JA
+          - link "HI" [ref=e329] [cursor=pointer]:
+            - /url: https://melindaozel.com/hi/levator-labii-superioris-vs-zygomaticus-minor/
+            - generic [ref=e330]: HI
+          - link "DE" [ref=e331] [cursor=pointer]:
+            - /url: https://melindaozel.com/de/levator-labii-superioris-vs-zygomaticus-minor/
+            - generic [ref=e332]: DE
+          - link "DE_DE" [ref=e333] [cursor=pointer]:
+            - /url: https://melindaozel.com/de_de/levator-labii-superioris-vs-zygomaticus-minor/
+            - generic [ref=e334]: DE_DE
+          - link "RU" [ref=e335] [cursor=pointer]:
+            - /url: https://melindaozel.com/ru/levator-labii-superioris-vs-zygomaticus-minor/
+            - generic [ref=e336]: RU
+          - link "PL" [ref=e337] [cursor=pointer]:
+            - /url: https://melindaozel.com/pl/levator-labii-superioris-vs-zygomaticus-minor/
+            - generic [ref=e338]: PL
+          - link "CS" [ref=e339] [cursor=pointer]:
+            - /url: https://melindaozel.com/cs/levator-labii-superioris-vs-zygomaticus-minor/
+            - generic [ref=e340]: CS
+          - link "VI" [ref=e341] [cursor=pointer]:
+            - /url: https://melindaozel.com/vi/levator-labii-superioris-vs-zygomaticus-minor/
+            - generic [ref=e342]: VI
+          - link "IT" [ref=e343] [cursor=pointer]:
+            - /url: https://melindaozel.com/it/levator-labii-superioris-vs-zygomaticus-minor/
+            - generic [ref=e344]: IT
+          - link "SV" [ref=e345] [cursor=pointer]:
+            - /url: https://melindaozel.com/sv/levator-labii-superioris-vs-zygomaticus-minor/
+            - generic [ref=e346]: SV
+          - link "SR" [ref=e347] [cursor=pointer]:
+            - /url: https://melindaozel.com/sr/levator-labii-superioris-vs-zygomaticus-minor/
+            - generic [ref=e348]: SR
+          - link "AR" [ref=e349] [cursor=pointer]:
+            - /url: https://melindaozel.com/ar/levator-labii-superioris-vs-zygomaticus-minor/
+            - generic [ref=e350]: AR
+          - link "MS" [ref=e351] [cursor=pointer]:
+            - /url: https://melindaozel.com/ms/levator-labii-superioris-vs-zygomaticus-minor/
+            - generic [ref=e352]: MS
+          - link "FI" [ref=e353] [cursor=pointer]:
+            - /url: https://melindaozel.com/fi/levator-labii-superioris-vs-zygomaticus-minor/
+            - generic [ref=e354]: FI
+          - link "ES_MX" [ref=e355] [cursor=pointer]:
+            - /url: https://melindaozel.com/es_mx/levator-labii-superioris-vs-zygomaticus-minor/
+            - generic [ref=e356]: ES_MX
+          - link "KO" [ref=e357] [cursor=pointer]:
+            - /url: https://melindaozel.com/ko/levator-labii-superioris-vs-zygomaticus-minor/
+            - generic [ref=e358]: KO
+          - link "TR" [ref=e359] [cursor=pointer]:
+            - /url: https://melindaozel.com/tr/levator-labii-superioris-vs-zygomaticus-minor/
+            - generic [ref=e360]: TR
+          - link "IS" [ref=e361] [cursor=pointer]:
+            - /url: https://melindaozel.com/is/levator-labii-superioris-vs-zygomaticus-minor/
+            - generic [ref=e362]: IS
+          - link "NL" [ref=e363] [cursor=pointer]:
+            - /url: https://melindaozel.com/nl/levator-labii-superioris-vs-zygomaticus-minor/
+            - generic [ref=e364]: NL
+          - link "NL_NL" [ref=e365] [cursor=pointer]:
+            - /url: https://melindaozel.com/nl_nl/levator-labii-superioris-vs-zygomaticus-minor/
+            - generic [ref=e366]: NL_NL
+          - link "ES_AR" [ref=e367] [cursor=pointer]:
+            - /url: https://melindaozel.com/es_ar/levator-labii-superioris-vs-zygomaticus-minor/
+            - generic [ref=e368]: ES_AR
+          - link "UK" [ref=e369] [cursor=pointer]:
+            - /url: https://melindaozel.com/uk/levator-labii-superioris-vs-zygomaticus-minor/
+            - generic [ref=e370]: UK
+  - generic [ref=e371]: desktop

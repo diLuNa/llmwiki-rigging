@@ -1,0 +1,643 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#content"
+  - navigation "Secondary" [ref=e3]:
+    - list [ref=e6]:
+      - listitem [ref=e7]:
+        - link "Premium Member Access" [ref=e8] [cursor=pointer]:
+          - /url: https://melindaozel.com/premium-resources/
+          - text: Premium Member Access
+          - img [ref=e10]
+        - list:
+          - listitem:
+            - link "Login":
+              - /url: https://melindaozel.com/login/
+          - listitem:
+            - link "Subscribe :)":
+              - /url: https://melindaozel.com/subscription-options/
+      - listitem [ref=e12]:
+        - link "Recorded Lecture Access" [ref=e13] [cursor=pointer]:
+          - /url: https://melindaozel.com/recorded-lectures/
+          - text: Recorded Lecture Access
+          - img [ref=e15]
+        - list:
+          - listitem:
+            - link "FACS Cram Session":
+              - /url: https://melindaozel.com/facs-cram-session/
+          - listitem:
+            - link "All About Lipsync":
+              - /url: https://melindaozel.com/all-about-lipsync-lecture-videos/
+      - listitem [ref=e17]:
+        - link "My Account" [ref=e18] [cursor=pointer]:
+          - /url: https://melindaozel.com/account/
+  - banner "Site" [ref=e19]:
+    - generic [ref=e21]:
+      - link "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e23] [cursor=pointer]:
+        - /url: https://melindaozel.com/
+        - img "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e24]
+      - paragraph [ref=e26]:
+        - link "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e27] [cursor=pointer]:
+          - /url: https://melindaozel.com/
+  - navigation "Primary" [ref=e28]:
+    - list [ref=e31]:
+      - listitem [ref=e32]:
+        - link "Learning Hub" [ref=e33] [cursor=pointer]:
+          - /url: https://melindaozel.com/learning-hub/
+          - text: Learning Hub
+          - img [ref=e35]
+        - list:
+          - listitem:
+            - link "FACS Cheat Sheet":
+              - /url: https://melindaozel.com/facs-cheat-sheet/
+          - listitem:
+            - link "Viseme Cheat Sheet":
+              - /url: https://melindaozel.com/viseme-cheat-sheet/
+          - listitem:
+            - link "All Free Resources":
+              - /url: https://melindaozel.com/free-resources/
+          - listitem:
+            - link "🔒 Premium Resources":
+              - /url: https://melindaozel.com/premium-resources/
+              - img "🔒"
+              - text: Premium Resources
+          - listitem:
+            - link "FAQs":
+              - /url: https://melindaozel.com/faqs/
+      - listitem [ref=e37]:
+        - link "Courses" [ref=e38] [cursor=pointer]:
+          - /url: https://melindaozel.com/online-lectures/
+          - text: Courses
+          - img [ref=e40]
+        - list:
+          - listitem:
+            - link "FACS Cram Session":
+              - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+          - listitem:
+            - link "All About Lipsync":
+              - /url: https://melindaozel.com/all-about-lipsync-course/
+      - listitem [ref=e42]:
+        - link "Full Site Access" [ref=e43] [cursor=pointer]:
+          - /url: https://melindaozel.com/subscription-options/
+          - text: Full Site Access
+          - img [ref=e45]
+        - list:
+          - listitem:
+            - link "Membership Options":
+              - /url: https://melindaozel.com/subscription-options/
+      - listitem [ref=e47]:
+        - link "Services" [ref=e48] [cursor=pointer]:
+          - /url: https://melindaozel.com/services/
+          - text: Services
+          - img [ref=e50]
+        - list:
+          - listitem:
+            - link "FACS Lectures & Training":
+              - /url: https://melindaozel.com/services/lectures-training/
+          - listitem:
+            - link "Consulting":
+              - /url: https://melindaozel.com/services/consulting/
+      - listitem [ref=e52]:
+        - link "About" [ref=e53] [cursor=pointer]:
+          - /url: https://melindaozel.com/who-is-melinda-ozel/
+          - text: About
+          - img [ref=e55]
+        - list:
+          - listitem:
+            - link "About Me":
+              - /url: https://melindaozel.com/who-is-melinda-ozel/
+          - listitem:
+            - link "Cite My Work":
+              - /url: https://melindaozel.com/how-to-cite-my-work-use-my-visuals/
+          - listitem:
+            - link "Contact":
+              - /url: https://melindaozel.com/who-is-melinda-ozel/contact-me/
+  - generic [ref=e58]:
+    - main [ref=e60]:
+      - article [ref=e61]:
+        - generic [ref=e62]:
+          - heading "ARKit to FACS translation guide" [level=1] [ref=e64]
+          - generic [ref=e66]:
+            - generic [ref=e70]:
+              - paragraph [ref=e72]: Welcome to the ARKit to FACS Translation Guide! Here you will find breakdowns of how to translate ARKit face shapes into their Facial Action Coding System (FACS) equivalents. Due to the difficulties in distinguishing similar FACS shapes as well as the lack of clear explanations in the Apple’s devkit, there are many mistranslations of ARKit-to-FACS out there. Beware. This guide is meant to clear up confusion and undo common misconceptions!
+              - generic [ref=e73]:
+                - heading "Difficulties With AR Development Toolkits" [level=2] [ref=e74]
+                - paragraph [ref=e75]: "If you or your team are using open-source face tracking kits to:"
+                - list [ref=e76]:
+                  - listitem [ref=e77]:
+                    - list [ref=e78]:
+                      - listitem [ref=e79]: animate faces
+                      - listitem [ref=e80]: overlay virtual content
+                      - listitem [ref=e81]: create expression-based events
+                - paragraph [ref=e82]: ". . . figuring out what’s what can be challenging – especially if you or your team do not have a strong background in:"
+                - list [ref=e83]:
+                  - listitem [ref=e84]:
+                    - list [ref=e85]:
+                      - listitem [ref=e86]: facial expressions
+                      - listitem [ref=e87]: face tracking
+                      - listitem [ref=e88]: the Facial Action Coding System (FACS)
+                - heading "Vaguely-defined Items" [level=2] [ref=e89]
+                - paragraph [ref=e90]: Face tracking software development kits (SDKs) can be confusing for a number of reasons. A large contributor to this confusion is the lack of detailed documentation available for users.
+                - paragraph [ref=e91]: Human facial expressions are complex and rich with nuance. Understanding how to identify and break down expressions is not always simple or intuitive. Despite this reality, face tracking kits often only provide minimalist definitions for the expression shapes in their libraries.
+                - paragraph [ref=e92]: "Minimally-defined expression shapes:"
+                - list [ref=e93]:
+                  - listitem [ref=e94]:
+                    - list [ref=e95]:
+                      - listitem [ref=e96]: create room for user misinterpretation.
+                      - listitem [ref=e97]: increase user’s likelihood to confuse similar-looking shapes.
+                      - listitem [ref=e98]: limit the user’s potential to effectively use the product.
+                - heading "Getting Around the Ambiguity" [level=2] [ref=e99]
+                - paragraph [ref=e100]: "Expression shapes in most face tracking products (despite their names) are primarily FACS-based. For those who may be skeptical: FACS is derived from anatomy; so unless a face kit has completely annihilated the foundations of human facial anatomy, all shapes will have FACS equivalents. If you wish to foster a better understanding of the face tracking products you are using, you should familiarize yourself with FACS."
+                - paragraph [ref=e101]: FACS naming is standardized. FACS is consistent. Each FACS shape has a detailed, well-defined, and heavily researched description. If you are well-versed in FACS, you can equip yourself with the tools you need to compensate for the ambiguity of most expression libraries.
+                - paragraph [ref=e102]: "Whether or not you are FACS-savvy, if you want a clearer breakdown of ARKit facial expression shapes, this is the document for you :"
+            - generic [ref=e106]:
+              - generic [ref=e107]:
+                - separator [ref=e108]
+                - paragraph [ref=e109]
+              - heading "ARKit to FACS Translation Guide" [level=2] [ref=e111]
+            - heading "QUICK TABLE" [level=2] [ref=e124]
+            - generic [ref=e133]:
+              - paragraph [ref=e137]: ARKit label
+              - paragraph [ref=e141]: corresponding FACS name(s)
+              - paragraph [ref=e145]: corresponding muscle(s)
+            - generic [ref=e154]:
+              - paragraph [ref=e158]: browInnerUp
+              - paragraph [ref=e162]: AU 1 – inner brow raiser
+              - paragraph [ref=e166]: frontalis, medial portion
+            - generic [ref=e168]:
+              - paragraph [ref=e172]: browOuter (left & right)
+              - paragraph [ref=e176]: AU2 – outer brow raiser
+              - paragraph [ref=e180]: frontalis, lateral portion
+            - generic [ref=e182]:
+              - paragraph [ref=e186]: browDown (left & right)
+              - paragraph [ref=e190]: AU4 – brow lowerer
+              - paragraph [ref=e194]: corrrugator supercilii, depressor supericilii, procerus
+            - generic [ref=e196]:
+              - paragraph [ref=e200]: eyeWide (left & right)
+              - paragraph [ref=e204]: AU5 – upper lid raiser
+              - paragraph [ref=e208]: levator palpebrae superioris
+            - generic [ref=e210]:
+              - paragraph [ref=e214]: cheekSquint (left & right)
+              - paragraph [ref=e218]: AU6 – cheek raiser
+              - paragraph [ref=e222]: orbicularis oculi, orbital portion
+            - generic [ref=e224]:
+              - paragraph [ref=e228]: eyeSquint (left & right)
+              - paragraph [ref=e232]: AU7 – lid tightener
+              - paragraph [ref=e236]: orbicularis oculi, palpebral portion
+            - generic [ref=e238]:
+              - paragraph [ref=e242]: eyeBlink (left & right)
+              - paragraph [ref=e246]: AU45 – blink
+              - generic "Page 18" [ref=e250]:
+                - paragraph [ref=e253]: relaxation of levator palpebrae superioris & contraction of the palpebral portion of orbicularis oculi
+            - generic [ref=e255]:
+              - paragraph [ref=e259]: eyeLookUp (left & right)
+              - paragraph [ref=e263]: M63 – eyes up
+              - paragraph [ref=e267]: superior rectus & inferior oblique**
+            - generic [ref=e269]:
+              - paragraph [ref=e273]: eyeLookDown (left & right)
+              - paragraph [ref=e277]: M64 – eyes down
+              - paragraph [ref=e281]: inferior rectus & superior oblique**
+            - generic [ref=e283]:
+              - paragraph [ref=e287]: eyeLookIn (left & right)
+              - paragraph [ref=e291]: AU66 – crosseye (when applied to both eyes at once); otherwise, eyeLookInLeft must be paired with eyeLookOutRight for rightward gaze (FACS M62), while eyeLookInRight must be paired with eyeLookOutLeft for leftward gaze (FACS M61)
+              - paragraph [ref=e295]: medial rectus**
+            - generic [ref=e297]:
+              - paragraph [ref=e301]: eyeLookOut (left & right)
+              - paragraph [ref=e305]: AU65 – walleye (when applied to both eyes at once); see above for leftward vs. rightward gaze
+              - paragraph [ref=e309]: lateral rectus**
+            - generic [ref=e311]:
+              - paragraph [ref=e315]: noseSneer (left & right)
+              - paragraph [ref=e319]: AU9 – nose wrinkler
+              - paragraph [ref=e323]: levator labii superioris alaeque nasi
+            - generic [ref=e325]:
+              - paragraph [ref=e329]: mouthUpper (left & right)
+              - paragraph [ref=e333]: AU10 – upper lip raiser
+              - paragraph [ref=e337]: levator labii superioris
+            - generic [ref=e339]:
+              - paragraph [ref=e343]: mouthSmile (left & right)
+              - paragraph [ref=e347]: AU12 – lip corner puller
+              - paragraph [ref=e351]: zygomaticus major
+            - generic [ref=e353]:
+              - paragraph [ref=e357]: mouth (left & right)
+              - paragraph [ref=e361]: See notes in Comprehensive Guide Section below.
+              - paragraph [ref=e365]: See notes in Comprehensive Guide Section below.
+            - generic [ref=e367]:
+              - paragraph [ref=e371]: mouthDimple (left & right)
+              - paragraph [ref=e375]: AU14 – dimpler
+              - paragraph [ref=e379]: buccinator
+            - generic [ref=e381]:
+              - paragraph [ref=e385]: mouthFrown (left & right)
+              - paragraph [ref=e389]: AU15 – lip corner depressor
+              - paragraph [ref=e393]: depressor aguli oris
+            - generic [ref=e395]:
+              - paragraph [ref=e399]: mouthLowerDown (left & right)
+              - paragraph [ref=e403]: AU16 – lower lip depressor
+              - paragraph [ref=e407]: depressor labii inferioris
+            - generic [ref=e409]:
+              - paragraph [ref=e413]: mouthShrugUpper
+              - paragraph [ref=e417]: AU17 – chin raiser – upper split
+              - paragraph [ref=e421]: secondary effect from the mentalis
+            - generic [ref=e426]:
+              - paragraph [ref=e427]:
+                - strong [ref=e429]: CRITICAL NOTE
+                - text: ": mouthShrugUpper is **CONTINGENT ON mouthShrugLower and is only applicable when the lips are already touching or WILL BE touching due to the intensity of mouthShrugLower."
+              - paragraph [ref=e430]: I have confirmed this distinction with former members of FaceShift (the company who created the original face shapes that ARKit is derived from before Apple bought them out).
+              - paragraph [ref=e431]: If you are using the ICT-FaceKit, they have misappropriated mouthShrugUpper as “upper lip raiser” and have mistranslated the actual “upper lip raiser” shapes, mouthUpperUp_L & mouthUpperUp_R as “nasolabial furrow deepener.”
+            - generic [ref=e433]:
+              - paragraph [ref=e437]: mouthShrugLower
+              - paragraph [ref=e441]: AU17 – chin raiser – lower split
+              - paragraph [ref=e445]: mentalis
+            - paragraph [ref=e451]: SEE NOTE ABOVE in mouthShrugUpper section.
+            - generic [ref=e453]:
+              - paragraph [ref=e457]: cheekPuff
+              - paragraph [ref=e461]: AD34 – puff
+              - paragraph [ref=e465]: buccinator
+            - generic [ref=e467]:
+              - paragraph [ref=e471]: mouthPucker
+              - paragraph [ref=e475]: AU18 – lip pucker
+              - paragraph [ref=e479]: incisivus labii superioris, incsivus labii inferioris
+            - generic [ref=e481]:
+              - paragraph [ref=e485]: mouthStretch (left & right)
+              - paragraph [ref=e489]: AU20 – lip stretcher
+              - paragraph [ref=e493]: risorius
+            - generic [ref=e495]:
+              - paragraph [ref=e499]: mouthFunnel
+              - paragraph [ref=e503]: AU22 – lip funneler
+              - paragraph [ref=e507]: orbicularis oris
+            - generic [ref=e509]:
+              - paragraph [ref=e513]: mouthPress (left & right)
+              - paragraph [ref=e517]: AU24 – lip presser
+              - paragraph [ref=e521]: orbicularis oris
+            - generic [ref=e523]:
+              - paragraph [ref=e527]: mouthClose
+              - paragraph [ref=e531]: AU8 (But see notes in Comprehensive Guide Section below.)
+              - paragraph [ref=e535]: orbcularis oris (But see notes in Comprehensive Guide Section below.)
+            - generic [ref=e537]:
+              - paragraph [ref=e541]: cheekPuff
+              - paragraph [ref=e545]: AD34 – puff
+              - paragraph [ref=e549]: buccinator
+            - generic [ref=e551]:
+              - paragraph [ref=e555]: mouthRoll (upper & lower)
+              - paragraph [ref=e559]: AU28 – lips suck
+              - paragraph [ref=e563]: orbicularis oris
+            - generic [ref=e565]:
+              - paragraph [ref=e569]: jawOpen
+              - paragraph [ref=e573]: AU26 – jaw drop or AU27 – mouth stretch
+              - paragraph [ref=e577]: (AU26) relaxation of masseter, temporalis, and internal pterygoid muscles or (AU27) lateral pterygoid and the suprahyoid (anterior digastric, geniohyoid, and mylohyoid) muscles
+            - generic [ref=e579]:
+              - paragraph [ref=e583]: jaw (left & right)
+              - paragraph [ref=e587]: AD30 – jaw sideways
+              - paragraph [ref=e591]: pterygoids and temporalis
+            - generic [ref=e593]:
+              - paragraph [ref=e597]: jawForward
+              - paragraph [ref=e601]: AD29 – jaw thrust
+              - paragraph [ref=e605]: pterygoids and masseter
+            - paragraph [ref=e618]: "** = Indicates an oversimplification of muscular correlates. For example, the muscles related to gaze are much more complex than “superior rectus = eyes look up.” Rather, they work together in a system of relativity. For the purposes of this guide, however, movements are matched with the most relevant and idealistic muscles."
+            - heading "COMPREHENSIVE GUIDE" [level=2] [ref=e631]
+            - paragraph [ref=e637]:
+              - text: Click on the following tabs to see image references and full text descriptions.
+              - strong [ref=e638]: Desktop viewing highly recommended.
+            - heading "eyebrow actions" [level=2] [ref=e644]
+            - generic [ref=e650]:
+              - tablist [ref=e651]:
+                - tab "all" [expanded] [selected] [ref=e652] [cursor=pointer]
+                - tab "browInnerUp" [ref=e653] [cursor=pointer]
+                - tab "browOuterUp (left & right)" [ref=e654] [cursor=pointer]
+                - tab "browDown (left & right)" [ref=e655] [cursor=pointer]
+              - tablist [ref=e656]:
+                - tabpanel "all" [ref=e657]:
+                  - list [ref=e658]:
+                    - listitem [ref=e659]: browInnerUp
+                    - listitem [ref=e660]: browOuterUpLeft & browOuterUpRight
+                    - listitem [ref=e661]: browDownLeft & browDownRight
+            - heading "gaze directions" [level=2] [ref=e667]
+            - generic [ref=e673]:
+              - tablist [ref=e674]:
+                - tab "all" [expanded] [selected] [ref=e675] [cursor=pointer]
+                - tab "eyeLookUp (left & right)" [ref=e676] [cursor=pointer]
+                - tab "eyeLookDown (left & right)" [ref=e677] [cursor=pointer]
+                - tab "eyeLookIn (left & right)" [ref=e678] [cursor=pointer]
+                - tab "eyeLookOut (left & right)" [ref=e679] [cursor=pointer]
+              - tablist [ref=e680]:
+                - tabpanel "all" [ref=e681]:
+                  - list [ref=e682]:
+                    - listitem [ref=e683]: eyeLookUpLeft & eyeLookUpRight
+                    - listitem [ref=e684]: eyeLookDownLeft & eyeLookDownRight
+                    - listitem [ref=e685]: eyeLookInLeft & eyeLookInRight
+                    - listitem [ref=e686]: eyeLookOutLeft & eyeLookOutRight
+            - heading "eye actions" [level=2] [ref=e692]
+            - generic [ref=e698]:
+              - tablist [ref=e699]:
+                - tab "all" [expanded] [selected] [ref=e700] [cursor=pointer]
+                - tab "eyeWide (left & right)" [ref=e701] [cursor=pointer]
+                - tab "cheekSquint (left & right)" [ref=e702] [cursor=pointer]
+                - tab "eyeSquint (left & right)" [ref=e703] [cursor=pointer]
+                - tab "eyeBlink (left & right)" [ref=e704] [cursor=pointer]
+              - tablist [ref=e705]:
+                - tabpanel "all" [ref=e706]:
+                  - list [ref=e707]:
+                    - listitem [ref=e708]: eyeWideLeft & eyeWideRight
+                    - listitem [ref=e709]: cheekSquintLeft & cheeksSquintRight
+                    - listitem [ref=e710]: eyeSquintLeft & eyeSquintRight
+                    - listitem [ref=e711]: eyeBlinkLeft & eyeBlinkRight
+            - heading "middle face actions" [level=2] [ref=e717]
+            - generic [ref=e723]:
+              - tablist [ref=e724]:
+                - tab "all" [expanded] [selected] [ref=e725] [cursor=pointer]
+                - tab "noseSneer (left & right)" [ref=e726] [cursor=pointer]
+                - tab "mouthUpper (left & right)" [ref=e727] [cursor=pointer]
+                - tab "cheekPuff" [ref=e728] [cursor=pointer]
+              - tablist [ref=e729]:
+                - tabpanel "all" [ref=e730]:
+                  - list [ref=e731]:
+                    - listitem [ref=e732]: noseSneerLeft & noseSneerRight
+                    - listitem [ref=e733]: mouthUpperLeft & mouthUpperRight
+                    - listitem [ref=e734]: cheekPuff
+            - heading "lip corner shifters" [level=2] [ref=e740]
+            - generic [ref=e746]:
+              - tablist [ref=e747]:
+                - tab "all" [expanded] [selected] [ref=e748] [cursor=pointer]
+                - tab "mouthSmile (left & right)" [ref=e749] [cursor=pointer]
+                - tab "mouth (left & right)" [ref=e750] [cursor=pointer]
+                - tab "mouthDimple (left & right)" [ref=e751] [cursor=pointer]
+                - tab "mouthFrown (left & right)" [ref=e752] [cursor=pointer]
+                - tab "mouthStretch (let & right)" [ref=e753] [cursor=pointer]
+              - tablist [ref=e754]:
+                - tabpanel "all" [ref=e755]:
+                  - list [ref=e756]:
+                    - listitem [ref=e757]: mouthSmileLeft & mouthSmileRight
+                    - listitem [ref=e758]: mouthLeft & mouthRight
+                    - listitem [ref=e759]: mouhtDimpleLef & mouthDimpleRight
+                    - listitem [ref=e760]: mouthFrownLeft & mouthFrownRight
+            - heading "lower lip & chin actions" [level=2] [ref=e766]
+            - generic [ref=e772]:
+              - tablist [ref=e773]:
+                - tab "all" [expanded] [selected] [ref=e774] [cursor=pointer]
+                - tab "mouthLowerDown (left & right)" [ref=e775] [cursor=pointer]
+                - tab "mouthShrug (upper & lower)" [ref=e776] [cursor=pointer]
+              - tablist [ref=e777]:
+                - tabpanel "all" [ref=e778]:
+                  - list [ref=e779]:
+                    - listitem [ref=e780]: mouthLowerDownLeft & mouthLowerDownRight
+                    - listitem [ref=e781]: mouthShrugUpper has & mouthShrugLower
+            - heading "orbicularis oris (mouth) actions" [level=2] [ref=e787]
+            - generic [ref=e793]:
+              - tablist [ref=e794]:
+                - tab "all" [expanded] [selected] [ref=e795] [cursor=pointer]
+                - tab "mouthPucker" [ref=e796] [cursor=pointer]
+                - tab "mouthFunnel" [ref=e797] [cursor=pointer]
+                - tab "mouthPress (left & right)" [ref=e798] [cursor=pointer]
+                - tab "mouthRoll (upper & lower)" [ref=e799] [cursor=pointer]
+              - tablist [ref=e800]:
+                - tabpanel "all" [ref=e801]:
+                  - list [ref=e802]:
+                    - listitem [ref=e803]: mouthPucker
+                    - listitem [ref=e804]: mouthFunnel
+                    - listitem [ref=e805]: mouthPressLeft & mouthPressRight
+            - heading "jaw actions" [level=2] [ref=e811]
+            - generic [ref=e817]:
+              - tablist [ref=e818]:
+                - tab "all" [expanded] [selected] [ref=e819] [cursor=pointer]
+                - tab "mouthClose" [ref=e820] [cursor=pointer]
+                - tab "jawOpen" [ref=e821] [cursor=pointer]
+                - tab "jaw (left & right)" [ref=e822] [cursor=pointer]
+                - tab "jawForward" [ref=e823] [cursor=pointer]
+              - tablist [ref=e824]:
+                - tabpanel "all" [ref=e825]:
+                  - list [ref=e826]:
+                    - listitem [ref=e827]: mouhtClose
+                    - listitem [ref=e828]: jawLeft & jawRight
+                    - listitem [ref=e829]: jawForward
+            - heading "OTHER NOTES" [level=2] [ref=e842]
+            - generic [ref=e847]:
+              - paragraph [ref=e848]: "ARKit is missing some important actions for everyday expression and emotion. Missing FACS-official shapes include:"
+              - list [ref=e849]:
+                - listitem [ref=e850]:
+                  - text: AU11 –
+                  - emphasis [ref=e851]: nasolabial furrow deepener
+                  - text: – zygomaticus minor
+                - listitem [ref=e852]:
+                  - text: AU13 –
+                  - emphasis [ref=e853]: sharp lip puller
+                  - text: – levator anguli oris
+                - listitem [ref=e854]: AU23 – lip tightener – orbicularis oris
+                - listitem [ref=e855]:
+                  - text: AU38 –
+                  - emphasis [ref=e856]: nostril dilator
+                  - text: – dilator naris
+                - listitem [ref=e857]:
+                  - text: AU39 –
+                  - emphasis [ref=e858]: nostril compressor
+                  - text: – depressor septi & transverse nasalis
+              - paragraph [ref=e859]: "Other missing shapes:"
+              - list [ref=e860]:
+                - listitem [ref=e861]:
+                  - emphasis [ref=e862]: vertical lip tightener
+                  - text: – orbicularis oris – *
+                  - link "See FACS Cheat Sheet for more" [ref=e863] [cursor=pointer]:
+                    - /url: https://melindaozel.com/facs-cheat-sheet/
+                  - text: .
+    - generic [ref=e865]:
+      - complementary [ref=e866]:
+        - generic [ref=e873]:
+          - figure [ref=e874]:
+            - link "headshot of page author" [ref=e875] [cursor=pointer]:
+              - /url: https://melindaozel.com/melinda-who-zel/
+              - img "headshot of page author" [ref=e876]
+          - paragraph
+          - paragraph [ref=e877]:
+            - text: I’m a Facial Systems Expert specializing in the Facial Action Coding System (FACS) and facial anatomy. My work spans
+            - link "expression tracking" [ref=e878] [cursor=pointer]:
+              - /url: https://patents.justia.com/inventor/melinda-ozel
+              - strong [ref=e879]: expression tracking
+            - text: ", facial animation, and"
+            - link "AI-driven lipsync" [ref=e880] [cursor=pointer]:
+              - /url: http://linkedin.com/in/melindaozel
+              - strong [ref=e881]: AI-driven lipsync
+            - text: . Recent work includes contributions to the de-aging of Tom Hanks and other actors in the
+            - strong [ref=e882]:
+              - link "Zemeckis film, Here" [ref=e883] [cursor=pointer]:
+                - /url: https://www.imdb.com/name/nm15482966/
+            - text: .
+          - paragraph [ref=e884]:
+            - text: Learn more about
+            - link "my background" [ref=e885] [cursor=pointer]:
+              - /url: https://melindaozel.com/melinda-who-zel/
+              - strong [ref=e886]: my background
+            - text: .
+          - paragraph
+      - complementary [ref=e887]:
+        - paragraph [ref=e888]:
+          - strong [ref=e889]: Courses & Workshops
+          - text: "-"
+          - link "FACS Cram Session" [ref=e890] [cursor=pointer]:
+            - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+          - text: "-"
+          - link "All About Lipsync" [ref=e891] [cursor=pointer]:
+            - /url: https://melindaozel.com/all-about-lipsync-course/
+          - text: "-"
+          - link "All Training Services" [ref=e892] [cursor=pointer]:
+            - /url: https://melindaozel.com/services/lectures-training/
+      - complementary [ref=e893]:
+        - paragraph [ref=e894]:
+          - strong [ref=e895]: "\""
+          - text: Melinda Ozel's resources on face anatomy, motion, and FACS are industry standard. During my time working on The Last of Us Part II (and other unannounced Playstation titles) I referred to it almost exclusively on a regular basis. The free material is great but the pay material is worth the cost.
+          - strong [ref=e896]: "\""
+          - strong [ref=e897]: Eric Drobile | Technical Animator
+          - strong [ref=e898]: "\""
+          - text: For most people learning traditional FACS is not feasible. It requires very costly specialized degrees and years long commitment. And the half century old research with fuzzy photos was not made for artists. What Melinda has done for our industry is take the dense scientific information and streamlined it into very easy to digest entries and videos catered to artists.
+          - strong [ref=e899]: "\""
+          - strong [ref=e900]: Paul Liaw | Principal Character Artist
+          - strong [ref=e901]: "\""
+          - text: I've been working as a Facial Blendshape Artist across film and gaming and have watched the quality of my work improve exponentially since I've had access to this wealth of knowledge that Melinda has so thoughtfully put together. Her documentation is clear, appealing, and comprehensive. If Paul Ekman is the father of FACS, Melinda has become the cool aunt.
+          - strong [ref=e902]: "\""
+          - strong [ref=e903]: "Ioana Alexandra Pirvu | Lead Artist: Blendshapes @ Rockstar Games"
+          - strong [ref=e904]: "\""
+          - text: Face the FACS in my opinion is bar-none, the best resource out there for any artist and company dealing with facial animation. The way in which Melinda delivers knowledge is detailed, but fun and compelling enough to make you want to keep learning. For a topic that could have easily been boring, she inspired me to keep learning.
+          - strong [ref=e905]: "\""
+          - strong [ref=e906]: Giovanni Nakpil | Senior Creative 3D Evangelist @ Adobe
+          - strong [ref=e907]: "\""
+          - text: If you're doing AU's (action units), this is the site you're going to need to bookmark. Melinda has gone above and beyond to create what I feel is the ultimate resource guide for AU's. Each AU explained, annotated and demonstrated with extreme clarity. You'll experience plenty of "aha!!" moments using Melinda's work as your guide!
+          - strong [ref=e908]: "\""
+          - strong [ref=e909]: Frank Gravatt
+          - strong [ref=e910]: "| Facial Modeler @ Cloud Chamber"
+      - complementary [ref=e911]:
+        - paragraph
+      - complementary [ref=e912]:
+        - generic [ref=e914]:
+          - paragraph [ref=e915]:
+            - strong [ref=e916]: Connect with me <3
+          - list [ref=e917]:
+            - listitem [ref=e918]:
+              - link "Instagram" [ref=e919] [cursor=pointer]:
+                - /url: https://instagram.com/manicexpression
+                - img [ref=e920]
+                - generic [ref=e922]: Instagram
+            - listitem [ref=e923]:
+              - link "LinkedIn" [ref=e924] [cursor=pointer]:
+                - /url: https://linkedin.com/in/melindaozel
+                - img [ref=e925]
+                - generic [ref=e927]: LinkedIn
+            - listitem [ref=e928]:
+              - link "X" [ref=e929] [cursor=pointer]:
+                - /url: https://x.com/melindaozel
+                - img [ref=e930]
+                - generic [ref=e932]: X
+  - generic [ref=e933]:
+    - generic [ref=e936]:
+      - complementary [ref=e938]:
+        - search [ref=e939]:
+          - generic [ref=e940]: Search
+          - generic [ref=e941]:
+            - searchbox "Search" [ref=e942]
+            - button "Search" [ref=e943] [cursor=pointer]
+      - complementary [ref=e945]:
+        - paragraph [ref=e946]:
+          - link "Terms & Conditions" [ref=e947] [cursor=pointer]:
+            - /url: https://melindaozel.com/terms-conditions/
+    - contentinfo "Site" [ref=e948]:
+      - generic [ref=e950]:
+        - text: Copyright © 2020-2026 Melinda Ozel . All rights reserved.
+        - text: Learn how to
+        - link "cite my work here" [ref=e951] [cursor=pointer]:
+          - /url: https://melindaozel.com/how-to-cite-my-work-use-my-visuals/
+          - generic [ref=e952]: cite my work here
+        - generic [ref=e953]: .
+  - navigation "Website language selector" [ref=e954]:
+    - generic [ref=e955]:
+      - button "Change language":
+        - generic: EN
+      - group "Available languages":
+        - link "ES" [ref=e956] [cursor=pointer]:
+          - /url: https://melindaozel.com/es/arkit-to-facs-translation-guide/
+          - generic [ref=e957]: ES
+        - link "FR" [ref=e958] [cursor=pointer]:
+          - /url: https://melindaozel.com/fr/arkit-to-facs-translation-guide/
+          - generic [ref=e959]: FR
+        - link "ES_VE" [ref=e960] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_ve/arkit-to-facs-translation-guide/
+          - generic [ref=e961]: ES_VE
+        - link "ES_CL" [ref=e962] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_cl/arkit-to-facs-translation-guide/
+          - generic [ref=e963]: ES_CL
+        - link "ES_GT" [ref=e964] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_gt/arkit-to-facs-translation-guide/
+          - generic [ref=e965]: ES_GT
+        - link "PT" [ref=e966] [cursor=pointer]:
+          - /url: https://melindaozel.com/pt/arkit-to-facs-translation-guide/
+          - generic [ref=e967]: PT
+        - link "ZH" [ref=e968] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh/arkit-to-facs-translation-guide/
+          - generic [ref=e969]: ZH
+        - link "ZH_TW" [ref=e970] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh_tw/arkit-to-facs-translation-guide/
+          - generic [ref=e971]: ZH_TW
+        - link "ZH_HK" [ref=e972] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh_hk/arkit-to-facs-translation-guide/
+          - generic [ref=e973]: ZH_HK
+        - link "JA" [ref=e974] [cursor=pointer]:
+          - /url: https://melindaozel.com/ja/arkit-to-facs-translation-guide/
+          - generic [ref=e975]: JA
+        - link "HI" [ref=e976] [cursor=pointer]:
+          - /url: https://melindaozel.com/hi/arkit-to-facs-translation-guide/
+          - generic [ref=e977]: HI
+        - link "DE" [ref=e978] [cursor=pointer]:
+          - /url: https://melindaozel.com/de/arkit-to-facs-translation-guide/
+          - generic [ref=e979]: DE
+        - link "DE_DE" [ref=e980] [cursor=pointer]:
+          - /url: https://melindaozel.com/de_de/arkit-to-facs-translation-guide/
+          - generic [ref=e981]: DE_DE
+        - link "RU" [ref=e982] [cursor=pointer]:
+          - /url: https://melindaozel.com/ru/arkit-to-facs-translation-guide/
+          - generic [ref=e983]: RU
+        - link "PL" [ref=e984] [cursor=pointer]:
+          - /url: https://melindaozel.com/pl/arkit-to-facs-translation-guide/
+          - generic [ref=e985]: PL
+        - link "CS" [ref=e986] [cursor=pointer]:
+          - /url: https://melindaozel.com/cs/arkit-to-facs-translation-guide/
+          - generic [ref=e987]: CS
+        - link "VI" [ref=e988] [cursor=pointer]:
+          - /url: https://melindaozel.com/vi/arkit-to-facs-translation-guide/
+          - generic [ref=e989]: VI
+        - link "IT" [ref=e990] [cursor=pointer]:
+          - /url: https://melindaozel.com/it/arkit-to-facs-translation-guide/
+          - generic [ref=e991]: IT
+        - link "SV" [ref=e992] [cursor=pointer]:
+          - /url: https://melindaozel.com/sv/arkit-to-facs-translation-guide/
+          - generic [ref=e993]: SV
+        - link "SR" [ref=e994] [cursor=pointer]:
+          - /url: https://melindaozel.com/sr/arkit-to-facs-translation-guide/
+          - generic [ref=e995]: SR
+        - link "AR" [ref=e996] [cursor=pointer]:
+          - /url: https://melindaozel.com/ar/arkit-to-facs-translation-guide/
+          - generic [ref=e997]: AR
+        - link "MS" [ref=e998] [cursor=pointer]:
+          - /url: https://melindaozel.com/ms/arkit-to-facs-translation-guide/
+          - generic [ref=e999]: MS
+        - link "FI" [ref=e1000] [cursor=pointer]:
+          - /url: https://melindaozel.com/fi/arkit-to-facs-translation-guide/
+          - generic [ref=e1001]: FI
+        - link "ES_MX" [ref=e1002] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_mx/arkit-to-facs-translation-guide/
+          - generic [ref=e1003]: ES_MX
+        - link "KO" [ref=e1004] [cursor=pointer]:
+          - /url: https://melindaozel.com/ko/arkit-to-facs-translation-guide/
+          - generic [ref=e1005]: KO
+        - link "TR" [ref=e1006] [cursor=pointer]:
+          - /url: https://melindaozel.com/tr/arkit-to-facs-translation-guide/
+          - generic [ref=e1007]: TR
+        - link "IS" [ref=e1008] [cursor=pointer]:
+          - /url: https://melindaozel.com/is/arkit-to-facs-translation-guide/
+          - generic [ref=e1009]: IS
+        - link "NL" [ref=e1010] [cursor=pointer]:
+          - /url: https://melindaozel.com/nl/arkit-to-facs-translation-guide/
+          - generic [ref=e1011]: NL
+        - link "NL_NL" [ref=e1012] [cursor=pointer]:
+          - /url: https://melindaozel.com/nl_nl/arkit-to-facs-translation-guide/
+          - generic [ref=e1013]: NL_NL
+        - link "ES_AR" [ref=e1014] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_ar/arkit-to-facs-translation-guide/
+          - generic [ref=e1015]: ES_AR
+        - link "UK" [ref=e1016] [cursor=pointer]:
+          - /url: https://melindaozel.com/uk/arkit-to-facs-translation-guide/
+          - generic [ref=e1017]: UK
+  - generic [ref=e1018]: desktop

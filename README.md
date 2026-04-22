@@ -18,7 +18,8 @@ Open this folder as an Obsidian vault. Point your LLM agent at `CLAUDE.md`.
   - `techniques/` — Houdini/VEX implementation pages
   - `authors/` — key researchers
   - `comparisons/` — side-by-side analyses
-  - `queries/` — saved answers
+  - `queries/` — saved answers  
+  - `explorations/` — saved exploration and research requests and answers
 - `raw/` — your source documents (immutable)
 - `tools/` — helper scripts
 

@@ -1,0 +1,802 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#content"
+  - navigation "Secondary" [ref=e3]:
+    - list [ref=e6]:
+      - listitem [ref=e7]:
+        - link "Premium Member Access" [ref=e8] [cursor=pointer]:
+          - /url: https://melindaozel.com/premium-resources/
+          - text: Premium Member Access
+          - img [ref=e10]
+        - list:
+          - listitem:
+            - link "Login":
+              - /url: https://melindaozel.com/login/
+          - listitem:
+            - link "Subscribe :)":
+              - /url: https://melindaozel.com/subscription-options/
+      - listitem [ref=e12]:
+        - link "Recorded Lecture Access" [ref=e13] [cursor=pointer]:
+          - /url: https://melindaozel.com/recorded-lectures/
+          - text: Recorded Lecture Access
+          - img [ref=e15]
+        - list:
+          - listitem:
+            - link "FACS Cram Session":
+              - /url: https://melindaozel.com/facs-cram-session/
+          - listitem:
+            - link "All About Lipsync":
+              - /url: https://melindaozel.com/all-about-lipsync-lecture-videos/
+      - listitem [ref=e17]:
+        - link "My Account" [ref=e18] [cursor=pointer]:
+          - /url: https://melindaozel.com/account/
+  - banner "Site" [ref=e19]:
+    - generic [ref=e21]:
+      - link "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e23] [cursor=pointer]:
+        - /url: https://melindaozel.com/
+        - img "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e24]
+      - paragraph [ref=e26]:
+        - link "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e27] [cursor=pointer]:
+          - /url: https://melindaozel.com/
+  - navigation "Primary" [ref=e28]:
+    - list [ref=e31]:
+      - listitem [ref=e32]:
+        - link "Learning Hub" [ref=e33] [cursor=pointer]:
+          - /url: https://melindaozel.com/learning-hub/
+          - text: Learning Hub
+          - img [ref=e35]
+        - list:
+          - listitem:
+            - link "FACS Cheat Sheet":
+              - /url: https://melindaozel.com/facs-cheat-sheet/
+          - listitem:
+            - link "Viseme Cheat Sheet":
+              - /url: https://melindaozel.com/viseme-cheat-sheet/
+          - listitem:
+            - link "All Free Resources":
+              - /url: https://melindaozel.com/free-resources/
+          - listitem:
+            - link "🔒 Premium Resources":
+              - /url: https://melindaozel.com/premium-resources/
+              - img "🔒"
+              - text: Premium Resources
+          - listitem:
+            - link "FAQs":
+              - /url: https://melindaozel.com/faqs/
+      - listitem [ref=e37]:
+        - link "Courses" [ref=e38] [cursor=pointer]:
+          - /url: https://melindaozel.com/online-lectures/
+          - text: Courses
+          - img [ref=e40]
+        - list:
+          - listitem:
+            - link "FACS Cram Session":
+              - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+          - listitem:
+            - link "All About Lipsync":
+              - /url: https://melindaozel.com/all-about-lipsync-course/
+      - listitem [ref=e42]:
+        - link "Full Site Access" [ref=e43] [cursor=pointer]:
+          - /url: https://melindaozel.com/subscription-options/
+          - text: Full Site Access
+          - img [ref=e45]
+        - list:
+          - listitem:
+            - link "Membership Options":
+              - /url: https://melindaozel.com/subscription-options/
+      - listitem [ref=e47]:
+        - link "Services" [ref=e48] [cursor=pointer]:
+          - /url: https://melindaozel.com/services/
+          - text: Services
+          - img [ref=e50]
+        - list:
+          - listitem:
+            - link "FACS Lectures & Training":
+              - /url: https://melindaozel.com/services/lectures-training/
+          - listitem:
+            - link "Consulting":
+              - /url: https://melindaozel.com/services/consulting/
+      - listitem [ref=e52]:
+        - link "About" [ref=e53] [cursor=pointer]:
+          - /url: https://melindaozel.com/who-is-melinda-ozel/
+          - text: About
+          - img [ref=e55]
+        - list:
+          - listitem:
+            - link "About Me":
+              - /url: https://melindaozel.com/who-is-melinda-ozel/
+          - listitem:
+            - link "Cite My Work":
+              - /url: https://melindaozel.com/how-to-cite-my-work-use-my-visuals/
+          - listitem:
+            - link "Contact":
+              - /url: https://melindaozel.com/who-is-melinda-ozel/contact-me/
+  - generic [ref=e58]:
+    - main [ref=e60]:
+      - article [ref=e61]:
+        - generic [ref=e62]:
+          - generic [ref=e63]:
+            - heading "All About Upper Lid Raiser – AU5" [level=1] [ref=e64]
+            - generic [ref=e65]:
+              - time [ref=e67]: June 27, 2021
+              - generic [ref=e68]:
+                - text: by
+                - link "Melinda Ozel" [ref=e70] [cursor=pointer]:
+                  - /url: https://melindaozel.com/author/melindaozel/
+          - generic [ref=e72]:
+            - img "AU5 - upper lid raiser - Facial Action Coding System - levator palpebrae superioris - before vs. after" [ref=e78]
+            - generic [ref=e83]:
+              - generic [ref=e84]:
+                - heading "TABLE OF CONTENTS" [level=4] [ref=e85]
+                - button "Затвори садржај" [expanded] [ref=e86] [cursor=pointer]:
+                  - img [ref=e87]
+              - list [ref=e90]:
+                - listitem [ref=e91]:
+                  - link "what is upper lid raiser?" [ref=e93] [cursor=pointer]:
+                    - /url: "#elementor-toc__heading-anchor-0"
+                - listitem [ref=e94]:
+                  - link "anatomy & etymology" [ref=e96] [cursor=pointer]:
+                    - /url: "#elementor-toc__heading-anchor-1"
+                  - list [ref=e97]:
+                    - listitem [ref=e98]:
+                      - link "anatomy" [ref=e100] [cursor=pointer]:
+                        - /url: "#elementor-toc__heading-anchor-2"
+                    - listitem [ref=e101]:
+                      - link "etymology" [ref=e103] [cursor=pointer]:
+                        - /url: "#elementor-toc__heading-anchor-3"
+                - listitem [ref=e104]:
+                  - link "function" [ref=e106] [cursor=pointer]:
+                    - /url: "#elementor-toc__heading-anchor-4"
+                - listitem [ref=e107]:
+                  - link "emotions & states" [ref=e109] [cursor=pointer]:
+                    - /url: "#elementor-toc__heading-anchor-5"
+                  - list [ref=e110]:
+                    - listitem [ref=e111]:
+                      - link "emotions" [ref=e113] [cursor=pointer]:
+                        - /url: "#elementor-toc__heading-anchor-6"
+                    - listitem [ref=e114]:
+                      - link "states" [ref=e116] [cursor=pointer]:
+                        - /url: "#elementor-toc__heading-anchor-7"
+                - listitem [ref=e117]:
+                  - link "upper lid raiser on different eyelid types" [ref=e119] [cursor=pointer]:
+                    - /url: "#elementor-toc__heading-anchor-8"
+                - listitem [ref=e120]:
+                  - link "common mistakes artists make" [ref=e122] [cursor=pointer]:
+                    - /url: "#elementor-toc__heading-anchor-9"
+                - listitem [ref=e123]:
+                  - link "interesting cases & rare conditions" [ref=e125] [cursor=pointer]:
+                    - /url: "#elementor-toc__heading-anchor-10"
+                  - list [ref=e126]:
+                    - listitem [ref=e127]:
+                      - link "globe luxation" [ref=e129] [cursor=pointer]:
+                        - /url: "#elementor-toc__heading-anchor-11"
+                    - listitem [ref=e130]:
+                      - link "retraction & ptosis" [ref=e132] [cursor=pointer]:
+                        - /url: "#elementor-toc__heading-anchor-12"
+                - listitem [ref=e133]:
+                  - link "final thoughts" [ref=e135] [cursor=pointer]:
+                    - /url: "#elementor-toc__heading-anchor-13"
+                - listitem [ref=e136]:
+                  - link "references" [ref=e138] [cursor=pointer]:
+                    - /url: "#elementor-toc__heading-anchor-14"
+            - heading "what is upper lid raiser?" [level=2] [ref=e151]
+            - generic [ref=e155]:
+              - paragraph [ref=e157]:
+                - text: In FACS,
+                - emphasis [ref=e158]: upper lid raiser
+                - text: ", or AU5, is the action that"
+                - strong [ref=e159]: raises
+                - text: and
+                - strong [ref=e160]: retracts
+                - text: the
+                - strong [ref=e161]: upper eyelid
+                - text: ; this movement causes the
+                - strong [ref=e162]: eyes
+                - text: to
+                - strong [ref=e163]: appear wider
+                - text: and
+                - strong [ref=e164]: reveal more sclera
+                - text: (the white part of eye).
+              - figure "GIF 1 - upper lid raiser (AU5) in action" [ref=e166]:
+                - img "AU 5 - GIF" [ref=e167]
+                - generic [ref=e168]: GIF 1 - upper lid raiser (AU5) in action
+            - heading "anatomy & etymology" [level=2] [ref=e181]
+            - figure "IMAGE 1 - by Melinda Ozel" [ref=e187]:
+              - img "upper lid raiser - levator palpebrae superioris - eye bulge" [ref=e188]
+              - generic [ref=e189]: IMAGE 1 - by Melinda Ozel
+            - heading "anatomy" [level=3] [ref=e195]
+            - paragraph [ref=e201]:
+              - text: The appearance changes we see in
+              - emphasis [ref=e202]: upper lid raiser
+              - text: are the result of an increase in contraction of
+              - strong [ref=e203]: levator palpebrae superioris
+              - text: ", an"
+              - strong [ref=e204]: extraocular muscle
+              - text: that works to keep the upper eyelid elevated.
+            - generic [ref=e209]:
+              - paragraph [ref=e210]:
+                - generic [ref=e211]:
+                  - strong [ref=e212]:
+                    - generic [ref=e213]: extraocular
+                  - generic [ref=e214]:
+                    - strong [ref=e215]: muscle
+                    - text: ": ocular muscles that control the external movements of the eyes"
+              - paragraph [ref=e216]:
+                - generic [ref=e218]:
+                  - strong [ref=e220]: "intraocular muscles:"
+                  - text: ocular muscles that control the internal movements of the eyes, e.g. pupillary reactions to lighting changes
+            - paragraph [ref=e226]:
+              - text: Levator palpebrae superioris is
+              - strong [ref=e227]: made up of skeletal muscle fibers
+              - text: but
+              - strong [ref=e228]: works closely with a small slip of muscle containing smooth fibers
+              - text: . (This bit of info will come in handy when we get to the “function” section.) Smooth muscles are involuntary and work without conscious awareness. Skeletal muscles, on the other hand, are voluntary and can be consciously controlled.
+            - figure "IMAGE 2 - by Melinda Ozel" [ref=e234]:
+              - img "lesser wing of the sphenoid bone - skull - anatomy" [ref=e235]
+              - generic [ref=e236]: IMAGE 2 - by Melinda Ozel
+            - paragraph [ref=e242]:
+              - text: Levator palpebrae superioris
+              - strong [ref=e243]: originates
+              - text: at the
+              - strong [ref=e244]: lesser wing
+              - text: of the
+              - strong [ref=e245]: sphenoid bone
+              - text: and
+              - strong [ref=e246]: attaches
+              - text: to the
+              - strong [ref=e247]: upper eyelid skin
+              - text: (making up the superficial layer) and the
+              - strong [ref=e248]: superior tarsal plate
+              - text: (making up the deep layer).
+            - generic [ref=e253]:
+              - paragraph [ref=e254]:
+                - generic [ref=e255]:
+                  - strong [ref=e256]: superior tarsal plate
+                  - text: ":"
+                - text: a long plate of dense fibrous tissue (also referred to as “dense connective tissue”) inside of the upper eyelid
+              - list [ref=e257]:
+                - listitem [ref=e258]: Both upper and lower eyelids contain a tarsal plate.
+                - listitem [ref=e259]: Tarsal plates provide support and structure to the eyelids.
+                - listitem [ref=e260]: The superior tarsal plate is part of the upper eyelid.
+                - listitem [ref=e261]: The inferior tarsal plate is part of the lower eyelid.
+                - listitem [ref=e262]: The superior tarsal plate is shaped like a half moon (just like an eyelid!)
+            - generic [ref=e267]:
+              - paragraph [ref=e268]: "Levator palpebrae superioris has a strong association with a few other muscles in the eye area including the:"
+              - list [ref=e269]:
+                - listitem [ref=e270]:
+                  - list [ref=e271]:
+                    - listitem [ref=e272]: "superior rectus muscle: works with levator palpebrae superioris to facilitate upward gaze"
+                    - listitem [ref=e273]:
+                      - generic [ref=e274]: superior tarsal muscle AKA Müller’s muscle
+                      - text: ": smooth-fibered muscle; attaches to the levator palpebrae superioris and assists with lid retraction"
+                    - listitem [ref=e275]: "orbicularis oculi: acts as an antagonistic muscle"
+            - paragraph [ref=e281]:
+              - emphasis [ref=e282]:
+                - img "📚" [ref=e283]
+              - text: "TRANSLATION:"
+              - img "🔎" [ref=e284]
+              - emphasis [ref=e285]: Levator palpebrae superioris originates behind the eye and attaches to the eyelid skin and surrounding areas. (See diagrams from Image 1 & Image 2 above.)
+            - heading "etymology" [level=3] [ref=e291]
+            - generic [ref=e296]:
+              - paragraph [ref=e297]: Even if you aren’t a fellow word nerd, knowing the etymology of muscle names can be extremely useful. When broken down, Latin-based muscle names often describe exactly what that muscle does. In this case . . .
+              - list [ref=e298]:
+                - listitem [ref=e299]:
+                  - list [ref=e300]:
+                    - listitem [level=1] [ref=e301]:
+                      - generic [ref=e302]:
+                        - generic [ref=e303]:
+                          - link "levator" [ref=e305] [cursor=pointer]:
+                            - /url: https://www.etymonline.com/word/levator#:~:text=levator%20(n.),Opposed%20to%20depressor.
+                          - text: ":"
+                        - text: type of muscle that raises or elevates
+                    - listitem [level=1] [ref=e306]:
+                      - generic [ref=e307]:
+                        - generic [ref=e308]:
+                          - link "palpebrae" [ref=e310] [cursor=pointer]:
+                            - /url: https://en.wiktionary.org/wiki/palpebrae
+                          - text: ":"
+                        - text: eyelids (plural) vs. palpebra (singular)
+                    - listitem [level=1] [ref=e311]:
+                      - generic [ref=e312]:
+                        - generic [ref=e313]:
+                          - link "superioris" [ref=e315] [cursor=pointer]:
+                            - /url: https://en.wiktionary.org/wiki/superior#Latin
+                          - text: ":"
+                        - generic [ref=e316]: above – coming from “superior,” a relational term used to indicate that the item you are describing is above something else (In this context, “superioris” is describing the “palpebrae,” i.e. the upper eyelids.)
+              - paragraph [ref=e317]:
+                - text: If
+                - generic [ref=e318]:
+                  - text: “levator” refers to a muscle that raises or elevates, and “palpebrae superioris” refers to the upper eyelids,
+                  - img "➡" [ref=e319]
+                  - text: "then “levator palpebrae superioris” translates to:"
+              - paragraph [ref=e320]:
+                - generic [ref=e321]: “The muscle that raises the upper eyelids.”
+            - heading "function" [level=2] [ref=e334]
+            - generic [ref=e339]:
+              - paragraph [ref=e340]:
+                - text: In FACS,
+                - emphasis [ref=e341]: upper lid raiser
+                - text: is only coded for noticeable increases in lid raising, but technically, levator palpebrae superioris is active any time the eyes are open. Levator palpebrae superioris doesn’t just function to display widened eyes; it functions to maintain lid position.
+              - paragraph [ref=e342]: As mentioned in the “anatomy” section, levator palpebrae superioris is made up of skeletal muscle fibers but works closely with a small slip of muscle comprised of smooth fibers (the superior tarsal muscle); these complementary functions mean eye-widening / eye-opening actions between the levator palpebrae superioris and superior tarsal muscles have both involuntary (smooth fibers) and voluntary (skeletal fibers) capabilities. The smooth muscle fibers are responsible for lid maintenance and keeping the lids open; while the skeletal muscle fibers are responsible for conscious lid retractions – e.g. widening our eyes to emphasize something we are saying or react to something shocking.
+            - heading "emotions & states" [level=2] [ref=e348]
+            - heading "emotions" [level=3] [ref=e361]
+            - generic [ref=e366]:
+              - paragraph [ref=e367]:
+                - text: If you subscribe to
+                - link "Paul Ekman’s theory" [ref=e369] [cursor=pointer]:
+                  - /url: https://www.paulekman.com/universal-emotions/#:~:text=What%20are%20the%20six%20basic,seventh%20emotion%2C%20which%20is%20contempt.
+                - text: "on basic emotions and facial expressions, AU5 is a key player in proposed prototypes such as:"
+              - list [ref=e370]:
+                - listitem [ref=e371]:
+                  - list [ref=e372]:
+                    - listitem [ref=e373]:
+                      - strong [ref=e374]: surprise
+                      - text: ": typically with other upper face actions: 1+2 (inner brow raiser + outer brow raiser)"
+                    - listitem [ref=e375]:
+                      - strong [ref=e376]: fear
+                      - text: ": typically with other upper face actions: 1+2+4 (inner brow raiser + outer brow raiser + brow lowerer)"
+                    - listitem [ref=e377]:
+                      - strong [ref=e378]: anger
+                      - text: ": typically with other upper face actions: 4+7 (brow lowerer + lid tightener)"
+              - paragraph [ref=e379]:
+                - text: HOWEVER, it is important to note that while “basic emotion” prototypes are useful in some contexts, they should be
+                - link "considered with an air of caution" [ref=e380] [cursor=pointer]:
+                  - /url: https://www.affective-science.org/pubs/2006/Barrett2006kinds.pdf
+                - text: .
+              - paragraph [ref=e381]:
+                - text: Emotions are complex systems contingent on context, culture, and individuality. To this day, not only is there contention regarding the universality and validity of Ekman-based emotions, but scientists still have not agreed upon a standardized definition of the term “emotion.” Read more on the
+                - link "issues that stem from an over-reliance on Ekman-based emotions here" [ref=e383] [cursor=pointer]:
+                  - /url: https://melindaozel.com/its-all-in-the-eyes-and-other-lies/
+                - text: .
+            - heading "states" [level=3] [ref=e396]
+            - generic [ref=e401]:
+              - paragraph [ref=e402]:
+                - text: Regardless of where you stand on the emotion theory spectrum (I, personally, hold a pluralist view),
+                - emphasis [ref=e403]: upper lid raiser
+                - text: is typically a good indicator of alertness and states of heightened arousal.
+              - paragraph [ref=e404]: When we are tired or fatigued, our upper lid may begin to droop; conversely, when we are in an alert, excited state, our upper lid is more likely to retain a retracted position. Drugs that affect arousal states may also affect lid position. (See “retraction & ptosis” under “interesting cases & rare conditions” for more on effects of stimulant substances on lid retraction.)
+              - paragraph [ref=e405]:
+                - text: The images below from
+                - link "designyoutrust.com’s article" [ref=e406] [cursor=pointer]:
+                  - /url: https://designyoutrust.com/2020/05/close-up-pictures-of-tennis-players-just-look-like-people-trying-really-hard-to-control-their-telekinetic-power/
+                - text: ", “Close Up Pictures Of Tennis Players Just Look Like People Trying Really Hard To Control Their Telekinetic Power,” contain great examples of high-intensity situations where"
+                - emphasis [ref=e407]: upper lid raiser
+                - text: makes an appearance.
+            - generic [ref=e412]:
+              - paragraph [ref=e413]:
+                - img "Italian Trulli" [ref=e414]
+              - paragraph [ref=e415]:
+                - text: Image sets here embedded from
+                - link "designyourtrust.com" [ref=e416] [cursor=pointer]:
+                  - /url: https://designyoutrust.com/2020/05/close-up-pictures-of-tennis-players-just-look-like-people-trying-really-hard-to-control-their-telekinetic-power/
+              - paragraph [ref=e417]:
+                - img "Italian Trulli" [ref=e418]
+            - heading "upper lid raiser on different eyelid types" [level=2] [ref=e431]
+            - generic [ref=e436]:
+              - paragraph [ref=e437]:
+                - text: The physical qualities of our eyelids are diverse. As a result,
+                - emphasis [ref=e438]: upper lid raiser
+                - text: may look slightly different on people with different eyelid types. Be mindful of this variation when observing
+                - emphasis [ref=e439]: upper lid raiser
+                - text: on different types of eyes & eyelids.
+              - paragraph [ref=e440]:
+                - text: Additionally, as discussed with other muscles like the
+                - link "frontalis" [ref=e441] [cursor=pointer]:
+                  - /url: https://melindaozel.com/frontalis-variation/
+                - text: ", the strength of levator palpebrae superioris differs across individuals; this variation in muscle strength affects the range of"
+                - emphasis [ref=e442]: upper lid raiser
+                - text: intensity from person to person.
+            - generic [ref=e446]:
+              - figure "upper lid raiser + moderate brow raise" [ref=e448]:
+                - img "AU5 - upper lid raiser - Facial Action Coding System - levator palpebrae superioris - eyelid types" [ref=e449]
+                - generic [ref=e450]: upper lid raiser + moderate brow raise
+              - figure "upper lid raiser + mild brow raise" [ref=e452]:
+                - img "AU5 - upper lid raiser - Facial Action Coding System - levator palpebrae superioris - eyelid types" [ref=e453]
+                - generic [ref=e454]: upper lid raiser + mild brow raise
+              - figure "upper lid raiser See how effects of upper lid raiser push the skin & fat between the eyes and eyebrow. Submitted by Giovanni Nakpil." [ref=e456]:
+                - img "AU5 - upper lid raiser - Facial Action Coding System - levator palpebrae superioris - eyelid types" [ref=e457]
+                - generic [ref=e458]:
+                  - text: upper lid raiser
+                  - text: See how effects of upper lid raiser push the skin & fat between the eyes and eyebrow.
+                  - text: Submitted by Giovanni Nakpil.
+            - generic [ref=e460]:
+              - figure "strong range upper lid raiser + mild brow raising Submitted by @annaberu.chan" [ref=e464]:
+                - link "AU5 - upper lid raiser - Facial Action Coding System - levator palpebrae superioris - eyelid types" [ref=e465] [cursor=pointer]:
+                  - /url: https://instagram.com/annaberu.chan?utm_medium=copy_link
+                  - img "AU5 - upper lid raiser - Facial Action Coding System - levator palpebrae superioris - eyelid types" [ref=e466]
+                - generic [ref=e467]:
+                  - text: strong range upper lid raiser + mild brow raising
+                  - text: Submitted by @annaberu.chan
+              - figure "strong range upper lid raiser + semi-moderate brow raising Submitted by @annaberu.chan" [ref=e471]:
+                - link "AU5 - upper lid raiser - Facial Action Coding System - looking down with levator palpebrae superioris - eyelid types" [ref=e472] [cursor=pointer]:
+                  - /url: https://instagram.com/annaberu.chan?utm_medium=copy_link
+                  - img "AU5 - upper lid raiser - Facial Action Coding System - looking down with levator palpebrae superioris - eyelid types" [ref=e473]
+                - generic [ref=e474]:
+                  - text: strong range upper lid raiser + semi-moderate brow raising
+                  - text: Submitted by @annaberu.chan
+            - heading "common mistakes artists make" [level=2] [ref=e487]
+            - generic [ref=e492]:
+              - iframe [ref=e495]:
+                - button "►" [ref=f50e3]
+              - paragraph
+              - paragraph [ref=e496]:
+                - emphasis [ref=e498]: GIF 2 – Gizmo with upper & lower lid retraction
+            - generic [ref=e503]:
+              - paragraph [ref=e504]:
+                - text: A relatively
+                - strong [ref=e505]: frequent mistake
+                - text: I see artists make with
+                - emphasis [ref=e506]: upper lid raiser
+                - text: is the
+                - strong [ref=e507]: erroneous addition of a lowered bottom eyelid
+                - text: to increase the breadth of eye widening.
+              - paragraph [ref=e508]:
+                - emphasis [ref=e509]: Upper lid raiser
+                - text: "is called “UPPER lid raiser” for a reason. As mentioned in the “anatomy” section, the levator palpebrae superioris muscle fixes onto the top eyelid and pulls it up & back. The only effect levator palpebrae superioris has on the lower eyelid is somewhat counterintuitive:"
+                - strong [ref=e510]: When its force is strong, it actually raises the lower eyelid
+                - text: . (Refer back to GIF 1 in the “what is upper lid raiser” section.)
+              - paragraph [ref=e511]: While at first glance the idea of an eye-widening action further enclosing the eye at the lower lid level might be surprising, if you consider the mechanics of a strong levitating force, it makes sense that as a secondary effect, the lower eyelid would be dragged upward.
+              - paragraph [ref=e512]:
+                - text: If you are working on a creature (like Gizmo in GIF 2) or a stylized human, by all means, throw in a bottom lid retraction with your upper lid raiser.
+                - strong [ref=e513]: If you are aiming for realism,
+                - text: however,
+                - strong [ref=e514]: lay off the lower lid
+                - text: –
+                - strong [ref=e515]: unless you’re adding a slight raise from the upward pull of the top lid
+                - text: .
+              - paragraph [ref=e516]: There is an exception to these suggestions, but it involves interesting cases and rare conditions. (See next section.)
+            - heading "interesting cases & rare conditions" [level=2] [ref=e529]
+            - paragraph [ref=e535]: The following conditions are included due to their influence on eye aperture. Some are directly related to the levator palpebrae superioris muscle, and some are indirectly related.
+            - heading "globe luxation" [level=3] [ref=e541]
+            - generic [ref=e546]:
+              - paragraph [ref=e547]:
+                - text: It is humanly possible for the eyes to pop out in such a way that both the upper and lower lids are forcibly pushed back to expose more eyeball. One such case includes
+                - strong [ref=e548]:
+                  - link "globe luxation" [ref=e549] [cursor=pointer]:
+                    - /url: https://www.irishnews.com/magazine/daily/2017/06/28/news/a-woman-who-can-pop-her-eyes-out-of-her-head-has-answered-the-internet-s-questions-1070147/
+                - text: (
+                - strong [ref=e550]: WARNING
+                - text: ": Link contains photos of eyes bulging dramatically from eye sockets.)"
+              - paragraph [ref=e551]:
+                - text: Globe luxation is a rare condition where the eye can pop out of the socket. This
+                - generic [ref=e552]:
+                  - link "displacement often occurs due to head or eye trauma" [ref=e553] [cursor=pointer]:
+                    - /url: https://www.allaboutvision.com/conditions/globe-luxation/eyes-popping-out/
+                  - text: .
+            - generic [ref=e558]:
+              - iframe [ref=e560]:
+                - generic [ref=f47e3]:
+                  - strong [ref=f47e4]: gfycat.com
+                  - text: ’s server IP address could not be found.
+              - paragraph [ref=e561]:
+                - emphasis [ref=e563]:
+                  - text: Video 1 –
+                  - link "via Gfycat" [ref=e565] [cursor=pointer]:
+                    - /url: https://gfycat.com/selfishacclaimedblackfish
+            - heading "retraction & ptosis" [level=3] [ref=e578]
+            - generic [ref=e580]:
+              - figure "posing in natural resting state" [ref=e584]:
+                - img "example of typical lid placement during resting phase - levator palpebrae superioris" [ref=e585]
+                - generic [ref=e586]: posing in natural resting state
+              - figure "posing in bilateral lid retraction style" [ref=e590]:
+                - img "example of retracted lid placement during resting phase - levator palpebrae superioris" [ref=e591]
+                - generic [ref=e592]: posing in bilateral lid retraction style
+              - figure "posing in bilateral ptosis style" [ref=e596]:
+                - img "example of bilateral ptosis lid placement during resting phase - levator palpebrae superioris" [ref=e597]
+                - generic [ref=e598]: posing in bilateral ptosis style
+              - figure "posing in unilateral ptosis style" [ref=e602]:
+                - img "example of asymmetric / unilateral ptosis lid placement during resting phase - levator palpebrae superioris" [ref=e603]
+                - generic [ref=e604]: posing in unilateral ptosis style
+            - generic [ref=e609]:
+              - paragraph [ref=e610]: On the less extreme end of the abnormal eye-widening spectrum is a condition known as “eyelid retraction.” Lid retraction occurs when the eyelid is displaced to be more retracted during resting positions than is typical. This retraction leaves the eyes looking wider and unusually alert.
+              - paragraph [ref=e611]:
+                - text: A common natural cause of lid retraction comes from a thyroid condition known as
+                - link "Graves’ Disease" [ref=e612] [cursor=pointer]:
+                  - /url: https://pubs.rsna.org/doi/abs/10.1148/radiology.188.1.8511284
+                - text: ; however, lid retraction can also be caused by chronic stimulant abuse from substances like cocaine and amphetamines.
+              - paragraph [ref=e613]: The reverse condition is known as ptosis. Ptosis refers to the drooping of the eyelids. While mild to moderate upper eyelid ptosis is generally a consequence of aging, it can also be caused by a variety of other factors and substances.
+            - heading "final thoughts" [level=2] [ref=e626]
+            - generic [ref=e631]:
+              - paragraph [ref=e632]:
+                - text: Though
+                - emphasis [ref=e633]: upper lid raiser
+                - text: is one of the simpler facial actions, there are still many factors to consider when representing this shape. Lid type, eye shape, and muscle strength are some of the larger factors affecting
+                - emphasis [ref=e634]: upper lid raiser
+                - text: ‘s overall appearance; however, because of our unique anatomy, there are always additional factors to consider on a case-by-case basis.
+              - paragraph [ref=e635]:
+                - text: For a deeper dive into eyelid diversity, please reach out for consultation. See my
+                - link "Services page" [ref=e636] [cursor=pointer]:
+                  - /url: https://melindaozel.com/services/
+                - text: for more information.
+            - generic [ref=e641]:
+              - heading "references" [level=2] [ref=e642]:
+                - generic [ref=e645]: references
+              - list [ref=e646]:
+                - listitem [ref=e647]: Haschek, Wanda M., et al. Haschek and Rousseaux’s Handbook of Toxicologic Pathology. 3rd ed., Elsevier/Academic Press, 2013.
+                - listitem [ref=e648]: "Ohnishi, T. “Levator Palpebrae Superioris Muscle: MR Evaluation of Enlargement as a Cause of Upper Eyelid Retraction in Graves Disease.” Radiology, 1 July 1993, pubs.rsna.org/doi/abs/10.1148/radiology.188.1.8511284."
+                - listitem [ref=e649]: "Knight B, Lopez MJ, Patel BC. Anatomy, Head and Neck, Eye Levator Palpebrae Superioris Muscles. [Updated 2021 Feb 13]. In: StatPearls [Internet]. Treasure Island (FL): StatPearls Publishing; 2021 Jan-. Available from: https:// www. ncbi.nlm.nih. gov/books/NBK536921/Sendic, G. (2021, May 31)."
+                - listitem [ref=e650]:
+                  - generic [ref=e651]: Sendic, Gordana. “Levator Palpebrae Superioris Muscle.” Kenhub, Kenhub, 31 May 2021, www. kenhub. com/en/library/anatomy/levator-palpebrae-superioris-muscle.
+                - listitem [ref=e652]: Micheau, Dr. Antoine, and Dr. Denis Hoa. “Levator Palpebrae Superioris.” IMAIOS, IMAIOS, 18 Mar. 2021, https:// www. imaios. com/en/e-Anatomy/Anatomical-Parts/levator-palpebrae-superioris.
+                - listitem [ref=e653]
+            - generic [ref=e655]:
+              - generic [ref=e659]:
+                - text: Connect to stay up-to-date on
+                - emphasis [ref=e660]: Face the FACS
+                - text: ‘s latest posts, announcements, and free content!
+              - link [ref=e665] [cursor=pointer]:
+                - /url: http://linkedin.com/in/melindaozel
+                - img [ref=e666]
+              - link [ref=e672] [cursor=pointer]:
+                - /url: http://instagram.com/manicexpression
+                - img [ref=e673]
+              - link [ref=e679] [cursor=pointer]:
+                - /url: http://twitter.com/melindaozel
+                - img [ref=e680]
+            - paragraph [ref=e687]:
+              - generic [ref=e688]:
+                - link "Home" [ref=e690] [cursor=pointer]:
+                  - /url: https://melindaozel.com/
+                - text: » All About Upper Lid Raiser – AU5
+          - generic "Entry meta" [ref=e691]:
+            - generic [ref=e692]:
+              - img [ref=e694]
+              - generic [ref=e696]: Categories
+              - link "action units (FACS AUs)" [ref=e697] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/facial-expressions/action-units/
+              - text: ","
+              - link "animation" [ref=e698] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/art/animation/
+              - text: ","
+              - link "art" [ref=e699] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/art/
+              - text: ","
+              - link "AU5" [ref=e700] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/facial-expressions/action-units/au5/
+              - text: ","
+              - link "blend shapes" [ref=e701] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/art/blend-shapes/
+              - text: ","
+              - link "character rigging" [ref=e702] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/art/character-rigging/
+              - text: ","
+              - link "facial anatomy" [ref=e703] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/anatomy/
+              - text: ","
+              - link "facial expressions" [ref=e704] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/facial-expressions/
+              - text: ","
+              - link "facial muscles" [ref=e705] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/anatomy/muscles/
+              - text: ","
+              - link "levator palpebrae superioris" [ref=e706] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/anatomy/muscles/levator-palpebrae-superioris/
+              - text: ","
+              - link "paid content" [ref=e707] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/paid/
+              - text: ","
+              - link "upper lid raiser" [ref=e708] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/facial-expressions/action-units/au5/upper-lid-raiser/
+            - navigation "Posts" [ref=e709]:
+              - generic [ref=e710]:
+                - img [ref=e712]
+                - 'link "“It’s All In the Eyes” and Other Lies: A Critique On Contemporary Emotion Research" [ref=e715] [cursor=pointer]':
+                  - /url: https://melindaozel.com/its-all-in-the-eyes-and-other-lies/
+              - generic [ref=e716]:
+                - img [ref=e718]
+                - link "Animation Tips For Smiles" [ref=e721] [cursor=pointer]:
+                  - /url: https://melindaozel.com/animation-tips-for-smiles/
+      - generic [ref=e723]:
+        - heading "1 thought on “All About Upper Lid Raiser – AU5”" [level=2] [ref=e724]
+        - list [ref=e725]:
+          - listitem [ref=e726]:
+            - generic [ref=e727]:
+              - text: "Pingback:"
+              - link "all about upper lid raiser - PREVIEW - Face the FACS" [ref=e728] [cursor=pointer]:
+                - /url: https://melindaozel.com/all-about-upper-lid-raiser-preview/
+        - paragraph [ref=e729]: Comments are closed.
+    - generic [ref=e731]:
+      - complementary [ref=e732]:
+        - generic [ref=e739]:
+          - figure [ref=e740]:
+            - link "headshot of page author" [ref=e741] [cursor=pointer]:
+              - /url: https://melindaozel.com/melinda-who-zel/
+              - img "headshot of page author" [ref=e742]
+          - paragraph
+          - paragraph [ref=e743]:
+            - text: I’m a Facial Systems Expert specializing in the Facial Action Coding System (FACS) and facial anatomy. My work spans
+            - link "expression tracking" [ref=e744] [cursor=pointer]:
+              - /url: https://patents.justia.com/inventor/melinda-ozel
+              - strong [ref=e745]: expression tracking
+            - text: ", facial animation, and"
+            - link "AI-driven lipsync" [ref=e746] [cursor=pointer]:
+              - /url: http://linkedin.com/in/melindaozel
+              - strong [ref=e747]: AI-driven lipsync
+            - text: . Recent work includes contributions to the de-aging of Tom Hanks and other actors in the
+            - strong [ref=e748]:
+              - link "Zemeckis film, Here" [ref=e749] [cursor=pointer]:
+                - /url: https://www.imdb.com/name/nm15482966/
+            - text: .
+          - paragraph [ref=e750]:
+            - text: Learn more about
+            - link "my background" [ref=e751] [cursor=pointer]:
+              - /url: https://melindaozel.com/melinda-who-zel/
+              - strong [ref=e752]: my background
+            - text: .
+          - paragraph
+      - complementary [ref=e753]:
+        - paragraph [ref=e754]:
+          - strong [ref=e755]: Courses & Workshops
+          - text: "-"
+          - link "FACS Cram Session" [ref=e756] [cursor=pointer]:
+            - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+          - text: "-"
+          - link "All About Lipsync" [ref=e757] [cursor=pointer]:
+            - /url: https://melindaozel.com/all-about-lipsync-course/
+          - text: "-"
+          - link "All Training Services" [ref=e758] [cursor=pointer]:
+            - /url: https://melindaozel.com/services/lectures-training/
+      - complementary [ref=e759]:
+        - paragraph [ref=e760]:
+          - strong [ref=e761]: "\""
+          - text: Melinda Ozel's resources on face anatomy, motion, and FACS are industry standard. During my time working on The Last of Us Part II (and other unannounced Playstation titles) I referred to it almost exclusively on a regular basis. The free material is great but the pay material is worth the cost.
+          - strong [ref=e762]: "\""
+          - strong [ref=e763]: Eric Drobile | Technical Animator
+          - strong [ref=e764]: "\""
+          - text: For most people learning traditional FACS is not feasible. It requires very costly specialized degrees and years long commitment. And the half century old research with fuzzy photos was not made for artists. What Melinda has done for our industry is take the dense scientific information and streamlined it into very easy to digest entries and videos catered to artists.
+          - strong [ref=e765]: "\""
+          - strong [ref=e766]: Paul Liaw | Principal Character Artist
+          - strong [ref=e767]: "\""
+          - text: I've been working as a Facial Blendshape Artist across film and gaming and have watched the quality of my work improve exponentially since I've had access to this wealth of knowledge that Melinda has so thoughtfully put together. Her documentation is clear, appealing, and comprehensive. If Paul Ekman is the father of FACS, Melinda has become the cool aunt.
+          - strong [ref=e768]: "\""
+          - strong [ref=e769]: "Ioana Alexandra Pirvu | Lead Artist: Blendshapes @ Rockstar Games"
+          - strong [ref=e770]: "\""
+          - text: Face the FACS in my opinion is bar-none, the best resource out there for any artist and company dealing with facial animation. The way in which Melinda delivers knowledge is detailed, but fun and compelling enough to make you want to keep learning. For a topic that could have easily been boring, she inspired me to keep learning.
+          - strong [ref=e771]: "\""
+          - strong [ref=e772]: Giovanni Nakpil | Senior Creative 3D Evangelist @ Adobe
+          - strong [ref=e773]: "\""
+          - text: If you're doing AU's (action units), this is the site you're going to need to bookmark. Melinda has gone above and beyond to create what I feel is the ultimate resource guide for AU's. Each AU explained, annotated and demonstrated with extreme clarity. You'll experience plenty of "aha!!" moments using Melinda's work as your guide!
+          - strong [ref=e774]: "\""
+          - strong [ref=e775]: Frank Gravatt
+          - strong [ref=e776]: "| Facial Modeler @ Cloud Chamber"
+      - complementary [ref=e777]:
+        - paragraph
+      - complementary [ref=e778]:
+        - generic [ref=e780]:
+          - paragraph [ref=e781]:
+            - strong [ref=e782]: Connect with me <3
+          - list [ref=e783]:
+            - listitem [ref=e784]:
+              - link "Instagram" [ref=e785] [cursor=pointer]:
+                - /url: https://instagram.com/manicexpression
+                - img [ref=e786]
+                - generic [ref=e788]: Instagram
+            - listitem [ref=e789]:
+              - link "LinkedIn" [ref=e790] [cursor=pointer]:
+                - /url: https://linkedin.com/in/melindaozel
+                - img [ref=e791]
+                - generic [ref=e793]: LinkedIn
+            - listitem [ref=e794]:
+              - link "X" [ref=e795] [cursor=pointer]:
+                - /url: https://x.com/melindaozel
+                - img [ref=e796]
+                - generic [ref=e798]: X
+  - generic [ref=e799]:
+    - generic [ref=e802]:
+      - complementary [ref=e804]:
+        - search [ref=e805]:
+          - generic [ref=e806]: Search
+          - generic [ref=e807]:
+            - searchbox "Search" [ref=e808]
+            - button "Search" [ref=e809] [cursor=pointer]
+      - complementary [ref=e811]:
+        - paragraph [ref=e812]:
+          - link "Terms & Conditions" [ref=e813] [cursor=pointer]:
+            - /url: https://melindaozel.com/terms-conditions/
+    - contentinfo "Site" [ref=e814]:
+      - generic [ref=e816]:
+        - text: Copyright © 2020-2026 Melinda Ozel . All rights reserved.
+        - text: Learn how to
+        - link "cite my work here" [ref=e817] [cursor=pointer]:
+          - /url: https://melindaozel.com/how-to-cite-my-work-use-my-visuals/
+          - generic [ref=e818]: cite my work here
+        - generic [ref=e819]: .
+  - navigation "Website language selector" [ref=e820]:
+    - generic [ref=e821]:
+      - button "Change language":
+        - generic: EN
+      - group "Available languages":
+        - link "ES" [ref=e822] [cursor=pointer]:
+          - /url: https://melindaozel.com/es/all-about-upper-lid-raiser-au5/
+          - generic [ref=e823]: ES
+        - link "FR" [ref=e824] [cursor=pointer]:
+          - /url: https://melindaozel.com/fr/all-about-upper-lid-raiser-au5/
+          - generic [ref=e825]: FR
+        - link "ES_VE" [ref=e826] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_ve/all-about-upper-lid-raiser-au5/
+          - generic [ref=e827]: ES_VE
+        - link "ES_CL" [ref=e828] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_cl/all-about-upper-lid-raiser-au5/
+          - generic [ref=e829]: ES_CL
+        - link "ES_GT" [ref=e830] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_gt/all-about-upper-lid-raiser-au5/
+          - generic [ref=e831]: ES_GT
+        - link "PT" [ref=e832] [cursor=pointer]:
+          - /url: https://melindaozel.com/pt/all-about-upper-lid-raiser-au5/
+          - generic [ref=e833]: PT
+        - link "ZH" [ref=e834] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh/all-about-upper-lid-raiser-au5/
+          - generic [ref=e835]: ZH
+        - link "ZH_TW" [ref=e836] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh_tw/all-about-upper-lid-raiser-au5/
+          - generic [ref=e837]: ZH_TW
+        - link "ZH_HK" [ref=e838] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh_hk/all-about-upper-lid-raiser-au5/
+          - generic [ref=e839]: ZH_HK
+        - link "JA" [ref=e840] [cursor=pointer]:
+          - /url: https://melindaozel.com/ja/all-about-upper-lid-raiser-au5/
+          - generic [ref=e841]: JA
+        - link "HI" [ref=e842] [cursor=pointer]:
+          - /url: https://melindaozel.com/hi/all-about-upper-lid-raiser-au5/
+          - generic [ref=e843]: HI
+        - link "DE" [ref=e844] [cursor=pointer]:
+          - /url: https://melindaozel.com/de/all-about-upper-lid-raiser-au5/
+          - generic [ref=e845]: DE
+        - link "DE_DE" [ref=e846] [cursor=pointer]:
+          - /url: https://melindaozel.com/de_de/all-about-upper-lid-raiser-au5/
+          - generic [ref=e847]: DE_DE
+        - link "RU" [ref=e848] [cursor=pointer]:
+          - /url: https://melindaozel.com/ru/all-about-upper-lid-raiser-au5/
+          - generic [ref=e849]: RU
+        - link "PL" [ref=e850] [cursor=pointer]:
+          - /url: https://melindaozel.com/pl/all-about-upper-lid-raiser-au5/
+          - generic [ref=e851]: PL
+        - link "CS" [ref=e852] [cursor=pointer]:
+          - /url: https://melindaozel.com/cs/all-about-upper-lid-raiser-au5/
+          - generic [ref=e853]: CS
+        - link "VI" [ref=e854] [cursor=pointer]:
+          - /url: https://melindaozel.com/vi/all-about-upper-lid-raiser-au5/
+          - generic [ref=e855]: VI
+        - link "IT" [ref=e856] [cursor=pointer]:
+          - /url: https://melindaozel.com/it/all-about-upper-lid-raiser-au5/
+          - generic [ref=e857]: IT
+        - link "SV" [ref=e858] [cursor=pointer]:
+          - /url: https://melindaozel.com/sv/all-about-upper-lid-raiser-au5/
+          - generic [ref=e859]: SV
+        - link "SR" [ref=e860] [cursor=pointer]:
+          - /url: https://melindaozel.com/sr/all-about-upper-lid-raiser-au5/
+          - generic [ref=e861]: SR
+        - link "AR" [ref=e862] [cursor=pointer]:
+          - /url: https://melindaozel.com/ar/all-about-upper-lid-raiser-au5/
+          - generic [ref=e863]: AR
+        - link "MS" [ref=e864] [cursor=pointer]:
+          - /url: https://melindaozel.com/ms/all-about-upper-lid-raiser-au5/
+          - generic [ref=e865]: MS
+        - link "FI" [ref=e866] [cursor=pointer]:
+          - /url: https://melindaozel.com/fi/all-about-upper-lid-raiser-au5/
+          - generic [ref=e867]: FI
+        - link "ES_MX" [ref=e868] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_mx/all-about-upper-lid-raiser-au5/
+          - generic [ref=e869]: ES_MX
+        - link "KO" [ref=e870] [cursor=pointer]:
+          - /url: https://melindaozel.com/ko/all-about-upper-lid-raiser-au5/
+          - generic [ref=e871]: KO
+        - link "TR" [ref=e872] [cursor=pointer]:
+          - /url: https://melindaozel.com/tr/all-about-upper-lid-raiser-au5/
+          - generic [ref=e873]: TR
+        - link "IS" [ref=e874] [cursor=pointer]:
+          - /url: https://melindaozel.com/is/all-about-upper-lid-raiser-au5/
+          - generic [ref=e875]: IS
+        - link "NL" [ref=e876] [cursor=pointer]:
+          - /url: https://melindaozel.com/nl/all-about-upper-lid-raiser-au5/
+          - generic [ref=e877]: NL
+        - link "NL_NL" [ref=e878] [cursor=pointer]:
+          - /url: https://melindaozel.com/nl_nl/all-about-upper-lid-raiser-au5/
+          - generic [ref=e879]: NL_NL
+        - link "ES_AR" [ref=e880] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_ar/all-about-upper-lid-raiser-au5/
+          - generic [ref=e881]: ES_AR
+        - link "UK" [ref=e882] [cursor=pointer]:
+          - /url: https://melindaozel.com/uk/all-about-upper-lid-raiser-au5/
+          - generic [ref=e883]: UK
+  - generic [ref=e884]: desktop

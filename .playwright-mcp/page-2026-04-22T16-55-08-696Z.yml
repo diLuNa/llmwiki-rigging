@@ -1,0 +1,520 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#content"
+  - navigation "Secondary" [ref=e3]:
+    - list [ref=e6]:
+      - listitem [ref=e7]:
+        - link "Premium Member Access" [ref=e8] [cursor=pointer]:
+          - /url: https://melindaozel.com/premium-resources/
+          - text: Premium Member Access
+          - img [ref=e10]
+        - list:
+          - listitem:
+            - link "Login":
+              - /url: https://melindaozel.com/login/
+          - listitem:
+            - link "Subscribe :)":
+              - /url: https://melindaozel.com/subscription-options/
+      - listitem [ref=e12]:
+        - link "Recorded Lecture Access" [ref=e13] [cursor=pointer]:
+          - /url: https://melindaozel.com/recorded-lectures/
+          - text: Recorded Lecture Access
+          - img [ref=e15]
+        - list:
+          - listitem:
+            - link "FACS Cram Session":
+              - /url: https://melindaozel.com/facs-cram-session/
+          - listitem:
+            - link "All About Lipsync":
+              - /url: https://melindaozel.com/all-about-lipsync-lecture-videos/
+      - listitem [ref=e17]:
+        - link "My Account" [ref=e18] [cursor=pointer]:
+          - /url: https://melindaozel.com/account/
+  - banner "Site" [ref=e19]:
+    - generic [ref=e21]:
+      - link "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e23] [cursor=pointer]:
+        - /url: https://melindaozel.com/
+        - img "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e24]
+      - paragraph [ref=e26]:
+        - link "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e27] [cursor=pointer]:
+          - /url: https://melindaozel.com/
+  - navigation "Primary" [ref=e28]:
+    - list [ref=e31]:
+      - listitem [ref=e32]:
+        - link "Learning Hub" [ref=e33] [cursor=pointer]:
+          - /url: https://melindaozel.com/learning-hub/
+          - text: Learning Hub
+          - img [ref=e35]
+        - list:
+          - listitem:
+            - link "FACS Cheat Sheet":
+              - /url: https://melindaozel.com/facs-cheat-sheet/
+          - listitem:
+            - link "Viseme Cheat Sheet":
+              - /url: https://melindaozel.com/viseme-cheat-sheet/
+          - listitem:
+            - link "All Free Resources":
+              - /url: https://melindaozel.com/free-resources/
+          - listitem:
+            - link "🔒 Premium Resources":
+              - /url: https://melindaozel.com/premium-resources/
+              - img "🔒"
+              - text: Premium Resources
+          - listitem:
+            - link "FAQs":
+              - /url: https://melindaozel.com/faqs/
+      - listitem [ref=e37]:
+        - link "Courses" [ref=e38] [cursor=pointer]:
+          - /url: https://melindaozel.com/online-lectures/
+          - text: Courses
+          - img [ref=e40]
+        - list:
+          - listitem:
+            - link "FACS Cram Session":
+              - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+          - listitem:
+            - link "All About Lipsync":
+              - /url: https://melindaozel.com/all-about-lipsync-course/
+      - listitem [ref=e42]:
+        - link "Full Site Access" [ref=e43] [cursor=pointer]:
+          - /url: https://melindaozel.com/subscription-options/
+          - text: Full Site Access
+          - img [ref=e45]
+        - list:
+          - listitem:
+            - link "Membership Options":
+              - /url: https://melindaozel.com/subscription-options/
+      - listitem [ref=e47]:
+        - link "Services" [ref=e48] [cursor=pointer]:
+          - /url: https://melindaozel.com/services/
+          - text: Services
+          - img [ref=e50]
+        - list:
+          - listitem:
+            - link "FACS Lectures & Training":
+              - /url: https://melindaozel.com/services/lectures-training/
+          - listitem:
+            - link "Consulting":
+              - /url: https://melindaozel.com/services/consulting/
+      - listitem [ref=e52]:
+        - link "About" [ref=e53] [cursor=pointer]:
+          - /url: https://melindaozel.com/who-is-melinda-ozel/
+          - text: About
+          - img [ref=e55]
+        - list:
+          - listitem:
+            - link "About Me":
+              - /url: https://melindaozel.com/who-is-melinda-ozel/
+          - listitem:
+            - link "Cite My Work":
+              - /url: https://melindaozel.com/how-to-cite-my-work-use-my-visuals/
+          - listitem:
+            - link "Contact":
+              - /url: https://melindaozel.com/who-is-melinda-ozel/contact-me/
+  - generic [ref=e58]:
+    - main [ref=e60]:
+      - article [ref=e61]:
+        - generic [ref=e64]:
+          - generic [ref=e68]:
+            - heading "Eyebrow Combos" [level=1] [ref=e70]
+            - generic [ref=e71]:
+              - paragraph [ref=e72]:
+                - text: There are 3 main brow actions that mix and match to create 7 different combinations – (1), (2), (1+2), (1+2+4), (1+4), (2+4), and (4). Isolated actions – 1, 2, and 4 – are listed in the main
+                - link "FACS Cheat Sheet" [ref=e73] [cursor=pointer]:
+                  - /url: https://melindaozel.com/facs-cheat-sheet/
+                - text: "&"
+                - link "FACS Study Guide" [ref=e74] [cursor=pointer]:
+                  - /url: https://melindaozel.com/facs-study-guide/
+                - text: ". Here are the remaining combos:"
+              - list [ref=e75]:
+                - listitem [ref=e76]:
+                  - strong [ref=e77]: full brow raise
+                - listitem [ref=e78]:
+                  - strong [ref=e79]: “fear” brows
+                - listitem [ref=e80]:
+                  - strong [ref=e81]: “sad” brows
+                - listitem [ref=e82]:
+                  - strong [ref=e83]: “the rock” brows
+          - generic [ref=e90]:
+            - heading "FULL BROW RAISE" [level=2] [ref=e92]
+            - heading "inner brow raiser + outer brow raiser" [level=3] [ref=e94]
+            - heading "frontalis, medial portion + frontalis, lateral portion" [level=4] [ref=e96]
+            - generic [ref=e97]:
+              - paragraph [ref=e98]:
+                - strong [ref=e99]: inner brow raiser + outer brow raiser
+              - list [ref=e100]:
+                - listitem [ref=e101]: One of the most common combinations
+                - listitem [ref=e102]: A signature marker for word emphasis, attentiveness, and punctuation in speech
+                - listitem [ref=e103]:
+                  - text: Major component of
+                  - strong [ref=e104]: surprise
+                  - text: prototype, which also features jaw drop + mouth open
+            - heading "person A (me)" [level=5] [ref=e106]
+          - generic [ref=e108]:
+            - img "AU 1+2 full brow raise, frontalis" [ref=e112]
+            - img "AU 1+2 full brow raise, frontalis - side view" [ref=e116]
+          - generic [ref=e120]:
+            - heading "person B (my brother)" [level=5] [ref=e122]
+            - heading "person C" [level=5] [ref=e125]: person C
+            - generic [ref=e127]:
+              - paragraph [ref=e128]: "Observe how:"
+              - list [ref=e129]:
+                - listitem [ref=e130]: The skin between the eyes and nose stretches vertically.
+                - listitem [ref=e131]: The skin under the lower eyelid is pulled up.
+                - listitem [ref=e132]: The skin around the inner eye corners is also pulled up.
+                - listitem [ref=e133]: The shape of the upper eyelid changes, revealing more upper lid.
+                - listitem [ref=e134]:
+                  - text: Hairline and scalp area in is pulled down as brow is raised higher in person B. For other references showing my own hairline drag,
+                  - strong [ref=e136]:
+                    - link "see Forehead Dynamics" [ref=e137] [cursor=pointer]:
+                      - /url: https://melindaozel.com/forehead-dynamics-frontalis-vs-occipitalis/
+                  - text: .
+                - listitem [ref=e138]: Wrinkles are only apparent in person B – though some lateral fine lines are present in person C.
+              - paragraph [ref=e139]:
+                - strong [ref=e140]: "Interesting Notes:"
+              - list [ref=e141]:
+                - listitem [ref=e142]: My brother and my dad have the same neatly folded, straight wrinkle patterns.
+                - listitem [ref=e143]: My mom, aunt (mom’s side), and I have the same messy, bulky forehead raises with messy lines.
+            - heading "\"FEAR\" BROWS" [level=2] [ref=e148]
+            - heading "inner brow raiser + outer brow raiser + brow lowerer" [level=3] [ref=e150]
+            - heading "medial frontalis + lateral frontalis + [corrugator supercilii, depressor supercilii, and/or prcoerus" [level=4] [ref=e152]
+            - generic [ref=e153]:
+              - paragraph [ref=e154]:
+                - strong [ref=e155]: inner brow raiser + outer brow raiser + brow lowerer
+              - list [ref=e156]:
+                - listitem [ref=e157]:
+                  - text: Prototypic brow combo for
+                  - strong [ref=e158]: fear
+                - listitem [ref=e159]:
+                  - generic [ref=e160]: Can be a difficult combo to see depending on intensity of each AU
+                  - text: – e.g. strong AU4 can make a weak AU1 look less obvious and vice versa
+              - paragraph [ref=e161]:
+                - strong [ref=e162]: NOTE
+                - text: ":"
+              - list [ref=e163]:
+                - listitem [ref=e164]: I start with 1+2, then slowly add AU4.
+                - listitem [ref=e165]: I had to concentrate on this expression, so there is slight tension in my eyes (unrelated to 1+2+4).
+            - heading "person A (me)" [level=5] [ref=e167]
+            - img "fear eyebrows - AU 1+2+4" [ref=e169]
+            - img "fear eyebrows - AU 1+2+4" [ref=e171]
+            - generic [ref=e172]:
+              - paragraph [ref=e173]:
+                - strong [ref=e174]: NOTE
+                - text: ":"
+              - list [ref=e175]:
+                - listitem [ref=e176]: I start with a full brow raise, then slowly add brow lowering muscles (procerus and corrugator supercilii – likely depressor supercilii as well).
+                - listitem [ref=e177]:
+                  - generic [ref=e178]: I had to concentrate on this expression, so there is slight tension in my eyes (unrelated to 1+2+4).
+              - paragraph [ref=e179]:
+                - strong [ref=e180]: "Observe how:"
+              - list [ref=e181]:
+                - listitem [ref=e182]: The wrinkles change going from full brow raise to full brow raise with brow lowering.
+                - listitem [ref=e183]: A slight dip forms in the first half of the brow once procerus is added.
+                - listitem [ref=e184]: Corrugator supercilii impacts the overall bunching and wrinkling of the forehead and squeezes the central forehead together.
+            - heading "\"SAD\" BROWS" [level=2] [ref=e189]
+            - heading "inner brow raiser + brow lowerer" [level=3] [ref=e191]
+            - heading "medial frontalis + corrugator supercilii" [level=4] [ref=e193]
+            - generic [ref=e194]:
+              - paragraph [ref=e195]:
+                - strong [ref=e196]: inner brow raiser + brow lowerer (mostly corrugator supercilii)
+              - list [ref=e197]:
+                - listitem [ref=e198]:
+                  - text: Prototypic brow combo for
+                  - strong [ref=e199]: sadness
+                - listitem [ref=e200]: Also shows worry and concern
+                - listitem [ref=e201]: While the brow lowering portion of 1+4 can be activated by any brow lowering muscle (corrugator supercilii, depressor supercilii, or procerus), for sad brows, it is typically primarily corrugator supercilii that combines with the medial frontalis.
+            - heading "person A (me)" [level=5] [ref=e203]
+          - generic [ref=e205]:
+            - img "1+4 inner brow raiser + brow lowerer" [ref=e209]
+            - img "AU1+4 inner brow raiser GIF+ brow lowerer" [ref=e213]
+          - generic [ref=e217]:
+            - generic [ref=e218]:
+              - paragraph [ref=e219]: "NOTE:"
+              - list [ref=e220]:
+                - listitem [ref=e221]: I (Person A) start with brow lowerer, then add inner brow raiser.
+                - listitem [ref=e222]: My (Person A) brows are asymmetric, and it’s especially obvious during inner brow raiser + brow lowerer combo.
+            - heading "person C" [level=5] [ref=e224]
+            - img "AU1+4 - inner brow raiser + brow lowerer" [ref=e226]
+            - generic [ref=e227]:
+              - paragraph [ref=e228]: "NOTE: Person C shows inner brow raiser and brow lowerer activating, more or less simultaneously."
+              - paragraph [ref=e229]:
+                - strong [ref=e230]: "Observe how:"
+              - list [ref=e231]:
+                - listitem [ref=e232]: The skin between the brow and upper eyelid is pushed down by brow lowerer but pulled up (near the tear duct) by inner brow raiser. These counteracting movements create a tent-like shape in the upper eyelid.
+            - heading "\"THE ROCK\" BROWS" [level=2] [ref=e237]
+            - heading "outer brow raiser + brow lowerer" [level=3] [ref=e239]
+            - heading "lateral frontalis + (corrugator supercilii, depressor supercilii, and/or procerus)" [level=4] [ref=e241]
+            - generic [ref=e242]:
+              - paragraph [ref=e243]:
+                - strong [ref=e244]: outer brow raiser + brow lowerer
+              - list [ref=e245]:
+                - listitem [ref=e246]:
+                  - text: Prototypic brow combo for
+                  - link "The Rock" [ref=e248] [cursor=pointer]:
+                    - /url: https://www.google.com/url?q=http://www.mtv.com/news/2193370/the-rock-eyebrows-fleek/&sa=D&ust=1593997143322000&usg=AOvVaw3S7JNvQ6d7w2jEzc3eqq9j
+                  - text: and
+                  - link "most smug characters in animated films" [ref=e250] [cursor=pointer]:
+                    - /url: https://www.google.com/url?q=https://filmschoolrejects.com/the-dreamworks-face-must-be-stopped-2fcd4e80d6a6/JDxrg5HyUHKAJ&sa=D&ust=1593997143323000&usg=AOvVaw0DqL4iXr0HyE_2R_Ayn5SU
+                  - text: (when asymmetric)
+            - heading "person A (me)" [level=5] [ref=e252]
+          - generic [ref=e254]:
+            - img "AU2+4 frontalis, pars lateralis + [corrugator supercilii, depressor supercilii, depressor glabellae (aka procerus)]" [ref=e258]
+            - img "frontalis, pars lateralis + [corrugator supercilii, depressor supercilii, depressor glabellae (aka procerus)]" [ref=e262]
+          - generic [ref=e267]:
+            - paragraph [ref=e268]:
+              - strong [ref=e269]: NOTE
+              - text: ":"
+            - list [ref=e270]:
+              - listitem [ref=e271]: In front-facing GIF, I start with outer brow raiser then add brow lowerer. The brow lowering in this GIF is almost solely driven by the corrugator supercilii muscle.
+              - listitem [ref=e272]: In side-view, I start with brow lowerer driven by a combination of all brow lowering muscles (procerus, depressor supercilii, corrugator supercilii), then add outer brow raiser. (Personally, doing brow lowerer first was easier for me – as made evident by how much I struggle to do outer brow raiser first in the front-facing GIF.) [/mepr-show]
+          - generic [ref=e279]:
+            - heading "Explore More Premium Content" [level=2] [ref=e284]
+            - generic [ref=e289]:
+              - list [ref=e290]:
+                - listitem [ref=e291]:
+                  - link "nose wrinkler, brow furrow, upper lid raiser" [ref=e292] [cursor=pointer]:
+                    - /url: https://melindaozel.com/bypassing-vr-headset-occlusion-in-face-tracking/
+                    - img "nose wrinkler, brow furrow, upper lid raiser" [ref=e294]
+                  - heading "Bypassing VR Headset Occlusion in Face Tracking" [level=3] [ref=e296]:
+                    - link "Bypassing VR Headset Occlusion in Face Tracking" [ref=e297] [cursor=pointer]:
+                      - /url: https://melindaozel.com/bypassing-vr-headset-occlusion-in-face-tracking/
+                - listitem [ref=e298]:
+                  - link [ref=e299] [cursor=pointer]:
+                    - /url: https://melindaozel.com/breaking-down-nose-wrinkler/
+                  - heading "Breaking Down Nose Wrinkler (AU9)" [level=3] [ref=e302]:
+                    - link "Breaking Down Nose Wrinkler (AU9)" [ref=e303] [cursor=pointer]:
+                      - /url: https://melindaozel.com/breaking-down-nose-wrinkler/
+                - listitem [ref=e304]:
+                  - link "woman raising her top lips with drawovers" [ref=e305] [cursor=pointer]:
+                    - /url: https://melindaozel.com/upper-lip-raiser-vs-nasolabial-furrow-deepener/
+                    - img "woman raising her top lips with drawovers" [ref=e307]
+                  - heading "Upper Lip Raiser vs. Nasolabial Furrow Deepener" [level=3] [ref=e309]:
+                    - link "Upper Lip Raiser vs. Nasolabial Furrow Deepener" [ref=e310] [cursor=pointer]:
+                      - /url: https://melindaozel.com/upper-lip-raiser-vs-nasolabial-furrow-deepener/
+                - listitem [ref=e311]:
+                  - link [ref=e312] [cursor=pointer]:
+                    - /url: https://melindaozel.com/a-wrinkle-in-time-building-characters-with-real-story-lines/
+                  - 'heading "A Wrinkle In Time, Part I: How to Build Characters With Real Story Lines" [level=3] [ref=e315]':
+                    - 'link "A Wrinkle In Time, Part I: How to Build Characters With Real Story Lines" [ref=e316] [cursor=pointer]':
+                      - /url: https://melindaozel.com/a-wrinkle-in-time-building-characters-with-real-story-lines/
+                - listitem [ref=e317]:
+                  - 'heading "Wrinkle Tips For Character Artists, Part II: Static Forms" [level=3] [ref=e319]':
+                    - 'link "Wrinkle Tips For Character Artists, Part II: Static Forms" [ref=e320] [cursor=pointer]':
+                      - /url: https://melindaozel.com/a-wrinkle-in-time-part-ii/
+                - listitem [ref=e321]:
+                  - link "inner brow raiser wrong" [ref=e322] [cursor=pointer]:
+                    - /url: https://melindaozel.com/inner-brow-raiser-deep-dive/
+                    - img "inner brow raiser wrong" [ref=e324]
+                  - 'heading "Inner Brow Raiser: Deep Dive" [level=3] [ref=e326]':
+                    - 'link "Inner Brow Raiser: Deep Dive" [ref=e327] [cursor=pointer]':
+                      - /url: https://melindaozel.com/inner-brow-raiser-deep-dive/
+              - button "LOAD MORE" [ref=e329] [cursor=pointer]:
+                - generic [ref=e331]: LOAD MORE
+            - link [ref=e337] [cursor=pointer]:
+              - /url: https://melindaozel.com/
+              - img [ref=e338]
+    - generic [ref=e344]:
+      - complementary [ref=e345]:
+        - generic [ref=e352]:
+          - figure [ref=e353]:
+            - link "headshot of page author" [ref=e354] [cursor=pointer]:
+              - /url: https://melindaozel.com/melinda-who-zel/
+              - img "headshot of page author" [ref=e355]
+          - paragraph
+          - paragraph [ref=e356]:
+            - text: I’m a Facial Systems Expert specializing in the Facial Action Coding System (FACS) and facial anatomy. My work spans
+            - link "expression tracking" [ref=e357] [cursor=pointer]:
+              - /url: https://patents.justia.com/inventor/melinda-ozel
+              - strong [ref=e358]: expression tracking
+            - text: ", facial animation, and"
+            - link "AI-driven lipsync" [ref=e359] [cursor=pointer]:
+              - /url: http://linkedin.com/in/melindaozel
+              - strong [ref=e360]: AI-driven lipsync
+            - text: . Recent work includes contributions to the de-aging of Tom Hanks and other actors in the
+            - strong [ref=e361]:
+              - link "Zemeckis film, Here" [ref=e362] [cursor=pointer]:
+                - /url: https://www.imdb.com/name/nm15482966/
+            - text: .
+          - paragraph [ref=e363]:
+            - text: Learn more about
+            - link "my background" [ref=e364] [cursor=pointer]:
+              - /url: https://melindaozel.com/melinda-who-zel/
+              - strong [ref=e365]: my background
+            - text: .
+          - paragraph
+      - complementary [ref=e366]:
+        - paragraph [ref=e367]:
+          - strong [ref=e368]: Courses & Workshops
+          - text: "-"
+          - link "FACS Cram Session" [ref=e369] [cursor=pointer]:
+            - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+          - text: "-"
+          - link "All About Lipsync" [ref=e370] [cursor=pointer]:
+            - /url: https://melindaozel.com/all-about-lipsync-course/
+          - text: "-"
+          - link "All Training Services" [ref=e371] [cursor=pointer]:
+            - /url: https://melindaozel.com/services/lectures-training/
+      - complementary [ref=e372]:
+        - paragraph [ref=e373]:
+          - strong [ref=e374]: "\""
+          - text: Melinda Ozel's resources on face anatomy, motion, and FACS are industry standard. During my time working on The Last of Us Part II (and other unannounced Playstation titles) I referred to it almost exclusively on a regular basis. The free material is great but the pay material is worth the cost.
+          - strong [ref=e375]: "\""
+          - strong [ref=e376]: Eric Drobile | Technical Animator
+          - strong [ref=e377]: "\""
+          - text: For most people learning traditional FACS is not feasible. It requires very costly specialized degrees and years long commitment. And the half century old research with fuzzy photos was not made for artists. What Melinda has done for our industry is take the dense scientific information and streamlined it into very easy to digest entries and videos catered to artists.
+          - strong [ref=e378]: "\""
+          - strong [ref=e379]: Paul Liaw | Principal Character Artist
+          - strong [ref=e380]: "\""
+          - text: I've been working as a Facial Blendshape Artist across film and gaming and have watched the quality of my work improve exponentially since I've had access to this wealth of knowledge that Melinda has so thoughtfully put together. Her documentation is clear, appealing, and comprehensive. If Paul Ekman is the father of FACS, Melinda has become the cool aunt.
+          - strong [ref=e381]: "\""
+          - strong [ref=e382]: "Ioana Alexandra Pirvu | Lead Artist: Blendshapes @ Rockstar Games"
+          - strong [ref=e383]: "\""
+          - text: Face the FACS in my opinion is bar-none, the best resource out there for any artist and company dealing with facial animation. The way in which Melinda delivers knowledge is detailed, but fun and compelling enough to make you want to keep learning. For a topic that could have easily been boring, she inspired me to keep learning.
+          - strong [ref=e384]: "\""
+          - strong [ref=e385]: Giovanni Nakpil | Senior Creative 3D Evangelist @ Adobe
+          - strong [ref=e386]: "\""
+          - text: If you're doing AU's (action units), this is the site you're going to need to bookmark. Melinda has gone above and beyond to create what I feel is the ultimate resource guide for AU's. Each AU explained, annotated and demonstrated with extreme clarity. You'll experience plenty of "aha!!" moments using Melinda's work as your guide!
+          - strong [ref=e387]: "\""
+          - strong [ref=e388]: Frank Gravatt
+          - strong [ref=e389]: "| Facial Modeler @ Cloud Chamber"
+      - complementary [ref=e390]:
+        - paragraph
+      - complementary [ref=e391]:
+        - generic [ref=e393]:
+          - paragraph [ref=e394]:
+            - strong [ref=e395]: Connect with me <3
+          - list [ref=e396]:
+            - listitem [ref=e397]:
+              - link "Instagram" [ref=e398] [cursor=pointer]:
+                - /url: https://instagram.com/manicexpression
+                - img [ref=e399]
+                - generic [ref=e401]: Instagram
+            - listitem [ref=e402]:
+              - link "LinkedIn" [ref=e403] [cursor=pointer]:
+                - /url: https://linkedin.com/in/melindaozel
+                - img [ref=e404]
+                - generic [ref=e406]: LinkedIn
+            - listitem [ref=e407]:
+              - link "X" [ref=e408] [cursor=pointer]:
+                - /url: https://x.com/melindaozel
+                - img [ref=e409]
+                - generic [ref=e411]: X
+  - generic [ref=e412]:
+    - generic [ref=e415]:
+      - complementary [ref=e417]:
+        - search [ref=e418]:
+          - generic [ref=e419]: Search
+          - generic [ref=e420]:
+            - searchbox "Search" [ref=e421]
+            - button "Search" [ref=e422] [cursor=pointer]
+      - complementary [ref=e424]:
+        - paragraph [ref=e425]:
+          - link "Terms & Conditions" [ref=e426] [cursor=pointer]:
+            - /url: https://melindaozel.com/terms-conditions/
+    - contentinfo "Site" [ref=e427]:
+      - generic [ref=e429]:
+        - text: Copyright © 2020-2026 Melinda Ozel . All rights reserved.
+        - text: Learn how to
+        - link "cite my work here" [ref=e430] [cursor=pointer]:
+          - /url: https://melindaozel.com/how-to-cite-my-work-use-my-visuals/
+          - generic [ref=e431]: cite my work here
+        - generic [ref=e432]: .
+  - navigation "Website language selector" [ref=e433]:
+    - generic [ref=e434]:
+      - button "Change language":
+        - generic: EN
+      - group "Available languages":
+        - link "ES" [ref=e435] [cursor=pointer]:
+          - /url: https://melindaozel.com/es/facs-cheat-sheet/eyebrow-combos-cheat-sheet/
+          - generic [ref=e436]: ES
+        - link "FR" [ref=e437] [cursor=pointer]:
+          - /url: https://melindaozel.com/fr/facs-cheat-sheet/eyebrow-combos-cheat-sheet/
+          - generic [ref=e438]: FR
+        - link "ES_VE" [ref=e439] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_ve/facs-cheat-sheet/eyebrow-combos-cheat-sheet/
+          - generic [ref=e440]: ES_VE
+        - link "ES_CL" [ref=e441] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_cl/facs-cheat-sheet/eyebrow-combos-cheat-sheet/
+          - generic [ref=e442]: ES_CL
+        - link "ES_GT" [ref=e443] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_gt/facs-cheat-sheet/eyebrow-combos-cheat-sheet/
+          - generic [ref=e444]: ES_GT
+        - link "PT" [ref=e445] [cursor=pointer]:
+          - /url: https://melindaozel.com/pt/facs-cheat-sheet/eyebrow-combos-cheat-sheet/
+          - generic [ref=e446]: PT
+        - link "ZH" [ref=e447] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh/facs-cheat-sheet/eyebrow-combos-cheat-sheet/
+          - generic [ref=e448]: ZH
+        - link "ZH_TW" [ref=e449] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh_tw/facs-cheat-sheet/eyebrow-combos-cheat-sheet/
+          - generic [ref=e450]: ZH_TW
+        - link "ZH_HK" [ref=e451] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh_hk/facs-cheat-sheet/eyebrow-combos-cheat-sheet/
+          - generic [ref=e452]: ZH_HK
+        - link "JA" [ref=e453] [cursor=pointer]:
+          - /url: https://melindaozel.com/ja/facs-cheat-sheet/eyebrow-combos-cheat-sheet/
+          - generic [ref=e454]: JA
+        - link "HI" [ref=e455] [cursor=pointer]:
+          - /url: https://melindaozel.com/hi/facs-cheat-sheet/eyebrow-combos-cheat-sheet/
+          - generic [ref=e456]: HI
+        - link "DE" [ref=e457] [cursor=pointer]:
+          - /url: https://melindaozel.com/de/facs-cheat-sheet/eyebrow-combos-cheat-sheet/
+          - generic [ref=e458]: DE
+        - link "DE_DE" [ref=e459] [cursor=pointer]:
+          - /url: https://melindaozel.com/de_de/facs-cheat-sheet/eyebrow-combos-cheat-sheet/
+          - generic [ref=e460]: DE_DE
+        - link "RU" [ref=e461] [cursor=pointer]:
+          - /url: https://melindaozel.com/ru/facs-cheat-sheet/eyebrow-combos-cheat-sheet/
+          - generic [ref=e462]: RU
+        - link "PL" [ref=e463] [cursor=pointer]:
+          - /url: https://melindaozel.com/pl/facs-cheat-sheet/eyebrow-combos-cheat-sheet/
+          - generic [ref=e464]: PL
+        - link "CS" [ref=e465] [cursor=pointer]:
+          - /url: https://melindaozel.com/cs/facs-cheat-sheet/eyebrow-combos-cheat-sheet/
+          - generic [ref=e466]: CS
+        - link "VI" [ref=e467] [cursor=pointer]:
+          - /url: https://melindaozel.com/vi/facs-cheat-sheet/eyebrow-combos-cheat-sheet/
+          - generic [ref=e468]: VI
+        - link "IT" [ref=e469] [cursor=pointer]:
+          - /url: https://melindaozel.com/it/facs-cheat-sheet/eyebrow-combos-cheat-sheet/
+          - generic [ref=e470]: IT
+        - link "SV" [ref=e471] [cursor=pointer]:
+          - /url: https://melindaozel.com/sv/facs-cheat-sheet/eyebrow-combos-cheat-sheet/
+          - generic [ref=e472]: SV
+        - link "SR" [ref=e473] [cursor=pointer]:
+          - /url: https://melindaozel.com/sr/facs-cheat-sheet/eyebrow-combos-cheat-sheet/
+          - generic [ref=e474]: SR
+        - link "AR" [ref=e475] [cursor=pointer]:
+          - /url: https://melindaozel.com/ar/facs-cheat-sheet/eyebrow-combos-cheat-sheet/
+          - generic [ref=e476]: AR
+        - link "MS" [ref=e477] [cursor=pointer]:
+          - /url: https://melindaozel.com/ms/facs-cheat-sheet/eyebrow-combos-cheat-sheet/
+          - generic [ref=e478]: MS
+        - link "FI" [ref=e479] [cursor=pointer]:
+          - /url: https://melindaozel.com/fi/facs-cheat-sheet/eyebrow-combos-cheat-sheet/
+          - generic [ref=e480]: FI
+        - link "ES_MX" [ref=e481] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_mx/facs-cheat-sheet/eyebrow-combos-cheat-sheet/
+          - generic [ref=e482]: ES_MX
+        - link "KO" [ref=e483] [cursor=pointer]:
+          - /url: https://melindaozel.com/ko/facs-cheat-sheet/eyebrow-combos-cheat-sheet/
+          - generic [ref=e484]: KO
+        - link "TR" [ref=e485] [cursor=pointer]:
+          - /url: https://melindaozel.com/tr/facs-cheat-sheet/eyebrow-combos-cheat-sheet/
+          - generic [ref=e486]: TR
+        - link "IS" [ref=e487] [cursor=pointer]:
+          - /url: https://melindaozel.com/is/facs-cheat-sheet/eyebrow-combos-cheat-sheet/
+          - generic [ref=e488]: IS
+        - link "NL" [ref=e489] [cursor=pointer]:
+          - /url: https://melindaozel.com/nl/facs-cheat-sheet/eyebrow-combos-cheat-sheet/
+          - generic [ref=e490]: NL
+        - link "NL_NL" [ref=e491] [cursor=pointer]:
+          - /url: https://melindaozel.com/nl_nl/facs-cheat-sheet/eyebrow-combos-cheat-sheet/
+          - generic [ref=e492]: NL_NL
+        - link "ES_AR" [ref=e493] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_ar/facs-cheat-sheet/eyebrow-combos-cheat-sheet/
+          - generic [ref=e494]: ES_AR
+        - link "UK" [ref=e495] [cursor=pointer]:
+          - /url: https://melindaozel.com/uk/facs-cheat-sheet/eyebrow-combos-cheat-sheet/
+          - generic [ref=e496]: UK
+  - generic [ref=e497]: desktop

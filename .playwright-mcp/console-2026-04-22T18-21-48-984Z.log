@@ -1,0 +1,12 @@
+[    1967ms] TypeError: Cannot read properties of undefined (reading 'hooks')
+    at https://melindaozel.com/wp-includes/js/dist/i18n.min.js?ver=c26c3dc7bed366793375:2:4981
+    at https://melindaozel.com/wp-includes/js/dist/i18n.min.js?ver=c26c3dc7bed366793375:2:5277
+[    1967ms] ReferenceError: wp is not defined
+    at wp-i18n-js-after:2:1
+[    1933ms] [LOG] JQMIGRATE: Migrate is installed, version 3.4.1 @ https://melindaozel.com/_static/??wp-includes/js/jquery/jquery-migrate.min.js,wp-content/plugins/translatepress-multilingual/assets/js/trp-frontend-language-switcher.js?m=1776798352:1
+[    2449ms] [ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ https://media.gettyimages.com/photos/willem-dafoe-and-his-wife-giada-colagrande-attend-the-graduation-picture-id532708468?k=6&m=532708468&s=594x594&w=0&h=Mt46RaKWSiB84VKAvF97y2nJ10Ff6VdG2sZs9BMUn1Q=:0
+[    2450ms] [ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ https://media.gettyimages.com/photos/julia-roberts-at-the-wonder-press-conference-at-the-langham-hotel-on-picture-id871092988?k=6&m=871092988&s=594x594&w=0&h=IjE8PF4g3VJdxqNFeEQ7IZ_Vs9DPmBgYOhaDkL-W3us=:0
+[    2467ms] [ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ https://media.gettyimages.com/photos/julia-roberts-at-the-wonder-press-conference-at-the-langham-hotel-on-picture-id871093072?k=6&m=871093072&s=594x594&w=0&h=Zl0q0SAlxUYjOr7JDI_l4Fg8C0iSXPRy7OEn7BCp8UY=:0
+[    2497ms] [ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ https://media.gettyimages.com/photos/linda-cardellini-attends-the-2019-vanity-fair-oscar-party-hosted-by-picture-id1127310146?k=6&m=1127310146&s=594x594&w=0&h=TLu8DXhWcyAw67biv8mLVUVkhDRaqrpBOk_x5-8Hl7o=:0
+[    2589ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202604170101/pubads_impl.js?cb=31097946:0
+[    2648ms] [ERROR] Failed to load resource: net::ERR_NAME_NOT_RESOLVED @ https://securepubads.g.doubleclick.net/pagead/managed/dict/m202604210101/gpt:0

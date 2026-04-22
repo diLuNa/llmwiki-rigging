@@ -1,0 +1,623 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#content"
+  - navigation "Secondary" [ref=e3]:
+    - list [ref=e6]:
+      - listitem [ref=e7]:
+        - link "Premium Member Access" [ref=e8] [cursor=pointer]:
+          - /url: https://melindaozel.com/premium-resources/
+          - text: Premium Member Access
+          - img [ref=e10]
+        - list:
+          - listitem:
+            - link "Login":
+              - /url: https://melindaozel.com/login/
+          - listitem:
+            - link "Subscribe :)":
+              - /url: https://melindaozel.com/subscription-options/
+      - listitem [ref=e12]:
+        - link "Recorded Lecture Access" [ref=e13] [cursor=pointer]:
+          - /url: https://melindaozel.com/recorded-lectures/
+          - text: Recorded Lecture Access
+          - img [ref=e15]
+        - list:
+          - listitem:
+            - link "FACS Cram Session":
+              - /url: https://melindaozel.com/facs-cram-session/
+          - listitem:
+            - link "All About Lipsync":
+              - /url: https://melindaozel.com/all-about-lipsync-lecture-videos/
+      - listitem [ref=e17]:
+        - link "My Account" [ref=e18] [cursor=pointer]:
+          - /url: https://melindaozel.com/account/
+  - banner "Site" [ref=e19]:
+    - generic [ref=e21]:
+      - link "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e23] [cursor=pointer]:
+        - /url: https://melindaozel.com/
+        - img "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e24]
+      - paragraph [ref=e26]:
+        - link "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e27] [cursor=pointer]:
+          - /url: https://melindaozel.com/
+  - navigation "Primary" [ref=e28]:
+    - list [ref=e31]:
+      - listitem [ref=e32]:
+        - link "Learning Hub" [ref=e33] [cursor=pointer]:
+          - /url: https://melindaozel.com/learning-hub/
+          - text: Learning Hub
+          - img [ref=e35]
+        - list:
+          - listitem:
+            - link "FACS Cheat Sheet":
+              - /url: https://melindaozel.com/facs-cheat-sheet/
+          - listitem:
+            - link "Viseme Cheat Sheet":
+              - /url: https://melindaozel.com/viseme-cheat-sheet/
+          - listitem:
+            - link "All Free Resources":
+              - /url: https://melindaozel.com/free-resources/
+          - listitem:
+            - link "🔒 Premium Resources":
+              - /url: https://melindaozel.com/premium-resources/
+              - img "🔒"
+              - text: Premium Resources
+          - listitem:
+            - link "FAQs":
+              - /url: https://melindaozel.com/faqs/
+      - listitem [ref=e37]:
+        - link "Courses" [ref=e38] [cursor=pointer]:
+          - /url: https://melindaozel.com/online-lectures/
+          - text: Courses
+          - img [ref=e40]
+        - list:
+          - listitem:
+            - link "FACS Cram Session":
+              - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+          - listitem:
+            - link "All About Lipsync":
+              - /url: https://melindaozel.com/all-about-lipsync-course/
+      - listitem [ref=e42]:
+        - link "Full Site Access" [ref=e43] [cursor=pointer]:
+          - /url: https://melindaozel.com/subscription-options/
+          - text: Full Site Access
+          - img [ref=e45]
+        - list:
+          - listitem:
+            - link "Membership Options":
+              - /url: https://melindaozel.com/subscription-options/
+      - listitem [ref=e47]:
+        - link "Services" [ref=e48] [cursor=pointer]:
+          - /url: https://melindaozel.com/services/
+          - text: Services
+          - img [ref=e50]
+        - list:
+          - listitem:
+            - link "FACS Lectures & Training":
+              - /url: https://melindaozel.com/services/lectures-training/
+          - listitem:
+            - link "Consulting":
+              - /url: https://melindaozel.com/services/consulting/
+      - listitem [ref=e52]:
+        - link "About" [ref=e53] [cursor=pointer]:
+          - /url: https://melindaozel.com/who-is-melinda-ozel/
+          - text: About
+          - img [ref=e55]
+        - list:
+          - listitem:
+            - link "About Me":
+              - /url: https://melindaozel.com/who-is-melinda-ozel/
+          - listitem:
+            - link "Cite My Work":
+              - /url: https://melindaozel.com/how-to-cite-my-work-use-my-visuals/
+          - listitem:
+            - link "Contact":
+              - /url: https://melindaozel.com/who-is-melinda-ozel/contact-me/
+  - generic [ref=e58]:
+    - main [ref=e60]:
+      - article [ref=e61]:
+        - generic [ref=e62]:
+          - generic [ref=e63]:
+            - 'heading "A Wrinkle In Time, Part I: How to Build Characters With Real Story Lines" [level=1] [ref=e64]'
+            - generic [ref=e65]:
+              - time [ref=e67]: May 4, 2020
+              - generic [ref=e68]:
+                - text: by
+                - link "Melinda Ozel" [ref=e70] [cursor=pointer]:
+                  - /url: https://melindaozel.com/author/melindaozel/
+          - generic [ref=e72]:
+            - generic [ref=e77]:
+              - paragraph [ref=e78]: "The wrinkles on our skin are like words in a book: Each line tells a story."
+              - paragraph [ref=e79]: Wrinkles are more than just a product of aging; they are maps that guide us through an individual’s emotional history, genetic tendencies, and lifestyle habits.
+              - paragraph [ref=e80]:
+                - img "wrinkly1-Recovered" [ref=e81]
+              - paragraph [ref=e82]: "Learning about wrinkles is useful for:"
+              - list [ref=e83]:
+                - listitem [ref=e84]: art
+                - listitem [ref=e85]: behavioral science
+                - listitem [ref=e86]: cosmetology
+                - listitem [ref=e87]: dermatology
+                - listitem [ref=e88]: plastic surgery
+                - listitem [ref=e89]: special effects makeup
+                - listitem [ref=e90]: and many other areas of study
+              - paragraph [ref=e91]: Each field has its own motive for studying wrinkles, and as a consequence, each field has a unique contribution toward the overall understanding of wrinkle characteristics.
+              - paragraph [ref=e92]:
+                - text: To gain a comprehensive understanding of wrinkle types and features, I pulled sources from cosmetology, dermatology, and plastic surgery journals. I leveraged these sources while examining portraits from photojournalist,
+                - link "Berke Arakli." [ref=e93] [cursor=pointer]:
+                  - /url: https://www.instagram.com/berkearakli/?hl=en
+                  - generic [ref=e94]: Berke Arakli.
+                - text: I encourage everyone to venture into studies from other disciplines. Exploring information outside of your respective field will teach you more than you could ever learn from staying in your lane; it is enlightening.
+              - heading "WTF is a “wrinkle”?" [level=2] [ref=e95]
+              - paragraph [ref=e96]: While I was writing this piece, I started to question where to draw the line (lol) on what is considered a “wrinkle.” Funnily enough,
+              - paragraph [ref=e97]:
+                - text: “
+                - link "The literature appears quite confusing because there is no consensus about the definition of such terms as wrinkle, rhytid, crinkle, crease, groove, line and furrow." [ref=e98] [cursor=pointer]:
+                  - /url: https://onlinelibrary.wiley.com/doi/full/10.1111/j.1467-2494.2006.00342.x
+                  - generic [ref=e99]: The literature appears quite confusing because
+                  - text: there is no consensus about the definition of such terms as wrinkle, rhytid, crinkle, crease, groove, line and furrow.
+                - text: ”
+              - paragraph [ref=e100]: Despite the lack of consensus of what it means to be a “wrinkle,” I was able identify a few different wrinkle classifications.
+              - heading "Dynamic and Static Wrinkles" [level=3] [ref=e101]
+              - paragraph [ref=e102]: "There two are major types:"
+              - list [ref=e103]:
+                - listitem [ref=e104]: dynamic
+                - listitem [ref=e105]: Static
+              - heading "Dynamic Wrinkles" [level=4] [ref=e106]
+              - paragraph [ref=e107]:
+                - link "Dynamic wrinkles" [ref=e109] [cursor=pointer]:
+                  - /url: https://onlinelibrary.wiley.com/doi/full/10.1111/j.1467-2494.2006.00342.x#b10
+                - text: (also referred to as “dynamic expression lines”) are formed from repeated facial expressions.
+              - paragraph [ref=e110]: "NOTE: There was also a discrepancy in the definition of “dynamic wrinkles.” Some sources claimed that dynamic wrinkles are only present during the formation of an expression but disappear once that expression is released. Other sources claimed that dynamic wrinkles referred to the formation of wrinkles over time caused by repeated expression movement. Due to the ambiguity in a definition consensus, I’m going to define dynamic wrinkles on my own terms."
+              - paragraph [ref=e111]:
+                - strong [ref=e112]: "Melinda’s dynamic wrinkle definition:"
+                - strong
+                - generic [ref=e113]: Dynamic wrinkles are wrinkles that appear on the face during expression-based movement. While they may begin as temporary lines (only existing during the expression), they often become permanently etched over time from repeated expression activation; thus, turning them into “static” wrinkles. The timing and depth of the etching will vary depending on a person’s skin type and lifestyle.
+              - paragraph [ref=e114]:
+                - link "lukewrinkles" [ref=e115] [cursor=pointer]:
+                  - /url: https://www.instagram.com/lukabrattzi/
+                  - img "lukewrinkles" [ref=e116]
+              - heading "Static Wrinkles" [level=4] [ref=e117]
+              - paragraph [ref=e118]: "Static wrinkles are wrinkles set in place on the skin with or without facial movement. They can be caused by: repeated expressions, gravitational forces, and loss of skin elasticity."
+              - paragraph [ref=e119]: "There are three subclasses of static wrinkles:"
+              - list [ref=e120]:
+                - listitem [ref=e121]: permanent elastotic creases
+                - listitem [ref=e122]: atrophic crinkling rhytids
+                - listitem [ref=e123]: gravitational folds
+              - paragraph [ref=e124]: ______________________
+              - paragraph [ref=e125]: "During my philosophical journey into the semantics of the word “wrinkle,” I ended up learning way too much and realizing: This post will require a Part II. For Part I, I am going to focus on one class of wrinkles: dynamic wrinkles."
+              - paragraph [ref=e126]: ______________________
+              - heading "Dynamic Wrinkles for Dynamic and Static Characters" [level=2] [ref=e127]
+              - paragraph [ref=e128]: In art, wrinkles should not be wasted as mere details used to make a character look real. Each line should be applied intentionally with mindful variations in depth.
+              - paragraph [ref=e129]:
+                - generic [ref=e130]:
+                  - text: For dynamic wrinkles in specific – because they are inherently caused by the expressions an individual makes repeatedly – they are especially pertinent to character stylization. You can use these lines to subtly illustrate a character’s personality. If you wish to create a character who is generally friendly and has lived a happy life, you may consider hammering in some
+                  - emphasis [ref=e131]: cheek raiser
+                  - text: and smile lines. If you want to create a kind but sad character, you may consider having the same strong
+                  - emphasis [ref=e132]: cheek raiser
+                  - text: and smile lines as discussed for the friendly/happy character – but coupled with upper face wrinkle patterns reflective of sadness (i.e. wrinkles from
+                  - emphasis [ref=e133]: inner brow raiser
+                  - text: +
+                  - emphasis [ref=e134]: brow lowerer
+                  - text: ).
+              - paragraph [ref=e135]: By playing with dynamic wrinkle strengths and combinations, there are infinite ways to tell a character’s story – and that’s just covering the surface. (Pun intended.)
+              - heading "Examples From Berke Arakli’s Photojournalism" [level=3] [ref=e136]
+              - paragraph [ref=e137]: Berke Arakli is a Turkish photographer I’ve been following for years. He captures raw emotion in people from all walks of life. His editing style is very conducive to studying wrinkles, as Arakli often appears to amp up the sharpness and definition, further showcasing every fine detail in his portraits.
+              - paragraph [ref=e138]:
+                - text: I have only chosen to review a couple of my favorite photos, but Arakli has many, many more amazing captures. Visit
+                - link "his page" [ref=e140] [cursor=pointer]:
+                  - /url: https://www.instagram.com/berkearakli/?hl=en
+                - text: to view his full gallery.
+              - heading "The Warm Woman" [level=4] [ref=e141]
+              - paragraph
+              - generic [ref=e142]:
+                - figure [ref=e143]:
+                  - link [ref=e145] [cursor=pointer]:
+                    - /url: https://melindaozel.com/a-wrinkle-in-time-building-characters-with-real-story-lines/portrait-by_-besdrke-arakli/#main
+                - figure [ref=e146]:
+                  - link [ref=e148] [cursor=pointer]:
+                    - /url: https://melindaozel.com/a-wrinkle-in-time-building-characters-with-real-story-lines/wrinkly12/#main
+              - paragraph
+              - paragraph [ref=e149]:
+                - generic [ref=e150]: Observe this woman’s beautiful face. She gives off a sense of warmth and kindness. Her dynamic expression lines are most prominent on her forehead, around her eyes, and along her mouth corners.
+              - paragraph [ref=e151]:
+                - emphasis [ref=e152]: The Warm Woman
+                - text: ‘s brow-based wrinkles are concentrated in the center of her forehead (blue lines). As the lines progress to the outer areas of her forehead (yellow lines), the wrinkle depth recedes. This pattern is similar to the wrinkle pattern for
+                - emphasis [ref=e153]: inner brow raiser
+                - text: (referred to as AU1 in the
+                - link "Facial Action Coding System" [ref=e155] [cursor=pointer]:
+                  - /url: https://www.paulekman.com/facial-action-coding-system/
+                - text: ). ***
+                - emphasis [ref=e156]: Inner brow raiser
+                - text: is an empathetic facial action, often used to express hope and understanding. When combined with brow furrowing muscles, it becomes a characteristic upper face expression for sadness. Since her brow furrow wrinkles (peach lines) seem relatively shallow in comparison, we can hypothesize her brow raising generally occurred without furrowing and was not a result of sadness.
+              - paragraph [ref=e157]:
+                - text: The wrinkles around her eyes are indicative of repeated
+                - emphasis [ref=e158]: cheek raiser
+                - text: actions from orbicularis oculi contractions (lilac and dark pink lines) – especially the orbitalis section (the lilac lines) – as well as repeated
+                - emphasis [ref=e159]: lip corner pulling
+                - text: (light pink lines). Her eye and mouth wrinkle patterns show a history of joy.
+              - paragraph [ref=e160]:
+                - emphasis [ref=e161]: The Warm Woman
+                - text: ‘s
+                - emphasis [ref=e162]: inner brow raiser
+                - text: –like
+                - link "***" [ref=e163] [cursor=pointer]:
+                  - /url: https://docs.google.com/document/d/e/2PACX-1vSPlLFniKsB-dtrhjyU4hUfXGyRAdly0Ine9lFIjAo1GLJGi68lhaKSr9oHCSAgfF5FN90MMzOn0M18/pub
+                - text: wrinkles combined with her eye and mouth joy lines work together to give her a warm, empathetic appearance.
+              - paragraph [ref=e164]:
+                - strong [ref=e165]: "***IMPORTANT UPDATE:"
+                - emphasis [ref=e166]: I came across some research that explains the differences in wrinkle patterns for brow raising. While
+                - text: The Warm Woman
+                - emphasis [ref=e167]: ‘s brow wrinkles are rounded and concentrated in the middle of her forehead (usually a sign of
+                - text: inner brow raiser
+                - emphasis [ref=e168]: ), because the lines are quite long and span across a wide area on her forehead (not usually a sign of
+                - text: inner brow raiser
+                - emphasis [ref=e169]: ), it is highly likely that she has a
+                - strong [ref=e171]:
+                  - link "Type I frontalis muscle" [ref=e173] [cursor=pointer]:
+                    - /url: https://docs.google.com/document/d/e/2PACX-1vSPlLFniKsB-dtrhjyU4hUfXGyRAdly0Ine9lFIjAo1GLJGi68lhaKSr9oHCSAgfF5FN90MMzOn0M18/pub
+                  - text: .
+              - heading "The Wise Man" [level=4] [ref=e174]
+              - paragraph
+              - generic [ref=e175]:
+                - figure [ref=e176]:
+                  - link [ref=e178] [cursor=pointer]:
+                    - /url: https://melindaozel.com/a-wrinkle-in-time-building-characters-with-real-story-lines/portrait-by_-berke-arakmanli-2/#main
+                - figure [ref=e179]:
+                  - link [ref=e181] [cursor=pointer]:
+                    - /url: https://melindaozel.com/a-wrinkle-in-time-building-characters-with-real-story-lines/wrinkles3-ddrecovered/#main
+              - paragraph
+              - paragraph [ref=e182]:
+                - text: Compare the differences between
+                - emphasis [ref=e183]: The Wise Man
+                - text: ‘s brow wrinkle patterns and
+                - emphasis [ref=e184]: The Warm Woman
+                - text: ‘s.
+                - emphasis [ref=e185]: The Wise Man’
+                - text: s brow wrinkles are fuller, with undulating humps*** and deeper lines on the outer parts of the forehead. Fuller lines are more typical of a full brow raise (both AU1 and AU2 occurring together). While full brow raising is an indicator of the surprise emotion, it is also a lot more common as a social expression to facilitate language and show engagement. Perhaps
+                - emphasis [ref=e186]: The Wise Man
+                - text: was a sociable person and an active listener.
+              - paragraph [ref=e187]:
+                - text: Now observe
+                - emphasis [ref=e188]: The Wise Man
+                - text: ‘s brow furrow wrinkles (red lines); they are deeper than
+                - emphasis [ref=e189]: The Warm Woman
+                - text: ‘s. It seems
+                - emphasis [ref=e190]: The Wise Man
+                - text: may have spent more time knitting and lowering his brows. The furrow action is seen in anger; however, it is also extremely common when a person is confused, lost in thought, tired, unable to see, etc. Due to lack of visibility of
+                - emphasis [ref=e191]: The Wise Man’
+                - text: "s lower face, we cannot use clues around his mouth to determine whether his brow furrowing was related to frequent displays of anger. #noshavenovember"
+              - paragraph [ref=e192]: Let’s assume he was a deep thinker – hence his name – “The Wise Man.”
+              - paragraph [ref=e193]:
+                - strong [ref=e194]: "***IMPORTANT UPDATE:"
+                - emphasis [ref=e195]: As mentioned earlier, I came across some research that explains the differences in wrinkle patterns for brow raising.
+                - text: The Wise Man’s
+                - emphasis [ref=e196]: brow wrinkles span across his forehead with undulating peaks. He likes has a
+                - emphasis [ref=e197]:
+                  - link "Type II frontalis muscle" [ref=e199] [cursor=pointer]:
+                    - /url: https://docs.google.com/document/d/e/2PACX-1vSPlLFniKsB-dtrhjyU4hUfXGyRAdly0Ine9lFIjAo1GLJGi68lhaKSr9oHCSAgfF5FN90MMzOn0M18/pub
+                  - text: .
+              - heading "Closing Notes" [level=2] [ref=e200]:
+                - strong [ref=e201]: Closing Notes
+              - paragraph [ref=e202]: As you can see, there are so many ways to paint a persona through subtle facial characteristics. Do not waste your wrinkles by applying them for the sake of realism. Apply them with purpose.
+              - heading "Other Notes" [level=3] [ref=e203]
+              - list [ref=e204]:
+                - listitem [ref=e205]:
+                  - text: While I focus on using wrinkles to extrapolate information and tell a story, I want to stress that dynamic wrinkles are no source of guaranteed knowledge. While someone may appear to have performed
+                  - emphasis [ref=e206]: inner brow raiser
+                  - text: throughout their life, such wrinkle patterns may also be a result of differences in facial morphology
+                  - link "***" [ref=e207] [cursor=pointer]:
+                    - /url: https://docs.google.com/document/d/e/2PACX-1vSPlLFniKsB-dtrhjyU4hUfXGyRAdly0Ine9lFIjAo1GLJGi68lhaKSr9oHCSAgfF5FN90MMzOn0M18/pub
+                    - generic [ref=e208]: "***"
+                  - text: and genetics. My mother and I both have a tendency to raise our right outer brow. When either of us performs this action, it is usually not in the context of an emotional response; it is simply a quirk of our unique genetics.
+            - generic [ref=e212]:
+              - heading "Explore More Premium Content" [level=2] [ref=e217]
+              - generic [ref=e222]:
+                - list [ref=e223]:
+                  - listitem [ref=e224]:
+                    - link "nose wrinkler, brow furrow, upper lid raiser" [ref=e225] [cursor=pointer]:
+                      - /url: https://melindaozel.com/bypassing-vr-headset-occlusion-in-face-tracking/
+                      - img "nose wrinkler, brow furrow, upper lid raiser" [ref=e227]
+                    - heading "Bypassing VR Headset Occlusion in Face Tracking" [level=3] [ref=e229]:
+                      - link "Bypassing VR Headset Occlusion in Face Tracking" [ref=e230] [cursor=pointer]:
+                        - /url: https://melindaozel.com/bypassing-vr-headset-occlusion-in-face-tracking/
+                  - listitem [ref=e231]:
+                    - link [ref=e232] [cursor=pointer]:
+                      - /url: https://melindaozel.com/breaking-down-nose-wrinkler/
+                    - heading "Breaking Down Nose Wrinkler (AU9)" [level=3] [ref=e235]:
+                      - link "Breaking Down Nose Wrinkler (AU9)" [ref=e236] [cursor=pointer]:
+                        - /url: https://melindaozel.com/breaking-down-nose-wrinkler/
+                  - listitem [ref=e237]:
+                    - link "woman raising her top lips with drawovers" [ref=e238] [cursor=pointer]:
+                      - /url: https://melindaozel.com/upper-lip-raiser-vs-nasolabial-furrow-deepener/
+                      - img "woman raising her top lips with drawovers" [ref=e240]
+                    - heading "Upper Lip Raiser vs. Nasolabial Furrow Deepener" [level=3] [ref=e242]:
+                      - link "Upper Lip Raiser vs. Nasolabial Furrow Deepener" [ref=e243] [cursor=pointer]:
+                        - /url: https://melindaozel.com/upper-lip-raiser-vs-nasolabial-furrow-deepener/
+                  - listitem [ref=e244]:
+                    - link [ref=e245] [cursor=pointer]:
+                      - /url: https://melindaozel.com/a-wrinkle-in-time-building-characters-with-real-story-lines/
+                    - 'heading "A Wrinkle In Time, Part I: How to Build Characters With Real Story Lines" [level=3] [ref=e248]':
+                      - 'link "A Wrinkle In Time, Part I: How to Build Characters With Real Story Lines" [ref=e249] [cursor=pointer]':
+                        - /url: https://melindaozel.com/a-wrinkle-in-time-building-characters-with-real-story-lines/
+                  - listitem [ref=e250]:
+                    - 'heading "Wrinkle Tips For Character Artists, Part II: Static Forms" [level=3] [ref=e252]':
+                      - 'link "Wrinkle Tips For Character Artists, Part II: Static Forms" [ref=e253] [cursor=pointer]':
+                        - /url: https://melindaozel.com/a-wrinkle-in-time-part-ii/
+                  - listitem [ref=e254]:
+                    - link "inner brow raiser wrong" [ref=e255] [cursor=pointer]:
+                      - /url: https://melindaozel.com/inner-brow-raiser-deep-dive/
+                      - img "inner brow raiser wrong" [ref=e257]
+                    - 'heading "Inner Brow Raiser: Deep Dive" [level=3] [ref=e259]':
+                      - 'link "Inner Brow Raiser: Deep Dive" [ref=e260] [cursor=pointer]':
+                        - /url: https://melindaozel.com/inner-brow-raiser-deep-dive/
+                - button "LOAD MORE" [ref=e262] [cursor=pointer]:
+                  - generic [ref=e264]: LOAD MORE
+              - link [ref=e270] [cursor=pointer]:
+                - /url: https://melindaozel.com/
+                - img [ref=e271]
+          - generic "Entry meta" [ref=e276]:
+            - generic [ref=e277]:
+              - img [ref=e279]
+              - generic [ref=e281]: Categories
+              - link "action units (FACS AUs)" [ref=e282] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/facial-expressions/action-units/
+              - text: ","
+              - link "facial expressions" [ref=e283] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/facial-expressions/
+              - text: ","
+              - link "facial muscles" [ref=e284] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/anatomy/muscles/
+              - text: ","
+              - link "paid content" [ref=e285] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/paid/
+              - text: ","
+              - link "premium previews" [ref=e286] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/paid/premium-previews/
+              - text: ","
+              - link "wrinkles" [ref=e287] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/facial-expressions/wrinkles/
+            - navigation "Posts" [ref=e288]:
+              - generic [ref=e289]:
+                - img [ref=e291]
+                - 'link "Mindful Design: Everything You Did and Didn’t Want to Know About Emoji Design" [ref=e294] [cursor=pointer]':
+                  - /url: https://melindaozel.com/mindful-design-everything-you-did-and-didnt-want-to-know-about-emoji/
+              - generic [ref=e295]:
+                - img [ref=e297]
+                - 'link "Wrinkle Tips For Character Artists, Part II: Static Forms" [ref=e300] [cursor=pointer]':
+                  - /url: https://melindaozel.com/a-wrinkle-in-time-part-ii/
+      - generic [ref=e302]:
+        - 'heading "2 thoughts on “A Wrinkle In Time, Part I: How to Build Characters With Real Story Lines”" [level=2] [ref=e303]'
+        - list [ref=e304]:
+          - listitem [ref=e305]:
+            - generic [ref=e306]:
+              - text: "Pingback:"
+              - link "faking aging in characters – Face the FACS" [ref=e307] [cursor=pointer]:
+                - /url: https://melindaozel.com/faking-aging-in-characters/
+          - listitem [ref=e308]:
+            - generic [ref=e309]:
+              - text: "Pingback:"
+              - 'link "a wrinkle in time, part II: static forms – Face the FACS" [ref=e310] [cursor=pointer]':
+                - /url: https://melindaozel.com/a-wrinkle-in-time-part-ii/
+        - generic [ref=e311]:
+          - heading "Leave a Comment" [level=3] [ref=e312]
+          - generic [ref=e313]:
+            - paragraph [ref=e314]:
+              - text: Logged in as LucaPrasso.
+              - link "Edit your profile" [ref=e315] [cursor=pointer]:
+                - /url: https://melindaozel.com/wp-admin/profile.php
+              - text: .
+              - link "Log out?" [ref=e316] [cursor=pointer]:
+                - /url: https://melindaozel.com/wp-login.php?action=logout&redirect_to=https%3A%2F%2Fmelindaozel.com%2Fa-wrinkle-in-time-building-characters-with-real-story-lines%2F&_wpnonce=3fac8055be
+              - generic [ref=e317]: Required fields are marked *
+            - paragraph [ref=e318]:
+              - generic [ref=e319]: Comment
+              - textbox "Comment" [ref=e320]
+            - paragraph [ref=e321]:
+              - button "Post Comment" [ref=e322] [cursor=pointer]
+        - paragraph [ref=e323]:
+          - text: This site uses Akismet to reduce spam.
+          - link "Learn how your comment data is processed." [ref=e324] [cursor=pointer]:
+            - /url: https://akismet.com/privacy/
+    - generic [ref=e326]:
+      - complementary [ref=e327]:
+        - generic [ref=e334]:
+          - figure [ref=e335]:
+            - link "headshot of page author" [ref=e336] [cursor=pointer]:
+              - /url: https://melindaozel.com/melinda-who-zel/
+              - img "headshot of page author" [ref=e337]
+          - paragraph
+          - paragraph [ref=e338]:
+            - text: I’m a Facial Systems Expert specializing in the Facial Action Coding System (FACS) and facial anatomy. My work spans
+            - link "expression tracking" [ref=e339] [cursor=pointer]:
+              - /url: https://patents.justia.com/inventor/melinda-ozel
+              - strong [ref=e340]: expression tracking
+            - text: ", facial animation, and"
+            - link "AI-driven lipsync" [ref=e341] [cursor=pointer]:
+              - /url: http://linkedin.com/in/melindaozel
+              - strong [ref=e342]: AI-driven lipsync
+            - text: . Recent work includes contributions to the de-aging of Tom Hanks and other actors in the
+            - strong [ref=e343]:
+              - link "Zemeckis film, Here" [ref=e344] [cursor=pointer]:
+                - /url: https://www.imdb.com/name/nm15482966/
+            - text: .
+          - paragraph [ref=e345]:
+            - text: Learn more about
+            - link "my background" [ref=e346] [cursor=pointer]:
+              - /url: https://melindaozel.com/melinda-who-zel/
+              - strong [ref=e347]: my background
+            - text: .
+          - paragraph
+      - complementary [ref=e348]:
+        - paragraph [ref=e349]:
+          - strong [ref=e350]: Courses & Workshops
+          - text: "-"
+          - link "FACS Cram Session" [ref=e351] [cursor=pointer]:
+            - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+          - text: "-"
+          - link "All About Lipsync" [ref=e352] [cursor=pointer]:
+            - /url: https://melindaozel.com/all-about-lipsync-course/
+          - text: "-"
+          - link "All Training Services" [ref=e353] [cursor=pointer]:
+            - /url: https://melindaozel.com/services/lectures-training/
+      - complementary [ref=e354]:
+        - paragraph [ref=e355]:
+          - strong [ref=e356]: "\""
+          - text: Melinda Ozel's resources on face anatomy, motion, and FACS are industry standard. During my time working on The Last of Us Part II (and other unannounced Playstation titles) I referred to it almost exclusively on a regular basis. The free material is great but the pay material is worth the cost.
+          - strong [ref=e357]: "\""
+          - strong [ref=e358]: Eric Drobile | Technical Animator
+          - strong [ref=e359]: "\""
+          - text: For most people learning traditional FACS is not feasible. It requires very costly specialized degrees and years long commitment. And the half century old research with fuzzy photos was not made for artists. What Melinda has done for our industry is take the dense scientific information and streamlined it into very easy to digest entries and videos catered to artists.
+          - strong [ref=e360]: "\""
+          - strong [ref=e361]: Paul Liaw | Principal Character Artist
+          - strong [ref=e362]: "\""
+          - text: I've been working as a Facial Blendshape Artist across film and gaming and have watched the quality of my work improve exponentially since I've had access to this wealth of knowledge that Melinda has so thoughtfully put together. Her documentation is clear, appealing, and comprehensive. If Paul Ekman is the father of FACS, Melinda has become the cool aunt.
+          - strong [ref=e363]: "\""
+          - strong [ref=e364]: "Ioana Alexandra Pirvu | Lead Artist: Blendshapes @ Rockstar Games"
+          - strong [ref=e365]: "\""
+          - text: Face the FACS in my opinion is bar-none, the best resource out there for any artist and company dealing with facial animation. The way in which Melinda delivers knowledge is detailed, but fun and compelling enough to make you want to keep learning. For a topic that could have easily been boring, she inspired me to keep learning.
+          - strong [ref=e366]: "\""
+          - strong [ref=e367]: Giovanni Nakpil | Senior Creative 3D Evangelist @ Adobe
+          - strong [ref=e368]: "\""
+          - text: If you're doing AU's (action units), this is the site you're going to need to bookmark. Melinda has gone above and beyond to create what I feel is the ultimate resource guide for AU's. Each AU explained, annotated and demonstrated with extreme clarity. You'll experience plenty of "aha!!" moments using Melinda's work as your guide!
+          - strong [ref=e369]: "\""
+          - strong [ref=e370]: Frank Gravatt
+          - strong [ref=e371]: "| Facial Modeler @ Cloud Chamber"
+      - complementary [ref=e372]:
+        - paragraph
+      - complementary [ref=e373]:
+        - generic [ref=e375]:
+          - paragraph [ref=e376]:
+            - strong [ref=e377]: Connect with me <3
+          - list [ref=e378]:
+            - listitem [ref=e379]:
+              - link "Instagram" [ref=e380] [cursor=pointer]:
+                - /url: https://instagram.com/manicexpression
+                - img [ref=e381]
+                - generic [ref=e383]: Instagram
+            - listitem [ref=e384]:
+              - link "LinkedIn" [ref=e385] [cursor=pointer]:
+                - /url: https://linkedin.com/in/melindaozel
+                - img [ref=e386]
+                - generic [ref=e388]: LinkedIn
+            - listitem [ref=e389]:
+              - link "X" [ref=e390] [cursor=pointer]:
+                - /url: https://x.com/melindaozel
+                - img [ref=e391]
+                - generic [ref=e393]: X
+  - generic [ref=e394]:
+    - generic [ref=e397]:
+      - complementary [ref=e399]:
+        - search [ref=e400]:
+          - generic [ref=e401]: Search
+          - generic [ref=e402]:
+            - searchbox "Search" [ref=e403]
+            - button "Search" [ref=e404] [cursor=pointer]
+      - complementary [ref=e406]:
+        - paragraph [ref=e407]:
+          - link "Terms & Conditions" [ref=e408] [cursor=pointer]:
+            - /url: https://melindaozel.com/terms-conditions/
+    - contentinfo "Site" [ref=e409]:
+      - generic [ref=e411]:
+        - text: Copyright © 2020-2026 Melinda Ozel . All rights reserved.
+        - text: Learn how to
+        - link "cite my work here" [ref=e412] [cursor=pointer]:
+          - /url: https://melindaozel.com/how-to-cite-my-work-use-my-visuals/
+          - generic [ref=e413]: cite my work here
+        - generic [ref=e414]: .
+  - navigation "Website language selector" [ref=e415]:
+    - generic [ref=e416]:
+      - button "Change language":
+        - generic: EN
+      - group "Available languages":
+        - link "ES" [ref=e417] [cursor=pointer]:
+          - /url: https://melindaozel.com/es/a-wrinkle-in-time-building-characters-with-real-story-lines/
+          - generic [ref=e418]: ES
+        - link "FR" [ref=e419] [cursor=pointer]:
+          - /url: https://melindaozel.com/fr/a-wrinkle-in-time-building-characters-with-real-story-lines/
+          - generic [ref=e420]: FR
+        - link "ES_VE" [ref=e421] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_ve/a-wrinkle-in-time-building-characters-with-real-story-lines/
+          - generic [ref=e422]: ES_VE
+        - link "ES_CL" [ref=e423] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_cl/a-wrinkle-in-time-building-characters-with-real-story-lines/
+          - generic [ref=e424]: ES_CL
+        - link "ES_GT" [ref=e425] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_gt/a-wrinkle-in-time-building-characters-with-real-story-lines/
+          - generic [ref=e426]: ES_GT
+        - link "PT" [ref=e427] [cursor=pointer]:
+          - /url: https://melindaozel.com/pt/a-wrinkle-in-time-building-characters-with-real-story-lines/
+          - generic [ref=e428]: PT
+        - link "ZH" [ref=e429] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh/a-wrinkle-in-time-building-characters-with-real-story-lines/
+          - generic [ref=e430]: ZH
+        - link "ZH_TW" [ref=e431] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh_tw/a-wrinkle-in-time-building-characters-with-real-story-lines/
+          - generic [ref=e432]: ZH_TW
+        - link "ZH_HK" [ref=e433] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh_hk/a-wrinkle-in-time-building-characters-with-real-story-lines/
+          - generic [ref=e434]: ZH_HK
+        - link "JA" [ref=e435] [cursor=pointer]:
+          - /url: https://melindaozel.com/ja/a-wrinkle-in-time-building-characters-with-real-story-lines/
+          - generic [ref=e436]: JA
+        - link "HI" [ref=e437] [cursor=pointer]:
+          - /url: https://melindaozel.com/hi/a-wrinkle-in-time-building-characters-with-real-story-lines/
+          - generic [ref=e438]: HI
+        - link "DE" [ref=e439] [cursor=pointer]:
+          - /url: https://melindaozel.com/de/a-wrinkle-in-time-building-characters-with-real-story-lines/
+          - generic [ref=e440]: DE
+        - link "DE_DE" [ref=e441] [cursor=pointer]:
+          - /url: https://melindaozel.com/de_de/a-wrinkle-in-time-building-characters-with-real-story-lines/
+          - generic [ref=e442]: DE_DE
+        - link "RU" [ref=e443] [cursor=pointer]:
+          - /url: https://melindaozel.com/ru/a-wrinkle-in-time-building-characters-with-real-story-lines/
+          - generic [ref=e444]: RU
+        - link "PL" [ref=e445] [cursor=pointer]:
+          - /url: https://melindaozel.com/pl/a-wrinkle-in-time-building-characters-with-real-story-lines/
+          - generic [ref=e446]: PL
+        - link "CS" [ref=e447] [cursor=pointer]:
+          - /url: https://melindaozel.com/cs/a-wrinkle-in-time-building-characters-with-real-story-lines/
+          - generic [ref=e448]: CS
+        - link "VI" [ref=e449] [cursor=pointer]:
+          - /url: https://melindaozel.com/vi/a-wrinkle-in-time-building-characters-with-real-story-lines/
+          - generic [ref=e450]: VI
+        - link "IT" [ref=e451] [cursor=pointer]:
+          - /url: https://melindaozel.com/it/a-wrinkle-in-time-building-characters-with-real-story-lines/
+          - generic [ref=e452]: IT
+        - link "SV" [ref=e453] [cursor=pointer]:
+          - /url: https://melindaozel.com/sv/a-wrinkle-in-time-building-characters-with-real-story-lines/
+          - generic [ref=e454]: SV
+        - link "SR" [ref=e455] [cursor=pointer]:
+          - /url: https://melindaozel.com/sr/a-wrinkle-in-time-building-characters-with-real-story-lines/
+          - generic [ref=e456]: SR
+        - link "AR" [ref=e457] [cursor=pointer]:
+          - /url: https://melindaozel.com/ar/a-wrinkle-in-time-building-characters-with-real-story-lines/
+          - generic [ref=e458]: AR
+        - link "MS" [ref=e459] [cursor=pointer]:
+          - /url: https://melindaozel.com/ms/a-wrinkle-in-time-building-characters-with-real-story-lines/
+          - generic [ref=e460]: MS
+        - link "FI" [ref=e461] [cursor=pointer]:
+          - /url: https://melindaozel.com/fi/a-wrinkle-in-time-building-characters-with-real-story-lines/
+          - generic [ref=e462]: FI
+        - link "ES_MX" [ref=e463] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_mx/a-wrinkle-in-time-building-characters-with-real-story-lines/
+          - generic [ref=e464]: ES_MX
+        - link "KO" [ref=e465] [cursor=pointer]:
+          - /url: https://melindaozel.com/ko/a-wrinkle-in-time-building-characters-with-real-story-lines/
+          - generic [ref=e466]: KO
+        - link "TR" [ref=e467] [cursor=pointer]:
+          - /url: https://melindaozel.com/tr/a-wrinkle-in-time-building-characters-with-real-story-lines/
+          - generic [ref=e468]: TR
+        - link "IS" [ref=e469] [cursor=pointer]:
+          - /url: https://melindaozel.com/is/a-wrinkle-in-time-building-characters-with-real-story-lines/
+          - generic [ref=e470]: IS
+        - link "NL" [ref=e471] [cursor=pointer]:
+          - /url: https://melindaozel.com/nl/a-wrinkle-in-time-building-characters-with-real-story-lines/
+          - generic [ref=e472]: NL
+        - link "NL_NL" [ref=e473] [cursor=pointer]:
+          - /url: https://melindaozel.com/nl_nl/a-wrinkle-in-time-building-characters-with-real-story-lines/
+          - generic [ref=e474]: NL_NL
+        - link "ES_AR" [ref=e475] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_ar/a-wrinkle-in-time-building-characters-with-real-story-lines/
+          - generic [ref=e476]: ES_AR
+        - link "UK" [ref=e477] [cursor=pointer]:
+          - /url: https://melindaozel.com/uk/a-wrinkle-in-time-building-characters-with-real-story-lines/
+          - generic [ref=e478]: UK
+  - generic [ref=e479]: desktop

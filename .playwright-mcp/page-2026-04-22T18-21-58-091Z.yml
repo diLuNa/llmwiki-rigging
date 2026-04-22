@@ -1,0 +1,605 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#content"
+  - navigation "Secondary" [ref=e3]:
+    - list [ref=e6]:
+      - listitem [ref=e7]:
+        - link "Premium Member Access" [ref=e8] [cursor=pointer]:
+          - /url: https://melindaozel.com/premium-resources/
+          - text: Premium Member Access
+          - img [ref=e10]
+        - list:
+          - listitem:
+            - link "Login":
+              - /url: https://melindaozel.com/login/
+          - listitem:
+            - link "Subscribe :)":
+              - /url: https://melindaozel.com/subscription-options/
+      - listitem [ref=e12]:
+        - link "Recorded Lecture Access" [ref=e13] [cursor=pointer]:
+          - /url: https://melindaozel.com/recorded-lectures/
+          - text: Recorded Lecture Access
+          - img [ref=e15]
+        - list:
+          - listitem:
+            - link "FACS Cram Session":
+              - /url: https://melindaozel.com/facs-cram-session/
+          - listitem:
+            - link "All About Lipsync":
+              - /url: https://melindaozel.com/all-about-lipsync-lecture-videos/
+      - listitem [ref=e17]:
+        - link "My Account" [ref=e18] [cursor=pointer]:
+          - /url: https://melindaozel.com/account/
+  - banner "Site" [ref=e19]:
+    - generic [ref=e21]:
+      - link "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e23] [cursor=pointer]:
+        - /url: https://melindaozel.com/
+        - img "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e24]
+      - paragraph [ref=e26]:
+        - link "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e27] [cursor=pointer]:
+          - /url: https://melindaozel.com/
+  - navigation "Primary" [ref=e28]:
+    - list [ref=e31]:
+      - listitem [ref=e32]:
+        - link "Learning Hub" [ref=e33] [cursor=pointer]:
+          - /url: https://melindaozel.com/learning-hub/
+          - text: Learning Hub
+          - img [ref=e35]
+        - list:
+          - listitem:
+            - link "FACS Cheat Sheet":
+              - /url: https://melindaozel.com/facs-cheat-sheet/
+          - listitem:
+            - link "Viseme Cheat Sheet":
+              - /url: https://melindaozel.com/viseme-cheat-sheet/
+          - listitem:
+            - link "All Free Resources":
+              - /url: https://melindaozel.com/free-resources/
+          - listitem:
+            - link "🔒 Premium Resources":
+              - /url: https://melindaozel.com/premium-resources/
+              - img "🔒"
+              - text: Premium Resources
+          - listitem:
+            - link "FAQs":
+              - /url: https://melindaozel.com/faqs/
+      - listitem [ref=e37]:
+        - link "Courses" [ref=e38] [cursor=pointer]:
+          - /url: https://melindaozel.com/online-lectures/
+          - text: Courses
+          - img [ref=e40]
+        - list:
+          - listitem:
+            - link "FACS Cram Session":
+              - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+          - listitem:
+            - link "All About Lipsync":
+              - /url: https://melindaozel.com/all-about-lipsync-course/
+      - listitem [ref=e42]:
+        - link "Full Site Access" [ref=e43] [cursor=pointer]:
+          - /url: https://melindaozel.com/subscription-options/
+          - text: Full Site Access
+          - img [ref=e45]
+        - list:
+          - listitem:
+            - link "Membership Options":
+              - /url: https://melindaozel.com/subscription-options/
+      - listitem [ref=e47]:
+        - link "Services" [ref=e48] [cursor=pointer]:
+          - /url: https://melindaozel.com/services/
+          - text: Services
+          - img [ref=e50]
+        - list:
+          - listitem:
+            - link "FACS Lectures & Training":
+              - /url: https://melindaozel.com/services/lectures-training/
+          - listitem:
+            - link "Consulting":
+              - /url: https://melindaozel.com/services/consulting/
+      - listitem [ref=e52]:
+        - link "About" [ref=e53] [cursor=pointer]:
+          - /url: https://melindaozel.com/who-is-melinda-ozel/
+          - text: About
+          - img [ref=e55]
+        - list:
+          - listitem:
+            - link "About Me":
+              - /url: https://melindaozel.com/who-is-melinda-ozel/
+          - listitem:
+            - link "Cite My Work":
+              - /url: https://melindaozel.com/how-to-cite-my-work-use-my-visuals/
+          - listitem:
+            - link "Contact":
+              - /url: https://melindaozel.com/who-is-melinda-ozel/contact-me/
+  - generic [ref=e58]:
+    - main [ref=e60]:
+      - article [ref=e61]:
+        - generic [ref=e62]:
+          - generic [ref=e64]:
+            - time [ref=e66]: July 13, 2020
+            - generic [ref=e67]:
+              - text: by
+              - link "Melinda Ozel" [ref=e69] [cursor=pointer]:
+                - /url: https://melindaozel.com/author/melindaozel/
+          - generic [ref=e71]:
+            - generic [ref=e75]:
+              - heading "Frontalis Muscle Variation" [level=1] [ref=e77]
+              - img "Face the FACS - frontalis muscle variation" [ref=e79]
+              - generic [ref=e80]:
+                - heading "Your Friendly Neighborhood Forehead Muscle" [level=2] [ref=e81]
+                - paragraph [ref=e82]:
+                  - text: The
+                  - link "frontalis" [ref=e83] [cursor=pointer]:
+                    - /url: https://melindaozel.com/forehead-dynamics-frontalis-vs-occipitalis-preview/
+                  - text: is a muscle that elevates our eyebrows. As the frontalis contracts, it pulls up our brows, creating dynamic (expression-based) wrinkles across the forehead. Because frontalis muscle fibers are vertical, frontalis contractions form horizontal(ish) wrinkles.
+                - paragraph [ref=e84]:
+                  - strong [ref=e86]: NOTE
+                  - text: ": Wrinkles form perpendicular to the direction of muscle fibers."
+                - heading [level=2] [ref=e87]
+                - heading "The Many Faces of Frontalis" [level=2] [ref=e88]
+                - paragraph [ref=e89]:
+                  - text: When we raise our eyebrows, there are numerous wrinkle shapes that can form. Those wrinkle shapes
+                  - strong [ref=e91]: are directly related to our frontalis muscle shape, size, placement, and relationship to neighboring facial muscles.
+                - list [ref=e92]:
+                  - listitem [ref=e93]: Are the wrinkles full lines spanning across the forehead?
+                  - listitem [ref=e94]: Are the wrinkles displayed in one or more columns?
+                  - listitem [ref=e95]: Are the wrinkles straight or curved?
+                - heading "Getting Past Cookie-cutter Diagrams" [level=2] [ref=e97]
+                - paragraph [ref=e98]: Contrary to most anatomy diagrams, the frontalis is widely variable in shape, size, and location. Most illustrations of frontalis tend to display one frontalis shape – the large, bifurcated shape.
+                - paragraph [ref=e99]:
+                  - strong [ref=e101]: "NOTE:"
+                  - text: Bifurcation simply refers to the split in the muscle.
+                - figure "example of Google image search results for “frontalis” and how they all display the same general type of frontalis" [ref=e102]:
+                  - img "Google search example of frontalis results" [ref=e103]
+                  - generic [ref=e104]: example of Google image search results for “frontalis” and how they all display the same general type of frontalis
+                - figure "my illustration of the “generic” frontalis shape" [ref=e105]:
+                  - img "bifurcated frontalis - galea aponeurotica" [ref=e106]
+                  - generic [ref=e107]: my illustration of the “generic” frontalis shape
+                - paragraph [ref=e108]:
+                  - strong [ref=e110]: "The popular frontalis shape displayed above features:"
+                - list [ref=e111]:
+                  - listitem [ref=e112]: the frontalis muscle with a division in the middle
+                  - listitem [ref=e113]: the frontalis muscle with large sections at each side of the split
+                  - listitem [ref=e114]:
+                    - text: the split connected by a wide, sheetlike tendon referred to as
+                    - strong [ref=e115]: galea aponeurotica
+                    - text: (or aponeurosis epicranialis or epicranial aponeurosis)
+                - paragraph [ref=e116]:
+                  - text: HOWEVER! The mainstream frontalis shape is by no means the only frontalis shape that exists.
+                  - strong [ref=e117]: Your forehead is a site of diversity.
+                - heading [level=2] [ref=e118]
+                - heading "Reframing The Frontalis" [level=2] [ref=e119]
+                - paragraph [ref=e120]:
+                  - text: After analyzing many cadaver photos, studying forehead facial movements, and hunting through research papers,
+                  - strong [ref=e121]: I have created a set of frontalis shape illustrations
+                  - text: below. These illustrations are simplified to give you a general idea of the different shapes, sizes, and orientations your frontalis muscle can assume.
+                - heading [level=2]:
+                  - strong
+                - paragraph [ref=e122]:
+                  - img "frontalis shapes illustration" [ref=e123]
+                - paragraph [ref=e124]:
+                  - strong [ref=e126]: "Notice how:"
+                - list [ref=e127]:
+                  - listitem [ref=e128]: a, b, and c have no bifurcation
+                  - listitem [ref=e129]: d and e have a small bifurcation
+                  - listitem [ref=e130]: c, d, and i-l are rather small
+                  - listitem [ref=e131]: h and k have a wider angle split
+                  - listitem [ref=e132]: b, c, and d are medially concentrated
+                  - listitem [ref=e133]: h-l are laterally concentrated
+                - heading [level=2] [ref=e134]
+                - heading "Implications For Art & Entertainment" [level=2] [ref=e135]
+                - paragraph [ref=e136]: After surveying ~40 artists of varying levels (from students to 20+ year industry professionals) it is apparent that frontalis diversity is not widely known.
+                - list [ref=e137]:
+                  - listitem [ref=e138]:
+                    - strong [ref=e139]: expression shape libraries
+                    - text: Because muscle shape, origin, and insertion directly affect muscle movement, awareness of frontalis shape range is important for those building FACS or anatomy-based expression shape libraries.
+                  - listitem [ref=e140]:
+                    - strong [ref=e141]: character art
+                    - text: In general, for any character-based art, knowledge of frontalis variation will allow you to draw, paint, or sculpt individual-specific anatomy – including each person’s unique wrinkles and facial expressions.
+                  - listitem [ref=e142]:
+                    - strong [ref=e143]: facial mocap
+                    - text: For those working on facial mocap, awareness of variable frontalis shapes will allow you to focus on forehead hotspots more effectively.
+                - heading [level=2] [ref=e144]
+                - heading "Implications For Research" [level=2] [ref=e145]
+                - list [ref=e146]:
+                  - listitem [ref=e147]:
+                    - strong [ref=e148]: facial EMG
+                    - text: If you are using electromyography (EMG) to track brow movements, it is imperative to place the electrodes on areas that will provide the best source of information for muscle activity. Though the fully divided frontalis type is estimated to be in about 10-15% of the population (I’ve noted a similar trend in my own observational studies.), it is useful to know when it is or is not effective to place electrodes on the medial portion of the forehead to measure frontalis activity.If a researcher were to concentrate electrodes on the medial portion of the forehead for an individual with lateralized frontalis, they would be missing out on key information. Same goes if a researcher were to concentrate electrodes on the lateral portion of the forehead for an individual with a medially-concentrated frontalis.
+                - paragraph [ref=e149]:
+                  - strong [ref=e151]: "NOTE 1:"
+                  - text: EMG measures the underlying electrical activity generated by muscle contraction.
+                - paragraph [ref=e152]:
+                  - strong [ref=e154]: "NOTE 2:"
+                  - text: I would love to get involved with some EMG studies and am available to consult on optimal electrode placement. E-mail me! facetheFACS@melindaozel.com
+                - list [ref=e155]:
+                  - listitem [ref=e156]:
+                    - strong [ref=e157]: FACS facial coding
+                    - text: If you are using the Facial Action Coding System to label or code expressions, knowledge of frontalis diversity will be extremely helpful when coding AUs 1 and 2 vs. 1+2 vs. 1+4 vs. 1+2+4.
+                - heading [level=2] [ref=e158]
+                - heading "Implications For Face Tracking" [level=2] [ref=e159]
+                - paragraph [ref=e160]: Anatomical variability in the human face is largely ignored in face tracking. In fact, in all my years in this field, I have never once heard anyone mention anything on this subject.
+                - paragraph [ref=e161]:
+                  - text: Common facial poses and concepts like, “inner brow raiser,” are not uniform. If an individual has a fully separated frontalis shape (as shown in the fourth row of the infographic) the movement of AU1 for
+                  - emphasis [ref=e162]: inner brow raiser
+                  - text: will look different when compared to individuals with a non-bifurcated frontalis, concentrated medially (first row, third face – pink).
+                - heading [level=2] [ref=e163]
+                - heading "Implications For Aging" [level=2] [ref=e164]
+                - paragraph [ref=e165]: Patterns of aging in the face are significantly affected by muscle shape, size, and placement. How wide your frontalis muscle spreads, where it inserts in relation to your eye muscles, how far it extends vertically, etc. will all influence how your face changes over time.
+                - list [ref=e166]:
+                  - listitem [ref=e167]: Wrinkle formation is based on muscle activity.
+                  - listitem [ref=e168]: Face sagging will vary based on where your muscles are located as well as how they intertwine with each other.
+                - paragraph [ref=e169]: Because of these differences, ideal botox and other cosmetic solutions are unique to each individual.
+                - heading [level=2] [ref=e170]
+                - heading "Concluding Thoughts" [level=2] [ref=e171]
+                - paragraph [ref=e172]: I believe our concept of “inner brow raiser” (frontalis, pars medialis – AU1) and “outer brow raiser” (frontalis, pars lateralis – AU2) is idealistic and flawed.
+                - paragraph [ref=e173]:
+                  - text: Most consider “inner brow raiser” to be a difficult muscle action to perform voluntarily. When capturing expression data from research participants – or when recording expressions from actors for facial mocap – there is typically a set of standard facial poses for each participant or actor to make. These sets undoubtedly contain
+                  - emphasis [ref=e174]: inner brow raiser
+                  - text: and
+                  - emphasis [ref=e175]: outer brow raiser.
+                - paragraph [ref=e176]:
+                  - text: Based on my findings, the look of
+                  - emphasis [ref=e177]: inner brow raiser
+                  - text: and
+                  - emphasis [ref=e178]: outer brow raiser
+                  - text: will vary considerably depending on individual frontalis shape, size, and location.
+                - paragraph [ref=e179]:
+                  - text: Perhaps
+                  - emphasis [ref=e180]: inner brow raiser
+                  - text: is not a difficult pose to make after all. Perhaps our interpretation of what
+                  - emphasis [ref=e181]: inner brow raiser
+                  - text: means was simply limited by the underrepresented diversity of the frontalis muscle. Where and how frontalis is situated will surely impact where the most medial raising will occur vs. where the most lateral raising will occur.
+                - paragraph [ref=e182]:
+                  - emphasis [ref=e183]: Inner brow raiser
+                  - text: and
+                  - emphasis [ref=e184]: outer brow raiser
+                  - text: are moving targets and should be reconsidered as such.
+                - heading [level=2] [ref=e185]:
+                  - strong [ref=e186]
+            - generic [ref=e190]:
+              - heading "Explore More Free Content" [level=2] [ref=e195]
+              - list [ref=e201]:
+                - listitem [ref=e202]:
+                  - link "a list of downloadable facial anatomy books" [ref=e203] [cursor=pointer]:
+                    - /url: https://melindaozel.com/free-downloadable-facial-anatomy-books/
+                    - img "a list of downloadable facial anatomy books" [ref=e205]
+                  - heading "Free & Downloadable Vintage Facial Anatomy Books" [level=3] [ref=e207]:
+                    - link "Free & Downloadable Vintage Facial Anatomy Books" [ref=e208] [cursor=pointer]:
+                      - /url: https://melindaozel.com/free-downloadable-facial-anatomy-books/
+                - listitem [ref=e209]:
+                  - link "yellow background with Paul Ekman next to FACS Manual cover" [ref=e210] [cursor=pointer]:
+                    - /url: https://melindaozel.com/reasons-the-facs-manual-is-not-for-you/
+                    - img "yellow background with Paul Ekman next to FACS Manual cover" [ref=e212]
+                  - heading "8 Signs the FACS Manual Is Not For You" [level=3] [ref=e214]:
+                    - link "8 Signs the FACS Manual Is Not For You" [ref=e215] [cursor=pointer]:
+                      - /url: https://melindaozel.com/reasons-the-facs-manual-is-not-for-you/
+                - listitem [ref=e216]:
+                  - link "sequence of woman (Gemma from Severance) mouthing phonemes and the lip shapes she makes" [ref=e217] [cursor=pointer]:
+                    - /url: https://melindaozel.com/viseme-variability-gritted-teeth-muted-speech/
+                    - img "sequence of woman (Gemma from Severance) mouthing phonemes and the lip shapes she makes" [ref=e219]
+                  - 'heading "Viseme Variability: Gritted Teeth & Muted Speech" [level=3] [ref=e221]':
+                    - 'link "Viseme Variability: Gritted Teeth & Muted Speech" [ref=e222] [cursor=pointer]':
+                      - /url: https://melindaozel.com/viseme-variability-gritted-teeth-muted-speech/
+                - listitem [ref=e223]:
+                  - link "facial blanching on lips - labels to show where localized blanching occurs" [ref=e224] [cursor=pointer]:
+                    - /url: https://melindaozel.com/facial-blanching-blood-flow/
+                    - img "facial blanching on lips - labels to show where localized blanching occurs" [ref=e226]
+                  - heading "Facial Blanching and Blood Flow" [level=3] [ref=e228]:
+                    - link "Facial Blanching and Blood Flow" [ref=e229] [cursor=pointer]:
+                      - /url: https://melindaozel.com/facial-blanching-blood-flow/
+                - listitem [ref=e230]:
+                  - link "tips for facial capture protocol design" [ref=e231] [cursor=pointer]:
+                    - /url: https://melindaozel.com/facial-expressions-facial-data-capture/
+                    - img "tips for facial capture protocol design" [ref=e233]
+                  - 'heading "Facial Performance: 3 Essential Tips for Data Capture Protocols" [level=3] [ref=e235]':
+                    - 'link "Facial Performance: 3 Essential Tips for Data Capture Protocols" [ref=e236] [cursor=pointer]':
+                      - /url: https://melindaozel.com/facial-expressions-facial-data-capture/
+                - listitem [ref=e237]:
+                  - link "Facial Volume Changes + Facial Expressions Reference" [ref=e238] [cursor=pointer]:
+                    - /url: https://melindaozel.com/squishy-faces-expressions/
+                    - img "Facial Volume Changes + Facial Expressions Reference" [ref=e240]
+                  - heading "Squishy Faces & Expressions" [level=3] [ref=e242]:
+                    - link "Squishy Faces & Expressions" [ref=e243] [cursor=pointer]:
+                      - /url: https://melindaozel.com/squishy-faces-expressions/
+              - link [ref=e246] [cursor=pointer]:
+                - /url: https://melindaozel.com/
+                - img [ref=e247]
+          - generic "Entry meta" [ref=e252]:
+            - generic [ref=e253]:
+              - img [ref=e255]
+              - generic [ref=e257]: Categories
+              - link "action units (FACS AUs)" [ref=e258] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/facial-expressions/action-units/
+              - text: ","
+              - link "AU1" [ref=e259] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/facial-expressions/action-units/au1/
+              - text: ","
+              - link "AU2" [ref=e260] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/facial-expressions/action-units/au2/
+              - text: ","
+              - link "behavior" [ref=e261] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/psychology/behavior/
+              - text: ","
+              - link "facial anatomy" [ref=e262] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/anatomy/
+              - text: ","
+              - link "facial expressions" [ref=e263] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/facial-expressions/
+              - text: ","
+              - link "facial muscles" [ref=e264] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/anatomy/muscles/
+              - text: ","
+              - link "frontalis" [ref=e265] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/anatomy/muscles/frontalis/
+              - text: ","
+              - link "inner brow raiser" [ref=e266] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/facial-expressions/action-units/au1/inner-brow-raiser/
+              - text: ","
+              - link "outer brow raiser" [ref=e267] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/facial-expressions/action-units/au2/outer-brow-raiser/
+              - text: ","
+              - link "paid content" [ref=e268] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/paid/
+              - text: ","
+              - link "premium previews" [ref=e269] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/paid/premium-previews/
+              - text: ","
+              - link "previews" [ref=e270] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/previews/
+              - text: ","
+              - link "tech" [ref=e271] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/tech/
+              - text: ","
+              - link "wrinkles" [ref=e272] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/facial-expressions/wrinkles/
+            - generic [ref=e273]:
+              - img [ref=e275]
+              - generic [ref=e278]: Tags
+              - link "AU1 - inner brow raiser" [ref=e279] [cursor=pointer]:
+                - /url: https://melindaozel.com/tag/inner-brow-raiser-frontalis/
+              - text: ","
+              - link "Facial Action Coding System (FACS)" [ref=e280] [cursor=pointer]:
+                - /url: https://melindaozel.com/tag/facial-action-coding-system-facs/
+            - navigation "Posts" [ref=e281]:
+              - generic [ref=e282]:
+                - img [ref=e284]
+                - link "Comparative Anatomy (Sneak Preview)" [ref=e287] [cursor=pointer]:
+                  - /url: https://melindaozel.com/comparative-anatomy/
+              - generic [ref=e288]:
+                - img [ref=e290]
+                - link "Webinar With CAVE Academy Via Visual Effects Society" [ref=e293] [cursor=pointer]:
+                  - /url: https://melindaozel.com/webinar-visual-effects-society/
+      - generic [ref=e295]:
+        - 'heading "5 thoughts on “Frontalis Variation: Why Wrinkle Patterns Differ”" [level=2] [ref=e296]'
+        - list [ref=e297]:
+          - listitem [ref=e298]:
+            - generic [ref=e299]:
+              - text: "Pingback:"
+              - link "chimpanzee vs. human expressions, part II - Face the FACS" [ref=e300] [cursor=pointer]:
+                - /url: https://melindaozel.com/chimpanzee-vs-human-brow-raiser/
+          - listitem [ref=e301]:
+            - generic [ref=e302]:
+              - text: "Pingback:"
+              - link "forehead dynamics – frontalis vs. occipitalis - PREVIEW - Face the FACS" [ref=e303] [cursor=pointer]:
+                - /url: https://melindaozel.com/forehead-dynamics-frontalis-vs-occipitalis-preview/
+          - listitem [ref=e304]:
+            - generic [ref=e305]:
+              - text: "Pingback:"
+              - link "lip tightener vs. lip presser - PREVIEW - Face the FACS" [ref=e306] [cursor=pointer]:
+                - /url: https://melindaozel.com/lip-tightener-vs-lip-presser-preview/
+          - listitem [ref=e307]:
+            - generic [ref=e308]:
+              - text: "Pingback:"
+              - link "all about upper lid raiser – AU5 – Face the FACS" [ref=e309] [cursor=pointer]:
+                - /url: https://melindaozel.com/all-about-upper-lid-raiser-au5/
+          - listitem [ref=e310]:
+            - generic [ref=e311]:
+              - text: "Pingback:"
+              - link "ARKit to FACS Translation – Face the FACS" [ref=e312] [cursor=pointer]:
+                - /url: https://melindaozel.com/arkit-to-facs-translation/
+        - paragraph [ref=e313]: Comments are closed.
+    - generic [ref=e315]:
+      - complementary [ref=e316]:
+        - generic [ref=e323]:
+          - figure [ref=e324]:
+            - link "headshot of page author" [ref=e325] [cursor=pointer]:
+              - /url: https://melindaozel.com/melinda-who-zel/
+              - img "headshot of page author" [ref=e326]
+          - paragraph
+          - paragraph [ref=e327]:
+            - text: I’m a Facial Systems Expert specializing in the Facial Action Coding System (FACS) and facial anatomy. My work spans
+            - link "expression tracking" [ref=e328] [cursor=pointer]:
+              - /url: https://patents.justia.com/inventor/melinda-ozel
+              - strong [ref=e329]: expression tracking
+            - text: ", facial animation, and"
+            - link "AI-driven lipsync" [ref=e330] [cursor=pointer]:
+              - /url: http://linkedin.com/in/melindaozel
+              - strong [ref=e331]: AI-driven lipsync
+            - text: . Recent work includes contributions to the de-aging of Tom Hanks and other actors in the
+            - strong [ref=e332]:
+              - link "Zemeckis film, Here" [ref=e333] [cursor=pointer]:
+                - /url: https://www.imdb.com/name/nm15482966/
+            - text: .
+          - paragraph [ref=e334]:
+            - text: Learn more about
+            - link "my background" [ref=e335] [cursor=pointer]:
+              - /url: https://melindaozel.com/melinda-who-zel/
+              - strong [ref=e336]: my background
+            - text: .
+          - paragraph
+      - complementary [ref=e337]:
+        - paragraph [ref=e338]:
+          - strong [ref=e339]: Courses & Workshops
+          - text: "-"
+          - link "FACS Cram Session" [ref=e340] [cursor=pointer]:
+            - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+          - text: "-"
+          - link "All About Lipsync" [ref=e341] [cursor=pointer]:
+            - /url: https://melindaozel.com/all-about-lipsync-course/
+          - text: "-"
+          - link "All Training Services" [ref=e342] [cursor=pointer]:
+            - /url: https://melindaozel.com/services/lectures-training/
+      - complementary [ref=e343]:
+        - paragraph [ref=e344]:
+          - strong [ref=e345]: "\""
+          - text: Melinda Ozel's resources on face anatomy, motion, and FACS are industry standard. During my time working on The Last of Us Part II (and other unannounced Playstation titles) I referred to it almost exclusively on a regular basis. The free material is great but the pay material is worth the cost.
+          - strong [ref=e346]: "\""
+          - strong [ref=e347]: Eric Drobile | Technical Animator
+          - strong [ref=e348]: "\""
+          - text: For most people learning traditional FACS is not feasible. It requires very costly specialized degrees and years long commitment. And the half century old research with fuzzy photos was not made for artists. What Melinda has done for our industry is take the dense scientific information and streamlined it into very easy to digest entries and videos catered to artists.
+          - strong [ref=e349]: "\""
+          - strong [ref=e350]: Paul Liaw | Principal Character Artist
+          - strong [ref=e351]: "\""
+          - text: I've been working as a Facial Blendshape Artist across film and gaming and have watched the quality of my work improve exponentially since I've had access to this wealth of knowledge that Melinda has so thoughtfully put together. Her documentation is clear, appealing, and comprehensive. If Paul Ekman is the father of FACS, Melinda has become the cool aunt.
+          - strong [ref=e352]: "\""
+          - strong [ref=e353]: "Ioana Alexandra Pirvu | Lead Artist: Blendshapes @ Rockstar Games"
+          - strong [ref=e354]: "\""
+          - text: Face the FACS in my opinion is bar-none, the best resource out there for any artist and company dealing with facial animation. The way in which Melinda delivers knowledge is detailed, but fun and compelling enough to make you want to keep learning. For a topic that could have easily been boring, she inspired me to keep learning.
+          - strong [ref=e355]: "\""
+          - strong [ref=e356]: Giovanni Nakpil | Senior Creative 3D Evangelist @ Adobe
+          - strong [ref=e357]: "\""
+          - text: If you're doing AU's (action units), this is the site you're going to need to bookmark. Melinda has gone above and beyond to create what I feel is the ultimate resource guide for AU's. Each AU explained, annotated and demonstrated with extreme clarity. You'll experience plenty of "aha!!" moments using Melinda's work as your guide!
+          - strong [ref=e358]: "\""
+          - strong [ref=e359]: Frank Gravatt
+          - strong [ref=e360]: "| Facial Modeler @ Cloud Chamber"
+      - complementary [ref=e361]:
+        - paragraph
+      - complementary [ref=e362]:
+        - generic [ref=e364]:
+          - paragraph [ref=e365]:
+            - strong [ref=e366]: Connect with me <3
+          - list [ref=e367]:
+            - listitem [ref=e368]:
+              - link "Instagram" [ref=e369] [cursor=pointer]:
+                - /url: https://instagram.com/manicexpression
+                - img [ref=e370]
+                - generic [ref=e372]: Instagram
+            - listitem [ref=e373]:
+              - link "LinkedIn" [ref=e374] [cursor=pointer]:
+                - /url: https://linkedin.com/in/melindaozel
+                - img [ref=e375]
+                - generic [ref=e377]: LinkedIn
+            - listitem [ref=e378]:
+              - link "X" [ref=e379] [cursor=pointer]:
+                - /url: https://x.com/melindaozel
+                - img [ref=e380]
+                - generic [ref=e382]: X
+  - generic [ref=e383]:
+    - generic [ref=e386]:
+      - complementary [ref=e388]:
+        - search [ref=e389]:
+          - generic [ref=e390]: Search
+          - generic [ref=e391]:
+            - searchbox "Search" [ref=e392]
+            - button "Search" [ref=e393] [cursor=pointer]
+      - complementary [ref=e395]:
+        - paragraph [ref=e396]:
+          - link "Terms & Conditions" [ref=e397] [cursor=pointer]:
+            - /url: https://melindaozel.com/terms-conditions/
+    - contentinfo "Site" [ref=e398]:
+      - generic [ref=e400]:
+        - text: Copyright © 2020-2026 Melinda Ozel . All rights reserved.
+        - text: Learn how to
+        - link "cite my work here" [ref=e401] [cursor=pointer]:
+          - /url: https://melindaozel.com/how-to-cite-my-work-use-my-visuals/
+          - generic [ref=e402]: cite my work here
+        - generic [ref=e403]: .
+  - navigation "Website language selector" [ref=e404]:
+    - generic [ref=e405]:
+      - button "Change language":
+        - generic: EN
+      - group "Available languages":
+        - link "ES" [ref=e406] [cursor=pointer]:
+          - /url: https://melindaozel.com/es/frontalis-variation/
+          - generic [ref=e407]: ES
+        - link "FR" [ref=e408] [cursor=pointer]:
+          - /url: https://melindaozel.com/fr/frontalis-variation/
+          - generic [ref=e409]: FR
+        - link "ES_VE" [ref=e410] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_ve/frontalis-variation/
+          - generic [ref=e411]: ES_VE
+        - link "ES_CL" [ref=e412] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_cl/frontalis-variation/
+          - generic [ref=e413]: ES_CL
+        - link "ES_GT" [ref=e414] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_gt/frontalis-variation/
+          - generic [ref=e415]: ES_GT
+        - link "PT" [ref=e416] [cursor=pointer]:
+          - /url: https://melindaozel.com/pt/frontalis-variation/
+          - generic [ref=e417]: PT
+        - link "ZH" [ref=e418] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh/frontalis-variation/
+          - generic [ref=e419]: ZH
+        - link "ZH_TW" [ref=e420] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh_tw/frontalis-variation/
+          - generic [ref=e421]: ZH_TW
+        - link "ZH_HK" [ref=e422] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh_hk/frontalis-variation/
+          - generic [ref=e423]: ZH_HK
+        - link "JA" [ref=e424] [cursor=pointer]:
+          - /url: https://melindaozel.com/ja/frontalis-variation/
+          - generic [ref=e425]: JA
+        - link "HI" [ref=e426] [cursor=pointer]:
+          - /url: https://melindaozel.com/hi/frontalis-variation/
+          - generic [ref=e427]: HI
+        - link "DE" [ref=e428] [cursor=pointer]:
+          - /url: https://melindaozel.com/de/frontalis-variation/
+          - generic [ref=e429]: DE
+        - link "DE_DE" [ref=e430] [cursor=pointer]:
+          - /url: https://melindaozel.com/de_de/frontalis-variation/
+          - generic [ref=e431]: DE_DE
+        - link "RU" [ref=e432] [cursor=pointer]:
+          - /url: https://melindaozel.com/ru/frontalis-variation/
+          - generic [ref=e433]: RU
+        - link "PL" [ref=e434] [cursor=pointer]:
+          - /url: https://melindaozel.com/pl/frontalis-variation/
+          - generic [ref=e435]: PL
+        - link "CS" [ref=e436] [cursor=pointer]:
+          - /url: https://melindaozel.com/cs/frontalis-variation/
+          - generic [ref=e437]: CS
+        - link "VI" [ref=e438] [cursor=pointer]:
+          - /url: https://melindaozel.com/vi/frontalis-variation/
+          - generic [ref=e439]: VI
+        - link "IT" [ref=e440] [cursor=pointer]:
+          - /url: https://melindaozel.com/it/frontalis-variation/
+          - generic [ref=e441]: IT
+        - link "SV" [ref=e442] [cursor=pointer]:
+          - /url: https://melindaozel.com/sv/frontalis-variation/
+          - generic [ref=e443]: SV
+        - link "SR" [ref=e444] [cursor=pointer]:
+          - /url: https://melindaozel.com/sr/frontalis-variation/
+          - generic [ref=e445]: SR
+        - link "AR" [ref=e446] [cursor=pointer]:
+          - /url: https://melindaozel.com/ar/frontalis-variation/
+          - generic [ref=e447]: AR
+        - link "MS" [ref=e448] [cursor=pointer]:
+          - /url: https://melindaozel.com/ms/frontalis-variation/
+          - generic [ref=e449]: MS
+        - link "FI" [ref=e450] [cursor=pointer]:
+          - /url: https://melindaozel.com/fi/frontalis-variation/
+          - generic [ref=e451]: FI
+        - link "ES_MX" [ref=e452] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_mx/frontalis-variation/
+          - generic [ref=e453]: ES_MX
+        - link "KO" [ref=e454] [cursor=pointer]:
+          - /url: https://melindaozel.com/ko/frontalis-variation/
+          - generic [ref=e455]: KO
+        - link "TR" [ref=e456] [cursor=pointer]:
+          - /url: https://melindaozel.com/tr/frontalis-variation/
+          - generic [ref=e457]: TR
+        - link "IS" [ref=e458] [cursor=pointer]:
+          - /url: https://melindaozel.com/is/frontalis-variation/
+          - generic [ref=e459]: IS
+        - link "NL" [ref=e460] [cursor=pointer]:
+          - /url: https://melindaozel.com/nl/frontalis-variation/
+          - generic [ref=e461]: NL
+        - link "NL_NL" [ref=e462] [cursor=pointer]:
+          - /url: https://melindaozel.com/nl_nl/frontalis-variation/
+          - generic [ref=e463]: NL_NL
+        - link "ES_AR" [ref=e464] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_ar/frontalis-variation/
+          - generic [ref=e465]: ES_AR
+        - link "UK" [ref=e466] [cursor=pointer]:
+          - /url: https://melindaozel.com/uk/frontalis-variation/
+          - generic [ref=e467]: UK
+  - generic [ref=e468]: desktop

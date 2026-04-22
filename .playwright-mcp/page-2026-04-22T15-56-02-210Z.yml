@@ -1,0 +1,351 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#content"
+  - navigation "Secondary" [ref=e3]:
+    - list [ref=e6]:
+      - listitem [ref=e7]:
+        - link "Premium Member Access" [ref=e8] [cursor=pointer]:
+          - /url: https://melindaozel.com/premium-resources/
+          - text: Premium Member Access
+          - img [ref=e10]
+        - list:
+          - listitem:
+            - link "Login":
+              - /url: https://melindaozel.com/login/
+          - listitem:
+            - link "Subscribe :)":
+              - /url: https://melindaozel.com/subscription-options/
+      - listitem [ref=e12]:
+        - link "Recorded Lecture Access" [ref=e13] [cursor=pointer]:
+          - /url: https://melindaozel.com/recorded-lectures/
+          - text: Recorded Lecture Access
+          - img [ref=e15]
+        - list:
+          - listitem:
+            - link "FACS Cram Session":
+              - /url: https://melindaozel.com/facs-cram-session/
+          - listitem:
+            - link "All About Lipsync":
+              - /url: https://melindaozel.com/all-about-lipsync-lecture-videos/
+      - listitem [ref=e17]:
+        - link "Sign In" [ref=e18] [cursor=pointer]:
+          - /url: https://melindaozel.com/login/
+          - text: Sign In
+          - img [ref=e20]
+        - list:
+          - listitem:
+            - link "Login Issues?":
+              - /url: https://melindaozel.com/login-issues/
+  - banner "Site" [ref=e22]:
+    - generic [ref=e24]:
+      - link "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e26] [cursor=pointer]:
+        - /url: https://melindaozel.com/
+        - img "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e27]
+      - paragraph [ref=e29]:
+        - link "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e30] [cursor=pointer]:
+          - /url: https://melindaozel.com/
+  - navigation "Primary" [ref=e31]:
+    - list [ref=e34]:
+      - listitem [ref=e35]:
+        - link "Learning Hub" [ref=e36] [cursor=pointer]:
+          - /url: https://melindaozel.com/learning-hub/
+          - text: Learning Hub
+          - img [ref=e38]
+        - list:
+          - listitem:
+            - link "FACS Cheat Sheet":
+              - /url: https://melindaozel.com/facs-cheat-sheet/
+          - listitem:
+            - link "Viseme Cheat Sheet":
+              - /url: https://melindaozel.com/viseme-cheat-sheet/
+          - listitem:
+            - link "All Free Resources":
+              - /url: https://melindaozel.com/free-resources/
+          - listitem:
+            - link "🔒 Premium Resources":
+              - /url: https://melindaozel.com/premium-resources/
+          - listitem:
+            - link "FAQs":
+              - /url: https://melindaozel.com/faqs/
+      - listitem [ref=e40]:
+        - link "Courses" [ref=e41] [cursor=pointer]:
+          - /url: https://melindaozel.com/online-lectures/
+          - text: Courses
+          - img [ref=e43]
+        - list:
+          - listitem:
+            - link "FACS Cram Session":
+              - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+          - listitem:
+            - link "All About Lipsync":
+              - /url: https://melindaozel.com/all-about-lipsync-course/
+      - listitem [ref=e45]:
+        - link "Full Site Access" [ref=e46] [cursor=pointer]:
+          - /url: https://melindaozel.com/subscription-options/
+          - text: Full Site Access
+          - img [ref=e48]
+        - list:
+          - listitem:
+            - link "Membership Options":
+              - /url: https://melindaozel.com/subscription-options/
+      - listitem [ref=e50]:
+        - link "Services" [ref=e51] [cursor=pointer]:
+          - /url: https://melindaozel.com/services/
+          - text: Services
+          - img [ref=e53]
+        - list:
+          - listitem:
+            - link "FACS Lectures & Training":
+              - /url: https://melindaozel.com/services/lectures-training/
+          - listitem:
+            - link "Consulting":
+              - /url: https://melindaozel.com/services/consulting/
+      - listitem [ref=e55]:
+        - link "About" [ref=e56] [cursor=pointer]:
+          - /url: https://melindaozel.com/who-is-melinda-ozel/
+          - text: About
+          - img [ref=e58]
+        - list:
+          - listitem:
+            - link "About Me":
+              - /url: https://melindaozel.com/who-is-melinda-ozel/
+          - listitem:
+            - link "Cite My Work":
+              - /url: https://melindaozel.com/how-to-cite-my-work-use-my-visuals/
+          - listitem:
+            - link "Contact":
+              - /url: https://melindaozel.com/who-is-melinda-ozel/contact-me/
+  - generic [ref=e61]:
+    - main [ref=e63]:
+      - article [ref=e64]:
+        - generic [ref=e67]:
+          - generic [ref=e68]:
+            - paragraph [ref=e69]:
+              - text: Please
+              - strong [ref=e70]:
+                - link "subscribe" [ref=e71] [cursor=pointer]:
+                  - /url: https://melindaozel.com/subscription-options/
+              - text: to see this content.
+            - paragraph [ref=e72]
+          - generic [ref=e74]:
+            - generic [ref=e75]:
+              - generic [ref=e76]:
+                - generic [ref=e77]: Username
+                - textbox "Username" [ref=e78]
+              - generic [ref=e80]:
+                - text: Password
+                - generic [ref=e81]:
+                  - textbox "Password" [ref=e82]
+                  - button "Show password" [ref=e83] [cursor=pointer]:
+                    - generic [ref=e84]: 
+              - generic [ref=e86]:
+                - checkbox "Remember Me" [ref=e87]
+                - text: Remember Me
+              - button "Log In" [ref=e90] [cursor=pointer]
+            - link "Forgot Password" [ref=e93] [cursor=pointer]:
+              - /url: https://melindaozel.com/login/?action=forgot_password
+    - generic [ref=e95]:
+      - complementary [ref=e96]:
+        - generic [ref=e103]:
+          - figure [ref=e104]:
+            - link "headshot of page author" [ref=e105] [cursor=pointer]:
+              - /url: https://melindaozel.com/melinda-who-zel/
+              - img "headshot of page author" [ref=e106]
+          - paragraph
+          - paragraph [ref=e107]:
+            - text: I’m a Facial Systems Expert specializing in the Facial Action Coding System (FACS) and facial anatomy. My work spans
+            - link "expression tracking" [ref=e108] [cursor=pointer]:
+              - /url: https://patents.justia.com/inventor/melinda-ozel
+              - strong [ref=e109]: expression tracking
+            - text: ", facial animation, and"
+            - link "AI-driven lipsync" [ref=e110] [cursor=pointer]:
+              - /url: http://linkedin.com/in/melindaozel
+              - strong [ref=e111]: AI-driven lipsync
+            - text: . Recent work includes contributions to the de-aging of Tom Hanks and other actors in the
+            - strong [ref=e112]:
+              - link "Zemeckis film, Here" [ref=e113] [cursor=pointer]:
+                - /url: https://www.imdb.com/name/nm15482966/
+            - text: .
+          - paragraph [ref=e114]:
+            - text: Learn more about
+            - link "my background" [ref=e115] [cursor=pointer]:
+              - /url: https://melindaozel.com/melinda-who-zel/
+              - strong [ref=e116]: my background
+            - text: .
+          - paragraph
+      - complementary [ref=e117]:
+        - paragraph [ref=e118]:
+          - strong [ref=e119]: Courses & Workshops
+          - text: "-"
+          - link "FACS Cram Session" [ref=e120] [cursor=pointer]:
+            - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+          - text: "-"
+          - link "All About Lipsync" [ref=e121] [cursor=pointer]:
+            - /url: https://melindaozel.com/all-about-lipsync-course/
+          - text: "-"
+          - link "All Training Services" [ref=e122] [cursor=pointer]:
+            - /url: https://melindaozel.com/services/lectures-training/
+      - complementary [ref=e123]:
+        - paragraph [ref=e124]:
+          - strong [ref=e125]: "\""
+          - text: Melinda Ozel's resources on face anatomy, motion, and FACS are industry standard. During my time working on The Last of Us Part II (and other unannounced Playstation titles) I referred to it almost exclusively on a regular basis. The free material is great but the pay material is worth the cost.
+          - strong [ref=e126]: "\""
+          - strong [ref=e127]: Eric Drobile | Technical Animator
+          - strong [ref=e128]: "\""
+          - text: For most people learning traditional FACS is not feasible. It requires very costly specialized degrees and years long commitment. And the half century old research with fuzzy photos was not made for artists. What Melinda has done for our industry is take the dense scientific information and streamlined it into very easy to digest entries and videos catered to artists.
+          - strong [ref=e129]: "\""
+          - strong [ref=e130]: Paul Liaw | Principal Character Artist
+          - strong [ref=e131]: "\""
+          - text: I've been working as a Facial Blendshape Artist across film and gaming and have watched the quality of my work improve exponentially since I've had access to this wealth of knowledge that Melinda has so thoughtfully put together. Her documentation is clear, appealing, and comprehensive. If Paul Ekman is the father of FACS, Melinda has become the cool aunt.
+          - strong [ref=e132]: "\""
+          - strong [ref=e133]: "Ioana Alexandra Pirvu | Lead Artist: Blendshapes @ Rockstar Games"
+          - strong [ref=e134]: "\""
+          - text: Face the FACS in my opinion is bar-none, the best resource out there for any artist and company dealing with facial animation. The way in which Melinda delivers knowledge is detailed, but fun and compelling enough to make you want to keep learning. For a topic that could have easily been boring, she inspired me to keep learning.
+          - strong [ref=e135]: "\""
+          - strong [ref=e136]: Giovanni Nakpil | Senior Creative 3D Evangelist @ Adobe
+          - strong [ref=e137]: "\""
+          - text: If you're doing AU's (action units), this is the site you're going to need to bookmark. Melinda has gone above and beyond to create what I feel is the ultimate resource guide for AU's. Each AU explained, annotated and demonstrated with extreme clarity. You'll experience plenty of "aha!!" moments using Melinda's work as your guide!
+          - strong [ref=e138]: "\""
+          - strong [ref=e139]: Frank Gravatt
+          - strong [ref=e140]: "| Facial Modeler @ Cloud Chamber"
+      - complementary [ref=e141]:
+        - paragraph
+      - complementary [ref=e142]:
+        - generic [ref=e144]:
+          - paragraph [ref=e145]:
+            - strong [ref=e146]: Connect with me <3
+          - list [ref=e147]:
+            - listitem [ref=e148]:
+              - link "Instagram" [ref=e149] [cursor=pointer]:
+                - /url: https://instagram.com/manicexpression
+                - img [ref=e150]
+                - generic [ref=e152]: Instagram
+            - listitem [ref=e153]:
+              - link "LinkedIn" [ref=e154] [cursor=pointer]:
+                - /url: https://linkedin.com/in/melindaozel
+                - img [ref=e155]
+                - generic [ref=e157]: LinkedIn
+            - listitem [ref=e158]:
+              - link "X" [ref=e159] [cursor=pointer]:
+                - /url: https://x.com/melindaozel
+                - img [ref=e160]
+                - generic [ref=e162]: X
+  - generic [ref=e163]:
+    - generic [ref=e166]:
+      - complementary [ref=e168]:
+        - search [ref=e169]:
+          - generic [ref=e170]: Search
+          - generic [ref=e171]:
+            - searchbox "Search" [ref=e172]
+            - button "Search" [ref=e173] [cursor=pointer]
+      - complementary [ref=e175]:
+        - paragraph [ref=e176]:
+          - link "Terms & Conditions" [ref=e177] [cursor=pointer]:
+            - /url: https://melindaozel.com/terms-conditions/
+    - contentinfo "Site" [ref=e178]:
+      - generic [ref=e180]:
+        - text: Copyright © 2020-2026 Melinda Ozel . All rights reserved.
+        - text: Learn how to
+        - link "cite my work here" [ref=e181] [cursor=pointer]:
+          - /url: https://melindaozel.com/how-to-cite-my-work-use-my-visuals/
+          - generic [ref=e182]: cite my work here
+        - generic [ref=e183]: .
+  - navigation "Website language selector" [ref=e184]:
+    - generic [ref=e185]:
+      - button "Change language":
+        - generic: EN
+      - group "Available languages":
+        - link "ES" [ref=e186] [cursor=pointer]:
+          - /url: https://melindaozel.com/es/facs-study-guide/
+          - generic [ref=e187]: ES
+        - link "FR" [ref=e188] [cursor=pointer]:
+          - /url: https://melindaozel.com/fr/facs-study-guide/
+          - generic [ref=e189]: FR
+        - link "ES_VE" [ref=e190] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_ve/facs-study-guide/
+          - generic [ref=e191]: ES_VE
+        - link "ES_CL" [ref=e192] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_cl/facs-study-guide/
+          - generic [ref=e193]: ES_CL
+        - link "ES_GT" [ref=e194] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_gt/facs-study-guide/
+          - generic [ref=e195]: ES_GT
+        - link "PT" [ref=e196] [cursor=pointer]:
+          - /url: https://melindaozel.com/pt/facs-study-guide/
+          - generic [ref=e197]: PT
+        - link "ZH" [ref=e198] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh/facs-study-guide/
+          - generic [ref=e199]: ZH
+        - link "ZH_TW" [ref=e200] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh_tw/facs-study-guide/
+          - generic [ref=e201]: ZH_TW
+        - link "ZH_HK" [ref=e202] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh_hk/facs-study-guide/
+          - generic [ref=e203]: ZH_HK
+        - link "JA" [ref=e204] [cursor=pointer]:
+          - /url: https://melindaozel.com/ja/facs-study-guide/
+          - generic [ref=e205]: JA
+        - link "HI" [ref=e206] [cursor=pointer]:
+          - /url: https://melindaozel.com/hi/facs-study-guide/
+          - generic [ref=e207]: HI
+        - link "DE" [ref=e208] [cursor=pointer]:
+          - /url: https://melindaozel.com/de/facs-study-guide/
+          - generic [ref=e209]: DE
+        - link "DE_DE" [ref=e210] [cursor=pointer]:
+          - /url: https://melindaozel.com/de_de/facs-study-guide/
+          - generic [ref=e211]: DE_DE
+        - link "RU" [ref=e212] [cursor=pointer]:
+          - /url: https://melindaozel.com/ru/facs-study-guide/
+          - generic [ref=e213]: RU
+        - link "PL" [ref=e214] [cursor=pointer]:
+          - /url: https://melindaozel.com/pl/facs-study-guide/
+          - generic [ref=e215]: PL
+        - link "CS" [ref=e216] [cursor=pointer]:
+          - /url: https://melindaozel.com/cs/facs-study-guide/
+          - generic [ref=e217]: CS
+        - link "VI" [ref=e218] [cursor=pointer]:
+          - /url: https://melindaozel.com/vi/facs-study-guide/
+          - generic [ref=e219]: VI
+        - link "IT" [ref=e220] [cursor=pointer]:
+          - /url: https://melindaozel.com/it/facs-study-guide/
+          - generic [ref=e221]: IT
+        - link "SV" [ref=e222] [cursor=pointer]:
+          - /url: https://melindaozel.com/sv/facs-study-guide/
+          - generic [ref=e223]: SV
+        - link "SR" [ref=e224] [cursor=pointer]:
+          - /url: https://melindaozel.com/sr/facs-study-guide/
+          - generic [ref=e225]: SR
+        - link "AR" [ref=e226] [cursor=pointer]:
+          - /url: https://melindaozel.com/ar/facs-study-guide/
+          - generic [ref=e227]: AR
+        - link "MS" [ref=e228] [cursor=pointer]:
+          - /url: https://melindaozel.com/ms/facs-study-guide/
+          - generic [ref=e229]: MS
+        - link "FI" [ref=e230] [cursor=pointer]:
+          - /url: https://melindaozel.com/fi/facs-study-guide/
+          - generic [ref=e231]: FI
+        - link "ES_MX" [ref=e232] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_mx/facs-study-guide/
+          - generic [ref=e233]: ES_MX
+        - link "KO" [ref=e234] [cursor=pointer]:
+          - /url: https://melindaozel.com/ko/facs-study-guide/
+          - generic [ref=e235]: KO
+        - link "TR" [ref=e236] [cursor=pointer]:
+          - /url: https://melindaozel.com/tr/facs-study-guide/
+          - generic [ref=e237]: TR
+        - link "IS" [ref=e238] [cursor=pointer]:
+          - /url: https://melindaozel.com/is/facs-study-guide/
+          - generic [ref=e239]: IS
+        - link "NL" [ref=e240] [cursor=pointer]:
+          - /url: https://melindaozel.com/nl/facs-study-guide/
+          - generic [ref=e241]: NL
+        - link "NL_NL" [ref=e242] [cursor=pointer]:
+          - /url: https://melindaozel.com/nl_nl/facs-study-guide/
+          - generic [ref=e243]: NL_NL
+        - link "ES_AR" [ref=e244] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_ar/facs-study-guide/
+          - generic [ref=e245]: ES_AR
+        - link "UK" [ref=e246] [cursor=pointer]:
+          - /url: https://melindaozel.com/uk/facs-study-guide/
+          - generic [ref=e247]: UK
+  - generic [ref=e248]: desktop

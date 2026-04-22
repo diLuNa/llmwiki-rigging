@@ -1,0 +1,1065 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#content"
+  - navigation "Secondary" [ref=e3]:
+    - list [ref=e6]:
+      - listitem [ref=e7]:
+        - link "Premium Member Access" [ref=e8] [cursor=pointer]:
+          - /url: https://melindaozel.com/premium-resources/
+          - text: Premium Member Access
+          - img [ref=e10]
+        - list:
+          - listitem:
+            - link "Login":
+              - /url: https://melindaozel.com/login/
+          - listitem:
+            - link "Subscribe :)":
+              - /url: https://melindaozel.com/subscription-options/
+      - listitem [ref=e12]:
+        - link "Recorded Lecture Access" [ref=e13] [cursor=pointer]:
+          - /url: https://melindaozel.com/recorded-lectures/
+          - text: Recorded Lecture Access
+          - img [ref=e15]
+        - list:
+          - listitem:
+            - link "FACS Cram Session":
+              - /url: https://melindaozel.com/facs-cram-session/
+          - listitem:
+            - link "All About Lipsync":
+              - /url: https://melindaozel.com/all-about-lipsync-lecture-videos/
+      - listitem [ref=e17]:
+        - link "My Account" [ref=e18] [cursor=pointer]:
+          - /url: https://melindaozel.com/account/
+  - banner "Site" [ref=e19]:
+    - generic [ref=e21]:
+      - link "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e23] [cursor=pointer]:
+        - /url: https://melindaozel.com/
+        - img "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e24]
+      - paragraph [ref=e26]:
+        - link "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e27] [cursor=pointer]:
+          - /url: https://melindaozel.com/
+  - navigation "Primary" [ref=e28]:
+    - list [ref=e31]:
+      - listitem [ref=e32]:
+        - link "Learning Hub" [ref=e33] [cursor=pointer]:
+          - /url: https://melindaozel.com/learning-hub/
+          - text: Learning Hub
+          - img [ref=e35]
+        - list:
+          - listitem:
+            - link "FACS Cheat Sheet":
+              - /url: https://melindaozel.com/facs-cheat-sheet/
+          - listitem:
+            - link "Viseme Cheat Sheet":
+              - /url: https://melindaozel.com/viseme-cheat-sheet/
+          - listitem:
+            - link "All Free Resources":
+              - /url: https://melindaozel.com/free-resources/
+          - listitem:
+            - link "🔒 Premium Resources":
+              - /url: https://melindaozel.com/premium-resources/
+              - img "🔒"
+              - text: Premium Resources
+          - listitem:
+            - link "FAQs":
+              - /url: https://melindaozel.com/faqs/
+      - listitem [ref=e37]:
+        - link "Courses" [ref=e38] [cursor=pointer]:
+          - /url: https://melindaozel.com/online-lectures/
+          - text: Courses
+          - img [ref=e40]
+        - list:
+          - listitem:
+            - link "FACS Cram Session":
+              - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+          - listitem:
+            - link "All About Lipsync":
+              - /url: https://melindaozel.com/all-about-lipsync-course/
+      - listitem [ref=e42]:
+        - link "Full Site Access" [ref=e43] [cursor=pointer]:
+          - /url: https://melindaozel.com/subscription-options/
+          - text: Full Site Access
+          - img [ref=e45]
+        - list:
+          - listitem:
+            - link "Membership Options":
+              - /url: https://melindaozel.com/subscription-options/
+      - listitem [ref=e47]:
+        - link "Services" [ref=e48] [cursor=pointer]:
+          - /url: https://melindaozel.com/services/
+          - text: Services
+          - img [ref=e50]
+        - list:
+          - listitem:
+            - link "FACS Lectures & Training":
+              - /url: https://melindaozel.com/services/lectures-training/
+          - listitem:
+            - link "Consulting":
+              - /url: https://melindaozel.com/services/consulting/
+      - listitem [ref=e52]:
+        - link "About" [ref=e53] [cursor=pointer]:
+          - /url: https://melindaozel.com/who-is-melinda-ozel/
+          - text: About
+          - img [ref=e55]
+        - list:
+          - listitem:
+            - link "About Me":
+              - /url: https://melindaozel.com/who-is-melinda-ozel/
+          - listitem:
+            - link "Cite My Work":
+              - /url: https://melindaozel.com/how-to-cite-my-work-use-my-visuals/
+          - listitem:
+            - link "Contact":
+              - /url: https://melindaozel.com/who-is-melinda-ozel/contact-me/
+  - generic [ref=e58]:
+    - main [ref=e60]:
+      - article [ref=e61]:
+        - generic [ref=e68]:
+          - heading "FACS & Video References" [level=1] [ref=e70]
+          - heading "FOREHEAD & BROW AREA" [level=2] [ref=e75]
+          - heading "INNER BROW RAISER - AU1" [level=3] [ref=e83]
+          - paragraph [ref=e85]:
+            - text: Contraction of the
+            - strong [ref=e86]: medial section
+            - text: of the
+            - strong [ref=e87]: frontalis
+            - text: muscle.
+          - iframe [ref=e90]:
+            - generic [ref=f12e4]:
+              - generic:
+                - generic:
+                  - img
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - img
+                - generic:
+                  - img
+                  - generic: Playing in picture-in-picture
+              - generic:
+                - link "Link to video owner's profile" [ref=f12e12] [cursor=pointer]:
+                  - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                  - img "Link to video owner's profile" [ref=f12e13]
+                - generic [ref=f12e14]:
+                  - generic [ref=f12e15]:
+                    - link "inner-brow-raiser-brother" [ref=f12e16] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                    - generic [ref=f12e17]: inner-brow-raiser-brother
+                  - link "Melinda Ozel" [ref=f12e18] [cursor=pointer]:
+                    - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                    - generic [ref=f12e19]: Melinda Ozel
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic: Like
+                      - button "Like (this opens in a new window)" [ref=f12e20] [cursor=pointer]:
+                        - img
+                - generic:
+                  - button "Play" [ref=f12e22] [cursor=pointer]:
+                    - img [ref=f12e23]
+                    - generic:
+                      - generic: Play
+                  - generic [ref=f12e26]:
+                    - generic [ref=f12e27]:
+                      - slider "Progress Bar" [ref=f12e28] [cursor=pointer]
+                      - generic:
+                        - generic:
+                          - generic: 00:00
+                      - generic [ref=f12e33]: 00:02
+                    - generic [ref=f12e35]:
+                      - generic [ref=f12e36]:
+                        - button "Unmute" [ref=f12e37] [cursor=pointer]:
+                          - img [ref=f12e38]
+                        - slider "Volume (use up/down arrow keys to change)"
+                      - button "CC/subtitles" [ref=f12e40] [cursor=pointer]:
+                        - img [ref=f12e41]
+                        - generic:
+                          - generic: CC/subtitles
+                      - button "Settings" [ref=f12e43] [cursor=pointer]:
+                        - img [ref=f12e44]
+                        - generic:
+                          - generic: Settings
+                      - button "Transcript" [ref=f12e46] [cursor=pointer]:
+                        - img [ref=f12e47]
+                        - generic:
+                          - generic: Transcript
+                      - button "Picture-in-Picture" [ref=f12e49] [cursor=pointer]:
+                        - img [ref=f12e50]
+                        - generic:
+                          - generic: Picture-in-Picture
+                      - button "Fullscreen" [ref=f12e52] [cursor=pointer]:
+                        - img [ref=f12e53]
+                        - generic:
+                          - generic: Fullscreen
+          - heading "FULL BROW RAISE - AUs 1+2" [level=3] [ref=e98]
+          - 'heading "COMBO: inner brow raiser + outer brow raiser" [level=4] [ref=e100]'
+          - paragraph [ref=e102]:
+            - text: Contraction of the
+            - strong [ref=e103]: full frontalis
+            - text: muscle (both medial and lateral portions).
+          - iframe [ref=e106]:
+            - generic [ref=f13e4]:
+              - generic:
+                - generic:
+                  - img
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - img
+                - generic:
+                  - img
+                  - generic: Playing in picture-in-picture
+              - generic:
+                - link "Link to video owner's profile" [ref=f13e12] [cursor=pointer]:
+                  - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                  - img "Link to video owner's profile" [ref=f13e13]
+                - generic [ref=f13e14]:
+                  - generic [ref=f13e15]:
+                    - 'link "full brow raise: inner brow raiser + outer brow raiser" [ref=f13e16] [cursor=pointer]':
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                    - generic [ref=f13e17]: "full brow raise: inner brow raiser + outer brow raiser"
+                  - link "Melinda Ozel" [ref=f13e18] [cursor=pointer]:
+                    - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                    - generic [ref=f13e19]: Melinda Ozel
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic: Like
+                      - button "Like (this opens in a new window)" [ref=f13e20] [cursor=pointer]:
+                        - img
+                - generic:
+                  - button "Play" [ref=f13e22] [cursor=pointer]:
+                    - img [ref=f13e23]
+                    - generic:
+                      - generic: Play
+                  - generic [ref=f13e26]:
+                    - generic [ref=f13e27]:
+                      - slider "Progress Bar" [ref=f13e28] [cursor=pointer]
+                      - generic:
+                        - generic:
+                          - generic: 00:00
+                      - generic [ref=f13e33]: 00:02
+                    - generic:
+                      - generic:
+                        - generic [ref=f13e34]:
+                          - button "Unmute" [ref=f13e35] [cursor=pointer]:
+                            - img [ref=f13e36]
+                          - slider "Volume (use up/down arrow keys to change)"
+                        - button "CC/subtitles" [ref=f13e38] [cursor=pointer]:
+                          - img [ref=f13e39]
+                          - generic:
+                            - generic: CC/subtitles
+                        - button "Settings" [ref=f13e41] [cursor=pointer]:
+                          - img [ref=f13e42]
+                          - generic:
+                            - generic: Settings
+                        - button "Transcript" [ref=f13e44] [cursor=pointer]:
+                          - img [ref=f13e45]
+                          - generic:
+                            - generic: Transcript
+                        - button "Picture-in-Picture" [ref=f13e47] [cursor=pointer]:
+                          - img [ref=f13e48]
+                          - generic:
+                            - generic: Picture-in-Picture
+                        - button "Fullscreen" [ref=f13e50] [cursor=pointer]:
+                          - img [ref=f13e51]
+                          - generic:
+                            - generic: Fullscreen
+          - heading "BROW LOWERER - AU4" [level=3] [ref=e111]
+          - generic [ref=e112]:
+            - paragraph [ref=e113]:
+              - text: Contraction of
+              - strong [ref=e114]: corrugator supercilii
+              - text: ","
+              - strong [ref=e115]: depressor supercilii
+              - text: ", and"
+              - strong [ref=e116]: procerus
+              - text: .
+            - paragraph [ref=e117]: "0-2 seconds: Corrugator supercilii-dominant (with slight accidental frontalis; see “IMPORTANT NOTE” below)"
+            - paragraph [ref=e118]: "2 seconds+: Mild presence of procerus and depressor supercilii start to take over and force out the lingering frontalis presence."
+            - paragraph [ref=e119]:
+              - generic [ref=e120]: IMPORTANT NOTE
+              - text: ": Unintentional mild medial frontalis contraction in first ~2 seconds of video clip. You can identify signs that frontalis is partially active in the left photo below. Frontalis signs (dynamic forehead wrinkles) are shown inside green brackets. When procerus kicks in, frontalis’s influence fades. Procerus kicks in around second 2 and is shown below and indicated by the green arrow on the right photo."
+          - generic [ref=e123]:
+            - figure "frontalis signs" [ref=e124]:
+              - link "signs of frontalis muscle" [ref=e126] [cursor=pointer]:
+                - /url: https://i0.wp.com/melindaozel.com/wp-content/uploads/2022/08/signs-of-frontalis-muscle.png?ssl=1
+                - img "signs of frontalis muscle" [ref=e127]
+              - generic [ref=e128]: frontalis signs
+            - figure "procerus signs" [ref=e129]:
+              - link "signs of procerus muscle" [ref=e131] [cursor=pointer]:
+                - /url: https://i0.wp.com/melindaozel.com/wp-content/uploads/2022/08/signs-of-procerus-muscle.png?ssl=1
+                - img "signs of procerus muscle" [ref=e132]
+              - generic [ref=e133]: procerus signs
+          - iframe [ref=e136]:
+            - generic [ref=f14e4]:
+              - generic:
+                - generic:
+                  - img
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - img
+                - generic:
+                  - img
+                  - generic: Playing in picture-in-picture
+              - generic:
+                - link "Link to video owner's profile" [ref=f14e12] [cursor=pointer]:
+                  - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                  - img "Link to video owner's profile" [ref=f14e13]
+                - generic [ref=f14e14]:
+                  - generic [ref=f14e15]:
+                    - link "brow lowerer" [ref=f14e16] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                    - generic [ref=f14e17]: brow lowerer
+                  - link "Melinda Ozel" [ref=f14e18] [cursor=pointer]:
+                    - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                    - generic [ref=f14e19]: Melinda Ozel
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic: Like
+                      - button "Like (this opens in a new window)" [ref=f14e20] [cursor=pointer]:
+                        - img
+                - generic:
+                  - button "Play" [ref=f14e22] [cursor=pointer]:
+                    - img [ref=f14e23]
+                    - generic:
+                      - generic: Play
+                  - generic [ref=f14e26]:
+                    - generic [ref=f14e27]:
+                      - slider "Progress Bar" [ref=f14e28] [cursor=pointer]
+                      - generic:
+                        - generic:
+                          - generic: 00:00
+                      - generic [ref=f14e33]: 00:04
+                    - generic:
+                      - generic:
+                        - button "CC/subtitles" [ref=f14e34] [cursor=pointer]:
+                          - img [ref=f14e35]
+                          - generic:
+                            - generic: CC/subtitles
+                        - button "Settings" [ref=f14e37] [cursor=pointer]:
+                          - img [ref=f14e38]
+                          - generic:
+                            - generic: Settings
+                        - button "Transcript" [ref=f14e40] [cursor=pointer]:
+                          - img [ref=f14e41]
+                          - generic:
+                            - generic: Transcript
+                        - button "Picture-in-Picture" [ref=f14e43] [cursor=pointer]:
+                          - img [ref=f14e44]
+                          - generic:
+                            - generic: Picture-in-Picture
+                        - button "Fullscreen" [ref=f14e46] [cursor=pointer]:
+                          - img [ref=f14e47]
+                          - generic:
+                            - generic: Fullscreen
+          - heading "MIDDLE FACE AREA" [level=2] [ref=e141]
+          - heading "NOSE WRINKLER - AU9" [level=3] [ref=e149]
+          - generic [ref=e150]:
+            - paragraph [ref=e151]:
+              - text: Contraction of
+              - strong [ref=e152]: levator labii superioris alaeque nasi
+              - text: +
+              - strong [ref=e153]: procerus
+              - text: and/or
+              - strong [ref=e154]: depressor supercilii
+              - text: .
+            - paragraph [ref=e155]: Notice the asymmetry and screen left dominance.
+            - paragraph [ref=e156]: "0-0.5 seconds: Mild signs of chin raiser from mentalis activation present. If nose wrinkler is strong, then the lips should separate. Cases in which the lips do not separate are caused by intervention of orbicularis oris and/or mentalis."
+            - paragraph [ref=e157]: "1 seconds: Mild signs of dimpler on screen left lift the screen left lip corner."
+            - paragraph [ref=e158]:
+              - generic [ref=e159]: "IMPORTANT NOTE:"
+              - text: Official FACS lists
+              - emphasis [ref=e160]: nose wrinkler
+              - text: as driven only by the levator labii superioris alaeque nasi (LLSAN) muscle. It also lists
+              - emphasis [ref=e161]: nose wrinkler
+              - generic [ref=e162]: as an action that lowers the inner brow tips. Because LLSAN originates from a bony landmark, its action alone should not affect the brows. Therefore, I propose that further specification be made when signs of brow lowering co-occur with nose wrinkler (which they most often do) and such lowering be credited to the actions of procerus and/or depressor supercilii. (The and/or indicates case-by-case variability.)
+          - iframe [ref=e165]:
+            - generic [ref=f15e4]:
+              - generic:
+                - generic:
+                  - img
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - img
+                - generic:
+                  - img
+                  - generic: Playing in picture-in-picture
+              - generic:
+                - link "Link to video owner's profile" [ref=f15e12] [cursor=pointer]:
+                  - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                  - img "Link to video owner's profile" [ref=f15e13]
+                - generic [ref=f15e14]:
+                  - generic [ref=f15e15]:
+                    - link "nose wrinkler - bro" [ref=f15e16] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                    - generic [ref=f15e17]: nose wrinkler - bro
+                  - link "Melinda Ozel" [ref=f15e18] [cursor=pointer]:
+                    - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                    - generic [ref=f15e19]: Melinda Ozel
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic: Like
+                      - button "Like (this opens in a new window)" [ref=f15e20] [cursor=pointer]:
+                        - img
+                - generic:
+                  - button "Play" [ref=f15e22] [cursor=pointer]:
+                    - img [ref=f15e23]
+                    - generic:
+                      - generic: Play
+                  - generic [ref=f15e26]:
+                    - generic [ref=f15e27]:
+                      - slider "Progress Bar" [ref=f15e28] [cursor=pointer]
+                      - generic:
+                        - generic:
+                          - generic: 00:00
+                      - generic [ref=f15e33]: 00:02
+                    - generic:
+                      - generic:
+                        - button "CC/subtitles" [ref=f15e34] [cursor=pointer]:
+                          - img [ref=f15e35]
+                          - generic:
+                            - generic: CC/subtitles
+                        - button "Settings" [ref=f15e37] [cursor=pointer]:
+                          - img [ref=f15e38]
+                          - generic:
+                            - generic: Settings
+                        - button "Transcript" [ref=f15e40] [cursor=pointer]:
+                          - img [ref=f15e41]
+                          - generic:
+                            - generic: Transcript
+                        - button "Picture-in-Picture" [ref=f15e43] [cursor=pointer]:
+                          - img [ref=f15e44]
+                          - generic:
+                            - generic: Picture-in-Picture
+                        - button "Fullscreen" [ref=f15e46] [cursor=pointer]:
+                          - img [ref=f15e47]
+                          - generic:
+                            - generic: Fullscreen
+          - heading "UPPER LIP RAISER - AU10" [level=3] [ref=e170]
+          - generic [ref=e171]:
+            - paragraph [ref=e172]:
+              - text: Contraction of
+              - strong [ref=e173]: levator labii superioris
+              - text: .
+            - paragraph [ref=e174]: "0-1 seconds: Mild signs of chin raiser from mentalis activation present."
+            - paragraph [ref=e175]:
+              - generic [ref=e176]: "IMPORTANT NOTE:"
+              - text: Starting and ending “neutral” faces have mild signs of y-axis dimpler from buccinator presence.
+          - iframe [ref=e179]:
+            - generic [ref=f16e4]:
+              - generic:
+                - generic:
+                  - img
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - img
+                - generic:
+                  - img
+                  - generic: Playing in picture-in-picture
+              - generic:
+                - link "Link to video owner's profile" [ref=f16e12] [cursor=pointer]:
+                  - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                  - img "Link to video owner's profile" [ref=f16e13]
+                - generic [ref=f16e14]:
+                  - generic [ref=f16e15]:
+                    - link "upper lip raiser - bro" [ref=f16e16] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                    - generic [ref=f16e17]: upper lip raiser - bro
+                  - link "Melinda Ozel" [ref=f16e18] [cursor=pointer]:
+                    - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                    - generic [ref=f16e19]: Melinda Ozel
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic: Like
+                      - button "Like (this opens in a new window)":
+                        - img
+                - generic:
+                  - button "Play" [ref=f16e21] [cursor=pointer]:
+                    - img [ref=f16e22]
+                    - generic:
+                      - generic: Play
+                  - generic [ref=f16e25]:
+                    - generic [ref=f16e26]:
+                      - slider "Progress Bar" [ref=f16e27] [cursor=pointer]
+                      - generic:
+                        - generic:
+                          - generic: 00:00
+                      - generic [ref=f16e32]: 00:03
+                    - generic:
+                      - generic:
+                        - button "CC/subtitles" [ref=f16e33] [cursor=pointer]:
+                          - img [ref=f16e34]
+                          - generic:
+                            - generic: CC/subtitles
+                        - button "Settings" [ref=f16e36] [cursor=pointer]:
+                          - img [ref=f16e37]
+                          - generic:
+                            - generic: Settings
+                        - button "Transcript" [ref=f16e39] [cursor=pointer]:
+                          - img [ref=f16e40]
+                          - generic:
+                            - generic: Transcript
+                        - button "Picture-in-Picture" [ref=f16e42] [cursor=pointer]:
+                          - img [ref=f16e43]
+                          - generic:
+                            - generic: Picture-in-Picture
+                        - button "Fullscreen" [ref=f16e45] [cursor=pointer]:
+                          - img [ref=f16e46]
+                          - generic:
+                            - generic: Fullscreen
+          - heading "LIP CORNER MOVERS" [level=2] [ref=e184]
+          - heading "LIP CORNER PULLER - AU12" [level=3] [ref=e192]
+          - generic [ref=e193]:
+            - paragraph [ref=e194]:
+              - text: Contraction of
+              - generic [ref=e195]: zygomaticus major.
+            - paragraph [ref=e196]:
+              - generic [ref=e197]: "NOTE:"
+              - generic [ref=e198]:
+                - text: "Observe the strong dimple on screen right. For more on lip corner puller dimples, read:"
+                - link "Zygomaticus Major Variations and the Dimple" [ref=e199] [cursor=pointer]:
+                  - /url: https://melindaozel.com/zygomaticus-major-variations-the-dimple/
+                - text: .
+          - iframe [ref=e202]:
+            - generic [ref=f17e4]:
+              - generic:
+                - generic:
+                  - img
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - img
+                - generic:
+                  - img
+                  - generic: Playing in picture-in-picture
+              - generic:
+                - link "Link to video owner's profile" [ref=f17e12] [cursor=pointer]:
+                  - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                  - img "Link to video owner's profile" [ref=f17e13]
+                - generic [ref=f17e14]:
+                  - generic [ref=f17e15]:
+                    - link "lip corner puller - bro" [ref=f17e16] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                    - generic [ref=f17e17]: lip corner puller - bro
+                  - link "Melinda Ozel" [ref=f17e18] [cursor=pointer]:
+                    - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                    - generic [ref=f17e19]: Melinda Ozel
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic: Like
+                      - button "Like (this opens in a new window)" [ref=f17e20] [cursor=pointer]:
+                        - img
+                - generic:
+                  - button "Play" [ref=f17e22] [cursor=pointer]:
+                    - img [ref=f17e23]
+                    - generic:
+                      - generic: Play
+                  - generic [ref=f17e26]:
+                    - generic [ref=f17e27]:
+                      - slider "Progress Bar" [ref=f17e28] [cursor=pointer]
+                      - generic:
+                        - generic:
+                          - generic: 00:00
+                      - generic [ref=f17e33]: 00:03
+                    - generic:
+                      - generic:
+                        - button "CC/subtitles" [ref=f17e34] [cursor=pointer]:
+                          - img [ref=f17e35]
+                          - generic:
+                            - generic: CC/subtitles
+                        - button "Settings" [ref=f17e37] [cursor=pointer]:
+                          - img [ref=f17e38]
+                          - generic:
+                            - generic: Settings
+                        - button "Transcript" [ref=f17e40] [cursor=pointer]:
+                          - img [ref=f17e41]
+                          - generic:
+                            - generic: Transcript
+                        - button "Picture-in-Picture" [ref=f17e43] [cursor=pointer]:
+                          - img [ref=f17e44]
+                          - generic:
+                            - generic: Picture-in-Picture
+                        - button "Fullscreen" [ref=f17e46] [cursor=pointer]:
+                          - img [ref=f17e47]
+                          - generic:
+                            - generic: Fullscreen
+          - heading "LIP CORNER DEPRESSOR - AU15" [level=3] [ref=e207]
+          - generic [ref=e208]:
+            - paragraph [ref=e209]: Contraction of depressor anguli oris.
+            - paragraph [ref=e210]:
+              - generic [ref=e211]: "Full clip:"
+              - generic [ref=e212]: Presence of chin raiser from mentalis is mildly present. These actions co-occur frequently. Many times you will see references of lip corner depressor contaminated with chin raiser and vice versa.
+          - iframe [ref=e215]:
+            - generic [ref=f18e4]:
+              - generic:
+                - generic:
+                  - img
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - img
+                - generic:
+                  - img
+                  - generic: Playing in picture-in-picture
+              - generic:
+                - link "Link to video owner's profile" [ref=f18e12] [cursor=pointer]:
+                  - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                  - img "Link to video owner's profile" [ref=f18e13]
+                - generic [ref=f18e14]:
+                  - generic [ref=f18e15]:
+                    - link "lip corner depressor - bro" [ref=f18e16] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                    - generic [ref=f18e17]: lip corner depressor - bro
+                  - link "Melinda Ozel" [ref=f18e18] [cursor=pointer]:
+                    - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                    - generic [ref=f18e19]: Melinda Ozel
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic: Like
+                      - button "Like (this opens in a new window)":
+                        - img
+                - generic:
+                  - button "Play" [ref=f18e21] [cursor=pointer]:
+                    - img [ref=f18e22]
+                    - generic:
+                      - generic: Play
+                  - generic [ref=f18e25]:
+                    - generic [ref=f18e26]:
+                      - slider "Progress Bar" [ref=f18e27] [cursor=pointer]
+                      - generic:
+                        - generic:
+                          - generic: 00:00
+                      - generic [ref=f18e32]: 00:02
+                    - generic:
+                      - generic:
+                        - button "CC/subtitles" [ref=f18e33] [cursor=pointer]:
+                          - img [ref=f18e34]
+                          - generic:
+                            - generic: CC/subtitles
+                        - button "Settings" [ref=f18e36] [cursor=pointer]:
+                          - img [ref=f18e37]
+                          - generic:
+                            - generic: Settings
+                        - button "Transcript" [ref=f18e39] [cursor=pointer]:
+                          - img [ref=f18e40]
+                          - generic:
+                            - generic: Transcript
+                        - button "Picture-in-Picture" [ref=f18e42] [cursor=pointer]:
+                          - img [ref=f18e43]
+                          - generic:
+                            - generic: Picture-in-Picture
+                        - button "Fullscreen" [ref=f18e45] [cursor=pointer]:
+                          - img [ref=f18e46]
+                          - generic:
+                            - generic: Fullscreen
+          - heading "LIP PUCKER - AU18" [level=3] [ref=e220]
+          - generic [ref=e221]:
+            - paragraph [ref=e222]: Contraction of incisivus labii superioris + incisivus labii inferioris** + orbicularis oris.
+            - paragraph [ref=e223]: "** = Incisivus labii superioris and inferioris are considered accessory bands to the orbicularis oris muscle."
+            - paragraph [ref=e224]:
+              - text: "1-3 seconds: Strong"
+              - link "vertical lip tightener" [ref=e225] [cursor=pointer]:
+                - /url: https://melindaozel.com/facs-study-guide/
+                - emphasis [ref=e226]: vertical lip tightener
+              - text: is present throughout
+              - emphasis [ref=e227]: pucker
+              - text: here; this is a common co-activation with pucker. When the incisivus bands push the lip corners toward each other, the flesh of the lips is forced to either project forward loosely or contract along a vertical plane like an accordion (i.e.
+              - emphasis [ref=e228]: vertical lip tightener
+              - text: ). In this case, they are contracting along a vertical plane.
+          - iframe [ref=e231]:
+            - generic [ref=f19e4]:
+              - generic:
+                - generic:
+                  - img
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - img
+                - generic:
+                  - img
+                  - generic: Playing in picture-in-picture
+              - generic:
+                - link "Link to video owner's profile" [ref=f19e12] [cursor=pointer]:
+                  - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                  - img "Link to video owner's profile" [ref=f19e13]
+                - generic [ref=f19e14]:
+                  - generic [ref=f19e15]:
+                    - link "lip pucker - bro.MOV" [ref=f19e16] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                    - generic [ref=f19e17]: lip pucker - bro.MOV
+                  - link "Melinda Ozel" [ref=f19e18] [cursor=pointer]:
+                    - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                    - generic [ref=f19e19]: Melinda Ozel
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic: Like
+                      - button "Like (this opens in a new window)" [ref=f19e20] [cursor=pointer]:
+                        - img
+                - generic:
+                  - button "Play" [ref=f19e22] [cursor=pointer]:
+                    - img [ref=f19e23]
+                    - generic:
+                      - generic: Play
+                  - generic [ref=f19e26]:
+                    - generic [ref=f19e27]:
+                      - slider "Progress Bar" [ref=f19e28] [cursor=pointer]
+                      - generic:
+                        - generic:
+                          - generic: 00:00
+                      - generic [ref=f19e33]: 00:03
+                    - generic:
+                      - generic:
+                        - button "CC/subtitles" [ref=f19e34] [cursor=pointer]:
+                          - img [ref=f19e35]
+                          - generic:
+                            - generic: CC/subtitles
+                        - button "Settings" [ref=f19e37] [cursor=pointer]:
+                          - img [ref=f19e38]
+                          - generic:
+                            - generic: Settings
+                        - button "Transcript" [ref=f19e40] [cursor=pointer]:
+                          - img [ref=f19e41]
+                          - generic:
+                            - generic: Transcript
+                        - button "Picture-in-Picture" [ref=f19e43] [cursor=pointer]:
+                          - img [ref=f19e44]
+                          - generic:
+                            - generic: Picture-in-Picture
+                        - button "Fullscreen" [ref=f19e46] [cursor=pointer]:
+                          - img [ref=f19e47]
+                          - generic:
+                            - generic: Fullscreen
+          - heading "LIP STRETCHER - AU20" [level=3] [ref=e236]
+          - generic [ref=e237]:
+            - paragraph [ref=e238]: Contraction of risorius.
+            - paragraph [ref=e239]:
+              - text: "0-3 seconds: Moderate"
+              - emphasis [ref=e240]: chin raiser
+              - text: from mentalis is present.
+            - paragraph [ref=e241]:
+              - strong [ref=e243]: NOTE
+              - text: ": Involuntary co-activation of"
+              - emphasis [ref=e244]: chin raiser
+              - text: during
+              - emphasis [ref=e245]: lip stretcher
+              - text: is not uncommon. This combo is so common that a beta released version of the Meta “grimacing face” emoji expression contained
+              - emphasis [ref=e246]: chin raiser
+              - text: . Though emoji are highly stylized, the umbrella-like shape of the lower lip area can still indicate presence of
+              - emphasis [ref=e247]: chin raiser
+              - text: .
+            - 'figure "left: beta released emoji with excessive chin raiser right: updated emoji in current product after my notes to the team were implemented" [ref=e248]':
+              - img "This image has an empty alt attribute; its file name is yikes.png" [ref=e249]
+              - generic [ref=e250]: "left: beta released emoji with excessive chin raiser right: updated emoji in current product after my notes to the team were implemented"
+            - paragraph [ref=e251]
+            - paragraph [ref=e252]:
+              - generic [ref=e253]:
+                - strong [ref=e254]: FURTHER READIN
+                - strong [ref=e255]: G
+              - text: ":"
+              - link "Since recruiting me to standardize their emoji set" [ref=e256] [cursor=pointer]:
+                - /url: https://melindaozel.com/mindful-design-everything-you-did-and-didnt-want-to-know-about-emoji/
+              - text: to reduce cross-vendor miscommunication, Meta has updated their “grimacing face” expression to feature a flatter lower lip. However, the Meta examples listed on
+              - link "Unicode" [ref=e257] [cursor=pointer]:
+                - /url: https://unicode.org/emoji/charts/full-emoji-list.html
+              - text: and
+              - link "Emojipedia" [ref=e258] [cursor=pointer]:
+                - /url: https://emojipedia.org/grimacing-face/
+              - text: still showcase the beta example with
+              - emphasis [ref=e259]: chin raiser.
+          - iframe [ref=e262]:
+            - generic [ref=f20e4]:
+              - generic:
+                - generic:
+                  - img
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - img
+                - generic:
+                  - img
+                  - generic: Playing in picture-in-picture
+              - generic:
+                - link "Link to video owner's profile" [ref=f20e12] [cursor=pointer]:
+                  - /url: https://vimeo.com/user59754546?fl=pl&fe=po
+                  - img "Link to video owner's profile" [ref=f20e13]
+                - generic [ref=f20e14]:
+                  - generic [ref=f20e15]:
+                    - link "lip stretcher - bro" [ref=f20e16] [cursor=pointer]:
+                      - /url: https://vimeo.com/user59754546?fl=pl&fe=ti
+                    - generic [ref=f20e17]: lip stretcher - bro
+                  - link "Melinda Ozel" [ref=f20e18] [cursor=pointer]:
+                    - /url: https://vimeo.com/user59754546?fl=pl&fe=by
+                    - generic [ref=f20e19]: Melinda Ozel
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic: Like
+                      - button "Like (this opens in a new window)":
+                        - img
+                - generic:
+                  - button "Play" [ref=f20e21] [cursor=pointer]:
+                    - img [ref=f20e22]
+                    - generic:
+                      - generic: Play
+                  - generic [ref=f20e25]:
+                    - generic [ref=f20e26]:
+                      - slider "Progress Bar" [ref=f20e27] [cursor=pointer]
+                      - generic:
+                        - generic:
+                          - generic: 00:00
+                      - generic [ref=f20e32]: 00:02
+                    - generic:
+                      - generic:
+                        - button "CC/subtitles" [ref=f20e33] [cursor=pointer]:
+                          - img [ref=f20e34]
+                          - generic:
+                            - generic: CC/subtitles
+                        - button "Settings" [ref=f20e36] [cursor=pointer]:
+                          - img [ref=f20e37]
+                          - generic:
+                            - generic: Settings
+                        - button "Transcript" [ref=f20e39] [cursor=pointer]:
+                          - img [ref=f20e40]
+                          - generic:
+                            - generic: Transcript
+                        - button "Picture-in-Picture" [ref=f20e42] [cursor=pointer]:
+                          - img [ref=f20e43]
+                          - generic:
+                            - generic: Picture-in-Picture
+                        - button "Fullscreen" [ref=f20e45] [cursor=pointer]:
+                          - img [ref=f20e46]
+                          - generic:
+                            - generic: Fullscreen
+    - generic [ref=e264]:
+      - complementary [ref=e265]:
+        - generic [ref=e272]:
+          - figure [ref=e273]:
+            - link "headshot of page author" [ref=e274] [cursor=pointer]:
+              - /url: https://melindaozel.com/melinda-who-zel/
+              - img "headshot of page author" [ref=e275]
+          - paragraph
+          - paragraph [ref=e276]:
+            - text: I’m a Facial Systems Expert specializing in the Facial Action Coding System (FACS) and facial anatomy. My work spans
+            - link "expression tracking" [ref=e277] [cursor=pointer]:
+              - /url: https://patents.justia.com/inventor/melinda-ozel
+              - strong [ref=e278]: expression tracking
+            - text: ", facial animation, and"
+            - link "AI-driven lipsync" [ref=e279] [cursor=pointer]:
+              - /url: http://linkedin.com/in/melindaozel
+              - strong [ref=e280]: AI-driven lipsync
+            - text: . Recent work includes contributions to the de-aging of Tom Hanks and other actors in the
+            - strong [ref=e281]:
+              - link "Zemeckis film, Here" [ref=e282] [cursor=pointer]:
+                - /url: https://www.imdb.com/name/nm15482966/
+            - text: .
+          - paragraph [ref=e283]:
+            - text: Learn more about
+            - link "my background" [ref=e284] [cursor=pointer]:
+              - /url: https://melindaozel.com/melinda-who-zel/
+              - strong [ref=e285]: my background
+            - text: .
+          - paragraph
+      - complementary [ref=e286]:
+        - paragraph [ref=e287]:
+          - strong [ref=e288]: Courses & Workshops
+          - text: "-"
+          - link "FACS Cram Session" [ref=e289] [cursor=pointer]:
+            - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+          - text: "-"
+          - link "All About Lipsync" [ref=e290] [cursor=pointer]:
+            - /url: https://melindaozel.com/all-about-lipsync-course/
+          - text: "-"
+          - link "All Training Services" [ref=e291] [cursor=pointer]:
+            - /url: https://melindaozel.com/services/lectures-training/
+      - complementary [ref=e292]:
+        - paragraph [ref=e293]:
+          - strong [ref=e294]: "\""
+          - text: Melinda Ozel's resources on face anatomy, motion, and FACS are industry standard. During my time working on The Last of Us Part II (and other unannounced Playstation titles) I referred to it almost exclusively on a regular basis. The free material is great but the pay material is worth the cost.
+          - strong [ref=e295]: "\""
+          - strong [ref=e296]: Eric Drobile | Technical Animator
+          - strong [ref=e297]: "\""
+          - text: For most people learning traditional FACS is not feasible. It requires very costly specialized degrees and years long commitment. And the half century old research with fuzzy photos was not made for artists. What Melinda has done for our industry is take the dense scientific information and streamlined it into very easy to digest entries and videos catered to artists.
+          - strong [ref=e298]: "\""
+          - strong [ref=e299]: Paul Liaw | Principal Character Artist
+          - strong [ref=e300]: "\""
+          - text: I've been working as a Facial Blendshape Artist across film and gaming and have watched the quality of my work improve exponentially since I've had access to this wealth of knowledge that Melinda has so thoughtfully put together. Her documentation is clear, appealing, and comprehensive. If Paul Ekman is the father of FACS, Melinda has become the cool aunt.
+          - strong [ref=e301]: "\""
+          - strong [ref=e302]: "Ioana Alexandra Pirvu | Lead Artist: Blendshapes @ Rockstar Games"
+          - strong [ref=e303]: "\""
+          - text: Face the FACS in my opinion is bar-none, the best resource out there for any artist and company dealing with facial animation. The way in which Melinda delivers knowledge is detailed, but fun and compelling enough to make you want to keep learning. For a topic that could have easily been boring, she inspired me to keep learning.
+          - strong [ref=e304]: "\""
+          - strong [ref=e305]: Giovanni Nakpil | Senior Creative 3D Evangelist @ Adobe
+          - strong [ref=e306]: "\""
+          - text: If you're doing AU's (action units), this is the site you're going to need to bookmark. Melinda has gone above and beyond to create what I feel is the ultimate resource guide for AU's. Each AU explained, annotated and demonstrated with extreme clarity. You'll experience plenty of "aha!!" moments using Melinda's work as your guide!
+          - strong [ref=e307]: "\""
+          - strong [ref=e308]: Frank Gravatt
+          - strong [ref=e309]: "| Facial Modeler @ Cloud Chamber"
+      - complementary [ref=e310]:
+        - paragraph
+      - complementary [ref=e311]:
+        - generic [ref=e313]:
+          - paragraph [ref=e314]:
+            - strong [ref=e315]: Connect with me <3
+          - list [ref=e316]:
+            - listitem [ref=e317]:
+              - link "Instagram" [ref=e318] [cursor=pointer]:
+                - /url: https://instagram.com/manicexpression
+                - img [ref=e319]
+                - generic [ref=e321]: Instagram
+            - listitem [ref=e322]:
+              - link "LinkedIn" [ref=e323] [cursor=pointer]:
+                - /url: https://linkedin.com/in/melindaozel
+                - img [ref=e324]
+                - generic [ref=e326]: LinkedIn
+            - listitem [ref=e327]:
+              - link "X" [ref=e328] [cursor=pointer]:
+                - /url: https://x.com/melindaozel
+                - img [ref=e329]
+                - generic [ref=e331]: X
+  - generic [ref=e332]:
+    - generic [ref=e335]:
+      - complementary [ref=e337]:
+        - search [ref=e338]:
+          - generic [ref=e339]: Search
+          - generic [ref=e340]:
+            - searchbox "Search" [ref=e341]
+            - button "Search" [ref=e342] [cursor=pointer]
+      - complementary [ref=e344]:
+        - paragraph [ref=e345]:
+          - link "Terms & Conditions" [ref=e346] [cursor=pointer]:
+            - /url: https://melindaozel.com/terms-conditions/
+    - contentinfo "Site" [ref=e347]:
+      - generic [ref=e349]:
+        - text: Copyright © 2020-2026 Melinda Ozel . All rights reserved.
+        - text: Learn how to
+        - link "cite my work here" [ref=e350] [cursor=pointer]:
+          - /url: https://melindaozel.com/how-to-cite-my-work-use-my-visuals/
+          - generic [ref=e351]: cite my work here
+        - generic [ref=e352]: .
+  - navigation "Website language selector" [ref=e353]:
+    - generic [ref=e354]:
+      - button "Change language":
+        - generic: EN
+      - group "Available languages":
+        - link "ES" [ref=e355] [cursor=pointer]:
+          - /url: https://melindaozel.com/es/facs-video-references/
+          - generic [ref=e356]: ES
+        - link "FR" [ref=e357] [cursor=pointer]:
+          - /url: https://melindaozel.com/fr/facs-video-references/
+          - generic [ref=e358]: FR
+        - link "ES_VE" [ref=e359] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_ve/facs-video-references/
+          - generic [ref=e360]: ES_VE
+        - link "ES_CL" [ref=e361] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_cl/facs-video-references/
+          - generic [ref=e362]: ES_CL
+        - link "ES_GT" [ref=e363] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_gt/facs-video-references/
+          - generic [ref=e364]: ES_GT
+        - link "PT" [ref=e365] [cursor=pointer]:
+          - /url: https://melindaozel.com/pt/facs-video-references/
+          - generic [ref=e366]: PT
+        - link "ZH" [ref=e367] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh/facs-video-references/
+          - generic [ref=e368]: ZH
+        - link "ZH_TW" [ref=e369] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh_tw/facs-video-references/
+          - generic [ref=e370]: ZH_TW
+        - link "ZH_HK" [ref=e371] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh_hk/facs-video-references/
+          - generic [ref=e372]: ZH_HK
+        - link "JA" [ref=e373] [cursor=pointer]:
+          - /url: https://melindaozel.com/ja/facs-video-references/
+          - generic [ref=e374]: JA
+        - link "HI" [ref=e375] [cursor=pointer]:
+          - /url: https://melindaozel.com/hi/facs-video-references/
+          - generic [ref=e376]: HI
+        - link "DE" [ref=e377] [cursor=pointer]:
+          - /url: https://melindaozel.com/de/facs-video-references/
+          - generic [ref=e378]: DE
+        - link "DE_DE" [ref=e379] [cursor=pointer]:
+          - /url: https://melindaozel.com/de_de/facs-video-references/
+          - generic [ref=e380]: DE_DE
+        - link "RU" [ref=e381] [cursor=pointer]:
+          - /url: https://melindaozel.com/ru/facs-video-references/
+          - generic [ref=e382]: RU
+        - link "PL" [ref=e383] [cursor=pointer]:
+          - /url: https://melindaozel.com/pl/facs-video-references/
+          - generic [ref=e384]: PL
+        - link "CS" [ref=e385] [cursor=pointer]:
+          - /url: https://melindaozel.com/cs/facs-video-references/
+          - generic [ref=e386]: CS
+        - link "VI" [ref=e387] [cursor=pointer]:
+          - /url: https://melindaozel.com/vi/facs-video-references/
+          - generic [ref=e388]: VI
+        - link "IT" [ref=e389] [cursor=pointer]:
+          - /url: https://melindaozel.com/it/facs-video-references/
+          - generic [ref=e390]: IT
+        - link "SV" [ref=e391] [cursor=pointer]:
+          - /url: https://melindaozel.com/sv/facs-video-references/
+          - generic [ref=e392]: SV
+        - link "SR" [ref=e393] [cursor=pointer]:
+          - /url: https://melindaozel.com/sr/facs-video-references/
+          - generic [ref=e394]: SR
+        - link "AR" [ref=e395] [cursor=pointer]:
+          - /url: https://melindaozel.com/ar/facs-video-references/
+          - generic [ref=e396]: AR
+        - link "MS" [ref=e397] [cursor=pointer]:
+          - /url: https://melindaozel.com/ms/facs-video-references/
+          - generic [ref=e398]: MS
+        - link "FI" [ref=e399] [cursor=pointer]:
+          - /url: https://melindaozel.com/fi/facs-video-references/
+          - generic [ref=e400]: FI
+        - link "ES_MX" [ref=e401] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_mx/facs-video-references/
+          - generic [ref=e402]: ES_MX
+        - link "KO" [ref=e403] [cursor=pointer]:
+          - /url: https://melindaozel.com/ko/facs-video-references/
+          - generic [ref=e404]: KO
+        - link "TR" [ref=e405] [cursor=pointer]:
+          - /url: https://melindaozel.com/tr/facs-video-references/
+          - generic [ref=e406]: TR
+        - link "IS" [ref=e407] [cursor=pointer]:
+          - /url: https://melindaozel.com/is/facs-video-references/
+          - generic [ref=e408]: IS
+        - link "NL" [ref=e409] [cursor=pointer]:
+          - /url: https://melindaozel.com/nl/facs-video-references/
+          - generic [ref=e410]: NL
+        - link "NL_NL" [ref=e411] [cursor=pointer]:
+          - /url: https://melindaozel.com/nl_nl/facs-video-references/
+          - generic [ref=e412]: NL_NL
+        - link "ES_AR" [ref=e413] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_ar/facs-video-references/
+          - generic [ref=e414]: ES_AR
+        - link "UK" [ref=e415] [cursor=pointer]:
+          - /url: https://melindaozel.com/uk/facs-video-references/
+          - generic [ref=e416]: UK
+  - generic [ref=e417]: desktop

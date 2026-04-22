@@ -1,0 +1,678 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#content"
+  - navigation "Secondary" [ref=e3]:
+    - list [ref=e6]:
+      - listitem [ref=e7]:
+        - link "Premium Member Access" [ref=e8] [cursor=pointer]:
+          - /url: https://melindaozel.com/premium-resources/
+          - text: Premium Member Access
+          - img [ref=e10]
+        - list:
+          - listitem:
+            - link "Login":
+              - /url: https://melindaozel.com/login/
+          - listitem:
+            - link "Subscribe :)":
+              - /url: https://melindaozel.com/subscription-options/
+      - listitem [ref=e12]:
+        - link "Recorded Lecture Access" [ref=e13] [cursor=pointer]:
+          - /url: https://melindaozel.com/recorded-lectures/
+          - text: Recorded Lecture Access
+          - img [ref=e15]
+        - list:
+          - listitem:
+            - link "FACS Cram Session":
+              - /url: https://melindaozel.com/facs-cram-session/
+          - listitem:
+            - link "All About Lipsync":
+              - /url: https://melindaozel.com/all-about-lipsync-lecture-videos/
+      - listitem [ref=e17]:
+        - link "My Account" [ref=e18] [cursor=pointer]:
+          - /url: https://melindaozel.com/account/
+  - banner "Site" [ref=e19]:
+    - generic [ref=e21]:
+      - link "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e23] [cursor=pointer]:
+        - /url: https://melindaozel.com/
+        - img "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e24]
+      - paragraph [ref=e26]:
+        - link "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e27] [cursor=pointer]:
+          - /url: https://melindaozel.com/
+  - navigation "Primary" [ref=e28]:
+    - list [ref=e31]:
+      - listitem [ref=e32]:
+        - link "Learning Hub" [ref=e33] [cursor=pointer]:
+          - /url: https://melindaozel.com/learning-hub/
+          - text: Learning Hub
+          - img [ref=e35]
+        - list:
+          - listitem:
+            - link "FACS Cheat Sheet":
+              - /url: https://melindaozel.com/facs-cheat-sheet/
+          - listitem:
+            - link "Viseme Cheat Sheet":
+              - /url: https://melindaozel.com/viseme-cheat-sheet/
+          - listitem:
+            - link "All Free Resources":
+              - /url: https://melindaozel.com/free-resources/
+          - listitem:
+            - link "🔒 Premium Resources":
+              - /url: https://melindaozel.com/premium-resources/
+              - img "🔒"
+              - text: Premium Resources
+          - listitem:
+            - link "FAQs":
+              - /url: https://melindaozel.com/faqs/
+      - listitem [ref=e37]:
+        - link "Courses" [ref=e38] [cursor=pointer]:
+          - /url: https://melindaozel.com/online-lectures/
+          - text: Courses
+          - img [ref=e40]
+        - list:
+          - listitem:
+            - link "FACS Cram Session":
+              - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+          - listitem:
+            - link "All About Lipsync":
+              - /url: https://melindaozel.com/all-about-lipsync-course/
+      - listitem [ref=e42]:
+        - link "Full Site Access" [ref=e43] [cursor=pointer]:
+          - /url: https://melindaozel.com/subscription-options/
+          - text: Full Site Access
+          - img [ref=e45]
+        - list:
+          - listitem:
+            - link "Membership Options":
+              - /url: https://melindaozel.com/subscription-options/
+      - listitem [ref=e47]:
+        - link "Services" [ref=e48] [cursor=pointer]:
+          - /url: https://melindaozel.com/services/
+          - text: Services
+          - img [ref=e50]
+        - list:
+          - listitem:
+            - link "FACS Lectures & Training":
+              - /url: https://melindaozel.com/services/lectures-training/
+          - listitem:
+            - link "Consulting":
+              - /url: https://melindaozel.com/services/consulting/
+      - listitem [ref=e52]:
+        - link "About" [ref=e53] [cursor=pointer]:
+          - /url: https://melindaozel.com/who-is-melinda-ozel/
+          - text: About
+          - img [ref=e55]
+        - list:
+          - listitem:
+            - link "About Me":
+              - /url: https://melindaozel.com/who-is-melinda-ozel/
+          - listitem:
+            - link "Cite My Work":
+              - /url: https://melindaozel.com/how-to-cite-my-work-use-my-visuals/
+          - listitem:
+            - link "Contact":
+              - /url: https://melindaozel.com/who-is-melinda-ozel/contact-me/
+  - generic [ref=e58]:
+    - main [ref=e60]:
+      - article [ref=e61]:
+        - generic [ref=e64]:
+          - generic [ref=e69]:
+            - generic [ref=e70]:
+              - heading "Premium Face Resources By Topic" [level=2] [ref=e71]
+              - button "Sulje sisällysluettelo" [expanded] [ref=e72] [cursor=pointer]:
+                - img [ref=e73]
+            - list [ref=e76]:
+              - listitem [ref=e77]:
+                - generic [ref=e78]:
+                  - img [ref=e79]
+                  - link "Facial Action Coding System (FACS) & Facial Anatomy" [ref=e81] [cursor=pointer]:
+                    - /url: "#elementor-toc__heading-anchor-0"
+              - listitem [ref=e82]:
+                - generic [ref=e83]:
+                  - img [ref=e84]
+                  - link "Face Tracking & Lipsync Technology" [ref=e86] [cursor=pointer]:
+                    - /url: "#elementor-toc__heading-anchor-1"
+              - listitem [ref=e87]:
+                - generic [ref=e88]:
+                  - img [ref=e89]
+                  - 'link "Mixed Posts: From FACS to Wrinkles & Eye Blinks" [ref=e91] [cursor=pointer]':
+                    - /url: "#elementor-toc__heading-anchor-2"
+          - generic [ref=e102]:
+            - heading "Facial Action Coding System (FACS) & Facial Anatomy" [level=2] [ref=e104]
+            - generic [ref=e106]:
+              - generic [ref=e108]:
+                - heading "FACS Study Guide" [level=3] [ref=e110]:
+                  - link "FACS Study Guide" [ref=e111] [cursor=pointer]:
+                    - /url: https://melindaozel.com/facs-study-guide/
+                - link "Facial Action Coding System study guide" [ref=e113] [cursor=pointer]:
+                  - /url: https://melindaozel.com/facs-study-guide/
+                  - img "Facial Action Coding System study guide" [ref=e114]
+                - paragraph [ref=e116]: Isolated FACS references as GIFs moving from neutral to pose, photos, and detailed descriptions.
+              - generic [ref=e118]:
+                - heading "Eyebrow Combos" [level=3] [ref=e120]:
+                  - link "Eyebrow Combos" [ref=e121] [cursor=pointer]:
+                    - /url: https://melindaozel.com/facs-cheat-sheet/eyebrow-combos-cheat-sheet/
+                - link "FACS cheat sheet - Facial Action Coding System - FACS AUs - action units - eyebrow combinations - AU combinations - AU1+2 - AU2+4 - AU1+2+4" [ref=e123] [cursor=pointer]:
+                  - /url: https://melindaozel.com/facs-cheat-sheet/eyebrow-combos-cheat-sheet/
+                  - img "FACS cheat sheet - Facial Action Coding System - FACS AUs - action units - eyebrow combinations - AU combinations - AU1+2 - AU2+4 - AU1+2+4" [ref=e124]
+                - paragraph [ref=e126]: Visuals of brow action combinations with descriptions and multiple angle GIFs.
+            - generic [ref=e128]:
+              - generic [ref=e130]:
+                - 'heading "Upper Face: Expanded" [level=3] [ref=e132]':
+                  - 'link "Upper Face: Expanded" [ref=e133] [cursor=pointer]':
+                    - /url: https://melindaozel.com/upper-face-expanded/
+                - link "FACS cheat sheet - Facial Action Coding System - FACS AUs - action units" [ref=e135] [cursor=pointer]:
+                  - /url: https://melindaozel.com/upper-face-expanded/
+                  - img "FACS cheat sheet - Facial Action Coding System - FACS AUs - action units" [ref=e136]
+                - paragraph [ref=e138]: Upper face action units (brows and orbital muscles) and their common combinations. Described in detail and shown with multiple angles.
+              - generic [ref=e140]:
+                - 'heading "Lower Face: Expanded" [level=3] [ref=e142]':
+                  - 'link "Lower Face: Expanded" [ref=e143] [cursor=pointer]':
+                    - /url: https://melindaozel.com/lower-face-cheat-sheet/
+                - link "FACS cheat sheet - Facial Action Coding System - FACS AUs - action units - lower face expressions - AU10 upper lip raiser - AU11 nasolabial furrow deepener - AU12 lip corner puller - AU13 sharp lip puller AKA cheek puffer - AU14 dimpler - AU15 lip corner depressor - AU16 lower lip depressor - AU17 chin raiser - AU18 lip pucker" [ref=e145] [cursor=pointer]:
+                  - /url: https://melindaozel.com/lower-face-cheat-sheet/
+                  - img "FACS cheat sheet - Facial Action Coding System - FACS AUs - action units - lower face expressions - AU10 upper lip raiser - AU11 nasolabial furrow deepener - AU12 lip corner puller - AU13 sharp lip puller AKA cheek puffer - AU14 dimpler - AU15 lip corner depressor - AU16 lower lip depressor - AU17 chin raiser - AU18 lip pucker" [ref=e146]
+                - paragraph [ref=e148]: Lower face action units and their common combinations. Described in detail and shown with multiple angles.
+            - generic [ref=e150]:
+              - generic [ref=e152]:
+                - heading "Emotion References" [level=3] [ref=e154]:
+                  - link "Emotion References" [ref=e155] [cursor=pointer]:
+                    - /url: https://melindaozel.com/emotion-references/
+                - link "FACS cheat sheet - Facial Action Coding System - FACS AUs - action units - emotion references for artists and animators" [ref=e157] [cursor=pointer]:
+                  - /url: https://melindaozel.com/emotion-references/
+                  - img "FACS cheat sheet - Facial Action Coding System - FACS AUs - action units - emotion references for artists and animators" [ref=e158]
+                - paragraph [ref=e160]: Authentic emotion references documented from real moments with contextual descriptions.
+              - generic [ref=e162]:
+                - heading "FACS Video References" [level=3] [ref=e164]:
+                  - link "FACS Video References" [ref=e165] [cursor=pointer]:
+                    - /url: https://melindaozel.com/facs-video-references/
+                - link "FACS Videos Preview" [ref=e167] [cursor=pointer]:
+                  - /url: https://melindaozel.com/facs-video-references/
+                  - img "FACS Videos Preview" [ref=e168]
+                - paragraph [ref=e170]: A select set of FACS expression and video references and some draw-overs. Especially helpful for those studying brow lowering.
+          - generic [ref=e181]:
+            - heading "Face Tracking & Lipsync Technology" [level=2] [ref=e183]
+            - generic [ref=e185]:
+              - generic [ref=e187]:
+                - heading "Posed Expression Captures" [level=3] [ref=e189]:
+                  - link "Posed Expression Captures" [ref=e190] [cursor=pointer]:
+                    - /url: https://melindaozel.com/posed-expression-capture-guide/
+                - link "POSED-EXPRSSION-CAPTURE-TEMP" [ref=e192] [cursor=pointer]:
+                  - /url: https://melindaozel.com/posed-expression-capture-guide/
+                  - img "POSED-EXPRSSION-CAPTURE-TEMP" [ref=e193]
+                - paragraph [ref=e195]: New to the world of facial captures? A series of tips for how to get started + a detailed guide for handling upper face expression captures.
+                - 'heading "ARKit to FACS: Full Guide" [level=3] [ref=e197]':
+                  - 'link "ARKit to FACS: Full Guide" [ref=e198] [cursor=pointer]':
+                    - /url: https://melindaozel.com/arkit-to-facs-translation-guide/
+                - link "ARKit - to FACS translation - full guide" [ref=e200] [cursor=pointer]:
+                  - /url: https://melindaozel.com/arkit-to-facs-translation-guide/
+                  - img "ARKit - to FACS translation - full guide" [ref=e201]
+                - paragraph [ref=e203]: The expanded version of the ARKit to FACS Cheat Sheet. Here we go more in depth of how things work and how you might want to use each shape.
+              - generic [ref=e205]:
+                - heading "Viseme Cheat Sheet" [level=3] [ref=e207]:
+                  - link "Viseme Cheat Sheet" [ref=e208] [cursor=pointer]:
+                    - /url: https://melindaozel.com/viseme-speech-guide/
+                - link "VIseme & speech reference guide" [ref=e210] [cursor=pointer]:
+                  - /url: https://melindaozel.com/viseme-speech-guide/
+                  - img "VIseme & speech reference guide" [ref=e211]
+                - paragraph [ref=e213]: Viseme & speech reference guide with videos shown in 1x speed and slow motion.
+          - generic [ref=e224]:
+            - 'heading "Mixed Posts: From FACS to Wrinkles & Eye Blinks" [level=2] [ref=e226]'
+            - paragraph [ref=e228]: Advanced facial expression tips, research, instructional guides, and commentary.
+          - list [ref=e236]:
+            - listitem [ref=e237]:
+              - generic [ref=e238]:
+                - link "woman raising her top lips with drawovers" [ref=e239] [cursor=pointer]:
+                  - /url: https://melindaozel.com/upper-lip-raiser-vs-nasolabial-furrow-deepener/
+                  - img "woman raising her top lips with drawovers" [ref=e241]
+                - generic [ref=e242]: action units (FACS AUs)
+                - generic [ref=e243]:
+                  - heading "Upper Lip Raiser vs. Nasolabial Furrow Deepener" [level=3] [ref=e244]:
+                    - link "Upper Lip Raiser vs. Nasolabial Furrow Deepener" [ref=e245] [cursor=pointer]:
+                      - /url: https://melindaozel.com/upper-lip-raiser-vs-nasolabial-furrow-deepener/
+                  - link "Read more about Upper Lip Raiser vs. Nasolabial Furrow Deepener" [ref=e246] [cursor=pointer]:
+                    - /url: https://melindaozel.com/upper-lip-raiser-vs-nasolabial-furrow-deepener/
+                    - text: Read More »
+            - listitem [ref=e247]:
+              - generic [ref=e248]:
+                - link "stylizing facial expressions in animated characters" [ref=e249] [cursor=pointer]:
+                  - /url: https://melindaozel.com/stylized-facial-expression-design/
+                  - img "stylizing facial expressions in animated characters" [ref=e251]
+                - generic [ref=e252]: action units (FACS AUs)
+                - generic [ref=e253]:
+                  - heading "Stylized Facial Expression Design" [level=3] [ref=e254]:
+                    - link "Stylized Facial Expression Design" [ref=e255] [cursor=pointer]:
+                      - /url: https://melindaozel.com/stylized-facial-expression-design/
+                  - link "Read more about Stylized Facial Expression Design" [ref=e256] [cursor=pointer]:
+                    - /url: https://melindaozel.com/stylized-facial-expression-design/
+                    - text: Read More »
+            - listitem [ref=e257]:
+              - generic [ref=e258]:
+                - link "frontalis and occipitalis - video" [ref=e259] [cursor=pointer]:
+                  - /url: https://melindaozel.com/forehead-dynamics-frontalis-vs-occipitalis/
+                  - img "frontalis and occipitalis - video" [ref=e261]
+                - generic [ref=e262]: art
+                - generic [ref=e263]:
+                  - heading "Forehead Dynamics – Frontalis vs. Occipitalis" [level=3] [ref=e264]:
+                    - link "Forehead Dynamics – Frontalis vs. Occipitalis" [ref=e265] [cursor=pointer]:
+                      - /url: https://melindaozel.com/forehead-dynamics-frontalis-vs-occipitalis/
+                  - link "Read more about Forehead Dynamics – Frontalis vs. Occipitalis" [ref=e266] [cursor=pointer]:
+                    - /url: https://melindaozel.com/forehead-dynamics-frontalis-vs-occipitalis/
+                    - text: Read More »
+            - listitem [ref=e267]:
+              - generic [ref=e268]:
+                - link "AU24 - lip presser shape" [ref=e269] [cursor=pointer]:
+                  - /url: https://melindaozel.com/lip-tightener-vs-lip-presser/
+                  - img "AU24 - lip presser shape" [ref=e271]
+                - generic [ref=e272]: action units (FACS AUs)
+                - generic [ref=e273]:
+                  - heading "Lip Tightener vs. Lip Presser" [level=3] [ref=e274]:
+                    - link "Lip Tightener vs. Lip Presser" [ref=e275] [cursor=pointer]:
+                      - /url: https://melindaozel.com/lip-tightener-vs-lip-presser/
+                  - link "Read more about Lip Tightener vs. Lip Presser" [ref=e276] [cursor=pointer]:
+                    - /url: https://melindaozel.com/lip-tightener-vs-lip-presser/
+                    - text: Read More »
+            - listitem [ref=e277]:
+              - generic [ref=e278]:
+                - link "stylized eyebrows" [ref=e279] [cursor=pointer]:
+                  - /url: https://melindaozel.com/eyebrow-shapes-and-character-design/
+                  - img "stylized eyebrows" [ref=e281]
+                - generic [ref=e282]: action units (FACS AUs)
+                - generic [ref=e283]:
+                  - heading "Eyebrow Shapes and Character Design" [level=3] [ref=e284]:
+                    - link "Eyebrow Shapes and Character Design" [ref=e285] [cursor=pointer]:
+                      - /url: https://melindaozel.com/eyebrow-shapes-and-character-design/
+                  - link "Read more about Eyebrow Shapes and Character Design" [ref=e286] [cursor=pointer]:
+                    - /url: https://melindaozel.com/eyebrow-shapes-and-character-design/
+                    - text: Read More »
+            - listitem [ref=e287]:
+              - generic [ref=e288]:
+                - link "sticky lids, blinkles, and rolling lids - new terms for vfx - animation" [ref=e289] [cursor=pointer]:
+                  - /url: https://melindaozel.com/advanced-blend-shape-tips-for-blinks/
+                  - img "sticky lids, blinkles, and rolling lids - new terms for vfx - animation" [ref=e291]
+                - generic [ref=e292]: facial expressions
+                - generic [ref=e293]:
+                  - heading "Advanced Blend Shape Tips For Blinks" [level=3] [ref=e294]:
+                    - link "Advanced Blend Shape Tips For Blinks" [ref=e295] [cursor=pointer]:
+                      - /url: https://melindaozel.com/advanced-blend-shape-tips-for-blinks/
+                  - link "Read more about Advanced Blend Shape Tips For Blinks" [ref=e296] [cursor=pointer]:
+                    - /url: https://melindaozel.com/advanced-blend-shape-tips-for-blinks/
+                    - text: Read More »
+            - listitem [ref=e297]:
+              - generic [ref=e298]:
+                - link "eye blink - Melinda Ozel design" [ref=e299] [cursor=pointer]:
+                  - /url: https://melindaozel.com/hot-tips-for-animating-blinks/
+                  - img "eye blink - Melinda Ozel design" [ref=e301]
+                - generic [ref=e302]: behavior
+                - generic [ref=e303]:
+                  - heading "Hot Tips For Animating Blinks" [level=3] [ref=e304]:
+                    - link "Hot Tips For Animating Blinks" [ref=e305] [cursor=pointer]:
+                      - /url: https://melindaozel.com/hot-tips-for-animating-blinks/
+                  - link "Read more about Hot Tips For Animating Blinks" [ref=e306] [cursor=pointer]:
+                    - /url: https://melindaozel.com/hot-tips-for-animating-blinks/
+                    - text: Read More »
+            - listitem [ref=e307]:
+              - generic [ref=e308]:
+                - link "upper lid raiser - levator palpebrae superioris - eye bulge - anatomy" [ref=e309] [cursor=pointer]:
+                  - /url: https://melindaozel.com/all-about-upper-lid-raiser-au5/
+                  - img "upper lid raiser - levator palpebrae superioris - eye bulge - anatomy" [ref=e311]
+                - generic [ref=e312]: action units (FACS AUs)
+                - generic [ref=e313]:
+                  - heading "All About Upper Lid Raiser – AU5" [level=3] [ref=e314]:
+                    - link "All About Upper Lid Raiser – AU5" [ref=e315] [cursor=pointer]:
+                      - /url: https://melindaozel.com/all-about-upper-lid-raiser-au5/
+                  - link "Read more about All About Upper Lid Raiser – AU5" [ref=e316] [cursor=pointer]:
+                    - /url: https://melindaozel.com/all-about-upper-lid-raiser-au5/
+                    - text: Read More »
+            - listitem [ref=e317]:
+              - generic [ref=e318]:
+                - link "woman raising her top lips with drawovers" [ref=e319] [cursor=pointer]:
+                  - /url: https://melindaozel.com/levator-labii-superioris-vs-zygomaticus-minor/
+                  - img "woman raising her top lips with drawovers" [ref=e321]
+                - generic [ref=e322]: facial expressions
+                - generic [ref=e323]:
+                  - heading "Nasolabial Furrow Deepener vs. Upper Lip Raiser" [level=3] [ref=e324]:
+                    - link "Nasolabial Furrow Deepener vs. Upper Lip Raiser" [ref=e325] [cursor=pointer]:
+                      - /url: https://melindaozel.com/levator-labii-superioris-vs-zygomaticus-minor/
+                  - link "Read more about Nasolabial Furrow Deepener vs. Upper Lip Raiser" [ref=e326] [cursor=pointer]:
+                    - /url: https://melindaozel.com/levator-labii-superioris-vs-zygomaticus-minor/
+                    - text: Read More »
+            - listitem [ref=e327]:
+              - generic [ref=e328]:
+                - link "color of emotion - mapping hotspots - sadness - sadness blushing - blood flow" [ref=e329] [cursor=pointer]:
+                  - /url: https://melindaozel.com/colors-of-sadness/
+                  - img "color of emotion - mapping hotspots - sadness - sadness blushing - blood flow" [ref=e331]
+                - generic [ref=e332]: behavior
+                - generic [ref=e333]:
+                  - heading "Colors of Sadness" [level=3] [ref=e334]:
+                    - link "Colors of Sadness" [ref=e335] [cursor=pointer]:
+                      - /url: https://melindaozel.com/colors-of-sadness/
+                  - link "Read more about Colors of Sadness" [ref=e336] [cursor=pointer]:
+                    - /url: https://melindaozel.com/colors-of-sadness/
+                    - text: Read More »
+            - listitem [ref=e337]:
+              - generic [ref=e338]:
+                - link "zygomaticus major dimple" [ref=e339] [cursor=pointer]:
+                  - /url: https://melindaozel.com/leveraging-facial-muscle-variation/
+                  - img "zygomaticus major dimple" [ref=e341]
+                - generic [ref=e342]: action units (FACS AUs)
+                - generic [ref=e343]:
+                  - heading "Leveraging Facial Muscle Variation" [level=3] [ref=e344]:
+                    - link "Leveraging Facial Muscle Variation" [ref=e345] [cursor=pointer]:
+                      - /url: https://melindaozel.com/leveraging-facial-muscle-variation/
+                  - link "Read more about Leveraging Facial Muscle Variation" [ref=e346] [cursor=pointer]:
+                    - /url: https://melindaozel.com/leveraging-facial-muscle-variation/
+                    - text: Read More »
+            - listitem [ref=e347]:
+              - generic [ref=e348]:
+                - link "bifid zygomaticus major" [ref=e349] [cursor=pointer]:
+                  - /url: https://melindaozel.com/zygomaticus-major-variations-the-dimple/
+                  - img "bifid zygomaticus major" [ref=e351]
+                - generic [ref=e352]: facial expressions
+                - generic [ref=e353]:
+                  - heading "Zygomaticus Major Variations & the Dimple" [level=3] [ref=e354]:
+                    - link "Zygomaticus Major Variations & the Dimple" [ref=e355] [cursor=pointer]:
+                      - /url: https://melindaozel.com/zygomaticus-major-variations-the-dimple/
+                  - link "Read more about Zygomaticus Major Variations & the Dimple" [ref=e356] [cursor=pointer]:
+                    - /url: https://melindaozel.com/zygomaticus-major-variations-the-dimple/
+                    - text: Read More »
+            - listitem [ref=e357]:
+              - generic [ref=e358]:
+                - link "frontalis shapes illustration" [ref=e359] [cursor=pointer]:
+                  - /url: https://melindaozel.com/frontalis-variation/
+                  - img "frontalis shapes illustration" [ref=e361]
+                - generic [ref=e362]: action units (FACS AUs)
+                - generic [ref=e363]:
+                  - 'heading "Frontalis Variation: Why Wrinkle Patterns Differ" [level=3] [ref=e364]':
+                    - 'link "Frontalis Variation: Why Wrinkle Patterns Differ" [ref=e365] [cursor=pointer]':
+                      - /url: https://melindaozel.com/frontalis-variation/
+                  - 'link "Read more about Frontalis Variation: Why Wrinkle Patterns Differ" [ref=e366] [cursor=pointer]':
+                    - /url: https://melindaozel.com/frontalis-variation/
+                    - text: Read More »
+            - listitem [ref=e367]:
+              - generic [ref=e368]:
+                - link "inner brow raiser wrong" [ref=e369] [cursor=pointer]:
+                  - /url: https://melindaozel.com/inner-brow-raiser-deep-dive/
+                  - img "inner brow raiser wrong" [ref=e371]
+                - generic [ref=e372]: AR/VR
+                - generic [ref=e373]:
+                  - 'heading "Inner Brow Raiser: Deep Dive" [level=3] [ref=e374]':
+                    - 'link "Inner Brow Raiser: Deep Dive" [ref=e375] [cursor=pointer]':
+                      - /url: https://melindaozel.com/inner-brow-raiser-deep-dive/
+                  - 'link "Read more about Inner Brow Raiser: Deep Dive" [ref=e376] [cursor=pointer]':
+                    - /url: https://melindaozel.com/inner-brow-raiser-deep-dive/
+                    - text: Read More »
+            - listitem [ref=e377]:
+              - generic [ref=e379]:
+                - 'heading "Wrinkle Tips For Character Artists, Part II: Static Forms" [level=3] [ref=e380]':
+                  - 'link "Wrinkle Tips For Character Artists, Part II: Static Forms" [ref=e381] [cursor=pointer]':
+                    - /url: https://melindaozel.com/a-wrinkle-in-time-part-ii/
+                - 'link "Read more about Wrinkle Tips For Character Artists, Part II: Static Forms" [ref=e382] [cursor=pointer]':
+                  - /url: https://melindaozel.com/a-wrinkle-in-time-part-ii/
+                  - text: Read More »
+            - listitem [ref=e383]:
+              - generic [ref=e384]:
+                - link [ref=e385] [cursor=pointer]:
+                  - /url: https://melindaozel.com/a-wrinkle-in-time-building-characters-with-real-story-lines/
+                - generic [ref=e387]: action units (FACS AUs)
+                - generic [ref=e388]:
+                  - 'heading "A Wrinkle In Time, Part I: How to Build Characters With Real Story Lines" [level=3] [ref=e389]':
+                    - 'link "A Wrinkle In Time, Part I: How to Build Characters With Real Story Lines" [ref=e390] [cursor=pointer]':
+                      - /url: https://melindaozel.com/a-wrinkle-in-time-building-characters-with-real-story-lines/
+                  - 'link "Read more about A Wrinkle In Time, Part I: How to Build Characters With Real Story Lines" [ref=e391] [cursor=pointer]':
+                    - /url: https://melindaozel.com/a-wrinkle-in-time-building-characters-with-real-story-lines/
+                    - text: Read More »
+            - listitem [ref=e392]:
+              - generic [ref=e393]:
+                - link [ref=e394] [cursor=pointer]:
+                  - /url: https://melindaozel.com/building-smiles-the-right-way/
+                - generic [ref=e396]: action units (FACS AUs)
+                - generic [ref=e397]:
+                  - heading "Building Smiles – The Right Way" [level=3] [ref=e398]:
+                    - link "Building Smiles – The Right Way" [ref=e399] [cursor=pointer]:
+                      - /url: https://melindaozel.com/building-smiles-the-right-way/
+                  - link "Read more about Building Smiles – The Right Way" [ref=e400] [cursor=pointer]:
+                    - /url: https://melindaozel.com/building-smiles-the-right-way/
+                    - text: Read More »
+            - listitem [ref=e401]:
+              - generic [ref=e402]:
+                - link "nose wrinkler, brow furrow, upper lid raiser" [ref=e403] [cursor=pointer]:
+                  - /url: https://melindaozel.com/bypassing-vr-headset-occlusion-in-face-tracking/
+                  - img "nose wrinkler, brow furrow, upper lid raiser" [ref=e405]
+                - generic [ref=e406]: action units (FACS AUs)
+                - generic [ref=e407]:
+                  - heading "Bypassing VR Headset Occlusion in Face Tracking" [level=3] [ref=e408]:
+                    - link "Bypassing VR Headset Occlusion in Face Tracking" [ref=e409] [cursor=pointer]:
+                      - /url: https://melindaozel.com/bypassing-vr-headset-occlusion-in-face-tracking/
+                  - link "Read more about Bypassing VR Headset Occlusion in Face Tracking" [ref=e410] [cursor=pointer]:
+                    - /url: https://melindaozel.com/bypassing-vr-headset-occlusion-in-face-tracking/
+                    - text: Read More »
+            - listitem [ref=e411]:
+              - generic [ref=e412]:
+                - link [ref=e413] [cursor=pointer]:
+                  - /url: https://melindaozel.com/breaking-down-nose-wrinkler/
+                - generic [ref=e415]: action units (FACS AUs)
+                - generic [ref=e416]:
+                  - heading "Breaking Down Nose Wrinkler (AU9)" [level=3] [ref=e417]:
+                    - link "Breaking Down Nose Wrinkler (AU9)" [ref=e418] [cursor=pointer]:
+                      - /url: https://melindaozel.com/breaking-down-nose-wrinkler/
+                  - link "Read more about Breaking Down Nose Wrinkler (AU9)" [ref=e419] [cursor=pointer]:
+                    - /url: https://melindaozel.com/breaking-down-nose-wrinkler/
+                    - text: Read More »
+            - listitem [ref=e420]:
+              - generic [ref=e421]:
+                - link "woman performing FACS-based lip tightener expression" [ref=e422] [cursor=pointer]:
+                  - /url: https://melindaozel.com/lip-tightener/
+                  - img "woman performing FACS-based lip tightener expression" [ref=e424]
+                - generic [ref=e425]: action units (FACS AUs)
+                - generic [ref=e426]:
+                  - heading "Lip Tightener (AU23) and Why Everyone Gets It Wrong" [level=3] [ref=e427]:
+                    - link "Lip Tightener (AU23) and Why Everyone Gets It Wrong" [ref=e428] [cursor=pointer]:
+                      - /url: https://melindaozel.com/lip-tightener/
+                  - link "Read more about Lip Tightener (AU23) and Why Everyone Gets It Wrong" [ref=e429] [cursor=pointer]:
+                    - /url: https://melindaozel.com/lip-tightener/
+                    - text: Read More »
+    - generic [ref=e431]:
+      - complementary [ref=e432]:
+        - generic [ref=e439]:
+          - figure [ref=e440]:
+            - link "headshot of page author" [ref=e441] [cursor=pointer]:
+              - /url: https://melindaozel.com/melinda-who-zel/
+              - img "headshot of page author" [ref=e442]
+          - paragraph
+          - paragraph [ref=e443]:
+            - text: I’m a Facial Systems Expert specializing in the Facial Action Coding System (FACS) and facial anatomy. My work spans
+            - link "expression tracking" [ref=e444] [cursor=pointer]:
+              - /url: https://patents.justia.com/inventor/melinda-ozel
+              - strong [ref=e445]: expression tracking
+            - text: ", facial animation, and"
+            - link "AI-driven lipsync" [ref=e446] [cursor=pointer]:
+              - /url: http://linkedin.com/in/melindaozel
+              - strong [ref=e447]: AI-driven lipsync
+            - text: . Recent work includes contributions to the de-aging of Tom Hanks and other actors in the
+            - strong [ref=e448]:
+              - link "Zemeckis film, Here" [ref=e449] [cursor=pointer]:
+                - /url: https://www.imdb.com/name/nm15482966/
+            - text: .
+          - paragraph [ref=e450]:
+            - text: Learn more about
+            - link "my background" [ref=e451] [cursor=pointer]:
+              - /url: https://melindaozel.com/melinda-who-zel/
+              - strong [ref=e452]: my background
+            - text: .
+          - paragraph
+      - complementary [ref=e453]:
+        - paragraph [ref=e454]:
+          - strong [ref=e455]: Courses & Workshops
+          - text: "-"
+          - link "FACS Cram Session" [ref=e456] [cursor=pointer]:
+            - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+          - text: "-"
+          - link "All About Lipsync" [ref=e457] [cursor=pointer]:
+            - /url: https://melindaozel.com/all-about-lipsync-course/
+          - text: "-"
+          - link "All Training Services" [ref=e458] [cursor=pointer]:
+            - /url: https://melindaozel.com/services/lectures-training/
+      - complementary [ref=e459]:
+        - paragraph [ref=e460]:
+          - strong [ref=e461]: "\""
+          - text: Melinda Ozel's resources on face anatomy, motion, and FACS are industry standard. During my time working on The Last of Us Part II (and other unannounced Playstation titles) I referred to it almost exclusively on a regular basis. The free material is great but the pay material is worth the cost.
+          - strong [ref=e462]: "\""
+          - strong [ref=e463]: Eric Drobile | Technical Animator
+          - strong [ref=e464]: "\""
+          - text: For most people learning traditional FACS is not feasible. It requires very costly specialized degrees and years long commitment. And the half century old research with fuzzy photos was not made for artists. What Melinda has done for our industry is take the dense scientific information and streamlined it into very easy to digest entries and videos catered to artists.
+          - strong [ref=e465]: "\""
+          - strong [ref=e466]: Paul Liaw | Principal Character Artist
+          - strong [ref=e467]: "\""
+          - text: I've been working as a Facial Blendshape Artist across film and gaming and have watched the quality of my work improve exponentially since I've had access to this wealth of knowledge that Melinda has so thoughtfully put together. Her documentation is clear, appealing, and comprehensive. If Paul Ekman is the father of FACS, Melinda has become the cool aunt.
+          - strong [ref=e468]: "\""
+          - strong [ref=e469]: "Ioana Alexandra Pirvu | Lead Artist: Blendshapes @ Rockstar Games"
+          - strong [ref=e470]: "\""
+          - text: Face the FACS in my opinion is bar-none, the best resource out there for any artist and company dealing with facial animation. The way in which Melinda delivers knowledge is detailed, but fun and compelling enough to make you want to keep learning. For a topic that could have easily been boring, she inspired me to keep learning.
+          - strong [ref=e471]: "\""
+          - strong [ref=e472]: Giovanni Nakpil | Senior Creative 3D Evangelist @ Adobe
+          - strong [ref=e473]: "\""
+          - text: If you're doing AU's (action units), this is the site you're going to need to bookmark. Melinda has gone above and beyond to create what I feel is the ultimate resource guide for AU's. Each AU explained, annotated and demonstrated with extreme clarity. You'll experience plenty of "aha!!" moments using Melinda's work as your guide!
+          - strong [ref=e474]: "\""
+          - strong [ref=e475]: Frank Gravatt
+          - strong [ref=e476]: "| Facial Modeler @ Cloud Chamber"
+      - complementary [ref=e477]:
+        - paragraph
+      - complementary [ref=e478]:
+        - generic [ref=e480]:
+          - paragraph [ref=e481]:
+            - strong [ref=e482]: Connect with me <3
+          - list [ref=e483]:
+            - listitem [ref=e484]:
+              - link "Instagram" [ref=e485] [cursor=pointer]:
+                - /url: https://instagram.com/manicexpression
+                - img [ref=e486]
+                - generic [ref=e488]: Instagram
+            - listitem [ref=e489]:
+              - link "LinkedIn" [ref=e490] [cursor=pointer]:
+                - /url: https://linkedin.com/in/melindaozel
+                - img [ref=e491]
+                - generic [ref=e493]: LinkedIn
+            - listitem [ref=e494]:
+              - link "X" [ref=e495] [cursor=pointer]:
+                - /url: https://x.com/melindaozel
+                - img [ref=e496]
+                - generic [ref=e498]: X
+  - generic [ref=e499]:
+    - generic [ref=e502]:
+      - complementary [ref=e504]:
+        - search [ref=e505]:
+          - generic [ref=e506]: Search
+          - generic [ref=e507]:
+            - searchbox "Search" [ref=e508]
+            - button "Search" [ref=e509] [cursor=pointer]
+      - complementary [ref=e511]:
+        - paragraph [ref=e512]:
+          - link "Terms & Conditions" [ref=e513] [cursor=pointer]:
+            - /url: https://melindaozel.com/terms-conditions/
+    - contentinfo "Site" [ref=e514]:
+      - generic [ref=e516]:
+        - text: Copyright © 2020-2026 Melinda Ozel . All rights reserved.
+        - text: Learn how to
+        - link "cite my work here" [ref=e517] [cursor=pointer]:
+          - /url: https://melindaozel.com/how-to-cite-my-work-use-my-visuals/
+          - generic [ref=e518]: cite my work here
+        - generic [ref=e519]: .
+  - navigation "Website language selector" [ref=e520]:
+    - generic [ref=e521]:
+      - button "Change language":
+        - generic: EN
+      - group "Available languages":
+        - link "ES" [ref=e522] [cursor=pointer]:
+          - /url: https://melindaozel.com/es/premium-resources/
+          - generic [ref=e523]: ES
+        - link "FR" [ref=e524] [cursor=pointer]:
+          - /url: https://melindaozel.com/fr/premium-resources/
+          - generic [ref=e525]: FR
+        - link "ES_VE" [ref=e526] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_ve/premium-resources/
+          - generic [ref=e527]: ES_VE
+        - link "ES_CL" [ref=e528] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_cl/premium-resources/
+          - generic [ref=e529]: ES_CL
+        - link "ES_GT" [ref=e530] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_gt/premium-resources/
+          - generic [ref=e531]: ES_GT
+        - link "PT" [ref=e532] [cursor=pointer]:
+          - /url: https://melindaozel.com/pt/premium-resources/
+          - generic [ref=e533]: PT
+        - link "ZH" [ref=e534] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh/premium-resources/
+          - generic [ref=e535]: ZH
+        - link "ZH_TW" [ref=e536] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh_tw/premium-resources/
+          - generic [ref=e537]: ZH_TW
+        - link "ZH_HK" [ref=e538] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh_hk/premium-resources/
+          - generic [ref=e539]: ZH_HK
+        - link "JA" [ref=e540] [cursor=pointer]:
+          - /url: https://melindaozel.com/ja/premium-resources/
+          - generic [ref=e541]: JA
+        - link "HI" [ref=e542] [cursor=pointer]:
+          - /url: https://melindaozel.com/hi/premium-resources/
+          - generic [ref=e543]: HI
+        - link "DE" [ref=e544] [cursor=pointer]:
+          - /url: https://melindaozel.com/de/premium-resources/
+          - generic [ref=e545]: DE
+        - link "DE_DE" [ref=e546] [cursor=pointer]:
+          - /url: https://melindaozel.com/de_de/premium-resources/
+          - generic [ref=e547]: DE_DE
+        - link "RU" [ref=e548] [cursor=pointer]:
+          - /url: https://melindaozel.com/ru/premium-resources/
+          - generic [ref=e549]: RU
+        - link "PL" [ref=e550] [cursor=pointer]:
+          - /url: https://melindaozel.com/pl/premium-resources/
+          - generic [ref=e551]: PL
+        - link "CS" [ref=e552] [cursor=pointer]:
+          - /url: https://melindaozel.com/cs/premium-resources/
+          - generic [ref=e553]: CS
+        - link "VI" [ref=e554] [cursor=pointer]:
+          - /url: https://melindaozel.com/vi/premium-resources/
+          - generic [ref=e555]: VI
+        - link "IT" [ref=e556] [cursor=pointer]:
+          - /url: https://melindaozel.com/it/premium-resources/
+          - generic [ref=e557]: IT
+        - link "SV" [ref=e558] [cursor=pointer]:
+          - /url: https://melindaozel.com/sv/premium-resources/
+          - generic [ref=e559]: SV
+        - link "SR" [ref=e560] [cursor=pointer]:
+          - /url: https://melindaozel.com/sr/premium-resources/
+          - generic [ref=e561]: SR
+        - link "AR" [ref=e562] [cursor=pointer]:
+          - /url: https://melindaozel.com/ar/premium-resources/
+          - generic [ref=e563]: AR
+        - link "MS" [ref=e564] [cursor=pointer]:
+          - /url: https://melindaozel.com/ms/premium-resources/
+          - generic [ref=e565]: MS
+        - link "FI" [ref=e566] [cursor=pointer]:
+          - /url: https://melindaozel.com/fi/premium-resources/
+          - generic [ref=e567]: FI
+        - link "ES_MX" [ref=e568] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_mx/premium-resources/
+          - generic [ref=e569]: ES_MX
+        - link "KO" [ref=e570] [cursor=pointer]:
+          - /url: https://melindaozel.com/ko/premium-resources/
+          - generic [ref=e571]: KO
+        - link "TR" [ref=e572] [cursor=pointer]:
+          - /url: https://melindaozel.com/tr/premium-resources/
+          - generic [ref=e573]: TR
+        - link "IS" [ref=e574] [cursor=pointer]:
+          - /url: https://melindaozel.com/is/premium-resources/
+          - generic [ref=e575]: IS
+        - link "NL" [ref=e576] [cursor=pointer]:
+          - /url: https://melindaozel.com/nl/premium-resources/
+          - generic [ref=e577]: NL
+        - link "NL_NL" [ref=e578] [cursor=pointer]:
+          - /url: https://melindaozel.com/nl_nl/premium-resources/
+          - generic [ref=e579]: NL_NL
+        - link "ES_AR" [ref=e580] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_ar/premium-resources/
+          - generic [ref=e581]: ES_AR
+        - link "UK" [ref=e582] [cursor=pointer]:
+          - /url: https://melindaozel.com/uk/premium-resources/
+          - generic [ref=e583]: UK
+  - generic [ref=e584]: desktop

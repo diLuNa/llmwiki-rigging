@@ -1,0 +1,421 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#content"
+  - navigation "Secondary" [ref=e3]:
+    - list [ref=e6]:
+      - listitem [ref=e7]:
+        - link "Premium Member Access" [ref=e8] [cursor=pointer]:
+          - /url: https://melindaozel.com/premium-resources/
+          - text: Premium Member Access
+          - img [ref=e10]
+        - list:
+          - listitem:
+            - link "Login":
+              - /url: https://melindaozel.com/login/
+          - listitem:
+            - link "Subscribe :)":
+              - /url: https://melindaozel.com/subscription-options/
+      - listitem [ref=e12]:
+        - link "Recorded Lecture Access" [ref=e13] [cursor=pointer]:
+          - /url: https://melindaozel.com/recorded-lectures/
+          - text: Recorded Lecture Access
+          - img [ref=e15]
+        - list:
+          - listitem:
+            - link "FACS Cram Session":
+              - /url: https://melindaozel.com/facs-cram-session/
+          - listitem:
+            - link "All About Lipsync":
+              - /url: https://melindaozel.com/all-about-lipsync-lecture-videos/
+      - listitem [ref=e17]:
+        - link "My Account" [ref=e18] [cursor=pointer]:
+          - /url: https://melindaozel.com/account/
+  - banner "Site" [ref=e19]:
+    - generic [ref=e21]:
+      - link "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e23] [cursor=pointer]:
+        - /url: https://melindaozel.com/
+        - img "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e24]
+      - paragraph [ref=e26]:
+        - link "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e27] [cursor=pointer]:
+          - /url: https://melindaozel.com/
+  - navigation "Primary" [ref=e28]:
+    - list [ref=e31]:
+      - listitem [ref=e32]:
+        - link "Learning Hub" [ref=e33] [cursor=pointer]:
+          - /url: https://melindaozel.com/learning-hub/
+          - text: Learning Hub
+          - img [ref=e35]
+        - list:
+          - listitem:
+            - link "FACS Cheat Sheet":
+              - /url: https://melindaozel.com/facs-cheat-sheet/
+          - listitem:
+            - link "Viseme Cheat Sheet":
+              - /url: https://melindaozel.com/viseme-cheat-sheet/
+          - listitem:
+            - link "All Free Resources":
+              - /url: https://melindaozel.com/free-resources/
+          - listitem:
+            - link "🔒 Premium Resources":
+              - /url: https://melindaozel.com/premium-resources/
+              - img "🔒"
+              - text: Premium Resources
+          - listitem:
+            - link "FAQs":
+              - /url: https://melindaozel.com/faqs/
+      - listitem [ref=e37]:
+        - link "Courses" [ref=e38] [cursor=pointer]:
+          - /url: https://melindaozel.com/online-lectures/
+          - text: Courses
+          - img [ref=e40]
+        - list:
+          - listitem:
+            - link "FACS Cram Session":
+              - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+          - listitem:
+            - link "All About Lipsync":
+              - /url: https://melindaozel.com/all-about-lipsync-course/
+      - listitem [ref=e42]:
+        - link "Full Site Access" [ref=e43] [cursor=pointer]:
+          - /url: https://melindaozel.com/subscription-options/
+          - text: Full Site Access
+          - img [ref=e45]
+        - list:
+          - listitem:
+            - link "Membership Options":
+              - /url: https://melindaozel.com/subscription-options/
+      - listitem [ref=e47]:
+        - link "Services" [ref=e48] [cursor=pointer]:
+          - /url: https://melindaozel.com/services/
+          - text: Services
+          - img [ref=e50]
+        - list:
+          - listitem:
+            - link "FACS Lectures & Training":
+              - /url: https://melindaozel.com/services/lectures-training/
+          - listitem:
+            - link "Consulting":
+              - /url: https://melindaozel.com/services/consulting/
+      - listitem [ref=e52]:
+        - link "About" [ref=e53] [cursor=pointer]:
+          - /url: https://melindaozel.com/who-is-melinda-ozel/
+          - text: About
+          - img [ref=e55]
+        - list:
+          - listitem:
+            - link "About Me":
+              - /url: https://melindaozel.com/who-is-melinda-ozel/
+          - listitem:
+            - link "Cite My Work":
+              - /url: https://melindaozel.com/how-to-cite-my-work-use-my-visuals/
+          - listitem:
+            - link "Contact":
+              - /url: https://melindaozel.com/who-is-melinda-ozel/contact-me/
+  - generic [ref=e58]:
+    - main [ref=e60]:
+      - article [ref=e61]:
+        - generic [ref=e62]:
+          - generic [ref=e63]:
+            - heading "Advanced Blend Shape Tips For Blinks" [level=1] [ref=e64]
+            - generic [ref=e65]:
+              - time [ref=e67]: September 9, 2021
+              - generic [ref=e68]:
+                - text: by
+                - link "Melinda Ozel" [ref=e70] [cursor=pointer]:
+                  - /url: https://melindaozel.com/author/melindaozel/
+          - generic [ref=e72]:
+            - generic [ref=e77]:
+              - heading "new technical terms to make your life easier (or harder)" [level=2] [ref=e78]
+              - paragraph [ref=e79]:
+                - text: While studying blinks for “
+                - link "Hot Tips for Animating Blinks" [ref=e80] [cursor=pointer]:
+                  - /url: https://melindaozel.com/hot-tips-for-animating-blinks/
+                  - strong [ref=e81]: Hot Tips for Animating Blinks
+                - text: ",” I noticed some fine details and patterns that deserve their own terminology; so I coined some new words to help with your advanced artist needs. Enjoy."
+              - list [ref=e82]:
+                - listitem [ref=e83]:
+                  - list [ref=e84]:
+                    - listitem [level=1] [ref=e85]: rolling lids – the folding and rolling of the upper eyelid skin onto itself
+              - list [ref=e86]:
+                - listitem [ref=e87]:
+                  - list [ref=e88]:
+                    - listitem [level=1] [ref=e89]: sticky lids – the slight sticking of the eyelid skin onto itself, may occur within the inner eyelids or within the upper eyelid skin
+              - list [ref=e90]:
+                - listitem [ref=e91]:
+                  - list [ref=e92]:
+                    - listitem [level=1] [ref=e93]:
+                      - text: blinkles
+                      - generic [ref=e98]: – blink wrinkles, the small, unique wrinkles surrounding the eyelids that form during the act of blinking
+                    - listitem [ref=e99]:
+                      - text: blink turning point**
+                      - generic [ref=e101]:
+                        - text: – the moment when the downward motion of a blink (downstroke) stops and reverses to begin moving upward (upstroke).
+                        - text: "**"
+                      - emphasis [ref=e102]:
+                        - generic [ref=e103]: I thought I made up the term “turning point” for blinks, but it’s a recognized concept in ophthalmology research.
+            - heading "rolling lids" [level=3] [ref=e116]:
+              - generic [ref=e117]: rolling lids
+            - generic [ref=e122]:
+              - paragraph [ref=e123]: Rolling lids refers to the folding and rolling of the upper eyelid skin onto itself. Rolling lids are very common – especially with double creased lids, partially hooded lids, and lids with sagging skin or excess fat content.
+              - paragraph [ref=e124]: People with double lid creases often have additional sub-folds that roll onto each other during blinking. The rolling is even more apparent at the release of the blink, when the lids return to their resting position (as shown below).
+              - paragraph [ref=e125]: Rolling lids can be asymmetric. Many people have different levels of spacing and overlap on their upper eyelid skin. The person in the video below is a great example of rolling asymmetry. As you can see, the screen left eye folds heavily with multiple, prominent sub-folds, while the screen right eye has much fewer and more subdued sub-folds.
+            - heading "sticky lids" [level=3] [ref=e145]:
+              - generic [ref=e146]: sticky lids
+            - generic [ref=e151]:
+              - paragraph [ref=e152]: Similar to the already known concept of “sticky lips,” sticky lids refers to the slight sticking of the eyelid skin onto itself. The sticking may occur within the inner eyelids (as shown below) or within the upper eyelid skin.
+              - paragraph [ref=e153]: Sticky lids are more likely to happen when eyes are dry. While they are not as common as sticky lips, they are worth noting.
+            - heading "blinkles" [level=3] [ref=e173]:
+              - generic [ref=e174]: blinkles
+            - paragraph [ref=e180]: Blinkles are blink wrinkles. They are small, unique wrinkles surrounding the eyelids that form during the act of blinking.
+            - button "播放關於的影片 blink wrinkles - blinkles" [ref=e189] [cursor=pointer]:
+              - img [ref=e190]
+            - heading "blink turning point" [level=3] [ref=e204]:
+              - generic [ref=e205]: blink turning point
+            - generic [ref=e210]:
+              - paragraph [ref=e211]: The blink turning point is the moment when the downward motion of a blink (downstroke) stops and reverses to begin moving upward (upstroke).
+              - paragraph [ref=e212]: When the turning point takes place, you can see the lid reach its final point of tension then relax before moving upward.
+              - paragraph [ref=e213]: The video below shows three full blinks at the turning point of a downstroke. Observe the lid’s state of compression at the “final point of closure.” Watch as that tension is freed at the release, relaxing the lids to their pre-compressed length.
+              - paragraph [ref=e214]: "NOTE 1: Half or partial blinks have turning points as well, but they look a bit different due to incomplete closure."
+              - paragraph [ref=e215]:
+                - text: "NOTE 2: According to"
+                - link "Doane 1981" [ref=e216] [cursor=pointer]:
+                  - /url: https://europepmc.org/article/MED/7322503
+                - text: ", after the turning point, the upstroke continues at about ~ half the speed of the downstroke."
+              - paragraph [ref=e217]: "NOTE 3: The turning point is a relevant concept animators too!"
+          - generic "Entry meta" [ref=e225]:
+            - generic [ref=e226]:
+              - img [ref=e228]
+              - generic [ref=e230]: Categories
+              - link "facial expressions" [ref=e231] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/facial-expressions/
+              - text: ","
+              - link "paid content" [ref=e232] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/paid/
+            - navigation "Posts" [ref=e233]:
+              - generic [ref=e234]:
+                - img [ref=e236]
+                - link "Hot Tips For Animating Blinks" [ref=e239] [cursor=pointer]:
+                  - /url: https://melindaozel.com/hot-tips-for-animating-blinks/
+              - generic [ref=e240]:
+                - img [ref=e242]
+                - link "Eyebrow Shapes and Character Design" [ref=e245] [cursor=pointer]:
+                  - /url: https://melindaozel.com/eyebrow-shapes-and-character-design/
+      - generic [ref=e247]:
+        - heading "2 thoughts on “Advanced Blend Shape Tips For Blinks”" [level=2] [ref=e248]
+        - list [ref=e249]:
+          - listitem [ref=e250]:
+            - generic [ref=e251]:
+              - text: "Pingback:"
+              - link "eyelid crease variation - Face the FACS" [ref=e252] [cursor=pointer]:
+                - /url: https://melindaozel.com/eyelid-crease-variation/
+          - listitem [ref=e253]:
+            - generic [ref=e254]:
+              - text: "Pingback:"
+              - link "advanced blend shape tips for blinks - PREVIEW - Face the FACS" [ref=e255] [cursor=pointer]:
+                - /url: https://melindaozel.com/advanced-blend-shape-tips-for-blinks-preview/
+        - paragraph [ref=e256]: Comments are closed.
+    - generic [ref=e258]:
+      - complementary [ref=e259]:
+        - generic [ref=e266]:
+          - figure [ref=e267]:
+            - link "headshot of page author" [ref=e268] [cursor=pointer]:
+              - /url: https://melindaozel.com/melinda-who-zel/
+              - img "headshot of page author" [ref=e269]
+          - paragraph
+          - paragraph [ref=e270]:
+            - text: I’m a Facial Systems Expert specializing in the Facial Action Coding System (FACS) and facial anatomy. My work spans
+            - link "expression tracking" [ref=e271] [cursor=pointer]:
+              - /url: https://patents.justia.com/inventor/melinda-ozel
+              - strong [ref=e272]: expression tracking
+            - text: ", facial animation, and"
+            - link "AI-driven lipsync" [ref=e273] [cursor=pointer]:
+              - /url: http://linkedin.com/in/melindaozel
+              - strong [ref=e274]: AI-driven lipsync
+            - text: . Recent work includes contributions to the de-aging of Tom Hanks and other actors in the
+            - strong [ref=e275]:
+              - link "Zemeckis film, Here" [ref=e276] [cursor=pointer]:
+                - /url: https://www.imdb.com/name/nm15482966/
+            - text: .
+          - paragraph [ref=e277]:
+            - text: Learn more about
+            - link "my background" [ref=e278] [cursor=pointer]:
+              - /url: https://melindaozel.com/melinda-who-zel/
+              - strong [ref=e279]: my background
+            - text: .
+          - paragraph
+      - complementary [ref=e280]:
+        - paragraph [ref=e281]:
+          - strong [ref=e282]: Courses & Workshops
+          - text: "-"
+          - link "FACS Cram Session" [ref=e283] [cursor=pointer]:
+            - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+          - text: "-"
+          - link "All About Lipsync" [ref=e284] [cursor=pointer]:
+            - /url: https://melindaozel.com/all-about-lipsync-course/
+          - text: "-"
+          - link "All Training Services" [ref=e285] [cursor=pointer]:
+            - /url: https://melindaozel.com/services/lectures-training/
+      - complementary [ref=e286]:
+        - paragraph [ref=e287]:
+          - strong [ref=e288]: "\""
+          - text: Melinda Ozel's resources on face anatomy, motion, and FACS are industry standard. During my time working on The Last of Us Part II (and other unannounced Playstation titles) I referred to it almost exclusively on a regular basis. The free material is great but the pay material is worth the cost.
+          - strong [ref=e289]: "\""
+          - strong [ref=e290]: Eric Drobile | Technical Animator
+          - strong [ref=e291]: "\""
+          - text: For most people learning traditional FACS is not feasible. It requires very costly specialized degrees and years long commitment. And the half century old research with fuzzy photos was not made for artists. What Melinda has done for our industry is take the dense scientific information and streamlined it into very easy to digest entries and videos catered to artists.
+          - strong [ref=e292]: "\""
+          - strong [ref=e293]: Paul Liaw | Principal Character Artist
+          - strong [ref=e294]: "\""
+          - text: I've been working as a Facial Blendshape Artist across film and gaming and have watched the quality of my work improve exponentially since I've had access to this wealth of knowledge that Melinda has so thoughtfully put together. Her documentation is clear, appealing, and comprehensive. If Paul Ekman is the father of FACS, Melinda has become the cool aunt.
+          - strong [ref=e295]: "\""
+          - strong [ref=e296]: "Ioana Alexandra Pirvu | Lead Artist: Blendshapes @ Rockstar Games"
+          - strong [ref=e297]: "\""
+          - text: Face the FACS in my opinion is bar-none, the best resource out there for any artist and company dealing with facial animation. The way in which Melinda delivers knowledge is detailed, but fun and compelling enough to make you want to keep learning. For a topic that could have easily been boring, she inspired me to keep learning.
+          - strong [ref=e298]: "\""
+          - strong [ref=e299]: Giovanni Nakpil | Senior Creative 3D Evangelist @ Adobe
+          - strong [ref=e300]: "\""
+          - text: If you're doing AU's (action units), this is the site you're going to need to bookmark. Melinda has gone above and beyond to create what I feel is the ultimate resource guide for AU's. Each AU explained, annotated and demonstrated with extreme clarity. You'll experience plenty of "aha!!" moments using Melinda's work as your guide!
+          - strong [ref=e301]: "\""
+          - strong [ref=e302]: Frank Gravatt
+          - strong [ref=e303]: "| Facial Modeler @ Cloud Chamber"
+      - complementary [ref=e304]:
+        - paragraph
+      - complementary [ref=e305]:
+        - generic [ref=e307]:
+          - paragraph [ref=e308]:
+            - strong [ref=e309]: Connect with me <3
+          - list [ref=e310]:
+            - listitem [ref=e311]:
+              - link "Instagram" [ref=e312] [cursor=pointer]:
+                - /url: https://instagram.com/manicexpression
+                - img [ref=e313]
+                - generic [ref=e315]: Instagram
+            - listitem [ref=e316]:
+              - link "LinkedIn" [ref=e317] [cursor=pointer]:
+                - /url: https://linkedin.com/in/melindaozel
+                - img [ref=e318]
+                - generic [ref=e320]: LinkedIn
+            - listitem [ref=e321]:
+              - link "X" [ref=e322] [cursor=pointer]:
+                - /url: https://x.com/melindaozel
+                - img [ref=e323]
+                - generic [ref=e325]: X
+  - generic [ref=e326]:
+    - generic [ref=e329]:
+      - complementary [ref=e331]:
+        - search [ref=e332]:
+          - generic [ref=e333]: Search
+          - generic [ref=e334]:
+            - searchbox "Search" [ref=e335]
+            - button "Search" [ref=e336] [cursor=pointer]
+      - complementary [ref=e338]:
+        - paragraph [ref=e339]:
+          - link "Terms & Conditions" [ref=e340] [cursor=pointer]:
+            - /url: https://melindaozel.com/terms-conditions/
+    - contentinfo "Site" [ref=e341]:
+      - generic [ref=e343]:
+        - text: Copyright © 2020-2026 Melinda Ozel . All rights reserved.
+        - text: Learn how to
+        - link "cite my work here" [ref=e344] [cursor=pointer]:
+          - /url: https://melindaozel.com/how-to-cite-my-work-use-my-visuals/
+          - generic [ref=e345]: cite my work here
+        - generic [ref=e346]: .
+  - navigation "Website language selector" [ref=e347]:
+    - generic [ref=e348]:
+      - button "Change language":
+        - generic: EN
+      - group "Available languages":
+        - link "ES" [ref=e349] [cursor=pointer]:
+          - /url: https://melindaozel.com/es/advanced-blend-shape-tips-for-blinks/
+          - generic [ref=e350]: ES
+        - link "FR" [ref=e351] [cursor=pointer]:
+          - /url: https://melindaozel.com/fr/advanced-blend-shape-tips-for-blinks/
+          - generic [ref=e352]: FR
+        - link "ES_VE" [ref=e353] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_ve/advanced-blend-shape-tips-for-blinks/
+          - generic [ref=e354]: ES_VE
+        - link "ES_CL" [ref=e355] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_cl/advanced-blend-shape-tips-for-blinks/
+          - generic [ref=e356]: ES_CL
+        - link "ES_GT" [ref=e357] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_gt/advanced-blend-shape-tips-for-blinks/
+          - generic [ref=e358]: ES_GT
+        - link "PT" [ref=e359] [cursor=pointer]:
+          - /url: https://melindaozel.com/pt/advanced-blend-shape-tips-for-blinks/
+          - generic [ref=e360]: PT
+        - link "ZH" [ref=e361] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh/advanced-blend-shape-tips-for-blinks/
+          - generic [ref=e362]: ZH
+        - link "ZH_TW" [ref=e363] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh_tw/advanced-blend-shape-tips-for-blinks/
+          - generic [ref=e364]: ZH_TW
+        - link "ZH_HK" [ref=e365] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh_hk/advanced-blend-shape-tips-for-blinks/
+          - generic [ref=e366]: ZH_HK
+        - link "JA" [ref=e367] [cursor=pointer]:
+          - /url: https://melindaozel.com/ja/advanced-blend-shape-tips-for-blinks/
+          - generic [ref=e368]: JA
+        - link "HI" [ref=e369] [cursor=pointer]:
+          - /url: https://melindaozel.com/hi/advanced-blend-shape-tips-for-blinks/
+          - generic [ref=e370]: HI
+        - link "DE" [ref=e371] [cursor=pointer]:
+          - /url: https://melindaozel.com/de/advanced-blend-shape-tips-for-blinks/
+          - generic [ref=e372]: DE
+        - link "DE_DE" [ref=e373] [cursor=pointer]:
+          - /url: https://melindaozel.com/de_de/advanced-blend-shape-tips-for-blinks/
+          - generic [ref=e374]: DE_DE
+        - link "RU" [ref=e375] [cursor=pointer]:
+          - /url: https://melindaozel.com/ru/advanced-blend-shape-tips-for-blinks/
+          - generic [ref=e376]: RU
+        - link "PL" [ref=e377] [cursor=pointer]:
+          - /url: https://melindaozel.com/pl/advanced-blend-shape-tips-for-blinks/
+          - generic [ref=e378]: PL
+        - link "CS" [ref=e379] [cursor=pointer]:
+          - /url: https://melindaozel.com/cs/advanced-blend-shape-tips-for-blinks/
+          - generic [ref=e380]: CS
+        - link "VI" [ref=e381] [cursor=pointer]:
+          - /url: https://melindaozel.com/vi/advanced-blend-shape-tips-for-blinks/
+          - generic [ref=e382]: VI
+        - link "IT" [ref=e383] [cursor=pointer]:
+          - /url: https://melindaozel.com/it/advanced-blend-shape-tips-for-blinks/
+          - generic [ref=e384]: IT
+        - link "SV" [ref=e385] [cursor=pointer]:
+          - /url: https://melindaozel.com/sv/advanced-blend-shape-tips-for-blinks/
+          - generic [ref=e386]: SV
+        - link "SR" [ref=e387] [cursor=pointer]:
+          - /url: https://melindaozel.com/sr/advanced-blend-shape-tips-for-blinks/
+          - generic [ref=e388]: SR
+        - link "AR" [ref=e389] [cursor=pointer]:
+          - /url: https://melindaozel.com/ar/advanced-blend-shape-tips-for-blinks/
+          - generic [ref=e390]: AR
+        - link "MS" [ref=e391] [cursor=pointer]:
+          - /url: https://melindaozel.com/ms/advanced-blend-shape-tips-for-blinks/
+          - generic [ref=e392]: MS
+        - link "FI" [ref=e393] [cursor=pointer]:
+          - /url: https://melindaozel.com/fi/advanced-blend-shape-tips-for-blinks/
+          - generic [ref=e394]: FI
+        - link "ES_MX" [ref=e395] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_mx/advanced-blend-shape-tips-for-blinks/
+          - generic [ref=e396]: ES_MX
+        - link "KO" [ref=e397] [cursor=pointer]:
+          - /url: https://melindaozel.com/ko/advanced-blend-shape-tips-for-blinks/
+          - generic [ref=e398]: KO
+        - link "TR" [ref=e399] [cursor=pointer]:
+          - /url: https://melindaozel.com/tr/advanced-blend-shape-tips-for-blinks/
+          - generic [ref=e400]: TR
+        - link "IS" [ref=e401] [cursor=pointer]:
+          - /url: https://melindaozel.com/is/advanced-blend-shape-tips-for-blinks/
+          - generic [ref=e402]: IS
+        - link "NL" [ref=e403] [cursor=pointer]:
+          - /url: https://melindaozel.com/nl/advanced-blend-shape-tips-for-blinks/
+          - generic [ref=e404]: NL
+        - link "NL_NL" [ref=e405] [cursor=pointer]:
+          - /url: https://melindaozel.com/nl_nl/advanced-blend-shape-tips-for-blinks/
+          - generic [ref=e406]: NL_NL
+        - link "ES_AR" [ref=e407] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_ar/advanced-blend-shape-tips-for-blinks/
+          - generic [ref=e408]: ES_AR
+        - link "UK" [ref=e409] [cursor=pointer]:
+          - /url: https://melindaozel.com/uk/advanced-blend-shape-tips-for-blinks/
+          - generic [ref=e410]: UK
+  - generic [ref=e411]: desktop

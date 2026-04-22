@@ -1,0 +1,577 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#content"
+  - navigation "Secondary" [ref=e3]:
+    - list [ref=e6]:
+      - listitem [ref=e7]:
+        - link "Premium Member Access" [ref=e8] [cursor=pointer]:
+          - /url: https://melindaozel.com/premium-resources/
+          - text: Premium Member Access
+          - img [ref=e10]
+        - list:
+          - listitem:
+            - link "Login":
+              - /url: https://melindaozel.com/login/
+          - listitem:
+            - link "Subscribe :)":
+              - /url: https://melindaozel.com/subscription-options/
+      - listitem [ref=e12]:
+        - link "Recorded Lecture Access" [ref=e13] [cursor=pointer]:
+          - /url: https://melindaozel.com/recorded-lectures/
+          - text: Recorded Lecture Access
+          - img [ref=e15]
+        - list:
+          - listitem:
+            - link "FACS Cram Session":
+              - /url: https://melindaozel.com/facs-cram-session/
+          - listitem:
+            - link "All About Lipsync":
+              - /url: https://melindaozel.com/all-about-lipsync-lecture-videos/
+      - listitem [ref=e17]:
+        - link "My Account" [ref=e18] [cursor=pointer]:
+          - /url: https://melindaozel.com/account/
+  - banner "Site" [ref=e19]:
+    - generic [ref=e21]:
+      - link "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e23] [cursor=pointer]:
+        - /url: https://melindaozel.com/
+        - img "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e24]
+      - paragraph [ref=e26]:
+        - link "Face the FACS | Facial Expressions in Animation, AI, & Behavior" [ref=e27] [cursor=pointer]:
+          - /url: https://melindaozel.com/
+  - navigation "Primary" [ref=e28]:
+    - list [ref=e31]:
+      - listitem [ref=e32]:
+        - link "Learning Hub" [ref=e33] [cursor=pointer]:
+          - /url: https://melindaozel.com/learning-hub/
+          - text: Learning Hub
+          - img [ref=e35]
+        - list:
+          - listitem:
+            - link "FACS Cheat Sheet":
+              - /url: https://melindaozel.com/facs-cheat-sheet/
+          - listitem:
+            - link "Viseme Cheat Sheet":
+              - /url: https://melindaozel.com/viseme-cheat-sheet/
+          - listitem:
+            - link "All Free Resources":
+              - /url: https://melindaozel.com/free-resources/
+          - listitem:
+            - link "🔒 Premium Resources":
+              - /url: https://melindaozel.com/premium-resources/
+              - img "🔒"
+              - text: Premium Resources
+          - listitem:
+            - link "FAQs":
+              - /url: https://melindaozel.com/faqs/
+      - listitem [ref=e37]:
+        - link "Courses" [ref=e38] [cursor=pointer]:
+          - /url: https://melindaozel.com/online-lectures/
+          - text: Courses
+          - img [ref=e40]
+        - list:
+          - listitem:
+            - link "FACS Cram Session":
+              - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+          - listitem:
+            - link "All About Lipsync":
+              - /url: https://melindaozel.com/all-about-lipsync-course/
+      - listitem [ref=e42]:
+        - link "Full Site Access" [ref=e43] [cursor=pointer]:
+          - /url: https://melindaozel.com/subscription-options/
+          - text: Full Site Access
+          - img [ref=e45]
+        - list:
+          - listitem:
+            - link "Membership Options":
+              - /url: https://melindaozel.com/subscription-options/
+      - listitem [ref=e47]:
+        - link "Services" [ref=e48] [cursor=pointer]:
+          - /url: https://melindaozel.com/services/
+          - text: Services
+          - img [ref=e50]
+        - list:
+          - listitem:
+            - link "FACS Lectures & Training":
+              - /url: https://melindaozel.com/services/lectures-training/
+          - listitem:
+            - link "Consulting":
+              - /url: https://melindaozel.com/services/consulting/
+      - listitem [ref=e52]:
+        - link "About" [ref=e53] [cursor=pointer]:
+          - /url: https://melindaozel.com/who-is-melinda-ozel/
+          - text: About
+          - img [ref=e55]
+        - list:
+          - listitem:
+            - link "About Me":
+              - /url: https://melindaozel.com/who-is-melinda-ozel/
+          - listitem:
+            - link "Cite My Work":
+              - /url: https://melindaozel.com/how-to-cite-my-work-use-my-visuals/
+          - listitem:
+            - link "Contact":
+              - /url: https://melindaozel.com/who-is-melinda-ozel/contact-me/
+  - generic [ref=e58]:
+    - main [ref=e60]:
+      - article [ref=e61]:
+        - generic [ref=e62]:
+          - generic [ref=e63]:
+            - 'heading "Inner Brow Raiser: Deep Dive" [level=1] [ref=e64]'
+            - generic [ref=e65]:
+              - time [ref=e67]: June 22, 2020
+              - generic [ref=e68]:
+                - text: by
+                - link "Melinda Ozel" [ref=e70] [cursor=pointer]:
+                  - /url: https://melindaozel.com/author/melindaozel/
+          - generic [ref=e71]:
+            - paragraph [ref=e72]:
+              - emphasis [ref=e73]:
+                - text: "The following post is about AU1 – inner brow raiser, driven by the medial part of the frontalis muscle. It covers:"
+                - strong [ref=e74]: anatomical
+                - strong [ref=e75]: variation
+                - text: ","
+                - strong [ref=e76]: common
+                - strong [ref=e77]: mistakes
+                - text: ", and provides"
+                - strong [ref=e78]: clean
+                - strong [ref=e79]: references
+                - text: .
+            - figure "Example of neutral pose compared to inner brow raiser pose" [ref=e80]:
+              - 'img "left column: woman in neutral face; right column: woman lifting her inner brow tips" [ref=e81]'
+              - generic [ref=e82]:
+                - text: Example of neutral pose compared to
+                - emphasis [ref=e83]: inner brow raiser
+                - text: pose
+            - heading [level=2] [ref=e84]
+            - heading "What is Inner Brow Raiser?" [level=2] [ref=e85]:
+              - strong [ref=e86]: What is I
+              - strong [ref=e87]: nner Brow Raiser?
+            - paragraph [ref=e88]:
+              - link "Inner brow raiser," [ref=e89] [cursor=pointer]:
+                - /url: https://melindaozel.com/the-secret-life-of-inner-brow-raiser/
+                - emphasis [ref=e90]: Inner brow raiser,
+              - text: or AU1, is a
+              - link "Facial Action Coding System" [ref=e91] [cursor=pointer]:
+                - /url: https://melindaozel.com/facs-cheat-sheet/
+              - text: (FACS) action unit (AU). Its function is to raise the medial brow/forehead area, and its action is triggered by the contraction of the medial region of
+              - link "frontalis" [ref=e92] [cursor=pointer]:
+                - /url: https://en.wikipedia.org/wiki/Frontalis_muscle
+              - text: . It can difficult find clean references
+              - emphasis [ref=e93]: inner brow raiser.
+              - text: "When building FACS references, many sources fail to:"
+            - list [ref=e94]:
+              - listitem [ref=e95]: Find actors who can voluntarily trigger their medial frontalis without also contracting the lateral area of frontalis or corrugator supercilii.
+              - listitem [ref=e96]:
+                - link "Properly direct models" [ref=e97] [cursor=pointer]:
+                  - /url: https://melindaozel.com/facial-expressions-facial-data-capture/
+                - text: to perform medial frontalis contraction.
+            - paragraph [ref=e98]: In our everyday lives, most of us can effortlessly raise our inner brows without thinking twice; however, when commanded to, many people struggle to isolate this motion.
+            - heading "FACS References & Misinformation" [level=2] [ref=e99]
+            - paragraph [ref=e100]:
+              - text: I recently (2020) critiqued a set of FACS shapes for a client and noticed his
+              - emphasis [ref=e101]: inner brow raiser
+              - text: shape had some corrugator (from
+              - emphasis [ref=e102]: brow lowerer
+              - text: ) mistakenly mixed in.
+            - paragraph [ref=e103]:
+              - strong [ref=e105]: "Client’s Inner Brow Blendshape + My Notes:"
+            - figure "FACS shape of by Derrick Sesson" [ref=e106]:
+              - img "inner brow raiser with brow lowerer mistake" [ref=e107]
+              - generic [ref=e108]: FACS shape of by Derrick Sesson
+            - paragraph [ref=e109]:
+              - text: Adding corrugator to
+              - emphasis [ref=e110]: inner brow raiser
+              - text: "is a very common mistake. This commonality is partly due to the fact that:"
+              - strong [ref=e111]: Good references are hard to find!
+            - paragraph [ref=e112]:
+              - text: "Even my client – an established industry artist with a great portfolio and CV – unknowingly added corrugator features to his model, because he trusted a tainted reference. The reference he used was from a prominent anatomy and facial expression book:"
+              - emphasis [ref=e113]: Anatomy of Facial Expressions
+              - text: . Many art students and professionals use this textbook. It is a great textbook, but some of its FACS shapes are inaccurate.
+            - paragraph [ref=e114]:
+              - strong [ref=e116]: "Reference used by client:"
+            - paragraph [ref=e117]: See the vertical and wavy lines in the center of the forehead in the images below? Those vertical lines are from a brow knitting muscle known corrugator supercilii.
+            - paragraph [ref=e118]:
+              - img "inner brow raiser wrong" [ref=e119]
+            - paragraph [ref=e120]:
+              - text: To view some clean examples of medial brow raising, observe the GIFs below. Read about the primary and secondary effects of
+              - emphasis [ref=e121]: inner brow raiser
+              - text: as well as how its features can vary across individuals.
+            - heading "Clean AU1 – Inner Brow Raiser Examples" [level=2] [ref=e122]:
+              - strong [ref=e123]: Clean AU1 – Inner Brow Raiser Examples
+            - paragraph [ref=e124]:
+              - img "AU 1 - inner brow raiser" [ref=e125]
+              - strong [ref=e126]: example
+              - strong [ref=e127]: i
+            - paragraph [ref=e128]:
+              - img "AU1 - inner brow raiser" [ref=e129]
+              - strong [ref=e130]: example ii
+            - paragraph
+            - paragraph [ref=e131]:
+              - img "AU 1 - inner brow raiser" [ref=e132]
+              - strong [ref=e133]: example iii
+            - generic [ref=e134]: Primary effects
+            - list [ref=e135]:
+              - listitem [ref=e136]: contracts medial portions of the frontalis muscle
+              - listitem [ref=e137]: pulls up the inner brow area
+            - paragraph [ref=e138]:
+              - strong [ref=e139]: Secondary effects
+            - list [ref=e140]:
+              - listitem [ref=e141]: stretches inner portion of the upper eyelid skin
+              - listitem [ref=e142]:
+                - text: "stretches skin near inner eye cover fold (eye cover fold:"
+                - emphasis [ref=e143]: where the upper eyelid skin folds into the eye socket
+                - text: )
+              - listitem [ref=e144]: even if eye cover fold is not present (monolid or hooded eyelids), skin above tear duct is still stretched and pulled up
+              - listitem [ref=e145]: skin around sides of nose (near tear duct) is also stretched
+            - paragraph [ref=e146]: Variation
+            - list [ref=e147]:
+              - listitem [ref=e148]:
+                - text: due to variation in human frontalis shapes, the
+                - emphasis [ref=e149]: inner brow raiser
+                - text: pull looks different on different individuals
+                - list [ref=e150]:
+                  - listitem [ref=e151]:
+                    - text: some pulls occur at the innermost edge of the inner brow tip (
+                    - strong [ref=e152]: example iii
+                    - text: )
+                  - listitem [ref=e153]:
+                    - text: other pulls take place half an inch away from the inner brow tip (or further), landing near the middle of the brow (
+                    - strong [ref=e154]: example i
+                    - text: and
+                    - strong [ref=e155]: example ii
+                    - text: )
+              - listitem [ref=e156]:
+                - emphasis [ref=e157]: inner brow raiser
+                - text: wrinkles also vary significantly across individuals
+                - list [ref=e158]:
+                  - listitem [ref=e159]:
+                    - text: some have no wrinkles (
+                    - strong [ref=e160]: example i
+                    - text: and
+                    - strong [ref=e161]: example ii
+                    - text: )
+                  - listitem [ref=e162]:
+                    - text: some have straight wrinkles concentrated in the center of the forehead (
+                    - strong [ref=e163]: example iii
+                    - text: )
+                  - listitem [ref=e164]: some have curved wrinkles concentrated in the center of the forehead, with a raised hump in the middle
+                  - listitem [ref=e165]: some have horizontally wavy wrinkles (think “M”-shape) concentrated in the center of the forehead with two humps and a slight dip in the middle of the wrinkles (Emilia Clarke has this type.)
+            - heading "Inner Brow Raiser Examples i-iii Explained" [level=2] [ref=e166]:
+              - strong [ref=e167]: Inner Brow Raiser Examples i-iii Explained
+            - paragraph [ref=e168]:
+              - img "AU 1 - inner brow raiser" [ref=e169]
+              - strong [ref=e170]: example i
+            - list [ref=e171]:
+              - listitem [ref=e172]:
+                - list [ref=e173]:
+                  - listitem [ref=e174]: asymmetric raise
+                  - listitem [ref=e175]: pull is stronger on screen left
+                  - listitem [ref=e176]: pull on screen left takes place closer to the middle of the brow than the pull on screen right (which is closer to the inner brow tip)
+                  - listitem [ref=e177]: pull on screen right is lower in intensity and closer to inner brow tip
+                  - listitem [ref=e178]: no wrinkles
+            - paragraph [ref=e179]:
+              - img "AU1 - inner brow raiser" [ref=e181]
+              - strong [ref=e182]: example ii
+            - list [ref=e183]:
+              - listitem [ref=e184]: asymmetric raise
+              - listitem [ref=e185]: pull on screen right takes place closer to the middle of the brow than the pull on screen left (which is closer to the inner brow tip)
+              - listitem [ref=e186]: overall, the raise on this face does not have much range
+              - listitem [ref=e187]: no wrinkles
+            - paragraph [ref=e188]:
+              - img "AU 1 - inner brow raiser" [ref=e189]
+            - paragraph [ref=e190]:
+              - strong [ref=e191]: example iii
+            - list [ref=e192]:
+              - listitem [ref=e193]:
+                - list [ref=e194]:
+                  - listitem [ref=e195]: very symmetric
+                  - listitem [ref=e196]: high range raise
+                  - listitem [ref=e197]: raise occurs at the innermost tips of the brow
+                  - listitem [ref=e198]: really good example of an exaggerated, cartoony inner brow raise
+            - list:
+              - listitem:
+                - list:
+                  - listitem:
+                    - paragraph
+            - paragraph [ref=e199]:
+              - text: For more information
+              - emphasis [ref=e200]
+              - text: "see:"
+              - strong [ref=e201]:
+                - link "The Secret Life of Inner Brow Raiser" [ref=e202] [cursor=pointer]:
+                  - /url: https://melindaozel.com/the-secret-life-of-inner-brow-raiser/
+              - text: .
+            - paragraph [ref=e203]:
+              - text: "For a full and structured FACS deep dive, see my online course, the:"
+              - link "FACS Cram Session" [ref=e204] [cursor=pointer]:
+                - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+                - strong [ref=e205]: FACS Cram Session
+              - text: .
+            - paragraph
+          - generic "Entry meta" [ref=e206]:
+            - generic [ref=e207]:
+              - img [ref=e209]
+              - generic [ref=e211]: Categories
+              - link "AR/VR" [ref=e212] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/tech/ar-vr/
+              - text: ","
+              - link "art" [ref=e213] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/art/
+              - text: ","
+              - link "AU1" [ref=e214] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/facial-expressions/action-units/au1/
+              - text: ","
+              - link "blend shapes" [ref=e215] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/art/blend-shapes/
+              - text: ","
+              - link "character rigging" [ref=e216] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/art/character-rigging/
+              - text: ","
+              - link "facial anatomy" [ref=e217] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/anatomy/
+              - text: ","
+              - link "facial expressions" [ref=e218] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/facial-expressions/
+              - text: ","
+              - link "facial muscles" [ref=e219] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/anatomy/muscles/
+              - text: ","
+              - link "inner brow raiser" [ref=e220] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/facial-expressions/action-units/au1/inner-brow-raiser/
+              - text: ","
+              - link "paid content" [ref=e221] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/paid/
+              - text: ","
+              - link "premium previews" [ref=e222] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/paid/premium-previews/
+              - text: ","
+              - link "tech" [ref=e223] [cursor=pointer]:
+                - /url: https://melindaozel.com/category/tech/
+            - navigation "Posts" [ref=e224]:
+              - generic [ref=e225]:
+                - img [ref=e227]
+                - link "ARKit & Other Face Tracking Mistakes" [ref=e230] [cursor=pointer]:
+                  - /url: https://melindaozel.com/arkit-other-face-tracking-mistakes/
+              - generic [ref=e231]:
+                - img [ref=e233]
+                - link "Comparative Anatomy (Sneak Preview)" [ref=e236] [cursor=pointer]:
+                  - /url: https://melindaozel.com/comparative-anatomy/
+      - generic [ref=e238]:
+        - 'heading "2 thoughts on “Inner Brow Raiser: Deep Dive”" [level=2] [ref=e239]'
+        - list [ref=e240]:
+          - listitem [ref=e241]:
+            - generic [ref=e242]:
+              - text: "Pingback:"
+              - link "ARKit to FACS cheat sheet – Face the FACS" [ref=e243] [cursor=pointer]:
+                - /url: https://melindaozel.com/arkit-to-facs-cheat-sheet/
+          - listitem [ref=e244]:
+            - generic [ref=e245]:
+              - text: "Pingback:"
+              - link "ARKit to FACS Translation – Face the FACS" [ref=e246] [cursor=pointer]:
+                - /url: https://melindaozel.com/arkit-to-facs-translation/
+        - paragraph [ref=e247]: Comments are closed.
+    - generic [ref=e249]:
+      - complementary [ref=e250]:
+        - generic [ref=e257]:
+          - figure [ref=e258]:
+            - link "headshot of page author" [ref=e259] [cursor=pointer]:
+              - /url: https://melindaozel.com/melinda-who-zel/
+              - img "headshot of page author" [ref=e260]
+          - paragraph
+          - paragraph [ref=e261]:
+            - text: I’m a Facial Systems Expert specializing in the Facial Action Coding System (FACS) and facial anatomy. My work spans
+            - link "expression tracking" [ref=e262] [cursor=pointer]:
+              - /url: https://patents.justia.com/inventor/melinda-ozel
+              - strong [ref=e263]: expression tracking
+            - text: ", facial animation, and"
+            - link "AI-driven lipsync" [ref=e264] [cursor=pointer]:
+              - /url: http://linkedin.com/in/melindaozel
+              - strong [ref=e265]: AI-driven lipsync
+            - text: . Recent work includes contributions to the de-aging of Tom Hanks and other actors in the
+            - strong [ref=e266]:
+              - link "Zemeckis film, Here" [ref=e267] [cursor=pointer]:
+                - /url: https://www.imdb.com/name/nm15482966/
+            - text: .
+          - paragraph [ref=e268]:
+            - text: Learn more about
+            - link "my background" [ref=e269] [cursor=pointer]:
+              - /url: https://melindaozel.com/melinda-who-zel/
+              - strong [ref=e270]: my background
+            - text: .
+          - paragraph
+      - complementary [ref=e271]:
+        - paragraph [ref=e272]:
+          - strong [ref=e273]: Courses & Workshops
+          - text: "-"
+          - link "FACS Cram Session" [ref=e274] [cursor=pointer]:
+            - /url: https://melindaozel.com/services/lectures-training/facs-cram-session/
+          - text: "-"
+          - link "All About Lipsync" [ref=e275] [cursor=pointer]:
+            - /url: https://melindaozel.com/all-about-lipsync-course/
+          - text: "-"
+          - link "All Training Services" [ref=e276] [cursor=pointer]:
+            - /url: https://melindaozel.com/services/lectures-training/
+      - complementary [ref=e277]:
+        - paragraph [ref=e278]:
+          - strong [ref=e279]: "\""
+          - text: Melinda Ozel's resources on face anatomy, motion, and FACS are industry standard. During my time working on The Last of Us Part II (and other unannounced Playstation titles) I referred to it almost exclusively on a regular basis. The free material is great but the pay material is worth the cost.
+          - strong [ref=e280]: "\""
+          - strong [ref=e281]: Eric Drobile | Technical Animator
+          - strong [ref=e282]: "\""
+          - text: For most people learning traditional FACS is not feasible. It requires very costly specialized degrees and years long commitment. And the half century old research with fuzzy photos was not made for artists. What Melinda has done for our industry is take the dense scientific information and streamlined it into very easy to digest entries and videos catered to artists.
+          - strong [ref=e283]: "\""
+          - strong [ref=e284]: Paul Liaw | Principal Character Artist
+          - strong [ref=e285]: "\""
+          - text: I've been working as a Facial Blendshape Artist across film and gaming and have watched the quality of my work improve exponentially since I've had access to this wealth of knowledge that Melinda has so thoughtfully put together. Her documentation is clear, appealing, and comprehensive. If Paul Ekman is the father of FACS, Melinda has become the cool aunt.
+          - strong [ref=e286]: "\""
+          - strong [ref=e287]: "Ioana Alexandra Pirvu | Lead Artist: Blendshapes @ Rockstar Games"
+          - strong [ref=e288]: "\""
+          - text: Face the FACS in my opinion is bar-none, the best resource out there for any artist and company dealing with facial animation. The way in which Melinda delivers knowledge is detailed, but fun and compelling enough to make you want to keep learning. For a topic that could have easily been boring, she inspired me to keep learning.
+          - strong [ref=e289]: "\""
+          - strong [ref=e290]: Giovanni Nakpil | Senior Creative 3D Evangelist @ Adobe
+          - strong [ref=e291]: "\""
+          - text: If you're doing AU's (action units), this is the site you're going to need to bookmark. Melinda has gone above and beyond to create what I feel is the ultimate resource guide for AU's. Each AU explained, annotated and demonstrated with extreme clarity. You'll experience plenty of "aha!!" moments using Melinda's work as your guide!
+          - strong [ref=e292]: "\""
+          - strong [ref=e293]: Frank Gravatt
+          - strong [ref=e294]: "| Facial Modeler @ Cloud Chamber"
+      - complementary [ref=e295]:
+        - paragraph
+      - complementary [ref=e296]:
+        - generic [ref=e298]:
+          - paragraph [ref=e299]:
+            - strong [ref=e300]: Connect with me <3
+          - list [ref=e301]:
+            - listitem [ref=e302]:
+              - link "Instagram" [ref=e303] [cursor=pointer]:
+                - /url: https://instagram.com/manicexpression
+                - img [ref=e304]
+                - generic [ref=e306]: Instagram
+            - listitem [ref=e307]:
+              - link "LinkedIn" [ref=e308] [cursor=pointer]:
+                - /url: https://linkedin.com/in/melindaozel
+                - img [ref=e309]
+                - generic [ref=e311]: LinkedIn
+            - listitem [ref=e312]:
+              - link "X" [ref=e313] [cursor=pointer]:
+                - /url: https://x.com/melindaozel
+                - img [ref=e314]
+                - generic [ref=e316]: X
+  - generic [ref=e317]:
+    - generic [ref=e320]:
+      - complementary [ref=e322]:
+        - search [ref=e323]:
+          - generic [ref=e324]: Search
+          - generic [ref=e325]:
+            - searchbox "Search" [ref=e326]
+            - button "Search" [ref=e327] [cursor=pointer]
+      - complementary [ref=e329]:
+        - paragraph [ref=e330]:
+          - link "Terms & Conditions" [ref=e331] [cursor=pointer]:
+            - /url: https://melindaozel.com/terms-conditions/
+    - contentinfo "Site" [ref=e332]:
+      - generic [ref=e334]:
+        - text: Copyright © 2020-2026 Melinda Ozel . All rights reserved.
+        - text: Learn how to
+        - link "cite my work here" [ref=e335] [cursor=pointer]:
+          - /url: https://melindaozel.com/how-to-cite-my-work-use-my-visuals/
+          - generic [ref=e336]: cite my work here
+        - generic [ref=e337]: .
+  - navigation "Website language selector" [ref=e338]:
+    - generic [ref=e339]:
+      - button "Change language":
+        - generic: EN
+      - group "Available languages":
+        - link "ES" [ref=e340] [cursor=pointer]:
+          - /url: https://melindaozel.com/es/inner-brow-raiser-deep-dive/
+          - generic [ref=e341]: ES
+        - link "FR" [ref=e342] [cursor=pointer]:
+          - /url: https://melindaozel.com/fr/inner-brow-raiser-deep-dive/
+          - generic [ref=e343]: FR
+        - link "ES_VE" [ref=e344] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_ve/inner-brow-raiser-deep-dive/
+          - generic [ref=e345]: ES_VE
+        - link "ES_CL" [ref=e346] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_cl/inner-brow-raiser-deep-dive/
+          - generic [ref=e347]: ES_CL
+        - link "ES_GT" [ref=e348] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_gt/inner-brow-raiser-deep-dive/
+          - generic [ref=e349]: ES_GT
+        - link "PT" [ref=e350] [cursor=pointer]:
+          - /url: https://melindaozel.com/pt/inner-brow-raiser-deep-dive/
+          - generic [ref=e351]: PT
+        - link "ZH" [ref=e352] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh/inner-brow-raiser-deep-dive/
+          - generic [ref=e353]: ZH
+        - link "ZH_TW" [ref=e354] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh_tw/inner-brow-raiser-deep-dive/
+          - generic [ref=e355]: ZH_TW
+        - link "ZH_HK" [ref=e356] [cursor=pointer]:
+          - /url: https://melindaozel.com/zh_hk/inner-brow-raiser-deep-dive/
+          - generic [ref=e357]: ZH_HK
+        - link "JA" [ref=e358] [cursor=pointer]:
+          - /url: https://melindaozel.com/ja/inner-brow-raiser-deep-dive/
+          - generic [ref=e359]: JA
+        - link "HI" [ref=e360] [cursor=pointer]:
+          - /url: https://melindaozel.com/hi/inner-brow-raiser-deep-dive/
+          - generic [ref=e361]: HI
+        - link "DE" [ref=e362] [cursor=pointer]:
+          - /url: https://melindaozel.com/de/inner-brow-raiser-deep-dive/
+          - generic [ref=e363]: DE
+        - link "DE_DE" [ref=e364] [cursor=pointer]:
+          - /url: https://melindaozel.com/de_de/inner-brow-raiser-deep-dive/
+          - generic [ref=e365]: DE_DE
+        - link "RU" [ref=e366] [cursor=pointer]:
+          - /url: https://melindaozel.com/ru/inner-brow-raiser-deep-dive/
+          - generic [ref=e367]: RU
+        - link "PL" [ref=e368] [cursor=pointer]:
+          - /url: https://melindaozel.com/pl/inner-brow-raiser-deep-dive/
+          - generic [ref=e369]: PL
+        - link "CS" [ref=e370] [cursor=pointer]:
+          - /url: https://melindaozel.com/cs/inner-brow-raiser-deep-dive/
+          - generic [ref=e371]: CS
+        - link "VI" [ref=e372] [cursor=pointer]:
+          - /url: https://melindaozel.com/vi/inner-brow-raiser-deep-dive/
+          - generic [ref=e373]: VI
+        - link "IT" [ref=e374] [cursor=pointer]:
+          - /url: https://melindaozel.com/it/inner-brow-raiser-deep-dive/
+          - generic [ref=e375]: IT
+        - link "SV" [ref=e376] [cursor=pointer]:
+          - /url: https://melindaozel.com/sv/inner-brow-raiser-deep-dive/
+          - generic [ref=e377]: SV
+        - link "SR" [ref=e378] [cursor=pointer]:
+          - /url: https://melindaozel.com/sr/inner-brow-raiser-deep-dive/
+          - generic [ref=e379]: SR
+        - link "AR" [ref=e380] [cursor=pointer]:
+          - /url: https://melindaozel.com/ar/inner-brow-raiser-deep-dive/
+          - generic [ref=e381]: AR
+        - link "MS" [ref=e382] [cursor=pointer]:
+          - /url: https://melindaozel.com/ms/inner-brow-raiser-deep-dive/
+          - generic [ref=e383]: MS
+        - link "FI" [ref=e384] [cursor=pointer]:
+          - /url: https://melindaozel.com/fi/inner-brow-raiser-deep-dive/
+          - generic [ref=e385]: FI
+        - link "ES_MX" [ref=e386] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_mx/inner-brow-raiser-deep-dive/
+          - generic [ref=e387]: ES_MX
+        - link "KO" [ref=e388] [cursor=pointer]:
+          - /url: https://melindaozel.com/ko/inner-brow-raiser-deep-dive/
+          - generic [ref=e389]: KO
+        - link "TR" [ref=e390] [cursor=pointer]:
+          - /url: https://melindaozel.com/tr/inner-brow-raiser-deep-dive/
+          - generic [ref=e391]: TR
+        - link "IS" [ref=e392] [cursor=pointer]:
+          - /url: https://melindaozel.com/is/inner-brow-raiser-deep-dive/
+          - generic [ref=e393]: IS
+        - link "NL" [ref=e394] [cursor=pointer]:
+          - /url: https://melindaozel.com/nl/inner-brow-raiser-deep-dive/
+          - generic [ref=e395]: NL
+        - link "NL_NL" [ref=e396] [cursor=pointer]:
+          - /url: https://melindaozel.com/nl_nl/inner-brow-raiser-deep-dive/
+          - generic [ref=e397]: NL_NL
+        - link "ES_AR" [ref=e398] [cursor=pointer]:
+          - /url: https://melindaozel.com/es_ar/inner-brow-raiser-deep-dive/
+          - generic [ref=e399]: ES_AR
+        - link "UK" [ref=e400] [cursor=pointer]:
+          - /url: https://melindaozel.com/uk/inner-brow-raiser-deep-dive/
+          - generic [ref=e401]: UK
+  - generic [ref=e402]: desktop

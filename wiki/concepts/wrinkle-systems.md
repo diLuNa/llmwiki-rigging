@@ -22,6 +22,32 @@ Wrinkle systems generate surface displacement deformations — on clothing or sk
 - [[concepts/delta-mush]] — smoothing layer that wrinkle systems typically run after
 - [[papers/mancewicz-2014-delta-mush]] — post-process smoothing
 
+## Wrinkle Taxonomy (Anatomical — for Character Design)
+
+Source: Melinda Ozel, [[queries/melindaozel-deep-dives]]
+
+### Dynamic Wrinkles (Expression Lines)
+Form from **repeated facial expressions**. Direction is **perpendicular to underlying muscle fiber direction** (e.g., vertical frontalis fibers → horizontal forehead wrinkles).
+
+Used in character design to signal habitual emotional life:
+- Medial forehead wrinkles (AU1) → empathetic, worried, hopeful
+- Full horizontal forehead wrinkles (AU1+2) → sociable, engaged
+- Glabellar furrows (AU4) → anger, concentration, confusion
+- Crow's feet (orbicularis orbitalis/AU6) → joy history
+- Nasolabial smile lines (AU12) → happiness
+
+**Important caveat:** dynamic wrinkle patterns are also affected by genetics and facial morphology — they are not guaranteed evidence of habitual expressions.
+
+### Static Wrinkles
+NOT caused by muscle movement. Causes:
+- **Gravity** — skin fold from decades of gravitational loading
+- **Compression / sleep position** — e.g., a vertical left-forehead crease from habitual left-side sleeping (Anthony Hopkins example); these do not correlate with any muscle
+- **Intrinsic aging** — collagen/elastin degradation
+- **UV/extrinsic aging** — sun damage
+- **Skin anisotropy** — skin is directionally dependent; wrinkles propagate along lines of least mechanical resistance
+
+**Rigging implication:** Static wrinkles belong in the **neutral mesh geometry**, not in blendshapes. They should not change with expression (only deform passively under skin stretch).
+
 ## Notes
 The stress / tension signal is the key design choice. Options range from simple edge-length ratios to the full Green–Lagrange strain tensor. A practical production signal: compute the ratio of deformed-to-rest edge lengths averaged over incident edges, then threshold to extract compression (negative strain) as a wrinkle trigger.
 

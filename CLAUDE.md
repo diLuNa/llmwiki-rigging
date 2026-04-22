@@ -24,7 +24,8 @@ rigging-wiki/
 │   ├── authors/       ← one page per notable author
 │   ├── comparisons/   ← side-by-side analysis pages
 │   ├── queries/       ← saved answers to important questions
-│   └── vex/           ← vex code snippets extracted from papers
+│   ├── explorations/  ← saved answers to request to explore an idea
+│   ├── vex/           ← vex code snippets extracted from papers
 │   └── python/        ← python code snippets extracted from papers
 └── tools/             ← helper scripts (search, lint, etc.)
 ```
