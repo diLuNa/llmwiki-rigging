@@ -6,6 +6,45 @@ Format: `## [YYYY-MM-DD] <operation> | <title>`
 
 ---
 
+## [2026-04-22] exploration | Nonlinear face model — moving beyond PCA
+- Created `wiki/explorations/nonlinear-face-model.md`
+- Created `wiki/python/nonlinear_face_model.py`
+- Architecture: IdentityEncoder (neutral mesh → z_id 64-dim) + MLPDecoder or UVConvDecoder
+- 6D continuous rotation representation for jaw SE(3) (no quaternion ambiguity)
+- Loss: vertex L1 + Laplacian + neutral anchor
+- Multi-subject HDF5 dataset, FaceModelTrainer with cosine schedule + gradient clipping
+- synthesize() and cache_identity() inference API
+- Houdini Python SOP integration for real-time rig preview
+
+## [2026-04-22] exploration | Jaw + muscle driven face mesh synthesis
+- Created `wiki/explorations/jaw-muscle-driven-synthesis.md`
+- Created `wiki/python/jaw_muscle_synthesis.py`
+- Four synthesis approaches: linear regression, KNN blending, MLP decoder, Houdini Python SOP
+- Jaw SE(3) extraction via SVD Procrustes, muscle stretch ratio from polyline length
+- Muscle attachment index definitions for FLAME 5023-vertex topology (11 muscles)
+- Correlation analysis function: which muscles drive which PCA expression components
+
+## [2026-04-22] lint | Wiki health pass
+- Fixed slug mismatches: `kavan-2008-dqs` → `kavan-2007-dqs`, `smith-2018-stable-neohookean` → `smith-2018-neo-hookean`
+- Removed dead link to `aberman-2017-style-transfer` (replaced with prose note)
+- Created author stubs: `authors/bradley-derek`, `authors/ng-thow-hing-victor`
+- Created concept page: `concepts/neural-blend-shapes`
+- Indexed orphan pages in `index.md`: `explorations/facs-pose-tsne`, `queries/metahuman-rig-internals`, 4 new author entries
+- Remaining known gaps (not ingested): `papers/magnenat-thalmann-1988-lbs`, `papers/kavan-2007-dqs` (stub only), `papers/aberman-2017-style-transfer`
+
+## [2026-04-22] exploration | FACS-guided t-SNE clustering of face expression poses
+
+Context: PCA face model (253 identity + 382 expression params), 100k animated poses.
+
+- Created `wiki/explorations/facs-pose-tsne.md`
+- Created `wiki/python/facs_pose_tsne.py`
+  - Option A: pre-PCA → UMAP/t-SNE directly on 382 expression params
+  - Option B: decode to mesh → per-FACS-region mean displacement features → UMAP/t-SNE
+  - Dominant-region labelling for FACS-type colouring
+  - Per-region activation subplot grid for verification
+  - FLAME-topology region masks for 18 AU-aligned vertex groups
+  - Batched decode loop (handles 100k × V × 3 without OOM)
+
 ## [2026-04-22] ingest | Deep-dive articles — Melinda Ozel (Face the FACS) × 12
 
 Sources (all premium, accessed via member session):

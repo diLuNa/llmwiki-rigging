@@ -39,7 +39,7 @@ Key insight: because B-spline/Bernstein evaluation is a linear map from control 
 [[papers/song-2025-spline-deformation-field]] (SIGGRAPH 2025) — models dense point trajectories over time using splines, where the number of knots controls degrees of freedom. Analytic velocity/acceleration from spline derivatives; avoids LBS-style deformation artifacts. Low-rank time-variant spatial encoding replaces heuristic spatiotemporal coupling.
 
 ### Hexahedral FEM Lattices (related)
-Flesh simulation (e.g., [[papers/smith-2018-stable-neohookean]]) drives hexahedral FEM lattices from skeletal bones. These are volumetric in the same spirit but discretized by FEM rather than B-spline basis functions — trilinear interpolation (degree 1 hexahedra) rather than higher-degree B-splines.
+Flesh simulation (e.g., [[papers/smith-2018-neo-hookean]]) drives hexahedral FEM lattices from skeletal bones. These are volumetric in the same spirit but discretized by FEM rather than B-spline basis functions — trilinear interpolation (degree 1 hexahedra) rather than higher-degree B-splines.
 
 ## Mathematical Details
 
@@ -137,7 +137,7 @@ B-spline volume deformers appear in production in several roles:
 
 2. **Muscle volume**: Each muscle is a B-spline solid parameterized by anatomical data. Contraction is modeled by changing control points in the $u$-direction (along fibre). The outer surface of the solid is rendered or transferred to the skin mesh.
 
-3. **FEM pre-computation**: Hex lattice driven by skeleton; simulation computes equilibrium deformation; result transferred to skin mesh as corrective or as direct deform. Used in [[papers/smith-2018-stable-neohookean]] for Pixar characters.
+3. **FEM pre-computation**: Hex lattice driven by skeleton; simulation computes equilibrium deformation; result transferred to skin mesh as corrective or as direct deform. Used in [[papers/smith-2018-neo-hookean]] for Pixar characters.
 
 4. **Learned deformation**: Train a network to predict control point displacements from pose parameters. At runtime, network runs once; FFD evaluation is analytic. Intermediate between direct neural displacement and classical rig.
 

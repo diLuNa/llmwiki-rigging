@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "wiki/concepts/facs.md",
+                "file": "wiki/explorations/nonlinear-face-model.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "facs"
+              "title": "nonlinear-face-model"
             }
           },
           {
@@ -216,6 +216,18 @@
   },
   "active": "e1e94846dc220d36",
   "lastOpenFiles": [
+    "wiki/explorations/jaw-muscle-driven-synthesis.md",
+    "wiki/explorations/nonlinear-face-model.md",
+    "wiki/python/nonlinear_face_model.py",
+    "wiki/explorations/facs-pose-tsne.md",
+    "wiki/python/jaw_muscle_synthesis.py",
+    "wiki/concepts/neural-blend-shapes.md",
+    "wiki/authors/ng-thow-hing-victor.md",
+    "wiki/authors/bradley-derek.md",
+    "wiki/python/index.md",
+    "wiki/concepts/facs.md",
+    "wiki/explorations",
+    "wiki/python/facs_pose_tsne.py",
     "wiki/queries/melindaozel-deep-dives.md",
     "raw/assets/melindaozel/snap-au9-nose-wrinkler.md",
     "raw/assets/melindaozel/snap-au23-lip-tightener.md",
@@ -240,12 +252,7 @@
     "raw/assets/melindaozel/facs-video-references/au20_lip-stretcher.fhls-fastly_skyfire-audio-high-Original.mp4.ytdl",
     "raw/assets/melindaozel/facs-video-references/au20_lip-stretcher.fhls-fastly_skyfire-11275.mp4",
     "raw/assets/melindaozel/facs-video-references/au20_lip-stretcher.fhls-fastly_skyfire-11275.mp4.part-Frag2.part",
-    "raw/assets/melindaozel/facs-video-references/au20_lip-stretcher.fhls-fastly_skyfire-11275.mp4.part",
-    "raw/assets/melindaozel/facs-video-references/au20_lip-stretcher.fhls-fastly_skyfire-11275.mp4.ytdl",
-    "raw/assets/melindaozel/facs-video-references/au18_lip-pucker.mp4",
-    "raw/assets/melindaozel/facs-video-references/au18_lip-pucker.fhls-fastly_skyfire-audio-high-Original.mp4",
     "raw/assets/melindaozel/emotion-references-page.png",
-    "wiki/queries/face-the-facs-site-report.md",
     "raw/assets/melindaozel/upper-face-expanded/au4_procerus_isolated.gif",
     "raw/assets/melindaozel/upper-face-expanded/au7_lid-tightener_muscle.png",
     "raw/assets/melindaozel/upper-face-expanded/au5_upper-lid-raiser_muscle.png",
@@ -254,13 +261,6 @@
     "raw/assets/melindaozel/upper-face-expanded/au5_upper-lid-raiser_side.gif",
     "raw/assets/melindaozel/upper-face-expanded/au5_upper-lid-raiser_static.png",
     "raw/assets/melindaozel/upper-face-expanded/au4_depressor-supercilii_spontaneous.gif",
-    "raw/assets/melindaozel/upper-face-expanded/au7_lid-tightener_side.gif",
-    "raw/assets/melindaozel/README.md",
-    "CLAUDE.md",
-    "wiki/authors/romero-javier.md",
-    "README.md",
-    "wiki/authors/giebenhain-simon.md",
-    "wiki/papers/kocasari-2026-face-anything.md",
-    "wiki/concepts/biomechanical-face-model-architecture.md"
+    "raw/assets/melindaozel/upper-face-expanded/au7_lid-tightener_side.gif"
   ]
 }

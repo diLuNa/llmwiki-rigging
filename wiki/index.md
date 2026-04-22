@@ -265,6 +265,7 @@ Master catalog of all pages. Updated on every ingest.
 | [[concepts/motion-synthesis]] | Automated character motion generation: physics-based (AMP), data-driven, neural generative, retargeting, crowd |
 | [[concepts/latent-generative-modelling]] | Two-stage generative modelling in latent space: autoencoder design (capacity, curation, shape), VQ-VAE lineage, latent diffusion, relevance to neural face models |
 | [[concepts/biomechanical-face-model-architecture]] | Design doc: neural face deformation model driven by muscle stretch ratios + jaw SE(3); MLP trunk + UV-space Conv upsample; ~12M params; identity PCA + expression encoding |
+| [[concepts/neural-blend-shapes]] | Learned pose-dependent corrective blend shapes: residual neural correctives, latent correctives, joint skeleton+weight learning (Li 2021) |
 
 ---
 
@@ -303,6 +304,9 @@ Full index with algorithm tables: [[vex/index]]
 | [[python/forearm_partial_twist.py]] | `swing_twist_decompose`, `partial_twist_xform`, `build_forearm_chain`, `relative_quaternion` | General technique |
 | [[python/rigid_body_rest.py]] | `support_function`, `potential_energy`, `convex_hull_gauss_map`, `check_face_stability`, `compute_spherical_voronoi_areas`, `resting_probabilities`, `drop_trajectory`, `inverse_design_target_probs` | [[papers/baktash-2025-resting-rigid-bodies]] |
 | [[python/flame-forward-pass.py]] | `rodrigues`, `lbs`, `flame_forward` — full FLAME forward pass: shape + pose correctives + expression + LBS | [[papers/li-2017-flame]], [[concepts/flame-model]] |
+| [[python/facs_pose_tsne.py]] | `embed_from_pca_params`, `decode_to_vertices`, `region_displacement_features`, `embed_from_mesh_regions`, `dominant_region_labels`, `plot_map`, `plot_map_by_region` — FACS-guided UMAP/t-SNE clustering of 100k expression poses | [[explorations/facs-pose-tsne]], [[concepts/facs]] |
+| [[python/jaw_muscle_synthesis.py]] | `extract_jaw_se3`, `muscle_stretch_ratio`, `extract_biomechanical_signals`, `fit_linear`, `synthesize_linear`, `build_knn`, `synthesize_knn`, `train_mlp`, `synthesize_mlp`, `muscle_expression_correlation` — four synthesis approaches (linear, KNN, MLP, Houdini SOP) for jaw+muscle → mesh | [[explorations/jaw-muscle-driven-synthesis]], [[concepts/biomechanical-face-model-architecture]] |
+| [[python/nonlinear_face_model.py]] | `IdentityEncoder`, `pca_identity_encoder`, `MLPDecoder`, `UVConvDecoder`, `NonlinearFaceModel`, `FaceModelTrainer`, `FaceDataset`, `NumpyFaceDataset`, `synthesize`, `cache_identity`, `export_to_hdf5`, `build_uniform_laplacian` — full nonlinear face model: identity encoding, MLP/UV-conv decoder, multi-subject HDF5 training | [[explorations/nonlinear-face-model]], [[concepts/biomechanical-face-model-architecture]] |
 
 ---
 
@@ -368,6 +372,20 @@ Full index with algorithm tables: [[vex/index]]
 | [[authors/crane-keenan]] | Carnegie Mellon University |
 | [[authors/sharp-nicholas]] | NVIDIA (formerly University of Toronto) |
 | [[authors/rackovic-stevo]] | Instituto Superior Técnico, Lisbon |
+| [[authors/giebenhain-simon]] | Technical University of Munich |
+| [[authors/romero-javier]] | Body Labs → Amazon |
+| [[authors/bradley-derek]] | DisneyResearch\|Studios |
+| [[authors/ng-thow-hing-victor]] | Honda Research Institute |
+
+---
+
+## Explorations
+
+| Page | Summary |
+|------|---------|
+| [[explorations/facs-pose-tsne]] | FACS-guided t-SNE/UMAP clustering of 100k face expression poses; Option A (direct PCA) vs Option B (per-region mesh displacements); 18 AU region masks for FLAME topology |
+| [[explorations/jaw-muscle-driven-synthesis]] | Synthesize a head mesh from jaw SE(3) + muscle stretch ratios; four approaches: linear regression, KNN blending, MLP decoder, Houdini Python SOP; muscle attachment definitions for FLAME topology |
+| [[explorations/nonlinear-face-model]] | Full nonlinear face model: IdentityEncoder (z_id) + MLPDecoder or UVConvDecoder; moves from PCA expression space to (jaw SE(3) + muscle ratios) → vertex deltas; 6D rotation, multi-subject HDF5 dataset, Laplacian loss, neutral anchor |
 
 ---
 
@@ -388,7 +406,8 @@ Full index with algorithm tables: [[vex/index]]
 | [[queries/melindaozel-deep-dives]] | Deep-dive notes from 12 premium articles: AU10 vs AU11, frontalis dynamics, AU23 lip cincher, blink asymmetry, AU5 anatomy, dimple cause, frontalis variation, AU1 mistakes, dynamic vs static wrinkles, AU9 context |
 | [[queries/jacobian-matrix]] | What is the Jacobian Matrix and why does it matter in character rigging? |
 | [[queries/gauss-newton-algorithm]] | What is the Gauss-Newton algorithm and when is it used in character rigging? |
+| [[queries/metahuman-rig-internals]] | Most detailed technical description of the MetaHuman rig internal architecture (RigLogic, DNA, control hierarchy) |
 
 ---
 
-*Last updated: 2026-04-17 — Extended parallel-transport (Snippet C: kinefx connectivity, orient output, 3 tangent modes); created aces-color-management technique page (OCIO setup, IDT guide, per-DCC, RRT gotchas). Wiki: 181 papers, 29 concepts, 55 authors, 9 techniques, 56 VEX snippets, 6 Python modules, 2 queries.*
+*Last updated: 2026-04-22 — Nonlinear face model exploration: IdentityEncoder + MLPDecoder/UVConvDecoder, 6D rotation, multi-subject HDF5 dataset, Laplacian + neutral anchor losses, Houdini SOP integration; `nonlinear_face_model.py`. Wiki: 181 papers, 30 concepts, 59 authors, 9 techniques, 56 VEX snippets, 10 Python modules, 5 queries, 3 explorations.*

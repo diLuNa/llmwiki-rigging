@@ -36,8 +36,7 @@ Learned skinning models that predict vertex positions from joint transforms via 
 [[concepts/bounded-biharmonic-weights]] — computes smooth, bounded skinning weights that satisfy the Laplace equation. Standard for computing weights from geometry automatically.
 
 ## Key Papers
-- [[papers/magnenat-thalmann-1988-lbs]] — original LBS formulation (if ingested)
-- [[papers/kavan-2008-dqs]] — dual quaternion skinning (SIGGRAPH 2008)
+- [[papers/kavan-2007-dqs]] — dual quaternion skinning (SIGGRAPH 2007)
 - [[papers/jacobson-2011-bbw]] — bounded biharmonic weights; auto-computed smooth weights (SIGGRAPH 2011)
 - [[papers/le-2014-skeletal-rigging]] — Smooth Skinning Decomposition (SSDR / Dem Bones); fits skinning to mesh sequences
 - [[papers/li-2021-neural-blend-shapes]] — neural blend shapes; learned pose-dependent correctives on LBS (SIGGRAPH 2021)

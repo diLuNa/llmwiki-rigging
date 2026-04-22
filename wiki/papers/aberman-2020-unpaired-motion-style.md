@@ -34,7 +34,7 @@ Paired motion data for style transfer is expensive to collect. Unpaired learning
 - May require motion cleaning and preprocessing
 
 ## Connections
-- [[papers/aberman-2017-style-transfer]] — related motion style research
+- Aberman et al. 2017 (motion style transfer) — related predecessor work (not yet ingested)
 - [[papers/holden-2015-inverse-rig]] — motion retargeting foundations
 - [[papers/gat-2025-anytop]] — topology-agnostic motion synthesis
 - [[concepts/motion-synthesis]] — neural motion generation
